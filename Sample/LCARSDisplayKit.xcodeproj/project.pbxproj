@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */; };
+		E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB51BBE7FBC0001C33D /* ViewController.swift */; };
+		E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FB71BBE7FBC0001C33D /* Main.storyboard */; };
+		E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */; };
+		E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */; };
+		E1112FC91BBE7FBC0001C33D /* LCARSDisplayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FC81BBE7FBC0001C33D /* LCARSDisplayKitTests.swift */; };
+		E1112FD41BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FD31BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift */; };
+		E127EB181BBE800600AAD675 /* LDKArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB0E1BBE800600AAD675 /* LDKArc.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB191BBE800600AAD675 /* LDKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB0F1BBE800600AAD675 /* LDKButton.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB1A1BBE800600AAD675 /* LDKCrescentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB101BBE800600AAD675 /* LDKCrescentButton.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB1B1BBE800600AAD675 /* LDKDirectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB111BBE800600AAD675 /* LDKDirectionButton.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB1C1BBE800600AAD675 /* LDKEdgedCrescentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB121BBE800600AAD675 /* LDKEdgedCrescentButton.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB1D1BBE800600AAD675 /* LDKElbowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB131BBE800600AAD675 /* LDKElbowButton.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB1E1BBE800600AAD675 /* LDKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB141BBE800600AAD675 /* LDKExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB1F1BBE800600AAD675 /* LDKIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB151BBE800600AAD675 /* LDKIndicatorView.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB201BBE800600AAD675 /* LDKProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB161BBE800600AAD675 /* LDKProtocols.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB211BBE800600AAD675 /* LDKSectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB171BBE800600AAD675 /* LDKSectorButton.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB231BBE803700AAD675 /* LDKDPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB221BBE803700AAD675 /* LDKDPadView.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB251BBE808500AAD675 /* LDKDPadExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB271BBE80C800AAD675 /* LDKDPadFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E1112FC51BBE7FBC0001C33D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1112FAF1BBE7FBB0001C33D;
+			remoteInfo = LCARSDisplayKit;
+		};
+		E1112FD01BBE7FBC0001C33D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1112FAF1BBE7FBB0001C33D;
+			remoteInfo = LCARSDisplayKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E1112FB01BBE7FBC0001C33D /* LCARSDisplayKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCARSDisplayKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E1112FB51BBE7FBC0001C33D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E1112FB81BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E1112FBD1BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E1112FBF1BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1112FC41BBE7FBC0001C33D /* LCARSDisplayKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LCARSDisplayKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1112FC81BBE7FBC0001C33D /* LCARSDisplayKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitTests.swift; sourceTree = "<group>"; };
+		E1112FCA1BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1112FCF1BBE7FBC0001C33D /* LCARSDisplayKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LCARSDisplayKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1112FD31BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitUITests.swift; sourceTree = "<group>"; };
+		E1112FD51BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E127EB0E1BBE800600AAD675 /* LDKArc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKArc.swift; sourceTree = "<group>"; };
+		E127EB0F1BBE800600AAD675 /* LDKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKButton.swift; sourceTree = "<group>"; };
+		E127EB101BBE800600AAD675 /* LDKCrescentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKCrescentButton.swift; sourceTree = "<group>"; };
+		E127EB111BBE800600AAD675 /* LDKDirectionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDirectionButton.swift; sourceTree = "<group>"; };
+		E127EB121BBE800600AAD675 /* LDKEdgedCrescentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKEdgedCrescentButton.swift; sourceTree = "<group>"; };
+		E127EB131BBE800600AAD675 /* LDKElbowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKElbowButton.swift; sourceTree = "<group>"; };
+		E127EB141BBE800600AAD675 /* LDKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKExtensions.swift; sourceTree = "<group>"; };
+		E127EB151BBE800600AAD675 /* LDKIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKIndicatorView.swift; sourceTree = "<group>"; };
+		E127EB161BBE800600AAD675 /* LDKProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKProtocols.swift; sourceTree = "<group>"; };
+		E127EB171BBE800600AAD675 /* LDKSectorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKSectorButton.swift; sourceTree = "<group>"; };
+		E127EB221BBE803700AAD675 /* LDKDPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadView.swift; sourceTree = "<group>"; };
+		E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadExpandedView.swift; sourceTree = "<group>"; };
+		E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadFullView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1112FAD1BBE7FBB0001C33D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FC11BBE7FBC0001C33D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FCC1BBE7FBC0001C33D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E1112FA71BBE7FBB0001C33D = {
+			isa = PBXGroup;
+			children = (
+				E127EB0D1BBE800600AAD675 /* LCARSDisplayKit */,
+				E1112FB21BBE7FBC0001C33D /* LCARSDisplayKit */,
+				E1112FC71BBE7FBC0001C33D /* LCARSDisplayKitTests */,
+				E1112FD21BBE7FBC0001C33D /* LCARSDisplayKitUITests */,
+				E1112FB11BBE7FBC0001C33D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1112FB11BBE7FBC0001C33D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1112FB01BBE7FBC0001C33D /* LCARSDisplayKit.app */,
+				E1112FC41BBE7FBC0001C33D /* LCARSDisplayKitTests.xctest */,
+				E1112FCF1BBE7FBC0001C33D /* LCARSDisplayKitUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1112FB21BBE7FBC0001C33D /* LCARSDisplayKit */ = {
+			isa = PBXGroup;
+			children = (
+				E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */,
+				E1112FB51BBE7FBC0001C33D /* ViewController.swift */,
+				E1112FB71BBE7FBC0001C33D /* Main.storyboard */,
+				E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */,
+				E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */,
+				E1112FBF1BBE7FBC0001C33D /* Info.plist */,
+				E127EB221BBE803700AAD675 /* LDKDPadView.swift */,
+				E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */,
+				E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */,
+			);
+			path = LCARSDisplayKit;
+			sourceTree = "<group>";
+		};
+		E1112FC71BBE7FBC0001C33D /* LCARSDisplayKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				E1112FC81BBE7FBC0001C33D /* LCARSDisplayKitTests.swift */,
+				E1112FCA1BBE7FBC0001C33D /* Info.plist */,
+			);
+			path = LCARSDisplayKitTests;
+			sourceTree = "<group>";
+		};
+		E1112FD21BBE7FBC0001C33D /* LCARSDisplayKitUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E1112FD31BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift */,
+				E1112FD51BBE7FBC0001C33D /* Info.plist */,
+			);
+			path = LCARSDisplayKitUITests;
+			sourceTree = "<group>";
+		};
+		E127EB0D1BBE800600AAD675 /* LCARSDisplayKit */ = {
+			isa = PBXGroup;
+			children = (
+				E127EB0E1BBE800600AAD675 /* LDKArc.swift */,
+				E127EB0F1BBE800600AAD675 /* LDKButton.swift */,
+				E127EB101BBE800600AAD675 /* LDKCrescentButton.swift */,
+				E127EB111BBE800600AAD675 /* LDKDirectionButton.swift */,
+				E127EB121BBE800600AAD675 /* LDKEdgedCrescentButton.swift */,
+				E127EB131BBE800600AAD675 /* LDKElbowButton.swift */,
+				E127EB141BBE800600AAD675 /* LDKExtensions.swift */,
+				E127EB151BBE800600AAD675 /* LDKIndicatorView.swift */,
+				E127EB161BBE800600AAD675 /* LDKProtocols.swift */,
+				E127EB171BBE800600AAD675 /* LDKSectorButton.swift */,
+			);
+			name = LCARSDisplayKit;
+			path = ../LCARSDisplayKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1112FD81BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKit" */;
+			buildPhases = (
+				E1112FAC1BBE7FBB0001C33D /* Sources */,
+				E1112FAD1BBE7FBB0001C33D /* Frameworks */,
+				E1112FAE1BBE7FBB0001C33D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LCARSDisplayKit;
+			productName = LCARSDisplayKit;
+			productReference = E1112FB01BBE7FBC0001C33D /* LCARSDisplayKit.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E1112FC31BBE7FBC0001C33D /* LCARSDisplayKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1112FDB1BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitTests" */;
+			buildPhases = (
+				E1112FC01BBE7FBC0001C33D /* Sources */,
+				E1112FC11BBE7FBC0001C33D /* Frameworks */,
+				E1112FC21BBE7FBC0001C33D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1112FC61BBE7FBC0001C33D /* PBXTargetDependency */,
+			);
+			name = LCARSDisplayKitTests;
+			productName = LCARSDisplayKitTests;
+			productReference = E1112FC41BBE7FBC0001C33D /* LCARSDisplayKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E1112FCE1BBE7FBC0001C33D /* LCARSDisplayKitUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1112FDE1BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitUITests" */;
+			buildPhases = (
+				E1112FCB1BBE7FBC0001C33D /* Sources */,
+				E1112FCC1BBE7FBC0001C33D /* Frameworks */,
+				E1112FCD1BBE7FBC0001C33D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1112FD11BBE7FBC0001C33D /* PBXTargetDependency */,
+			);
+			name = LCARSDisplayKitUITests;
+			productName = LCARSDisplayKitUITests;
+			productReference = E1112FCF1BBE7FBC0001C33D /* LCARSDisplayKitUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1112FA81BBE7FBB0001C33D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Richard Piazza";
+				TargetAttributes = {
+					E1112FAF1BBE7FBB0001C33D = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+					E1112FC31BBE7FBC0001C33D = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = E1112FAF1BBE7FBB0001C33D;
+					};
+					E1112FCE1BBE7FBC0001C33D = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = E1112FAF1BBE7FBB0001C33D;
+					};
+				};
+			};
+			buildConfigurationList = E1112FAB1BBE7FBB0001C33D /* Build configuration list for PBXProject "LCARSDisplayKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E1112FA71BBE7FBB0001C33D;
+			productRefGroup = E1112FB11BBE7FBC0001C33D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKit */,
+				E1112FC31BBE7FBC0001C33D /* LCARSDisplayKitTests */,
+				E1112FCE1BBE7FBC0001C33D /* LCARSDisplayKitUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1112FAE1BBE7FBB0001C33D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */,
+				E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */,
+				E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FC21BBE7FBC0001C33D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FCD1BBE7FBC0001C33D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1112FAC1BBE7FBB0001C33D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */,
+				E127EB1B1BBE800600AAD675 /* LDKDirectionButton.swift in Sources */,
+				E127EB231BBE803700AAD675 /* LDKDPadView.swift in Sources */,
+				E127EB201BBE800600AAD675 /* LDKProtocols.swift in Sources */,
+				E127EB251BBE808500AAD675 /* LDKDPadExpandedView.swift in Sources */,
+				E127EB191BBE800600AAD675 /* LDKButton.swift in Sources */,
+				E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */,
+				E127EB1F1BBE800600AAD675 /* LDKIndicatorView.swift in Sources */,
+				E127EB271BBE80C800AAD675 /* LDKDPadFullView.swift in Sources */,
+				E127EB1A1BBE800600AAD675 /* LDKCrescentButton.swift in Sources */,
+				E127EB181BBE800600AAD675 /* LDKArc.swift in Sources */,
+				E127EB1C1BBE800600AAD675 /* LDKEdgedCrescentButton.swift in Sources */,
+				E127EB1E1BBE800600AAD675 /* LDKExtensions.swift in Sources */,
+				E127EB1D1BBE800600AAD675 /* LDKElbowButton.swift in Sources */,
+				E127EB211BBE800600AAD675 /* LDKSectorButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FC01BBE7FBC0001C33D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1112FC91BBE7FBC0001C33D /* LCARSDisplayKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FCB1BBE7FBC0001C33D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1112FD41BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E1112FC61BBE7FBC0001C33D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKit */;
+			targetProxy = E1112FC51BBE7FBC0001C33D /* PBXContainerItemProxy */;
+		};
+		E1112FD11BBE7FBC0001C33D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKit */;
+			targetProxy = E1112FD01BBE7FBC0001C33D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E1112FB71BBE7FBC0001C33D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1112FB81BBE7FBC0001C33D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1112FBD1BBE7FBC0001C33D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E1112FD61BBE7FBC0001C33D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E1112FD71BBE7FBC0001C33D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1112FD91BBE7FBC0001C33D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LCARSDisplayKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E1112FDA1BBE7FBC0001C33D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LCARSDisplayKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		E1112FDC1BBE7FBC0001C33D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LCARSDisplayKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LCARSDisplayKit.app/LCARSDisplayKit";
+			};
+			name = Debug;
+		};
+		E1112FDD1BBE7FBC0001C33D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = LCARSDisplayKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LCARSDisplayKit.app/LCARSDisplayKit";
+			};
+			name = Release;
+		};
+		E1112FDF1BBE7FBC0001C33D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LCARSDisplayKitUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LCARSDisplayKit;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		E1112FE01BBE7FBC0001C33D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = LCARSDisplayKitUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = LCARSDisplayKit;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1112FAB1BBE7FBB0001C33D /* Build configuration list for PBXProject "LCARSDisplayKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1112FD61BBE7FBC0001C33D /* Debug */,
+				E1112FD71BBE7FBC0001C33D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1112FD81BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1112FD91BBE7FBC0001C33D /* Debug */,
+				E1112FDA1BBE7FBC0001C33D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1112FDB1BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1112FDC1BBE7FBC0001C33D /* Debug */,
+				E1112FDD1BBE7FBC0001C33D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1112FDE1BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1112FDF1BBE7FBC0001C33D /* Debug */,
+				E1112FE01BBE7FBC0001C33D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1112FA81BBE7FBB0001C33D /* Project object */;
+}
