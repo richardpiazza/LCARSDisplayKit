@@ -43,7 +43,7 @@ public let LDKRingArc18: LDKDegreeRange = (CGFloat(316.5), CGFloat(332.5))
 public let LDKRingArc19: LDKDegreeRange = (CGFloat(334.5), CGFloat(350.5))
 public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
 
-@IBDesignable public class LDKDPadView: UIView, LDKScalable {
+@IBDesignable public class LDKDPadView: UIView {
     public var crux: LDKButton = LDKButton()
     public var up: LDKDirectionButton = LDKDirectionButton()
     public var down: LDKDirectionButton = LDKDirectionButton()
@@ -54,19 +54,15 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
     public var sector03: LDKSectorButton = LDKSectorButton()
     public var sector04: LDKSectorButton = LDKSectorButton()
     
-    public class func defaultSize() -> CGSize {
-        return CGSizeMake(384, 384)
-    }
-    
     /// X and Y valuses to offset the center of the dpad from the center of the frame
-    func axisOffset() -> CGPoint {
+    func originOffset() -> CGPoint {
         return CGPointMake(0, 0)
     }
     
-    func axisOrigin(rect: CGRect) -> LDKAxisOrigin {
-        let x = rect.size.width / 2 + self.axisOffset().x
-        let y = rect.size.height / 2 + self.axisOffset().y
-        return LDKAxisOrigin(x: x, y: y)
+    func graphOrigin(rect: CGRect) -> GraphOrigin {
+        let x = rect.size.width / 2 + self.originOffset().x
+        let y = rect.size.height / 2 + self.originOffset().y
+        return GraphOrigin(x: x, y: y)
     }
     
     func cruxInteriorRadius(rect: CGRect) -> CGFloat {
@@ -80,9 +76,9 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        let axisOrigin = self.axisOrigin(self.frame)
-        let axisX = axisOrigin.x
-        let axisY = axisOrigin.y
+        let graphOrigin = self.graphOrigin(self.frame)
+        let axisX = graphOrigin.x
+        let axisY = graphOrigin.y
         let cruxInteriorRadius = self.cruxInteriorRadius(self.frame)
         let cruxExteriorRadius = self.cruxExteriorRadius(self.frame)
         
@@ -155,8 +151,8 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
             self.addSubview(self.right)
         }
         
-        var arc = LDKArc(radius: cruxExteriorRadius, startDegree: LDKSectorButton01.startDegree, endDegree: LDKSectorButton01.endDegree)
-        frame = arc.axisFrame().viewFrameForAxisOrigin(axisOrigin)
+        var arc = Arc(radius: cruxExteriorRadius, startDegree: LDKSectorButton01.startDegree, endDegree: LDKSectorButton01.endDegree)
+        frame = GraphFrame.frameFor(arc: arc).rectFor(graphOrigin)
         
         self.sector01.frame = frame
         self.sector01.setArc(arc)
@@ -167,8 +163,8 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
             self.addSubview(self.sector01)
         }
         
-        arc = LDKArc(radius: cruxExteriorRadius, startDegree: LDKSectorButton02.startDegree, endDegree: LDKSectorButton02.endDegree)
-        frame = arc.axisFrame().viewFrameForAxisOrigin(axisOrigin)
+        arc = Arc(radius: cruxExteriorRadius, startDegree: LDKSectorButton02.startDegree, endDegree: LDKSectorButton02.endDegree)
+        frame = GraphFrame.frameFor(arc: arc).rectFor(graphOrigin)
         
         self.sector02.frame = frame
         self.sector02.setArc(arc)
@@ -179,8 +175,8 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
             self.addSubview(self.sector02)
         }
         
-        arc = LDKArc(radius: cruxExteriorRadius, startDegree: LDKSectorButton03.startDegree, endDegree: LDKSectorButton03.endDegree)
-        frame = arc.axisFrame().viewFrameForAxisOrigin(axisOrigin)
+        arc = Arc(radius: cruxExteriorRadius, startDegree: LDKSectorButton03.startDegree, endDegree: LDKSectorButton03.endDegree)
+        frame = GraphFrame.frameFor(arc: arc).rectFor(graphOrigin)
         
         self.sector03.frame = frame
         self.sector03.setArc(arc)
@@ -191,8 +187,8 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
             self.addSubview(self.sector03)
         }
         
-        arc = LDKArc(radius: cruxExteriorRadius, startDegree: LDKSectorButton04.startDegree, endDegree: LDKSectorButton04.endDegree)
-        frame = arc.axisFrame().viewFrameForAxisOrigin(axisOrigin)
+        arc = Arc(radius: cruxExteriorRadius, startDegree: LDKSectorButton04.startDegree, endDegree: LDKSectorButton04.endDegree)
+        frame = GraphFrame.frameFor(arc: arc).rectFor(graphOrigin)
         
         self.sector04.frame = frame
         self.sector04.setArc(arc)
@@ -202,5 +198,12 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         if !self.subviews.contains(self.sector04) {
             self.addSubview(self.sector04)
         }
+    }
+}
+
+// MARK: - Scalable
+extension LDKDPadView: Scalable {
+    public class func defaultSize() -> CGSize {
+        return CGSizeMake(384, 384)
     }
 }

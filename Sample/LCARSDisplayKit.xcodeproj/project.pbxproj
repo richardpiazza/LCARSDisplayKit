@@ -14,19 +14,26 @@
 		E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */; };
 		E1112FC91BBE7FBC0001C33D /* LCARSDisplayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FC81BBE7FBC0001C33D /* LCARSDisplayKitTests.swift */; };
 		E1112FD41BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FD31BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift */; };
-		E127EB181BBE800600AAD675 /* LDKArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB0E1BBE800600AAD675 /* LDKArc.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB191BBE800600AAD675 /* LDKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB0F1BBE800600AAD675 /* LDKButton.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB1A1BBE800600AAD675 /* LDKCrescentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB101BBE800600AAD675 /* LDKCrescentButton.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB1B1BBE800600AAD675 /* LDKDirectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB111BBE800600AAD675 /* LDKDirectionButton.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB1C1BBE800600AAD675 /* LDKEdgedCrescentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB121BBE800600AAD675 /* LDKEdgedCrescentButton.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB1D1BBE800600AAD675 /* LDKElbowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB131BBE800600AAD675 /* LDKElbowButton.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB1E1BBE800600AAD675 /* LDKExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB141BBE800600AAD675 /* LDKExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB1F1BBE800600AAD675 /* LDKIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB151BBE800600AAD675 /* LDKIndicatorView.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB201BBE800600AAD675 /* LDKProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB161BBE800600AAD675 /* LDKProtocols.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB211BBE800600AAD675 /* LDKSectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB171BBE800600AAD675 /* LDKSectorButton.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB231BBE803700AAD675 /* LDKDPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB221BBE803700AAD675 /* LDKDPadView.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB251BBE808500AAD675 /* LDKDPadExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */; settings = {ASSET_TAGS = (); }; };
-		E127EB271BBE80C800AAD675 /* LDKDPadFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */; settings = {ASSET_TAGS = (); }; };
+		E127EB191BBE800600AAD675 /* LDKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB0F1BBE800600AAD675 /* LDKButton.swift */; };
+		E127EB1A1BBE800600AAD675 /* LDKCrescentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB101BBE800600AAD675 /* LDKCrescentButton.swift */; };
+		E127EB1B1BBE800600AAD675 /* LDKDirectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB111BBE800600AAD675 /* LDKDirectionButton.swift */; };
+		E127EB1C1BBE800600AAD675 /* LDKEdgedCrescentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB121BBE800600AAD675 /* LDKEdgedCrescentButton.swift */; };
+		E127EB1D1BBE800600AAD675 /* LDKElbowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB131BBE800600AAD675 /* LDKElbowButton.swift */; };
+		E127EB1F1BBE800600AAD675 /* LDKIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB151BBE800600AAD675 /* LDKIndicatorView.swift */; };
+		E127EB211BBE800600AAD675 /* LDKSectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB171BBE800600AAD675 /* LDKSectorButton.swift */; };
+		E127EB231BBE803700AAD675 /* LDKDPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB221BBE803700AAD675 /* LDKDPadView.swift */; };
+		E127EB251BBE808500AAD675 /* LDKDPadExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */; };
+		E127EB271BBE80C800AAD675 /* LDKDPadFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */; };
+		E197220F1C4255F20055E457 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197220E1C4255F20055E457 /* UIButton.swift */; };
+		E1F98EBC1C42034300A95ED0 /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F98EBB1C42034300A95ED0 /* CGRect.swift */; };
+		E1F98EBE1C42035000A95ED0 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F98EBD1C42035000A95ED0 /* CGSize.swift */; };
+		E1F98EC01C42035700A95ED0 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F98EBF1C42035700A95ED0 /* CGPoint.swift */; };
+		E1F98EC21C42036900A95ED0 /* Scalable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F98EC11C42036900A95ED0 /* Scalable.swift */; };
+		E1F98EC41C42037000A95ED0 /* Tappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F98EC31C42037000A95ED0 /* Tappable.swift */; };
+		E1F98EC61C4213D500A95ED0 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F98EC51C4213D500A95ED0 /* CGFloat.swift */; };
+		E1F98EC81C42140100A95ED0 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F98EC71C42140100A95ED0 /* UIColor.swift */; };
+		E1F98ECA1C42142900A95ED0 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F98EC91C42142900A95ED0 /* UIImage.swift */; };
+		E1F98ECC1C421D1D00A95ED0 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F98ECB1C421D1D00A95ED0 /* Arc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,19 +67,26 @@
 		E1112FCF1BBE7FBC0001C33D /* LCARSDisplayKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LCARSDisplayKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1112FD31BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitUITests.swift; sourceTree = "<group>"; };
 		E1112FD51BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E127EB0E1BBE800600AAD675 /* LDKArc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKArc.swift; sourceTree = "<group>"; };
 		E127EB0F1BBE800600AAD675 /* LDKButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKButton.swift; sourceTree = "<group>"; };
 		E127EB101BBE800600AAD675 /* LDKCrescentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKCrescentButton.swift; sourceTree = "<group>"; };
 		E127EB111BBE800600AAD675 /* LDKDirectionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDirectionButton.swift; sourceTree = "<group>"; };
 		E127EB121BBE800600AAD675 /* LDKEdgedCrescentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKEdgedCrescentButton.swift; sourceTree = "<group>"; };
 		E127EB131BBE800600AAD675 /* LDKElbowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKElbowButton.swift; sourceTree = "<group>"; };
-		E127EB141BBE800600AAD675 /* LDKExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKExtensions.swift; sourceTree = "<group>"; };
 		E127EB151BBE800600AAD675 /* LDKIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKIndicatorView.swift; sourceTree = "<group>"; };
-		E127EB161BBE800600AAD675 /* LDKProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKProtocols.swift; sourceTree = "<group>"; };
 		E127EB171BBE800600AAD675 /* LDKSectorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKSectorButton.swift; sourceTree = "<group>"; };
 		E127EB221BBE803700AAD675 /* LDKDPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadView.swift; sourceTree = "<group>"; };
 		E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadExpandedView.swift; sourceTree = "<group>"; };
 		E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadFullView.swift; sourceTree = "<group>"; };
+		E197220E1C4255F20055E457 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		E1F98EBB1C42034300A95ED0 /* CGRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRect.swift; sourceTree = "<group>"; };
+		E1F98EBD1C42035000A95ED0 /* CGSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
+		E1F98EBF1C42035700A95ED0 /* CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		E1F98EC11C42036900A95ED0 /* Scalable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scalable.swift; sourceTree = "<group>"; };
+		E1F98EC31C42037000A95ED0 /* Tappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tappable.swift; sourceTree = "<group>"; };
+		E1F98EC51C4213D500A95ED0 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		E1F98EC71C42140100A95ED0 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		E1F98EC91C42142900A95ED0 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		E1F98ECB1C421D1D00A95ED0 /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,16 +172,23 @@
 		E127EB0D1BBE800600AAD675 /* LCARSDisplayKit */ = {
 			isa = PBXGroup;
 			children = (
-				E127EB0E1BBE800600AAD675 /* LDKArc.swift */,
 				E127EB0F1BBE800600AAD675 /* LDKButton.swift */,
 				E127EB101BBE800600AAD675 /* LDKCrescentButton.swift */,
 				E127EB111BBE800600AAD675 /* LDKDirectionButton.swift */,
 				E127EB121BBE800600AAD675 /* LDKEdgedCrescentButton.swift */,
 				E127EB131BBE800600AAD675 /* LDKElbowButton.swift */,
-				E127EB141BBE800600AAD675 /* LDKExtensions.swift */,
 				E127EB151BBE800600AAD675 /* LDKIndicatorView.swift */,
-				E127EB161BBE800600AAD675 /* LDKProtocols.swift */,
 				E127EB171BBE800600AAD675 /* LDKSectorButton.swift */,
+				E1F98ECB1C421D1D00A95ED0 /* Arc.swift */,
+				E1F98EC51C4213D500A95ED0 /* CGFloat.swift */,
+				E1F98EBF1C42035700A95ED0 /* CGPoint.swift */,
+				E1F98EBB1C42034300A95ED0 /* CGRect.swift */,
+				E1F98EBD1C42035000A95ED0 /* CGSize.swift */,
+				E1F98EC11C42036900A95ED0 /* Scalable.swift */,
+				E1F98EC31C42037000A95ED0 /* Tappable.swift */,
+				E197220E1C4255F20055E457 /* UIButton.swift */,
+				E1F98EC71C42140100A95ED0 /* UIColor.swift */,
+				E1F98EC91C42142900A95ED0 /* UIImage.swift */,
 			);
 			name = LCARSDisplayKit;
 			path = ../LCARSDisplayKit;
@@ -303,21 +324,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F98EC61C4213D500A95ED0 /* CGFloat.swift in Sources */,
+				E1F98ECA1C42142900A95ED0 /* UIImage.swift in Sources */,
+				E1F98EC81C42140100A95ED0 /* UIColor.swift in Sources */,
+				E1F98EBE1C42035000A95ED0 /* CGSize.swift in Sources */,
 				E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */,
 				E127EB1B1BBE800600AAD675 /* LDKDirectionButton.swift in Sources */,
 				E127EB231BBE803700AAD675 /* LDKDPadView.swift in Sources */,
-				E127EB201BBE800600AAD675 /* LDKProtocols.swift in Sources */,
+				E1F98EC01C42035700A95ED0 /* CGPoint.swift in Sources */,
 				E127EB251BBE808500AAD675 /* LDKDPadExpandedView.swift in Sources */,
 				E127EB191BBE800600AAD675 /* LDKButton.swift in Sources */,
 				E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */,
 				E127EB1F1BBE800600AAD675 /* LDKIndicatorView.swift in Sources */,
 				E127EB271BBE80C800AAD675 /* LDKDPadFullView.swift in Sources */,
 				E127EB1A1BBE800600AAD675 /* LDKCrescentButton.swift in Sources */,
-				E127EB181BBE800600AAD675 /* LDKArc.swift in Sources */,
 				E127EB1C1BBE800600AAD675 /* LDKEdgedCrescentButton.swift in Sources */,
-				E127EB1E1BBE800600AAD675 /* LDKExtensions.swift in Sources */,
+				E1F98EC41C42037000A95ED0 /* Tappable.swift in Sources */,
 				E127EB1D1BBE800600AAD675 /* LDKElbowButton.swift in Sources */,
+				E1F98ECC1C421D1D00A95ED0 /* Arc.swift in Sources */,
+				E1F98EC21C42036900A95ED0 /* Scalable.swift in Sources */,
+				E197220F1C4255F20055E457 /* UIButton.swift in Sources */,
 				E127EB211BBE800600AAD675 /* LDKSectorButton.swift in Sources */,
+				E1F98EBC1C42034300A95ED0 /* CGRect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

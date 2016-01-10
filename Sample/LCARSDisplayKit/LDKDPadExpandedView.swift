@@ -45,7 +45,7 @@ public class LDKDPadExpandedView: LDKDPadView {
         return CGSizeMake(794, 660)
     }
     
-    override func axisOffset() -> CGPoint {
+    override func originOffset() -> CGPoint {
         return CGPointMake(0, self.dynamicType.defaultSize().height * 0.068)
     }
     
@@ -96,7 +96,7 @@ public class LDKDPadExpandedView: LDKDPadView {
     public override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         
-        let axisOrigin = self.axisOrigin(rect)
+        let graphOrigin = self.graphOrigin(rect)
         let frir = self.firstRingInteriorRadius(rect)
         let frer = self.firstRingExteriorRadius(rect)
         let srir = self.secondRingInteriorRadius(rect)
@@ -105,172 +105,171 @@ public class LDKDPadExpandedView: LDKDPadView {
         let trir = self.thirdRingInteriorRadius(rect)
         let trer = self.thirdRingExteriorRadius(rect)
         
-        self.innerRingSector01 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree, axisOrigin: axisOrigin)
+        self.innerRingSector01 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree, graphOrigin: graphOrigin)
         if let button = self.innerRingSector01 {
             self.addSubview(button)
         }
         
-        self.innerRingSector04 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector04.startDegree, endDegree: LDKRingSector04.endDegree, axisOrigin: axisOrigin)
+        self.innerRingSector04 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector04.startDegree, endDegree: LDKRingSector04.endDegree, graphOrigin: graphOrigin)
         if let button = self.innerRingSector04 {
             self.addSubview(button)
         }
         
-        self.innerRing05 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree, axisOrigin: axisOrigin)
+        self.innerRing05 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree, graphOrigin: graphOrigin)
         if let button = self.innerRing05 {
             self.addSubview(button)
         }
         
-        self.innerRing10 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree, axisOrigin: axisOrigin)
+        self.innerRing10 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree, graphOrigin: graphOrigin)
         if let button = self.innerRing10 {
             self.addSubview(button)
         }
         
-        self.innerRing11 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree, axisOrigin: axisOrigin)
+        self.innerRing11 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree, graphOrigin: graphOrigin)
         if let button = self.innerRing11 {
             self.addSubview(button)
         }
         
-        self.innerRing12 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree, axisOrigin: axisOrigin)
+        self.innerRing12 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree, graphOrigin: graphOrigin)
         if let button = self.innerRing12 {
             self.addSubview(button)
         }
         
-        self.innerRing13 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree, axisOrigin: axisOrigin)
+        self.innerRing13 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree, graphOrigin: graphOrigin)
         if let button = self.innerRing13 {
             self.addSubview(button)
         }
         
-        self.innerRing14 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree, axisOrigin: axisOrigin)
+        self.innerRing14 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree, graphOrigin: graphOrigin)
         if let button = self.innerRing14 {
             self.addSubview(button)
         }
         
-        self.innerRing15 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree, axisOrigin: axisOrigin)
+        self.innerRing15 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree, graphOrigin: graphOrigin)
         if let button = self.innerRing15 {
             self.addSubview(button)
         }
         
-        self.innerRing20 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree, axisOrigin: axisOrigin)
+        self.innerRing20 = LDKCrescentButton(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree, graphOrigin: graphOrigin)
         if let button = self.innerRing20 {
             self.addSubview(button)
         }
         
-        self.outerRing10 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree, axisOrigin: axisOrigin)
+        self.outerRing10 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRing10 {
             self.addSubview(button)
         }
         
-        self.outerRing11 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree, axisOrigin: axisOrigin)
+        self.outerRing11 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRing11 {
             self.addSubview(button)
         }
         
-        self.outerRing12 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree, axisOrigin: axisOrigin)
+        self.outerRing12 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRing12 {
             self.addSubview(button)
         }
         
-        self.outerRing13 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree, axisOrigin: axisOrigin)
+        self.outerRing13 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRing13 {
             self.addSubview(button)
         }
         
-        self.outerRing14 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree, axisOrigin: axisOrigin)
+        self.outerRing14 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRing14 {
             self.addSubview(button)
         }
         
-        self.outerRing16 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc16.startDegree, endDegree: LDKRingArc16.endDegree, axisOrigin: axisOrigin)
+        self.outerRing16 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc16.startDegree, endDegree: LDKRingArc16.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRing16 {
             self.addSubview(button)
         }
         
-        self.outerRing17 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc17.startDegree, endDegree: LDKRingArc17.endDegree, axisOrigin: axisOrigin)
+        self.outerRing17 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc17.startDegree, endDegree: LDKRingArc17.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRing17 {
             self.addSubview(button)
         }
         
-        self.outerRing20 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree, axisOrigin: axisOrigin)
+        self.outerRing20 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRing20 {
             self.addSubview(button)
         }
         
-        self.outerRingExtended18 = LDKCrescentButton(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc18.startDegree, endDegree: LDKRingArc18.endDegree, axisOrigin: axisOrigin)
+        self.outerRingExtended18 = LDKCrescentButton(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc18.startDegree, endDegree: LDKRingArc18.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRingExtended18 {
             self.addSubview(button)
         }
         
-        self.outerRingExtended19 = LDKCrescentButton(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc19.startDegree, endDegree: LDKRingArc19.endDegree, axisOrigin: axisOrigin)
+        self.outerRingExtended19 = LDKCrescentButton(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc19.startDegree, endDegree: LDKRingArc19.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRingExtended19 {
             self.addSubview(button)
         }
         
-        let edge01InteriorArc = LDKArc(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
-        let edge01ExteriorArc = LDKArc(radius: self.edge01ExteriorRadius(rect), startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
-        let edge02InteriorArc = LDKArc(radius: self.firstRingInteriorRadius(rect), startDegree: LDKRingArc07.startDegree, endDegree: LDKRingArc08.endDegree)
-        let edge03InteriorArc = LDKArc(radius: frir, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree)
-        let edge03ExteriorArc = LDKArc(radius: srerExtended, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree)
-        let edge04InteriorArc = LDKArc(radius: trir, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
-        let edge04ExteriorArc = LDKArc(radius: trer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
-//        let edge05InteriorArc = LDKArc(radius: srir, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree)
-        let edge05ExteriorArc = LDKArc(radius: srerExtended, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree)
+        let edge01InteriorArc = Arc(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
+        let edge01ExteriorArc = Arc(radius: self.edge01ExteriorRadius(rect), startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
+        let edge02InteriorArc = Arc(radius: self.firstRingInteriorRadius(rect), startDegree: LDKRingArc07.startDegree, endDegree: LDKRingArc08.endDegree)
+        let edge03InteriorArc = Arc(radius: frir, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree)
+        let edge03ExteriorArc = Arc(radius: srerExtended, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree)
+        let edge04InteriorArc = Arc(radius: trir, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
+        let edge04ExteriorArc = Arc(radius: trer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
+        let edge05ExteriorArc = Arc(radius: srerExtended, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree)
         
         let edge01EndInteriorAngle = edge01InteriorArc.endDegree - 90
         let edge01EndExteriorAngle = 180 - 90 - edge01EndInteriorAngle
-        let edge01EndExteriorLength = (edge01ExteriorArc.startPoint().y / sin(edge01EndExteriorAngle.toRadians())) * sin(edge01EndInteriorAngle.toRadians())
+        let edge01EndExteriorLength = (edge01ExteriorArc.startPoint.y / sin(edge01EndExteriorAngle.toRadians())) * sin(edge01EndInteriorAngle.toRadians())
         
-        let edge01Point01 = CGPointMake(edge01ExteriorArc.startPoint().x, edge01ExteriorArc.startPoint().y)
-        let edge01Point02 = CGPointMake(edge01EndExteriorLength, edge01ExteriorArc.startPoint().y)
+        let edge01Point01 = CGPointMake(edge01ExteriorArc.startPoint.x, edge01ExteriorArc.startPoint.y)
+        let edge01Point02 = CGPointMake(edge01EndExteriorLength, edge01ExteriorArc.startPoint.y)
         
         let edge02StartInteriorAngle = edge02InteriorArc.startDegree - 90
         let edge02StartExteriorAngle = 180 - 90 - edge02StartInteriorAngle
-        let edge02StartExteriorLength = (edge01ExteriorArc.startPoint().y / sin(edge02StartExteriorAngle.toRadians())) * sin(edge02StartInteriorAngle.toRadians())
+        let edge02StartExteriorLength = (edge01ExteriorArc.startPoint.y / sin(edge02StartExteriorAngle.toRadians())) * sin(edge02StartInteriorAngle.toRadians())
         let edge02EndInteriorAngle = 180 - edge02InteriorArc.endDegree
         let edge02EndExteriorAngle = 180 - 90 - edge02EndInteriorAngle
-        let edge02EndExteriorLength = (edge03ExteriorArc.endPoint().x / sin(edge02EndExteriorAngle.toRadians())) * sin(edge02EndInteriorAngle.toRadians())
+        let edge02EndExteriorLength = (edge03ExteriorArc.endPoint.x / sin(edge02EndExteriorAngle.toRadians())) * sin(edge02EndInteriorAngle.toRadians())
         
-        let edge02Point01 = CGPointMake(edge02StartExteriorLength, edge01ExteriorArc.startPoint().y)
-        let edge02Point02 = CGPointMake(edge03ExteriorArc.endPoint().x, edge01ExteriorArc.startPoint().y)
-        let edge02Point03 = CGPointMake(edge03ExteriorArc.endPoint().x, edge02EndExteriorLength)
+        let edge02Point01 = CGPointMake(edge02StartExteriorLength, edge01ExteriorArc.startPoint.y)
+        let edge02Point02 = CGPointMake(edge03ExteriorArc.endPoint.x, edge01ExteriorArc.startPoint.y)
+        let edge02Point03 = CGPointMake(edge03ExteriorArc.endPoint.x, edge02EndExteriorLength)
         
         let edge03StartInteriorAngle = 180 - edge03InteriorArc.startDegree
         let edge03StartExteriorAngle = 180 - 90 - edge03StartInteriorAngle
-        let edge03StartExteriorLength = (edge03ExteriorArc.endPoint().x / sin(edge03StartExteriorAngle.toRadians())) * sin(edge03StartInteriorAngle.toRadians())
+        let edge03StartExteriorLength = (edge03ExteriorArc.endPoint.x / sin(edge03StartExteriorAngle.toRadians())) * sin(edge03StartInteriorAngle.toRadians())
         
-        let edge03Point01 = CGPointMake(edge03ExteriorArc.endPoint().x, edge03StartExteriorLength)
-        let edge03Point02 = CGPointMake(edge03ExteriorArc.endPoint().x, edge03ExteriorArc.endPoint().y)
+        let edge03Point01 = CGPointMake(edge03ExteriorArc.endPoint.x, edge03StartExteriorLength)
+        let edge03Point02 = CGPointMake(edge03ExteriorArc.endPoint.x, edge03ExteriorArc.endPoint.y)
         
         let edge04StartInteriorAngle = 270 - edge04InteriorArc.startDegree
         let edge04StartExteriorAngle = 180 - 90 - edge04StartInteriorAngle
-        let edge04StartExteriorLength = (edge04ExteriorArc.endPoint().y / sin(edge04StartExteriorAngle.toRadians())) * sin(edge04StartInteriorAngle.toRadians())
+        let edge04StartExteriorLength = (edge04ExteriorArc.endPoint.y / sin(edge04StartExteriorAngle.toRadians())) * sin(edge04StartInteriorAngle.toRadians())
         
-        let edge04Point01 = CGPointMake(-edge04StartExteriorLength, edge04ExteriorArc.endPoint().y)
-        let edge04Point02 = CGPointMake(edge04ExteriorArc.endPoint().x, edge04ExteriorArc.endPoint().y)
+        let edge04Point01 = CGPointMake(-edge04StartExteriorLength, edge04ExteriorArc.endPoint.y)
+        let edge04Point02 = CGPointMake(edge04ExteriorArc.endPoint.x, edge04ExteriorArc.endPoint.y)
         
-        let edge05Point01 = edge05ExteriorArc.startPoint()
-        let edge05Point02 = edge05ExteriorArc.endPoint()
+        let edge05Point01 = edge05ExteriorArc.startPoint
+        let edge05Point02 = edge05ExteriorArc.endPoint
         
-        self.edge01 = LDKEdgedCrescentButton(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree, edgePoint1: edge01Point01, edgePoint2: edge01Point02, edgePoint3: nil, axisOrigin: axisOrigin)
+        self.edge01 = LDKEdgedCrescentButton(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree, edgePoint1: edge01Point01, edgePoint2: edge01Point02, edgePoint3: nil, graphOrigin: graphOrigin)
         if let button = self.edge01 {
             self.addSubview(button)
         }
         
-        self.edge02 = LDKEdgedCrescentButton(radius: frir, startDegree: LDKRingArc07.startDegree, endDegree: LDKRingArc08.endDegree, edgePoint1: edge02Point01, edgePoint2: edge02Point02, edgePoint3: edge02Point03, axisOrigin: axisOrigin)
+        self.edge02 = LDKEdgedCrescentButton(radius: frir, startDegree: LDKRingArc07.startDegree, endDegree: LDKRingArc08.endDegree, edgePoint1: edge02Point01, edgePoint2: edge02Point02, edgePoint3: edge02Point03, graphOrigin: graphOrigin)
         if let button = self.edge02 {
             self.addSubview(button)
         }
         
-        self.edge03 = LDKEdgedCrescentButton(radius: frir, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree, edgePoint1: edge03Point01, edgePoint2: edge03Point02, edgePoint3: nil, axisOrigin: axisOrigin)
+        self.edge03 = LDKEdgedCrescentButton(radius: frir, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree, edgePoint1: edge03Point01, edgePoint2: edge03Point02, edgePoint3: nil, graphOrigin: graphOrigin)
         if let button = self.edge03 {
             self.addSubview(button)
         }
         
-        self.edge04 = LDKEdgedCrescentButton(radius: trir, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree, edgePoint1: edge04Point01, edgePoint2: edge04Point02, edgePoint3: nil, axisOrigin: axisOrigin)
+        self.edge04 = LDKEdgedCrescentButton(radius: trir, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree, edgePoint1: edge04Point01, edgePoint2: edge04Point02, edgePoint3: nil, graphOrigin: graphOrigin)
         if let button = self.edge04 {
             self.addSubview(button)
         }
         
-        self.edge05 = LDKEdgedCrescentButton(radius: srir, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree, edgePoint1: edge05Point01, edgePoint2: edge05Point02, edgePoint3: nil, axisOrigin: axisOrigin)
+        self.edge05 = LDKEdgedCrescentButton(radius: srir, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree, edgePoint1: edge05Point01, edgePoint2: edge05Point02, edgePoint3: nil, graphOrigin: graphOrigin)
         if let button = self.edge05 {
             self.addSubview(button)
         }

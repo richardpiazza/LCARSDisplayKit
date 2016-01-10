@@ -24,7 +24,7 @@ public class LDKDPadFullView: LDKDPadExpandedView {
         return CGSizeMake(794, 794)
     }
     
-    override func axisOffset() -> CGPoint {
+    override func originOffset() -> CGPoint {
         return CGPointMake(0, self.center.y * 0.125)
     }
     
@@ -35,16 +35,16 @@ public class LDKDPadFullView: LDKDPadExpandedView {
     public override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         
-        let axisOrigin = self.axisOrigin(rect)
+        let graphOrigin = self.graphOrigin(rect)
         let srir = self.secondRingInteriorRadius(rect)
         let srer = self.secondRingExteriorRadius(rect)
         
-        self.outerRingSector01 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree, axisOrigin: axisOrigin)
+        self.outerRingSector01 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRingSector01 {
             self.addSubview(button)
         }
         
-        self.outerRing05 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree, axisOrigin: axisOrigin)
+        self.outerRing05 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree, graphOrigin: graphOrigin)
         if let button = self.outerRing05 {
             self.addSubview(button)
         }

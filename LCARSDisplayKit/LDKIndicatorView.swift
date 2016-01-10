@@ -1,33 +1,36 @@
-/*
-*  LDKIndicatorView.swift
-*
-*  Copyright (c) 2015 Richard Piazza
-*
-*  Permission is hereby granted, free of charge, to any person obtaining a copy
-*  of this software and associated documentation files (the "Software"), to deal
-*  in the Software without restriction, including without limitation the rights
-*  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-*  copies of the Software, and to permit persons to whom the Software is
-*  furnished to do so, subject to the following conditions:
-*
-*  The above copyright notice and this permission notice shall be included in all
-*  copies or substantial portions of the Software.
-*
-*  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-*  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-*  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-*  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-*  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-*  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-*  SOFTWARE.
-*
-*  Star Trek and related marks are registered trademarks of CBS® / PARAMOUNT® PLC.
-*  Original LCARS design credit: Mike Okuda.
-*/
+//===----------------------------------------------------------------------===//
+//
+// LDKIndicatorView.swift
+//
+// Copyright (c) 2015 Richard Piazza
+// https://github.com/richardpiazza/CodeQuickKit
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+// Star Trek and related marks are registered trademarks of CBS® / PARAMOUNT®
+// PLC. Original LCARS design credit: Mike Okuda.
+//
+//===----------------------------------------------------------------------===//
 
 import UIKit
 
-@IBDesignable public class LDKIndicatorView: UIView, LDKTappable, LDKScalable {
+@IBDesignable public class LDKIndicatorView: UIView {
     @IBInspectable public var backgroundImageColor: UIColor = UIColor.neonCarrot()
     @IBInspectable public var displayValue: String = "000"
     @IBInspectable public var left: Bool = true
@@ -41,7 +44,7 @@ import UIKit
         self.backgroundColor = UIColor.clearColor()
         
         let indicatorFrame = self.indicatorFrame(self.frame)
-        UIGraphicsBeginImageContext(indicatorFrame.size)
+        UIGraphicsBeginImageContextWithOptions(indicatorFrame.size, false, UIScreen.mainScreen().scale)
         let context = UIGraphicsGetCurrentContext()
         self.indicatorImage = self.backgroundImage(context, size: indicatorFrame.size)
         UIGraphicsEndImageContext()
@@ -61,16 +64,6 @@ import UIKit
         if !self.subviews.contains(self.valueLabel) {
             self.addSubview(self.valueLabel)
         }
-    }
-    
-    //MARK: - LDKScalable -
-    public class func defaultSize() -> CGSize {
-        return CGSizeMake(132, 60)
-    }
-    
-    //MARK: - LDKTappable -
-    public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        return LDKButton.buttonPathWithSize(size, roundLeft: false, roundRight: false, isFrame: false)
     }
     
     func indicatorWidth(size: CGSize) -> CGFloat {
@@ -100,5 +93,19 @@ import UIKit
         }
         
         return CGRectMake(0, 0, displayValueWidth, rect.height)
+    }
+}
+
+// MARK: - Tappable
+extension LDKIndicatorView: Tappable {
+    public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
+        return LDKButton.buttonPathWithSize(size, roundLeft: false, roundRight: false, isFrame: false)
+    }
+}
+
+// MARK: - Scalable
+extension LDKIndicatorView: Scalable {
+    public class func defaultSize() -> CGSize {
+        return CGSizeMake(132, 60)
     }
 }
