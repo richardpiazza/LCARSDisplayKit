@@ -56,13 +56,13 @@ import UIKit
 // MARK: - Tappable
 extension LDKCrescentButton: Tappable {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        let innerArc = Arc(radius: self.innerRadius, startDegree: self.startDegree, endDegree: self.endDegree)
-        let outerArc = Arc(radius: self.outerRadius, startDegree: self.startDegree, endDegree: self.endDegree)
+        let innerArc = Arc(radius: innerRadius, startDegree: startDegree, endDegree: endDegree)
+        let outerArc = Arc(radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
         return self.dynamicType.cresentPathWithArcs(innerArc, outerArc: outerArc)
     }
     
     public func backgroundImage(context: CGContextRef?, size: CGSize) -> UIImage? {
-        let path = self.backgroundImagePath(size)
+        let path = backgroundImagePath(size)
         return UIImage.imageWithPath(path, size: size, color: self.backgroundImageColor, context: context)
     }
 }

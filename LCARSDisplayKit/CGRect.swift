@@ -98,6 +98,33 @@ public extension GraphFrame {
         return GraphPoint.degreeFor(graphPoint: pointFor(point: point))
     }
     
+    /// Calculates the point of the right angle that connects an arcs start
+    /// and end points.
+    public func pivotFor(arc: Arc) -> GraphPoint {
+        let start = pointFor(graphPoint: arc.startPoint)
+        let end = pointFor(graphPoint: arc.endPoint)
+        var pivot = GraphPoint(x: 0, y: 0)
+        
+        if arc.startDegree < 90 {
+            pivot.x = end.x
+            pivot.y = start.y
+        } else if arc.startDegree < 180 {
+            pivot.x = start.x
+            pivot.y = end.y
+        } else if arc.startDegree < 270 {
+            pivot.x = end.x
+            pivot.y = start.y
+        } else {
+            pivot.x = start.x
+            pivot.y = end.y
+        }
+        
+        return pivot
+    }
+}
+
+// MARK: - Static Funcs
+public extension GraphFrame {
     /// Determines that smallest `GraphFrame` that encompases all graph points.
     public static func frameFor(graphPoints: [GraphPoint]) -> GraphFrame {
         var minXMaxY = CGPointZero

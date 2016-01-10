@@ -53,26 +53,4 @@ public struct Arc {
         self.startDegree = startDegree
         self.endDegree = endDegree
     }
-    
-    public func rightAnglePivotPoint(graphFrame: GraphFrame) -> GraphPoint {
-        let start = graphFrame.pointFor(graphPoint: startPoint)
-        let end = graphFrame.pointFor(graphPoint: endPoint)
-        var pivot = GraphPoint(x: 0, y: 0)
-        
-        if startDegree < 90 {
-            pivot.x = end.x
-            pivot.y = start.y
-        } else if startDegree < 180 {
-            pivot.x = start.x
-            pivot.y = end.y
-        } else if startDegree < 270 {
-            pivot.x = end.x
-            pivot.y = start.y
-        } else {
-            pivot.x = start.x
-            pivot.y = end.y
-        }
-        
-        return pivot
-    }
 }

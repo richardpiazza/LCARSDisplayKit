@@ -77,16 +77,16 @@ import UIKit
 // MARK: - Tappable
 extension LDKEdgedCrescentButton: Tappable {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        let arc = Arc(radius: self.radius, startDegree: self.startDegree, endDegree: self.endDegree)
+        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
         var points = [GraphPoint]()
-        if !CGPointEqualToPoint(self.edgePoint1, CGPointZero) {
-            points.append(self.edgePoint1)
+        if !CGPointEqualToPoint(edgePoint1, CGPointZero) {
+            points.append(edgePoint1)
         }
-        if !CGPointEqualToPoint(self.edgePoint2, CGPointZero) {
-            points.append(self.edgePoint2)
+        if !CGPointEqualToPoint(edgePoint2, CGPointZero) {
+            points.append(edgePoint2)
         }
-        if !CGPointEqualToPoint(self.edgePoint3, CGPointZero) {
-            points.append(self.edgePoint3)
+        if !CGPointEqualToPoint(edgePoint3, CGPointZero) {
+            points.append(edgePoint3)
         }
         return self.dynamicType.edgedCresentPathWithArc(arc, points: points)
     }

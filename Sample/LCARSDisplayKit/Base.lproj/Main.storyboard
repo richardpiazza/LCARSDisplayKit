@@ -14,11 +14,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pAE-Wx-Cxf" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="80" height="274"/>
+                                <rect key="frame" x="20" y="20" width="80" height="698"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="vS2-9v-Pwg"/>
                                 </constraints>
@@ -29,14 +29,14 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqt-1T-BtH" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="302" width="80" height="80"/>
+                                <rect key="frame" x="20" y="726" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="odo-aE-f1B"/>
                                     <constraint firstAttribute="width" constant="80" id="xou-nk-DuO"/>
                                 </constraints>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ATt-gv-LwK" customClass="LDKElbowButton" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="390" width="560" height="190"/>
+                                <rect key="frame" x="20" y="814" width="728" height="190"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="190" id="nAb-Vc-Nhf"/>
                                 </constraints>
@@ -57,7 +57,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DuI-PK-21y" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="445" y="419" width="135" height="60"/>
+                                <rect key="frame" x="613" y="843" width="135" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="135" id="cN0-vC-jG1"/>
                                     <constraint firstAttribute="height" constant="60" id="e80-y4-Rgg"/>
@@ -71,7 +71,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgM-rb-Haj" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="302" y="419" width="135" height="60"/>
+                                <rect key="frame" x="470" y="843" width="135" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="FNb-tE-SaY"/>
                                     <constraint firstAttribute="width" constant="135" id="sFY-6d-A8p"/>
@@ -114,6 +114,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

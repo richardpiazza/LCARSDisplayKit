@@ -52,13 +52,13 @@ import UIKit
 // MARK: - Tappables
 extension LDKDirectionButton: Tappables {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        let arc = Arc(radius: self.radius, startDegree: self.startDegree, endDegree: self.endDegree)
-        return self.dynamicType.directionPathWithArc(arc, cardinalDegree: self.cardinalDegree, size: size)
+        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
+        return self.dynamicType.directionPathWithArc(arc, cardinalDegree: cardinalDegree, size: size)
     }
     
     public func backgroundImageSubpaths(size: CGSize) -> [CGMutablePathRef] {
-        let arc = Arc(radius: self.radius, startDegree: self.startDegree, endDegree: self.endDegree)
-        return self.dynamicType.directionSubpathsWithArc(arc, cardinalDegree: self.cardinalDegree, size: size)
+        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
+        return self.dynamicType.directionSubpathsWithArc(arc, cardinalDegree: cardinalDegree, size: size)
     }
 }
 

@@ -55,7 +55,7 @@ import UIKit
 // MARK: - Tappable
 extension LDKSectorButton: Tappable {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        let arc = Arc(radius: self.radius, startDegree: self.startDegree, endDegree: self.endDegree)
+        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
         return self.dynamicType.sectorPathWithArc(arc)
     }
 }
@@ -67,7 +67,7 @@ extension LDKSectorButton {
         
         let graphFrame = GraphFrame.frameFor(arc: arc)
         let graphOrigin = graphFrame.graphOrigin
-        let pivot = arc.rightAnglePivotPoint(graphFrame)
+        let pivot = graphFrame.pivotFor(arc)
         
         CGPathAddArc(path, nil, graphOrigin.x, graphOrigin.y, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
         CGPathAddLineToPoint(path, nil, pivot.x, pivot.y)

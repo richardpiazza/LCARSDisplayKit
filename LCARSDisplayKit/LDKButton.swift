@@ -48,7 +48,7 @@ import UIKit
 // MARK: - Tappable
 extension LDKButton: Tappable {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        return self.dynamicType.buttonPathWithSize(size, roundLeft: self.roundLeft, roundRight: self.roundRight, isFrame: self.isFrame)
+        return self.dynamicType.buttonPathWithSize(size, roundLeft: roundLeft, roundRight: roundRight, isFrame: isFrame)
     }
 }
 

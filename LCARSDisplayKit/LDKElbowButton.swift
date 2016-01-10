@@ -55,7 +55,7 @@ import UIKit
 // MARK: - Tappable
 extension LDKElbowButton: Tappable {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        return self.dynamicType.elbowPathWithSize(size, top: self.top, left: self.left, rounded: self.rounded, horizontalHeight: self.horizontalHeight, verticalWidth: self.verticalWidth, closedHeight: self.closedHeight)
+        return self.dynamicType.elbowPathWithSize(size, top: top, left: left, rounded: rounded, horizontalHeight: horizontalHeight, verticalWidth: verticalWidth, closedHeight: closedHeight)
     }
 }
 
