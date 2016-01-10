@@ -10,15 +10,15 @@ import UIKit
 
 public class LDKDPadFullView: LDKDPadExpandedView {
     // Labeled for Sector or Arc Degree
-    public var outerRing05: LDKCrescentButton?
-    public var outerRingSector01: LDKCrescentButton?
+    public var outerRing05: LDKCrescentButton = LDKCrescentButton()
+    public var outerRingSector01: LDKCrescentButton = LDKCrescentButton()
     
     // Labeled numerically from zero degrees
-    public var top01: LDKButton?
-    public var top02: LDKButton?
-    public var top03: LDKButton?
-    public var top04: LDKButton?
-    public var top05: LDKButton?
+    public var top01: LDKButton = LDKButton()
+    public var top02: LDKButton = LDKButton()
+    public var top03: LDKButton = LDKButton()
+    public var top04: LDKButton = LDKButton()
+    public var top05: LDKButton = LDKButton()
     
     override public class func defaultSize() -> CGSize {
         return CGSizeMake(794, 794)
@@ -39,14 +39,14 @@ public class LDKDPadFullView: LDKDPadExpandedView {
         let srir = self.secondRingInteriorRadius(rect)
         let srer = self.secondRingExteriorRadius(rect)
         
-        self.outerRingSector01 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree, graphOrigin: graphOrigin)
-        if let button = self.outerRingSector01 {
-            self.addSubview(button)
+        outerRingSector01.setAttributes(innerRadius: srir, outerRadius: srer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree, graphOrigin: graphOrigin)
+        if !self.subviews.contains(outerRingSector01) {
+            self.addSubview(outerRingSector01)
         }
         
-        self.outerRing05 = LDKCrescentButton(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree, graphOrigin: graphOrigin)
-        if let button = self.outerRing05 {
-            self.addSubview(button)
+        outerRing05.setAttributes(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree, graphOrigin: graphOrigin)
+        if !self.subviews.contains(outerRing05) {
+            self.addSubview(outerRing05)
         }
         
         var frame = CGRectZero
@@ -62,9 +62,9 @@ public class LDKDPadFullView: LDKDPadExpandedView {
             frame.size.height = 60
         }
         
-        self.top01 = LDKButton(frame: frame, roundLeft: false, roundRight: false, isFrame: false)
-        if let button = self.top01 {
-            self.addSubview(button)
+        top01.setAttributes(frame: frame, roundLeft: false, roundRight: false, isFrame: false)
+        if !self.subviews.contains(top01) {
+            self.addSubview(top01)
         }
         
         if let edge = self.edge05 {
@@ -79,78 +79,57 @@ public class LDKDPadFullView: LDKDPadExpandedView {
             frame.size.height = 60
         }
         
-        self.top03 = LDKButton(frame: frame, roundLeft: false, roundRight: false, isFrame: false)
-        if let button = self.top03 {
-            self.addSubview(button)
+        top03.setAttributes(frame: frame, roundLeft: false, roundRight: false, isFrame: false)
+        if !self.subviews.contains(top03) {
+            self.addSubview(top03)
         }
         
-        if let button = self.top03 {
-            frame.size.width = 80
-            frame.origin.x = button.frame.origin.x - 88
+        frame.size.width = 80
+        frame.origin.x = top03.frame.origin.x - 88
+        
+        top02.setAttributes(frame: frame, roundLeft: true, roundRight: false, isFrame: false)
+        if !self.subviews.contains(top02) {
+            self.addSubview(top02)
         }
         
-        self.top02 = LDKButton(frame: frame, roundLeft: true, roundRight: false, isFrame: false)
-        if let button = self.top02 {
-            self.addSubview(button)
+        frame.origin.x = top03.frame.origin.x + top03.frame.size.width + 8
+        
+        top04.setAttributes(frame: frame, roundLeft: false, roundRight: true, isFrame: false)
+        if !self.subviews.contains(top04) {
+            self.addSubview(top04)
         }
         
-        if let button = self.top03 {
-            frame.origin.x = button.frame.origin.x + button.frame.size.width + 8
-        }
+        frame.origin.x = top00.frame.origin.x
+        frame.size.width = top00.frame.size.width
         
-        self.top04 = LDKButton(frame: frame, roundLeft: false, roundRight: true, isFrame: false)
-        if let button = self.top04 {
-            self.addSubview(button)
-        }
-        
-        if let button = self.top00 {
-            frame.origin.x = button.frame.origin.x
-            frame.size.width = button.frame.size.width
-        }
-        
-        self.top05 = LDKButton(frame: frame, roundLeft: true, roundRight: true, isFrame: false)
-        if let button = self.top05 {
-            self.addSubview(button)
+        top05.setAttributes(frame: frame, roundLeft: true, roundRight: true, isFrame: false)
+        if !self.subviews.contains(top05) {
+            self.addSubview(top05)
         }
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        if let button = self.outerRingSector01 {
-            button.backgroundImageColor = UIColor.neonCarrot()
-            button.setTitle("ORS01", forState: .Normal)
-        }
+        outerRingSector01.backgroundImageColor = UIColor.neonCarrot()
+        outerRingSector01.setTitle("ORS01", forState: .Normal)
         
-        if let button = self.outerRing05 {
-            button.backgroundImageColor = UIColor.neonCarrot()
-            button.setTitle("OR05", forState: .Normal)
-        }
+        outerRing05.backgroundImageColor = UIColor.neonCarrot()
+        outerRing05.setTitle("OR05", forState: .Normal)
         
-        if let button = self.top01 {
-            button.backgroundImageColor = UIColor.babyBlueEyesLCARS()
-            button.setTitle("Calibrate", forState: .Normal)
-        }
+        top01.backgroundImageColor = UIColor.babyBlueEyesLCARS()
+        top01.setTitle("Calibrate", forState: .Normal)
         
-        if let button = self.top02 {
-            button.backgroundImageColor = UIColor.paleCanary()
-            button.setTitle("T02", forState: .Normal)
-        }
+        top02.backgroundImageColor = UIColor.paleCanary()
+        top02.setTitle("T02", forState: .Normal)
         
-        if let button = self.top03 {
-            button.backgroundImageColor = UIColor.marinerLCARS()
-            button.setTitle("T03", forState: .Normal)
-        }
+        top03.backgroundImageColor = UIColor.marinerLCARS()
+        top03.setTitle("T03", forState: .Normal)
         
-        if let button = self.top04 {
-            button.backgroundImageColor = UIColor.neonCarrot()
-            button.setTitle("T04", forState: .Normal)
-        }
+        top04.backgroundImageColor = UIColor.neonCarrot()
+        top04.setTitle("T04", forState: .Normal)
         
-        if let button = self.top05 {
-            button.backgroundImageColor = UIColor.neonCarrot()
-            button.setTitle("T05", forState: .Normal)
-        }
-        
+        top05.backgroundImageColor = UIColor.neonCarrot()
+        top05.setTitle("T05", forState: .Normal)
     }
 }

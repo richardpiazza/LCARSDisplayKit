@@ -37,19 +37,19 @@ import UIKit
     @IBInspectable public var startDegree: CGFloat = CGFloat(0)
     @IBInspectable public var endDegree: CGFloat = CGFloat(0)
     
-    convenience init(innerRadius: CGFloat, outerRadius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
+    func setAttributes(innerRadius innerRadius: CGFloat, outerRadius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
+        self.innerRadius = innerRadius
+        self.outerRadius = outerRadius
+        self.startDegree = startDegree
+        self.endDegree = endDegree
+        
         let innerArc = Arc(radius: innerRadius, startDegree: startDegree, endDegree: endDegree)
         let outerArc = Arc(radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
         var points = [GraphPoint]()
         points.appendContentsOf(innerArc.allPoints)
         points.appendContentsOf(outerArc.allPoints)
         let graphFrame = GraphFrame.frameFor(points, radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
-        let frame = graphFrame.rectFor(graphOrigin)
-        self.init(frame: frame)
-        self.innerRadius = innerRadius
-        self.outerRadius = outerRadius
-        self.startDegree = startDegree
-        self.endDegree = endDegree
+        self.frame = graphFrame.rectFor(graphOrigin)
     }
 }
 

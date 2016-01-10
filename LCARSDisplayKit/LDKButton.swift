@@ -37,11 +37,11 @@ import UIKit
     /// When isFrame == true, rounding is applied only to corners, not the entire edge.
     @IBInspectable public var isFrame: Bool = false
     
-    convenience init(frame: CGRect, roundLeft: Bool, roundRight: Bool, isFrame: Bool) {
-        self.init(frame: frame)
+    func setAttributes(frame frame: CGRect, roundLeft: Bool, roundRight: Bool, isFrame: Bool) {
         self.roundLeft = roundLeft
         self.roundRight = roundRight
         self.isFrame = isFrame
+        self.frame = frame
     }
 }
 

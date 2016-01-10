@@ -48,6 +48,11 @@ extension UIButton {
         }
         
         let path = tappableSelf.backgroundImagePath(bounds.size)
-        return CGPathContainsPoint(path, nil, point, false)
+        let containsPoint = CGPathContainsPoint(path, nil, point, false)
+        if containsPoint {
+            print("point \(point) inside \(self.currentTitle)")
+        }
+        
+        return containsPoint
     }
 }
