@@ -23,9 +23,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-// Star Trek and related marks are registered trademarks of CBS® / PARAMOUNT®
-// PLC. Original LCARS design credit: Mike Okuda.
-//
 //===----------------------------------------------------------------------===//
 
 import UIKit
@@ -45,8 +42,7 @@ public extension Tappable {
     }
     
     public func backgroundImage(context: CGContextRef?, size: CGSize) -> UIImage? {
-        let path = self.backgroundImagePath(size)
-        return UIImage.imageWithPath(path, size: size, color: self.backgroundImageColor, context: context)
+        return UIImage.imageWithPath(backgroundImagePath(size), size: size, color: backgroundImageColor, context: context)
     }
 }
 

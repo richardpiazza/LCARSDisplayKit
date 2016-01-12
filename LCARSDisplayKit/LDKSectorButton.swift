@@ -31,48 +31,56 @@
 import UIKit
 
 @IBDesignable public class LDKSectorButton: UIButton {
+    public var arc: Arc = Arc()
     @IBInspectable public var backgroundImageColor: UIColor = UIColor.goldenTainoiLCARS()
-    @IBInspectable public var radius: CGFloat = CGFloat(0)
-    @IBInspectable public var startDegree: CGFloat = CGFloat(0)
-    @IBInspectable public var endDegree: CGFloat = CGFloat(0)
+    @IBInspectable public var radius: CGFloat {
+        get {
+            return arc.radius
+        }
+        set {
+            arc.radius = newValue
+        }
+    }
+    @IBInspectable public var startDegree: CGFloat {
+        get {
+            return arc.startDegree
+        }
+        set {
+            arc.startDegree = newValue
+        }
+    }
+    @IBInspectable public var endDegree: CGFloat {
+        get {
+            return arc.endDegree
+        }
+        set {
+            arc.endDegree = newValue
+        }
+    }
     
     convenience init(radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        let frame = GraphFrame.frameFor(arc: arc).rectFor(graphOrigin)
+        let frame = GraphFrame.graphFrameFor(arc: arc).rectFor(graphOrigin)
         self.init(frame: frame)
         self.radius = arc.radius
         self.startDegree = arc.startDegree
         self.endDegree = arc.endDegree
     }
     
-    public func setArc(arc: Arc) {
-        self.radius = arc.radius
-        self.startDegree = arc.startDegree
-        self.endDegree = arc.endDegree
+    convenience init(withArc arc: Arc, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+        self.init(frame: rect.frameFor(graphFrame: arc.graphFrame, withGraphOriginOffset: offset))
+        self.arc = arc
+    }
+    
+    public func setArc(arc: Arc, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+        self.arc = arc
+        self.frame = rect.frameFor(graphFrame: arc.graphFrame, withGraphOriginOffset: offset)
     }
 }
 
 // MARK: - Tappable
 extension LDKSectorButton: Tappable {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        return self.dynamicType.sectorPathWithArc(arc)
-    }
-}
-
-// MARK: - CG Paths
-extension LDKSectorButton {
-    public static func sectorPathWithArc(arc: Arc) -> CGMutablePathRef {
-        let path: CGMutablePathRef = CGPathCreateMutable()
-        
-        let graphFrame = GraphFrame.frameFor(arc: arc)
-        let graphOrigin = graphFrame.graphOrigin
-        let pivot = graphFrame.pivotFor(arc)
-        
-        CGPathAddArc(path, nil, graphOrigin.x, graphOrigin.y, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
-        CGPathAddLineToPoint(path, nil, pivot.x, pivot.y)
-        CGPathCloseSubpath(path)
-        
-        return path
+        return arc.path
     }
 }

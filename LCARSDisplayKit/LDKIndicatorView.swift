@@ -31,6 +31,8 @@
 import UIKit
 
 @IBDesignable public class LDKIndicatorView: UIView {
+    static let defaultSize: CGSize = CGSizeMake(132, 60)
+    
     @IBInspectable public var backgroundImageColor: UIColor = UIColor.neonCarrot()
     @IBInspectable public var displayValue: String = "000"
     @IBInspectable public var left: Bool = true
@@ -66,9 +68,13 @@ import UIKit
         }
     }
     
+    func scaleOfDefaultSize(actualSize: CGSize) -> GraphMultiplier {
+        return GraphMultiplier(width: CGFloat(actualSize.width / LDKIndicatorView.defaultSize.width), height: CGFloat(actualSize.height / LDKIndicatorView.defaultSize.height))
+    }
+    
     func indicatorWidth(size: CGSize) -> CGFloat {
-        let defaultWidth = self.dynamicType.defaultSize().width * 0.227272
-        let scale = self.dynamicType.scaleOfDefaultSize(size).width
+        let defaultWidth = LDKIndicatorView.defaultSize.width * 0.227272
+        let scale = self.scaleOfDefaultSize(size).width
         return defaultWidth * scale
     }
     
@@ -99,13 +105,8 @@ import UIKit
 // MARK: - Tappable
 extension LDKIndicatorView: Tappable {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        return LDKButton.buttonPathWithSize(size, roundLeft: false, roundRight: false, isFrame: false)
-    }
-}
-
-// MARK: - Scalable
-extension LDKIndicatorView: Scalable {
-    public class func defaultSize() -> CGSize {
-        return CGSizeMake(132, 60)
+        let rr = RoundedRectangle(size: size, leftRounded: false, rightRounded: false, cornersOnly: false)
+        return rr.path
+//        return LDKButton.buttonPathWithSize(size, roundLeft: false, roundRight: false, isFrame: false)
     }
 }

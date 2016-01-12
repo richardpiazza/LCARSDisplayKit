@@ -31,88 +31,98 @@
 import UIKit
 
 @IBDesignable public class LDKEdgedCrescentButton: UIButton {
+    public var edgedCrescent: EdgedCrescent = EdgedCrescent()
     @IBInspectable public var backgroundImageColor: UIColor = UIColor.neonCarrot()
-    @IBInspectable public var radius: CGFloat = CGFloat(0)
-    @IBInspectable public var startDegree: CGFloat = CGFloat(0)
-    @IBInspectable public var endDegree: CGFloat = CGFloat(0)
-    @IBInspectable public var edgePoint1: CGPoint = CGPointZero
-    @IBInspectable public var edgePoint2: CGPoint = CGPointZero
-    @IBInspectable public var edgePoint3: CGPoint = CGPointZero
+    @IBInspectable public var radius: CGFloat {
+        get {
+            return edgedCrescent.arc.radius
+        }
+        set {
+            edgedCrescent.arc.radius = newValue
+        }
+    }
+    @IBInspectable public var startDegree: CGFloat {
+        get {
+            return edgedCrescent.arc.startDegree
+        }
+        set {
+            edgedCrescent.arc.startDegree = newValue
+        }
+    }
+    @IBInspectable public var endDegree: CGFloat {
+        get {
+            return edgedCrescent.arc.endDegree
+        }
+        set {
+            edgedCrescent.arc.endDegree = newValue
+        }
+    }
+    @IBInspectable public var edgePoint1: CGPoint {
+        get {
+            guard edgedCrescent.additionalPoints.count > 0 else {
+                return CGPointZero
+            }
+            
+            return edgedCrescent.additionalPoints[0]
+        }
+        set {
+            guard edgedCrescent.additionalPoints.count > 0 else {
+                edgedCrescent.additionalPoints.append(newValue)
+                return
+            }
+            
+            edgedCrescent.additionalPoints[0] = newValue
+        }
+    }
+    @IBInspectable public var edgePoint2: CGPoint {
+        get {
+            guard edgedCrescent.additionalPoints.count > 1 else {
+                return CGPointZero
+            }
+            
+            return edgedCrescent.additionalPoints[1]
+        }
+        set {
+            guard edgedCrescent.additionalPoints.count > 1 else {
+                edgedCrescent.additionalPoints.append(newValue)
+                return
+            }
+            
+            edgedCrescent.additionalPoints[1] = newValue
+        }
+    }
+    @IBInspectable public var edgePoint3: CGPoint {
+        get {
+            guard edgedCrescent.additionalPoints.count > 2 else {
+                return CGPointZero
+            }
+            
+            return edgedCrescent.additionalPoints[2]
+        }
+        set {
+            guard edgedCrescent.additionalPoints.count > 2 else {
+                edgedCrescent.additionalPoints.append(newValue)
+                return
+            }
+            
+            edgedCrescent.additionalPoints[2] = newValue
+        }
+    }
     
-    convenience init(radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, edgePoint1: GraphPoint?, edgePoint2: GraphPoint?, edgePoint3: GraphPoint?, graphOrigin: GraphOrigin) {
-        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        var points = [GraphPoint]()
-        points.appendContentsOf(arc.allPoints)
-        if let ep = edgePoint1 {
-            points.append(ep)
-        }
-        if let ep = edgePoint2 {
-            points.append(ep)
-        }
-        if let ep = edgePoint3 {
-            points.append(ep)
-        }
-        let graphFrame = GraphFrame.frameFor(points, radius: radius, startDegree: startDegree, endDegree: endDegree)
-        let frame = graphFrame.rectFor(graphOrigin)
-        
-        self.init(frame: frame)
-        self.radius = radius
-        self.startDegree = startDegree
-        self.endDegree = endDegree
-        if let ep = edgePoint1 {
-            self.edgePoint1.x = ep.x
-            self.edgePoint1.y = ep.y
-        }
-        if let ep = edgePoint2 {
-            self.edgePoint2.x = ep.x
-            self.edgePoint2.y = ep.y
-        }
-        if let ep = edgePoint3 {
-            self.edgePoint3.x = ep.x
-            self.edgePoint3.y = ep.y
-        }
+    convenience init(withEdgedCrescent edgedCrescent: EdgedCrescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+        self.init(frame: rect.frameFor(graphFrame: edgedCrescent.graphFrame, withGraphOriginOffset: offset))
+        self.edgedCrescent = edgedCrescent
+    }
+    
+    func setEdgedCrescent(edgedCrescent: EdgedCrescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+        self.edgedCrescent = edgedCrescent
+        self.frame = rect.frameFor(graphFrame: edgedCrescent.graphFrame, withGraphOriginOffset: offset)
     }
 }
 
 // MARK: - Tappable
 extension LDKEdgedCrescentButton: Tappable {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        var points = [GraphPoint]()
-        if !CGPointEqualToPoint(edgePoint1, CGPointZero) {
-            points.append(edgePoint1)
-        }
-        if !CGPointEqualToPoint(edgePoint2, CGPointZero) {
-            points.append(edgePoint2)
-        }
-        if !CGPointEqualToPoint(edgePoint3, CGPointZero) {
-            points.append(edgePoint3)
-        }
-        return self.dynamicType.edgedCresentPathWithArc(arc, points: points)
-    }
-}
-
-// MARK: - CG Paths
-extension LDKEdgedCrescentButton {
-    public static func edgedCresentPathWithArc(arc: Arc, points: [GraphPoint]) -> CGMutablePathRef {
-        let path: CGMutablePathRef = CGPathCreateMutable()
-        
-        var allPoints = [GraphPoint]()
-        allPoints.appendContentsOf(arc.allPoints)
-        allPoints.appendContentsOf(points)
-        
-        let graphFrame = GraphFrame.frameFor(allPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
-        let graphOrigin = graphFrame.graphOrigin
-        
-        CGPathAddArc(path, nil, graphOrigin.x, graphOrigin.y, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
-        
-        for point in Array(points.reverse()) {
-            let viewPoint = graphFrame.pointFor(graphPoint: point)
-            CGPathAddLineToPoint(path, nil, viewPoint.x, viewPoint.y)
-        }
-        
-        CGPathCloseSubpath(path)
-        
-        return path
+        return edgedCrescent.path
     }
 }

@@ -1,8 +1,8 @@
 //===----------------------------------------------------------------------===//
 //
-// Scalable.swift
+// Graphable.swift
 //
-// Copyright (c) 2016 Richard Piazza
+// Copyright (c) 2015 Richard Piazza
 // https://github.com/richardpiazza/CodeQuickKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,25 +23,29 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-// Star Trek and related marks are registered trademarks of CBS® / PARAMOUNT®
-// PLC. Original LCARS design credit: Mike Okuda.
-//
 //===----------------------------------------------------------------------===//
 
 import CoreGraphics
 
-public protocol Scalable {
-    static func defaultSize() -> CGSize
-    static func scaleOfDefaultSize(actualSize: CGSize) -> GraphMultiplier
+public protocol Graphable {
+    /// The `GraphPoint`s that define the area of the object
+    var graphPoints: [GraphPoint] { get }
+    /// The `GraphFrame` required to contain all the `GraphPoint`s
+    var graphFrame: GraphFrame { get }
+    /// A path connecting all `GraphPoint`s
+    var path: CGMutablePathRef { get }
 }
 
-public extension Scalable {
-    static func defaultSize() -> CGSize {
-        return CGSizeZero
+extension Graphable {
+    public var graphPoints: [GraphPoint] {
+        return [GraphPoint]()
     }
     
-    static func scaleOfDefaultSize(actualSize: CGSize) -> GraphMultiplier {
-        let defaultSize = self.defaultSize()
-        return GraphMultiplier(width: CGFloat(actualSize.width / defaultSize.width), height: CGFloat(actualSize.height / defaultSize.height))
+    public var graphFrame: GraphFrame {
+        return GraphFrame.graphFrameFor(graphPoints)
+    }
+    
+    public var path: CGMutablePathRef {
+        return CGPathCreateMutable()
     }
 }

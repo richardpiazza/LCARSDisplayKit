@@ -1,10 +1,32 @@
+//===----------------------------------------------------------------------===//
 //
-//  LDKDPadExpandedView.swift
-//  LCARSDisplayKit
+// LDKDPadExpandedView.swift
 //
-//  Created by Richard Piazza on 10/2/15.
-//  Copyright © 2015 Richard Piazza. All rights reserved.
+// Copyright (c) 2015 Richard Piazza
+// https://github.com/richardpiazza/CodeQuickKit
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+// Star Trek and related marks are registered trademarks of CBS® / PARAMOUNT®
+// PLC. Original LCARS design credit: Mike Okuda.
+//
+//===----------------------------------------------------------------------===//
 
 import UIKit
 
@@ -32,21 +54,21 @@ public class LDKDPadExpandedView: LDKDPadView {
     public var outerRingExtended19: LDKCrescentButton = LDKCrescentButton()
     
     // Labeled numerically from zero degrees
-    public var edge01: LDKEdgedCrescentButton?
-    public var edge02: LDKEdgedCrescentButton?
-    public var edge03: LDKEdgedCrescentButton?
-    public var edge04: LDKEdgedCrescentButton?
-    public var edge05: LDKEdgedCrescentButton?
+    public var edge01: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
+    public var edge02: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
+    public var edge03: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
+    public var edge04: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
+    public var edge05: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
     
     // Labeled just because
     public var top00: LDKButton = LDKButton()
     
-    override public class func defaultSize() -> CGSize {
+    override func defaultSize() -> CGSize {
         return CGSizeMake(794, 660)
     }
     
-    override func originOffset() -> CGPoint {
-        return CGPointMake(0, self.dynamicType.defaultSize().height * 0.068)
+    override func graphOriginOffset() -> GraphOriginOffset {
+        return GraphOriginOffset(x: 0.0, y: defaultSize().height * 0.068)
     }
     
     override func cruxInteriorRadius(rect: CGRect) -> CGFloat {
@@ -96,7 +118,6 @@ public class LDKDPadExpandedView: LDKDPadView {
     public override func drawRect(rect: CGRect) {
         super.drawRect(rect)
         
-        let graphOrigin = self.graphOrigin(rect)
         let frir = self.firstRingInteriorRadius(rect)
         let frer = self.firstRingExteriorRadius(rect)
         let srir = self.secondRingInteriorRadius(rect)
@@ -106,105 +127,65 @@ public class LDKDPadExpandedView: LDKDPadView {
         let trir = self.thirdRingInteriorRadius(rect)
         let trer = self.thirdRingExteriorRadius(rect)
         
-        self.innerRingSector01.setAttributes(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(innerRingSector01) {
-            self.addSubview(innerRingSector01)
-        }
+        var crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree)
+        innerRingSector01.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.innerRingSector04.setAttributes(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector04.startDegree, endDegree: LDKRingSector04.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(innerRingSector04) {
-            self.addSubview(innerRingSector04)
-        }
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector04.startDegree, endDegree: LDKRingSector04.endDegree)
+        innerRingSector04.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.innerRing05.setAttributes(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(innerRing05) {
-            self.addSubview(innerRing05)
-        }
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree)
+        innerRing05.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.innerRing10.setAttributes(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(innerRing10) {
-            self.addSubview(innerRing10)
-        }
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree)
+        innerRing10.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.innerRing11.setAttributes(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(innerRing11) {
-            self.addSubview(innerRing11)
-        }
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree)
+        innerRing11.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.innerRing12.setAttributes(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(innerRing12) {
-            self.addSubview(innerRing12)
-        }
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree)
+        innerRing12.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.innerRing13.setAttributes(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(innerRing13) {
-            self.addSubview(innerRing13)
-        }
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
+        innerRing13.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.innerRing14.setAttributes(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(innerRing14) {
-            self.addSubview(innerRing14)
-        }
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree)
+        innerRing14.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.innerRing15.setAttributes(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(innerRing15) {
-            self.addSubview(innerRing15)
-        }
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree)
+        innerRing15.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.innerRing20.setAttributes(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(innerRing20) {
-            self.addSubview(innerRing20)
-        }
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree)
+        innerRing20.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.outerRing10.setAttributes(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(outerRing10) {
-            self.addSubview(outerRing10)
-        }
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree)
+        outerRing10.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.outerRing11.setAttributes(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(outerRing11) {
-            self.addSubview(outerRing11)
-        }
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree)
+        outerRing11.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.outerRing12.setAttributes(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(outerRing12) {
-            self.addSubview(outerRing12)
-        }
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree)
+        outerRing12.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.outerRing13.setAttributes(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(outerRing13) {
-            self.addSubview(outerRing13)
-        }
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
+        outerRing13.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.outerRing14.setAttributes(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(outerRing14) {
-            self.addSubview(outerRing14)
-        }
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree)
+        outerRing14.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.outerRing16.setAttributes(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc16.startDegree, endDegree: LDKRingArc16.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(outerRing16) {
-            self.addSubview(outerRing16)
-        }
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc16.startDegree, endDegree: LDKRingArc16.endDegree)
+        outerRing16.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.outerRing17.setAttributes(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc17.startDegree, endDegree: LDKRingArc17.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(outerRing17) {
-            self.addSubview(outerRing17)
-        }
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc17.startDegree, endDegree: LDKRingArc17.endDegree)
+        outerRing17.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.outerRing20.setAttributes(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(outerRing20) {
-            self.addSubview(outerRing20)
-        }
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree)
+        outerRing20.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.outerRingExtended18.setAttributes(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc18.startDegree, endDegree: LDKRingArc18.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(outerRingExtended18) {
-            self.addSubview(outerRingExtended18)
-        }
+        crescent = Crescent(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc18.startDegree, endDegree: LDKRingArc18.endDegree)
+        outerRingExtended18.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.outerRingExtended19.setAttributes(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc19.startDegree, endDegree: LDKRingArc19.endDegree, graphOrigin: graphOrigin)
-        if !self.subviews.contains(outerRingExtended19) {
-            self.addSubview(outerRingExtended19)
-        }
+        crescent = Crescent(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc19.startDegree, endDegree: LDKRingArc19.endDegree)
+        outerRingExtended19.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
         let edge01InteriorArc = Arc(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
         let edge01ExteriorArc = Arc(radius: self.edge01ExteriorRadius(rect), startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
@@ -250,42 +231,34 @@ public class LDKDPadExpandedView: LDKDPadView {
         let edge05Point01 = edge05ExteriorArc.startPoint
         let edge05Point02 = edge05ExteriorArc.endPoint
         
-        self.edge01 = LDKEdgedCrescentButton(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree, edgePoint1: edge01Point01, edgePoint2: edge01Point02, edgePoint3: nil, graphOrigin: graphOrigin)
-        if let button = self.edge01 {
-            self.addSubview(button)
-        }
+        var arc = Arc(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
+        var edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge01Point01, edge01Point02])
+        edge01.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.edge02 = LDKEdgedCrescentButton(radius: frir, startDegree: LDKRingArc07.startDegree, endDegree: LDKRingArc08.endDegree, edgePoint1: edge02Point01, edgePoint2: edge02Point02, edgePoint3: edge02Point03, graphOrigin: graphOrigin)
-        if let button = self.edge02 {
-            self.addSubview(button)
-        }
+        arc = Arc(radius: frir, startDegree: LDKRingArc07.startDegree, endDegree: LDKRingArc08.endDegree)
+        edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge02Point01, edge02Point02, edge02Point03])
+        edge02.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.edge03 = LDKEdgedCrescentButton(radius: frir, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree, edgePoint1: edge03Point01, edgePoint2: edge03Point02, edgePoint3: nil, graphOrigin: graphOrigin)
-        if let button = self.edge03 {
-            self.addSubview(button)
-        }
+        arc = Arc(radius: frir, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree)
+        edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge03Point01, edge03Point02])
+        edge03.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.edge04 = LDKEdgedCrescentButton(radius: trir, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree, edgePoint1: edge04Point01, edgePoint2: edge04Point02, edgePoint3: nil, graphOrigin: graphOrigin)
-        if let button = self.edge04 {
-            self.addSubview(button)
-        }
+        arc = Arc(radius: trir, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
+        edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge04Point01, edge04Point02])
+        edge04.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        self.edge05 = LDKEdgedCrescentButton(radius: srir, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree, edgePoint1: edge05Point01, edgePoint2: edge05Point02, edgePoint3: nil, graphOrigin: graphOrigin)
-        if let button = self.edge05 {
-            self.addSubview(button)
-        }
+        arc = Arc(radius: srir, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree)
+        edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge05Point01, edge05Point02])
+        edge05.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        let scale = self.dynamicType.scaleOfDefaultSize(rect.size)
-        var frame = CGRectMake(0, 0, LDKButton.defaultSize().width * scale.width, LDKButton.defaultSize().height * scale.height)
-        if let edge = self.edge04 {
-            frame.origin.y = edge.frame.origin.y
-            frame.origin.x = rect.size.width - frame.size.width - edge.frame.origin.x
-        }
+        let scale = self.scaleOfDefaultSize(rect.size)
+        var frame = CGRectMake(0, 0, LDKButton.defaultSize.width * scale.width, LDKButton.defaultSize.height * scale.height)
+        frame.origin.y = edge04.frame.origin.y
+        frame.origin.x = rect.size.width - frame.size.width - edge04.frame.origin.x
         
-        top00.setAttributes(frame: frame, roundLeft: true, roundRight: true, isFrame: false)
-        if !self.subviews.contains(top00) {
-            self.addSubview(top00)
-        }
+        let roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: true, rightRounded: true, cornersOnly: false)
+        
+        top00.setRoundedRectangle(roundedRectangle, withFrame: frame)
     }
     
     public override func layoutSubviews() {
@@ -293,96 +266,161 @@ public class LDKDPadExpandedView: LDKDPadView {
         
         innerRingSector01.backgroundImageColor = UIColor.babyBlueEyesLCARS()
         innerRingSector01.setTitle("IRS01", forState: .Normal)
+        if !self.subviews.contains(innerRingSector01) {
+            self.addSubview(innerRingSector01)
+        }
         self.bringSubviewToFront(innerRingSector01)
         
         innerRingSector04.backgroundImageColor = UIColor.babyBlueEyesLCARS()
         innerRingSector04.setTitle("IRS04", forState: .Normal)
+        if !self.subviews.contains(innerRingSector04) {
+            self.addSubview(innerRingSector04)
+        }
         
         innerRing05.backgroundImageColor = UIColor.paleCanary()
         innerRing05.setTitle("IR05", forState: .Normal)
         innerRing05.contentVerticalAlignment = .Top
+        if !self.subviews.contains(innerRing05) {
+            self.addSubview(innerRing05)
+        }
         
         innerRing10.backgroundImageColor = UIColor.paleCanary()
         innerRing10.setTitle("IR10", forState: .Normal)
+        if !self.subviews.contains(innerRing10) {
+            self.addSubview(innerRing10)
+        }
         
         innerRing11.backgroundImageColor = UIColor.babyBlueEyesLCARS()
         innerRing11.setTitle("IR11", forState: .Normal)
+        if !self.subviews.contains(innerRing11) {
+            self.addSubview(innerRing11)
+        }
         
         innerRing12.backgroundImageColor = UIColor.neonCarrot()
         innerRing12.setTitle("IR12", forState: .Normal)
+        if !self.subviews.contains(innerRing12) {
+            self.addSubview(innerRing12)
+        }
         
         innerRing13.backgroundImageColor = UIColor.marinerLCARS()
         innerRing13.setTitle("IR13", forState: .Normal)
+        if !self.subviews.contains(innerRing13) {
+            self.addSubview(innerRing13)
+        }
         
         innerRing14.backgroundImageColor = UIColor.babyBlueEyesLCARS()
         innerRing14.setTitle("IR14", forState: .Normal)
+        if !self.subviews.contains(innerRing14) {
+            self.addSubview(innerRing14)
+        }
         
         innerRing15.backgroundImageColor = UIColor.paleCanary()
         innerRing15.setTitle("IR15", forState: .Normal)
+        if !self.subviews.contains(innerRing15) {
+            self.addSubview(innerRing15)
+        }
         
         innerRing20.backgroundImageColor = UIColor.paleCanary()
         innerRing20.setTitle("IR20", forState: .Normal)
+        if !self.subviews.contains(innerRing20) {
+            self.addSubview(innerRing20)
+        }
         
         outerRing10.backgroundImageColor = UIColor.neonCarrot()
         outerRing10.setTitle("OR10", forState: .Normal)
-        
-        outerRing10.backgroundImageColor = UIColor.neonCarrot()
-        outerRing10.setTitle("OR10", forState: .Normal)
+        if !self.subviews.contains(outerRing10) {
+            self.addSubview(outerRing10)
+        }
         
         outerRing11.backgroundImageColor = UIColor.marinerLCARS()
         outerRing11.setTitle("OR11", forState: .Normal)
+        if !self.subviews.contains(outerRing11) {
+            self.addSubview(outerRing11)
+        }
         
         outerRing12.backgroundImageColor = UIColor.babyBlueEyesLCARS()
         outerRing12.setTitle("OR12", forState: .Normal)
+        if !self.subviews.contains(outerRing12) {
+            self.addSubview(outerRing12)
+        }
         
         outerRing13.backgroundImageColor = UIColor.paleCanary()
         outerRing13.setTitle("OR13", forState: .Normal)
+        if !self.subviews.contains(outerRing13) {
+            self.addSubview(outerRing13)
+        }
         
         outerRing14.backgroundImageColor = UIColor.neonCarrot()
         outerRing14.setTitle("OR14", forState: .Normal)
+        if !self.subviews.contains(outerRing14) {
+            self.addSubview(outerRing14)
+        }
         
         outerRing16.backgroundImageColor = UIColor.marinerLCARS()
         outerRing16.setTitle("OR16", forState: .Normal)
+        if !self.subviews.contains(outerRing16) {
+            self.addSubview(outerRing16)
+        }
         
         outerRing17.backgroundImageColor = UIColor.paleCanary()
         outerRing17.setTitle("OR17", forState: .Normal)
+        if !self.subviews.contains(outerRing17) {
+            self.addSubview(outerRing17)
+        }
         
         outerRingExtended18.backgroundImageColor = UIColor.neonCarrot()
         outerRingExtended18.setTitle("ORE18", forState: .Normal)
+        if !self.subviews.contains(outerRingExtended18) {
+            self.addSubview(outerRingExtended18)
+        }
         
         outerRingExtended19.backgroundImageColor = UIColor.marinerLCARS()
         outerRingExtended19.setTitle("ORE19", forState: .Normal)
+        if !self.subviews.contains(outerRingExtended19) {
+            self.addSubview(outerRingExtended19)
+        }
         
         outerRing20.backgroundImageColor = UIColor.babyBlueEyesLCARS()
         outerRing20.setTitle("OR20", forState: .Normal)
-        
-        if let button = self.edge01 {
-            button.backgroundImageColor = UIColor.babyBlueEyesLCARS()
-            button.setTitle("E01", forState: .Normal)
+        if !self.subviews.contains(outerRing20) {
+            self.addSubview(outerRing20)
         }
         
-        if let button = self.edge02 {
-            button.backgroundImageColor = UIColor.paleCanary()
-            button.setTitle("Mode Select", forState: .Normal)
+        edge01.backgroundImageColor = UIColor.babyBlueEyesLCARS()
+        edge01.setTitle("E01", forState: .Normal)
+        if !self.subviews.contains(edge01) {
+            self.addSubview(edge01)
         }
         
-        if let button = self.edge03 {
-            button.backgroundImageColor = UIColor.marinerLCARS()
-            button.setTitle("E03", forState: .Normal)
+        edge02.backgroundImageColor = UIColor.paleCanary()
+        edge02.setTitle("Mode Select", forState: .Normal)
+        if !self.subviews.contains(edge02) {
+            self.addSubview(edge02)
         }
         
-        if let button = self.edge04 {
-            button.backgroundImageColor = UIColor.neonCarrot()
-            button.setTitle("E04", forState: .Normal)
+        edge03.backgroundImageColor = UIColor.marinerLCARS()
+        edge03.setTitle("E03", forState: .Normal)
+        if !self.subviews.contains(edge03) {
+            self.addSubview(edge03)
         }
         
-        if let button = self.edge05 {
-            button.backgroundImageColor = UIColor.babyBlueEyesLCARS()
-            button.setTitle("E05", forState: .Normal)
+        edge04.backgroundImageColor = UIColor.neonCarrot()
+        edge04.setTitle("E04", forState: .Normal)
+        if !self.subviews.contains(edge04) {
+            self.addSubview(edge04)
+        }
+        
+        edge05.backgroundImageColor = UIColor.babyBlueEyesLCARS()
+        edge05.setTitle("E05", forState: .Normal)
+        if !self.subviews.contains(edge05) {
+            self.addSubview(edge05)
         }
         
         top00.backgroundImageColor = UIColor.babyBlueEyesLCARS()
         top00.setTitle("T00", forState: .Normal)
+        if !self.subviews.contains(top00) {
+            self.addSubview(top00)
+        }
         
         self.bringSubviewToFront(self.sector01)
         self.bringSubviewToFront(self.sector04)

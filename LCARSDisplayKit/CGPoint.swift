@@ -23,15 +23,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-// Star Trek and related marks are registered trademarks of CBS® / PARAMOUNT®
-// PLC. Original LCARS design credit: Mike Okuda.
-//
 //===----------------------------------------------------------------------===//
 
 import CoreGraphics
 
-/// The center (0, 0) of the graph axis, typically the center of a UIView
+/// The center (0, 0) of the graph axis, typically the center of a CGRect
 public typealias GraphOrigin = CGPoint
+
+/// The offset of any `GraphFrame` to the `GraphOrigin`
+public typealias GraphOriginOffset = CGPoint
 
 /// A point on the graph with coordinates as an offset of GraphOrigin
 public typealias GraphPoint = CGPoint

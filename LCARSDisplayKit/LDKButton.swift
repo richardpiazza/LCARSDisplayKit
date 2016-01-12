@@ -31,16 +31,37 @@
 import UIKit
 
 @IBDesignable public class LDKButton: UIButton {
-    @IBInspectable public var backgroundImageColor: UIColor = UIColor.neonCarrot()
-    @IBInspectable public var roundLeft: Bool = false
-    @IBInspectable public var roundRight: Bool = false
-    /// When isFrame == true, rounding is applied only to corners, not the entire edge.
-    @IBInspectable public var isFrame: Bool = false
+    static let defaultSize: CGSize = CGSizeMake(144, 60)
     
-    func setAttributes(frame frame: CGRect, roundLeft: Bool, roundRight: Bool, isFrame: Bool) {
-        self.roundLeft = roundLeft
-        self.roundRight = roundRight
-        self.isFrame = isFrame
+    public var roundedRectangle: RoundedRectangle = RoundedRectangle()
+    @IBInspectable public var backgroundImageColor: UIColor = UIColor.neonCarrot()
+    @IBInspectable public var roundLeft: Bool {
+        get {
+            return roundedRectangle.leftRounded
+        }
+        set {
+            roundedRectangle.leftRounded = newValue
+        }
+    }
+    @IBInspectable public var roundRight: Bool {
+        get {
+            return roundedRectangle.rightRounded
+        }
+        set {
+            roundedRectangle.rightRounded = newValue
+        }
+    }
+    @IBInspectable public var isFrame: Bool {
+        get {
+            return roundedRectangle.cornersOnly
+        }
+        set {
+            roundedRectangle.cornersOnly = newValue
+        }
+    }
+    
+    func setRoundedRectangle(roundedRectangle: RoundedRectangle, withFrame frame: CGRect) {
+        self.roundedRectangle = roundedRectangle
         self.frame = frame
     }
 }
@@ -48,77 +69,7 @@ import UIKit
 // MARK: - Tappable
 extension LDKButton: Tappable {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        return self.dynamicType.buttonPathWithSize(size, roundLeft: roundLeft, roundRight: roundRight, isFrame: isFrame)
-    }
-}
-
-// MARK: - Scalable
-extension LDKButton: Scalable {
-    public class func defaultSize() -> CGSize {
-        return CGSizeMake(144, 60)
-    }
-}
-
-// MARK: - CG Paths
-extension LDKButton {
-    public static func buttonPathWithSize(size: CGSize, roundLeft: Bool, roundRight: Bool, isFrame: Bool) -> CGMutablePathRef {
-        let path: CGMutablePathRef = CGPathCreateMutable()
-        
-        if roundLeft == false && roundRight == false {
-            CGPathAddRect(path, nil, CGRectMake(0, 0, size.width, size.height))
-            return path
-        }
-        
-        let radius = (isFrame) ? CGFloat(size.height * 0.25) : CGFloat(size.height / 2)
-        let upperLeftCenter = CGPointMake(radius, radius)
-        let lowerRightCenter = CGPointMake(size.width - radius, size.height - radius)
-        
-        if roundLeft && roundRight {
-            if isFrame {
-                CGPathAddArc(path, nil, upperLeftCenter.x, upperLeftCenter.y, radius, CGFloat(180).toRadians(), CGFloat(270).toRadians(), false)
-                CGPathAddLineToPoint(path, nil, lowerRightCenter.x, 0)
-                CGPathAddArc(path, nil, lowerRightCenter.x, upperLeftCenter.y, radius, CGFloat(270).toRadians(), CGFloat(0).toRadians(), false)
-                CGPathAddLineToPoint(path, nil, size.width, lowerRightCenter.y)
-                CGPathAddArc(path, nil, lowerRightCenter.x, lowerRightCenter.y, radius, CGFloat(0).toRadians(), CGFloat(90).toRadians(), false)
-                CGPathAddLineToPoint(path, nil, upperLeftCenter.x, size.height)
-                CGPathAddArc(path, nil, upperLeftCenter.x, lowerRightCenter.y, radius, CGFloat(90).toRadians(), CGFloat(180).toRadians(), false)
-                CGPathCloseSubpath(path)
-            } else {
-                CGPathAddArc(path, nil, upperLeftCenter.x, upperLeftCenter.y, radius, CGFloat(90).toRadians(), CGFloat(270).toRadians(), false)
-                CGPathAddLineToPoint(path, nil, lowerRightCenter.x, 0)
-                CGPathAddArc(path, nil, lowerRightCenter.x, lowerRightCenter.y, radius, CGFloat(270).toRadians(), CGFloat(90).toRadians(), false)
-                CGPathCloseSubpath(path)
-            }
-        } else if roundLeft {
-            if isFrame {
-                CGPathAddArc(path, nil, upperLeftCenter.x, upperLeftCenter.y, radius, CGFloat(180).toRadians(), CGFloat(270).toRadians(), false)
-                CGPathAddLineToPoint(path, nil, size.width, 0)
-                CGPathAddLineToPoint(path, nil, size.width, size.height)
-                CGPathAddLineToPoint(path, nil, upperLeftCenter.x, size.height)
-                CGPathAddArc(path, nil, upperLeftCenter.x, lowerRightCenter.y, radius, CGFloat(90).toRadians(), CGFloat(180).toRadians(), false)
-                CGPathCloseSubpath(path)
-            } else {
-                CGPathAddArc(path, nil, upperLeftCenter.x, upperLeftCenter.y, radius, CGFloat(90).toRadians(), CGFloat(270).toRadians(), false)
-                CGPathAddLineToPoint(path, nil, size.width, 0)
-                CGPathAddLineToPoint(path, nil, size.width, size.height)
-                CGPathCloseSubpath(path)
-            }
-        } else if roundRight {
-            if isFrame {
-                CGPathAddArc(path, nil, lowerRightCenter.x, upperLeftCenter.y, radius, CGFloat(270).toRadians(), CGFloat(0).toRadians(), false)
-                CGPathAddLineToPoint(path, nil, size.width, lowerRightCenter.y)
-                CGPathAddArc(path, nil, lowerRightCenter.x, lowerRightCenter.y, radius, CGFloat(0).toRadians(), CGFloat(90).toRadians(), false)
-                CGPathAddLineToPoint(path, nil, 0, size.height)
-                CGPathAddLineToPoint(path, nil, 0, 0)
-                CGPathCloseSubpath(path)
-            } else {
-                CGPathAddArc(path, nil, lowerRightCenter.x, lowerRightCenter.y, radius, CGFloat(270).toRadians(), CGFloat(90).toRadians(), false)
-                CGPathAddLineToPoint(path, nil, 0, size.height)
-                CGPathAddLineToPoint(path, nil, 0, 0)
-                CGPathCloseSubpath(path)
-            }
-        }
-        
-        return path
+        roundedRectangle.size = size
+        return roundedRectangle.path
     }
 }

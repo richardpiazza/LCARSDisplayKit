@@ -1,10 +1,32 @@
+//===----------------------------------------------------------------------===//
 //
-//  LDKDPadView.swift
-//  LCARSDisplayKit
+// LDKDPadView.swift
 //
-//  Created by Richard Piazza on 10/2/15.
-//  Copyright © 2015 Richard Piazza. All rights reserved.
+// Copyright (c) 2015 Richard Piazza
+// https://github.com/richardpiazza/CodeQuickKit
 //
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+//
+// Star Trek and related marks are registered trademarks of CBS® / PARAMOUNT®
+// PLC. Original LCARS design credit: Mike Okuda.
+//
+//===----------------------------------------------------------------------===//
 
 import UIKit
 
@@ -54,15 +76,16 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
     public var sector03: LDKSectorButton = LDKSectorButton()
     public var sector04: LDKSectorButton = LDKSectorButton()
     
-    /// X and Y valuses to offset the center of the dpad from the center of the frame
-    func originOffset() -> CGPoint {
-        return CGPointMake(0, 0)
+    func defaultSize() -> CGSize {
+        return CGSizeMake(384, 384)
     }
     
-    func graphOrigin(rect: CGRect) -> GraphOrigin {
-        let x = rect.size.width / 2 + self.originOffset().x
-        let y = rect.size.height / 2 + self.originOffset().y
-        return GraphOrigin(x: x, y: y)
+    func graphOriginOffset() -> GraphOriginOffset {
+        return GraphOriginOffset(x: 0, y: 0)
+    }
+    
+    func scaleOfDefaultSize(actualSize: CGSize) -> GraphMultiplier {
+        return GraphMultiplier(width: CGFloat(actualSize.width / defaultSize().width), height: CGFloat(actualSize.height / defaultSize().height))
     }
     
     func cruxInteriorRadius(rect: CGRect) -> CGFloat {
@@ -73,137 +96,130 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         return CGFloat(rect.size.width / 2)
     }
     
+    public override func drawRect(rect: CGRect) {
+        super.drawRect(rect)
+        
+        let graphOrigin = GraphOrigin(x: rect.center.x + graphOriginOffset().x, y: rect.center.y + graphOriginOffset().y)
+        
+        let cir = cruxInteriorRadius(rect)
+        let cer = cruxExteriorRadius(rect)
+        
+        var width = cir
+        var height = cir
+        var x = graphOrigin.x - (width / 2)
+        var y = graphOrigin.y - (height / 2)
+        
+        var frame = CGRect(x: x, y: y, width: width, height: height)
+        
+        crux.frame = frame
+        
+        height = cer - 8 - cir / 2
+        y = graphOrigin.y - cer
+        frame = CGRectMake(x, y, width, height)
+        
+        up.frame = frame
+        up.radius = cer
+        up.startDegree = LDKDirectionButtonUp.startDegree
+        up.endDegree = LDKDirectionButtonUp.endDegree
+        up.cardinalDegree = CGFloat(270)
+        
+        y = graphOrigin.y + cir / 2 + 8
+        frame = CGRectMake(x, y, width, height)
+        
+        down.frame = frame
+        down.radius = cer
+        down.startDegree = LDKDirectionButtonDown.startDegree
+        down.endDegree = LDKDirectionButtonDown.endDegree
+        down.cardinalDegree = CGFloat(90)
+        
+        height = cir
+        width = cer - 8 - cir / 2
+        x = graphOrigin.x - cir / 2 - width - 8
+        y = graphOrigin.y - cir / 2
+        frame = CGRectMake(x, y, width, height)
+        
+        left.frame = frame
+        left.radius = cer
+        left.startDegree = LDKDirectionButtonLeft.startDegree
+        left.endDegree = LDKDirectionButtonLeft.endDegree
+        left.cardinalDegree = CGFloat(180)
+        
+        x = graphOrigin.x + cir / 2 + 8
+        frame = CGRectMake(x, y, width, height)
+        
+        right.frame = frame
+        right.radius = cer
+        right.startDegree = LDKDirectionButtonRight.startDegree
+        right.endDegree = LDKDirectionButtonRight.endDegree
+        right.cardinalDegree = CGFloat(0)
+        
+        var arc = Arc(radius: cer, startDegree: LDKSectorButton01.startDegree, endDegree: LDKSectorButton01.endDegree)
+        sector01.setArc(arc, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        
+        arc = Arc(radius: cer, startDegree: LDKSectorButton02.startDegree, endDegree: LDKSectorButton02.endDegree)
+        sector02.setArc(arc, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        
+        arc = Arc(radius: cer, startDegree: LDKSectorButton03.startDegree, endDegree: LDKSectorButton03.endDegree)
+        sector03.setArc(arc, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        
+        arc = Arc(radius: cer, startDegree: LDKSectorButton04.startDegree, endDegree: LDKSectorButton04.endDegree)
+        sector04.setArc(arc, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+    }
+    
     public override func layoutSubviews() {
         super.layoutSubviews()
         
-        let graphOrigin = self.graphOrigin(self.frame)
-        let axisX = graphOrigin.x
-        let axisY = graphOrigin.y
-        let cruxInteriorRadius = self.cruxInteriorRadius(self.frame)
-        let cruxExteriorRadius = self.cruxExteriorRadius(self.frame)
-        
-        var width = cruxInteriorRadius
-        var height = cruxInteriorRadius
-        var x = axisX - cruxInteriorRadius / 2
-        var y = axisY - cruxInteriorRadius / 2
-        
-        var frame = CGRectMake(x, y, width, height)
-        
-        self.crux.frame = frame
-        self.crux.setTitle("NIL", forState: .Normal)
-        if !self.subviews.contains(self.crux) {
-            self.addSubview(self.crux)
+        crux.setTitle("NIL", forState: .Normal)
+        if !self.subviews.contains(crux) {
+            self.addSubview(crux)
         }
         
-        height = cruxExteriorRadius - 8 - cruxInteriorRadius / 2
-        y = axisY - cruxExteriorRadius
-        frame = CGRectMake(x, y, width, height)
-        
-        self.up.frame = frame
-        self.up.radius = cruxExteriorRadius
-        self.up.startDegree = LDKDirectionButtonUp.startDegree
-        self.up.endDegree = LDKDirectionButtonUp.endDegree
-        self.up.cardinalDegree = CGFloat(270)
-        self.up.setTitle("Up", forState: .Normal)
-        if !self.subviews.contains(self.up) {
-            self.addSubview(self.up)
+        up.setTitle("Up", forState: .Normal)
+        if !self.subviews.contains(up) {
+            self.addSubview(up)
         }
         
-        y = axisY + cruxInteriorRadius / 2 + 8
-        frame = CGRectMake(x, y, width, height)
-        
-        self.down.frame = frame
-        self.down.radius = cruxExteriorRadius
-        self.down.startDegree = LDKDirectionButtonDown.startDegree
-        self.down.endDegree = LDKDirectionButtonDown.endDegree
-        self.down.cardinalDegree = CGFloat(90)
-        self.down.setTitle("Down", forState: .Normal)
-        if !self.subviews.contains(self.down) {
-            self.addSubview(self.down)
+        down.setTitle("Down", forState: .Normal)
+        if !self.subviews.contains(down) {
+            self.addSubview(down)
         }
         
-        height = cruxInteriorRadius
-        width = cruxExteriorRadius - 8 - cruxInteriorRadius / 2
-        x = axisX - cruxInteriorRadius / 2 - width - 8
-        y = axisY - cruxInteriorRadius / 2
-        frame = CGRectMake(x, y, width, height)
-        
-        self.left.frame = frame
-        self.left.radius = cruxExteriorRadius
-        self.left.startDegree = LDKDirectionButtonLeft.startDegree
-        self.left.endDegree = LDKDirectionButtonLeft.endDegree
-        self.left.cardinalDegree = CGFloat(180)
-        self.left.setTitle("Left", forState: .Normal)
-        if !self.subviews.contains(self.left) {
-            self.addSubview(self.left)
+        left.setTitle("Left", forState: .Normal)
+        if !self.subviews.contains(left) {
+            self.addSubview(left)
         }
         
-        x = axisX + cruxInteriorRadius / 2 + 8
-        frame = CGRectMake(x, y, width, height)
-        
-        self.right.frame = frame
-        self.right.radius = cruxExteriorRadius
-        self.right.startDegree = LDKDirectionButtonRight.startDegree
-        self.right.endDegree = LDKDirectionButtonRight.endDegree
-        self.right.cardinalDegree = CGFloat(0)
-        self.right.setTitle("Right", forState: .Normal)
-        if !self.subviews.contains(self.right) {
-            self.addSubview(self.right)
+        right.setTitle("Right", forState: .Normal)
+        if !self.subviews.contains(right) {
+            self.addSubview(right)
         }
         
-        var arc = Arc(radius: cruxExteriorRadius, startDegree: LDKSectorButton01.startDegree, endDegree: LDKSectorButton01.endDegree)
-        frame = GraphFrame.frameFor(arc: arc).rectFor(graphOrigin)
-        
-        self.sector01.frame = frame
-        self.sector01.setArc(arc)
-        self.sector01.setTitle("S01", forState: .Normal)
-        self.sector01.contentVerticalAlignment = .Top
-        self.sector01.contentHorizontalAlignment = .Right
-        if !self.subviews.contains(self.sector01) {
-            self.addSubview(self.sector01)
+        sector01.setTitle("S01", forState: .Normal)
+        sector01.contentVerticalAlignment = .Top
+        sector01.contentHorizontalAlignment = .Right
+        if !self.subviews.contains(sector01) {
+            self.addSubview(sector01)
         }
         
-        arc = Arc(radius: cruxExteriorRadius, startDegree: LDKSectorButton02.startDegree, endDegree: LDKSectorButton02.endDegree)
-        frame = GraphFrame.frameFor(arc: arc).rectFor(graphOrigin)
-        
-        self.sector02.frame = frame
-        self.sector02.setArc(arc)
-        self.sector02.setTitle("S02", forState: .Normal)
-        self.sector02.contentVerticalAlignment = .Top
-        self.sector02.contentHorizontalAlignment = .Left
-        if !self.subviews.contains(self.sector02) {
-            self.addSubview(self.sector02)
+        sector02.setTitle("S02", forState: .Normal)
+        sector02.contentVerticalAlignment = .Top
+        sector02.contentHorizontalAlignment = .Left
+        if !self.subviews.contains(sector02) {
+            self.addSubview(sector02)
         }
         
-        arc = Arc(radius: cruxExteriorRadius, startDegree: LDKSectorButton03.startDegree, endDegree: LDKSectorButton03.endDegree)
-        frame = GraphFrame.frameFor(arc: arc).rectFor(graphOrigin)
-        
-        self.sector03.frame = frame
-        self.sector03.setArc(arc)
-        self.sector03.setTitle("S03", forState: .Normal)
-        self.sector03.contentVerticalAlignment = .Bottom
-        self.sector03.contentHorizontalAlignment = .Left
-        if !self.subviews.contains(self.sector03) {
-            self.addSubview(self.sector03)
+        sector03.setTitle("S03", forState: .Normal)
+        sector03.contentVerticalAlignment = .Bottom
+        sector03.contentHorizontalAlignment = .Left
+        if !self.subviews.contains(sector03) {
+            self.addSubview(sector03)
         }
         
-        arc = Arc(radius: cruxExteriorRadius, startDegree: LDKSectorButton04.startDegree, endDegree: LDKSectorButton04.endDegree)
-        frame = GraphFrame.frameFor(arc: arc).rectFor(graphOrigin)
-        
-        self.sector04.frame = frame
-        self.sector04.setArc(arc)
-        self.sector04.setTitle("S04", forState: .Normal)
-        self.sector04.contentVerticalAlignment = .Bottom
-        self.sector04.contentHorizontalAlignment = .Right
-        if !self.subviews.contains(self.sector04) {
-            self.addSubview(self.sector04)
+        sector04.setTitle("S04", forState: .Normal)
+        sector04.contentVerticalAlignment = .Bottom
+        sector04.contentHorizontalAlignment = .Right
+        if !self.subviews.contains(sector04) {
+            self.addSubview(sector04)
         }
-    }
-}
-
-// MARK: - Scalable
-extension LDKDPadView: Scalable {
-    public class func defaultSize() -> CGSize {
-        return CGSizeMake(384, 384)
     }
 }

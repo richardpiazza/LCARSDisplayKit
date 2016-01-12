@@ -31,60 +31,61 @@
 import UIKit
 
 @IBDesignable public class LDKCrescentButton: UIButton {
+    public var crescent: Crescent = Crescent()
     @IBInspectable public var backgroundImageColor: UIColor = UIColor.neonCarrot()
-    @IBInspectable public var innerRadius: CGFloat = CGFloat(0)
-    @IBInspectable public var outerRadius: CGFloat = CGFloat(0)
-    @IBInspectable public var startDegree: CGFloat = CGFloat(0)
-    @IBInspectable public var endDegree: CGFloat = CGFloat(0)
+    @IBInspectable public var innerRadius: CGFloat {
+        get {
+            return crescent.innerArc.radius
+        }
+        set {
+            crescent.innerArc.radius = newValue
+        }
+    }
+    @IBInspectable public var outerRadius: CGFloat {
+        get {
+            return crescent.outerArc.radius
+        }
+        set {
+            crescent.outerArc.radius = newValue
+        }
+    }
+    @IBInspectable public var startDegree: CGFloat {
+        get {
+            return crescent.startDegree
+        }
+        set {
+            crescent.innerArc.startDegree = newValue
+            crescent.outerArc.startDegree = newValue
+        }
+    }
+    @IBInspectable public var endDegree: CGFloat {
+        get {
+            return crescent.endDegree
+        }
+        set {
+            crescent.innerArc.endDegree = newValue
+            crescent.outerArc.endDegree = newValue
+        }
+    }
     
-    func setAttributes(innerRadius innerRadius: CGFloat, outerRadius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
-        self.innerRadius = innerRadius
-        self.outerRadius = outerRadius
-        self.startDegree = startDegree
-        self.endDegree = endDegree
-        
-        let innerArc = Arc(radius: innerRadius, startDegree: startDegree, endDegree: endDegree)
-        let outerArc = Arc(radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
-        var points = [GraphPoint]()
-        points.appendContentsOf(innerArc.allPoints)
-        points.appendContentsOf(outerArc.allPoints)
-        let graphFrame = GraphFrame.frameFor(points, radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
-        self.frame = graphFrame.rectFor(graphOrigin)
+    convenience init(withCrescent crescent: Crescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+        self.init(frame: rect.frameFor(graphFrame: crescent.graphFrame, withGraphOriginOffset: offset))
+        self.crescent = crescent
+    }
+    
+    func setCrescent(crescent: Crescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+        self.crescent = crescent
+        self.frame = rect.frameFor(graphFrame: crescent.graphFrame, withGraphOriginOffset: offset)
     }
 }
 
 // MARK: - Tappable
 extension LDKCrescentButton: Tappable {
     public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        let innerArc = Arc(radius: innerRadius, startDegree: startDegree, endDegree: endDegree)
-        let outerArc = Arc(radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
-        return self.dynamicType.cresentPathWithArcs(innerArc, outerArc: outerArc)
+        return crescent.path
     }
     
     public func backgroundImage(context: CGContextRef?, size: CGSize) -> UIImage? {
-        let path = backgroundImagePath(size)
-        return UIImage.imageWithPath(path, size: size, color: self.backgroundImageColor, context: context)
-    }
-}
-
-// MARK: - CG Paths
-extension LDKCrescentButton {
-    public static func cresentPathWithArcs(innerArc: Arc, outerArc: Arc) -> CGMutablePathRef {
-        let path: CGMutablePathRef = CGPathCreateMutable()
-        
-        var points = [GraphPoint]()
-        points.appendContentsOf(innerArc.allPoints)
-        points.appendContentsOf(outerArc.allPoints)
-        
-        let graphFrame = GraphFrame.frameFor(points, radius: outerArc.radius, startDegree: outerArc.startDegree, endDegree: outerArc.endDegree)
-        let graphOrigin = graphFrame.graphOrigin
-        let outerEnd = graphFrame.pointFor(graphPoint: outerArc.endPoint)
-        
-        CGPathAddArc(path, nil, graphOrigin.x, graphOrigin.y, innerArc.radius, innerArc.startDegree.toRadians(), innerArc.endDegree.toRadians(), false)
-        CGPathAddLineToPoint(path, nil, outerEnd.x, outerEnd.y)
-        CGPathAddArc(path, nil, graphOrigin.x, graphOrigin.y, outerArc.radius, outerArc.endDegree.toRadians(), outerArc.startDegree.toRadians(), true)
-        CGPathCloseSubpath(path)
-        
-        return path
+        return UIImage.imageWithPath(backgroundImagePath(size), size: size, color: backgroundImageColor, context: context)
     }
 }

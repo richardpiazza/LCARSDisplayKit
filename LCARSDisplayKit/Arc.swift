@@ -23,9 +23,6 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-// Star Trek and related marks are registered trademarks of CBS® / PARAMOUNT®
-// PLC. Original LCARS design credit: Mike Okuda.
-//
 //===----------------------------------------------------------------------===//
 
 import CoreGraphics
@@ -36,21 +33,68 @@ public struct Arc {
     public var startDegree: CGFloat = CGFloat(0)
     public var endDegree: CGFloat = CGFloat(0)
     
-    public var startPoint: GraphPoint {
-        return GraphPoint.pointFor(degree: startDegree, radius: radius)
-    }
-    
-    public var endPoint: GraphPoint {
-        return GraphPoint.pointFor(degree: endDegree, radius: radius)
-    }
-    
-    public var allPoints: [GraphPoint] {
-        return [startPoint, endPoint]
-    }
-    
+    public init() {}
     public init(radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat) {
         self.radius = radius
         self.startDegree = startDegree
         self.endDegree = endDegree
+    }
+    
+    /// The `GraphPoint` corresponding to the startDegree and radius
+    public var startPoint: GraphPoint {
+        return GraphPoint.pointFor(degree: startDegree, radius: radius)
+    }
+    
+    /// The `GraphPoint` corresponding to the endDegree and radius
+    public var endPoint: GraphPoint {
+        return GraphPoint.pointFor(degree: endDegree, radius: radius)
+    }
+    
+    /// Calculates the point of the right angle that joins the start and end points.
+    public var pivot: GraphPoint {
+        let start = startPoint
+        let end = endPoint
+        var pivot = GraphPoint(x: 0, y: 0)
+        
+        if startDegree < 90 {
+            pivot.x = end.x
+            pivot.y = start.y
+        } else if startDegree < 180 {
+            pivot.x = start.x
+            pivot.y = end.y
+        } else if startDegree < 270 {
+            pivot.x = end.x
+            pivot.y = start.y
+        } else {
+            pivot.x = start.x
+            pivot.y = end.y
+        }
+        
+        return pivot
+    }
+}
+
+// MARK: - Graphable
+extension Arc: Graphable {
+    public var graphPoints: [GraphPoint] {
+        return [startPoint, endPoint]
+    }
+    
+    public var graphFrame: GraphFrame {
+        return GraphFrame.graphFrameFor(graphPoints, radius: radius, startDegree: startDegree, endDegree: endDegree)
+    }
+    
+    public var path: CGMutablePathRef {
+        let path: CGMutablePathRef = CGPathCreateMutable()
+        
+        let gf = graphFrame
+        let offset = gf.offsetToGraphOrigin
+        let translatedPivot = gf.pointFor(graphPoint: pivot)
+        
+        CGPathAddArc(path, nil, offset.x, offset.y, radius, startDegree.toRadians(), endDegree.toRadians(), false)
+        CGPathAddLineToPoint(path, nil, translatedPivot.x, translatedPivot.y)
+        CGPathCloseSubpath(path)
+        
+        return path
     }
 }

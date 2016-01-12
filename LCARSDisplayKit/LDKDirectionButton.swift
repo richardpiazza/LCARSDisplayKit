@@ -39,8 +39,8 @@ import UIKit
     
     convenience init(radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinalDegree: CGFloat) {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        let graphFrame = GraphFrame.frameFor(arc.allPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
-        let frame = graphFrame.rectFor(graphFrame.graphOrigin)
+        let graphFrame = GraphFrame.graphFrameFor(arc.graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
+        let frame = graphFrame.rectFor(graphFrame.offsetToGraphOrigin)
         self.init(frame: frame)
         self.radius = radius
         self.startDegree = startDegree
@@ -82,15 +82,15 @@ extension LDKDirectionButton {
             return paths
         }
         
-        let graphFrame = GraphFrame.frameFor(arc.allPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
-        let graphOrigin = graphFrame.graphOrigin
+        let graphFrame = GraphFrame.graphFrameFor(arc.graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
+        let offset = graphFrame.offsetToGraphOrigin
         let unit = min(size.width, size.height) / 2
         
         if cardinalDegree == 0 {
             // Right
             let arrowPath: CGMutablePathRef = CGPathCreateMutable()
-            let arcX = size.width + graphOrigin.x - graphFrame.width
-            CGPathAddArc(arrowPath, nil, arcX, graphOrigin.y, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
+            let arcX = size.width + offset.x - graphFrame.width
+            CGPathAddArc(arrowPath, nil, arcX, offset.y, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
             CGPathAddLineToPoint(arrowPath, nil, size.width - unit, size.height)
             CGPathAddLineToPoint(arrowPath, nil, size.width - unit, 0)
             CGPathCloseSubpath(arrowPath)
@@ -107,7 +107,7 @@ extension LDKDirectionButton {
         } else if cardinalDegree == 90 {
             // Down
             let arrowPath: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddArc(arrowPath, nil, graphOrigin.x, size.height + graphOrigin.y - graphFrame.height, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
+            CGPathAddArc(arrowPath, nil, offset.x, size.height + offset.y - graphFrame.height, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
             CGPathAddLineToPoint(arrowPath, nil, 0, size.height - unit)
             CGPathAddLineToPoint(arrowPath, nil, size.width, size.height - unit)
             CGPathCloseSubpath(arrowPath)
@@ -124,7 +124,7 @@ extension LDKDirectionButton {
         } else if cardinalDegree == 180 {
             // Left
             let arrowPath: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddArc(arrowPath, nil, graphOrigin.x, graphOrigin.y, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
+            CGPathAddArc(arrowPath, nil, offset.x, offset.y, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
             CGPathAddLineToPoint(arrowPath, nil, unit, 0)
             CGPathAddLineToPoint(arrowPath, nil, unit, size.height)
             CGPathCloseSubpath(arrowPath)
@@ -141,7 +141,7 @@ extension LDKDirectionButton {
         } else if cardinalDegree == 270 {
             // Up
             let arrowPath: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddArc(arrowPath, nil, graphOrigin.x, graphOrigin.y, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
+            CGPathAddArc(arrowPath, nil, offset.x, offset.y, arc.radius, arc.startDegree.toRadians(), arc.endDegree.toRadians(), false)
             CGPathAddLineToPoint(arrowPath, nil, size.width, unit)
             CGPathAddLineToPoint(arrowPath, nil, 0, unit)
             CGPathCloseSubpath(arrowPath)
