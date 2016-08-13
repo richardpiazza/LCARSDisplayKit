@@ -1,0 +1,6 @@
+framework module Pods_LCARSDisplayKitTests {
+  umbrella header "Pods-LCARSDisplayKitTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

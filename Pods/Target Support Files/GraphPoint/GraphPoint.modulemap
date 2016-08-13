@@ -1,0 +1,6 @@
+framework module GraphPoint {
+  umbrella header "GraphPoint-umbrella.h"
+
+  export *
+  module * { export * }
+}
