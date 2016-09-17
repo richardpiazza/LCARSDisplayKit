@@ -31,32 +31,32 @@
 import UIKit
 import GraphPoint
 
-public class LDKDPadFullView: LDKDPadExpandedView {
+open class LDKDPadFullView: LDKDPadExpandedView {
     // Labeled for Sector or Arc Degree
-    public var outerRing05: LDKCrescentButton = LDKCrescentButton()
-    public var outerRingSector01: LDKCrescentButton = LDKCrescentButton()
+    open var outerRing05: LDKCrescentButton = LDKCrescentButton()
+    open var outerRingSector01: LDKCrescentButton = LDKCrescentButton()
     
     // Labeled numerically from zero degrees
-    public var top01: LDKButton = LDKButton()
-    public var top02: LDKButton = LDKButton()
-    public var top03: LDKButton = LDKButton()
-    public var top04: LDKButton = LDKButton()
-    public var top05: LDKButton = LDKButton()
+    open var top01: LDKButton = LDKButton()
+    open var top02: LDKButton = LDKButton()
+    open var top03: LDKButton = LDKButton()
+    open var top04: LDKButton = LDKButton()
+    open var top05: LDKButton = LDKButton()
     
     override func defaultSize() -> CGSize {
-        return CGSizeMake(794, 794)
+        return CGSize(width: 794, height: 794)
     }
     
     override func graphOriginOffset() -> GraphOriginOffset {
         return GraphOriginOffset(x: 0.0, y: defaultSize().height * 0.0625)
     }
     
-    override func edge01ExteriorRadius(rect: CGRect) -> CGFloat {
+    override func edge01ExteriorRadius(_ rect: CGRect) -> CGFloat {
         return self.secondRingExteriorRadius(rect)
     }
     
-    public override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         let srir = self.secondRingInteriorRadius(rect)
         let srer = self.secondRingExteriorRadius(rect)
@@ -67,9 +67,9 @@ public class LDKDPadFullView: LDKDPadExpandedView {
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree)
         outerRing05.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
-        var frame = CGRectZero
-        if !CGPointEqualToPoint(edge04.edgePoint1, CGPointZero) {
-            if !CGPointEqualToPoint(edge04.edgePoint2, CGPointZero) {
+        var frame = CGRect.zero
+        if !edge04.edgePoint1.equalTo(CGPoint.zero) {
+            if !edge04.edgePoint2.equalTo(CGPoint.zero) {
                 frame.size.width = edge04.edgePoint2.x - edge04.edgePoint1.x
             }
         }
@@ -82,8 +82,8 @@ public class LDKDPadFullView: LDKDPadExpandedView {
         top01.setRoundedRectangle(roundedRectangle, withFrame: frame)
         
         
-        if !CGPointEqualToPoint(edge05.edgePoint1, CGPointZero) {
-            if !CGPointEqualToPoint(edge05.edgePoint2, CGPointZero) {
+        if !edge05.edgePoint1.equalTo(CGPoint.zero) {
+            if !edge05.edgePoint2.equalTo(CGPoint.zero) {
                 frame.size.width = edge05.edgePoint2.x - edge05.edgePoint1.x
             }
         }
@@ -113,47 +113,47 @@ public class LDKDPadFullView: LDKDPadExpandedView {
         top05.setRoundedRectangle(roundedRectangle, withFrame: frame)
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         outerRingSector01.backgroundImageColor = Interface.theme.primaryDark
-        outerRingSector01.setTitle("ORS01", forState: .Normal)
+        outerRingSector01.setTitle("ORS01", for: UIControlState())
         if !self.subviews.contains(outerRingSector01) {
             self.addSubview(outerRingSector01)
         }
         
         outerRing05.backgroundImageColor = Interface.theme.primaryDark
-        outerRing05.setTitle("OR05", forState: .Normal)
+        outerRing05.setTitle("OR05", for: UIControlState())
         if !self.subviews.contains(outerRing05) {
             self.addSubview(outerRing05)
         }
         
         top01.backgroundImageColor = Interface.theme.tertiaryLight
-        top01.setTitle("Calibrate", forState: .Normal)
+        top01.setTitle("Calibrate", for: UIControlState())
         if !self.subviews.contains(top01) {
             self.addSubview(top01)
         }
         
         top02.backgroundImageColor = Interface.theme.primaryLight
-        top02.setTitle("T02", forState: .Normal)
+        top02.setTitle("T02", for: UIControlState())
         if !self.subviews.contains(top02) {
             self.addSubview(top02)
         }
         
         top03.backgroundImageColor = Interface.theme.tertiaryDark
-        top03.setTitle("T03", forState: .Normal)
+        top03.setTitle("T03", for: UIControlState())
         if !self.subviews.contains(top03) {
             self.addSubview(top03)
         }
         
         top04.backgroundImageColor = Interface.theme.primaryDark
-        top04.setTitle("T04", forState: .Normal)
+        top04.setTitle("T04", for: UIControlState())
         if !self.subviews.contains(top04) {
             self.addSubview(top04)
         }
         
         top05.backgroundImageColor = Interface.theme.primaryDark
-        top05.setTitle("T05", forState: .Normal)
+        top05.setTitle("T05", for: UIControlState())
         if !self.subviews.contains(top05) {
             self.addSubview(top05)
         }

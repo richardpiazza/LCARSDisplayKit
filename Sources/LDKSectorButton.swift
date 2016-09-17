@@ -31,10 +31,10 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable public class LDKSectorButton: UIButton, Tappable {
-    public var arc: Arc = Arc()
-    @IBInspectable public var backgroundImageColor: UIColor = Interface.theme.primaryMedium
-    @IBInspectable public var radius: CGFloat {
+@IBDesignable open class LDKSectorButton: UIButton, Tappable {
+    open var arc: Arc = Arc()
+    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryMedium
+    @IBInspectable open var radius: CGFloat {
         get {
             return arc.radius
         }
@@ -42,7 +42,7 @@ import GraphPoint
             arc.radius = newValue
         }
     }
-    @IBInspectable public var startDegree: CGFloat {
+    @IBInspectable open var startDegree: CGFloat {
         get {
             return arc.startDegree
         }
@@ -50,7 +50,7 @@ import GraphPoint
             arc.startDegree = newValue
         }
     }
-    @IBInspectable public var endDegree: CGFloat {
+    @IBInspectable open var endDegree: CGFloat {
         get {
             return arc.endDegree
         }
@@ -74,13 +74,13 @@ import GraphPoint
         self.arc = arc
     }
     
-    public func setArc(arc: Arc, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+    open func setArc(_ arc: Arc, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
         self.arc = arc
         self.frame = rect.frame(forGraphFrame: arc.graphFrame, graphOriginOffset: offset)
     }
     
     // MARK: - Tappable
-    public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
+    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
         if let superframe = self.superview?.bounds {
             return arc.path(inRect: superframe)
         }

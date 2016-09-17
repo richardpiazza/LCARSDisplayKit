@@ -28,24 +28,24 @@
 import UIKit
 
 extension UIButton {
-    public override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         guard let tappableSelf = (self as? Tappable) else {
             return
         }
         
         let context = UIGraphicsGetCurrentContext()
-        self.setBackgroundImage(tappableSelf.backgroundImage(context, size: rect.size), forState: .Normal)
+        self.setBackgroundImage(tappableSelf.backgroundImage(context, size: rect.size), for: UIControlState())
     }
     
-    public override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
         guard let tappableSelf = (self as? Tappable) else {
-            return super.pointInside(point, withEvent: event)
+            return super.point(inside: point, with: event)
         }
         
         let path = tappableSelf.backgroundImagePath(bounds.size)
-        let containsPoint = CGPathContainsPoint(path, nil, point, false)
+        let containsPoint = path.contains(point)
         if containsPoint {
             print("point \(point) inside \(self.currentTitle)")
         }

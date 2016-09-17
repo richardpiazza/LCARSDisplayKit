@@ -85,16 +85,16 @@ public struct Arc: Graphable {
         return GraphFrame.graphFrame(forGraphPoints: graphPoints, radius: radius, startDegree: startDegree, endDegree: endDegree)
     }
     
-    public func path(inRect rect: CGRect) -> CGMutablePathRef {
-        let path: CGMutablePathRef = CGPathCreateMutable()
+    public func path(inRect rect: CGRect) -> CGMutablePath {
+        let path: CGMutablePath = CGMutablePath()
         
         let gf = graphFrame
         let offset = gf.graphOriginOffset
         let translatedPivot = gf.boundedPoint(forGraphPoint: pivot)
         
-        CGPathAddArc(path, nil, offset.x, offset.y, radius, startDegree.radians, endDegree.radians, false)
-        CGPathAddLineToPoint(path, nil, translatedPivot.x, translatedPivot.y)
-        CGPathCloseSubpath(path)
+        path.addArc(center: offset, radius: radius, startAngle: startDegree.radians, endAngle: endDegree.radians, clockwise: false)
+        path.addLine(to: translatedPivot)
+        path.closeSubpath()
         
         return path
     }

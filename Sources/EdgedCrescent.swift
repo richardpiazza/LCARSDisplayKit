@@ -45,8 +45,8 @@ public struct EdgedCrescent: Graphable {
     // MARK: - Graphable
     public var graphPoints: [GraphPoint] {
         var points = [GraphPoint]()
-        points.appendContentsOf(arc.graphPoints)
-        points.appendContentsOf(additionalPoints)
+        points.append(contentsOf: arc.graphPoints)
+        points.append(contentsOf: additionalPoints)
         return points
     }
     
@@ -54,20 +54,20 @@ public struct EdgedCrescent: Graphable {
         return GraphFrame.graphFrame(forGraphPoints: graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
     }
     
-    public var path: CGMutablePathRef {
-        let path: CGMutablePathRef = CGPathCreateMutable()
+    public var path: CGMutablePath {
+        let path: CGMutablePath = CGMutablePath()
         
         let gf = graphFrame
         let offset = gf.graphOriginOffset
         
-        CGPathAddArc(path, nil, offset.x, offset.y, arc.radius, arc.startDegree.radians, arc.endDegree.radians, false)
+        path.addArc(center: offset, radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
         
-        for point in Array(additionalPoints.reverse()) {
+        for point in Array(additionalPoints.reversed()) {
             let translatedPoint = gf.boundedPoint(forGraphPoint: point)
-            CGPathAddLineToPoint(path, nil, translatedPoint.x, translatedPoint.y)
+            path.addLine(to: translatedPoint)
         }
         
-        CGPathCloseSubpath(path)
+        path.closeSubpath()
         
         return path
     }

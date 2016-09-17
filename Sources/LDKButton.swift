@@ -30,12 +30,12 @@
 
 import UIKit
 
-@IBDesignable public class LDKButton: UIButton, Tappable {
-    static let defaultSize: CGSize = CGSizeMake(144, 60)
+@IBDesignable open class LDKButton: UIButton, Tappable {
+    static let defaultSize: CGSize = CGSize(width: 144, height: 60)
     
-    public var roundedRectangle: RoundedRectangle = RoundedRectangle()
-    @IBInspectable public var backgroundImageColor: UIColor = Interface.theme.primaryDark
-    @IBInspectable public var roundLeft: Bool {
+    open var roundedRectangle: RoundedRectangle = RoundedRectangle()
+    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
+    @IBInspectable open var roundLeft: Bool {
         get {
             return roundedRectangle.leftRounded
         }
@@ -43,7 +43,7 @@ import UIKit
             roundedRectangle.leftRounded = newValue
         }
     }
-    @IBInspectable public var roundRight: Bool {
+    @IBInspectable open var roundRight: Bool {
         get {
             return roundedRectangle.rightRounded
         }
@@ -51,7 +51,7 @@ import UIKit
             roundedRectangle.rightRounded = newValue
         }
     }
-    @IBInspectable public var isFrame: Bool {
+    @IBInspectable open var isFrame: Bool {
         get {
             return roundedRectangle.cornersOnly
         }
@@ -60,13 +60,13 @@ import UIKit
         }
     }
     
-    func setRoundedRectangle(roundedRectangle: RoundedRectangle, withFrame frame: CGRect) {
+    func setRoundedRectangle(_ roundedRectangle: RoundedRectangle, withFrame frame: CGRect) {
         self.roundedRectangle = roundedRectangle
         self.frame = frame
     }
     
     // MARK: - Tappable
-    public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
+    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
         roundedRectangle.size = size
         return roundedRectangle.path
     }

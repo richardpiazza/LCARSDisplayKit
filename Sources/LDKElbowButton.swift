@@ -31,16 +31,16 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable public class LDKElbowButton: UIButton, Tappable {
-    @IBInspectable public var backgroundImageColor: UIColor = Interface.theme.primaryDark
-    @IBInspectable public var top: Bool = true
-    @IBInspectable public var left: Bool = true
+@IBDesignable open class LDKElbowButton: UIButton, Tappable {
+    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
+    @IBInspectable open var top: Bool = true
+    @IBInspectable open var left: Bool = true
     /// Specifies if the corner specified by `top` and `left` should be rounded.
-    @IBInspectable public var rounded: Bool = true
-    @IBInspectable public var horizontalHeight: CGFloat = CGFloat(120)
-    @IBInspectable public var verticalWidth: CGFloat = CGFloat(30)
+    @IBInspectable open var rounded: Bool = true
+    @IBInspectable open var horizontalHeight: CGFloat = CGFloat(120)
+    @IBInspectable open var verticalWidth: CGFloat = CGFloat(30)
     /// If closedHeight > 0, an additional area is drawn parallel to the horizontalHeight area.
-    @IBInspectable public var closedHeight: CGFloat = CGFloat(0)
+    @IBInspectable open var closedHeight: CGFloat = CGFloat(0)
     
     convenience init(frame: CGRect, top: Bool, left: Bool, rounded: Bool, horizontalHeight: CGFloat, verticalWidth: CGFloat, closedHeight: CGFloat) {
         self.init(frame: frame)
@@ -53,117 +53,117 @@ import GraphPoint
     }
     
     // MARK: - Tappable
-    public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        return self.dynamicType.elbowPathWithSize(size, top: top, left: left, rounded: rounded, horizontalHeight: horizontalHeight, verticalWidth: verticalWidth, closedHeight: closedHeight)
+    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
+        return type(of: self).elbowPathWithSize(size, top: top, left: left, rounded: rounded, horizontalHeight: horizontalHeight, verticalWidth: verticalWidth, closedHeight: closedHeight)
     }
     
     // MARK: - CG Paths
-    public static func elbowPathWithSize(size: CGSize, top: Bool, left: Bool, rounded: Bool, horizontalHeight: CGFloat, verticalWidth: CGFloat, closedHeight: CGFloat) -> CGMutablePathRef {
-        let path: CGMutablePathRef = CGPathCreateMutable()
+    open static func elbowPathWithSize(_ size: CGSize, top: Bool, left: Bool, rounded: Bool, horizontalHeight: CGFloat, verticalWidth: CGFloat, closedHeight: CGFloat) -> CGMutablePath {
+        let path: CGMutablePath = CGMutablePath()
         
         let outerRadius = fmax(horizontalHeight, verticalWidth) / 2
         let innerRadius = outerRadius / 2.4
-        let upperLeftOuterCenter = CGPointMake(outerRadius, outerRadius)
-        let upperLeftInnerCenter = CGPointMake(verticalWidth + innerRadius, horizontalHeight + innerRadius)
-        let lowerRightOuterCenter = CGPointMake(size.width - outerRadius, size.height - outerRadius)
-        let lowerRightInnerCenter = CGPointMake(size.width - verticalWidth - innerRadius, size.height - horizontalHeight - innerRadius)
+        let upperLeftOuterCenter = CGPoint(x: outerRadius, y: outerRadius)
+        let upperLeftInnerCenter = CGPoint(x: verticalWidth + innerRadius, y: horizontalHeight + innerRadius)
+        let lowerRightOuterCenter = CGPoint(x: size.width - outerRadius, y: size.height - outerRadius)
+        let lowerRightInnerCenter = CGPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight - innerRadius)
         
         if top && left {
             // Upper Left
             if rounded {
-                CGPathAddArc(path, nil, upperLeftOuterCenter.x, upperLeftOuterCenter.y, outerRadius, CGFloat(180).radians, CGFloat(270).radians, false)
+                path.addArc(center: upperLeftOuterCenter, radius: outerRadius, startAngle: CGFloat.radians180, endAngle: CGFloat.radians270, clockwise: false)
             } else {
-                CGPathMoveToPoint(path, nil, 0, 0)
+                path.move(to: CGPoint.zero)
             }
-            CGPathAddLineToPoint(path, nil, size.width, 0)
-            CGPathAddLineToPoint(path, nil, size.width, horizontalHeight)
+            path.addLine(to: CGPoint(x: size.width, y: 0))
+            path.addLine(to: CGPoint(x: size.width, y: horizontalHeight))
             if rounded {
-                CGPathAddLineToPoint(path, nil, verticalWidth + innerRadius, horizontalHeight)
-                CGPathAddArc(path, nil, upperLeftInnerCenter.x, upperLeftInnerCenter.y, innerRadius, CGFloat(270).radians, CGFloat(180).radians, true)
+                path.addLine(to: CGPoint(x: verticalWidth + innerRadius, y: horizontalHeight))
+                path.addArc(center: upperLeftInnerCenter, radius: innerRadius, startAngle: CGFloat.radians270, endAngle: CGFloat.radians180, clockwise: true)
             } else {
-                CGPathAddLineToPoint(path, nil, verticalWidth, horizontalHeight)
+                path.addLine(to: CGPoint(x: verticalWidth, y: horizontalHeight))
             }
             if closedHeight > 0 {
-                CGPathAddLineToPoint(path, nil, verticalWidth, size.height - closedHeight)
-                CGPathAddLineToPoint(path, nil, size.width, size.height - closedHeight)
-                CGPathAddLineToPoint(path, nil, size.width, size.height)
+                path.addLine(to: CGPoint(x: verticalWidth, y: size.height - closedHeight))
+                path.addLine(to: CGPoint(x: size.width, y: size.height - closedHeight))
+                path.addLine(to: CGPoint(x: size.width, y: size.height))
             } else {
-                CGPathAddLineToPoint(path, nil, verticalWidth, size.height)
+                path.addLine(to: CGPoint(x: verticalWidth, y: size.height))
             }
-            CGPathAddLineToPoint(path, nil, 0, size.height)
-            CGPathCloseSubpath(path)
+            path.addLine(to: CGPoint(x: 0, y: size.height))
+            path.closeSubpath()
         } else if !top && left {
             // Lower Left
             if rounded {
-                CGPathAddArc(path, nil, upperLeftOuterCenter.x, lowerRightOuterCenter.y, outerRadius, CGFloat(180).radians, CGFloat(90).radians, true)
+                path.addArc(center: CGPoint(x: upperLeftOuterCenter.x, y: lowerRightOuterCenter.y), radius: outerRadius, startAngle: CGFloat.radians180, endAngle: CGFloat.radians90, clockwise: true)
             } else {
-                CGPathMoveToPoint(path, nil, 0, size.height)
+                path.move(to: CGPoint(x: 0, y: size.height))
             }
-            CGPathAddLineToPoint(path, nil, size.width, size.height)
-            CGPathAddLineToPoint(path, nil, size.width, size.height - horizontalHeight)
+            path.addLine(to: CGPoint(x: size.width, y: size.height))
+            path.addLine(to: CGPoint(x: size.width, y: size.height - horizontalHeight))
             if rounded {
-                CGPathAddLineToPoint(path, nil, verticalWidth + innerRadius, size.height - horizontalHeight)
-                CGPathAddArc(path, nil, upperLeftInnerCenter.x, lowerRightInnerCenter.y, innerRadius, CGFloat(90).radians, CGFloat(180).radians, false)
+                path.addLine(to: CGPoint(x: verticalWidth + innerRadius, y: size.height - horizontalHeight))
+                path.addArc(center: CGPoint(x: upperLeftInnerCenter.x, y: lowerRightInnerCenter.y), radius: innerRadius, startAngle: CGFloat.radians90, endAngle: CGFloat.radians180, clockwise: false)
             } else {
-                CGPathAddLineToPoint(path, nil, verticalWidth, size.height - horizontalHeight)
+                path.addLine(to: CGPoint(x: verticalWidth, y: size.height - horizontalHeight))
             }
             if closedHeight > 0 {
-                CGPathAddLineToPoint(path, nil, verticalWidth, closedHeight)
-                CGPathAddLineToPoint(path, nil, size.width, closedHeight)
-                CGPathAddLineToPoint(path, nil, size.width, 0)
+                path.addLine(to: CGPoint(x: verticalWidth, y: closedHeight))
+                path.addLine(to: CGPoint(x: size.width, y: closedHeight))
+                path.addLine(to: CGPoint(x: size.width, y: 0))
             } else {
-                CGPathAddLineToPoint(path, nil, verticalWidth, 0)
+                path.addLine(to: CGPoint(x: verticalWidth, y: 0))
             }
-            CGPathAddLineToPoint(path, nil, 0, 0)
-            CGPathCloseSubpath(path)
+            path.addLine(to: CGPoint.zero)
+            path.closeSubpath()
         } else if top && !left {
             // Upper Right
             if rounded {
-                CGPathAddArc(path, nil, lowerRightOuterCenter.x, upperLeftOuterCenter.y, outerRadius, CGFloat(0).radians, CGFloat(270).radians, true)
+                path.addArc(center: CGPoint(x: lowerRightOuterCenter.x, y: upperLeftOuterCenter.y), radius: outerRadius, startAngle: CGFloat.radians0, endAngle: CGFloat.radians270, clockwise: true)
             } else {
-                CGPathMoveToPoint(path, nil, size.width, 0)
+                path.move(to: CGPoint(x: size.width, y: 0))
             }
-            CGPathAddLineToPoint(path, nil, 0, 0)
-            CGPathAddLineToPoint(path, nil, 0, horizontalHeight)
+            path.addLine(to: CGPoint.zero)
+            path.addLine(to: CGPoint(x: 0, y: horizontalHeight))
             if rounded {
-                CGPathAddLineToPoint(path, nil, size.width - verticalWidth - innerRadius, horizontalHeight)
-                CGPathAddArc(path, nil, lowerRightInnerCenter.x, upperLeftInnerCenter.y, innerRadius, CGFloat(270).radians, CGFloat(0).radians, false)
+                path.addLine(to: CGPoint(x: size.width - verticalWidth - innerRadius, y: horizontalHeight))
+                path.addArc(center: CGPoint(x: lowerRightInnerCenter.x, y: upperLeftInnerCenter.y), radius: innerRadius, startAngle: CGFloat.radians270, endAngle: CGFloat.radians0, clockwise: false)
             } else {
-                CGPathAddLineToPoint(path, nil, size.width - verticalWidth, horizontalHeight)
+                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: horizontalHeight))
             }
             if closedHeight > 0 {
-                CGPathAddLineToPoint(path, nil, size.width - verticalWidth, size.height - closedHeight)
-                CGPathAddLineToPoint(path, nil, 0, size.height - closedHeight)
-                CGPathAddLineToPoint(path, nil, 0, size.height)
+                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: size.height - closedHeight))
+                path.addLine(to: CGPoint(x: 0, y: size.height - closedHeight))
+                path.addLine(to: CGPoint(x: 0, y: size.height))
             } else {
-                CGPathAddLineToPoint(path, nil, size.width - verticalWidth, size.height)
+                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: size.height))
             }
-            CGPathAddLineToPoint(path, nil, size.width, size.height)
-            CGPathCloseSubpath(path)
+            path.addLine(to: CGPoint(x: size.width, y: size.height))
+            path.closeSubpath()
         } else if !top && !left {
             // Lower Right
             if rounded {
-                CGPathAddArc(path, nil, lowerRightOuterCenter.x, lowerRightOuterCenter.y, outerRadius, CGFloat(0).radians, CGFloat(90).radians, false)
+                path.addArc(center: lowerRightOuterCenter, radius: outerRadius, startAngle: CGFloat.radians0, endAngle: CGFloat.radians90, clockwise: false)
             } else {
-                CGPathMoveToPoint(path, nil, size.width, size.height)
+                path.move(to: CGPoint(x: size.width, y: size.height))
             }
-            CGPathAddLineToPoint(path, nil, 0, size.height)
-            CGPathAddLineToPoint(path, nil, 0, size.height - horizontalHeight)
+            path.addLine(to: CGPoint(x: 0, y: size.height))
+            path.addLine(to: CGPoint(x: 0, y: size.height - horizontalHeight))
             if rounded {
-                CGPathAddLineToPoint(path, nil, size.width - verticalWidth - innerRadius, size.height - horizontalHeight)
-                CGPathAddArc(path, nil, lowerRightInnerCenter.x, lowerRightInnerCenter.y, innerRadius, CGFloat(90).radians, CGFloat(0).radians, true)
+                path.addLine(to: CGPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight))
+                path.addArc(center: lowerRightInnerCenter, radius: innerRadius, startAngle: CGFloat.radians90, endAngle: CGFloat.radians0, clockwise: true)
             } else {
-                CGPathAddLineToPoint(path, nil, size.width - verticalWidth, size.height - horizontalHeight)
+                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: size.height - horizontalHeight))
             }
             if closedHeight > 0 {
-                CGPathAddLineToPoint(path, nil, size.width - verticalWidth, closedHeight)
-                CGPathAddLineToPoint(path, nil, 0, closedHeight)
-                CGPathAddLineToPoint(path, nil, 0, 0)
+                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: closedHeight))
+                path.addLine(to: CGPoint(x: 0, y: closedHeight))
+                path.addLine(to: CGPoint.zero)
             } else {
-                CGPathAddLineToPoint(path, nil, size.width - verticalWidth, 0)
+                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: 0))
             }
-            CGPathAddLineToPoint(path, nil, size.width, 0)
-            CGPathCloseSubpath(path)
+            path.addLine(to: CGPoint(x: size.width, y: 0))
+            path.closeSubpath()
         }
         
         return path

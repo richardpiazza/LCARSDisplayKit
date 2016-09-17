@@ -70,39 +70,39 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
 /// default size.
 public typealias GraphMultiplier = CGSize
 
-@IBDesignable public class LDKDPadView: UIView {
-    public var crux: LDKButton = LDKButton()
-    public var up: LDKDirectionButton = LDKDirectionButton()
-    public var down: LDKDirectionButton = LDKDirectionButton()
-    public var left: LDKDirectionButton = LDKDirectionButton()
-    public var right: LDKDirectionButton = LDKDirectionButton()
-    public var sector01: LDKSectorButton = LDKSectorButton()
-    public var sector02: LDKSectorButton = LDKSectorButton()
-    public var sector03: LDKSectorButton = LDKSectorButton()
-    public var sector04: LDKSectorButton = LDKSectorButton()
+@IBDesignable open class LDKDPadView: UIView {
+    open var crux: LDKButton = LDKButton()
+    open var up: LDKDirectionButton = LDKDirectionButton()
+    open var down: LDKDirectionButton = LDKDirectionButton()
+    open var left: LDKDirectionButton = LDKDirectionButton()
+    open var right: LDKDirectionButton = LDKDirectionButton()
+    open var sector01: LDKSectorButton = LDKSectorButton()
+    open var sector02: LDKSectorButton = LDKSectorButton()
+    open var sector03: LDKSectorButton = LDKSectorButton()
+    open var sector04: LDKSectorButton = LDKSectorButton()
     
     func defaultSize() -> CGSize {
-        return CGSizeMake(384, 384)
+        return CGSize(width: 384, height: 384)
     }
     
     func graphOriginOffset() -> GraphOriginOffset {
         return GraphOriginOffset(x: 0, y: 0)
     }
     
-    func scaleOfDefaultSize(actualSize: CGSize) -> GraphMultiplier {
+    func scaleOfDefaultSize(_ actualSize: CGSize) -> GraphMultiplier {
         return GraphMultiplier(width: CGFloat(actualSize.width / defaultSize().width), height: CGFloat(actualSize.height / defaultSize().height))
     }
     
-    func cruxInteriorRadius(rect: CGRect) -> CGFloat {
+    func cruxInteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.size.width / 2) * 0.3125)
     }
     
-    func cruxExteriorRadius(rect: CGRect) -> CGFloat {
+    func cruxExteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat(rect.size.width / 2)
     }
     
-    public override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         let graphOrigin = GraphOrigin(x: rect.graphOrigin.x + graphOriginOffset().x, y: rect.graphOrigin.y + graphOriginOffset().y)
         
@@ -120,7 +120,7 @@ public typealias GraphMultiplier = CGSize
         
         height = cer - 8 - cir / 2
         y = graphOrigin.y - cer
-        frame = CGRectMake(x, y, width, height)
+        frame = CGRect(x: x, y: y, width: width, height: height)
         
         up.frame = frame
         up.radius = cer
@@ -129,7 +129,7 @@ public typealias GraphMultiplier = CGSize
         up.cardinalDegree = CGFloat(270)
         
         y = graphOrigin.y + cir / 2 + 8
-        frame = CGRectMake(x, y, width, height)
+        frame = CGRect(x: x, y: y, width: width, height: height)
         
         down.frame = frame
         down.radius = cer
@@ -141,7 +141,7 @@ public typealias GraphMultiplier = CGSize
         width = cer - 8 - cir / 2
         x = graphOrigin.x - cir / 2 - width - 8
         y = graphOrigin.y - cir / 2
-        frame = CGRectMake(x, y, width, height)
+        frame = CGRect(x: x, y: y, width: width, height: height)
         
         left.frame = frame
         left.radius = cer
@@ -150,7 +150,7 @@ public typealias GraphMultiplier = CGSize
         left.cardinalDegree = CGFloat(180)
         
         x = graphOrigin.x + cir / 2 + 8
-        frame = CGRectMake(x, y, width, height)
+        frame = CGRect(x: x, y: y, width: width, height: height)
         
         right.frame = frame
         right.radius = cer
@@ -171,58 +171,58 @@ public typealias GraphMultiplier = CGSize
         sector04.setArc(arc, inRect: rect, withGraphOriginOffset: graphOriginOffset())
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
-        crux.setTitle("NIL", forState: .Normal)
+        crux.setTitle("NIL", for: UIControlState())
         if !self.subviews.contains(crux) {
             self.addSubview(crux)
         }
         
-        up.setTitle("Up", forState: .Normal)
+        up.setTitle("Up", for: UIControlState())
         if !self.subviews.contains(up) {
             self.addSubview(up)
         }
         
-        down.setTitle("Down", forState: .Normal)
+        down.setTitle("Down", for: UIControlState())
         if !self.subviews.contains(down) {
             self.addSubview(down)
         }
         
-        left.setTitle("Left", forState: .Normal)
+        left.setTitle("Left", for: UIControlState())
         if !self.subviews.contains(left) {
             self.addSubview(left)
         }
         
-        right.setTitle("Right", forState: .Normal)
+        right.setTitle("Right", for: UIControlState())
         if !self.subviews.contains(right) {
             self.addSubview(right)
         }
         
-        sector01.setTitle("S01", forState: .Normal)
-        sector01.contentVerticalAlignment = .Top
-        sector01.contentHorizontalAlignment = .Right
+        sector01.setTitle("S01", for: UIControlState())
+        sector01.contentVerticalAlignment = .top
+        sector01.contentHorizontalAlignment = .right
         if !self.subviews.contains(sector01) {
             self.addSubview(sector01)
         }
         
-        sector02.setTitle("S02", forState: .Normal)
-        sector02.contentVerticalAlignment = .Top
-        sector02.contentHorizontalAlignment = .Left
+        sector02.setTitle("S02", for: UIControlState())
+        sector02.contentVerticalAlignment = .top
+        sector02.contentHorizontalAlignment = .left
         if !self.subviews.contains(sector02) {
             self.addSubview(sector02)
         }
         
-        sector03.setTitle("S03", forState: .Normal)
-        sector03.contentVerticalAlignment = .Bottom
-        sector03.contentHorizontalAlignment = .Left
+        sector03.setTitle("S03", for: UIControlState())
+        sector03.contentVerticalAlignment = .bottom
+        sector03.contentHorizontalAlignment = .left
         if !self.subviews.contains(sector03) {
             self.addSubview(sector03)
         }
         
-        sector04.setTitle("S04", forState: .Normal)
-        sector04.contentVerticalAlignment = .Bottom
-        sector04.contentHorizontalAlignment = .Right
+        sector04.setTitle("S04", for: UIControlState())
+        sector04.contentVerticalAlignment = .bottom
+        sector04.contentHorizontalAlignment = .right
         if !self.subviews.contains(sector04) {
             self.addSubview(sector04)
         }

@@ -31,10 +31,10 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable public class LDKCrescentButton: UIButton, Tappable {
-    public var crescent: Crescent = Crescent()
-    @IBInspectable public var backgroundImageColor: UIColor = Interface.theme.primaryDark
-    @IBInspectable public var innerRadius: CGFloat {
+@IBDesignable open class LDKCrescentButton: UIButton, Tappable {
+    open var crescent: Crescent = Crescent()
+    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
+    @IBInspectable open var innerRadius: CGFloat {
         get {
             return crescent.innerArc.radius
         }
@@ -42,7 +42,7 @@ import GraphPoint
             crescent.innerArc.radius = newValue
         }
     }
-    @IBInspectable public var outerRadius: CGFloat {
+    @IBInspectable open var outerRadius: CGFloat {
         get {
             return crescent.outerArc.radius
         }
@@ -50,7 +50,7 @@ import GraphPoint
             crescent.outerArc.radius = newValue
         }
     }
-    @IBInspectable public var startDegree: CGFloat {
+    @IBInspectable open var startDegree: CGFloat {
         get {
             return crescent.startDegree
         }
@@ -59,7 +59,7 @@ import GraphPoint
             crescent.outerArc.startDegree = newValue
         }
     }
-    @IBInspectable public var endDegree: CGFloat {
+    @IBInspectable open var endDegree: CGFloat {
         get {
             return crescent.endDegree
         }
@@ -75,17 +75,17 @@ import GraphPoint
         self.crescent = crescent
     }
     
-    func setCrescent(crescent: Crescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+    func setCrescent(_ crescent: Crescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
         self.crescent = crescent
         self.frame = rect.frame(forGraphFrame: crescent.graphFrame, graphOriginOffset: offset)
     }
     
     // MARK: - Tappable
-    public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
+    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
         return crescent.path
     }
     
-    public func backgroundImage(context: CGContextRef?, size: CGSize) -> UIImage? {
+    open func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage? {
         return UIImage.imageWithPath(backgroundImagePath(size), size: size, color: backgroundImageColor, context: context)
     }
 }

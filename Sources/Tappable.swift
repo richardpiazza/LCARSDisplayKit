@@ -31,17 +31,17 @@ import UIKit
 public protocol Tappable {
     var backgroundImageColor: UIColor { get set }
     /// Path representing the background image, also used to determine if a touch falls inside a button.
-    func backgroundImagePath(size: CGSize) -> CGMutablePathRef
+    func backgroundImagePath(_ size: CGSize) -> CGMutablePath
     /// Construct an image using the `backgroundImagePath`
-    func backgroundImage(context: CGContextRef?, size: CGSize) -> UIImage?
+    func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage?
 }
 
 public extension Tappable {
-    public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
-        return CGPathCreateMutable()
+    public func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
+        return CGMutablePath()
     }
     
-    public func backgroundImage(context: CGContextRef?, size: CGSize) -> UIImage? {
+    public func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage? {
         return UIImage.imageWithPath(backgroundImagePath(size), size: size, color: backgroundImageColor, context: context)
     }
 }
@@ -49,7 +49,7 @@ public extension Tappable {
 /// An interactive item with multipls colors and paths.
 public protocol Tappables: Tappable {
     func backgroundImageColors() -> [UIColor]
-    func backgroundImageSubpaths(size: CGSize) -> [CGMutablePathRef]
+    func backgroundImageSubpaths(_ size: CGSize) -> [CGMutablePath]
 }
 
 public extension Tappables {
@@ -60,7 +60,7 @@ public extension Tappables {
         return colors
     }
     
-    public func backgroundImage(context: CGContextRef?, size: CGSize) -> UIImage? {
+    public func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage? {
         let paths = self.backgroundImageSubpaths(size)
         return UIImage.imageWithSubpaths(paths, colors: self.backgroundImageColors(), size: size, context: context)
     }

@@ -1,9 +1,9 @@
 //===----------------------------------------------------------------------===//
 //
-// Package.swift
+// CGFloat.swift
 //
 // Copyright (c) 2016 Richard Piazza
-// https://github.com/richardpiazza/LCARSDisplayKit
+// https://github.com/richardpiazza/CodeQuickKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -12,8 +12,8 @@
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
 //
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
 //
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -25,11 +25,26 @@
 //
 //===----------------------------------------------------------------------===//
 
-import PackageDescription
+import CoreGraphics
 
-let package = Package(
-    name: "LCARSDisplayKit",
-    dependencies: [
-        .Package(url: "https://github.com/richardpiazza/GraphPoint.git", majorVersion: 2, minor: 0)
-    ]
-)
+public extension CGFloat {
+    public static var radians0: CGFloat {
+        return CGFloat(0).radians
+    }
+    
+    public static var radians90: CGFloat {
+        return CGFloat(90).radians
+    }
+    
+    public static var radians180: CGFloat {
+        return CGFloat(180).radians
+    }
+    
+    public static var radians270: CGFloat {
+        return CGFloat(270).radians
+    }
+    
+    public static var radians360: CGFloat {
+        return CGFloat(360).radians
+    }
+}

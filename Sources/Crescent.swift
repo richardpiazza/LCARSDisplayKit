@@ -66,8 +66,8 @@ public struct Crescent: Graphable {
     // MARK: - Graphable
     public var graphPoints: [GraphPoint] {
         var points = [GraphPoint]()
-        points.appendContentsOf(innerArc.graphPoints)
-        points.appendContentsOf(outerArc.graphPoints)
+        points.append(contentsOf: innerArc.graphPoints)
+        points.append(contentsOf: outerArc.graphPoints)
         return points
     }
     
@@ -75,17 +75,17 @@ public struct Crescent: Graphable {
         return GraphFrame.graphFrame(forGraphPoints: graphPoints, radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
     }
     
-    public var path: CGMutablePathRef {
-        let path = CGPathCreateMutable()
+    public var path: CGMutablePath {
+        let path = CGMutablePath()
         
         let gf = graphFrame
         let offset = gf.graphOriginOffset
         let translatedEnd = gf.boundedPoint(forGraphPoint: outerArc.endPoint)
         
-        CGPathAddArc(path, nil, offset.x, offset.y, innerArc.radius, innerArc.startDegree.radians, innerArc.endDegree.radians, false)
-        CGPathAddLineToPoint(path, nil, translatedEnd.x, translatedEnd.y)
-        CGPathAddArc(path, nil, offset.x, offset.y, outerArc.radius, outerArc.endDegree.radians, outerArc.startDegree.radians, true)
-        CGPathCloseSubpath(path)
+        path.addArc(center: offset, radius: innerArc.radius, startAngle: innerArc.startDegree.radians, endAngle: innerArc.endDegree.radians, clockwise: false)
+        path.addLine(to: translatedEnd)
+        path.addArc(center: offset, radius: outerArc.radius, startAngle: outerArc.endDegree.radians, endAngle: outerArc.startDegree.radians, clockwise: true)
+        path.closeSubpath()
         
         return path
     }

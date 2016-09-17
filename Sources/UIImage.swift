@@ -29,17 +29,17 @@ import UIKit
 
 public extension UIImage {
     /// Creates a UIImage from a path, filled with the specified color
-    static func imageWithPath(path: CGMutablePathRef, fillColor color: UIColor, context: CGContextRef?) -> UIImage? {
+    static func imageWithPath(_ path: CGMutablePath, fillColor color: UIColor, context: CGContext?) -> UIImage? {
         var image: UIImage? = nil
         
         guard context != nil else {
             return image
         }
         
-        CGContextSetLineWidth(context, 0)
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextAddPath(context, path)
-        CGContextFillPath(context)
+        context?.setLineWidth(0)
+        context?.setFillColor(color.cgColor)
+        context?.addPath(path)
+        context?.fillPath()
         
         image = UIGraphicsGetImageFromCurrentImageContext()
         
@@ -47,17 +47,17 @@ public extension UIImage {
     }
     
     /// Creates a UIImage from a path, stroked with the specified color
-    static func imageWithPath(path: CGMutablePathRef, strokeColor color: UIColor, strokeWidth: CGFloat, context: CGContextRef?) -> UIImage? {
+    static func imageWithPath(_ path: CGMutablePath, strokeColor color: UIColor, strokeWidth: CGFloat, context: CGContext?) -> UIImage? {
         var image: UIImage? = nil
         
         guard context != nil else {
             return image
         }
         
-        CGContextSetLineWidth(context, strokeWidth)
-        CGContextSetStrokeColorWithColor(context, color.CGColor)
-        CGContextAddPath(context, path)
-        CGContextStrokePath(context)
+        context?.setLineWidth(strokeWidth)
+        context?.setStrokeColor(color.cgColor)
+        context?.addPath(path)
+        context?.strokePath()
         
         image = UIGraphicsGetImageFromCurrentImageContext()
         
@@ -65,7 +65,7 @@ public extension UIImage {
     }
     
     /// Creates a `UIImage` by filling the provided path.
-    static func imageWithPath(path: CGMutablePathRef, size: CGSize, color: UIColor, context: CGContextRef?) -> UIImage? {
+    static func imageWithPath(_ path: CGMutablePath, size: CGSize, color: UIColor, context: CGContext?) -> UIImage? {
         var image: UIImage? = nil
         
         if size.width == 0 || size.height == 0 {
@@ -76,17 +76,17 @@ public extension UIImage {
             return image
         }
         
-        CGContextSetLineWidth(context, 0)
-        CGContextSetFillColorWithColor(context, color.CGColor)
-        CGContextAddPath(context, path)
-        CGContextFillPath(context)
+        context?.setLineWidth(0)
+        context?.setFillColor(color.cgColor)
+        context?.addPath(path)
+        context?.fillPath()
         image = UIGraphicsGetImageFromCurrentImageContext()
         
         return image
     }
     
     /// Creates a `UIImage` by filling the provided paths with the provided colors.
-    static func imageWithSubpaths(subpaths: [CGMutablePathRef], colors: [UIColor], size: CGSize, context: CGContextRef?) -> UIImage? {
+    static func imageWithSubpaths(_ subpaths: [CGMutablePath], colors: [UIColor], size: CGSize, context: CGContext?) -> UIImage? {
         var image: UIImage? = nil
         
         guard size.width != 0 && size.height != 0 else {
@@ -97,16 +97,16 @@ public extension UIImage {
             return image
         }
         
-        CGContextSetLineWidth(ctx, 0)
+        ctx.setLineWidth(0)
         
         for i in 0..<subpaths.count {
             if colors.count < i {
-                CGContextSetFillColorWithColor(ctx, Interface.theme.primaryDark.CGColor)
+                ctx.setFillColor(Interface.theme.primaryDark.cgColor)
             } else {
-                CGContextSetFillColorWithColor(ctx, colors[i].CGColor)
+                ctx.setFillColor(colors[i].cgColor)
             }
-            CGContextAddPath(ctx, subpaths[i])
-            CGContextFillPath(ctx)
+            ctx.addPath(subpaths[i])
+            ctx.fillPath()
         }
         
         image = UIGraphicsGetImageFromCurrentImageContext()

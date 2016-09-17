@@ -34,7 +34,7 @@ public protocol Graphable {
     /// The `GraphFrame` required to contain all the `GraphPoint`s
     var graphFrame: GraphFrame { get }
     /// A path connecting all `GraphPoint`s
-    var path: CGMutablePathRef { get }
+    var path: CGMutablePath { get }
 }
 
 extension Graphable {
@@ -46,7 +46,7 @@ extension Graphable {
         return GraphFrame.graphFrame(forGraphPoints: graphPoints)
     }
     
-    public var path: CGMutablePathRef {
-        return CGPathCreateMutable()
+    public var path: CGMutablePath {
+        return CGMutablePath()
     }
 }

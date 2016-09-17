@@ -30,30 +30,30 @@
 
 import UIKit
 
-@IBDesignable public class LDKIndicatorView: UIView, Tappable {
-    static let defaultSize: CGSize = CGSizeMake(132, 60)
+@IBDesignable open class LDKIndicatorView: UIView, Tappable {
+    static let defaultSize: CGSize = CGSize(width: 132, height: 60)
     
-    @IBInspectable public var backgroundImageColor: UIColor = Interface.theme.primaryDark
-    @IBInspectable public var displayValue: String = "000"
-    @IBInspectable public var left: Bool = true
-    internal var indicator: UIImageView = UIImageView(frame: CGRectZero)
-    internal var valueLabel: UILabel = UILabel(frame: CGRectZero)
+    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
+    @IBInspectable open var displayValue: String = "000"
+    @IBInspectable open var left: Bool = true
+    internal var indicator: UIImageView = UIImageView(frame: CGRect.zero)
+    internal var valueLabel: UILabel = UILabel(frame: CGRect.zero)
     internal var indicatorImage: UIImage?
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
         let indicatorFrame = self.indicatorFrame(self.frame)
-        UIGraphicsBeginImageContextWithOptions(indicatorFrame.size, false, UIScreen.mainScreen().scale)
+        UIGraphicsBeginImageContextWithOptions(indicatorFrame.size, false, UIScreen.main.scale)
         let context = UIGraphicsGetCurrentContext()
         self.indicatorImage = self.backgroundImage(context, size: indicatorFrame.size)
         UIGraphicsEndImageContext()
         
         self.indicator.frame = indicatorFrame
         self.indicator.image = self.indicatorImage
-        self.indicator.backgroundColor = UIColor.purpleColor()
+        self.indicator.backgroundColor = UIColor.purple
         if !self.subviews.contains(self.indicator) {
             self.addSubview(self.indicator)
         }
@@ -62,47 +62,47 @@ import UIKit
         self.valueLabel.frame = valueLabelFrame
         self.valueLabel.textColor = self.backgroundImageColor
         self.valueLabel.text = self.displayValue
-        self.valueLabel.textAlignment = (self.left) ? .Left : .Right
+        self.valueLabel.textAlignment = (self.left) ? .left : .right
         if !self.subviews.contains(self.valueLabel) {
             self.addSubview(self.valueLabel)
         }
     }
     
-    func scaleOfDefaultSize(actualSize: CGSize) -> GraphMultiplier {
+    func scaleOfDefaultSize(_ actualSize: CGSize) -> GraphMultiplier {
         return GraphMultiplier(width: CGFloat(actualSize.width / LDKIndicatorView.defaultSize.width), height: CGFloat(actualSize.height / LDKIndicatorView.defaultSize.height))
     }
     
-    func indicatorWidth(size: CGSize) -> CGFloat {
+    func indicatorWidth(_ size: CGSize) -> CGFloat {
         let defaultWidth = LDKIndicatorView.defaultSize.width * 0.227272
         let scale = self.scaleOfDefaultSize(size).width
         return defaultWidth * scale
     }
     
-    func indicatorFrame(rect: CGRect) -> CGRect {
+    func indicatorFrame(_ rect: CGRect) -> CGRect {
         let indicatorWidth = self.indicatorWidth(rect.size)
         if self.left {
-            return CGRectMake(0, 0, indicatorWidth, rect.height)
+            return CGRect(x: 0, y: 0, width: indicatorWidth, height: rect.height)
         }
         
-        return CGRectMake(rect.size.width - indicatorWidth, 0, indicatorWidth, rect.height)
+        return CGRect(x: rect.size.width - indicatorWidth, y: 0, width: indicatorWidth, height: rect.height)
     }
     
-    func displayValueWidth(size: CGSize) -> CGFloat {
+    func displayValueWidth(_ size: CGSize) -> CGFloat {
         let indicatorWidth = self.indicatorWidth(size)
         return size.width - indicatorWidth - 8
     }
     
-    func displayValueFrame(rect: CGRect) -> CGRect {
+    func displayValueFrame(_ rect: CGRect) -> CGRect {
         let displayValueWidth = self.displayValueWidth(rect.size)
         if self.left {
-            return CGRectMake(rect.width - displayValueWidth, 0, displayValueWidth, rect.height)
+            return CGRect(x: rect.width - displayValueWidth, y: 0, width: displayValueWidth, height: rect.height)
         }
         
-        return CGRectMake(0, 0, displayValueWidth, rect.height)
+        return CGRect(x: 0, y: 0, width: displayValueWidth, height: rect.height)
     }
     
     // MARK: - Tappable
-    public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
+    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
         let rr = RoundedRectangle(size: size, leftRounded: false, rightRounded: false, cornersOnly: false)
         return rr.path
     }

@@ -31,12 +31,12 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable public class LDKDirectionButton: UIButton, Tappables {
-    @IBInspectable public var backgroundImageColor: UIColor = Interface.theme.primaryDark
-    @IBInspectable public var radius: CGFloat = CGFloat(0)
-    @IBInspectable public var startDegree: CGFloat = CGFloat(0)
-    @IBInspectable public var endDegree: CGFloat = CGFloat(0)
-    @IBInspectable public var cardinalDegree: CGFloat = CGFloat(0)
+@IBDesignable open class LDKDirectionButton: UIButton, Tappables {
+    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
+    @IBInspectable open var radius: CGFloat = CGFloat(0)
+    @IBInspectable open var startDegree: CGFloat = CGFloat(0)
+    @IBInspectable open var endDegree: CGFloat = CGFloat(0)
+    @IBInspectable open var cardinalDegree: CGFloat = CGFloat(0)
     
     convenience init(inRect rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinalDegree: CGFloat) {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
@@ -50,30 +50,30 @@ import GraphPoint
     }
     
     // MARK: - Tappables
-    public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
+    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        return self.dynamicType.directionPathWithArc(arc, cardinalDegree: cardinalDegree, size: size)
+        return type(of: self).directionPathWithArc(arc, cardinalDegree: cardinalDegree, size: size)
     }
     
-    public func backgroundImageSubpaths(size: CGSize) -> [CGMutablePathRef] {
+    open func backgroundImageSubpaths(_ size: CGSize) -> [CGMutablePath] {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        return self.dynamicType.directionSubpathsWithArc(arc, cardinalDegree: cardinalDegree, size: size)
+        return type(of: self).directionSubpathsWithArc(arc, cardinalDegree: cardinalDegree, size: size)
     }
     
     // MARK: - CG Paths
-    public static func directionPathWithArc(arc: Arc, cardinalDegree: CGFloat, size: CGSize) -> CGMutablePathRef {
-        let path: CGMutablePathRef = CGPathCreateMutable()
+    open static func directionPathWithArc(_ arc: Arc, cardinalDegree: CGFloat, size: CGSize) -> CGMutablePath {
+        let path: CGMutablePath = CGMutablePath()
         
         let paths = self.directionSubpathsWithArc(arc, cardinalDegree: cardinalDegree, size: size)
         for p in paths {
-            CGPathAddPath(path, nil, p)
+            path.addPath(p)
         }
         
         return path
     }
     
-    public static func directionSubpathsWithArc(arc: Arc, cardinalDegree: CGFloat, size: CGSize) -> [CGMutablePathRef] {
-        var paths: [CGMutablePathRef] = [CGMutablePathRef]()
+    open static func directionSubpathsWithArc(_ arc: Arc, cardinalDegree: CGFloat, size: CGSize) -> [CGMutablePath] {
+        var paths: [CGMutablePath] = [CGMutablePath]()
         
         guard cardinalDegree == 0 || cardinalDegree == 90 || cardinalDegree == 180 || cardinalDegree == 270 else {
             return paths
@@ -85,75 +85,75 @@ import GraphPoint
         
         if cardinalDegree == 0 {
             // Right
-            let arrowPath: CGMutablePathRef = CGPathCreateMutable()
+            let arrowPath: CGMutablePath = CGMutablePath()
             let arcX = size.width + offset.x - graphFrame.width
-            CGPathAddArc(arrowPath, nil, arcX, offset.y, arc.radius, arc.startDegree.radians, arc.endDegree.radians, false)
-            CGPathAddLineToPoint(arrowPath, nil, size.width - unit, size.height)
-            CGPathAddLineToPoint(arrowPath, nil, size.width - unit, 0)
-            CGPathCloseSubpath(arrowPath)
+            arrowPath.addArc(center: CGPoint(x: arcX, y: offset.y), radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
+            arrowPath.addLine(to: CGPoint(x: size.width - unit, y: size.height))
+            arrowPath.addLine(to: CGPoint(x: size.width - unit, y: 0))
+            arrowPath.closeSubpath()
             
-            CGPathMoveToPoint(arrowPath, nil, size.width - (unit * 1.25), unit)
-            CGPathAddLineToPoint(arrowPath, nil, size.width - (unit * 1.75), size.height * 0.1)
-            CGPathAddLineToPoint(arrowPath, nil, size.width - (unit * 1.75), size.height * 0.9)
-            CGPathCloseSubpath(arrowPath)
+            arrowPath.move(to: CGPoint(x: size.width - (unit * 1.25), y: unit))
+            arrowPath.addLine(to: CGPoint(x: size.width - (unit * 1.75), y: size.height * 0.1))
+            arrowPath.addLine(to: CGPoint(x: size.width - (unit * 1.75), y: size.height * 0.9))
+            arrowPath.closeSubpath()
             paths.append(arrowPath)
             
-            let remainingPath: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddRect(remainingPath, nil, CGRectMake(0, 0, size.width - (unit * 2.0), size.height))
+            let remainingPath: CGMutablePath = CGMutablePath()
+            remainingPath.addRect(CGRect(x: 0, y: 0, width: size.width - (unit * 2.0), height: size.height))
             paths.append(remainingPath)
         } else if cardinalDegree == 90 {
             // Down
-            let arrowPath: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddArc(arrowPath, nil, offset.x, size.height + offset.y - graphFrame.height, arc.radius, arc.startDegree.radians, arc.endDegree.radians, false)
-            CGPathAddLineToPoint(arrowPath, nil, 0, size.height - unit)
-            CGPathAddLineToPoint(arrowPath, nil, size.width, size.height - unit)
-            CGPathCloseSubpath(arrowPath)
+            let arrowPath: CGMutablePath = CGMutablePath()
+            arrowPath.addArc(center: CGPoint(x: offset.x, y: size.height + offset.y - graphFrame.height), radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
+            arrowPath.addLine(to: CGPoint(x: 0, y: size.height - unit))
+            arrowPath.addLine(to: CGPoint(x: size.width, y: size.height - unit))
+            arrowPath.closeSubpath()
             
-            CGPathMoveToPoint(arrowPath, nil, unit, size.height - (unit * 1.25))
-            CGPathAddLineToPoint(arrowPath, nil, size.width * 0.1, size.height - (unit * 1.75))
-            CGPathAddLineToPoint(arrowPath, nil, size.width * 0.9, size.height - (unit * 1.75))
-            CGPathCloseSubpath(arrowPath)
+            arrowPath.move(to: CGPoint(x: unit, y: size.height - (unit * 1.25)))
+            arrowPath.addLine(to: CGPoint(x: size.width * 0.1, y: size.height - (unit * 1.75)))
+            arrowPath.addLine(to: CGPoint(x: size.width * 0.9, y: size.height - (unit * 1.75)))
+            arrowPath.closeSubpath()
             paths.append(arrowPath)
             
-            let remainingPath: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddRect(remainingPath, nil, CGRectMake(0, 0, size.width, size.height - (unit * 2)))
+            let remainingPath: CGMutablePath = CGMutablePath()
+            remainingPath.addRect(CGRect(x: 0, y: 0, width: size.width, height: size.height - (unit * 2)))
             paths.append(remainingPath)
         } else if cardinalDegree == 180 {
             // Left
-            let arrowPath: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddArc(arrowPath, nil, offset.x, offset.y, arc.radius, arc.startDegree.radians, arc.endDegree.radians, false)
-            CGPathAddLineToPoint(arrowPath, nil, unit, 0)
-            CGPathAddLineToPoint(arrowPath, nil, unit, size.height)
-            CGPathCloseSubpath(arrowPath)
+            let arrowPath: CGMutablePath = CGMutablePath()
+            arrowPath.addArc(center: offset, radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
+            arrowPath.addLine(to: CGPoint(x: unit, y: 0))
+            arrowPath.addLine(to: CGPoint(x: unit, y: size.height))
+            arrowPath.closeSubpath()
             
-            CGPathMoveToPoint(arrowPath, nil, (unit * 1.25), unit)
-            CGPathAddLineToPoint(arrowPath, nil, (unit * 1.75), size.height * 0.1)
-            CGPathAddLineToPoint(arrowPath, nil, (unit * 1.75), size.height * 0.9)
-            CGPathCloseSubpath(arrowPath)
+            arrowPath.move(to: CGPoint(x: unit * 1.25, y: unit))
+            arrowPath.addLine(to: CGPoint(x: unit * 1.75, y: size.height * 0.1))
+            arrowPath.addLine(to: CGPoint(x: unit * 1.75, y: size.height * 0.9))
+            arrowPath.closeSubpath()
             paths.append(arrowPath)
             
-            let remainingPath: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddRect(remainingPath, nil, CGRectMake((unit * 2), 0, size.width - (unit * 2.0), size.height))
+            let remainingPath: CGMutablePath = CGMutablePath()
+            remainingPath.addRect(CGRect(x: (unit * 2), y: 0, width: size.width - (unit * 2.0), height: size.height))
             paths.append(remainingPath)
         } else if cardinalDegree == 270 {
             // Up
-            let arrowPath: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddArc(arrowPath, nil, offset.x, offset.y, arc.radius, arc.startDegree.radians, arc.endDegree.radians, false)
-            CGPathAddLineToPoint(arrowPath, nil, size.width, unit)
-            CGPathAddLineToPoint(arrowPath, nil, 0, unit)
-            CGPathCloseSubpath(arrowPath)
+            let arrowPath: CGMutablePath = CGMutablePath()
+            arrowPath.addArc(center: offset, radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
+            arrowPath.addLine(to: CGPoint(x: size.width, y: unit))
+            arrowPath.addLine(to: CGPoint(x: 0, y: unit))
+            arrowPath.closeSubpath()
             
-            CGPathMoveToPoint(arrowPath, nil, unit, (unit * 1.25))
-            CGPathAddLineToPoint(arrowPath, nil, size.width * 0.1, (unit * 1.75))
-            CGPathAddLineToPoint(arrowPath, nil, size.width * 0.9, (unit * 1.75))
-            CGPathCloseSubpath(arrowPath)
+            arrowPath.move(to: CGPoint(x: unit, y: unit * 1.25))
+            arrowPath.addLine(to: CGPoint(x: size.width * 0.1, y: unit * 1.75))
+            arrowPath.addLine(to: CGPoint(x: size.width * 0.9, y: unit * 1.75))
+            arrowPath.closeSubpath()
             
-            CGPathAddRect(arrowPath, nil, CGRectMake(0, (unit * 2.0), size.width, (unit * 0.5)))
+            arrowPath.addRect(CGRect(x: 0, y: (unit * 2.0), width: size.width, height: (unit * 0.5)))
             paths.append(arrowPath)
             
-            let remainingPath: CGMutablePathRef = CGPathCreateMutable()
-            CGPathAddRect(remainingPath, nil, CGRectMake(0, (unit * 2.75), size.width, unit))
-            CGPathAddRect(remainingPath, nil, CGRectMake(0, (unit * 4.0), size.width, size.height - (unit * 4.0)))
+            let remainingPath: CGMutablePath = CGMutablePath()
+            remainingPath.addRect(CGRect(x: 0, y: (unit * 2.75), width: size.width, height: unit))
+            remainingPath.addRect(CGRect(x: 0, y: (unit * 4.0), width: size.width, height: size.height - (unit * 4.0)))
             paths.append(remainingPath)
         }
         

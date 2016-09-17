@@ -31,10 +31,10 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable public class LDKEdgedCrescentButton: UIButton, Tappable {
-    public var edgedCrescent: EdgedCrescent = EdgedCrescent()
-    @IBInspectable public var backgroundImageColor: UIColor = Interface.theme.primaryDark
-    @IBInspectable public var radius: CGFloat {
+@IBDesignable open class LDKEdgedCrescentButton: UIButton, Tappable {
+    open var edgedCrescent: EdgedCrescent = EdgedCrescent()
+    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
+    @IBInspectable open var radius: CGFloat {
         get {
             return edgedCrescent.arc.radius
         }
@@ -42,7 +42,7 @@ import GraphPoint
             edgedCrescent.arc.radius = newValue
         }
     }
-    @IBInspectable public var startDegree: CGFloat {
+    @IBInspectable open var startDegree: CGFloat {
         get {
             return edgedCrescent.arc.startDegree
         }
@@ -50,7 +50,7 @@ import GraphPoint
             edgedCrescent.arc.startDegree = newValue
         }
     }
-    @IBInspectable public var endDegree: CGFloat {
+    @IBInspectable open var endDegree: CGFloat {
         get {
             return edgedCrescent.arc.endDegree
         }
@@ -58,10 +58,10 @@ import GraphPoint
             edgedCrescent.arc.endDegree = newValue
         }
     }
-    @IBInspectable public var edgePoint1: CGPoint {
+    @IBInspectable open var edgePoint1: CGPoint {
         get {
             guard edgedCrescent.additionalPoints.count > 0 else {
-                return CGPointZero
+                return CGPoint.zero
             }
             
             return edgedCrescent.additionalPoints[0]
@@ -75,10 +75,10 @@ import GraphPoint
             edgedCrescent.additionalPoints[0] = newValue
         }
     }
-    @IBInspectable public var edgePoint2: CGPoint {
+    @IBInspectable open var edgePoint2: CGPoint {
         get {
             guard edgedCrescent.additionalPoints.count > 1 else {
-                return CGPointZero
+                return CGPoint.zero
             }
             
             return edgedCrescent.additionalPoints[1]
@@ -92,10 +92,10 @@ import GraphPoint
             edgedCrescent.additionalPoints[1] = newValue
         }
     }
-    @IBInspectable public var edgePoint3: CGPoint {
+    @IBInspectable open var edgePoint3: CGPoint {
         get {
             guard edgedCrescent.additionalPoints.count > 2 else {
-                return CGPointZero
+                return CGPoint.zero
             }
             
             return edgedCrescent.additionalPoints[2]
@@ -116,13 +116,13 @@ import GraphPoint
         self.edgedCrescent = edgedCrescent
     }
     
-    func setEdgedCrescent(edgedCrescent: EdgedCrescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+    func setEdgedCrescent(_ edgedCrescent: EdgedCrescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
         self.edgedCrescent = edgedCrescent
         self.frame = rect.frame(forGraphFrame: edgedCrescent.graphFrame, graphOriginOffset: offset)
     }
     
     // MARK: - Tappable
-    public func backgroundImagePath(size: CGSize) -> CGMutablePathRef {
+    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
         return edgedCrescent.path
     }
 }

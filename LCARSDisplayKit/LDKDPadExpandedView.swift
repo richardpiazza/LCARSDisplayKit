@@ -31,93 +31,93 @@
 import UIKit
 import GraphPoint
 
-public class LDKDPadExpandedView: LDKDPadView {
+open class LDKDPadExpandedView: LDKDPadView {
     // Labeled for Sector or Arc Degree
-    public var innerRingSector01: LDKCrescentButton = LDKCrescentButton()
-    public var innerRingSector04: LDKCrescentButton = LDKCrescentButton()
-    public var innerRing05: LDKCrescentButton = LDKCrescentButton()
-    public var innerRing10: LDKCrescentButton = LDKCrescentButton()
-    public var innerRing11: LDKCrescentButton = LDKCrescentButton()
-    public var innerRing12: LDKCrescentButton = LDKCrescentButton()
-    public var innerRing13: LDKCrescentButton = LDKCrescentButton()
-    public var innerRing14: LDKCrescentButton = LDKCrescentButton()
-    public var innerRing15: LDKCrescentButton = LDKCrescentButton()
-    public var innerRing20: LDKCrescentButton = LDKCrescentButton()
-    public var outerRing10: LDKCrescentButton = LDKCrescentButton()
-    public var outerRing11: LDKCrescentButton = LDKCrescentButton()
-    public var outerRing12: LDKCrescentButton = LDKCrescentButton()
-    public var outerRing13: LDKCrescentButton = LDKCrescentButton()
-    public var outerRing14: LDKCrescentButton = LDKCrescentButton()
-    public var outerRing16: LDKCrescentButton = LDKCrescentButton()
-    public var outerRing17: LDKCrescentButton = LDKCrescentButton()
-    public var outerRing20: LDKCrescentButton = LDKCrescentButton()
-    public var outerRingExtended18: LDKCrescentButton = LDKCrescentButton()
-    public var outerRingExtended19: LDKCrescentButton = LDKCrescentButton()
+    open var innerRingSector01: LDKCrescentButton = LDKCrescentButton()
+    open var innerRingSector04: LDKCrescentButton = LDKCrescentButton()
+    open var innerRing05: LDKCrescentButton = LDKCrescentButton()
+    open var innerRing10: LDKCrescentButton = LDKCrescentButton()
+    open var innerRing11: LDKCrescentButton = LDKCrescentButton()
+    open var innerRing12: LDKCrescentButton = LDKCrescentButton()
+    open var innerRing13: LDKCrescentButton = LDKCrescentButton()
+    open var innerRing14: LDKCrescentButton = LDKCrescentButton()
+    open var innerRing15: LDKCrescentButton = LDKCrescentButton()
+    open var innerRing20: LDKCrescentButton = LDKCrescentButton()
+    open var outerRing10: LDKCrescentButton = LDKCrescentButton()
+    open var outerRing11: LDKCrescentButton = LDKCrescentButton()
+    open var outerRing12: LDKCrescentButton = LDKCrescentButton()
+    open var outerRing13: LDKCrescentButton = LDKCrescentButton()
+    open var outerRing14: LDKCrescentButton = LDKCrescentButton()
+    open var outerRing16: LDKCrescentButton = LDKCrescentButton()
+    open var outerRing17: LDKCrescentButton = LDKCrescentButton()
+    open var outerRing20: LDKCrescentButton = LDKCrescentButton()
+    open var outerRingExtended18: LDKCrescentButton = LDKCrescentButton()
+    open var outerRingExtended19: LDKCrescentButton = LDKCrescentButton()
     
     // Labeled numerically from zero degrees
-    public var edge01: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
-    public var edge02: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
-    public var edge03: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
-    public var edge04: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
-    public var edge05: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
+    open var edge01: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
+    open var edge02: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
+    open var edge03: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
+    open var edge04: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
+    open var edge05: LDKEdgedCrescentButton = LDKEdgedCrescentButton()
     
     // Labeled just because
-    public var top00: LDKButton = LDKButton()
+    open var top00: LDKButton = LDKButton()
     
     override func defaultSize() -> CGSize {
-        return CGSizeMake(794, 660)
+        return CGSize(width: 794, height: 660)
     }
     
     override func graphOriginOffset() -> GraphOriginOffset {
         return GraphOriginOffset(x: 0.0, y: defaultSize().height * 0.068)
     }
     
-    override func cruxInteriorRadius(rect: CGRect) -> CGFloat {
+    override func cruxInteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.width / 2) * 0.14143577)
     }
     
-    override func cruxExteriorRadius(rect: CGRect) -> CGFloat {
+    override func cruxExteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.width / 2) * 0.4836272)
     }
     
-    func firstRingInteriorRadius(rect: CGRect) -> CGFloat {
+    func firstRingInteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.width / 2) * 0.50761421)
     }
     
-    func firstRingExteriorRadius(rect: CGRect) -> CGFloat {
+    func firstRingExteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.width / 2) * 0.7106599)
     }
     
-    func secondRingInteriorRadius(rect: CGRect) -> CGFloat {
+    func secondRingInteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.width / 2) * 0.73096447)
     }
     
-    func secondRingExteriorRadius(rect: CGRect) -> CGFloat {
+    func secondRingExteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.width / 2) * 0.85786802)
     }
     
-    func secondRingExtendedExteriorRadius(rect: CGRect) -> CGFloat {
+    func secondRingExtendedExteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.width / 2))
     }
     
-    func secondRingEdgeExteriorRadius(rect: CGRect) -> CGFloat {
+    func secondRingEdgeExteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.width / 2) * 0.94962217)
     }
     
-    func thirdRingInteriorRadius(rect: CGRect) -> CGFloat {
+    func thirdRingInteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.width / 2) * 0.87657431)
     }
     
-    func thirdRingExteriorRadius(rect: CGRect) -> CGFloat {
+    func thirdRingExteriorRadius(_ rect: CGRect) -> CGFloat {
         return CGFloat((rect.width / 2) * 1.07052897)
     }
     
-    func edge01ExteriorRadius(rect: CGRect) -> CGFloat {
+    func edge01ExteriorRadius(_ rect: CGRect) -> CGFloat {
         return self.firstRingExteriorRadius(rect)
     }
     
-    public override func drawRect(rect: CGRect) {
-        super.drawRect(rect)
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
         
         let frir = self.firstRingInteriorRadius(rect)
         let frer = self.firstRingExteriorRadius(rect)
@@ -201,8 +201,8 @@ public class LDKDPadExpandedView: LDKDPadView {
         let edge01EndExteriorAngle = 180 - 90 - edge01EndInteriorAngle
         let edge01EndExteriorLength = (edge01ExteriorArc.startPoint.y / sin(edge01EndExteriorAngle.radians)) * sin(edge01EndInteriorAngle.radians)
         
-        let edge01Point01 = CGPointMake(edge01ExteriorArc.startPoint.x, edge01ExteriorArc.startPoint.y)
-        let edge01Point02 = CGPointMake(edge01EndExteriorLength, edge01ExteriorArc.startPoint.y)
+        let edge01Point01 = CGPoint(x: edge01ExteriorArc.startPoint.x, y: edge01ExteriorArc.startPoint.y)
+        let edge01Point02 = CGPoint(x: edge01EndExteriorLength, y: edge01ExteriorArc.startPoint.y)
         
         let edge02StartInteriorAngle = edge02InteriorArc.startDegree - 90
         let edge02StartExteriorAngle = 180 - 90 - edge02StartInteriorAngle
@@ -211,23 +211,23 @@ public class LDKDPadExpandedView: LDKDPadView {
         let edge02EndExteriorAngle = 180 - 90 - edge02EndInteriorAngle
         let edge02EndExteriorLength = (edge03ExteriorArc.endPoint.x / sin(edge02EndExteriorAngle.radians)) * sin(edge02EndInteriorAngle.radians)
         
-        let edge02Point01 = CGPointMake(edge02StartExteriorLength, edge01ExteriorArc.startPoint.y)
-        let edge02Point02 = CGPointMake(edge03ExteriorArc.endPoint.x, edge01ExteriorArc.startPoint.y)
-        let edge02Point03 = CGPointMake(edge03ExteriorArc.endPoint.x, edge02EndExteriorLength)
+        let edge02Point01 = CGPoint(x: edge02StartExteriorLength, y: edge01ExteriorArc.startPoint.y)
+        let edge02Point02 = CGPoint(x: edge03ExteriorArc.endPoint.x, y: edge01ExteriorArc.startPoint.y)
+        let edge02Point03 = CGPoint(x: edge03ExteriorArc.endPoint.x, y: edge02EndExteriorLength)
         
         let edge03StartInteriorAngle = 180 - edge03InteriorArc.startDegree
         let edge03StartExteriorAngle = 180 - 90 - edge03StartInteriorAngle
         let edge03StartExteriorLength = (edge03ExteriorArc.endPoint.x / sin(edge03StartExteriorAngle.radians)) * sin(edge03StartInteriorAngle.radians)
         
-        let edge03Point01 = CGPointMake(edge03ExteriorArc.endPoint.x, edge03StartExteriorLength)
-        let edge03Point02 = CGPointMake(edge03ExteriorArc.endPoint.x, edge03ExteriorArc.endPoint.y)
+        let edge03Point01 = CGPoint(x: edge03ExteriorArc.endPoint.x, y: edge03StartExteriorLength)
+        let edge03Point02 = CGPoint(x: edge03ExteriorArc.endPoint.x, y: edge03ExteriorArc.endPoint.y)
         
         let edge04StartInteriorAngle = 270 - edge04InteriorArc.startDegree
         let edge04StartExteriorAngle = 180 - 90 - edge04StartInteriorAngle
         let edge04StartExteriorLength = (edge04ExteriorArc.endPoint.y / sin(edge04StartExteriorAngle.radians)) * sin(edge04StartInteriorAngle.radians)
         
-        let edge04Point01 = CGPointMake(-edge04StartExteriorLength, edge04ExteriorArc.endPoint.y)
-        let edge04Point02 = CGPointMake(edge04ExteriorArc.endPoint.x, edge04ExteriorArc.endPoint.y)
+        let edge04Point01 = CGPoint(x: -edge04StartExteriorLength, y: edge04ExteriorArc.endPoint.y)
+        let edge04Point02 = CGPoint(x: edge04ExteriorArc.endPoint.x, y: edge04ExteriorArc.endPoint.y)
         
         let edge05Point01 = edge05ExteriorArc.startPoint
         let edge05Point02 = edge05ExteriorArc.endPoint
@@ -253,7 +253,7 @@ public class LDKDPadExpandedView: LDKDPadView {
         edge05.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
         
         let scale = self.scaleOfDefaultSize(rect.size)
-        var frame = CGRectMake(0, 0, LDKButton.defaultSize.width * scale.width, LDKButton.defaultSize.height * scale.height)
+        var frame = CGRect(x: 0, y: 0, width: LDKButton.defaultSize.width * scale.width, height: LDKButton.defaultSize.height * scale.height)
         frame.origin.y = edge04.frame.origin.y
         frame.origin.x = rect.size.width - frame.size.width - edge04.frame.origin.x
         
@@ -262,168 +262,168 @@ public class LDKDPadExpandedView: LDKDPadView {
         top00.setRoundedRectangle(roundedRectangle, withFrame: frame)
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         innerRingSector01.backgroundImageColor = Interface.theme.tertiaryLight
-        innerRingSector01.setTitle("IRS01", forState: .Normal)
+        innerRingSector01.setTitle("IRS01", for: UIControlState())
         if !self.subviews.contains(innerRingSector01) {
             self.addSubview(innerRingSector01)
         }
-        self.bringSubviewToFront(innerRingSector01)
+        self.bringSubview(toFront: innerRingSector01)
         
         innerRingSector04.backgroundImageColor = Interface.theme.tertiaryLight
-        innerRingSector04.setTitle("IRS04", forState: .Normal)
+        innerRingSector04.setTitle("IRS04", for: UIControlState())
         if !self.subviews.contains(innerRingSector04) {
             self.addSubview(innerRingSector04)
         }
         
         innerRing05.backgroundImageColor = Interface.theme.primaryLight
-        innerRing05.setTitle("IR05", forState: .Normal)
-        innerRing05.contentVerticalAlignment = .Top
+        innerRing05.setTitle("IR05", for: UIControlState())
+        innerRing05.contentVerticalAlignment = .top
         if !self.subviews.contains(innerRing05) {
             self.addSubview(innerRing05)
         }
         
         innerRing10.backgroundImageColor = Interface.theme.primaryLight
-        innerRing10.setTitle("IR10", forState: .Normal)
+        innerRing10.setTitle("IR10", for: UIControlState())
         if !self.subviews.contains(innerRing10) {
             self.addSubview(innerRing10)
         }
         
         innerRing11.backgroundImageColor = Interface.theme.tertiaryLight
-        innerRing11.setTitle("IR11", forState: .Normal)
+        innerRing11.setTitle("IR11", for: UIControlState())
         if !self.subviews.contains(innerRing11) {
             self.addSubview(innerRing11)
         }
         
         innerRing12.backgroundImageColor = Interface.theme.primaryDark
-        innerRing12.setTitle("IR12", forState: .Normal)
+        innerRing12.setTitle("IR12", for: UIControlState())
         if !self.subviews.contains(innerRing12) {
             self.addSubview(innerRing12)
         }
         
         innerRing13.backgroundImageColor = Interface.theme.tertiaryDark
-        innerRing13.setTitle("IR13", forState: .Normal)
+        innerRing13.setTitle("IR13", for: UIControlState())
         if !self.subviews.contains(innerRing13) {
             self.addSubview(innerRing13)
         }
         
         innerRing14.backgroundImageColor = Interface.theme.tertiaryLight
-        innerRing14.setTitle("IR14", forState: .Normal)
+        innerRing14.setTitle("IR14", for: UIControlState())
         if !self.subviews.contains(innerRing14) {
             self.addSubview(innerRing14)
         }
         
         innerRing15.backgroundImageColor = Interface.theme.primaryLight
-        innerRing15.setTitle("IR15", forState: .Normal)
+        innerRing15.setTitle("IR15", for: UIControlState())
         if !self.subviews.contains(innerRing15) {
             self.addSubview(innerRing15)
         }
         
         innerRing20.backgroundImageColor = Interface.theme.primaryLight
-        innerRing20.setTitle("IR20", forState: .Normal)
+        innerRing20.setTitle("IR20", for: UIControlState())
         if !self.subviews.contains(innerRing20) {
             self.addSubview(innerRing20)
         }
         
         outerRing10.backgroundImageColor = Interface.theme.primaryDark
-        outerRing10.setTitle("OR10", forState: .Normal)
+        outerRing10.setTitle("OR10", for: UIControlState())
         if !self.subviews.contains(outerRing10) {
             self.addSubview(outerRing10)
         }
         
         outerRing11.backgroundImageColor = Interface.theme.tertiaryDark
-        outerRing11.setTitle("OR11", forState: .Normal)
+        outerRing11.setTitle("OR11", for: UIControlState())
         if !self.subviews.contains(outerRing11) {
             self.addSubview(outerRing11)
         }
         
         outerRing12.backgroundImageColor = Interface.theme.tertiaryLight
-        outerRing12.setTitle("OR12", forState: .Normal)
+        outerRing12.setTitle("OR12", for: UIControlState())
         if !self.subviews.contains(outerRing12) {
             self.addSubview(outerRing12)
         }
         
         outerRing13.backgroundImageColor = Interface.theme.primaryLight
-        outerRing13.setTitle("OR13", forState: .Normal)
+        outerRing13.setTitle("OR13", for: UIControlState())
         if !self.subviews.contains(outerRing13) {
             self.addSubview(outerRing13)
         }
         
         outerRing14.backgroundImageColor = Interface.theme.primaryDark
-        outerRing14.setTitle("OR14", forState: .Normal)
+        outerRing14.setTitle("OR14", for: UIControlState())
         if !self.subviews.contains(outerRing14) {
             self.addSubview(outerRing14)
         }
         
         outerRing16.backgroundImageColor = Interface.theme.tertiaryDark
-        outerRing16.setTitle("OR16", forState: .Normal)
+        outerRing16.setTitle("OR16", for: UIControlState())
         if !self.subviews.contains(outerRing16) {
             self.addSubview(outerRing16)
         }
         
         outerRing17.backgroundImageColor = Interface.theme.primaryLight
-        outerRing17.setTitle("OR17", forState: .Normal)
+        outerRing17.setTitle("OR17", for: UIControlState())
         if !self.subviews.contains(outerRing17) {
             self.addSubview(outerRing17)
         }
         
         outerRingExtended18.backgroundImageColor = Interface.theme.primaryDark
-        outerRingExtended18.setTitle("ORE18", forState: .Normal)
+        outerRingExtended18.setTitle("ORE18", for: UIControlState())
         if !self.subviews.contains(outerRingExtended18) {
             self.addSubview(outerRingExtended18)
         }
         
         outerRingExtended19.backgroundImageColor = Interface.theme.tertiaryDark
-        outerRingExtended19.setTitle("ORE19", forState: .Normal)
+        outerRingExtended19.setTitle("ORE19", for: UIControlState())
         if !self.subviews.contains(outerRingExtended19) {
             self.addSubview(outerRingExtended19)
         }
         
         outerRing20.backgroundImageColor = Interface.theme.tertiaryLight
-        outerRing20.setTitle("OR20", forState: .Normal)
+        outerRing20.setTitle("OR20", for: UIControlState())
         if !self.subviews.contains(outerRing20) {
             self.addSubview(outerRing20)
         }
         
         edge01.backgroundImageColor = Interface.theme.tertiaryLight
-        edge01.setTitle("E01", forState: .Normal)
+        edge01.setTitle("E01", for: UIControlState())
         if !self.subviews.contains(edge01) {
             self.addSubview(edge01)
         }
         
         edge02.backgroundImageColor = Interface.theme.primaryLight
-        edge02.setTitle("Mode Select", forState: .Normal)
+        edge02.setTitle("Mode Select", for: UIControlState())
         if !self.subviews.contains(edge02) {
             self.addSubview(edge02)
         }
         
         edge03.backgroundImageColor = Interface.theme.tertiaryDark
-        edge03.setTitle("E03", forState: .Normal)
+        edge03.setTitle("E03", for: UIControlState())
         if !self.subviews.contains(edge03) {
             self.addSubview(edge03)
         }
         
         edge04.backgroundImageColor = Interface.theme.primaryDark
-        edge04.setTitle("E04", forState: .Normal)
+        edge04.setTitle("E04", for: UIControlState())
         if !self.subviews.contains(edge04) {
             self.addSubview(edge04)
         }
         
         edge05.backgroundImageColor = Interface.theme.tertiaryLight
-        edge05.setTitle("E05", forState: .Normal)
+        edge05.setTitle("E05", for: UIControlState())
         if !self.subviews.contains(edge05) {
             self.addSubview(edge05)
         }
         
         top00.backgroundImageColor = Interface.theme.tertiaryLight
-        top00.setTitle("T00", forState: .Normal)
+        top00.setTitle("T00", for: UIControlState())
         if !self.subviews.contains(top00) {
             self.addSubview(top00)
         }
         
-        self.bringSubviewToFront(self.sector01)
-        self.bringSubviewToFront(self.sector04)
+        self.bringSubview(toFront: self.sector01)
+        self.bringSubview(toFront: self.sector04)
     }
 }

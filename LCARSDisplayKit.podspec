@@ -12,9 +12,9 @@ Pod::Spec.new do |s|
 
   s.source = { :git => "https://github.com/richardpiazza/LCARSDisplayKit.git", :tag => s.version.to_s }
   s.source_files = 'Sources/*'
-  s.platforms = { :ios => '9.1' }
+  s.platforms = { :ios => '10.0' }
   s.frameworks = 'Foundation'
   s.requires_arc = true
-  s.dependency 'GraphPoint', '~> 1.2'
+  s.dependency 'GraphPoint', '~> 2.0'
 
 end
