@@ -66,10 +66,6 @@ public let LDKRingArc18: LDKDegreeRange = (CGFloat(316.5), CGFloat(332.5))
 public let LDKRingArc19: LDKDegreeRange = (CGFloat(334.5), CGFloat(350.5))
 public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
 
-/// Represents the percent difference in both X (width) and Y (height) from a
-/// default size.
-public typealias GraphMultiplier = CGSize
-
 @IBDesignable open class LDKDPadView: UIView {
     open var crux: LDKButton = LDKButton()
     open var up: LDKDirectionButton = LDKDirectionButton()

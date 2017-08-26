@@ -48,6 +48,7 @@
 		E14DEAFE1F521CBD00F1EEFF /* beep1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */; };
 		E14DEAFF1F521CBD00F1EEFF /* beep3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */; };
 		E176A6901D8DE5CD00823E19 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A68F1D8DE5CD00823E19 /* CGFloat.swift */; };
+		E1E6A6B51F522D3D005DC4D0 /* GraphMultiplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6A6B41F522D3D005DC4D0 /* GraphMultiplier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep1.m4a; sourceTree = "<group>"; };
 		E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep3.m4a; sourceTree = "<group>"; };
 		E176A68F1D8DE5CD00823E19 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		E1E6A6B41F522D3D005DC4D0 /* GraphMultiplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphMultiplier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				E105B7581D5A5F73004AE5D9 /* Crescent.swift */,
 				E105B7591D5A5F73004AE5D9 /* EdgedCrescent.swift */,
 				E105B75A1D5A5F73004AE5D9 /* Graphable.swift */,
+				E1E6A6B41F522D3D005DC4D0 /* GraphMultiplier.swift */,
 				E105B75B1D5A5F73004AE5D9 /* LDKButton.swift */,
 				E105B75C1D5A5F73004AE5D9 /* LDKCrescentButton.swift */,
 				E105B75D1D5A5F73004AE5D9 /* LDKDirectionButton.swift */,
@@ -350,7 +353,6 @@
 				TargetAttributes = {
 					E1112FAF1BBE7FBB0001C33D = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = EX6YK9HKXA;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -597,6 +599,7 @@
 				E127EB251BBE808500AAD675 /* LDKDPadExpandedView.swift in Sources */,
 				E105B76F1D5A5F73004AE5D9 /* LDKButton.swift in Sources */,
 				E105B7711D5A5F73004AE5D9 /* LDKDirectionButton.swift in Sources */,
+				E1E6A6B51F522D3D005DC4D0 /* GraphMultiplier.swift in Sources */,
 				E105B77C1D5A61DC004AE5D9 /* Theme.swift in Sources */,
 				E105B7781D5A5F73004AE5D9 /* UIButton.swift in Sources */,
 				E105B7731D5A5F73004AE5D9 /* LDKElbowButton.swift in Sources */,
@@ -772,7 +775,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LCARSDisplayKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
@@ -788,7 +791,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LCARSDisplayKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
