@@ -1,8 +1,8 @@
 //===----------------------------------------------------------------------===//
 //
-// Graphable.swift
+// UIFont.swift
 //
-// Copyright (c) 2015 Richard Piazza
+// Copyright (c) 2017 Richard Piazza
 // https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,28 +25,13 @@
 //
 //===----------------------------------------------------------------------===//
 
-import CoreGraphics
-import GraphPoint
+import UIKit
 
-public protocol Graphable {
-    /// The `GraphPoint`s that define the area of the object
-    var graphPoints: [GraphPoint] { get }
-    /// The `GraphFrame` required to contain all the `GraphPoint`s
-    var graphFrame: GraphFrame { get }
-    /// A path connecting all `GraphPoint`s
-    var path: CGMutablePath { get }
-}
-
-extension Graphable {
-    public var graphPoints: [GraphPoint] {
-        return []
-    }
-    
-    public var graphFrame: GraphFrame {
-        return GraphFrame.graphFrame(graphPoints: graphPoints)
-    }
-    
-    public var path: CGMutablePath {
-        return CGMutablePath()
+extension UIFont {
+    struct Okuda {
+        static var regular = UIFont(name: "Okuda", size: 18.0)
+        static var italic = UIFont(name: "Okuda-Italic", size: 18.0)
+        static var bold = UIFont(name: "Okuda-Bold", size: 18.0)
+        static var boldItalic = UIFont(name: "Okuda-BoldItalic", size: 18.0)
     }
 }

@@ -3,7 +3,7 @@
 // Arc.swift
 //
 // Copyright (c) 2016 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,12 +45,12 @@ public struct Arc: Graphable {
     
     /// The `GraphPoint` corresponding to the startDegree and radius
     public var startPoint: GraphPoint {
-        return GraphPoint.graphPoint(forDegree: startDegree, radius: radius)
+        return GraphPoint.graphPoint(degree: startDegree, radius: radius)
     }
     
     /// The `GraphPoint` corresponding to the endDegree and radius
     public var endPoint: GraphPoint {
-        return GraphPoint.graphPoint(forDegree: endDegree, radius: radius)
+        return GraphPoint.graphPoint(degree: endDegree, radius: radius)
     }
     
     /// Calculates the point of the right angle that joins the start and end points.
@@ -82,7 +82,7 @@ public struct Arc: Graphable {
     }
     
     public var graphFrame: GraphFrame {
-        return GraphFrame.graphFrame(forGraphPoints: graphPoints, radius: radius, startDegree: startDegree, endDegree: endDegree)
+        return GraphFrame.graphFrame(graphPoints: graphPoints, radius: radius, startDegree: startDegree, endDegree: endDegree)
     }
     
     public func path(inRect rect: CGRect) -> CGMutablePath {
@@ -90,7 +90,7 @@ public struct Arc: Graphable {
         
         let gf = graphFrame
         let offset = gf.graphOriginOffset
-        let translatedPivot = gf.boundedPoint(forGraphPoint: pivot)
+        let translatedPivot = gf.boundedPoint(graphPoint: pivot)
         
         path.addArc(center: offset, radius: radius, startAngle: startDegree.radians, endAngle: endDegree.radians, clockwise: false)
         path.addLine(to: translatedPivot)

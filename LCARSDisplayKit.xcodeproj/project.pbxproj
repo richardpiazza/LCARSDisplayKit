@@ -37,6 +37,16 @@
 		E127EB231BBE803700AAD675 /* LDKDPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB221BBE803700AAD675 /* LDKDPadView.swift */; };
 		E127EB251BBE808500AAD675 /* LDKDPadExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */; };
 		E127EB271BBE80C800AAD675 /* LDKDPadFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */; };
+		E14DEAEB1F51E79800F1EEFF /* Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE61F51E79800F1EEFF /* Font License.txt */; };
+		E14DEAEC1F51E79800F1EEFF /* Okuda Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE71F51E79800F1EEFF /* Okuda Bold Italic.otf */; };
+		E14DEAED1F51E79800F1EEFF /* Okuda Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE81F51E79800F1EEFF /* Okuda Bold.otf */; };
+		E14DEAEE1F51E79800F1EEFF /* Okuda Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE91F51E79800F1EEFF /* Okuda Italic.otf */; };
+		E14DEAEF1F51E79800F1EEFF /* Okuda.otf in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAEA1F51E79800F1EEFF /* Okuda.otf */; };
+		E14DEAF11F51EA4E00F1EEFF /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEAF01F51EA4E00F1EEFF /* UIFont.swift */; };
+		E14DEAF91F521A1300F1EEFF /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEAF81F521A1300F1EEFF /* Audio.swift */; };
+		E14DEAFD1F521CBD00F1EEFF /* beep2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFA1F521CBC00F1EEFF /* beep2.m4a */; };
+		E14DEAFE1F521CBD00F1EEFF /* beep1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */; };
+		E14DEAFF1F521CBD00F1EEFF /* beep3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */; };
 		E176A6901D8DE5CD00823E19 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A68F1D8DE5CD00823E19 /* CGFloat.swift */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +110,16 @@
 		E127EB221BBE803700AAD675 /* LDKDPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadView.swift; sourceTree = "<group>"; };
 		E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadExpandedView.swift; sourceTree = "<group>"; };
 		E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadFullView.swift; sourceTree = "<group>"; };
+		E14DEAE61F51E79800F1EEFF /* Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Font License.txt"; sourceTree = "<group>"; };
+		E14DEAE71F51E79800F1EEFF /* Okuda Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Okuda Bold Italic.otf"; sourceTree = "<group>"; };
+		E14DEAE81F51E79800F1EEFF /* Okuda Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Okuda Bold.otf"; sourceTree = "<group>"; };
+		E14DEAE91F51E79800F1EEFF /* Okuda Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Okuda Italic.otf"; sourceTree = "<group>"; };
+		E14DEAEA1F51E79800F1EEFF /* Okuda.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Okuda.otf; sourceTree = "<group>"; };
+		E14DEAF01F51EA4E00F1EEFF /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		E14DEAF81F521A1300F1EEFF /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		E14DEAFA1F521CBC00F1EEFF /* beep2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep2.m4a; sourceTree = "<group>"; };
+		E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep1.m4a; sourceTree = "<group>"; };
+		E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep3.m4a; sourceTree = "<group>"; };
 		E176A68F1D8DE5CD00823E19 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				E105B7531D5A5F73004AE5D9 /* Arc.swift */,
+				E14DEAF81F521A1300F1EEFF /* Audio.swift */,
+				E176A68F1D8DE5CD00823E19 /* CGFloat.swift */,
 				E105B7581D5A5F73004AE5D9 /* Crescent.swift */,
 				E105B7591D5A5F73004AE5D9 /* EdgedCrescent.swift */,
 				E105B75A1D5A5F73004AE5D9 /* Graphable.swift */,
@@ -170,10 +192,10 @@
 				E105B7611D5A5F73004AE5D9 /* LDKSectorButton.swift */,
 				E105B7621D5A5F73004AE5D9 /* RoundedRectangle.swift */,
 				E105B7631D5A5F73004AE5D9 /* Tappable.swift */,
-				E105B7641D5A5F73004AE5D9 /* UIButton.swift */,
-				E105B7661D5A5F73004AE5D9 /* UIImage.swift */,
 				E105B77B1D5A61DC004AE5D9 /* Theme.swift */,
-				E176A68F1D8DE5CD00823E19 /* CGFloat.swift */,
+				E105B7641D5A5F73004AE5D9 /* UIButton.swift */,
+				E14DEAF01F51EA4E00F1EEFF /* UIFont.swift */,
+				E105B7661D5A5F73004AE5D9 /* UIImage.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -182,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				E105B7521D5A5F73004AE5D9 /* Sources */,
+				E14DEAE51F51E79800F1EEFF /* Resources */,
 				E1112FB21BBE7FBC0001C33D /* LCARSDisplayKit */,
 				E1112FC71BBE7FBC0001C33D /* LCARSDisplayKitTests */,
 				E1112FD21BBE7FBC0001C33D /* LCARSDisplayKitUITests */,
@@ -234,6 +257,21 @@
 				E1112FD51BBE7FBC0001C33D /* Info.plist */,
 			);
 			path = LCARSDisplayKitUITests;
+			sourceTree = "<group>";
+		};
+		E14DEAE51F51E79800F1EEFF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */,
+				E14DEAFA1F521CBC00F1EEFF /* beep2.m4a */,
+				E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */,
+				E14DEAE61F51E79800F1EEFF /* Font License.txt */,
+				E14DEAE71F51E79800F1EEFF /* Okuda Bold Italic.otf */,
+				E14DEAE81F51E79800F1EEFF /* Okuda Bold.otf */,
+				E14DEAE91F51E79800F1EEFF /* Okuda Italic.otf */,
+				E14DEAEA1F51E79800F1EEFF /* Okuda.otf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,26 +345,26 @@
 		E1112FA81BBE7FBB0001C33D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Richard Piazza";
 				TargetAttributes = {
 					E1112FAF1BBE7FBB0001C33D = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = EX6YK9HKXA;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					E1112FC31BBE7FBC0001C33D = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = EX6YK9HKXA;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E1112FAF1BBE7FBB0001C33D;
 					};
 					E1112FCE1BBE7FBC0001C33D = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = EX6YK9HKXA;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E1112FAF1BBE7FBB0001C33D;
 					};
@@ -357,9 +395,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E14DEAFF1F521CBD00F1EEFF /* beep3.m4a in Resources */,
 				E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */,
+				E14DEAEE1F51E79800F1EEFF /* Okuda Italic.otf in Resources */,
+				E14DEAED1F51E79800F1EEFF /* Okuda Bold.otf in Resources */,
+				E14DEAEC1F51E79800F1EEFF /* Okuda Bold Italic.otf in Resources */,
 				E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */,
+				E14DEAEF1F51E79800F1EEFF /* Okuda.otf in Resources */,
 				E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */,
+				E14DEAFD1F521CBD00F1EEFF /* beep2.m4a in Resources */,
+				E14DEAFE1F521CBD00F1EEFF /* beep1.m4a in Resources */,
+				E14DEAEB1F51E79800F1EEFF /* Font License.txt in Resources */,
 				E105B78D1D5E6688004AE5D9 /* DPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,13 +448,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LCARSDisplayKit-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		491C2F527391A38B6A2B9158 /* [CP] Check Pods Manifest.lock */ = {
@@ -417,13 +466,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LCARSDisplayKitTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		53C95805D3239E37549B8713 /* [CP] Check Pods Manifest.lock */ = {
@@ -432,13 +484,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LCARSDisplayKitUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		882E42C3986C711E02A26688 /* [CP] Copy Pods Resources */ = {
@@ -477,9 +532,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKit/Pods-LCARSDisplayKit-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GraphPoint/GraphPoint.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GraphPoint.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -523,8 +581,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E14DEAF91F521A1300F1EEFF /* Audio.swift in Sources */,
 				E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */,
 				E105B77A1D5A5F73004AE5D9 /* UIImage.swift in Sources */,
+				E14DEAF11F51EA4E00F1EEFF /* UIFont.swift in Sources */,
 				E176A6901D8DE5CD00823E19 /* CGFloat.swift in Sources */,
 				E105B7721D5A5F73004AE5D9 /* LDKEdgedCrescentButton.swift in Sources */,
 				E127EB231BBE803700AAD675 /* LDKDPadView.swift in Sources */,
@@ -615,14 +675,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -644,7 +710,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -661,14 +727,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -684,7 +756,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -705,7 +777,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -721,7 +793,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -736,7 +808,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LCARSDisplayKit.app/LCARSDisplayKit";
 			};
 			name = Debug;
@@ -752,7 +825,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LCARSDisplayKit.app/LCARSDisplayKit";
 			};
 			name = Release;
@@ -767,7 +841,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LCARSDisplayKit;
 				USES_XCTRUNNER = YES;
 			};
@@ -783,7 +858,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LCARSDisplayKit;
 				USES_XCTRUNNER = YES;
 			};

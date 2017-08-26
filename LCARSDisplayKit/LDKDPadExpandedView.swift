@@ -3,7 +3,7 @@
 // LDKDPadExpandedView.swift
 //
 // Copyright (c) 2015 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -280,37 +280,36 @@ open class LDKDPadExpandedView: LDKDPadView {
         
         innerRing05.backgroundImageColor = Interface.theme.primaryLight
         innerRing05.setTitle("IR05", for: UIControlState())
-        innerRing05.contentVerticalAlignment = .top
         if !self.subviews.contains(innerRing05) {
             self.addSubview(innerRing05)
         }
         
         innerRing10.backgroundImageColor = Interface.theme.primaryLight
-        innerRing10.setTitle("IR10", for: UIControlState())
+        innerRing10.setTitle("6", for: UIControlState())
         if !self.subviews.contains(innerRing10) {
             self.addSubview(innerRing10)
         }
         
         innerRing11.backgroundImageColor = Interface.theme.tertiaryLight
-        innerRing11.setTitle("IR11", for: UIControlState())
+        innerRing11.setTitle("7", for: UIControlState())
         if !self.subviews.contains(innerRing11) {
             self.addSubview(innerRing11)
         }
         
         innerRing12.backgroundImageColor = Interface.theme.primaryDark
-        innerRing12.setTitle("IR12", for: UIControlState())
+        innerRing12.setTitle("8", for: UIControlState())
         if !self.subviews.contains(innerRing12) {
             self.addSubview(innerRing12)
         }
         
         innerRing13.backgroundImageColor = Interface.theme.tertiaryDark
-        innerRing13.setTitle("IR13", for: UIControlState())
+        innerRing13.setTitle("9", for: UIControlState())
         if !self.subviews.contains(innerRing13) {
             self.addSubview(innerRing13)
         }
         
         innerRing14.backgroundImageColor = Interface.theme.tertiaryLight
-        innerRing14.setTitle("IR14", for: UIControlState())
+        innerRing14.setTitle("0", for: UIControlState())
         if !self.subviews.contains(innerRing14) {
             self.addSubview(innerRing14)
         }
@@ -328,31 +327,31 @@ open class LDKDPadExpandedView: LDKDPadView {
         }
         
         outerRing10.backgroundImageColor = Interface.theme.primaryDark
-        outerRing10.setTitle("OR10", for: UIControlState())
+        outerRing10.setTitle("1", for: UIControlState())
         if !self.subviews.contains(outerRing10) {
             self.addSubview(outerRing10)
         }
         
         outerRing11.backgroundImageColor = Interface.theme.tertiaryDark
-        outerRing11.setTitle("OR11", for: UIControlState())
+        outerRing11.setTitle("2", for: UIControlState())
         if !self.subviews.contains(outerRing11) {
             self.addSubview(outerRing11)
         }
         
         outerRing12.backgroundImageColor = Interface.theme.tertiaryLight
-        outerRing12.setTitle("OR12", for: UIControlState())
+        outerRing12.setTitle("3", for: UIControlState())
         if !self.subviews.contains(outerRing12) {
             self.addSubview(outerRing12)
         }
         
         outerRing13.backgroundImageColor = Interface.theme.primaryLight
-        outerRing13.setTitle("OR13", for: UIControlState())
+        outerRing13.setTitle("4", for: UIControlState())
         if !self.subviews.contains(outerRing13) {
             self.addSubview(outerRing13)
         }
         
         outerRing14.backgroundImageColor = Interface.theme.primaryDark
-        outerRing14.setTitle("OR14", for: UIControlState())
+        outerRing14.setTitle("5", for: UIControlState())
         if !self.subviews.contains(outerRing14) {
             self.addSubview(outerRing14)
         }

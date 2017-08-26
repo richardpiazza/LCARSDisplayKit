@@ -3,7 +3,7 @@
 // LDKButton.swift
 //
 // Copyright (c) 2015 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -58,6 +58,18 @@ import UIKit
         set {
             roundedRectangle.cornersOnly = newValue
         }
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.titleLabel?.font = UIFont.Okuda.regular
+        self.setTitleColor(UIColor.black, for: UIControlState())
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.titleLabel?.font = UIFont.Okuda.regular
+        self.setTitleColor(UIColor.black, for: UIControlState())
     }
     
     func setRoundedRectangle(_ roundedRectangle: RoundedRectangle, withFrame frame: CGRect) {

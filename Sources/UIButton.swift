@@ -3,7 +3,7 @@
 // UIButton.swift
 //
 // Copyright (c) 2016 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -45,11 +45,17 @@ extension UIButton {
         }
         
         let path = tappableSelf.backgroundImagePath(bounds.size)
-        let containsPoint = path.contains(point)
-        if containsPoint {
-            print("point \(point) inside \(self.currentTitle)")
-        }
-        
-        return containsPoint
+        return path.contains(point)
+    }
+    
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        self.layer.backgroundColor = UIColor.red.cgColor
+        Audio.playBeep()
+    }
+    
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.layer.backgroundColor = UIColor.clear.cgColor
+        super.touchesEnded(touches, with: event)
     }
 }

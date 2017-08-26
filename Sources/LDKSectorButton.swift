@@ -3,7 +3,7 @@
 // LDKSectorButton.swift
 //
 // Copyright (c) 2015 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -59,9 +59,21 @@ import GraphPoint
         }
     }
     
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.titleLabel?.font = UIFont.Okuda.regular
+        self.setTitleColor(UIColor.black, for: UIControlState())
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.titleLabel?.font = UIFont.Okuda.regular
+        self.setTitleColor(UIColor.black, for: UIControlState())
+    }
+    
     convenience init(inRect rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        let frame = GraphFrame.graphFrame(forGraphPoints: arc.graphPoints)
+        let frame = GraphFrame.graphFrame(graphPoints: arc.graphPoints)
         self.init(frame: frame)
         self.radius = arc.radius
         self.startDegree = arc.startDegree
@@ -69,14 +81,14 @@ import GraphPoint
     }
     
     convenience init(withArc arc: Arc, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
-        let frame = rect.frame(forGraphFrame: arc.graphFrame, graphOriginOffset: offset)
+        let frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
         self.init(frame: frame)
         self.arc = arc
     }
     
     open func setArc(_ arc: Arc, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
         self.arc = arc
-        self.frame = rect.frame(forGraphFrame: arc.graphFrame, graphOriginOffset: offset)
+        self.frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
     }
     
     // MARK: - Tappable

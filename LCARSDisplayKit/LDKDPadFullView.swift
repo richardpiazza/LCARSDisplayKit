@@ -3,7 +3,7 @@
 // LDKDPadFullView.swift
 //
 // Copyright (c) 2015 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -118,6 +118,7 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         
         outerRingSector01.backgroundImageColor = Interface.theme.primaryDark
         outerRingSector01.setTitle("ORS01", for: UIControlState())
+        outerRingSector01.contentEdgeInsets = UIEdgeInsets(top: 30.0, left: 60.0, bottom: 0.0, right: 0.0)
         if !self.subviews.contains(outerRingSector01) {
             self.addSubview(outerRingSector01)
         }

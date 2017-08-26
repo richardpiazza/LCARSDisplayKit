@@ -3,7 +3,7 @@
 // LDKDPadView.swift
 //
 // Copyright (c) 2015 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -174,53 +174,53 @@ public typealias GraphMultiplier = CGSize
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        crux.setTitle("NIL", for: UIControlState())
+        crux.setTitle("", for: UIControlState())
         if !self.subviews.contains(crux) {
             self.addSubview(crux)
         }
         
-        up.setTitle("Up", for: UIControlState())
+        up.setTitle("", for: UIControlState())
         if !self.subviews.contains(up) {
             self.addSubview(up)
         }
         
-        down.setTitle("Down", for: UIControlState())
+        down.setTitle("", for: UIControlState())
         if !self.subviews.contains(down) {
             self.addSubview(down)
         }
         
-        left.setTitle("Left", for: UIControlState())
+        left.setTitle("", for: UIControlState())
         if !self.subviews.contains(left) {
             self.addSubview(left)
         }
         
-        right.setTitle("Right", for: UIControlState())
+        right.setTitle("", for: UIControlState())
         if !self.subviews.contains(right) {
             self.addSubview(right)
         }
         
-        sector01.setTitle("S01", for: UIControlState())
+        sector01.setTitle("", for: UIControlState())
         sector01.contentVerticalAlignment = .top
         sector01.contentHorizontalAlignment = .right
         if !self.subviews.contains(sector01) {
             self.addSubview(sector01)
         }
         
-        sector02.setTitle("S02", for: UIControlState())
+        sector02.setTitle("", for: UIControlState())
         sector02.contentVerticalAlignment = .top
         sector02.contentHorizontalAlignment = .left
         if !self.subviews.contains(sector02) {
             self.addSubview(sector02)
         }
         
-        sector03.setTitle("S03", for: UIControlState())
+        sector03.setTitle("", for: UIControlState())
         sector03.contentVerticalAlignment = .bottom
         sector03.contentHorizontalAlignment = .left
         if !self.subviews.contains(sector03) {
             self.addSubview(sector03)
         }
         
-        sector04.setTitle("S04", for: UIControlState())
+        sector04.setTitle("", for: UIControlState())
         sector04.contentVerticalAlignment = .bottom
         sector04.contentHorizontalAlignment = .right
         if !self.subviews.contains(sector04) {

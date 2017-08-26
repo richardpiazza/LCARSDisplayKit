@@ -52,7 +52,7 @@ public extension GraphFrame {
     ///
     /// Given: CGRect(0, 0, 500, 500) & GraphFrame(47.7022, 250.0, 197.7045, 202.2977),
     /// The GraphPoint(47.7022, 47.7022) would be translated to CGPoint(0.0, 202.2977)
-    public func boundedPoint(forGraphPoint graphPoint: GraphPoint) -> CGPoint {
+    public func boundedPoint(graphPoint: GraphPoint) -> CGPoint {
         let x = abs(origin.x - graphPoint.x)
         let y = abs(origin.y - graphPoint.y)
         
@@ -60,7 +60,7 @@ public extension GraphFrame {
     }
     
     /// Determines that smallest `GraphFrame` that encompases all graph points.
-    public static func graphFrame(forGraphPoints graphPoints: [GraphPoint]) -> GraphFrame {
+    public static func graphFrame(graphPoints: [GraphPoint]) -> GraphFrame {
         var minXMaxY = CGPoint.zero
         var maxXMinY = CGPoint.zero
         
@@ -84,30 +84,34 @@ public extension GraphFrame {
     
     /// Determines the smallest `GraphFrame` that encompases all points, with
     /// expansion for crossing an axis.
-    public static func graphFrame(forGraphPoints graphPoints: [GraphPoint], radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat) -> GraphFrame {
-        var graphFrame = self.graphFrame(forGraphPoints: graphPoints)
+    public static func graphFrame(graphPoints: [GraphPoint], radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat) -> GraphFrame {
+        var graphFrame = self.graphFrame(graphPoints: graphPoints)
         
-        if startDegree >= 270 && endDegree <= 90 {
-            let expand = abs(graphFrame.origin.x + graphFrame.width)
-            if expand < radius {
-                graphFrame.size.width = graphFrame.size.width + (radius - expand)
+        if (startDegree >= 270 && startDegree <= 360) && (endDegree >= 0 && endDegree <= 90) {
+            let exterior = graphFrame.origin.x + graphFrame.width
+            if exterior < radius {
+                let expansion = radius - exterior
+                graphFrame.size.width = graphFrame.size.width + expansion
             }
-        } else if startDegree >= 180 && endDegree > 270 {
-            let expand = abs(graphFrame.origin.y)
-            if expand < radius {
-                graphFrame.origin.y = graphFrame.origin.y + (radius - expand)
-                graphFrame.size.height = graphFrame.size.height + (radius - expand)
+        } else if (startDegree >= 180 && startDegree <= 270) && (endDegree >= 270 && endDegree <= 360) {
+            let exterior = graphFrame.origin.y
+            if exterior < radius {
+                let expansion = radius - exterior
+                graphFrame.origin.y = graphFrame.origin.y + expansion
+                graphFrame.size.height = graphFrame.size.height + expansion
             }
-        } else if startDegree >= 90 && endDegree > 180 {
-            let expand = abs(graphFrame.origin.x)
-            if expand < radius {
-                graphFrame.origin.x = graphFrame.origin.x - (radius - expand)
-                graphFrame.size.width = graphFrame.size.width + (radius - expand)
+        } else if (startDegree >= 90 && startDegree <= 180) && (endDegree >= 180 && endDegree <= 270) {
+            let exterior = abs(graphFrame.origin.x)
+            if exterior < radius {
+                let expansion = radius - exterior
+                graphFrame.origin.x = graphFrame.origin.x - expansion
+                graphFrame.size.width = graphFrame.size.width + expansion
             }
-        } else if startDegree >= 0 && endDegree > 90 {
-            let expand = abs(graphFrame.origin.y + graphFrame.height)
-            if expand < radius {
-                graphFrame.size.height = graphFrame.size.height + (radius - expand)
+        } else if (startDegree >= 0 && startDegree <= 90) && (endDegree >= 90 && endDegree <= 180) {
+            let exterior = abs(graphFrame.origin.y) + graphFrame.height
+            if exterior < radius {
+                let expansion = radius - exterior
+                graphFrame.size.height = graphFrame.size.height + expansion
             }
         }
         

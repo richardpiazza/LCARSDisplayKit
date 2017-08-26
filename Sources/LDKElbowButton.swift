@@ -3,7 +3,7 @@
 // LDKElbowButton.swift
 //
 // Copyright (c) 2015 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -41,6 +41,18 @@ import GraphPoint
     @IBInspectable open var verticalWidth: CGFloat = CGFloat(30)
     /// If closedHeight > 0, an additional area is drawn parallel to the horizontalHeight area.
     @IBInspectable open var closedHeight: CGFloat = CGFloat(0)
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.titleLabel?.font = UIFont.Okuda.regular
+        self.setTitleColor(UIColor.black, for: UIControlState())
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.titleLabel?.font = UIFont.Okuda.regular
+        self.setTitleColor(UIColor.black, for: UIControlState())
+    }
     
     convenience init(frame: CGRect, top: Bool, left: Bool, rounded: Bool, horizontalHeight: CGFloat, verticalWidth: CGFloat, closedHeight: CGFloat) {
         self.init(frame: frame)

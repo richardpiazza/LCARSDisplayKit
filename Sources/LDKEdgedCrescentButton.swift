@@ -3,7 +3,7 @@
 // LDKEdgedCrescentButton.swift
 //
 // Copyright (c) 2015 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -110,15 +110,27 @@ import GraphPoint
         }
     }
     
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.titleLabel?.font = UIFont.Okuda.regular
+        self.setTitleColor(UIColor.black, for: UIControlState())
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.titleLabel?.font = UIFont.Okuda.regular
+        self.setTitleColor(UIColor.black, for: UIControlState())
+    }
+    
     convenience init(withEdgedCrescent edgedCrescent: EdgedCrescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
-        let frame = rect.frame(forGraphFrame: edgedCrescent.graphFrame, graphOriginOffset: offset)
+        let frame = rect.frame(graphFrame: edgedCrescent.graphFrame, offset: offset)
         self.init(frame: frame)
         self.edgedCrescent = edgedCrescent
     }
     
     func setEdgedCrescent(_ edgedCrescent: EdgedCrescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
         self.edgedCrescent = edgedCrescent
-        self.frame = rect.frame(forGraphFrame: edgedCrescent.graphFrame, graphOriginOffset: offset)
+        self.frame = rect.frame(graphFrame: edgedCrescent.graphFrame, offset: offset)
     }
     
     // MARK: - Tappable

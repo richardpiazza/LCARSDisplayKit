@@ -3,7 +3,7 @@
 // Crescent.swift
 //
 // Copyright (c) 2016 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -72,7 +72,7 @@ public struct Crescent: Graphable {
     }
     
     public var graphFrame: GraphFrame {
-        return GraphFrame.graphFrame(forGraphPoints: graphPoints, radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
+        return GraphFrame.graphFrame(graphPoints: graphPoints, radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
     }
     
     public var path: CGMutablePath {
@@ -80,7 +80,7 @@ public struct Crescent: Graphable {
         
         let gf = graphFrame
         let offset = gf.graphOriginOffset
-        let translatedEnd = gf.boundedPoint(forGraphPoint: outerArc.endPoint)
+        let translatedEnd = gf.boundedPoint(graphPoint: outerArc.endPoint)
         
         path.addArc(center: offset, radius: innerArc.radius, startAngle: innerArc.startDegree.radians, endAngle: innerArc.endDegree.radians, clockwise: false)
         path.addLine(to: translatedEnd)

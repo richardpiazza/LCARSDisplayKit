@@ -3,7 +3,7 @@
 // LDKDirectionButton.swift
 //
 // Copyright (c) 2015 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,10 +38,22 @@ import GraphPoint
     @IBInspectable open var endDegree: CGFloat = CGFloat(0)
     @IBInspectable open var cardinalDegree: CGFloat = CGFloat(0)
     
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.titleLabel?.font = UIFont.Okuda.regular
+        self.setTitleColor(UIColor.black, for: UIControlState())
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.titleLabel?.font = UIFont.Okuda.regular
+        self.setTitleColor(UIColor.black, for: UIControlState())
+    }
+    
     convenience init(inRect rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinalDegree: CGFloat) {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        let graphFrame = GraphFrame.graphFrame(forGraphPoints: arc.graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
-        let frame = graphFrame.frame(forGraphFrame: graphFrame, graphOriginOffset: graphFrame.graphOriginOffset)
+        let graphFrame = GraphFrame.graphFrame(graphPoints: arc.graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
+        let frame = graphFrame.frame(graphFrame: graphFrame, offset: graphFrame.graphOriginOffset)
         self.init(frame: frame)
         self.radius = radius
         self.startDegree = startDegree
@@ -79,7 +91,7 @@ import GraphPoint
             return paths
         }
         
-        let graphFrame = GraphFrame.graphFrame(forGraphPoints: arc.graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
+        let graphFrame = GraphFrame.graphFrame(graphPoints: arc.graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
         let offset = graphFrame.graphOriginOffset
         let unit = min(size.width, size.height) / 2
         

@@ -3,7 +3,7 @@
 // EdgedCrescent.swift
 //
 // Copyright (c) 2016 Richard Piazza
-// https://github.com/richardpiazza/CodeQuickKit
+// https://github.com/richardpiazza/LCARSDisplayKit
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,7 @@ public struct EdgedCrescent: Graphable {
     }
     
     public var graphFrame: GraphFrame {
-        return GraphFrame.graphFrame(forGraphPoints: graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
+        return GraphFrame.graphFrame(graphPoints: graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
     }
     
     public var path: CGMutablePath {
@@ -63,7 +63,7 @@ public struct EdgedCrescent: Graphable {
         path.addArc(center: offset, radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
         
         for point in Array(additionalPoints.reversed()) {
-            let translatedPoint = gf.boundedPoint(forGraphPoint: point)
+            let translatedPoint = gf.boundedPoint(graphPoint: point)
             path.addLine(to: translatedPoint)
         }
         
