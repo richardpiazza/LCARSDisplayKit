@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "LCARSDisplayKit"
-  s.version = "1.0.0"
+  s.version = "1.0.1"
   s.summary = "A Hobby Project."
   s.description = <<-DESC
   A Swift library for developing personal iOS apps with an LCARS© interface.
