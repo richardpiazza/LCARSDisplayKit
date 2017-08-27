@@ -33,12 +33,22 @@ import UIKit
 @IBDesignable open class LDKIndicatorView: UIView, Tappable {
     static let defaultSize: CGSize = CGSize(width: 132, height: 60)
     
-    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
+    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.random()
     @IBInspectable open var displayValue: String = "000"
     @IBInspectable open var left: Bool = true
     internal var indicator: UIImageView = UIImageView(frame: CGRect.zero)
     internal var valueLabel: UILabel = UILabel(frame: CGRect.zero)
     internal var indicatorImage: UIImage?
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.valueLabel.font = UIFont.Okuda.bold
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.valueLabel.font = UIFont.Okuda.bold
+    }
     
     open override func layoutSubviews() {
         super.layoutSubviews()

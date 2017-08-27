@@ -38,6 +38,7 @@ public protocol Theme {
     var tertiaryMedium: UIColor { get }
     var tertiaryDark: UIColor { get }
     var inactive: UIColor { get }
+    func random() -> UIColor
 }
 
 public struct Interface {
@@ -111,6 +112,12 @@ public struct Interface {
         /// Hex #6E6E6E
         public var inactive: UIColor {
             return UIColor(red: 110/255.0, green: 110/255.0, blue: 110/255.0, alpha: 1.0)
+        }
+        
+        public func random() -> UIColor {
+            let colors = [primaryLight, primaryDark, tertiaryLight, tertiaryDark]
+            let random = arc4random_uniform(UInt32(colors.count))
+            return colors[Int(random)]
         }
     }
 }

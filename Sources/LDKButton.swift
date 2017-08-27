@@ -34,7 +34,7 @@ import UIKit
     static let defaultSize: CGSize = CGSize(width: 144, height: 60)
     
     open var roundedRectangle: RoundedRectangle = RoundedRectangle()
-    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
+    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.random()
     @IBInspectable open var roundLeft: Bool {
         get {
             return roundedRectangle.leftRounded

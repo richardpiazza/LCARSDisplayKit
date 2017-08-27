@@ -50,12 +50,10 @@ extension UIButton {
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-        self.layer.backgroundColor = UIColor.red.cgColor
         Audio.playBeep()
     }
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.layer.backgroundColor = UIColor.clear.cgColor
         super.touchesEnded(touches, with: event)
     }
 }

@@ -31,7 +31,7 @@ extension UIFont {
     struct Okuda {
         static var regular = UIFont(name: "Okuda", size: 18.0)
         static var italic = UIFont(name: "Okuda-Italic", size: 18.0)
-        static var bold = UIFont(name: "Okuda-Bold", size: 18.0)
+        static var bold = UIFont(name: "Okuda-Bold", size: 40.0)
         static var boldItalic = UIFont(name: "Okuda-BoldItalic", size: 18.0)
     }
 }

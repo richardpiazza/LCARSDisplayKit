@@ -170,6 +170,7 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
     open override func layoutSubviews() {
         super.layoutSubviews()
         
+        crux.backgroundImageColor = Interface.theme.primaryDark
         crux.setTitle("", for: UIControlState())
         if !self.subviews.contains(crux) {
             self.addSubview(crux)
