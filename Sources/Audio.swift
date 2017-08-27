@@ -28,62 +28,42 @@
 import Foundation
 import AVFoundation
 
-struct Audio {
-    static var beep1: AVAudioPlayer = {
-        guard let url = Bundle.main.url(forResource: "beep1", withExtension: "m4a") else {
-            fatalError("Failed to locate resource")
+public struct Audio {
+    public static let engine: Audio = Audio()
+    
+    internal var beep1: SystemSoundID = 0
+    internal var beep2: SystemSoundID = 0
+    internal var beep3: SystemSoundID = 0
+    
+    init() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print(error.localizedDescription)
         }
         
-        var player: AVAudioPlayer
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-        player.numberOfLoops = 0
-        player.prepareToPlay()
-        return player
-    }()
-    
-    static var beep2: AVAudioPlayer = {
-        guard let url = Bundle.main.url(forResource: "beep2", withExtension: "m4a") else {
-            fatalError("Failed to locate resource")
+        if let url = Bundle.main.url(forResource: "beep1", withExtension: "m4a") {
+            AudioServicesCreateSystemSoundID(url as CFURL, &beep1)
         }
         
-        var player: AVAudioPlayer
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-        player.numberOfLoops = 0
-        player.prepareToPlay()
-        return player
-    }()
-    
-    static var beep3: AVAudioPlayer = {
-        guard let url = Bundle.main.url(forResource: "beep3", withExtension: "m4a") else {
-            fatalError("Failed to locate resource")
+        if let url = Bundle.main.url(forResource: "beep2", withExtension: "m4a") {
+            AudioServicesCreateSystemSoundID(url as CFURL, &beep2)
         }
         
-        var player: AVAudioPlayer
-        do {
-            player = try AVAudioPlayer(contentsOf: url)
-        } catch {
-            fatalError(error.localizedDescription)
+        if let url = Bundle.main.url(forResource: "beep3", withExtension: "m4a") {
+            AudioServicesCreateSystemSoundID(url as CFURL, &beep3)
         }
-        player.numberOfLoops = 0
-        player.prepareToPlay()
-        return player
-    }()
-    
-    static func randomBeep() -> AVAudioPlayer {
-        let players = [beep1, beep2, beep3]
-        let random = arc4random_uniform(UInt32(players.count))
-        return players[Int(random)]
     }
     
-    static func playBeep() {
-        beep3.play()
+    public func playBeep() {
+        AudioServicesPlaySystemSound(beep3)
+    }
+    
+    public func playRandomBeep() {
+        let sounds = [beep1, beep2, beep3]
+        let random = arc4random_uniform(UInt32(sounds.count))
+        let soundID = sounds[Int(random)]
+        AudioServicesPlaySystemSound(soundID)
     }
 }
