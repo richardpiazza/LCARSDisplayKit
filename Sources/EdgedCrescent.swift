@@ -30,6 +30,7 @@ import GraphPoint
 
 /// An interior `Arc` extended with straight lines to additional points
 public struct EdgedCrescent: Graphable {
+    public var size: CGSize = CGSize.zero
     public var arc: Arc = Arc()
     public var additionalPoints: [GraphPoint] = [GraphPoint]()
     

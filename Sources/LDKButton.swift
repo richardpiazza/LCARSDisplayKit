@@ -33,35 +33,48 @@ import UIKit
 @IBDesignable open class LDKButton: UIButton, Tappable {
     static let defaultSize: CGSize = CGSize(width: 144, height: 60)
     
-    open var roundedRectangle: RoundedRectangle = RoundedRectangle()
-    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.random()
+    open var rectangle: RoundedRectangle = RoundedRectangle()
+    open var graphable: Graphable {
+        get {
+            return rectangle
+        }
+        set {}
+    }
+    
     @IBInspectable open var roundLeft: Bool {
         get {
-            return roundedRectangle.leftRounded
+            return rectangle.leftRounded
         }
         set {
-            roundedRectangle.leftRounded = newValue
+            rectangle.leftRounded = newValue
         }
     }
     @IBInspectable open var roundRight: Bool {
         get {
-            return roundedRectangle.rightRounded
+            return rectangle.rightRounded
         }
         set {
-            roundedRectangle.rightRounded = newValue
+            rectangle.rightRounded = newValue
         }
     }
     @IBInspectable open var isFrame: Bool {
         get {
-            return roundedRectangle.cornersOnly
+            return rectangle.cornersOnly
         }
         set {
-            roundedRectangle.cornersOnly = newValue
+            rectangle.cornersOnly = newValue
         }
     }
+    @IBInspectable open var color: UIColor = Interface.theme.random()
+    @IBInspectable lazy open var touchedColor: UIColor = {
+        [unowned self] in
+        return self.color.adaptingSaturation(by: 0.8)
+    }()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        graphable.size = frame.size
+        rectangle.size = frame.size
         self.titleLabel?.font = UIFont.Okuda.regular
         self.setTitleColor(UIColor.black, for: UIControlState())
     }
@@ -72,14 +85,71 @@ import UIKit
         self.setTitleColor(UIColor.black, for: UIControlState())
     }
     
-    func setRoundedRectangle(_ roundedRectangle: RoundedRectangle, withFrame frame: CGRect) {
-        self.roundedRectangle = roundedRectangle
-        self.frame = frame
+    open override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        graphable.size = rect.size
+        rectangle.size = rect.size
+        let context = UIGraphicsGetCurrentContext()
+        self.setBackgroundImage(self.image(context), for: UIControlState())
     }
     
-    // MARK: - Tappable
-    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
-        roundedRectangle.size = size
-        return roundedRectangle.path
+    open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        return path.contains(point)
+    }
+    
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+        
+        Audio.engine.playBeep()
+        
+        let size = self.bounds.size
+        UIGraphicsBeginImageContext(size)
+        let context = UIGraphicsGetCurrentContext()
+        self.setBackgroundImage(self.touchedImage(context), for: UIControlState())
+        UIGraphicsEndImageContext()
+    }
+    
+    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let size = self.bounds.size
+        UIGraphicsBeginImageContext(size)
+        let context = UIGraphicsGetCurrentContext()
+        self.setBackgroundImage(self.image(context), for: UIControlState())
+        UIGraphicsEndImageContext()
+        
+        super.touchesEnded(touches, with: event)
+    }
+    
+    // - MARK: Tappable
+    open var path: CGMutablePath {
+        return graphable.path
+    }
+    
+    open func image(_ context: CGContext?) -> UIImage? {
+        if let paths = self.subpaths, let colors = self.colors {
+            return UIImage.image(with: paths, colors: colors, size: graphable.size, context: context)
+        }
+        
+        return UIImage.image(with: path, fillColor: color, context: context)
+    }
+    
+    open func touchedImage(_ context: CGContext?) -> UIImage? {
+        if let paths = self.subpaths, let colors = touchedColors {
+            return UIImage.image(with: paths, colors: colors, size: graphable.size, context: context)
+        }
+        
+        return UIImage.image(with: path, fillColor: touchedColor, context: context)
+    }
+    
+    open var subpaths: [CGMutablePath]? {
+        return graphable.subpaths
+    }
+    
+    open var colors: [UIColor]? {
+        return nil
+    }
+    
+    open var touchedColors: [UIColor]? {
+        return nil
     }
 }

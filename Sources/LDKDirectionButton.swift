@@ -31,23 +31,47 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable open class LDKDirectionButton: UIButton, Tappables {
-    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
-    @IBInspectable open var radius: CGFloat = CGFloat(0)
-    @IBInspectable open var startDegree: CGFloat = CGFloat(0)
-    @IBInspectable open var endDegree: CGFloat = CGFloat(0)
-    @IBInspectable open var cardinalDegree: CGFloat = CGFloat(0)
+@IBDesignable open class LDKDirectionButton: LDKButton {
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.titleLabel?.font = UIFont.Okuda.regular
-        self.setTitleColor(UIColor.black, for: UIControlState())
+    open var direction: Direction = Direction()
+    open override var graphable: Graphable {
+        get {
+            return direction
+        }
+        set {}
     }
     
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.titleLabel?.font = UIFont.Okuda.regular
-        self.setTitleColor(UIColor.black, for: UIControlState())
+    @IBInspectable open var radius: CGFloat {
+        get {
+            return direction.arc.radius
+        }
+        set {
+            direction.arc.radius = newValue
+        }
+    }
+    @IBInspectable open var startDegree: CGFloat {
+        get {
+            return direction.arc.startDegree
+        }
+        set {
+            direction.arc.startDegree = newValue
+        }
+    }
+    @IBInspectable open var endDegree: CGFloat {
+        get {
+            return direction.arc.endDegree
+        }
+        set {
+            direction.arc.endDegree = newValue
+        }
+    }
+    @IBInspectable open var cardinalDegree: CGFloat {
+        get {
+            return direction.cardinal.degree
+        }
+        set {
+            direction.cardinal = Direction.Cardinal(degreeValue: newValue)
+        }
     }
     
     convenience init(inRect rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinalDegree: CGFloat) {
@@ -61,114 +85,20 @@ import GraphPoint
         self.cardinalDegree = cardinalDegree
     }
     
-    // MARK: - Tappables
-    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
-        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        return type(of: self).directionPathWithArc(arc, cardinalDegree: cardinalDegree, size: size)
+    // MARK: - Tappable
+    override open var colors: [UIColor]? {
+        return [Interface.theme.primaryDark, Interface.theme.primaryLight]
     }
     
-    open func backgroundImageSubpaths(_ size: CGSize) -> [CGMutablePath] {
-        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        return type(of: self).directionSubpathsWithArc(arc, cardinalDegree: cardinalDegree, size: size)
-    }
-    
-    // MARK: - CG Paths
-    open static func directionPathWithArc(_ arc: Arc, cardinalDegree: CGFloat, size: CGSize) -> CGMutablePath {
-        let path: CGMutablePath = CGMutablePath()
-        
-        let paths = self.directionSubpathsWithArc(arc, cardinalDegree: cardinalDegree, size: size)
-        for p in paths {
-            path.addPath(p)
+    override open var touchedColors: [UIColor]? {
+        guard let c = self.colors else {
+            return nil
         }
         
-        return path
-    }
-    
-    open static func directionSubpathsWithArc(_ arc: Arc, cardinalDegree: CGFloat, size: CGSize) -> [CGMutablePath] {
-        var paths: [CGMutablePath] = [CGMutablePath]()
-        
-        guard cardinalDegree == 0 || cardinalDegree == 90 || cardinalDegree == 180 || cardinalDegree == 270 else {
-            return paths
+        var colors = c
+        for (index, color) in colors.enumerated() {
+            colors[index] = color.adaptingSaturation(by: 0.8)
         }
-        
-        let graphFrame = GraphFrame.graphFrame(graphPoints: arc.graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
-        let offset = graphFrame.graphOriginOffset
-        let unit = min(size.width, size.height) / 2
-        
-        if cardinalDegree == 0 {
-            // Right
-            let arrowPath: CGMutablePath = CGMutablePath()
-            let arcX = size.width + offset.x - graphFrame.width
-            arrowPath.addArc(center: CGPoint(x: arcX, y: offset.y), radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
-            arrowPath.addLine(to: CGPoint(x: size.width - unit, y: size.height))
-            arrowPath.addLine(to: CGPoint(x: size.width - unit, y: 0))
-            arrowPath.closeSubpath()
-            
-            arrowPath.move(to: CGPoint(x: size.width - (unit * 1.25), y: unit))
-            arrowPath.addLine(to: CGPoint(x: size.width - (unit * 1.75), y: size.height * 0.1))
-            arrowPath.addLine(to: CGPoint(x: size.width - (unit * 1.75), y: size.height * 0.9))
-            arrowPath.closeSubpath()
-            paths.append(arrowPath)
-            
-            let remainingPath: CGMutablePath = CGMutablePath()
-            remainingPath.addRect(CGRect(x: 0, y: 0, width: size.width - (unit * 2.0), height: size.height))
-            paths.append(remainingPath)
-        } else if cardinalDegree == 90 {
-            // Down
-            let arrowPath: CGMutablePath = CGMutablePath()
-            arrowPath.addArc(center: CGPoint(x: offset.x, y: size.height + offset.y - graphFrame.height), radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
-            arrowPath.addLine(to: CGPoint(x: 0, y: size.height - unit))
-            arrowPath.addLine(to: CGPoint(x: size.width, y: size.height - unit))
-            arrowPath.closeSubpath()
-            
-            arrowPath.move(to: CGPoint(x: unit, y: size.height - (unit * 1.25)))
-            arrowPath.addLine(to: CGPoint(x: size.width * 0.1, y: size.height - (unit * 1.75)))
-            arrowPath.addLine(to: CGPoint(x: size.width * 0.9, y: size.height - (unit * 1.75)))
-            arrowPath.closeSubpath()
-            paths.append(arrowPath)
-            
-            let remainingPath: CGMutablePath = CGMutablePath()
-            remainingPath.addRect(CGRect(x: 0, y: 0, width: size.width, height: size.height - (unit * 2)))
-            paths.append(remainingPath)
-        } else if cardinalDegree == 180 {
-            // Left
-            let arrowPath: CGMutablePath = CGMutablePath()
-            arrowPath.addArc(center: offset, radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
-            arrowPath.addLine(to: CGPoint(x: unit, y: 0))
-            arrowPath.addLine(to: CGPoint(x: unit, y: size.height))
-            arrowPath.closeSubpath()
-            
-            arrowPath.move(to: CGPoint(x: unit * 1.25, y: unit))
-            arrowPath.addLine(to: CGPoint(x: unit * 1.75, y: size.height * 0.1))
-            arrowPath.addLine(to: CGPoint(x: unit * 1.75, y: size.height * 0.9))
-            arrowPath.closeSubpath()
-            paths.append(arrowPath)
-            
-            let remainingPath: CGMutablePath = CGMutablePath()
-            remainingPath.addRect(CGRect(x: (unit * 2), y: 0, width: size.width - (unit * 2.0), height: size.height))
-            paths.append(remainingPath)
-        } else if cardinalDegree == 270 {
-            // Up
-            let arrowPath: CGMutablePath = CGMutablePath()
-            arrowPath.addArc(center: offset, radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
-            arrowPath.addLine(to: CGPoint(x: size.width, y: unit))
-            arrowPath.addLine(to: CGPoint(x: 0, y: unit))
-            arrowPath.closeSubpath()
-            
-            arrowPath.move(to: CGPoint(x: unit, y: unit * 1.25))
-            arrowPath.addLine(to: CGPoint(x: size.width * 0.1, y: unit * 1.75))
-            arrowPath.addLine(to: CGPoint(x: size.width * 0.9, y: unit * 1.75))
-            arrowPath.closeSubpath()
-            
-            arrowPath.addRect(CGRect(x: 0, y: (unit * 2.0), width: size.width, height: (unit * 0.5)))
-            paths.append(arrowPath)
-            
-            let remainingPath: CGMutablePath = CGMutablePath()
-            remainingPath.addRect(CGRect(x: 0, y: (unit * 2.75), width: size.width, height: unit))
-            remainingPath.addRect(CGRect(x: 0, y: (unit * 4.0), width: size.width, height: size.height - (unit * 4.0)))
-            paths.append(remainingPath)
-        }
-        
-        return paths
+        return colors
     }
 }

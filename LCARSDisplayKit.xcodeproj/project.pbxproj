@@ -23,10 +23,10 @@
 		E105B7751D5A5F73004AE5D9 /* LDKSectorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105B7611D5A5F73004AE5D9 /* LDKSectorButton.swift */; };
 		E105B7761D5A5F73004AE5D9 /* RoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105B7621D5A5F73004AE5D9 /* RoundedRectangle.swift */; };
 		E105B7771D5A5F73004AE5D9 /* Tappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105B7631D5A5F73004AE5D9 /* Tappable.swift */; };
-		E105B7781D5A5F73004AE5D9 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105B7641D5A5F73004AE5D9 /* UIButton.swift */; };
 		E105B77A1D5A5F73004AE5D9 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105B7661D5A5F73004AE5D9 /* UIImage.swift */; };
 		E105B77C1D5A61DC004AE5D9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105B77B1D5A61DC004AE5D9 /* Theme.swift */; };
 		E105B78D1D5E6688004AE5D9 /* Designables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E105B78B1D5E6688004AE5D9 /* Designables.storyboard */; };
+		E11009F61F5492E30040D29B /* Elbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11009F51F5492E30040D29B /* Elbow.swift */; };
 		E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */; };
 		E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB51BBE7FBC0001C33D /* ViewController.swift */; };
 		E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FB71BBE7FBC0001C33D /* Main.storyboard */; };
@@ -48,6 +48,7 @@
 		E14DEAFE1F521CBD00F1EEFF /* beep1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */; };
 		E14DEAFF1F521CBD00F1EEFF /* beep3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */; };
 		E14DEB011F5452DE00F1EEFF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEB001F5452DE00F1EEFF /* UIColor.swift */; };
+		E14DEB051F546F0000F1EEFF /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEB041F546F0000F1EEFF /* Direction.swift */; };
 		E176A6901D8DE5CD00823E19 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A68F1D8DE5CD00823E19 /* CGFloat.swift */; };
 		E1E6A6B51F522D3D005DC4D0 /* GraphMultiplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6A6B41F522D3D005DC4D0 /* GraphMultiplier.swift */; };
 /* End PBXBuildFile section */
@@ -92,10 +93,10 @@
 		E105B7611D5A5F73004AE5D9 /* LDKSectorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKSectorButton.swift; sourceTree = "<group>"; };
 		E105B7621D5A5F73004AE5D9 /* RoundedRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectangle.swift; sourceTree = "<group>"; };
 		E105B7631D5A5F73004AE5D9 /* Tappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tappable.swift; sourceTree = "<group>"; };
-		E105B7641D5A5F73004AE5D9 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		E105B7661D5A5F73004AE5D9 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		E105B77B1D5A61DC004AE5D9 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		E105B78C1D5E6688004AE5D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Designables.storyboard; sourceTree = "<group>"; };
+		E11009F51F5492E30040D29B /* Elbow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elbow.swift; sourceTree = "<group>"; };
 		E1112FB01BBE7FBC0001C33D /* LCARSDisplayKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCARSDisplayKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1112FB51BBE7FBC0001C33D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +124,7 @@
 		E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep1.m4a; sourceTree = "<group>"; };
 		E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep3.m4a; sourceTree = "<group>"; };
 		E14DEB001F5452DE00F1EEFF /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		E14DEB041F546F0000F1EEFF /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		E176A68F1D8DE5CD00823E19 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
 		E1E6A6B41F522D3D005DC4D0 /* GraphMultiplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphMultiplier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,9 +185,11 @@
 			children = (
 				E105B7531D5A5F73004AE5D9 /* Arc.swift */,
 				E14DEAF81F521A1300F1EEFF /* Audio.swift */,
+				E14DEB041F546F0000F1EEFF /* Direction.swift */,
 				E176A68F1D8DE5CD00823E19 /* CGFloat.swift */,
 				E105B7581D5A5F73004AE5D9 /* Crescent.swift */,
 				E105B7591D5A5F73004AE5D9 /* EdgedCrescent.swift */,
+				E11009F51F5492E30040D29B /* Elbow.swift */,
 				E105B75A1D5A5F73004AE5D9 /* Graphable.swift */,
 				E1E6A6B41F522D3D005DC4D0 /* GraphMultiplier.swift */,
 				E105B75B1D5A5F73004AE5D9 /* LDKButton.swift */,
@@ -198,7 +202,6 @@
 				E105B7621D5A5F73004AE5D9 /* RoundedRectangle.swift */,
 				E105B7631D5A5F73004AE5D9 /* Tappable.swift */,
 				E105B77B1D5A61DC004AE5D9 /* Theme.swift */,
-				E105B7641D5A5F73004AE5D9 /* UIButton.swift */,
 				E14DEB001F5452DE00F1EEFF /* UIColor.swift */,
 				E14DEAF01F51EA4E00F1EEFF /* UIFont.swift */,
 				E105B7661D5A5F73004AE5D9 /* UIImage.swift */,
@@ -606,10 +609,11 @@
 				E105B7711D5A5F73004AE5D9 /* LDKDirectionButton.swift in Sources */,
 				E1E6A6B51F522D3D005DC4D0 /* GraphMultiplier.swift in Sources */,
 				E105B77C1D5A61DC004AE5D9 /* Theme.swift in Sources */,
-				E105B7781D5A5F73004AE5D9 /* UIButton.swift in Sources */,
 				E105B7731D5A5F73004AE5D9 /* LDKElbowButton.swift in Sources */,
 				E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */,
 				E105B7751D5A5F73004AE5D9 /* LDKSectorButton.swift in Sources */,
+				E11009F61F5492E30040D29B /* Elbow.swift in Sources */,
+				E14DEB051F546F0000F1EEFF /* Direction.swift in Sources */,
 				E105B76C1D5A5F73004AE5D9 /* Crescent.swift in Sources */,
 				E127EB271BBE80C800AAD675 /* LDKDPadFullView.swift in Sources */,
 				E105B7741D5A5F73004AE5D9 /* LDKIndicatorView.swift in Sources */,

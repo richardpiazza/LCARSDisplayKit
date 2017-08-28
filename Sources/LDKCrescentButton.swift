@@ -31,9 +31,16 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable open class LDKCrescentButton: UIButton, Tappable {
+@IBDesignable open class LDKCrescentButton: LDKButton {
+    
     open var crescent: Crescent = Crescent()
-    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
+    open override var graphable: Graphable {
+        get {
+            return crescent
+        }
+        set {}
+    }
+    
     @IBInspectable open var innerRadius: CGFloat {
         get {
             return crescent.innerArc.radius
@@ -69,18 +76,6 @@ import GraphPoint
         }
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.titleLabel?.font = UIFont.Okuda.regular
-        self.setTitleColor(UIColor.black, for: UIControlState())
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.titleLabel?.font = UIFont.Okuda.regular
-        self.setTitleColor(UIColor.black, for: UIControlState())
-    }
-    
     convenience init(withCrescent crescent: Crescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
         let frame = rect.frame(graphFrame: crescent.graphFrame, offset: offset)
         self.init(frame: frame)
@@ -90,14 +85,5 @@ import GraphPoint
     func setCrescent(_ crescent: Crescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
         self.crescent = crescent
         self.frame = rect.frame(graphFrame: crescent.graphFrame, offset: offset)
-    }
-    
-    // MARK: - Tappable
-    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
-        return crescent.path
-    }
-    
-    open func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage? {
-        return UIImage.imageWithPath(backgroundImagePath(size), size: size, color: backgroundImageColor, context: context)
     }
 }

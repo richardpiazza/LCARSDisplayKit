@@ -30,15 +30,16 @@
 
 import UIKit
 
-@IBDesignable open class LDKIndicatorView: UIView, Tappable {
+@IBDesignable open class LDKIndicatorView: UIView {
+    
     static let defaultSize: CGSize = CGSize(width: 132, height: 60)
     
-    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.random()
+    @IBInspectable open var color: UIColor = Interface.theme.primaryDark
     @IBInspectable open var displayValue: String = "000"
     @IBInspectable open var left: Bool = true
-    internal var indicator: UIImageView = UIImageView(frame: CGRect.zero)
+    
     internal var valueLabel: UILabel = UILabel(frame: CGRect.zero)
-    internal var indicatorImage: UIImage?
+    internal var indicator: LDKButton = LDKButton(frame: CGRect.zero)
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -55,22 +56,15 @@ import UIKit
         
         self.backgroundColor = UIColor.clear
         
-        let indicatorFrame = self.indicatorFrame(self.frame)
-        UIGraphicsBeginImageContextWithOptions(indicatorFrame.size, false, UIScreen.main.scale)
-        let context = UIGraphicsGetCurrentContext()
-        self.indicatorImage = self.backgroundImage(context, size: indicatorFrame.size)
-        UIGraphicsEndImageContext()
-        
-        self.indicator.frame = indicatorFrame
-        self.indicator.image = self.indicatorImage
-        self.indicator.backgroundColor = UIColor.purple
+        self.indicator.frame = self.indicatorFrame(self.frame)
+        self.indicator.graphable.size = indicator.frame.size
         if !self.subviews.contains(self.indicator) {
             self.addSubview(self.indicator)
         }
         
         let valueLabelFrame = self.displayValueFrame(self.frame)
         self.valueLabel.frame = valueLabelFrame
-        self.valueLabel.textColor = self.backgroundImageColor
+        self.valueLabel.textColor = self.color
         self.valueLabel.text = self.displayValue
         self.valueLabel.textAlignment = (self.left) ? .left : .right
         if !self.subviews.contains(self.valueLabel) {
@@ -109,11 +103,5 @@ import UIKit
         }
         
         return CGRect(x: 0, y: 0, width: displayValueWidth, height: rect.height)
-    }
-    
-    // MARK: - Tappable
-    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
-        let rr = RoundedRectangle(size: size, leftRounded: false, rightRounded: false, cornersOnly: false)
-        return rr.path
     }
 }

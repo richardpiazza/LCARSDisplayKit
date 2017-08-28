@@ -23,71 +23,34 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+// Star Trek and related marks are registered trademarks of CBS® / PARAMOUNT®
+// PLC. Original LCARS design credit: Mike Okuda.
+//
 //===----------------------------------------------------------------------===//
 
 import UIKit
+import GraphPoint
 
 /// Protocol defining methods of an interactive item with single color and path.
 public protocol Tappable {
-    var backgroundImageColor: UIColor { get set }
-    /// Path representing the background image, also used to determine if a touch falls inside a button.
-    func backgroundImagePath(_ size: CGSize) -> CGMutablePath
-    /// Construct an image using the `backgroundImagePath`
-    func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage?
-    /// An adapted color signifying activation
-    func touchColor() -> UIColor
-    /// An image using the 'backgroundImagePath' with an adapted color signifying activation
-    func touchImage(_ context: CGContext?, size: CGSize) -> UIImage?
-}
-
-public extension Tappable {
-    public func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
-        return CGMutablePath()
-    }
+    /// The base Graphable type
+    var graphable: Graphable { get set }
+    /// The color of the element
+    var color: UIColor { get set }
+    /// A color used during active touching
+    var touchedColor: UIColor { get set }
+    /// Path representing the image.
+    /// Also used to determine if a touch falls within a path (not just within the frame).
+    var path: CGMutablePath { get }
+    /// An image generated using the `path`
+    func image(_ context: CGContext?) -> UIImage?
+    /// An image generated using the `path` and substituting the `touchedColor`.
+    func touchedImage(_ context: CGContext?) -> UIImage?
     
-    public func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage? {
-        return UIImage.imageWithPath(backgroundImagePath(size), size: size, color: backgroundImageColor, context: context)
-    }
-    
-    public func touchColor() -> UIColor {
-        return backgroundImageColor.adaptingSaturation(by: 0.8)
-    }
-    
-    public func touchImage(_ context: CGContext?, size: CGSize) -> UIImage? {
-        return UIImage.imageWithPath(backgroundImagePath(size), size: size, color: self.touchColor(), context: context)
-    }
-}
-
-/// An interactive item with multipls colors and paths.
-public protocol Tappables: Tappable {
-    func backgroundImageColors() -> [UIColor]
-    func backgroundImageSubpaths(_ size: CGSize) -> [CGMutablePath]
-    func touchColors() -> [UIColor]
-}
-
-public extension Tappables {
-    public func backgroundImageColors() -> [UIColor] {
-        var colors: [UIColor] = [UIColor]()
-        colors.append(Interface.theme.primaryDark)
-        colors.append(Interface.theme.primaryLight)
-        return colors
-    }
-    
-    public func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage? {
-        let paths = self.backgroundImageSubpaths(size)
-        return UIImage.imageWithSubpaths(paths, colors: self.backgroundImageColors(), size: size, context: context)
-    }
-    
-    public func touchColors() -> [UIColor] {
-        var colors = backgroundImageColors()
-        for (index, color) in colors.enumerated() {
-            colors[index] = color.adaptingSaturation(by: 0.8)
-        }
-        return colors
-    }
-    
-    public func touchImage(_ context: CGContext?, size: CGSize) -> UIImage? {
-        let paths = self.backgroundImageSubpaths(size)
-        return UIImage.imageWithSubpaths(paths, colors: self.touchColors(), size: size, context: context)
-    }
+    /// A collection of paths that make up the `path`
+    var subpaths: [CGMutablePath]? { get }
+    /// Colors that are used for each of the `subpaths`
+    var colors: [UIColor]? { get }
+    /// Colors used for each `subpath` used during active touching
+    var touchedColors: [UIColor]? { get }
 }

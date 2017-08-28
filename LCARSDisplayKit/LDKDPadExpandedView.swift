@@ -259,164 +259,165 @@ open class LDKDPadExpandedView: LDKDPadView {
         
         let roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: true, rightRounded: true, cornersOnly: false)
         
-        top00.setRoundedRectangle(roundedRectangle, withFrame: frame)
+        top00.rectangle = roundedRectangle
+        top00.frame = frame
     }
     
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        innerRingSector01.backgroundImageColor = Interface.theme.tertiaryLight
+        innerRingSector01.color = Interface.theme.tertiaryLight
         innerRingSector01.setTitle("IRS01", for: UIControlState())
         if !self.subviews.contains(innerRingSector01) {
             self.addSubview(innerRingSector01)
         }
         self.bringSubview(toFront: innerRingSector01)
         
-        innerRingSector04.backgroundImageColor = Interface.theme.tertiaryLight
+        innerRingSector04.color = Interface.theme.tertiaryLight
         innerRingSector04.setTitle("IRS04", for: UIControlState())
         if !self.subviews.contains(innerRingSector04) {
             self.addSubview(innerRingSector04)
         }
         
-        innerRing05.backgroundImageColor = Interface.theme.primaryLight
+        innerRing05.color = Interface.theme.primaryLight
         innerRing05.setTitle("IR05", for: UIControlState())
         if !self.subviews.contains(innerRing05) {
             self.addSubview(innerRing05)
         }
         
-        innerRing10.backgroundImageColor = Interface.theme.primaryLight
+        innerRing10.color = Interface.theme.primaryLight
         innerRing10.setTitle("6", for: UIControlState())
         if !self.subviews.contains(innerRing10) {
             self.addSubview(innerRing10)
         }
         
-        innerRing11.backgroundImageColor = Interface.theme.tertiaryLight
+        innerRing11.color = Interface.theme.tertiaryLight
         innerRing11.setTitle("7", for: UIControlState())
         if !self.subviews.contains(innerRing11) {
             self.addSubview(innerRing11)
         }
         
-        innerRing12.backgroundImageColor = Interface.theme.primaryDark
+        innerRing12.color = Interface.theme.primaryDark
         innerRing12.setTitle("8", for: UIControlState())
         if !self.subviews.contains(innerRing12) {
             self.addSubview(innerRing12)
         }
         
-        innerRing13.backgroundImageColor = Interface.theme.tertiaryDark
+        innerRing13.color = Interface.theme.tertiaryDark
         innerRing13.setTitle("9", for: UIControlState())
         if !self.subviews.contains(innerRing13) {
             self.addSubview(innerRing13)
         }
         
-        innerRing14.backgroundImageColor = Interface.theme.tertiaryLight
+        innerRing14.color = Interface.theme.tertiaryLight
         innerRing14.setTitle("0", for: UIControlState())
         if !self.subviews.contains(innerRing14) {
             self.addSubview(innerRing14)
         }
         
-        innerRing15.backgroundImageColor = Interface.theme.primaryLight
+        innerRing15.color = Interface.theme.primaryLight
         innerRing15.setTitle("IR15", for: UIControlState())
         if !self.subviews.contains(innerRing15) {
             self.addSubview(innerRing15)
         }
         
-        innerRing20.backgroundImageColor = Interface.theme.primaryLight
+        innerRing20.color = Interface.theme.primaryLight
         innerRing20.setTitle("IR20", for: UIControlState())
         if !self.subviews.contains(innerRing20) {
             self.addSubview(innerRing20)
         }
         
-        outerRing10.backgroundImageColor = Interface.theme.primaryDark
+        outerRing10.color = Interface.theme.primaryDark
         outerRing10.setTitle("1", for: UIControlState())
         if !self.subviews.contains(outerRing10) {
             self.addSubview(outerRing10)
         }
         
-        outerRing11.backgroundImageColor = Interface.theme.tertiaryDark
+        outerRing11.color = Interface.theme.tertiaryDark
         outerRing11.setTitle("2", for: UIControlState())
         if !self.subviews.contains(outerRing11) {
             self.addSubview(outerRing11)
         }
         
-        outerRing12.backgroundImageColor = Interface.theme.tertiaryLight
+        outerRing12.color = Interface.theme.tertiaryLight
         outerRing12.setTitle("3", for: UIControlState())
         if !self.subviews.contains(outerRing12) {
             self.addSubview(outerRing12)
         }
         
-        outerRing13.backgroundImageColor = Interface.theme.primaryLight
+        outerRing13.color = Interface.theme.primaryLight
         outerRing13.setTitle("4", for: UIControlState())
         if !self.subviews.contains(outerRing13) {
             self.addSubview(outerRing13)
         }
         
-        outerRing14.backgroundImageColor = Interface.theme.primaryDark
+        outerRing14.color = Interface.theme.primaryDark
         outerRing14.setTitle("5", for: UIControlState())
         if !self.subviews.contains(outerRing14) {
             self.addSubview(outerRing14)
         }
         
-        outerRing16.backgroundImageColor = Interface.theme.tertiaryDark
+        outerRing16.color = Interface.theme.tertiaryDark
         outerRing16.setTitle("OR16", for: UIControlState())
         if !self.subviews.contains(outerRing16) {
             self.addSubview(outerRing16)
         }
         
-        outerRing17.backgroundImageColor = Interface.theme.primaryLight
+        outerRing17.color = Interface.theme.primaryLight
         outerRing17.setTitle("OR17", for: UIControlState())
         if !self.subviews.contains(outerRing17) {
             self.addSubview(outerRing17)
         }
         
-        outerRingExtended18.backgroundImageColor = Interface.theme.primaryDark
+        outerRingExtended18.color = Interface.theme.primaryDark
         outerRingExtended18.setTitle("ORE18", for: UIControlState())
         if !self.subviews.contains(outerRingExtended18) {
             self.addSubview(outerRingExtended18)
         }
         
-        outerRingExtended19.backgroundImageColor = Interface.theme.tertiaryDark
+        outerRingExtended19.color = Interface.theme.tertiaryDark
         outerRingExtended19.setTitle("ORE19", for: UIControlState())
         if !self.subviews.contains(outerRingExtended19) {
             self.addSubview(outerRingExtended19)
         }
         
-        outerRing20.backgroundImageColor = Interface.theme.tertiaryLight
+        outerRing20.color = Interface.theme.tertiaryLight
         outerRing20.setTitle("OR20", for: UIControlState())
         if !self.subviews.contains(outerRing20) {
             self.addSubview(outerRing20)
         }
         
-        edge01.backgroundImageColor = Interface.theme.tertiaryLight
+        edge01.color = Interface.theme.tertiaryLight
         edge01.setTitle("E01", for: UIControlState())
         if !self.subviews.contains(edge01) {
             self.addSubview(edge01)
         }
         
-        edge02.backgroundImageColor = Interface.theme.primaryLight
+        edge02.color = Interface.theme.primaryLight
         edge02.setTitle("Mode Select", for: UIControlState())
         if !self.subviews.contains(edge02) {
             self.addSubview(edge02)
         }
         
-        edge03.backgroundImageColor = Interface.theme.tertiaryDark
+        edge03.color = Interface.theme.tertiaryDark
         edge03.setTitle("E03", for: UIControlState())
         if !self.subviews.contains(edge03) {
             self.addSubview(edge03)
         }
         
-        edge04.backgroundImageColor = Interface.theme.primaryDark
+        edge04.color = Interface.theme.primaryDark
         edge04.setTitle("E04", for: UIControlState())
         if !self.subviews.contains(edge04) {
             self.addSubview(edge04)
         }
         
-        edge05.backgroundImageColor = Interface.theme.tertiaryLight
+        edge05.color = Interface.theme.tertiaryLight
         edge05.setTitle("E05", for: UIControlState())
         if !self.subviews.contains(edge05) {
             self.addSubview(edge05)
         }
         
-        top00.backgroundImageColor = Interface.theme.tertiaryLight
+        top00.color = Interface.theme.tertiaryLight
         top00.setTitle("T00", for: UIControlState())
         if !self.subviews.contains(top00) {
             self.addSubview(top00)

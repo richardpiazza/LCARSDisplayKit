@@ -79,7 +79,8 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         frame.size.height = 60
         
         var roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: false, rightRounded: false, cornersOnly: false)
-        top01.setRoundedRectangle(roundedRectangle, withFrame: frame)
+        top01.rectangle = roundedRectangle
+        top01.frame = frame
         
         
         if !edge05.edgePoint1.equalTo(CGPoint.zero) {
@@ -93,67 +94,71 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         frame.size.height = 60
         
         roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: false, rightRounded: false, cornersOnly: false)
-        top03.setRoundedRectangle(roundedRectangle, withFrame: frame)
+        top03.rectangle = roundedRectangle
+        top03.frame = frame
         
         frame.size.width = 80
         frame.origin.x = top03.frame.origin.x - 88
         
         roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: true, rightRounded: false, cornersOnly: false)
-        top02.setRoundedRectangle(roundedRectangle, withFrame: frame)
+        top02.rectangle = roundedRectangle
+        top02.frame = frame
         
         frame.origin.x = top03.frame.origin.x + top03.frame.size.width + 8
         
         roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: false, rightRounded: true, cornersOnly: false)
-        top04.setRoundedRectangle(roundedRectangle, withFrame: frame)
+        top04.rectangle = roundedRectangle
+        top04.frame = frame
         
         frame.origin.x = top00.frame.origin.x
         frame.size.width = top00.frame.size.width
         
         roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: true, rightRounded: true, cornersOnly: false)
-        top05.setRoundedRectangle(roundedRectangle, withFrame: frame)
+        top05.rectangle = roundedRectangle
+        top05.frame = frame
     }
     
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        outerRingSector01.backgroundImageColor = Interface.theme.primaryDark
+        outerRingSector01.color = Interface.theme.primaryDark
         outerRingSector01.setTitle("ORS01", for: UIControlState())
         outerRingSector01.contentEdgeInsets = UIEdgeInsets(top: 30.0, left: 60.0, bottom: 0.0, right: 0.0)
         if !self.subviews.contains(outerRingSector01) {
             self.addSubview(outerRingSector01)
         }
         
-        outerRing05.backgroundImageColor = Interface.theme.primaryDark
+        outerRing05.color = Interface.theme.primaryDark
         outerRing05.setTitle("OR05", for: UIControlState())
         if !self.subviews.contains(outerRing05) {
             self.addSubview(outerRing05)
         }
         
-        top01.backgroundImageColor = Interface.theme.tertiaryLight
+        top01.color = Interface.theme.tertiaryLight
         top01.setTitle("Calibrate", for: UIControlState())
         if !self.subviews.contains(top01) {
             self.addSubview(top01)
         }
         
-        top02.backgroundImageColor = Interface.theme.primaryLight
+        top02.color = Interface.theme.primaryLight
         top02.setTitle("T02", for: UIControlState())
         if !self.subviews.contains(top02) {
             self.addSubview(top02)
         }
         
-        top03.backgroundImageColor = Interface.theme.tertiaryDark
+        top03.color = Interface.theme.tertiaryDark
         top03.setTitle("T03", for: UIControlState())
         if !self.subviews.contains(top03) {
             self.addSubview(top03)
         }
         
-        top04.backgroundImageColor = Interface.theme.primaryDark
+        top04.color = Interface.theme.primaryDark
         top04.setTitle("T04", for: UIControlState())
         if !self.subviews.contains(top04) {
             self.addSubview(top04)
         }
         
-        top05.backgroundImageColor = Interface.theme.primaryDark
+        top05.color = Interface.theme.primaryDark
         top05.setTitle("T05", for: UIControlState())
         if !self.subviews.contains(top05) {
             self.addSubview(top05)

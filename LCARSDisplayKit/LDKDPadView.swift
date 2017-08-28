@@ -112,6 +112,7 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         
         var frame = CGRect(x: x, y: y, width: width, height: height)
         
+        crux.rectangle = RoundedRectangle(size: frame.size, leftRounded: false, rightRounded: false, cornersOnly: false)
         crux.frame = frame
         
         height = cer - 8 - cir / 2
@@ -119,19 +120,21 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         frame = CGRect(x: x, y: y, width: width, height: height)
         
         up.frame = frame
+        up.direction.size = frame.size
         up.radius = cer
         up.startDegree = LDKDirectionButtonUp.startDegree
         up.endDegree = LDKDirectionButtonUp.endDegree
-        up.cardinalDegree = CGFloat(270)
+        up.cardinalDegree = Direction.Cardinal.up.degree
         
         y = graphOrigin.y + cir / 2 + 8
         frame = CGRect(x: x, y: y, width: width, height: height)
         
         down.frame = frame
+        down.direction.size = frame.size
         down.radius = cer
         down.startDegree = LDKDirectionButtonDown.startDegree
         down.endDegree = LDKDirectionButtonDown.endDegree
-        down.cardinalDegree = CGFloat(90)
+        down.cardinalDegree = Direction.Cardinal.down.degree
         
         height = cir
         width = cer - 8 - cir / 2
@@ -140,19 +143,21 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         frame = CGRect(x: x, y: y, width: width, height: height)
         
         left.frame = frame
+        left.direction.size = frame.size
         left.radius = cer
         left.startDegree = LDKDirectionButtonLeft.startDegree
         left.endDegree = LDKDirectionButtonLeft.endDegree
-        left.cardinalDegree = CGFloat(180)
+        left.cardinalDegree = Direction.Cardinal.left.degree
         
         x = graphOrigin.x + cir / 2 + 8
         frame = CGRect(x: x, y: y, width: width, height: height)
         
         right.frame = frame
+        right.direction.size = frame.size
         right.radius = cer
         right.startDegree = LDKDirectionButtonRight.startDegree
         right.endDegree = LDKDirectionButtonRight.endDegree
-        right.cardinalDegree = CGFloat(0)
+        right.cardinalDegree = Direction.Cardinal.right.degree
         
         var arc = Arc(radius: cer, startDegree: LDKSectorButton01.startDegree, endDegree: LDKSectorButton01.endDegree)
         sector01.setArc(arc, inRect: rect, withGraphOriginOffset: graphOriginOffset())
@@ -170,7 +175,7 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        crux.backgroundImageColor = Interface.theme.primaryDark
+        crux.color = Interface.theme.primaryDark
         crux.setTitle("", for: UIControlState())
         if !self.subviews.contains(crux) {
             self.addSubview(crux)
@@ -197,29 +202,25 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         }
         
         sector01.setTitle("", for: UIControlState())
-        sector01.contentVerticalAlignment = .top
-        sector01.contentHorizontalAlignment = .right
+        sector01.color = Interface.theme.primaryMedium
         if !self.subviews.contains(sector01) {
             self.addSubview(sector01)
         }
         
         sector02.setTitle("", for: UIControlState())
-        sector02.contentVerticalAlignment = .top
-        sector02.contentHorizontalAlignment = .left
+        sector02.color = Interface.theme.primaryMedium
         if !self.subviews.contains(sector02) {
             self.addSubview(sector02)
         }
         
         sector03.setTitle("", for: UIControlState())
-        sector03.contentVerticalAlignment = .bottom
-        sector03.contentHorizontalAlignment = .left
+        sector03.color = Interface.theme.primaryMedium
         if !self.subviews.contains(sector03) {
             self.addSubview(sector03)
         }
         
         sector04.setTitle("", for: UIControlState())
-        sector04.contentVerticalAlignment = .bottom
-        sector04.contentHorizontalAlignment = .right
+        sector04.color = Interface.theme.primaryMedium
         if !self.subviews.contains(sector04) {
             self.addSubview(sector04)
         }

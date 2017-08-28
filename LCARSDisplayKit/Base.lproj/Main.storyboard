@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad9_7" orientation="landscape">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -24,19 +24,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qX5-kk-hu4" customClass="LDKDPadFullView" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="728" height="728"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="728" id="0Vb-Wh-TVT"/>
-                                    <constraint firstAttribute="width" secondItem="qX5-kk-hu4" secondAttribute="height" multiplier="1:1" id="6pJ-XJ-Wlx"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgS-Mn-RDY" userLabel="Top Left">
-                                <rect key="frame" x="20" y="-236" width="728" height="230"/>
+                                <rect key="frame" x="20" y="20" width="728" height="230"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCd-8L-ofV" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="305" height="230"/>
@@ -82,7 +74,7 @@
                                 </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvF-dd-Sdo" userLabel="Indicators">
-                                <rect key="frame" x="772" y="20" width="232" height="728"/>
+                                <rect key="frame" x="772" y="276" width="232" height="728"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8W4-kD-vs7" customClass="LDKIndicatorView" customModule="LCARSDisplayKit" customModuleProvider="target">
                                         <rect key="frame" x="143" y="192" width="89" height="60"/>
@@ -325,6 +317,14 @@
                                     <constraint firstItem="2lc-hE-Olk" firstAttribute="leading" secondItem="rvF-dd-Sdo" secondAttribute="leading" id="x3e-sR-5BC"/>
                                     <constraint firstAttribute="trailing" secondItem="RrC-Ds-Suf" secondAttribute="trailing" id="yq4-sf-6jJ"/>
                                     <constraint firstItem="2lc-hE-Olk" firstAttribute="leading" secondItem="rvF-dd-Sdo" secondAttribute="leading" id="zbe-bx-iMn"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qX5-kk-hu4" customClass="LDKDPadFullView" customModule="LCARSDisplayKit" customModuleProvider="target">
+                                <rect key="frame" x="20" y="276" width="728" height="728"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="728" id="0Vb-Wh-TVT"/>
+                                    <constraint firstAttribute="width" secondItem="qX5-kk-hu4" secondAttribute="height" multiplier="1:1" id="6pJ-XJ-Wlx"/>
                                 </constraints>
                             </view>
                         </subviews>

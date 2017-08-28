@@ -33,8 +33,12 @@ public protocol Graphable {
     var graphPoints: [GraphPoint] { get }
     /// The `GraphFrame` required to contain all the `GraphPoint`s
     var graphFrame: GraphFrame { get }
+    /// Size used in creating the `path`.
+    var size: CGSize { get set }
     /// A path connecting all `GraphPoint`s
     var path: CGMutablePath { get }
+    /// A collection of paths that make up the `path`
+    var subpaths: [CGMutablePath]? { get }
 }
 
 extension Graphable {
@@ -48,5 +52,9 @@ extension Graphable {
     
     public var path: CGMutablePath {
         return CGMutablePath()
+    }
+    
+    public var subpaths: [CGMutablePath]? {
+        return nil
     }
 }

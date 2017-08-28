@@ -31,9 +31,16 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable open class LDKSectorButton: UIButton, Tappable {
+@IBDesignable open class LDKSectorButton: LDKButton {
+    
     open var arc: Arc = Arc()
-    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryMedium
+    open override var graphable: Graphable {
+        get {
+            return arc
+        }
+        set {}
+    }
+    
     @IBInspectable open var radius: CGFloat {
         get {
             return arc.radius
@@ -59,18 +66,6 @@ import GraphPoint
         }
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.titleLabel?.font = UIFont.Okuda.regular
-        self.setTitleColor(UIColor.black, for: UIControlState())
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.titleLabel?.font = UIFont.Okuda.regular
-        self.setTitleColor(UIColor.black, for: UIControlState())
-    }
-    
     convenience init(inRect rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
         let frame = GraphFrame.graphFrame(graphPoints: arc.graphPoints)
@@ -92,7 +87,7 @@ import GraphPoint
     }
     
     // MARK: - Tappable
-    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
+    override open var path: CGMutablePath {
         if let superframe = self.superview?.bounds {
             return arc.path(inRect: superframe)
         }

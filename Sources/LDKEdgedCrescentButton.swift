@@ -31,9 +31,16 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable open class LDKEdgedCrescentButton: UIButton, Tappable {
+@IBDesignable open class LDKEdgedCrescentButton: LDKButton {
+    
     open var edgedCrescent: EdgedCrescent = EdgedCrescent()
-    @IBInspectable open var backgroundImageColor: UIColor = Interface.theme.primaryDark
+    open override var graphable: Graphable {
+        get {
+            return edgedCrescent
+        }
+        set {}
+    }
+    
     @IBInspectable open var radius: CGFloat {
         get {
             return edgedCrescent.arc.radius
@@ -110,18 +117,6 @@ import GraphPoint
         }
     }
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.titleLabel?.font = UIFont.Okuda.regular
-        self.setTitleColor(UIColor.black, for: UIControlState())
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.titleLabel?.font = UIFont.Okuda.regular
-        self.setTitleColor(UIColor.black, for: UIControlState())
-    }
-    
     convenience init(withEdgedCrescent edgedCrescent: EdgedCrescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
         let frame = rect.frame(graphFrame: edgedCrescent.graphFrame, offset: offset)
         self.init(frame: frame)
@@ -131,10 +126,5 @@ import GraphPoint
     func setEdgedCrescent(_ edgedCrescent: EdgedCrescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
         self.edgedCrescent = edgedCrescent
         self.frame = rect.frame(graphFrame: edgedCrescent.graphFrame, offset: offset)
-    }
-    
-    // MARK: - Tappable
-    open func backgroundImagePath(_ size: CGSize) -> CGMutablePath {
-        return edgedCrescent.path
     }
 }

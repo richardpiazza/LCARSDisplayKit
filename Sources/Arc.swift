@@ -30,6 +30,7 @@ import GraphPoint
 
 /// Arc of a circle (a continuous length around the circumference)
 public struct Arc: Graphable {
+    public var size: CGSize = CGSize.zero
     public var radius: CGFloat = CGFloat(0)
     public var startDegree: CGFloat = CGFloat(0)
     public var endDegree: CGFloat = CGFloat(0)
