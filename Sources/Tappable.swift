@@ -34,6 +34,10 @@ public protocol Tappable {
     func backgroundImagePath(_ size: CGSize) -> CGMutablePath
     /// Construct an image using the `backgroundImagePath`
     func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage?
+    /// An adapted color signifying activation
+    func touchColor() -> UIColor
+    /// An image using the 'backgroundImagePath' with an adapted color signifying activation
+    func touchImage(_ context: CGContext?, size: CGSize) -> UIImage?
 }
 
 public extension Tappable {
@@ -44,12 +48,21 @@ public extension Tappable {
     public func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage? {
         return UIImage.imageWithPath(backgroundImagePath(size), size: size, color: backgroundImageColor, context: context)
     }
+    
+    public func touchColor() -> UIColor {
+        return backgroundImageColor.adaptingSaturation(by: 0.8)
+    }
+    
+    public func touchImage(_ context: CGContext?, size: CGSize) -> UIImage? {
+        return UIImage.imageWithPath(backgroundImagePath(size), size: size, color: self.touchColor(), context: context)
+    }
 }
 
 /// An interactive item with multipls colors and paths.
 public protocol Tappables: Tappable {
     func backgroundImageColors() -> [UIColor]
     func backgroundImageSubpaths(_ size: CGSize) -> [CGMutablePath]
+    func touchColors() -> [UIColor]
 }
 
 public extension Tappables {
@@ -63,5 +76,18 @@ public extension Tappables {
     public func backgroundImage(_ context: CGContext?, size: CGSize) -> UIImage? {
         let paths = self.backgroundImageSubpaths(size)
         return UIImage.imageWithSubpaths(paths, colors: self.backgroundImageColors(), size: size, context: context)
+    }
+    
+    public func touchColors() -> [UIColor] {
+        var colors = backgroundImageColors()
+        for (index, color) in colors.enumerated() {
+            colors[index] = color.adaptingSaturation(by: 0.8)
+        }
+        return colors
+    }
+    
+    public func touchImage(_ context: CGContext?, size: CGSize) -> UIImage? {
+        let paths = self.backgroundImageSubpaths(size)
+        return UIImage.imageWithSubpaths(paths, colors: self.touchColors(), size: size, context: context)
     }
 }

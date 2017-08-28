@@ -31,7 +31,7 @@ extension UIButton {
     open override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        guard let tappableSelf = (self as? Tappable) else {
+        guard let tappableSelf = self as? Tappable else {
             return
         }
         
@@ -50,10 +50,27 @@ extension UIButton {
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
+        
         Audio.engine.playBeep()
+        
+        if let tappableSelf = self as? Tappable {
+            let size = self.bounds.size
+            UIGraphicsBeginImageContext(size)
+            let context = UIGraphicsGetCurrentContext()
+            self.setBackgroundImage(tappableSelf.touchImage(context, size: size), for: UIControlState())
+            UIGraphicsEndImageContext()
+        }
     }
     
     open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let tappableSelf = self as? Tappable {
+            let size = self.bounds.size
+            UIGraphicsBeginImageContext(size)
+            let context = UIGraphicsGetCurrentContext()
+            self.setBackgroundImage(tappableSelf.backgroundImage(context, size: size), for: UIControlState())
+            UIGraphicsEndImageContext()
+        }
+        
         super.touchesEnded(touches, with: event)
     }
 }
