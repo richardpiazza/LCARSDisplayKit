@@ -121,46 +121,46 @@ open class LDKDPadFullView: LDKDPadExpandedView {
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        outerRingSector01.color = Interface.theme.primaryDark
-        outerRingSector01.setTitle("ORS01", for: UIControlState())
-        outerRingSector01.contentEdgeInsets = UIEdgeInsets(top: 30.0, left: 60.0, bottom: 0.0, right: 0.0)
         if !self.subviews.contains(outerRingSector01) {
+            outerRingSector01.color = Interface.theme.primaryDark
+            outerRingSector01.setTitle("ORS01", for: UIControlState())
+            outerRingSector01.contentEdgeInsets = UIEdgeInsets(top: 30.0, left: 60.0, bottom: 0.0, right: 0.0)
             self.addSubview(outerRingSector01)
         }
         
-        outerRing05.color = Interface.theme.primaryDark
-        outerRing05.setTitle("OR05", for: UIControlState())
         if !self.subviews.contains(outerRing05) {
+            outerRing05.color = Interface.theme.primaryDark
+            outerRing05.setTitle("OR05", for: UIControlState())
             self.addSubview(outerRing05)
         }
         
-        top01.color = Interface.theme.tertiaryLight
-        top01.setTitle("Calibrate", for: UIControlState())
         if !self.subviews.contains(top01) {
+            top01.color = Interface.theme.tertiaryLight
+            top01.setTitle("Calibrate", for: UIControlState())
             self.addSubview(top01)
         }
         
-        top02.color = Interface.theme.primaryLight
-        top02.setTitle("T02", for: UIControlState())
         if !self.subviews.contains(top02) {
+            top02.color = Interface.theme.primaryLight
+            top02.setTitle("T02", for: UIControlState())
             self.addSubview(top02)
         }
         
-        top03.color = Interface.theme.tertiaryDark
-        top03.setTitle("T03", for: UIControlState())
         if !self.subviews.contains(top03) {
+            top03.color = Interface.theme.tertiaryDark
+            top03.setTitle("T03", for: UIControlState())
             self.addSubview(top03)
         }
         
-        top04.color = Interface.theme.primaryDark
-        top04.setTitle("T04", for: UIControlState())
         if !self.subviews.contains(top04) {
+            top04.color = Interface.theme.primaryDark
+            top04.setTitle("T04", for: UIControlState())
             self.addSubview(top04)
         }
         
-        top05.color = Interface.theme.primaryDark
-        top05.setTitle("T05", for: UIControlState())
         if !self.subviews.contains(top05) {
+            top05.color = Interface.theme.primaryDark
+            top05.setTitle("T05", for: UIControlState())
             self.addSubview(top05)
         }
     }

@@ -37,6 +37,7 @@
 		E127EB231BBE803700AAD675 /* LDKDPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB221BBE803700AAD675 /* LDKDPadView.swift */; };
 		E127EB251BBE808500AAD675 /* LDKDPadExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */; };
 		E127EB271BBE80C800AAD675 /* LDKDPadFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */; };
+		E12815341F56E8B900B68748 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12815331F56E8B900B68748 /* Behavior.swift */; };
 		E14DEAEB1F51E79800F1EEFF /* Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE61F51E79800F1EEFF /* Font License.txt */; };
 		E14DEAEC1F51E79800F1EEFF /* Okuda Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE71F51E79800F1EEFF /* Okuda Bold Italic.otf */; };
 		E14DEAED1F51E79800F1EEFF /* Okuda Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE81F51E79800F1EEFF /* Okuda Bold.otf */; };
@@ -113,6 +114,7 @@
 		E127EB221BBE803700AAD675 /* LDKDPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadView.swift; sourceTree = "<group>"; };
 		E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadExpandedView.swift; sourceTree = "<group>"; };
 		E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadFullView.swift; sourceTree = "<group>"; };
+		E12815331F56E8B900B68748 /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
 		E14DEAE61F51E79800F1EEFF /* Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Font License.txt"; sourceTree = "<group>"; };
 		E14DEAE71F51E79800F1EEFF /* Okuda Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Okuda Bold Italic.otf"; sourceTree = "<group>"; };
 		E14DEAE81F51E79800F1EEFF /* Okuda Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Okuda Bold.otf"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			children = (
 				E105B7531D5A5F73004AE5D9 /* Arc.swift */,
 				E14DEAF81F521A1300F1EEFF /* Audio.swift */,
+				E12815331F56E8B900B68748 /* Behavior.swift */,
 				E14DEB041F546F0000F1EEFF /* Direction.swift */,
 				E176A68F1D8DE5CD00823E19 /* CGFloat.swift */,
 				E105B7581D5A5F73004AE5D9 /* Crescent.swift */,
@@ -603,6 +606,7 @@
 				E105B7761D5A5F73004AE5D9 /* RoundedRectangle.swift in Sources */,
 				E105B7771D5A5F73004AE5D9 /* Tappable.swift in Sources */,
 				E105B7671D5A5F73004AE5D9 /* Arc.swift in Sources */,
+				E12815341F56E8B900B68748 /* Behavior.swift in Sources */,
 				E105B7701D5A5F73004AE5D9 /* LDKCrescentButton.swift in Sources */,
 				E127EB251BBE808500AAD675 /* LDKDPadExpandedView.swift in Sources */,
 				E105B76F1D5A5F73004AE5D9 /* LDKButton.swift in Sources */,

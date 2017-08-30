@@ -66,7 +66,7 @@ import GraphPoint
         }
     }
     
-    convenience init(inRect rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
+    convenience init(rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
         let frame = GraphFrame.graphFrame(graphPoints: arc.graphPoints)
         self.init(frame: frame)
@@ -75,13 +75,13 @@ import GraphPoint
         self.endDegree = arc.endDegree
     }
     
-    convenience init(withArc arc: Arc, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+    convenience init(with arc: Arc, rect: CGRect, offset: GraphOriginOffset) {
         let frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
         self.init(frame: frame)
         self.arc = arc
     }
     
-    open func setArc(_ arc: Arc, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+    open func setArc(_ arc: Arc, rect: CGRect, offset: GraphOriginOffset) {
         self.arc = arc
         self.frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
         self.arc.size = self.frame.size

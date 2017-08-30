@@ -67,6 +67,7 @@ public let LDKRingArc19: LDKDegreeRange = (CGFloat(334.5), CGFloat(350.5))
 public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
 
 @IBDesignable open class LDKDPadView: UIView {
+    
     open var crux: LDKButton = LDKButton()
     open var up: LDKDirectionButton = LDKDirectionButton()
     open var down: LDKDirectionButton = LDKDirectionButton()
@@ -160,16 +161,16 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         right.cardinalDegree = Direction.Cardinal.right.degree
         
         var arc = Arc(radius: cer, startDegree: LDKSectorButton01.startDegree, endDegree: LDKSectorButton01.endDegree)
-        sector01.setArc(arc, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        sector01.setArc(arc, rect: rect, offset: graphOriginOffset())
         
         arc = Arc(radius: cer, startDegree: LDKSectorButton02.startDegree, endDegree: LDKSectorButton02.endDegree)
-        sector02.setArc(arc, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        sector02.setArc(arc, rect: rect, offset: graphOriginOffset())
         
         arc = Arc(radius: cer, startDegree: LDKSectorButton03.startDegree, endDegree: LDKSectorButton03.endDegree)
-        sector03.setArc(arc, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        sector03.setArc(arc, rect: rect, offset: graphOriginOffset())
         
         arc = Arc(radius: cer, startDegree: LDKSectorButton04.startDegree, endDegree: LDKSectorButton04.endDegree)
-        sector04.setArc(arc, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        sector04.setArc(arc, rect: rect, offset: graphOriginOffset())
     }
     
     open override func layoutSubviews() {

@@ -407,6 +407,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="fullView" destination="qX5-kk-hu4" id="Eno-rB-FVT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

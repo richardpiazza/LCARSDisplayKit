@@ -31,6 +31,7 @@
 import UIKit
 
 @IBDesignable open class LDKButton: UIButton, Tappable {
+    
     static let defaultSize: CGSize = CGSize(width: 144, height: 60)
     
     open var rectangle: RoundedRectangle = RoundedRectangle()
@@ -39,6 +40,14 @@ import UIKit
             return rectangle
         }
         set {}
+    }
+    open var behavior: Behavior? {
+        willSet {
+            behavior?.end(self)
+        }
+        didSet {
+            behavior?.begin(self)
+        }
     }
     
     @IBInspectable open var roundLeft: Bool {
@@ -99,7 +108,7 @@ import UIKit
     }
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
+        super.touchesBegan(touches, with: event)
         
         Audio.engine.playBeep()
         

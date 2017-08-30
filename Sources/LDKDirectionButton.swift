@@ -74,7 +74,7 @@ import GraphPoint
         }
     }
     
-    convenience init(inRect rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinalDegree: CGFloat) {
+    convenience init(rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinalDegree: CGFloat) {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
         let graphFrame = GraphFrame.graphFrame(graphPoints: arc.graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
         let frame = graphFrame.frame(graphFrame: graphFrame, offset: graphFrame.graphOriginOffset)
