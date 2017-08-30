@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad9_7" orientation="portrait">
+    <device id="ipad12_9" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -24,10 +24,18 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgS-Mn-RDY" userLabel="Top Left">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qX5-kk-hu4" customClass="LDKDPadFullView" customModule="LCARSDisplayKit" customModuleProvider="target">
+                                <rect key="frame" x="20" y="276" width="728" height="728"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="728" id="0Vb-Wh-TVT"/>
+                                    <constraint firstAttribute="width" secondItem="qX5-kk-hu4" secondAttribute="height" multiplier="1:1" id="6pJ-XJ-Wlx"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgS-Mn-RDY" userLabel="Middle Left">
                                 <rect key="frame" x="20" y="20" width="728" height="230"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oCd-8L-ofV" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
@@ -73,8 +81,58 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DkQ-uP-xf1" userLabel="Pro Right">
+                                <rect key="frame" x="756" y="20" width="590" height="984"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oga-pB-F4B" customClass="LDKElbowButton" customModule="LCARSDisplayKit" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="590" height="984"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalHeight">
+                                                <real key="value" value="230"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalWidth">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l1a-3O-mXb" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
+                                        <rect key="frame" x="249" y="924" width="135" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="5K3-9j-OJE"/>
+                                            <constraint firstAttribute="width" constant="135" id="jlt-6d-CNa"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundRight" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fpa-py-0EC" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
+                                        <rect key="frame" x="392" y="924" width="135" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="czw-KL-UlU"/>
+                                            <constraint firstAttribute="width" constant="135" id="dG7-PP-KGk"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundRight" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="roundLeft" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Fpa-py-0EC" secondAttribute="trailing" constant="63" id="8Z1-ZF-lfA"/>
+                                    <constraint firstItem="Fpa-py-0EC" firstAttribute="leading" secondItem="l1a-3O-mXb" secondAttribute="trailing" constant="8" id="9F5-3F-NIZ"/>
+                                    <constraint firstItem="oga-pB-F4B" firstAttribute="top" secondItem="DkQ-uP-xf1" secondAttribute="top" id="CSu-Wx-1Qr"/>
+                                    <constraint firstAttribute="trailing" secondItem="oga-pB-F4B" secondAttribute="trailing" id="KSs-nA-IMl"/>
+                                    <constraint firstAttribute="bottom" secondItem="oga-pB-F4B" secondAttribute="bottom" id="KXA-bj-DjO"/>
+                                    <constraint firstAttribute="bottom" secondItem="Fpa-py-0EC" secondAttribute="bottom" id="UHt-ps-dbL"/>
+                                    <constraint firstAttribute="bottom" secondItem="l1a-3O-mXb" secondAttribute="bottom" id="Y6q-15-EbC"/>
+                                    <constraint firstItem="oga-pB-F4B" firstAttribute="leading" secondItem="DkQ-uP-xf1" secondAttribute="leading" id="ZuU-MA-V5o"/>
+                                    <constraint firstAttribute="width" constant="590" id="yI7-5g-96k"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvF-dd-Sdo" userLabel="Indicators">
-                                <rect key="frame" x="772" y="276" width="232" height="728"/>
+                                <rect key="frame" x="764" y="276" width="232" height="728"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8W4-kD-vs7" customClass="LDKIndicatorView" customModule="LCARSDisplayKit" customModuleProvider="target">
                                         <rect key="frame" x="143" y="192" width="89" height="60"/>
@@ -84,6 +142,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="displayValue" value="97"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xhv-h1-y2h" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
@@ -104,6 +163,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="displayValue" value="43"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51U-HW-GVs" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
@@ -124,6 +184,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="displayValue" value="209"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AIz-6z-pza" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
@@ -144,6 +205,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="displayValue" value="18"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-jh-nLN" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
@@ -164,6 +226,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="displayValue" value="44"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UpK-wl-9ZP" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
@@ -184,6 +247,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="displayValue" value="882"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Om5-O4-oYo" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
@@ -204,6 +268,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="displayValue" value="47"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lc-hE-Olk" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
@@ -224,6 +289,7 @@
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="string" keyPath="displayValue" value="301"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsL-QM-x5B" customClass="LDKButton" customModule="LCARSDisplayKit" customModuleProvider="target">
@@ -319,23 +385,18 @@
                                     <constraint firstItem="2lc-hE-Olk" firstAttribute="leading" secondItem="rvF-dd-Sdo" secondAttribute="leading" id="zbe-bx-iMn"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qX5-kk-hu4" customClass="LDKDPadFullView" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="276" width="728" height="728"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="728" id="0Vb-Wh-TVT"/>
-                                    <constraint firstAttribute="width" secondItem="qX5-kk-hu4" secondAttribute="height" multiplier="1:1" id="6pJ-XJ-Wlx"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qX5-kk-hu4" secondAttribute="bottom" constant="20" id="4bu-42-smG"/>
                             <constraint firstItem="rvF-dd-Sdo" firstAttribute="height" secondItem="qX5-kk-hu4" secondAttribute="height" id="Dz7-RX-iOC"/>
+                            <constraint firstItem="DkQ-uP-xf1" firstAttribute="top" secondItem="hgS-Mn-RDY" secondAttribute="top" id="Eux-vV-1Qy"/>
                             <constraint firstItem="rvF-dd-Sdo" firstAttribute="centerY" secondItem="qX5-kk-hu4" secondAttribute="centerY" id="HwU-dx-I9g"/>
-                            <constraint firstItem="rvF-dd-Sdo" firstAttribute="leading" secondItem="qX5-kk-hu4" secondAttribute="trailing" constant="24" id="RaS-hs-0H3"/>
+                            <constraint firstItem="DkQ-uP-xf1" firstAttribute="leading" secondItem="hgS-Mn-RDY" secondAttribute="trailing" constant="8" id="IBy-Y2-HNX"/>
+                            <constraint firstItem="rvF-dd-Sdo" firstAttribute="leading" secondItem="qX5-kk-hu4" secondAttribute="trailing" constant="16" id="RaS-hs-0H3"/>
                             <constraint firstItem="hgS-Mn-RDY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="WzI-JB-GBV"/>
                             <constraint firstItem="qX5-kk-hu4" firstAttribute="top" secondItem="hgS-Mn-RDY" secondAttribute="bottom" constant="26" id="aX6-BS-ZHU"/>
+                            <constraint firstItem="DkQ-uP-xf1" firstAttribute="bottom" secondItem="qX5-kk-hu4" secondAttribute="bottom" id="bAv-GM-FPf"/>
                             <constraint firstItem="hgS-Mn-RDY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gvz-Ke-oIY"/>
                             <constraint firstItem="hgS-Mn-RDY" firstAttribute="width" secondItem="qX5-kk-hu4" secondAttribute="width" id="jux-Mc-d4e"/>
                             <constraint firstItem="qX5-kk-hu4" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="rCz-38-Sw9"/>
@@ -349,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="412.5" y="315.625"/>
+            <point key="canvasLocation" x="412.44509516837479" y="315.234375"/>
         </scene>
     </scenes>
 </document>

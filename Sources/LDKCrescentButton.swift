@@ -76,13 +76,13 @@ import GraphPoint
         }
     }
     
-    convenience init(withCrescent crescent: Crescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+    convenience init(with crescent: Crescent, rect: CGRect, offset: GraphOriginOffset) {
         let frame = rect.frame(graphFrame: crescent.graphFrame, offset: offset)
         self.init(frame: frame)
         self.crescent = crescent
     }
     
-    func setCrescent(_ crescent: Crescent, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
+    func setCrescent(_ crescent: Crescent, rect: CGRect, offset: GraphOriginOffset) {
         self.crescent = crescent
         self.frame = rect.frame(graphFrame: crescent.graphFrame, offset: offset)
     }

@@ -84,14 +84,6 @@ import GraphPoint
     open func setArc(_ arc: Arc, inRect rect: CGRect, withGraphOriginOffset offset: GraphOriginOffset) {
         self.arc = arc
         self.frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
-    }
-    
-    // MARK: - Tappable
-    override open var path: CGMutablePath {
-        if let superframe = self.superview?.bounds {
-            return arc.path(inRect: superframe)
-        }
-        
-        return arc.path(inRect: frame)
+        self.arc.size = self.frame.size
     }
 }

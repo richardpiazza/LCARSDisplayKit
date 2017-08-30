@@ -129,64 +129,64 @@ open class LDKDPadExpandedView: LDKDPadView {
         let trer = self.thirdRingExteriorRadius(rect)
         
         var crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree)
-        innerRingSector01.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        innerRingSector01.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector04.startDegree, endDegree: LDKRingSector04.endDegree)
-        innerRingSector04.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        innerRingSector04.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree)
-        innerRing05.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        innerRing05.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree)
-        innerRing10.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        innerRing10.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree)
-        innerRing11.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        innerRing11.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree)
-        innerRing12.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        innerRing12.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
-        innerRing13.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        innerRing13.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree)
-        innerRing14.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        innerRing14.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree)
-        innerRing15.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        innerRing15.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree)
-        innerRing20.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        innerRing20.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree)
-        outerRing10.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRing10.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree)
-        outerRing11.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRing11.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree)
-        outerRing12.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRing12.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
-        outerRing13.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRing13.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree)
-        outerRing14.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRing14.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc16.startDegree, endDegree: LDKRingArc16.endDegree)
-        outerRing16.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRing16.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc17.startDegree, endDegree: LDKRingArc17.endDegree)
-        outerRing17.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRing17.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree)
-        outerRing20.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRing20.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc18.startDegree, endDegree: LDKRingArc18.endDegree)
-        outerRingExtended18.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRingExtended18.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc19.startDegree, endDegree: LDKRingArc19.endDegree)
-        outerRingExtended19.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRingExtended19.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         let edge01InteriorArc = Arc(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
         let edge01ExteriorArc = Arc(radius: self.edge01ExteriorRadius(rect), startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
@@ -234,23 +234,23 @@ open class LDKDPadExpandedView: LDKDPadView {
         
         var arc = Arc(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
         var edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge01Point01, edge01Point02])
-        edge01.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        edge01.setEdgedCrescent(edgedCrescent, rect: rect, offset: graphOriginOffset())
         
         arc = Arc(radius: frir, startDegree: LDKRingArc07.startDegree, endDegree: LDKRingArc08.endDegree)
         edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge02Point01, edge02Point02, edge02Point03])
-        edge02.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        edge02.setEdgedCrescent(edgedCrescent, rect: rect, offset: graphOriginOffset())
         
         arc = Arc(radius: frir, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree)
         edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge03Point01, edge03Point02])
-        edge03.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        edge03.setEdgedCrescent(edgedCrescent, rect: rect, offset: graphOriginOffset())
         
         arc = Arc(radius: trir, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
         edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge04Point01, edge04Point02])
-        edge04.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        edge04.setEdgedCrescent(edgedCrescent, rect: rect, offset: graphOriginOffset())
         
         arc = Arc(radius: srir, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree)
         edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge05Point01, edge05Point02])
-        edge05.setEdgedCrescent(edgedCrescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        edge05.setEdgedCrescent(edgedCrescent, rect: rect, offset: graphOriginOffset())
         
         let scale = self.scaleOfDefaultSize(rect.size)
         var frame = CGRect(x: 0, y: 0, width: LDKButton.defaultSize.width * scale.width, height: LDKButton.defaultSize.height * scale.height)

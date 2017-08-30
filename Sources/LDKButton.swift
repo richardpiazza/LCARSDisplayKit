@@ -65,7 +65,7 @@ import UIKit
             rectangle.cornersOnly = newValue
         }
     }
-    @IBInspectable open var color: UIColor = Interface.theme.random()
+    @IBInspectable open var color: UIColor = Interface.theme.inactive
     @IBInspectable lazy open var touchedColor: UIColor = {
         [unowned self] in
         return self.color.adaptingSaturation(by: 0.8)

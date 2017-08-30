@@ -99,4 +99,10 @@ import GraphPoint
         self.verticalWidth = verticalWidth
         self.closedHeight = closedHeight
     }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+
+        self.elbow.size = self.bounds.size
+    }
 }

@@ -62,10 +62,10 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         let srer = self.secondRingExteriorRadius(rect)
         
         var crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree)
-        outerRingSector01.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRingSector01.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree)
-        outerRing05.setCrescent(crescent, inRect: rect, withGraphOriginOffset: graphOriginOffset())
+        outerRing05.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
         
         var frame = CGRect.zero
         if !edge04.edgePoint1.equalTo(CGPoint.zero) {

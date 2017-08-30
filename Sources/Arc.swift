@@ -86,7 +86,7 @@ public struct Arc: Graphable {
         return GraphFrame.graphFrame(graphPoints: graphPoints, radius: radius, startDegree: startDegree, endDegree: endDegree)
     }
     
-    public func path(inRect rect: CGRect) -> CGMutablePath {
+    public var path: CGMutablePath {
         let path: CGMutablePath = CGMutablePath()
         
         let gf = graphFrame

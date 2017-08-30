@@ -38,17 +38,42 @@ import UIKit
     @IBInspectable open var displayValue: String = "000"
     @IBInspectable open var left: Bool = true
     
-    internal var valueLabel: UILabel = UILabel(frame: CGRect.zero)
-    internal var indicator: LDKButton = LDKButton(frame: CGRect.zero)
+    public var display: UILabel = UILabel(frame: CGRect.zero)
+    public var indicator: LDKButton = LDKButton(frame: CGRect.zero)
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.valueLabel.font = UIFont.Okuda.bold
+    public var indicatorWidth: CGFloat {
+        let defaultWidth = type(of: self).defaultSize.width * 0.227272
+        return defaultWidth * graphMultiplier.width
     }
     
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        self.valueLabel.font = UIFont.Okuda.bold
+    public var indicatorFrame: CGRect {
+        let rect = self.frame
+        let width = self.indicatorWidth
+        if self.left {
+            return CGRect(x: 0, y: 0, width: width, height: rect.height)
+        } else {
+            return CGRect(x: rect.size.width - width, y: 0, width: width, height: rect.height)
+        }
+    }
+    
+    public var displayWidth: CGFloat {
+        return self.bounds.width - (indicatorWidth + 8)
+    }
+    
+    public var displayFrame: CGRect {
+        let rect = self.frame
+        let width = self.displayWidth
+        if self.left {
+            return CGRect(x: rect.width - width, y: 0, width: width, height: rect.height)
+        } else {
+            return CGRect(x: 0, y: 0, width: width, height: rect.height)
+        }
+    }
+    
+    public var graphMultiplier: GraphMultiplier {
+        let defaultSize = type(of: self).defaultSize
+        let size = self.bounds.size
+        return GraphMultiplier(width: (size.width / defaultSize.width), height: (size.height / defaultSize.height))
     }
     
     open override func layoutSubviews() {
@@ -56,52 +81,28 @@ import UIKit
         
         self.backgroundColor = UIColor.clear
         
-        self.indicator.frame = self.indicatorFrame(self.frame)
+        self.indicator.frame = indicatorFrame
         self.indicator.graphable.size = indicator.frame.size
         if !self.subviews.contains(self.indicator) {
             self.addSubview(self.indicator)
         }
         
-        let valueLabelFrame = self.displayValueFrame(self.frame)
-        self.valueLabel.frame = valueLabelFrame
-        self.valueLabel.textColor = self.color
-        self.valueLabel.text = self.displayValue
-        self.valueLabel.textAlignment = (self.left) ? .left : .right
-        if !self.subviews.contains(self.valueLabel) {
-            self.addSubview(self.valueLabel)
+        self.display.frame = displayFrame
+        self.display.textColor = self.color
+        self.display.text = self.displayValue
+        self.display.textAlignment = (self.left) ? .left : .right
+        self.display.font = UIFont.Okuda.bold
+        if !self.subviews.contains(self.display) {
+            self.addSubview(self.display)
         }
     }
     
-    func scaleOfDefaultSize(_ actualSize: CGSize) -> GraphMultiplier {
-        return GraphMultiplier(width: CGFloat(actualSize.width / LDKIndicatorView.defaultSize.width), height: CGFloat(actualSize.height / LDKIndicatorView.defaultSize.height))
-    }
-    
-    func indicatorWidth(_ size: CGSize) -> CGFloat {
-        let defaultWidth = LDKIndicatorView.defaultSize.width * 0.227272
-        let scale = self.scaleOfDefaultSize(size).width
-        return defaultWidth * scale
-    }
-    
-    func indicatorFrame(_ rect: CGRect) -> CGRect {
-        let indicatorWidth = self.indicatorWidth(rect.size)
-        if self.left {
-            return CGRect(x: 0, y: 0, width: indicatorWidth, height: rect.height)
-        }
+    open override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
         
-        return CGRect(x: rect.size.width - indicatorWidth, y: 0, width: indicatorWidth, height: rect.height)
-    }
-    
-    func displayValueWidth(_ size: CGSize) -> CGFloat {
-        let indicatorWidth = self.indicatorWidth(size)
-        return size.width - indicatorWidth - 8
-    }
-    
-    func displayValueFrame(_ rect: CGRect) -> CGRect {
-        let displayValueWidth = self.displayValueWidth(rect.size)
-        if self.left {
-            return CGRect(x: rect.width - displayValueWidth, y: 0, width: displayValueWidth, height: rect.height)
-        }
-        
-        return CGRect(x: 0, y: 0, width: displayValueWidth, height: rect.height)
+        self.indicator.frame = indicatorFrame
+        self.indicator.graphable.size = indicator.frame.size
+        self.display.frame = displayFrame
+        self.display.text = displayValue
     }
 }
