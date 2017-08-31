@@ -101,9 +101,6 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
     open var graphMultiplier: GraphMultiplier {
         let size = self.bounds.size
         let scaledContent = self.scaledContentSize
-//        let width = CGFloat(size.width / intrinsicContentSize.width)
-//        let height = CGFloat(size.height / intrinsicContentSize.height)
-//        return GraphMultiplier(width: width, height: height)
         return GraphMultiplier(width: scaledContent.width / size.width, height: scaledContent.height / size.height)
     }
     

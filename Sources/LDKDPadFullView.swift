@@ -74,7 +74,10 @@ open class LDKDPadFullView: LDKDPadExpandedView {
             }
         }
         
-        var ldkButtonFrame = CGRect(x: 0, y: 0, width: LDKButton.defaultSize.width / graphMultiplier.width, height: LDKButton.defaultSize.height / graphMultiplier.height)
+        let ldkButtonWidthToHeightRatio = LDKButton.defaultSize.width / LDKButton.defaultSize.height
+        let ldkWidth = LDKButton.defaultSize.width * graphMultiplier.width
+        let ldkHeight = ldkWidth / ldkButtonWidthToHeightRatio
+        let ldkButtonFrame = CGRect(x: 0, y: 0, width: ldkWidth, height: ldkHeight)
         
         frame.origin.x = edge04.frame.origin.x
         frame.origin.y = edge04.frame.origin.y - (ldkButtonFrame.height + 8)

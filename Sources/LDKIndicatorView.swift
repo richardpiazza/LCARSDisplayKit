@@ -32,8 +32,6 @@ import UIKit
 
 @IBDesignable open class LDKIndicatorView: UIView {
     
-    static let defaultSize: CGSize = CGSize(width: 132, height: 60)
-    
     @IBInspectable open var color: UIColor = Interface.theme.primaryDark
     @IBInspectable open var displayValue: String = "000"
     @IBInspectable open var left: Bool = true
@@ -42,7 +40,7 @@ import UIKit
     public var indicator: LDKButton = LDKButton(frame: CGRect.zero)
     
     public var indicatorWidth: CGFloat {
-        let defaultWidth = type(of: self).defaultSize.width * 0.227272
+        let defaultWidth = intrinsicContentSize.width * 0.227272
         return defaultWidth * graphMultiplier.width
     }
     
@@ -71,9 +69,12 @@ import UIKit
     }
     
     public var graphMultiplier: GraphMultiplier {
-        let defaultSize = type(of: self).defaultSize
         let size = self.bounds.size
-        return GraphMultiplier(width: (size.width / defaultSize.width), height: (size.height / defaultSize.height))
+        return GraphMultiplier(width: (size.width / intrinsicContentSize.width), height: (size.height / intrinsicContentSize.height))
+    }
+    
+    open override var intrinsicContentSize: CGSize {
+        return CGSize(width: 132, height: 60)
     }
     
     open override func layoutSubviews() {

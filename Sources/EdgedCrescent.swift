@@ -23,6 +23,9 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
+// Star Trek and related marks are registered trademarks of CBS® / PARAMOUNT®
+// PLC. Original LCARS design credit: Mike Okuda.
+//
 //===----------------------------------------------------------------------===//
 
 import CoreGraphics
