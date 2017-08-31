@@ -33,38 +33,26 @@ import GraphPoint
 
 public typealias LDKDegreeRange = (startDegree: CGFloat, endDegree: CGFloat)
 
-public let LDKDirectionButtonUp: LDKDegreeRange = (CGFloat(260.5), CGFloat(279.5))
-public let LDKDirectionButtonDown: LDKDegreeRange = (CGFloat(80.5), CGFloat(99.5))
-public let LDKDirectionButtonLeft: LDKDegreeRange = (CGFloat(170.5), CGFloat(189.5))
-public let LDKDirectionButtonRight: LDKDegreeRange = (CGFloat(350.5), CGFloat(9.5))
-public let LDKSectorButton01: LDKDegreeRange = (CGFloat(11), CGFloat(79))
-public let LDKSectorButton02: LDKDegreeRange = (CGFloat(101), CGFloat(169))
-public let LDKSectorButton03: LDKDegreeRange = (CGFloat(191), CGFloat(259))
-public let LDKSectorButton04: LDKDegreeRange = (CGFloat(281), CGFloat(349))
-public let LDKRingSector01: LDKDegreeRange = (CGFloat(10.5), CGFloat(79.5))
-public let LDKRingSector02: LDKDegreeRange = (CGFloat(99.5), CGFloat(169.5))
-public let LDKRingSector03: LDKDegreeRange = (CGFloat(189.5), CGFloat(259.5))
-public let LDKRingSector04: LDKDegreeRange = (CGFloat(280.5), CGFloat(350.5))
-public let LDKRingArc01: LDKDegreeRange = (CGFloat(9.5), CGFloat(25.5))
-public let LDKRingArc02: LDKDegreeRange = (CGFloat(27.5), CGFloat(43.5))
-public let LDKRingArc03: LDKDegreeRange = (CGFloat(45.5), CGFloat(61.5))
-public let LDKRingArc04: LDKDegreeRange = (CGFloat(63.5), CGFloat(79.5))
-public let LDKRingArc05: LDKDegreeRange = (CGFloat(81.5), CGFloat(97.5))
-public let LDKRingArc06: LDKDegreeRange = (CGFloat(99.5), CGFloat(115.5))
-public let LDKRingArc07: LDKDegreeRange = (CGFloat(117.5), CGFloat(133.5))
-public let LDKRingArc08: LDKDegreeRange = (CGFloat(135.5), CGFloat(151.5))
-public let LDKRingArc09: LDKDegreeRange = (CGFloat(153.5), CGFloat(169.5))
-public let LDKRingArc10: LDKDegreeRange = (CGFloat(171.5), CGFloat(187.5))
-public let LDKRingArc11: LDKDegreeRange = (CGFloat(189.5), CGFloat(205.5))
-public let LDKRingArc12: LDKDegreeRange = (CGFloat(207.5), CGFloat(223.5))
-public let LDKRingArc13: LDKDegreeRange = (CGFloat(225.5), CGFloat(241.5))
-public let LDKRingArc14: LDKDegreeRange = (CGFloat(243.5), CGFloat(259.5))
-public let LDKRingArc15: LDKDegreeRange = (CGFloat(261.5), CGFloat(278.5))
-public let LDKRingArc16: LDKDegreeRange = (CGFloat(280.5), CGFloat(296.5))
-public let LDKRingArc17: LDKDegreeRange = (CGFloat(298.5), CGFloat(314.5))
-public let LDKRingArc18: LDKDegreeRange = (CGFloat(316.5), CGFloat(332.5))
-public let LDKRingArc19: LDKDegreeRange = (CGFloat(334.5), CGFloat(350.5))
-public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
+//public let LDKRingArc01: LDKDegreeRange = (CGFloat(9.5), CGFloat(25.5))
+//public let LDKRingArc02: LDKDegreeRange = (CGFloat(27.5), CGFloat(43.5))
+//public let LDKRingArc03: LDKDegreeRange = (CGFloat(45.5), CGFloat(61.5))
+//public let LDKRingArc04: LDKDegreeRange = (CGFloat(63.5), CGFloat(79.5))
+//public let LDKRingArc05: LDKDegreeRange = (CGFloat(81.5), CGFloat(97.5))
+//public let LDKRingArc06: LDKDegreeRange = (CGFloat(99.5), CGFloat(115.5))
+//public let LDKRingArc07: LDKDegreeRange = (CGFloat(117.5), CGFloat(133.5))
+//public let LDKRingArc08: LDKDegreeRange = (CGFloat(135.5), CGFloat(151.5))
+//public let LDKRingArc09: LDKDegreeRange = (CGFloat(153.5), CGFloat(169.5))
+//public let LDKRingArc10: LDKDegreeRange = (CGFloat(171.5), CGFloat(187.5))
+//public let LDKRingArc11: LDKDegreeRange = (CGFloat(189.5), CGFloat(205.5))
+//public let LDKRingArc12: LDKDegreeRange = (CGFloat(207.5), CGFloat(223.5))
+//public let LDKRingArc13: LDKDegreeRange = (CGFloat(225.5), CGFloat(241.5))
+//public let LDKRingArc14: LDKDegreeRange = (CGFloat(243.5), CGFloat(259.5))
+//public let LDKRingArc15: LDKDegreeRange = (CGFloat(261.5), CGFloat(278.5))
+//public let LDKRingArc16: LDKDegreeRange = (CGFloat(280.5), CGFloat(296.5))
+//public let LDKRingArc17: LDKDegreeRange = (CGFloat(298.5), CGFloat(314.5))
+//public let LDKRingArc18: LDKDegreeRange = (CGFloat(316.5), CGFloat(332.5))
+//public let LDKRingArc19: LDKDegreeRange = (CGFloat(334.5), CGFloat(350.5))
+//public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
 
 @IBDesignable open class LDKDPadView: UIView {
     
@@ -143,8 +131,8 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         up.frame = frame
         up.direction.size = frame.size
         up.radius = cer
-        up.startDegree = LDKDirectionButtonUp.startDegree
-        up.endDegree = LDKDirectionButtonUp.endDegree
+        up.startDegree = DPad.Crux.up.start
+        up.endDegree = DPad.Crux.up.end
         up.cardinalDegree = Direction.Cardinal.up.degree
         
         y = graphOrigin.y + cir / 2 + 8
@@ -153,8 +141,8 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         down.frame = frame
         down.direction.size = frame.size
         down.radius = cer
-        down.startDegree = LDKDirectionButtonDown.startDegree
-        down.endDegree = LDKDirectionButtonDown.endDegree
+        down.startDegree = DPad.Crux.down.start
+        down.endDegree = DPad.Crux.down.end
         down.cardinalDegree = Direction.Cardinal.down.degree
         
         height = cir
@@ -166,8 +154,8 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         left.frame = frame
         left.direction.size = frame.size
         left.radius = cer
-        left.startDegree = LDKDirectionButtonLeft.startDegree
-        left.endDegree = LDKDirectionButtonLeft.endDegree
+        left.startDegree = DPad.Crux.left.start
+        left.endDegree = DPad.Crux.left.end
         left.cardinalDegree = Direction.Cardinal.left.degree
         
         x = graphOrigin.x + cir / 2 + 8
@@ -176,20 +164,20 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         right.frame = frame
         right.direction.size = frame.size
         right.radius = cer
-        right.startDegree = LDKDirectionButtonRight.startDegree
-        right.endDegree = LDKDirectionButtonRight.endDegree
+        right.startDegree = DPad.Crux.right.start
+        right.endDegree = DPad.Crux.right.end
         right.cardinalDegree = Direction.Cardinal.right.degree
         
-        var arc = Arc(radius: cer, startDegree: LDKSectorButton01.startDegree, endDegree: LDKSectorButton01.endDegree)
+        var arc = Arc(radius: cer, startDegree: DPad.Crux.sector01.start, endDegree: DPad.Crux.sector01.end)
         sector01.setArc(arc, rect: rect, offset: offset)
         
-        arc = Arc(radius: cer, startDegree: LDKSectorButton02.startDegree, endDegree: LDKSectorButton02.endDegree)
+        arc = Arc(radius: cer, startDegree: DPad.Crux.sector02.start, endDegree: DPad.Crux.sector02.end)
         sector02.setArc(arc, rect: rect, offset: offset)
         
-        arc = Arc(radius: cer, startDegree: LDKSectorButton03.startDegree, endDegree: LDKSectorButton03.endDegree)
+        arc = Arc(radius: cer, startDegree: DPad.Crux.sector03.start, endDegree: DPad.Crux.sector03.end)
         sector03.setArc(arc, rect: rect, offset: offset)
         
-        arc = Arc(radius: cer, startDegree: LDKSectorButton04.startDegree, endDegree: LDKSectorButton04.endDegree)
+        arc = Arc(radius: cer, startDegree: DPad.Crux.sector04.start, endDegree: DPad.Crux.sector04.end)
         sector04.setArc(arc, rect: rect, offset: offset)
     }
     
@@ -245,5 +233,7 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
             sector04.color = Interface.theme.primaryMedium
             self.addSubview(sector04)
         }
+        
+        self.setNeedsDisplay()
     }
 }

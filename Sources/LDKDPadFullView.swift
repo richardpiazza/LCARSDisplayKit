@@ -61,10 +61,10 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         let srir = self.secondRingInteriorRadius
         let srer = self.secondRingExteriorRadius
         
-        var crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree)
+        var crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: DPad.Ring.sector01.start, endDegree: DPad.Ring.sector01.end)
         outerRingSector01.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: DPad.Ring.arc05.start, endDegree: DPad.Ring.arc05.end)
         outerRing05.setCrescent(crescent, rect: rect, offset: offset)
         
         var frame = CGRect.zero
@@ -101,8 +101,8 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         top03.rectangle = roundedRectangle
         top03.frame = frame
         
-        frame.size.width = 80
-        frame.origin.x = top03.frame.origin.x - 88
+        frame.size.width = ldkWidth * (80 / LDKButton.defaultSize.width)
+        frame.origin.x = top03.frame.origin.x - (frame.size.width + 8)
         
         roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: true, rightRounded: false, cornersOnly: false)
         top02.rectangle = roundedRectangle

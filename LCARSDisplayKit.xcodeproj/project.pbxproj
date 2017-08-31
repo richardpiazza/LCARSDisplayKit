@@ -51,6 +51,7 @@
 		E14DEB011F5452DE00F1EEFF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEB001F5452DE00F1EEFF /* UIColor.swift */; };
 		E14DEB051F546F0000F1EEFF /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEB041F546F0000F1EEFF /* Direction.swift */; };
 		E176A6901D8DE5CD00823E19 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A68F1D8DE5CD00823E19 /* CGFloat.swift */; };
+		E1B5F3561F5840F70010B293 /* DPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B5F3551F5840F70010B293 /* DPad.swift */; };
 		E1E6A6B51F522D3D005DC4D0 /* GraphMultiplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6A6B41F522D3D005DC4D0 /* GraphMultiplier.swift */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +129,7 @@
 		E14DEB001F5452DE00F1EEFF /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E14DEB041F546F0000F1EEFF /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		E176A68F1D8DE5CD00823E19 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		E1B5F3551F5840F70010B293 /* DPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPad.swift; sourceTree = "<group>"; };
 		E1E6A6B41F522D3D005DC4D0 /* GraphMultiplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphMultiplier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 				E14DEAF81F521A1300F1EEFF /* Audio.swift */,
 				E12815331F56E8B900B68748 /* Behavior.swift */,
 				E14DEB041F546F0000F1EEFF /* Direction.swift */,
+				E1B5F3551F5840F70010B293 /* DPad.swift */,
 				E176A68F1D8DE5CD00823E19 /* CGFloat.swift */,
 				E105B7581D5A5F73004AE5D9 /* Crescent.swift */,
 				E105B7591D5A5F73004AE5D9 /* EdgedCrescent.swift */,
@@ -614,6 +617,7 @@
 				E1E6A6B51F522D3D005DC4D0 /* GraphMultiplier.swift in Sources */,
 				E105B77C1D5A61DC004AE5D9 /* Theme.swift in Sources */,
 				E105B7731D5A5F73004AE5D9 /* LDKElbowButton.swift in Sources */,
+				E1B5F3561F5840F70010B293 /* DPad.swift in Sources */,
 				E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */,
 				E105B7751D5A5F73004AE5D9 /* LDKSectorButton.swift in Sources */,
 				E11009F61F5492E30040D29B /* Elbow.swift in Sources */,

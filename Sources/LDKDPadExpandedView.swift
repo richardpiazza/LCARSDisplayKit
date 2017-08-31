@@ -128,74 +128,74 @@ open class LDKDPadExpandedView: LDKDPadView {
         let trir = self.thirdRingInteriorRadius
         let trer = self.thirdRingExteriorRadius
         
-        var crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree)
+        var crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: DPad.Ring.sector01.start, endDegree: DPad.Ring.sector01.end)
         innerRingSector01.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingSector04.startDegree, endDegree: LDKRingSector04.endDegree)
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: DPad.Ring.sector04.start, endDegree: DPad.Ring.sector04.end)
         innerRingSector04.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree)
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: DPad.Ring.arc05.start, endDegree: DPad.Ring.arc05.end)
         innerRing05.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree)
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: DPad.Ring.arc10.start, endDegree: DPad.Ring.arc10.end)
         innerRing10.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree)
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: DPad.Ring.arc11.start, endDegree: DPad.Ring.arc11.end)
         innerRing11.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree)
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: DPad.Ring.arc12.start, endDegree: DPad.Ring.arc12.end)
         innerRing12.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
         innerRing13.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree)
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end)
         innerRing14.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree)
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: DPad.Ring.arc15.start, endDegree: DPad.Ring.arc15.end)
         innerRing15.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree)
+        crescent = Crescent(innerRadius: frir, outerRadius: frer, startDegree: DPad.Ring.arc20.start, endDegree: DPad.Ring.arc20.end)
         innerRing20.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc10.startDegree, endDegree: LDKRingArc10.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: DPad.Ring.arc10.start, endDegree: DPad.Ring.arc10.end)
         outerRing10.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc11.startDegree, endDegree: LDKRingArc11.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: DPad.Ring.arc11.start, endDegree: DPad.Ring.arc11.end)
         outerRing11.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc12.startDegree, endDegree: LDKRingArc12.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: DPad.Ring.arc12.start, endDegree: DPad.Ring.arc12.end)
         outerRing12.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
         outerRing13.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc14.startDegree, endDegree: LDKRingArc14.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end)
         outerRing14.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc16.startDegree, endDegree: LDKRingArc16.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: DPad.Ring.arc16.start, endDegree: DPad.Ring.arc16.end)
         outerRing16.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc17.startDegree, endDegree: LDKRingArc17.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: DPad.Ring.arc17.start, endDegree: DPad.Ring.arc17.end)
         outerRing17.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc20.startDegree, endDegree: LDKRingArc20.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: DPad.Ring.arc20.start, endDegree: DPad.Ring.arc20.end)
         outerRing20.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc18.startDegree, endDegree: LDKRingArc18.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srerExtended, startDegree: DPad.Ring.arc18.start, endDegree: DPad.Ring.arc18.end)
         outerRingExtended18.setCrescent(crescent, rect: rect, offset: offset)
         
-        crescent = Crescent(innerRadius: srir, outerRadius: srerExtended, startDegree: LDKRingArc19.startDegree, endDegree: LDKRingArc19.endDegree)
+        crescent = Crescent(innerRadius: srir, outerRadius: srerExtended, startDegree: DPad.Ring.arc19.start, endDegree: DPad.Ring.arc19.end)
         outerRingExtended19.setCrescent(crescent, rect: rect, offset: offset)
         
-        let edge01InteriorArc = Arc(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
-        let edge01ExteriorArc = Arc(radius: self.edge01ExteriorRadius, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
-        let edge02InteriorArc = Arc(radius: self.firstRingInteriorRadius, startDegree: LDKRingArc07.startDegree, endDegree: LDKRingArc08.endDegree)
-        let edge03InteriorArc = Arc(radius: frir, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree)
-        let edge03ExteriorArc = Arc(radius: srerExtended, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree)
-        let edge04InteriorArc = Arc(radius: trir, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
-        let edge04ExteriorArc = Arc(radius: trer, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
-        let edge05ExteriorArc = Arc(radius: sreer, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree)
+        let edge01InteriorArc = Arc(radius: frir, startDegree: DPad.Ring.arc06.start, endDegree: DPad.Ring.arc06.end)
+        let edge01ExteriorArc = Arc(radius: self.edge01ExteriorRadius, startDegree: DPad.Ring.arc06.start, endDegree: DPad.Ring.arc06.end)
+        let edge02InteriorArc = Arc(radius: self.firstRingInteriorRadius, startDegree: DPad.Ring.arc07.start, endDegree: DPad.Ring.arc08.end)
+        let edge03InteriorArc = Arc(radius: frir, startDegree: DPad.Ring.arc09.start, endDegree: DPad.Ring.arc09.end)
+        let edge03ExteriorArc = Arc(radius: srerExtended, startDegree: DPad.Ring.arc09.start, endDegree: DPad.Ring.arc09.end)
+        let edge04InteriorArc = Arc(radius: trir, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
+        let edge04ExteriorArc = Arc(radius: trer, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
+        let edge05ExteriorArc = Arc(radius: sreer, startDegree: DPad.Ring.arc15.start, endDegree: DPad.Ring.arc15.end)
         
         let edge01EndInteriorAngle = edge01InteriorArc.endDegree - 90
         let edge01EndExteriorAngle = 180 - 90 - edge01EndInteriorAngle
@@ -232,29 +232,29 @@ open class LDKDPadExpandedView: LDKDPadView {
         let edge05Point01 = edge05ExteriorArc.startPoint
         let edge05Point02 = edge05ExteriorArc.endPoint
         
-        var arc = Arc(radius: frir, startDegree: LDKRingArc06.startDegree, endDegree: LDKRingArc06.endDegree)
+        var arc = Arc(radius: frir, startDegree: DPad.Ring.arc06.start, endDegree: DPad.Ring.arc06.end)
         var edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge01Point01, edge01Point02])
         edge01.setEdgedCrescent(edgedCrescent, rect: rect, offset: offset)
         
-        arc = Arc(radius: frir, startDegree: LDKRingArc07.startDegree, endDegree: LDKRingArc08.endDegree)
+        arc = Arc(radius: frir, startDegree: DPad.Ring.arc07.start, endDegree: DPad.Ring.arc08.end)
         edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge02Point01, edge02Point02, edge02Point03])
         edge02.setEdgedCrescent(edgedCrescent, rect: rect, offset: offset)
         
-        arc = Arc(radius: frir, startDegree: LDKRingArc09.startDegree, endDegree: LDKRingArc09.endDegree)
+        arc = Arc(radius: frir, startDegree: DPad.Ring.arc09.start, endDegree: DPad.Ring.arc09.end)
         edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge03Point01, edge03Point02])
         edge03.setEdgedCrescent(edgedCrescent, rect: rect, offset: offset)
         
-        arc = Arc(radius: trir, startDegree: LDKRingArc13.startDegree, endDegree: LDKRingArc13.endDegree)
+        arc = Arc(radius: trir, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
         edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge04Point01, edge04Point02])
         edge04.setEdgedCrescent(edgedCrescent, rect: rect, offset: offset)
         
-        arc = Arc(radius: srir, startDegree: LDKRingArc15.startDegree, endDegree: LDKRingArc15.endDegree)
+        arc = Arc(radius: srir, startDegree: DPad.Ring.arc15.start, endDegree: DPad.Ring.arc15.end)
         edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge05Point01, edge05Point02])
         edge05.setEdgedCrescent(edgedCrescent, rect: rect, offset: offset)
         
         let ldkButtonWidthToHeightRatio = LDKButton.defaultSize.width / LDKButton.defaultSize.height
         let width = LDKButton.defaultSize.width * graphMultiplier.width
-        let height = width / ldkButtonWidthToHeightRatio // LDKButton.defaultSize.height / graphMultiplier.height
+        let height = width / ldkButtonWidthToHeightRatio
         var frame = CGRect(x: 0, y: 0, width: width, height: height)
         frame.origin.y = edge04.frame.origin.y
         frame.origin.x = rect.size.width - frame.size.width - edge04.frame.origin.x
@@ -272,7 +272,6 @@ open class LDKDPadExpandedView: LDKDPadView {
             innerRingSector01.color = Interface.theme.tertiaryLight
             innerRingSector01.setTitle("IRS01", for: UIControlState())
             self.addSubview(innerRingSector01)
-            self.bringSubview(toFront: innerRingSector01)
         }
         
         if !self.subviews.contains(innerRingSector04) {
@@ -359,9 +358,9 @@ open class LDKDPadExpandedView: LDKDPadView {
             self.addSubview(outerRing14)
         }
         
-        outerRing16.color = Interface.theme.tertiaryDark
-        outerRing16.setTitle("OR16", for: UIControlState())
         if !self.subviews.contains(outerRing16) {
+            outerRing16.color = Interface.theme.tertiaryDark
+            outerRing16.setTitle("OR16", for: UIControlState())
             self.addSubview(outerRing16)
         }
         
@@ -424,8 +423,5 @@ open class LDKDPadExpandedView: LDKDPadView {
             top00.setTitle("T00", for: UIControlState())
             self.addSubview(top00)
         }
-        
-        self.bringSubview(toFront: self.sector01)
-        self.bringSubview(toFront: self.sector04)
     }
 }
