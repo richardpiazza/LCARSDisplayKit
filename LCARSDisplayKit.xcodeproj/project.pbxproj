@@ -198,6 +198,9 @@
 				E105B75B1D5A5F73004AE5D9 /* LDKButton.swift */,
 				E105B75C1D5A5F73004AE5D9 /* LDKCrescentButton.swift */,
 				E105B75D1D5A5F73004AE5D9 /* LDKDirectionButton.swift */,
+				E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */,
+				E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */,
+				E127EB221BBE803700AAD675 /* LDKDPadView.swift */,
 				E105B75E1D5A5F73004AE5D9 /* LDKEdgedCrescentButton.swift */,
 				E105B75F1D5A5F73004AE5D9 /* LDKElbowButton.swift */,
 				E105B7601D5A5F73004AE5D9 /* LDKIndicatorView.swift */,
@@ -245,9 +248,6 @@
 				E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */,
 				E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */,
 				E1112FBF1BBE7FBC0001C33D /* Info.plist */,
-				E127EB221BBE803700AAD675 /* LDKDPadView.swift */,
-				E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */,
-				E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */,
 				E105B78B1D5E6688004AE5D9 /* Designables.storyboard */,
 			);
 			path = LCARSDisplayKit;

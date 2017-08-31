@@ -78,33 +78,56 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
     open var sector03: LDKSectorButton = LDKSectorButton()
     open var sector04: LDKSectorButton = LDKSectorButton()
     
-    func defaultSize() -> CGSize {
+    open override var intrinsicContentSize: CGSize {
         return CGSize(width: 384, height: 384)
     }
     
-    func graphOriginOffset() -> GraphOriginOffset {
+    open var scaledContentSize: CGSize {
+        let size = self.bounds.size
+        
+        var widthMultiplier: CGFloat
+        var heightMultipler: CGFloat
+        if size.width >= size.height {
+            widthMultiplier = 1.0 / (size.width / size.height)
+            heightMultipler = 1.0
+        } else {
+            widthMultiplier = 1.0
+            heightMultipler = 1.0 / (size.height / size.width)
+        }
+        
+        return CGSize(width: size.width * widthMultiplier, height: size.height * heightMultipler)
+    }
+    
+    open var graphMultiplier: GraphMultiplier {
+        let size = self.bounds.size
+        let scaledContent = self.scaledContentSize
+//        let width = CGFloat(size.width / intrinsicContentSize.width)
+//        let height = CGFloat(size.height / intrinsicContentSize.height)
+//        return GraphMultiplier(width: width, height: height)
+        return GraphMultiplier(width: scaledContent.width / size.width, height: scaledContent.height / size.height)
+    }
+    
+    open var offset: GraphOriginOffset {
         return GraphOriginOffset(x: 0, y: 0)
     }
-    
-    func scaleOfDefaultSize(_ actualSize: CGSize) -> GraphMultiplier {
-        return GraphMultiplier(width: CGFloat(actualSize.width / defaultSize().width), height: CGFloat(actualSize.height / defaultSize().height))
+
+    open var cruxInteriorRadius: CGFloat {
+        let size = scaledContentSize
+        return CGFloat((size.width / 2) * 0.3125)
     }
     
-    func cruxInteriorRadius(_ rect: CGRect) -> CGFloat {
-        return CGFloat((rect.size.width / 2) * 0.3125)
-    }
-    
-    func cruxExteriorRadius(_ rect: CGRect) -> CGFloat {
-        return CGFloat(rect.size.width / 2)
+    open var cruxExteriorRadius: CGFloat {
+        let size = scaledContentSize
+        return CGFloat(size.width / 2)
     }
     
     open override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        let graphOrigin = GraphOrigin(x: rect.graphOrigin.x + graphOriginOffset().x, y: rect.graphOrigin.y + graphOriginOffset().y)
+        let graphOrigin = GraphOrigin(x: rect.graphOrigin.x + offset.x, y: rect.graphOrigin.y + offset.y)
         
-        let cir = cruxInteriorRadius(rect)
-        let cer = cruxExteriorRadius(rect)
+        let cir = cruxInteriorRadius
+        let cer = cruxExteriorRadius
         
         var width = cir
         var height = cir
@@ -161,68 +184,68 @@ public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
         right.cardinalDegree = Direction.Cardinal.right.degree
         
         var arc = Arc(radius: cer, startDegree: LDKSectorButton01.startDegree, endDegree: LDKSectorButton01.endDegree)
-        sector01.setArc(arc, rect: rect, offset: graphOriginOffset())
+        sector01.setArc(arc, rect: rect, offset: offset)
         
         arc = Arc(radius: cer, startDegree: LDKSectorButton02.startDegree, endDegree: LDKSectorButton02.endDegree)
-        sector02.setArc(arc, rect: rect, offset: graphOriginOffset())
+        sector02.setArc(arc, rect: rect, offset: offset)
         
         arc = Arc(radius: cer, startDegree: LDKSectorButton03.startDegree, endDegree: LDKSectorButton03.endDegree)
-        sector03.setArc(arc, rect: rect, offset: graphOriginOffset())
+        sector03.setArc(arc, rect: rect, offset: offset)
         
         arc = Arc(radius: cer, startDegree: LDKSectorButton04.startDegree, endDegree: LDKSectorButton04.endDegree)
-        sector04.setArc(arc, rect: rect, offset: graphOriginOffset())
+        sector04.setArc(arc, rect: rect, offset: offset)
     }
     
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        crux.color = Interface.theme.primaryDark
-        crux.setTitle("", for: UIControlState())
         if !self.subviews.contains(crux) {
+            crux.color = Interface.theme.primaryDark
+            crux.setTitle("", for: UIControlState())
             self.addSubview(crux)
         }
         
-        up.setTitle("", for: UIControlState())
         if !self.subviews.contains(up) {
+            up.setTitle("", for: UIControlState())
             self.addSubview(up)
         }
         
-        down.setTitle("", for: UIControlState())
         if !self.subviews.contains(down) {
+            down.setTitle("", for: UIControlState())
             self.addSubview(down)
         }
         
-        left.setTitle("", for: UIControlState())
         if !self.subviews.contains(left) {
+            left.setTitle("", for: UIControlState())
             self.addSubview(left)
         }
         
-        right.setTitle("", for: UIControlState())
         if !self.subviews.contains(right) {
+            right.setTitle("", for: UIControlState())
             self.addSubview(right)
         }
         
-        sector01.setTitle("", for: UIControlState())
-        sector01.color = Interface.theme.primaryMedium
         if !self.subviews.contains(sector01) {
+            sector01.setTitle("", for: UIControlState())
+            sector01.color = Interface.theme.primaryMedium
             self.addSubview(sector01)
         }
         
-        sector02.setTitle("", for: UIControlState())
-        sector02.color = Interface.theme.primaryMedium
         if !self.subviews.contains(sector02) {
+            sector02.setTitle("", for: UIControlState())
+            sector02.color = Interface.theme.primaryMedium
             self.addSubview(sector02)
         }
         
-        sector03.setTitle("", for: UIControlState())
-        sector03.color = Interface.theme.primaryMedium
         if !self.subviews.contains(sector03) {
+            sector03.setTitle("", for: UIControlState())
+            sector03.color = Interface.theme.primaryMedium
             self.addSubview(sector03)
         }
         
-        sector04.setTitle("", for: UIControlState())
-        sector04.color = Interface.theme.primaryMedium
         if !self.subviews.contains(sector04) {
+            sector04.setTitle("", for: UIControlState())
+            sector04.color = Interface.theme.primaryMedium
             self.addSubview(sector04)
         }
     }

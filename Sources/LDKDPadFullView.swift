@@ -43,29 +43,29 @@ open class LDKDPadFullView: LDKDPadExpandedView {
     open var top04: LDKButton = LDKButton()
     open var top05: LDKButton = LDKButton()
     
-    override func defaultSize() -> CGSize {
+    open override var intrinsicContentSize: CGSize {
         return CGSize(width: 794, height: 794)
     }
     
-    override func graphOriginOffset() -> GraphOriginOffset {
-        return GraphOriginOffset(x: 0.0, y: defaultSize().height * 0.0625)
+    override open var offset: GraphOriginOffset {
+        return GraphOriginOffset(x: 0.0, y: intrinsicContentSize.height * 0.0625)
     }
     
-    override func edge01ExteriorRadius(_ rect: CGRect) -> CGFloat {
-        return self.secondRingExteriorRadius(rect)
+    override open var edge01ExteriorRadius: CGFloat {
+        return self.secondRingExteriorRadius
     }
     
     open override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        let srir = self.secondRingInteriorRadius(rect)
-        let srer = self.secondRingExteriorRadius(rect)
+        let srir = self.secondRingInteriorRadius
+        let srer = self.secondRingExteriorRadius
         
         var crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingSector01.startDegree, endDegree: LDKRingSector01.endDegree)
-        outerRingSector01.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
+        outerRingSector01.setCrescent(crescent, rect: rect, offset: offset)
         
         crescent = Crescent(innerRadius: srir, outerRadius: srer, startDegree: LDKRingArc05.startDegree, endDegree: LDKRingArc05.endDegree)
-        outerRing05.setCrescent(crescent, rect: rect, offset: graphOriginOffset())
+        outerRing05.setCrescent(crescent, rect: rect, offset: offset)
         
         var frame = CGRect.zero
         if !edge04.edgePoint1.equalTo(CGPoint.zero) {
@@ -74,14 +74,15 @@ open class LDKDPadFullView: LDKDPadExpandedView {
             }
         }
         
+        var ldkButtonFrame = CGRect(x: 0, y: 0, width: LDKButton.defaultSize.width / graphMultiplier.width, height: LDKButton.defaultSize.height / graphMultiplier.height)
+        
         frame.origin.x = edge04.frame.origin.x
-        frame.origin.y = edge04.frame.origin.y - 68
-        frame.size.height = 60
+        frame.origin.y = edge04.frame.origin.y - (ldkButtonFrame.height + 8)
+        frame.size.height = ldkButtonFrame.height
         
         var roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: false, rightRounded: false, cornersOnly: false)
         top01.rectangle = roundedRectangle
         top01.frame = frame
-        
         
         if !edge05.edgePoint1.equalTo(CGPoint.zero) {
             if !edge05.edgePoint2.equalTo(CGPoint.zero) {
@@ -90,8 +91,8 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         }
         
         frame.origin.x = edge05.frame.origin.x
-        frame.origin.y = edge05.frame.origin.y - 68
-        frame.size.height = 60
+        frame.origin.y = edge05.frame.origin.y - (ldkButtonFrame.height + 8)
+        frame.size.height = ldkButtonFrame.height
         
         roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: false, rightRounded: false, cornersOnly: false)
         top03.rectangle = roundedRectangle
