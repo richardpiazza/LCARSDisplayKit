@@ -252,10 +252,7 @@ open class LDKDPadExpandedView: LDKDPadView {
         edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [edge05Point01, edge05Point02])
         edge05.setEdgedCrescent(edgedCrescent, rect: rect, offset: offset)
         
-        let ldkButtonWidthToHeightRatio = LDKButton.defaultSize.width / LDKButton.defaultSize.height
-        let width = LDKButton.defaultSize.width * graphMultiplier.width
-        let height = width / ldkButtonWidthToHeightRatio
-        var frame = CGRect(x: 0, y: 0, width: width, height: height)
+        var frame = CGRect(x: 0, y: 0, width: LDKButton.defaultSize.width * scaleMultiplier.width, height: LDKButton.defaultSize.height * scaleMultiplier.width)
         frame.origin.y = edge04.frame.origin.y
         frame.origin.x = rect.size.width - frame.size.width - edge04.frame.origin.x
         

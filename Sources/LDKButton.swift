@@ -94,6 +94,10 @@ import UIKit
         self.setTitleColor(UIColor.black, for: UIControlState())
     }
     
+    open override var intrinsicContentSize: CGSize {
+        return CGSize(width: 144, height: 60)
+    }
+    
     open override func draw(_ rect: CGRect) {
         super.draw(rect)
         

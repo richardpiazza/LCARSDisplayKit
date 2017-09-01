@@ -68,16 +68,13 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         outerRing05.setCrescent(crescent, rect: rect, offset: offset)
         
         var frame = CGRect.zero
-        if !edge04.edgePoint1.equalTo(CGPoint.zero) {
+        if !edge04.edgePoint1.equalTo(CGPoint.zero) {
             if !edge04.edgePoint2.equalTo(CGPoint.zero) {
                 frame.size.width = edge04.edgePoint2.x - edge04.edgePoint1.x
             }
         }
         
-        let ldkButtonWidthToHeightRatio = LDKButton.defaultSize.width / LDKButton.defaultSize.height
-        let ldkWidth = LDKButton.defaultSize.width * graphMultiplier.width
-        let ldkHeight = ldkWidth / ldkButtonWidthToHeightRatio
-        let ldkButtonFrame = CGRect(x: 0, y: 0, width: ldkWidth, height: ldkHeight)
+        let ldkButtonFrame = CGRect(x: 0, y: 0, width: LDKButton.defaultSize.width * scaleMultiplier.width, height: LDKButton.defaultSize.height * scaleMultiplier.width)
         
         frame.origin.x = edge04.frame.origin.x
         frame.origin.y = edge04.frame.origin.y - (ldkButtonFrame.height + 8)
@@ -101,7 +98,7 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         top03.rectangle = roundedRectangle
         top03.frame = frame
         
-        frame.size.width = ldkWidth * (80 / LDKButton.defaultSize.width)
+        frame.size.width = ldkButtonFrame.width * (80 / LDKButton.defaultSize.width)
         frame.origin.x = top03.frame.origin.x - (frame.size.width + 8)
         
         roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: true, rightRounded: false, cornersOnly: false)

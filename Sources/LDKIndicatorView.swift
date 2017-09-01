@@ -39,9 +39,36 @@ import UIKit
     public var display: UILabel = UILabel(frame: CGRect.zero)
     public var indicator: LDKButton = LDKButton(frame: CGRect.zero)
     
+    open override var intrinsicContentSize: CGSize {
+        return CGSize(width: 132, height: 60)
+    }
+    
+    open var intrinsicRatio: CGFloat{
+        if intrinsicContentSize.width >= intrinsicContentSize.height {
+            return intrinsicContentSize.width / intrinsicContentSize.height
+        } else {
+            return intrinsicContentSize.height / intrinsicContentSize.width
+        }
+    }
+    
+    open var scaledContentSize: CGSize {
+        if intrinsicContentSize.width >= intrinsicContentSize.height {
+            if self.bounds.size.width >= self.bounds.size.height {
+                return CGSize(width: self.bounds.height * intrinsicRatio, height: self.bounds.height)
+            } else {
+                return CGSize(width: self.bounds.width, height: self.bounds.height / intrinsicRatio)
+            }
+        } else {
+            if self.bounds.size.height >= self.bounds.size.width {
+                return CGSize(width: self.bounds.width, height: self.bounds.width * intrinsicRatio)
+            } else {
+                return CGSize(width: self.bounds.height / intrinsicRatio, height: self.bounds.width)
+            }
+        }
+    }
+    
     public var indicatorWidth: CGFloat {
-        let defaultWidth = intrinsicContentSize.width * 0.227272
-        return defaultWidth * graphMultiplier.width
+        return scaledContentSize.width * 0.227272
     }
     
     public var indicatorFrame: CGRect {
@@ -66,15 +93,6 @@ import UIKit
         } else {
             return CGRect(x: 0, y: 0, width: width, height: rect.height)
         }
-    }
-    
-    public var graphMultiplier: GraphMultiplier {
-        let size = self.bounds.size
-        return GraphMultiplier(width: (size.width / intrinsicContentSize.width), height: (size.height / intrinsicContentSize.height))
-    }
-    
-    open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 132, height: 60)
     }
     
     open override func layoutSubviews() {

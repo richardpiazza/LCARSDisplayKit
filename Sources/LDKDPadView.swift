@@ -70,26 +70,32 @@ public typealias LDKDegreeRange = (startDegree: CGFloat, endDegree: CGFloat)
         return CGSize(width: 384, height: 384)
     }
     
-    open var scaledContentSize: CGSize {
-        let size = self.bounds.size
-        
-        var widthMultiplier: CGFloat
-        var heightMultipler: CGFloat
-        if size.width >= size.height {
-            widthMultiplier = 1.0 / (size.width / size.height)
-            heightMultipler = 1.0
+    open var intrinsicRatio: CGFloat{
+        if intrinsicContentSize.width >= intrinsicContentSize.height {
+            return intrinsicContentSize.width / intrinsicContentSize.height
         } else {
-            widthMultiplier = 1.0
-            heightMultipler = 1.0 / (size.height / size.width)
+            return intrinsicContentSize.height / intrinsicContentSize.width
         }
-        
-        return CGSize(width: size.width * widthMultiplier, height: size.height * heightMultipler)
     }
     
-    open var graphMultiplier: GraphMultiplier {
-        let size = self.bounds.size
-        let scaledContent = self.scaledContentSize
-        return GraphMultiplier(width: scaledContent.width / size.width, height: scaledContent.height / size.height)
+    open var scaledContentSize: CGSize {
+        if intrinsicContentSize.width >= intrinsicContentSize.height {
+            if self.bounds.size.width >= self.bounds.size.height {
+                return CGSize(width: self.bounds.height * intrinsicRatio, height: self.bounds.height)
+            } else {
+                return CGSize(width: self.bounds.width, height: self.bounds.height / intrinsicRatio)
+            }
+        } else {
+            if self.bounds.size.height >= self.bounds.size.width {
+                return CGSize(width: self.bounds.width, height: self.bounds.width * intrinsicRatio)
+            } else {
+                return CGSize(width: self.bounds.height / intrinsicRatio, height: self.bounds.width)
+            }
+        }
+    }
+    
+    open var scaleMultiplier: CGSize {
+        return CGSize(width: scaledContentSize.width / intrinsicContentSize.width, height: scaledContentSize.height / intrinsicContentSize.height)
     }
     
     open var offset: GraphOriginOffset {
