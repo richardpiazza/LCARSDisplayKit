@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// LDKSectorButton.swift
+// RoundedRectangleButton.swift
 //
 // Copyright (c) 2015 Richard Piazza
 // https://github.com/richardpiazza/LCARSDisplayKit
@@ -29,61 +29,39 @@
 //===----------------------------------------------------------------------===//
 
 import UIKit
-import GraphPoint
 
-@IBDesignable open class LDKSectorButton: LDKButton {
+/// A rectangular button with options for rounding left/right edges.
+@IBDesignable open class RoundedRectangleButton: Button {
     
-    open var arc: Arc = Arc()
-    open override var graphable: Graphable {
-        get {
-            return arc
-        }
-        set {}
-    }
+    static let defaultSize: CGSize = CGSize(width: 144, height: 60)
     
-    @IBInspectable open var radius: CGFloat {
+    @IBInspectable open var roundLeft: Bool {
         get {
-            return arc.radius
+            return rectangle.leftRounded
         }
         set {
-            arc.radius = newValue
+            rectangle.leftRounded = newValue
         }
     }
-    @IBInspectable open var startDegree: CGFloat {
+    @IBInspectable open var roundRight: Bool {
         get {
-            return arc.startDegree
+            return rectangle.rightRounded
         }
         set {
-            arc.startDegree = newValue
+            rectangle.rightRounded = newValue
         }
     }
-    @IBInspectable open var endDegree: CGFloat {
+    @IBInspectable open var isFrame: Bool {
         get {
-            return arc.endDegree
+            return rectangle.cornersOnly
         }
         set {
-            arc.endDegree = newValue
+            rectangle.cornersOnly = newValue
         }
     }
     
-    convenience init(rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
-        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        let frame = GraphFrame.graphFrame(graphPoints: arc.graphPoints)
-        self.init(frame: frame)
-        self.radius = arc.radius
-        self.startDegree = arc.startDegree
-        self.endDegree = arc.endDegree
-    }
-    
-    convenience init(with arc: Arc, rect: CGRect, offset: GraphOriginOffset) {
-        let frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
-        self.init(frame: frame)
-        self.arc = arc
-    }
-    
-    open func setArc(_ arc: Arc, rect: CGRect, offset: GraphOriginOffset) {
-        self.arc = arc
-        self.frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
-        self.arc.size = self.frame.size
+    open override var intrinsicContentSize: CGSize {
+        return CGSize(width: 144, height: 60)
     }
 }
+

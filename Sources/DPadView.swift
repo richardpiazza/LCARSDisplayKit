@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// LDKDPadView.swift
+// DPadView.swift
 //
 // Copyright (c) 2015 Richard Piazza
 // https://github.com/richardpiazza/LCARSDisplayKit
@@ -31,40 +31,18 @@
 import UIKit
 import GraphPoint
 
-public typealias LDKDegreeRange = (startDegree: CGFloat, endDegree: CGFloat)
-
-//public let LDKRingArc01: LDKDegreeRange = (CGFloat(9.5), CGFloat(25.5))
-//public let LDKRingArc02: LDKDegreeRange = (CGFloat(27.5), CGFloat(43.5))
-//public let LDKRingArc03: LDKDegreeRange = (CGFloat(45.5), CGFloat(61.5))
-//public let LDKRingArc04: LDKDegreeRange = (CGFloat(63.5), CGFloat(79.5))
-//public let LDKRingArc05: LDKDegreeRange = (CGFloat(81.5), CGFloat(97.5))
-//public let LDKRingArc06: LDKDegreeRange = (CGFloat(99.5), CGFloat(115.5))
-//public let LDKRingArc07: LDKDegreeRange = (CGFloat(117.5), CGFloat(133.5))
-//public let LDKRingArc08: LDKDegreeRange = (CGFloat(135.5), CGFloat(151.5))
-//public let LDKRingArc09: LDKDegreeRange = (CGFloat(153.5), CGFloat(169.5))
-//public let LDKRingArc10: LDKDegreeRange = (CGFloat(171.5), CGFloat(187.5))
-//public let LDKRingArc11: LDKDegreeRange = (CGFloat(189.5), CGFloat(205.5))
-//public let LDKRingArc12: LDKDegreeRange = (CGFloat(207.5), CGFloat(223.5))
-//public let LDKRingArc13: LDKDegreeRange = (CGFloat(225.5), CGFloat(241.5))
-//public let LDKRingArc14: LDKDegreeRange = (CGFloat(243.5), CGFloat(259.5))
-//public let LDKRingArc15: LDKDegreeRange = (CGFloat(261.5), CGFloat(278.5))
-//public let LDKRingArc16: LDKDegreeRange = (CGFloat(280.5), CGFloat(296.5))
-//public let LDKRingArc17: LDKDegreeRange = (CGFloat(298.5), CGFloat(314.5))
-//public let LDKRingArc18: LDKDegreeRange = (CGFloat(316.5), CGFloat(332.5))
-//public let LDKRingArc19: LDKDegreeRange = (CGFloat(334.5), CGFloat(350.5))
-//public let LDKRingArc20: LDKDegreeRange = (CGFloat(352.5), CGFloat(8.5))
-
-@IBDesignable open class LDKDPadView: UIView {
+/// A standard circular direction pad
+@IBDesignable open class DPadView: UIView {
     
-    open var crux: LDKButton = LDKButton()
-    open var up: LDKDirectionButton = LDKDirectionButton()
-    open var down: LDKDirectionButton = LDKDirectionButton()
-    open var left: LDKDirectionButton = LDKDirectionButton()
-    open var right: LDKDirectionButton = LDKDirectionButton()
-    open var sector01: LDKSectorButton = LDKSectorButton()
-    open var sector02: LDKSectorButton = LDKSectorButton()
-    open var sector03: LDKSectorButton = LDKSectorButton()
-    open var sector04: LDKSectorButton = LDKSectorButton()
+    open var crux: RoundedRectangleButton = RoundedRectangleButton()
+    open var up: DirectionButton = DirectionButton()
+    open var down: DirectionButton = DirectionButton()
+    open var left: DirectionButton = DirectionButton()
+    open var right: DirectionButton = DirectionButton()
+    open var sector01: ArcButton = ArcButton()
+    open var sector02: ArcButton = ArcButton()
+    open var sector03: ArcButton = ArcButton()
+    open var sector04: ArcButton = ArcButton()
     
     open override var intrinsicContentSize: CGSize {
         return CGSize(width: 384, height: 384)

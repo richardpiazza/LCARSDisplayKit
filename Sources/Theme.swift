@@ -48,7 +48,7 @@ public protocol Theme {
     var subtitle: UIFont { get }
     var body: UIFont { get }
     // Sounds
-    var beepURL: URL { get }
+    var beepURL: URL? { get }
     var beepSoundID: SystemSoundID { get set }
 }
 
@@ -57,6 +57,18 @@ public extension Theme {
         let colors = [primaryLight, primaryDark, tertiaryLight, tertiaryDark]
         let random = arc4random_uniform(UInt32(colors.count))
         return colors[Int(random)]
+    }
+    
+    public var title: UIFont {
+        return UIFont(name: "Swiss911BT-UltraCompressed", size: 40.0)!
+    }
+    
+    public var subtitle: UIFont {
+        return UIFont(name: "Swiss911BT-UltraCompressed", size: 30.0)!
+    }
+    
+    public var body: UIFont {
+        return UIFont(name: "Swiss911BT-UltraCompressed", size: 20.0)!
     }
     
     public func beep() {
@@ -79,7 +91,9 @@ public struct Interface {
                 print(error.localizedDescription)
             }
             
-            AudioServicesCreateSystemSoundID(beepURL as CFURL, &beepSoundID)
+            if let url = beepURL {
+                AudioServicesCreateSystemSoundID(url as CFURL, &beepSoundID)
+            }
         }
         
         /// A pale-yellow color (Pale Canary)
@@ -108,7 +122,7 @@ public struct Interface {
         
         /// A medium-purple color (Pastel Violet)
         /// - HEX #CC99CC;
-        public var secondaryMedium: UIColor {
+        public var secondaryMedium: UIColor {
             return UIColor(red: 204/255.0, green: 153/255.0, blue: 204/255.0, alpha: 1.0)
         }
         
@@ -139,27 +153,12 @@ public struct Interface {
         /// A flat gray color
         /// - HEX #6E6E6E
         public var inactive: UIColor {
-            return UIColor(red: 110/255.0, green: 110/255.0, blue: 110/255.0, alpha: 1.0)
+//            return UIColor(red: 110/255.0, green: 110/255.0, blue: 110/255.0, alpha: 1.0)
+            return UIColor(red: 177/255.0, green: 149/255.0, blue: 122/255.0, alpha: 1.0)
         }
         
-        public var title: UIFont {
-            return UIFont(name: "Swiss911BT-UltraCompressed", size: 40.0)!
-        }
-        
-        public var subtitle: UIFont {
-            return UIFont(name: "Swiss911BT-UltraCompressed", size: 30.0)!
-        }
-        
-        public var body: UIFont {
-            return UIFont(name: "Swiss911BT-UltraCompressed", size: 20.0)!
-        }
-        
-        public var beepURL: URL {
-            guard let url = Bundle.main.url(forResource: "beep3", withExtension: "m4a") else {
-                fatalError("Failed to locate 'beep' resource.")
-            }
-            
-            return url
+        public var beepURL: URL? {
+            return Bundle.main.url(forResource: "beep3", withExtension: "m4a")
         }
     }
 }

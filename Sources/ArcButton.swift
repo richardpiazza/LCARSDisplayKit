@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// LDKElbowButton.swift
+// ArcButton.swift
 //
 // Copyright (c) 2015 Richard Piazza
 // https://github.com/richardpiazza/LCARSDisplayKit
@@ -31,86 +31,60 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable open class LDKElbowButton: LDKButton {
+/// A Button that draws an arc connected by a right angle pivot.
+@IBDesignable open class ArcButton: Button {
     
-    open var elbow: Elbow = Elbow()
+    open var arc: Arc = Arc()
     open override var graphable: Graphable {
         get {
-            return elbow
+            return arc
         }
         set {}
     }
     
-    @IBInspectable open var top: Bool {
+    @IBInspectable open var radius: CGFloat {
         get {
-            return elbow.top
+            return arc.radius
         }
         set {
-            elbow.top = newValue
+            arc.radius = newValue
         }
     }
-    @IBInspectable open var left: Bool {
+    @IBInspectable open var startDegree: CGFloat {
         get {
-            return elbow.left
+            return arc.startDegree
         }
         set {
-            elbow.left = newValue
+            arc.startDegree = newValue
         }
     }
-    @IBInspectable open var rounded: Bool {
+    @IBInspectable open var endDegree: CGFloat {
         get {
-            return elbow.rounded
+            return arc.endDegree
         }
         set {
-            elbow.rounded = newValue
-        }
-    }
-    @IBInspectable open var horizontalHeight: CGFloat {
-        get {
-            return elbow.horizontalHeight
-        }
-        set {
-            elbow.horizontalHeight = newValue
-        }
-    }
-    @IBInspectable open var verticalWidth: CGFloat {
-        get {
-            return elbow.verticalWidth
-        }
-        set {
-            elbow.verticalWidth = newValue
-        }
-    }
-    @IBInspectable open var closedHeight: CGFloat {
-        get {
-            return elbow.closedHeight
-        }
-        set {
-            elbow.closedHeight = newValue
-        }
-    }
-    @IBInspectable open var matchRadius: Bool {
-        get {
-            return elbow.shouldMatchRadius
-        }
-        set {
-            elbow.shouldMatchRadius = newValue
+            arc.endDegree = newValue
         }
     }
     
-    convenience init(frame: CGRect, top: Bool, left: Bool, rounded: Bool, horizontalHeight: CGFloat, verticalWidth: CGFloat, closedHeight: CGFloat) {
+    convenience init(rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
+        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
+        let frame = GraphFrame.graphFrame(graphPoints: arc.graphPoints)
         self.init(frame: frame)
-        self.top = top
-        self.left = left
-        self.rounded = rounded
-        self.horizontalHeight = horizontalHeight
-        self.verticalWidth = verticalWidth
-        self.closedHeight = closedHeight
+        self.radius = arc.radius
+        self.startDegree = arc.startDegree
+        self.endDegree = arc.endDegree
     }
     
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-
-        self.elbow.size = self.bounds.size
+    convenience init(with arc: Arc, rect: CGRect, offset: GraphOriginOffset) {
+        let frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
+        self.init(frame: frame)
+        self.arc = arc
+    }
+    
+    open func setArc(_ arc: Arc, rect: CGRect, offset: GraphOriginOffset) {
+        self.arc = arc
+        self.frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
+        self.arc.size = self.frame.size
     }
 }

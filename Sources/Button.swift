@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// LDKButton.swift
+// Button.swift
 //
 // Copyright (c) 2015 Richard Piazza
 // https://github.com/richardpiazza/LCARSDisplayKit
@@ -30,10 +30,8 @@
 
 import UIKit
 
-@IBDesignable open class LDKButton: UIButton, Tappable {
-    
-    static let defaultSize: CGSize = CGSize(width: 144, height: 60)
-    
+/// Base button class
+open class Button: UIButton, Tappable {
     open var rectangle: RoundedRectangle = RoundedRectangle()
     open var graphable: Graphable {
         get {
@@ -50,35 +48,11 @@ import UIKit
         }
     }
     
-    @IBInspectable open var roundLeft: Bool {
-        get {
-            return rectangle.leftRounded
-        }
-        set {
-            rectangle.leftRounded = newValue
-        }
-    }
-    @IBInspectable open var roundRight: Bool {
-        get {
-            return rectangle.rightRounded
-        }
-        set {
-            rectangle.rightRounded = newValue
-        }
-    }
-    @IBInspectable open var isFrame: Bool {
-        get {
-            return rectangle.cornersOnly
-        }
-        set {
-            rectangle.cornersOnly = newValue
-        }
-    }
     @IBInspectable open var color: UIColor = Interface.theme.inactive
     @IBInspectable lazy open var touchedColor: UIColor = {
         [unowned self] in
         return self.color.adaptingSaturation(by: 0.8)
-    }()
+        }()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

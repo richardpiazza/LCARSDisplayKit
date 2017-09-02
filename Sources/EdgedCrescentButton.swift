@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// LDKEdgedCrescentButton.swift
+// EdgedCrescentButton.swift
 //
 // Copyright (c) 2015 Richard Piazza
 // https://github.com/richardpiazza/LCARSDisplayKit
@@ -31,7 +31,8 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable open class LDKEdgedCrescentButton: LDKButton {
+/// Button that had an interior matching an arc, and a flat exterior.
+@IBDesignable open class EdgedCrescentButton: Button {
     
     open var edgedCrescent: EdgedCrescent = EdgedCrescent()
     open override var graphable: Graphable {

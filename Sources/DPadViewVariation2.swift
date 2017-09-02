@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// LDKDPadFullView.swift
+// DPadViewVariation2.swift
 //
 // Copyright (c) 2015 Richard Piazza
 // https://github.com/richardpiazza/LCARSDisplayKit
@@ -31,17 +31,18 @@
 import UIKit
 import GraphPoint
 
-open class LDKDPadFullView: LDKDPadExpandedView {
+/// A further expansion of the `DPadView` that expands the rings and top controls.
+open class DPadViewVariation2: DPadViewVariation1 {
     // Labeled for Sector or Arc Degree
-    open var outerRing05: LDKCrescentButton = LDKCrescentButton()
-    open var outerRingSector01: LDKCrescentButton = LDKCrescentButton()
+    open var outerRing05: CrescentButton = CrescentButton()
+    open var outerRingSector01: CrescentButton = CrescentButton()
     
     // Labeled numerically from zero degrees
-    open var top01: LDKButton = LDKButton()
-    open var top02: LDKButton = LDKButton()
-    open var top03: LDKButton = LDKButton()
-    open var top04: LDKButton = LDKButton()
-    open var top05: LDKButton = LDKButton()
+    open var top01: RoundedRectangleButton = RoundedRectangleButton()
+    open var top02: RoundedRectangleButton = RoundedRectangleButton()
+    open var top03: RoundedRectangleButton = RoundedRectangleButton()
+    open var top04: RoundedRectangleButton = RoundedRectangleButton()
+    open var top05: RoundedRectangleButton = RoundedRectangleButton()
     
     open override var intrinsicContentSize: CGSize {
         return CGSize(width: 794, height: 794)
@@ -74,11 +75,11 @@ open class LDKDPadFullView: LDKDPadExpandedView {
             }
         }
         
-        let ldkButtonFrame = CGRect(x: 0, y: 0, width: LDKButton.defaultSize.width * scaleMultiplier.width, height: LDKButton.defaultSize.height * scaleMultiplier.width)
+        let RoundedRectangleButtonFrame = CGRect(x: 0, y: 0, width: RoundedRectangleButton.defaultSize.width * scaleMultiplier.width, height: RoundedRectangleButton.defaultSize.height * scaleMultiplier.width)
         
         frame.origin.x = edge04.frame.origin.x
-        frame.origin.y = edge04.frame.origin.y - (ldkButtonFrame.height + 8)
-        frame.size.height = ldkButtonFrame.height
+        frame.origin.y = edge04.frame.origin.y - (RoundedRectangleButtonFrame.height + 8)
+        frame.size.height = RoundedRectangleButtonFrame.height
         
         var roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: false, rightRounded: false, cornersOnly: false)
         top01.rectangle = roundedRectangle
@@ -91,14 +92,14 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         }
         
         frame.origin.x = edge05.frame.origin.x
-        frame.origin.y = edge05.frame.origin.y - (ldkButtonFrame.height + 8)
-        frame.size.height = ldkButtonFrame.height
+        frame.origin.y = edge05.frame.origin.y - (RoundedRectangleButtonFrame.height + 8)
+        frame.size.height = RoundedRectangleButtonFrame.height
         
         roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: false, rightRounded: false, cornersOnly: false)
         top03.rectangle = roundedRectangle
         top03.frame = frame
         
-        frame.size.width = ldkButtonFrame.width * (80 / LDKButton.defaultSize.width)
+        frame.size.width = RoundedRectangleButtonFrame.width * (80 / RoundedRectangleButton.defaultSize.width)
         frame.origin.x = top03.frame.origin.x - (frame.size.width + 8)
         
         roundedRectangle = RoundedRectangle(size: frame.size, leftRounded: true, rightRounded: false, cornersOnly: false)
@@ -125,43 +126,43 @@ open class LDKDPadFullView: LDKDPadExpandedView {
         if !self.subviews.contains(outerRingSector01) {
             outerRingSector01.color = Interface.theme.primaryDark
             outerRingSector01.setTitle("ORS01", for: UIControlState())
-            outerRingSector01.contentEdgeInsets = UIEdgeInsets(top: 30.0, left: 60.0, bottom: 0.0, right: 0.0)
+            outerRingSector01.contentEdgeInsets = UIEdgeInsets(top: 40.0, left: 70.0, bottom: 0.0, right: 0.0)
             self.addSubview(outerRingSector01)
         }
         
         if !self.subviews.contains(outerRing05) {
-            outerRing05.color = Interface.theme.primaryDark
             outerRing05.setTitle("OR05", for: UIControlState())
+            outerRing05.color = Interface.theme.primaryDark
             self.addSubview(outerRing05)
         }
         
         if !self.subviews.contains(top01) {
+            top01.setTitle("CALIBRATE", for: UIControlState())
             top01.color = Interface.theme.tertiaryLight
-            top01.setTitle("Calibrate", for: UIControlState())
             self.addSubview(top01)
         }
         
         if !self.subviews.contains(top02) {
-            top02.color = Interface.theme.primaryLight
             top02.setTitle("T02", for: UIControlState())
+            top02.color = Interface.theme.primaryLight
             self.addSubview(top02)
         }
         
         if !self.subviews.contains(top03) {
-            top03.color = Interface.theme.tertiaryDark
             top03.setTitle("T03", for: UIControlState())
+            top03.color = Interface.theme.tertiaryDark
             self.addSubview(top03)
         }
         
         if !self.subviews.contains(top04) {
-            top04.color = Interface.theme.primaryDark
             top04.setTitle("T04", for: UIControlState())
+            top04.color = Interface.theme.primaryDark
             self.addSubview(top04)
         }
         
         if !self.subviews.contains(top05) {
-            top05.color = Interface.theme.primaryDark
             top05.setTitle("T05", for: UIControlState())
+            top05.color = Interface.theme.primaryDark
             self.addSubview(top05)
         }
     }

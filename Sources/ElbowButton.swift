@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// LDKDirectionButton.swift
+// ElbowButton.swift
 //
 // Copyright (c) 2015 Richard Piazza
 // https://github.com/richardpiazza/LCARSDisplayKit
@@ -31,74 +31,87 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable open class LDKDirectionButton: LDKButton {
+/// A large sweeping button typically used to group other buttons.
+@IBDesignable open class ElbowButton: Button {
     
-    open var direction: Direction = Direction()
+    open var elbow: Elbow = Elbow()
     open override var graphable: Graphable {
         get {
-            return direction
+            return elbow
         }
         set {}
     }
     
-    @IBInspectable open var radius: CGFloat {
+    @IBInspectable open var top: Bool {
         get {
-            return direction.arc.radius
+            return elbow.top
         }
         set {
-            direction.arc.radius = newValue
+            elbow.top = newValue
         }
     }
-    @IBInspectable open var startDegree: CGFloat {
+    @IBInspectable open var left: Bool {
         get {
-            return direction.arc.startDegree
+            return elbow.left
         }
         set {
-            direction.arc.startDegree = newValue
+            elbow.left = newValue
         }
     }
-    @IBInspectable open var endDegree: CGFloat {
+    @IBInspectable open var rounded: Bool {
         get {
-            return direction.arc.endDegree
+            return elbow.rounded
         }
         set {
-            direction.arc.endDegree = newValue
+            elbow.rounded = newValue
         }
     }
-    @IBInspectable open var cardinalDegree: CGFloat {
+    @IBInspectable open var horizontalHeight: CGFloat {
         get {
-            return direction.cardinal.degree
+            return elbow.horizontalHeight
         }
         set {
-            direction.cardinal = Direction.Cardinal(degreeValue: newValue)
+            elbow.horizontalHeight = newValue
+        }
+    }
+    @IBInspectable open var verticalWidth: CGFloat {
+        get {
+            return elbow.verticalWidth
+        }
+        set {
+            elbow.verticalWidth = newValue
+        }
+    }
+    @IBInspectable open var closedHeight: CGFloat {
+        get {
+            return elbow.closedHeight
+        }
+        set {
+            elbow.closedHeight = newValue
+        }
+    }
+    @IBInspectable open var matchRadius: Bool {
+        get {
+            return elbow.shouldMatchRadius
+        }
+        set {
+            elbow.shouldMatchRadius = newValue
         }
     }
     
-    convenience init(rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinalDegree: CGFloat) {
-        let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
-        let graphFrame = GraphFrame.graphFrame(graphPoints: arc.graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
-        let frame = graphFrame.frame(graphFrame: graphFrame, offset: graphFrame.graphOriginOffset)
+    convenience init(frame: CGRect, top: Bool, left: Bool, rounded: Bool, horizontalHeight: CGFloat, verticalWidth: CGFloat, closedHeight: CGFloat) {
         self.init(frame: frame)
-        self.radius = radius
-        self.startDegree = startDegree
-        self.endDegree = endDegree
-        self.cardinalDegree = cardinalDegree
+        self.top = top
+        self.left = left
+        self.rounded = rounded
+        self.horizontalHeight = horizontalHeight
+        self.verticalWidth = verticalWidth
+        self.closedHeight = closedHeight
     }
     
-    // MARK: - Tappable
-    override open var colors: [UIColor]? {
-        return [Interface.theme.primaryDark, Interface.theme.primaryLight]
-    }
-    
-    override open var touchedColors: [UIColor]? {
-        guard let c = self.colors else {
-            return nil
-        }
-        
-        var colors = c
-        for (index, color) in colors.enumerated() {
-            colors[index] = color.adaptingSaturation(by: 0.8)
-        }
-        return colors
+    open override func layoutSubviews() {
+        super.layoutSubviews()
+
+        self.elbow.size = self.bounds.size
     }
 }

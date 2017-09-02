@@ -37,7 +37,7 @@ import UIKit
     @IBInspectable open var left: Bool = true
     
     public var display: UILabel = UILabel(frame: CGRect.zero)
-    public var indicator: LDKButton = LDKButton(frame: CGRect.zero)
+    public var indicator: RoundedRectangleButton = RoundedRectangleButton(frame: CGRect.zero)
     
     open override var intrinsicContentSize: CGSize {
         return CGSize(width: 132, height: 60)

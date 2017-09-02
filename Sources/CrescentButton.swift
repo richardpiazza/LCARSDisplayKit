@@ -1,6 +1,6 @@
 //===----------------------------------------------------------------------===//
 //
-// LDKCrescentButton.swift
+// CrescentButton.swift
 //
 // Copyright (c) 2015 Richard Piazza
 // https://github.com/richardpiazza/LCARSDisplayKit
@@ -31,7 +31,8 @@
 import UIKit
 import GraphPoint
 
-@IBDesignable open class LDKCrescentButton: LDKButton {
+/// A button used to outline a circular 'DPad'
+@IBDesignable open class CrescentButton: Button {
     
     open var crescent: Crescent = Crescent()
     open override var graphable: Graphable {
