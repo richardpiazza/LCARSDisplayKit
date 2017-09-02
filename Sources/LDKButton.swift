@@ -84,13 +84,13 @@ import UIKit
         super.init(frame: frame)
         graphable.size = frame.size
         rectangle.size = frame.size
-        self.titleLabel?.font = UIFont.Okuda.regular
+        self.titleLabel?.font = Interface.theme.body
         self.setTitleColor(UIColor.black, for: UIControlState())
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.titleLabel?.font = UIFont.Okuda.regular
+        self.titleLabel?.font = Interface.theme.body
         self.setTitleColor(UIColor.black, for: UIControlState())
     }
     
@@ -114,7 +114,7 @@ import UIKit
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         
-        Audio.engine.playBeep()
+        Interface.theme.beep()
         
         let size = self.bounds.size
         UIGraphicsBeginImageContext(size)

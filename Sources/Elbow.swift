@@ -41,13 +41,15 @@ public struct Elbow: Graphable {
     public var verticalWidth: CGFloat = CGFloat(30)
     /// If closedHeight > 0, an additional area is drawn parallel to the horizontalHeight area.
     public var closedHeight: CGFloat = CGFloat(0)
+    /// If true, the interior radius will match the exterior radius.
+    public var shouldMatchRadius: Bool = false
     
     // - MARK: Graphable
     public var path: CGMutablePath {
         let path: CGMutablePath = CGMutablePath()
         
         let outerRadius = fmax(horizontalHeight, verticalWidth) / 2
-        let innerRadius = outerRadius / 2.4
+        let innerRadius = shouldMatchRadius ? outerRadius : (outerRadius / 2.4)
         let upperLeftOuterCenter = CGPoint(x: outerRadius, y: outerRadius)
         let upperLeftInnerCenter = CGPoint(x: verticalWidth + innerRadius, y: horizontalHeight + innerRadius)
         let lowerRightOuterCenter = CGPoint(x: size.width - outerRadius, y: size.height - outerRadius)

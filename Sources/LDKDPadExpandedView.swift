@@ -386,20 +386,25 @@ open class LDKDPadExpandedView: LDKDPadView {
         }
         
         if !self.subviews.contains(edge01) {
+            edge01.setTitle("-", for: UIControlState())
             edge01.color = Interface.theme.tertiaryLight
-            edge01.setTitle("E01", for: UIControlState())
+            edge01.titleLabel?.font = Interface.theme.subtitle
+            edge01.contentEdgeInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 0.0, right: 0.0)
             self.addSubview(edge01)
         }
         
         if !self.subviews.contains(edge02) {
-            edge02.color = Interface.theme.primaryLight
             edge02.setTitle("Mode Select", for: UIControlState())
+            edge02.color = Interface.theme.primaryLight
+            edge02.contentEdgeInsets = UIEdgeInsets(top: 30.0, left: 60.0, bottom: 0.0, right: 0.0)
             self.addSubview(edge02)
         }
         
         if !self.subviews.contains(edge03) {
+            edge03.setTitle("+", for: UIControlState())
             edge03.color = Interface.theme.tertiaryDark
-            edge03.setTitle("E03", for: UIControlState())
+            edge03.titleLabel?.font = Interface.theme.subtitle
+            edge03.contentEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 30.0, right: 10.0)
             self.addSubview(edge03)
         }
         

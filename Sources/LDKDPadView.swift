@@ -103,13 +103,11 @@ public typealias LDKDegreeRange = (startDegree: CGFloat, endDegree: CGFloat)
     }
 
     open var cruxInteriorRadius: CGFloat {
-        let size = scaledContentSize
-        return CGFloat((size.width / 2) * 0.3125)
+        return CGFloat((scaledContentSize.width / 2) * 0.3125)
     }
     
     open var cruxExteriorRadius: CGFloat {
-        let size = scaledContentSize
-        return CGFloat(size.width / 2)
+        return CGFloat(scaledContentSize.width / 2)
     }
     
     open override func draw(_ rect: CGRect) {

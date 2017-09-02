@@ -38,19 +38,13 @@
 		E127EB251BBE808500AAD675 /* LDKDPadExpandedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */; };
 		E127EB271BBE80C800AAD675 /* LDKDPadFullView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */; };
 		E12815341F56E8B900B68748 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12815331F56E8B900B68748 /* Behavior.swift */; };
-		E14DEAEB1F51E79800F1EEFF /* Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE61F51E79800F1EEFF /* Font License.txt */; };
-		E14DEAEC1F51E79800F1EEFF /* Okuda Bold Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE71F51E79800F1EEFF /* Okuda Bold Italic.otf */; };
-		E14DEAED1F51E79800F1EEFF /* Okuda Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE81F51E79800F1EEFF /* Okuda Bold.otf */; };
-		E14DEAEE1F51E79800F1EEFF /* Okuda Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAE91F51E79800F1EEFF /* Okuda Italic.otf */; };
-		E14DEAEF1F51E79800F1EEFF /* Okuda.otf in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAEA1F51E79800F1EEFF /* Okuda.otf */; };
-		E14DEAF11F51EA4E00F1EEFF /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEAF01F51EA4E00F1EEFF /* UIFont.swift */; };
-		E14DEAF91F521A1300F1EEFF /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEAF81F521A1300F1EEFF /* Audio.swift */; };
 		E14DEAFD1F521CBD00F1EEFF /* beep2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFA1F521CBC00F1EEFF /* beep2.m4a */; };
 		E14DEAFE1F521CBD00F1EEFF /* beep1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */; };
 		E14DEAFF1F521CBD00F1EEFF /* beep3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */; };
 		E14DEB011F5452DE00F1EEFF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEB001F5452DE00F1EEFF /* UIColor.swift */; };
 		E14DEB051F546F0000F1EEFF /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEB041F546F0000F1EEFF /* Direction.swift */; };
 		E176A6901D8DE5CD00823E19 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A68F1D8DE5CD00823E19 /* CGFloat.swift */; };
+		E190A1D91F5ADF83005B1B57 /* Swiss 911 Ultra Compressed BT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E190A1D81F5ADF82005B1B57 /* Swiss 911 Ultra Compressed BT.ttf */; };
 		E1B5F3561F5840F70010B293 /* DPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B5F3551F5840F70010B293 /* DPad.swift */; };
 /* End PBXBuildFile section */
 
@@ -115,19 +109,13 @@
 		E127EB241BBE808500AAD675 /* LDKDPadExpandedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadExpandedView.swift; sourceTree = "<group>"; };
 		E127EB261BBE80C800AAD675 /* LDKDPadFullView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LDKDPadFullView.swift; sourceTree = "<group>"; };
 		E12815331F56E8B900B68748 /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
-		E14DEAE61F51E79800F1EEFF /* Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Font License.txt"; sourceTree = "<group>"; };
-		E14DEAE71F51E79800F1EEFF /* Okuda Bold Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Okuda Bold Italic.otf"; sourceTree = "<group>"; };
-		E14DEAE81F51E79800F1EEFF /* Okuda Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Okuda Bold.otf"; sourceTree = "<group>"; };
-		E14DEAE91F51E79800F1EEFF /* Okuda Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Okuda Italic.otf"; sourceTree = "<group>"; };
-		E14DEAEA1F51E79800F1EEFF /* Okuda.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Okuda.otf; sourceTree = "<group>"; };
-		E14DEAF01F51EA4E00F1EEFF /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
-		E14DEAF81F521A1300F1EEFF /* Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
 		E14DEAFA1F521CBC00F1EEFF /* beep2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep2.m4a; sourceTree = "<group>"; };
 		E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep1.m4a; sourceTree = "<group>"; };
 		E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep3.m4a; sourceTree = "<group>"; };
 		E14DEB001F5452DE00F1EEFF /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E14DEB041F546F0000F1EEFF /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		E176A68F1D8DE5CD00823E19 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		E190A1D81F5ADF82005B1B57 /* Swiss 911 Ultra Compressed BT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Swiss 911 Ultra Compressed BT.ttf"; sourceTree = "<group>"; };
 		E1B5F3551F5840F70010B293 /* DPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPad.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,7 +174,6 @@
 			isa = PBXGroup;
 			children = (
 				E105B7531D5A5F73004AE5D9 /* Arc.swift */,
-				E14DEAF81F521A1300F1EEFF /* Audio.swift */,
 				E12815331F56E8B900B68748 /* Behavior.swift */,
 				E14DEB041F546F0000F1EEFF /* Direction.swift */,
 				E1B5F3551F5840F70010B293 /* DPad.swift */,
@@ -209,7 +196,6 @@
 				E105B7631D5A5F73004AE5D9 /* Tappable.swift */,
 				E105B77B1D5A61DC004AE5D9 /* Theme.swift */,
 				E14DEB001F5452DE00F1EEFF /* UIColor.swift */,
-				E14DEAF01F51EA4E00F1EEFF /* UIFont.swift */,
 				E105B7661D5A5F73004AE5D9 /* UIImage.swift */,
 			);
 			path = Sources;
@@ -274,14 +260,10 @@
 		E14DEAE51F51E79800F1EEFF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E190A1D81F5ADF82005B1B57 /* Swiss 911 Ultra Compressed BT.ttf */,
 				E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */,
 				E14DEAFA1F521CBC00F1EEFF /* beep2.m4a */,
 				E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */,
-				E14DEAE61F51E79800F1EEFF /* Font License.txt */,
-				E14DEAE71F51E79800F1EEFF /* Okuda Bold Italic.otf */,
-				E14DEAE81F51E79800F1EEFF /* Okuda Bold.otf */,
-				E14DEAE91F51E79800F1EEFF /* Okuda Italic.otf */,
-				E14DEAEA1F51E79800F1EEFF /* Okuda.otf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -409,15 +391,11 @@
 			files = (
 				E14DEAFF1F521CBD00F1EEFF /* beep3.m4a in Resources */,
 				E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */,
-				E14DEAEE1F51E79800F1EEFF /* Okuda Italic.otf in Resources */,
-				E14DEAED1F51E79800F1EEFF /* Okuda Bold.otf in Resources */,
-				E14DEAEC1F51E79800F1EEFF /* Okuda Bold Italic.otf in Resources */,
 				E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */,
-				E14DEAEF1F51E79800F1EEFF /* Okuda.otf in Resources */,
 				E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */,
+				E190A1D91F5ADF83005B1B57 /* Swiss 911 Ultra Compressed BT.ttf in Resources */,
 				E14DEAFD1F521CBD00F1EEFF /* beep2.m4a in Resources */,
 				E14DEAFE1F521CBD00F1EEFF /* beep1.m4a in Resources */,
-				E14DEAEB1F51E79800F1EEFF /* Font License.txt in Resources */,
 				E105B78D1D5E6688004AE5D9 /* Designables.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,10 +571,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E14DEAF91F521A1300F1EEFF /* Audio.swift in Sources */,
 				E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */,
 				E105B77A1D5A5F73004AE5D9 /* UIImage.swift in Sources */,
-				E14DEAF11F51EA4E00F1EEFF /* UIFont.swift in Sources */,
 				E176A6901D8DE5CD00823E19 /* CGFloat.swift in Sources */,
 				E105B7721D5A5F73004AE5D9 /* LDKEdgedCrescentButton.swift in Sources */,
 				E127EB231BBE803700AAD675 /* LDKDPadView.swift in Sources */,

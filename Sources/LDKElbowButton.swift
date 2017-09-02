@@ -89,6 +89,14 @@ import GraphPoint
             elbow.closedHeight = newValue
         }
     }
+    @IBInspectable open var matchRadius: Bool {
+        get {
+            return elbow.shouldMatchRadius
+        }
+        set {
+            elbow.shouldMatchRadius = newValue
+        }
+    }
     
     convenience init(frame: CGRect, top: Bool, left: Bool, rounded: Bool, horizontalHeight: CGFloat, verticalWidth: CGFloat, closedHeight: CGFloat) {
         self.init(frame: frame)

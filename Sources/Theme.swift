@@ -29,8 +29,10 @@
 //===----------------------------------------------------------------------===//
 
 import UIKit
+import AVFoundation
 
 public protocol Theme {
+    // Colors
     var primaryLight: UIColor { get }
     var primaryMedium: UIColor { get }
     var primaryDark: UIColor { get }
@@ -41,44 +43,71 @@ public protocol Theme {
     var tertiaryMedium: UIColor { get }
     var tertiaryDark: UIColor { get }
     var inactive: UIColor { get }
-    func random() -> UIColor
+    // Fonts
+    var title: UIFont { get }
+    var subtitle: UIFont { get }
+    var body: UIFont { get }
+    // Sounds
+    var beepURL: URL { get }
+    var beepSoundID: SystemSoundID { get set }
+}
+
+public extension Theme {
+    public func randomColor() -> UIColor {
+        let colors = [primaryLight, primaryDark, tertiaryLight, tertiaryDark]
+        let random = arc4random_uniform(UInt32(colors.count))
+        return colors[Int(random)]
+    }
+    
+    public func beep() {
+        AudioServicesPlaySystemSound(beepSoundID)
+    }
 }
 
 public struct Interface {
     public static var theme: Theme = TNG()
     
     public struct TNG: Theme {
+        
+        public var beepSoundID: SystemSoundID = 0
+        
+        init() {
+            do {
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+                try AVAudioSession.sharedInstance().setActive(true)
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            AudioServicesCreateSystemSoundID(beepURL as CFURL, &beepSoundID)
+        }
+        
         /// A pale-yellow color (Pale Canary)
-        ///
-        /// HEX #FFFF99
+        /// - HEX #FFFF99
         public var primaryLight: UIColor {
             return UIColor(red: 255/255.0, green: 255/255.0, blue: 153/255.0, alpha: 1.0)
         }
         
         /// A medium-yellow color (Golden Tainoi)
-        ///
-        /// HEX #FFCC66
+        /// - HEX #FFCC66
         public var primaryMedium: UIColor {
             return UIColor(red: 255/255.0, green: 204/255.0, blue: 102/255.0, alpha: 1.0)
         }
         
         /// A dense-orange color (Neon Carrot)
-        ///
-        /// Hex #FF9933
+        /// - HEX #FF9933
         public var primaryDark: UIColor {
             return UIColor(red: 255/255.0, green: 153/255.0, blue: 51/255.0, alpha: 1.0)
         }
         
         /// A pale-purple color (Cosmic)
-        ///
-        /// Hex #664466;
+        /// - HEX #664466;
         public var secondaryLight: UIColor {
             return UIColor(red: 102/255.0, green: 68/255.0, blue: 102/255.0, alpha: 1.0)
         }
         
         /// A medium-purple color (Pastel Violet)
-        ///
-        /// Hex #CC99CC;
+        /// - HEX #CC99CC;
         public var secondaryMedium: UIColor {
             return UIColor(red: 204/255.0, green: 153/255.0, blue: 204/255.0, alpha: 1.0)
         }
@@ -89,38 +118,48 @@ public struct Interface {
         }
         
         /// A pale-blue color (Baby Blue Eyes)
-        ///
-        /// Hex #99CCFF
+        /// - HEX #99CCFF
         public var tertiaryLight: UIColor {
             return UIColor(red: 153/255.0, green: 204/255.0, blue: 255/255.0, alpha: 1.0)
         }
         
         /// A rich blue color (Bahama Blue)
-        ///
-        /// Hex #006699
+        /// = HEX #006699
         public var tertiaryMedium: UIColor {
             return UIColor(red: 0/255.0, green: 102/255.0, blue: 153/255.0, alpha: 1.0)
             
         }
         
         /// A medium-blue color (Mariner)
-        ///
-        /// Hex #3366CC
+        /// - HEX #3366CC
         public var tertiaryDark: UIColor {
             return UIColor(red: 51/255.0, green: 102/255.0, blue: 204/255.0, alpha: 1.0)
         }
         
         /// A flat gray color
-        ///
-        /// Hex #6E6E6E
+        /// - HEX #6E6E6E
         public var inactive: UIColor {
             return UIColor(red: 110/255.0, green: 110/255.0, blue: 110/255.0, alpha: 1.0)
         }
         
-        public func random() -> UIColor {
-            let colors = [primaryLight, primaryDark, tertiaryLight, tertiaryDark]
-            let random = arc4random_uniform(UInt32(colors.count))
-            return colors[Int(random)]
+        public var title: UIFont {
+            return UIFont(name: "Swiss911BT-UltraCompressed", size: 40.0)!
+        }
+        
+        public var subtitle: UIFont {
+            return UIFont(name: "Swiss911BT-UltraCompressed", size: 30.0)!
+        }
+        
+        public var body: UIFont {
+            return UIFont(name: "Swiss911BT-UltraCompressed", size: 20.0)!
+        }
+        
+        public var beepURL: URL {
+            guard let url = Bundle.main.url(forResource: "beep3", withExtension: "m4a") else {
+                fatalError("Failed to locate 'beep' resource.")
+            }
+            
+            return url
         }
     }
 }

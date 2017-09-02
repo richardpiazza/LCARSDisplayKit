@@ -110,7 +110,7 @@ import UIKit
         self.display.textColor = self.color
         self.display.text = self.displayValue
         self.display.textAlignment = (self.left) ? .left : .right
-        self.display.font = UIFont.Okuda.bold
+        self.display.font = Interface.theme.body
         if !self.subviews.contains(self.display) {
             self.addSubview(self.display)
         }
