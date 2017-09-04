@@ -37,6 +37,10 @@ public struct Arc: Graphable {
     public var radius: CGFloat = CGFloat(0)
     public var startDegree: CGFloat = CGFloat(0)
     public var endDegree: CGFloat = CGFloat(0)
+    /// A `GraphPoint` used to verticaly/horizontaly clip the starting degree
+    public var boundedStart: GraphPoint?
+    /// A `GraphPoint` used to verticaly/horizontaly clip the ending degree
+    public var boundedEnd: GraphPoint?
     
     public init() {
     }
@@ -49,11 +53,19 @@ public struct Arc: Graphable {
     
     /// The `GraphPoint` corresponding to the startDegree and radius
     public var startPoint: GraphPoint {
+        if let boundedStart = self.boundedStart {
+            return GraphPoint.graphPoint(degree: startDegree, radius: radius, boundedBy: boundedStart)
+        }
+        
         return GraphPoint.graphPoint(degree: startDegree, radius: radius)
     }
     
     /// The `GraphPoint` corresponding to the endDegree and radius
     public var endPoint: GraphPoint {
+        if let boundedEnd = self.boundedEnd {
+            return GraphPoint.graphPoint(degree: endDegree, radius: radius, boundedBy: boundedEnd)
+        }
+        
         return GraphPoint.graphPoint(degree: endDegree, radius: radius)
     }
     

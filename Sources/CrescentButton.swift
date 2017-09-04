@@ -39,7 +39,11 @@ import GraphPoint
         get {
             return crescent
         }
-        set {}
+        set {
+            if let type = newValue as? Crescent {
+                crescent = type
+            }
+        }
     }
     
     @IBInspectable open var innerRadius: CGFloat {

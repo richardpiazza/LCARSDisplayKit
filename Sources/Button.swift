@@ -37,7 +37,11 @@ open class Button: UIButton, Tappable {
         get {
             return rectangle
         }
-        set {}
+        set {
+            if let type = newValue as? RoundedRectangle {
+                rectangle = type
+            }
+        }
     }
     open var behavior: Behavior? {
         willSet {
@@ -57,7 +61,7 @@ open class Button: UIButton, Tappable {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         graphable.size = frame.size
-        rectangle.size = frame.size
+//        rectangle.size = frame.size
         self.titleLabel?.font = Interface.theme.body
         self.setTitleColor(UIColor.black, for: UIControlState())
     }
@@ -76,7 +80,7 @@ open class Button: UIButton, Tappable {
         super.draw(rect)
         
         graphable.size = rect.size
-        rectangle.size = rect.size
+//        rectangle.size = rect.size
         let context = UIGraphicsGetCurrentContext()
         self.setBackgroundImage(self.image(context), for: UIControlState())
     }
@@ -138,5 +142,11 @@ open class Button: UIButton, Tappable {
     
     open var touchedColors: [UIColor]? {
         return nil
+    }
+    
+    // - MARK: Layout & Drawing
+    open func setGraphableFrame(_ frame: CGRect) {
+        self.graphable.size = frame.size
+        self.frame = frame
     }
 }

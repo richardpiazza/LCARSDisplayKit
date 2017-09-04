@@ -39,7 +39,11 @@ import GraphPoint
         get {
             return edgedCrescent
         }
-        set {}
+        set {
+            if let type = newValue as? EdgedCrescent {
+                edgedCrescent = type
+            }
+        }
     }
     
     @IBInspectable open var radius: CGFloat {

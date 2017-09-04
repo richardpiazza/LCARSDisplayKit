@@ -74,17 +74,17 @@
         <!--View Controller-->
         <scene sceneID="bxk-x1-mqA">
             <objects>
-                <viewController id="2nk-8c-5Cc" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DirectionGroupingView03" id="2nk-8c-5Cc" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RPT-4S-bSJ"/>
                         <viewControllerLayoutGuide type="bottom" id="Jr3-7b-Xhj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wC6-mT-xGb">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="777" height="578"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFT-F3-7F8" customClass="DPadViewVariation3" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="794" height="660"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XFT-F3-7F8" customClass="DirectionGroupingView03" customModule="LCARSDisplayKit" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="737" height="538"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -96,7 +96,7 @@
                             <constraint firstItem="Jr3-7b-Xhj" firstAttribute="top" secondItem="XFT-F3-7F8" secondAttribute="bottom" constant="20" id="kcd-OA-sjA"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="834" height="700"/>
+                    <size key="freeformSize" width="777" height="578"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heX-A5-jjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

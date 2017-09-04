@@ -36,14 +36,14 @@ public typealias DegreeRange = (start: CGFloat, end: CGFloat)
 /// A collection of `DegreeRange` used in drawing the DPad
 public struct DPad {
     public struct Crux {
-        public static let down = DegreeRange(CGFloat(80.5), CGFloat(99.5))
-        public static let left = DegreeRange(CGFloat(170.5), CGFloat(189.5))
-        public static let up = DegreeRange(CGFloat(260.5), CGFloat(279.5))
-        public static let right = DegreeRange(CGFloat(350.5), CGFloat(9.5))
-        public static let sector01 = DegreeRange(CGFloat(11), CGFloat(79))
-        public static let sector02 = DegreeRange(CGFloat(101), CGFloat(169))
-        public static let sector03 = DegreeRange(CGFloat(191), CGFloat(259))
-        public static let sector04 = DegreeRange(CGFloat(281), CGFloat(349))
+        public static let down = DegreeRange(CGFloat(80), CGFloat(100))//80.5,99.5
+        public static let left = DegreeRange(CGFloat(170), CGFloat(190))//170.5,189.5
+        public static let up = DegreeRange(CGFloat(260), CGFloat(280))//260.5,279.5
+        public static let right = DegreeRange(CGFloat(350), CGFloat(10))//350.5,9.5
+        public static let sector01 = DegreeRange(CGFloat(12), CGFloat(78))//11,79
+        public static let sector02 = DegreeRange(CGFloat(102), CGFloat(168))//101,169
+        public static let sector03 = DegreeRange(CGFloat(192), CGFloat(258))//191,259
+        public static let sector04 = DegreeRange(CGFloat(282), CGFloat(348))//281,349
     }
     
     public struct Ring {

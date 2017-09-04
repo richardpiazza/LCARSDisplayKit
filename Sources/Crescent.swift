@@ -53,6 +53,26 @@ public struct Crescent: Graphable {
         return max(innerArc.endDegree, outerArc.endDegree)
     }
     
+    public var boundStart: Bool = false {
+        didSet {
+            if boundStart {
+                outerArc.boundedStart = innerArc.startPoint
+            } else {
+                outerArc.boundedStart = nil
+            }
+        }
+    }
+    
+    public var boundEnd: Bool = false {
+        didSet {
+            if boundEnd {
+                outerArc.boundedEnd = innerArc.endPoint
+            } else {
+                outerArc.boundedEnd = nil
+            }
+        }
+    }
+    
     public init() {}
     
     public init(innerArc: Arc, outerArc: Arc) {
@@ -61,7 +81,7 @@ public struct Crescent: Graphable {
         self.outerArc = outerArc
     }
     
-    public init(innerRadius: CGFloat, outerRadius: CGFloat, startDegree: CGFloat, endDegree: CGFloat) {
+    public init(innerRadius: CGFloat, outerRadius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, boundedStart: Bool = false, boundedEnd: Bool = false) {
         self.init()
         innerArc = Arc(radius: innerRadius, startDegree: startDegree, endDegree: endDegree)
         outerArc = Arc(radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
