@@ -34,9 +34,6 @@
 		E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */; };
 		E1112FC91BBE7FBC0001C33D /* LCARSDisplayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FC81BBE7FBC0001C33D /* LCARSDisplayKitTests.swift */; };
 		E1112FD41BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FD31BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift */; };
-		E127EB231BBE803700AAD675 /* DPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB221BBE803700AAD675 /* DPadView.swift */; };
-		E127EB251BBE808500AAD675 /* DPadViewVariation1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB241BBE808500AAD675 /* DPadViewVariation1.swift */; };
-		E127EB271BBE80C800AAD675 /* DPadViewVariation2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB261BBE80C800AAD675 /* DPadViewVariation2.swift */; };
 		E12815341F56E8B900B68748 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12815331F56E8B900B68748 /* Behavior.swift */; };
 		E13E4C6F1F5ECAF3001C1CC5 /* DirectionGroupingView02.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13E4C6E1F5ECAF3001C1CC5 /* DirectionGroupingView02.swift */; };
 		E14DEAFD1F521CBD00F1EEFF /* beep2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFA1F521CBC00F1EEFF /* beep2.m4a */; };
@@ -110,9 +107,6 @@
 		E1112FCF1BBE7FBC0001C33D /* LCARSDisplayKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LCARSDisplayKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1112FD31BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitUITests.swift; sourceTree = "<group>"; };
 		E1112FD51BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E127EB221BBE803700AAD675 /* DPadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPadView.swift; sourceTree = "<group>"; };
-		E127EB241BBE808500AAD675 /* DPadViewVariation1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPadViewVariation1.swift; sourceTree = "<group>"; };
-		E127EB261BBE80C800AAD675 /* DPadViewVariation2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPadViewVariation2.swift; sourceTree = "<group>"; };
 		E12815331F56E8B900B68748 /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
 		E13E4C6E1F5ECAF3001C1CC5 /* DirectionGroupingView02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionGroupingView02.swift; sourceTree = "<group>"; };
 		E14DEAFA1F521CBC00F1EEFF /* beep2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep2.m4a; sourceTree = "<group>"; };
@@ -194,9 +188,6 @@
 				E13E4C6E1F5ECAF3001C1CC5 /* DirectionGroupingView02.swift */,
 				E172FFBF1F5AF3DE0071B963 /* DirectionGroupingView03.swift */,
 				E1B5F3551F5840F70010B293 /* DPad.swift */,
-				E127EB221BBE803700AAD675 /* DPadView.swift */,
-				E127EB241BBE808500AAD675 /* DPadViewVariation1.swift */,
-				E127EB261BBE80C800AAD675 /* DPadViewVariation2.swift */,
 				E176A68F1D8DE5CD00823E19 /* CGFloat.swift */,
 				E105B7581D5A5F73004AE5D9 /* Crescent.swift */,
 				E105B75C1D5A5F73004AE5D9 /* CrescentButton.swift */,
@@ -590,7 +581,6 @@
 				E105B77A1D5A5F73004AE5D9 /* UIImage.swift in Sources */,
 				E176A6901D8DE5CD00823E19 /* CGFloat.swift in Sources */,
 				E105B7721D5A5F73004AE5D9 /* EdgedCrescentButton.swift in Sources */,
-				E127EB231BBE803700AAD675 /* DPadView.swift in Sources */,
 				E105B76D1D5A5F73004AE5D9 /* EdgedCrescent.swift in Sources */,
 				E105B76E1D5A5F73004AE5D9 /* Graphable.swift in Sources */,
 				E14DEB011F5452DE00F1EEFF /* UIColor.swift in Sources */,
@@ -600,7 +590,6 @@
 				E105B7671D5A5F73004AE5D9 /* Arc.swift in Sources */,
 				E12815341F56E8B900B68748 /* Behavior.swift in Sources */,
 				E105B7701D5A5F73004AE5D9 /* CrescentButton.swift in Sources */,
-				E127EB251BBE808500AAD675 /* DPadViewVariation1.swift in Sources */,
 				E105B76F1D5A5F73004AE5D9 /* Button.swift in Sources */,
 				E105B7711D5A5F73004AE5D9 /* DirectionButton.swift in Sources */,
 				E105B77C1D5A61DC004AE5D9 /* Theme.swift in Sources */,
@@ -615,7 +604,6 @@
 				E172FFC01F5AF3DE0071B963 /* DirectionGroupingView03.swift in Sources */,
 				E14DEB051F546F0000F1EEFF /* Direction.swift in Sources */,
 				E105B76C1D5A5F73004AE5D9 /* Crescent.swift in Sources */,
-				E127EB271BBE80C800AAD675 /* DPadViewVariation2.swift in Sources */,
 				E105B7741D5A5F73004AE5D9 /* LDKIndicatorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

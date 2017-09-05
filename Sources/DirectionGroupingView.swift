@@ -48,7 +48,11 @@ import GraphPoint
         let x = graphOrigin.x - (cruxDiameter / 2)
         let y = graphOrigin.y - cruxExteriorRadius
         let frame = CGRect(x: x, y: y, width: cruxDiameter, height: cruxDirectionDiameter)
-        let button = DirectionButton(frame: frame, radius: cruxExteriorRadius, startDegree: DPad.Crux.up.start, endDegree: DPad.Crux.up.end, cardinal: .up)
+        
+        let arc = Arc(radius: cruxExteriorRadius, startDegree: DPad.Crux.up.start, endDegree: DPad.Crux.up.end)
+        let direction = Direction(with: arc, cardinal: .up)
+        
+        let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
@@ -57,7 +61,11 @@ import GraphPoint
         let x = graphOrigin.x - (cruxDiameter / 2)
         let y = graphOrigin.y + (cruxDiameter / 2) + minimalElementSpacing
         let frame = CGRect(x: x, y: y, width: cruxDiameter, height: cruxDirectionDiameter)
-        let button = DirectionButton(frame: frame, radius: self.cruxExteriorRadius, startDegree: DPad.Crux.down.start, endDegree: DPad.Crux.down.end, cardinal: .down)
+        
+        let arc = Arc(radius: cruxExteriorRadius, startDegree: DPad.Crux.down.start, endDegree: DPad.Crux.down.end)
+        let direction = Direction(with: arc, cardinal: .down)
+        
+        let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
@@ -66,7 +74,11 @@ import GraphPoint
         let x = graphOrigin.x - (cruxDiameter / 2) - cruxDirectionDiameter - minimalElementSpacing
         let y = graphOrigin.y - (cruxDiameter / 2)
         let frame = CGRect(x: x, y: y, width: cruxDirectionDiameter, height: cruxDiameter)
-        let button = DirectionButton(frame: frame, radius: self.cruxExteriorRadius, startDegree: DPad.Crux.left.start, endDegree: DPad.Crux.left.end, cardinal: .left)
+        
+        let arc = Arc(radius: cruxExteriorRadius, startDegree: DPad.Crux.left.start, endDegree: DPad.Crux.left.end)
+        let direction = Direction(with: arc, cardinal: .left)
+        
+        let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
@@ -76,7 +88,11 @@ import GraphPoint
         let x = graphOrigin.x + (cruxDiameter / 2) + minimalElementSpacing
         let y = graphOrigin.y - (cruxDiameter / 2)
         let frame = CGRect(x: x, y: y, width: cruxDirectionDiameter, height: cruxDiameter)
-        let button = DirectionButton(frame: frame, radius: self.cruxExteriorRadius, startDegree: DPad.Crux.right.start, endDegree: DPad.Crux.right.end, cardinal: .right)
+        
+        let arc = Arc(radius: cruxExteriorRadius, startDegree: DPad.Crux.right.start, endDegree: DPad.Crux.right.end)
+        let direction = Direction(with: arc, cardinal: .right)
+        
+        let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button

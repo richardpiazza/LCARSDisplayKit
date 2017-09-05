@@ -35,7 +35,11 @@ import GraphPoint
 /// the bottom half, and an additional row of controls to the top.
 @IBDesignable open class DirectionGroupingView02: DirectionGroupingView01 {
     open lazy var outerRing01: CrescentButton = {
-        let crescent = Crescent(innerRadius: secondRingInteriorRadius, outerRadius: secondRingExteriorRadius, startDegree: DPad.Ring.arc01.start, endDegree: DPad.Ring.arc04.end)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc01.start, endDegree: DPad.Ring.arc04.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.Ring.arc01.start, endDegree: DPad.Ring.arc04.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
         let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR01", for: UIControlState())
         button.color = Interface.theme.primaryDark
@@ -43,7 +47,11 @@ import GraphPoint
         return button
     }()
     open lazy var outerRing05: CrescentButton = {
-        let crescent = Crescent(innerRadius: secondRingInteriorRadius, outerRadius: secondRingExteriorRadius, startDegree: DPad.Ring.arc05.start, endDegree: DPad.Ring.arc05.end)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc05.start, endDegree: DPad.Ring.arc05.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.Ring.arc05.start, endDegree: DPad.Ring.arc05.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
         let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR05", for: UIControlState())
         button.color = Interface.theme.primaryDark

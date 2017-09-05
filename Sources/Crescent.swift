@@ -74,17 +74,21 @@ public struct Crescent: Graphable {
     }
     
     public init() {}
-    
-    public init(innerArc: Arc, outerArc: Arc) {
+    public init(innerArc: Arc, outerArc: Arc, boundedStart: Bool = false, boundedEnd: Bool = false) {
         self.init()
         self.innerArc = innerArc
         self.outerArc = outerArc
+        if boundedStart {
+            self.outerArc.boundedStart = self.innerArc.startPoint
+        }
+        if boundedEnd {
+            self.outerArc.boundedEnd = self.innerArc.endPoint
+        }
     }
-    
     public init(innerRadius: CGFloat, outerRadius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, boundedStart: Bool = false, boundedEnd: Bool = false) {
-        self.init()
-        innerArc = Arc(radius: innerRadius, startDegree: startDegree, endDegree: endDegree)
-        outerArc = Arc(radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
+        let innerArc = Arc(radius: innerRadius, startDegree: startDegree, endDegree: endDegree)
+        let outerArc = Arc(radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
+        self.init(innerArc: innerArc, outerArc: outerArc, boundedStart: boundedStart, boundedEnd: boundedEnd)
     }
     
     // MARK: - Graphable

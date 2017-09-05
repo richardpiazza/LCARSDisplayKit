@@ -141,10 +141,4 @@ open class Button: UIButton, Tappable {
     open var touchedColors: [UIColor]? {
         return nil
     }
-    
-    // - MARK: Layout & Drawing
-    open func setGraphableFrame(_ frame: CGRect) {
-        self.graphable.size = frame.size
-        self.frame = frame
-    }
 }

@@ -62,10 +62,10 @@ import GraphPoint
     }
     
     open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 144, height: 60)
+        return type(of: self).defaultSize
     }
     
-    convenience init(with roundedRectangle: RoundedRectangle, frame: CGRect) {
+    convenience init(with frame: CGRect, roundedRectangle: RoundedRectangle) {
         self.init(frame: frame)
         self.rectangle = roundedRectangle
     }

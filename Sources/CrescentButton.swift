@@ -32,7 +32,7 @@ import UIKit
 import GraphPoint
 
 /// A button used to outline a circular 'DPad'
-@IBDesignable open class CrescentButton: Button {
+open class CrescentButton: Button {
     
     open var crescent: Crescent = Crescent()
     open override var graphable: Graphable {
@@ -46,49 +46,9 @@ import GraphPoint
         }
     }
     
-    @IBInspectable open var innerRadius: CGFloat {
-        get {
-            return crescent.innerArc.radius
-        }
-        set {
-            crescent.innerArc.radius = newValue
-        }
-    }
-    @IBInspectable open var outerRadius: CGFloat {
-        get {
-            return crescent.outerArc.radius
-        }
-        set {
-            crescent.outerArc.radius = newValue
-        }
-    }
-    @IBInspectable open var startDegree: CGFloat {
-        get {
-            return crescent.startDegree
-        }
-        set {
-            crescent.innerArc.startDegree = newValue
-            crescent.outerArc.startDegree = newValue
-        }
-    }
-    @IBInspectable open var endDegree: CGFloat {
-        get {
-            return crescent.endDegree
-        }
-        set {
-            crescent.innerArc.endDegree = newValue
-            crescent.outerArc.endDegree = newValue
-        }
-    }
-    
     convenience init(with crescent: Crescent, rect: CGRect, offset: GraphOriginOffset) {
         let frame = rect.frame(graphFrame: crescent.graphFrame, offset: offset)
         self.init(frame: frame)
         self.crescent = crescent
-    }
-    
-    func setCrescent(_ crescent: Crescent, rect: CGRect, offset: GraphOriginOffset) {
-        self.crescent = crescent
-        self.frame = rect.frame(graphFrame: crescent.graphFrame, offset: offset)
     }
 }

@@ -6,7 +6,7 @@ target 'LCARSDisplayKit' do
   use_frameworks!
 
   # Pods for LCARSDisplayKit
-  pod 'GraphPoint', '~> 3.0'
+  pod 'GraphPoint', '~> 3.1'
 
   target 'LCARSDisplayKitTests' do
     inherit! :search_paths

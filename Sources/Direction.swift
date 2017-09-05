@@ -64,7 +64,10 @@ public struct Direction: Graphable {
     public var cardinal: Cardinal = .up
     public var size: CGSize = CGSize()
     
-    public init() {
+    public init() {}
+    public init(with arc: Arc, cardinal: Cardinal) {
+        self.arc = arc
+        self.cardinal = cardinal
     }
     
     public var path: CGMutablePath {

@@ -31,8 +31,8 @@
 import UIKit
 import GraphPoint
 
-/// Button that had an interior matching an arc, and a flat exterior.
-@IBDesignable open class EdgedCrescentButton: Button {
+/// Button that has an interior matching an arc, and a flat exterior.
+open class EdgedCrescentButton: Button {
     
     open var edgedCrescent: EdgedCrescent = EdgedCrescent()
     open override var graphable: Graphable {
@@ -46,90 +46,9 @@ import GraphPoint
         }
     }
     
-    @IBInspectable open var radius: CGFloat {
-        get {
-            return edgedCrescent.arc.radius
-        }
-        set {
-            edgedCrescent.arc.radius = newValue
-        }
-    }
-    @IBInspectable open var startDegree: CGFloat {
-        get {
-            return edgedCrescent.arc.startDegree
-        }
-        set {
-            edgedCrescent.arc.startDegree = newValue
-        }
-    }
-    @IBInspectable open var endDegree: CGFloat {
-        get {
-            return edgedCrescent.arc.endDegree
-        }
-        set {
-            edgedCrescent.arc.endDegree = newValue
-        }
-    }
-    @IBInspectable open var edgePoint1: CGPoint {
-        get {
-            guard edgedCrescent.additionalPoints.count > 0 else {
-                return CGPoint.zero
-            }
-            
-            return edgedCrescent.additionalPoints[0]
-        }
-        set {
-            guard edgedCrescent.additionalPoints.count > 0 else {
-                edgedCrescent.additionalPoints.append(newValue)
-                return
-            }
-            
-            edgedCrescent.additionalPoints[0] = newValue
-        }
-    }
-    @IBInspectable open var edgePoint2: CGPoint {
-        get {
-            guard edgedCrescent.additionalPoints.count > 1 else {
-                return CGPoint.zero
-            }
-            
-            return edgedCrescent.additionalPoints[1]
-        }
-        set {
-            guard edgedCrescent.additionalPoints.count > 1 else {
-                edgedCrescent.additionalPoints.append(newValue)
-                return
-            }
-            
-            edgedCrescent.additionalPoints[1] = newValue
-        }
-    }
-    @IBInspectable open var edgePoint3: CGPoint {
-        get {
-            guard edgedCrescent.additionalPoints.count > 2 else {
-                return CGPoint.zero
-            }
-            
-            return edgedCrescent.additionalPoints[2]
-        }
-        set {
-            guard edgedCrescent.additionalPoints.count > 2 else {
-                edgedCrescent.additionalPoints.append(newValue)
-                return
-            }
-            
-            edgedCrescent.additionalPoints[2] = newValue
-        }
-    }
-    
     convenience init(with edgedCrescent: EdgedCrescent, rect: CGRect, offset: GraphOriginOffset) {
         let frame = rect.frame(graphFrame: edgedCrescent.graphFrame, offset: offset)
         self.init(frame: frame)
         self.edgedCrescent = edgedCrescent
-    }
-    
-    func setEdgedCrescent(_ edgedCrescent: EdgedCrescent, rect: CGRect, offset: GraphOriginOffset) {
-        self.edgedCrescent = edgedCrescent
-        self.frame = rect.frame(graphFrame: edgedCrescent.graphFrame, offset: offset)
     }
 }

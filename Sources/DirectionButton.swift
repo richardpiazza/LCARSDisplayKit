@@ -32,7 +32,7 @@ import UIKit
 import GraphPoint
 
 /// A button soley used in a 'DPad' to represent cardinal directions
-@IBDesignable open class DirectionButton: Button {
+open class DirectionButton: Button {
     
     open var direction: Direction = Direction()
     open override var graphable: Graphable {
@@ -46,53 +46,9 @@ import GraphPoint
         }
     }
     
-    @IBInspectable open var radius: CGFloat {
-        get {
-            return direction.arc.radius
-        }
-        set {
-            direction.arc.radius = newValue
-        }
-    }
-    @IBInspectable open var startDegree: CGFloat {
-        get {
-            return direction.arc.startDegree
-        }
-        set {
-            direction.arc.startDegree = newValue
-        }
-    }
-    @IBInspectable open var endDegree: CGFloat {
-        get {
-            return direction.arc.endDegree
-        }
-        set {
-            direction.arc.endDegree = newValue
-        }
-    }
-    @IBInspectable open var cardinalDegree: CGFloat {
-        get {
-            return direction.cardinal.degree
-        }
-        set {
-            direction.cardinal = Direction.Cardinal(degreeValue: newValue)
-        }
-    }
-    
-    convenience init(frame: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinal: Direction.Cardinal) {
+    convenience init(with frame: CGRect, direction: Direction) {
         self.init(frame: frame)
-        self.radius = radius
-        self.startDegree = startDegree
-        self.endDegree = endDegree
-        self.cardinalDegree = cardinal.degree
-    }
-    
-    convenience init(radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinal: Direction.Cardinal) {
-        self.init()
-        self.radius = radius
-        self.startDegree = startDegree
-        self.endDegree = endDegree
-        self.cardinalDegree = cardinal.degree
+        self.direction = direction
     }
     
     // MARK: - Tappable

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "LCARSDisplayKit"
-  s.version = "1.0.1"
+  s.version = "2.0.0"
   s.summary = "A Hobby Project."
   s.description = <<-DESC
   A Swift library for developing personal iOS apps with an LCARS© interface.
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.resources = 'Resources/*'
   s.frameworks = 'Foundation', 'AVFoundation'
   s.requires_arc = true
-  s.dependency 'GraphPoint', '~> 3.0'
+  s.dependency 'GraphPoint', '~> 3.1'
 
   s.ios.deployment_target = "11.0"
 end

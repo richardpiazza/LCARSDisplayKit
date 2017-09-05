@@ -103,19 +103,8 @@ import GraphPoint
         }
     }
     
-    convenience init(frame: CGRect, top: Bool, left: Bool, rounded: Bool, horizontalHeight: CGFloat, verticalWidth: CGFloat, closedHeight: CGFloat) {
+    convenience init(frame: CGRect, elbow: Elbow) {
         self.init(frame: frame)
-        self.top = top
-        self.left = left
-        self.rounded = rounded
-        self.horizontalHeight = horizontalHeight
-        self.verticalWidth = verticalWidth
-        self.closedHeight = closedHeight
-    }
-    
-    open override func layoutSubviews() {
-        super.layoutSubviews()
-
-        self.elbow.size = self.bounds.size
+        self.elbow = elbow
     }
 }

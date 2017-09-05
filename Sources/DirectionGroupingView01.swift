@@ -35,160 +35,240 @@ import GraphPoint
 /// This layout is representative of LCARS starting in 2371.
 @IBDesignable open class DirectionGroupingView01: DirectionGroupingView {
     open lazy var innerRing01: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc01.start, endDegree: DPad.Ring.arc04.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc01.start, endDegree: DPad.Ring.arc04.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc01.start, endDegree: DPad.Ring.arc04.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("IR01", for: UIControlState())
         button.color = Interface.theme.tertiaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var innerRing05: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc05.start, endDegree: DPad.Ring.arc05.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc05.start, endDegree: DPad.Ring.arc05.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc05.start, endDegree: DPad.Ring.arc05.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("IR05", for: UIControlState())
         button.color = Interface.theme.primaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var innerRing10: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc10.start, endDegree: DPad.Ring.arc10.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc10.start, endDegree: DPad.Ring.arc10.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc10.start, endDegree: DPad.Ring.arc10.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("IR10", for: UIControlState())
         button.color = Interface.theme.primaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var innerRing11: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc11.start, endDegree: DPad.Ring.arc11.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc11.start, endDegree: DPad.Ring.arc11.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc11.start, endDegree: DPad.Ring.arc11.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("IR11", for: UIControlState())
         button.color = Interface.theme.tertiaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var innerRing12: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc12.start, endDegree: DPad.Ring.arc12.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc12.start, endDegree: DPad.Ring.arc12.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc12.start, endDegree: DPad.Ring.arc12.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("IR12", for: UIControlState())
         button.color = Interface.theme.primaryDark
         self.addSubview(button)
         return button
     }()
     open lazy var innerRing13: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("IR13", for: UIControlState())
         button.color = Interface.theme.tertiaryDark
         self.addSubview(button)
         return button
     }()
     open lazy var innerRing14: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("IR14", for: UIControlState())
         button.color = Interface.theme.tertiaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var innerRing15: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc15.start, endDegree: DPad.Ring.arc15.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc15.start, endDegree: DPad.Ring.arc15.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc15.start, endDegree: DPad.Ring.arc15.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("IR15", for: UIControlState())
         button.color = Interface.theme.primaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var innerRing16: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc16.start, endDegree: DPad.Ring.arc19.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc16.start, endDegree: DPad.Ring.arc19.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc16.start, endDegree: DPad.Ring.arc19.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("IR16", for: UIControlState())
         button.color = Interface.theme.tertiaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var innerRing20: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc20.start, endDegree: DPad.Ring.arc20.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc20.start, endDegree: DPad.Ring.arc20.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc20.start, endDegree: DPad.Ring.arc20.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("IR20", for: UIControlState())
         button.color = Interface.theme.primaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var outerRing10: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.secondRingInteriorRadius, outerRadius: self.secondRingExteriorRadius, startDegree: DPad.Ring.arc10.start, endDegree: DPad.Ring.arc10.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc10.start, endDegree: DPad.Ring.arc10.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.Ring.arc10.start, endDegree: DPad.Ring.arc10.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR10", for: UIControlState())
         button.color = Interface.theme.primaryDark
         self.addSubview(button)
         return button
     }()
     open lazy var outerRing11: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.secondRingInteriorRadius, outerRadius: self.secondRingExteriorRadius, startDegree: DPad.Ring.arc11.start, endDegree: DPad.Ring.arc11.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc11.start, endDegree: DPad.Ring.arc11.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.Ring.arc11.start, endDegree: DPad.Ring.arc11.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR11", for: UIControlState())
         button.color = Interface.theme.tertiaryDark
         self.addSubview(button)
         return button
     }()
     open lazy var outerRing12: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.secondRingInteriorRadius, outerRadius: self.secondRingExteriorRadius, startDegree: DPad.Ring.arc12.start, endDegree: DPad.Ring.arc12.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc12.start, endDegree: DPad.Ring.arc12.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.Ring.arc12.start, endDegree: DPad.Ring.arc12.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR12", for: UIControlState())
         button.color = Interface.theme.tertiaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var outerRing13: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.secondRingInteriorRadius, outerRadius: self.secondRingExteriorRadius, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.Ring.arc13.start, endDegree: DPad.Ring.arc13.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR13", for: UIControlState())
         button.color = Interface.theme.primaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var outerRing14: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.secondRingInteriorRadius, outerRadius: self.secondRingExteriorRadius, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR14", for: UIControlState())
         button.color = Interface.theme.primaryDark
         self.addSubview(button)
         return button
     }()
     open lazy var outerRing16: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.secondRingInteriorRadius, outerRadius: self.secondRingExteriorRadius, startDegree: DPad.Ring.arc16.start, endDegree: DPad.Ring.arc16.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc16.start, endDegree: DPad.Ring.arc16.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.Ring.arc16.start, endDegree: DPad.Ring.arc16.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR16", for: UIControlState())
         button.color = Interface.theme.tertiaryDark
         self.addSubview(button)
         return button
     }()
     open lazy var outerRing17: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.secondRingInteriorRadius, outerRadius: self.secondRingExteriorRadius, startDegree: DPad.Ring.arc17.start, endDegree: DPad.Ring.arc17.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc17.start, endDegree: DPad.Ring.arc17.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.Ring.arc17.start, endDegree: DPad.Ring.arc17.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR17", for: UIControlState())
         button.color = Interface.theme.primaryLight
         self.addSubview(button)
         return button
     }()
     open lazy var outerRing18: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.secondRingInteriorRadius, outerRadius: self.secondRingExtendedExteriorRadius, startDegree: DPad.Ring.arc18.start, endDegree: DPad.Ring.arc18.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc18.start, endDegree: DPad.Ring.arc18.end)
+        let outerArc = Arc(radius: secondRingExtendedExteriorRadius, startDegree: DPad.Ring.arc18.start, endDegree: DPad.Ring.arc18.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR18", for: UIControlState())
         button.color = Interface.theme.primaryDark
         self.addSubview(button)
         return button
     }()
     open lazy var outerRing19: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.secondRingInteriorRadius, outerRadius: self.secondRingExtendedExteriorRadius, startDegree: DPad.Ring.arc19.start, endDegree: DPad.Ring.arc19.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc19.start, endDegree: DPad.Ring.arc19.end)
+        let outerArc = Arc(radius: secondRingExtendedExteriorRadius, startDegree: DPad.Ring.arc19.start, endDegree: DPad.Ring.arc19.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR19", for: UIControlState())
         button.color = Interface.theme.tertiaryDark
         self.addSubview(button)
         return button
     }()
     open lazy var outerRing20: CrescentButton = {
-        let crescent = Crescent(innerRadius: self.secondRingInteriorRadius, outerRadius: self.secondRingExteriorRadius, startDegree: DPad.Ring.arc20.start, endDegree: DPad.Ring.arc20.end)
-        let button = CrescentButton(with: crescent, rect: self.bounds, offset: self.offset)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.Ring.arc20.start, endDegree: DPad.Ring.arc20.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.Ring.arc20.start, endDegree: DPad.Ring.arc20.end)
+        
+        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
+        
+        let button = CrescentButton(with: crescent, rect: bounds, offset: offset)
         button.setTitle("OR20", for: UIControlState())
         button.color = Interface.theme.tertiaryLight
         self.addSubview(button)
@@ -300,7 +380,7 @@ import GraphPoint
         
         let roundedRectangle = RoundedRectangle(size: CGSize(width: width, height: height), leftRounded: true, rightRounded: true, cornersOnly: false)
         
-        let button = RoundedRectangleButton(with: roundedRectangle, frame: CGRect(x: x, y: y, width: width, height: height))
+        let button = RoundedRectangleButton(with: CGRect(x: x, y: y, width: width, height: height), roundedRectangle: roundedRectangle)
         button.setTitle("T00", for: UIControlState())
         button.color = Interface.theme.tertiaryLight
         self.addSubview(button)
