@@ -272,46 +272,6 @@ import GraphPoint
         return GraphOriginOffset(x: -(scaledContentSize.width * 0.0366), y: (scaledContentSize.height * 0.1468))
     }
     
-    // 181.426406871192851
-    open var firstRingInteriorRadius: CGFloat {
-        return cruxExteriorRadius + defaultElementSpacing
-    }
-    
-    // 261.226406871192851
-    open var firstRingExteriorRadius: CGFloat {
-        return firstRingInteriorRadius + (cruxDiameter * 1.33)
-    }
-    
-    // 276.226406871192851
-    open var secondRingInteriorRadius: CGFloat {
-        return firstRingExteriorRadius + defaultElementSpacing
-    }
-    
-    // 326.206406871192851
-    open var secondRingExteriorRadius: CGFloat {
-        return secondRingInteriorRadius + (cruxDiameter * 0.833)
-    }
-    
-    // 386.206406871192851
-    open var secondRingExtendedExteriorRadius: CGFloat {
-        return secondRingInteriorRadius + (cruxDiameter * 1.833)
-    }
-    
-    // 339.706406871192851
-    open var secondRingEdgeExteriorRadius: CGFloat {
-        return secondRingExteriorRadius + (cruxDiameter * 0.225)
-    }
-    
-    // 341.206406871192851
-    open var thirdRingInteriorRadius: CGFloat {
-        return secondRingExteriorRadius + defaultElementSpacing
-    }
-    
-    // 386.206406871192851
-    open var thirdRingExteriorRadius: CGFloat {
-        return thirdRingInteriorRadius + (cruxDiameter * 0.75)
-    }
-    
     open override func layoutSubviews() {
         super.layoutSubviews()
         

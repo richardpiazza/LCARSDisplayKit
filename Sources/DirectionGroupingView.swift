@@ -35,32 +35,48 @@ import GraphPoint
 @IBDesignable open class DirectionGroupingView: UIView {
     
     open lazy var crux: RoundedRectangleButton = {
-        let button = RoundedRectangleButton()
+        let x = graphOrigin.x - (cruxDiameter / 2)
+        let y = graphOrigin.y - (cruxDiameter / 2)
+        let frame = CGRect(x: x, y: y, width: cruxDiameter, height: cruxDiameter)
+        let button = RoundedRectangleButton(frame: frame)
         button.color = Interface.theme.primaryDark
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
     }()
     open lazy var up: DirectionButton = {
-        let button = DirectionButton(radius: self.cruxExteriorRadius, startDegree: DPad.Crux.up.start, endDegree: DPad.Crux.up.end, cardinal: .up)
+        let x = graphOrigin.x - (cruxDiameter / 2)
+        let y = graphOrigin.y - cruxExteriorRadius
+        let frame = CGRect(x: x, y: y, width: cruxDiameter, height: cruxDirectionDiameter)
+        let button = DirectionButton(frame: frame, radius: cruxExteriorRadius, startDegree: DPad.Crux.up.start, endDegree: DPad.Crux.up.end, cardinal: .up)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
     }()
     open lazy var down: DirectionButton = {
-        let button = DirectionButton(radius: self.cruxExteriorRadius, startDegree: DPad.Crux.down.start, endDegree: DPad.Crux.down.end, cardinal: .down)
+        let x = graphOrigin.x - (cruxDiameter / 2)
+        let y = graphOrigin.y + (cruxDiameter / 2) + minimalElementSpacing
+        let frame = CGRect(x: x, y: y, width: cruxDiameter, height: cruxDirectionDiameter)
+        let button = DirectionButton(frame: frame, radius: self.cruxExteriorRadius, startDegree: DPad.Crux.down.start, endDegree: DPad.Crux.down.end, cardinal: .down)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
     }()
     open lazy var left: DirectionButton = {
-        let button = DirectionButton(radius: self.cruxExteriorRadius, startDegree: DPad.Crux.left.start, endDegree: DPad.Crux.left.end, cardinal: .left)
+        let x = graphOrigin.x - (cruxDiameter / 2) - cruxDirectionDiameter - minimalElementSpacing
+        let y = graphOrigin.y - (cruxDiameter / 2)
+        let frame = CGRect(x: x, y: y, width: cruxDirectionDiameter, height: cruxDiameter)
+        let button = DirectionButton(frame: frame, radius: self.cruxExteriorRadius, startDegree: DPad.Crux.left.start, endDegree: DPad.Crux.left.end, cardinal: .left)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
     }()
     open lazy var right: DirectionButton = {
-        let button = DirectionButton(radius: self.cruxExteriorRadius, startDegree: DPad.Crux.right.start, endDegree: DPad.Crux.right.end, cardinal: .right)
+        let graphOrigin = GraphOrigin(x: self.bounds.graphOrigin.x + offset.x, y: self.bounds.graphOrigin.y + offset.y)
+        let x = graphOrigin.x + (cruxDiameter / 2) + minimalElementSpacing
+        let y = graphOrigin.y - (cruxDiameter / 2)
+        let frame = CGRect(x: x, y: y, width: cruxDirectionDiameter, height: cruxDiameter)
+        let button = DirectionButton(frame: frame, radius: self.cruxExteriorRadius, startDegree: DPad.Crux.right.start, endDegree: DPad.Crux.right.end, cardinal: .right)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
@@ -127,6 +143,10 @@ import GraphPoint
         return GraphOriginOffset()
     }
     
+    open var graphOrigin: GraphOrigin {
+        return GraphOrigin(x: bounds.graphOrigin.x + offset.x, y: bounds.graphOrigin.y + offset.y)
+    }
+    
     // 8.0
     open var minimalElementSpacing: CGFloat {
         if scaledContentSize.width >= scaledContentSize.height {
@@ -165,92 +185,66 @@ import GraphPoint
     
     // 46.426406871192851
     open var cruxInteriorRadius: CGFloat {
-        return (sin(45.0) * cruxDiameter) + (minimalElementSpacing / 2)
+        return (cruxDiameter / 2) + minimalElementSpacing
     }
     
     // 166.426406871192851
     open var cruxExteriorRadius: CGFloat {
-        return cruxInteriorRadius + (cruxDiameter * 2)
+        return cruxInteriorRadius + (cruxDiameter * 2.3)
     }
     
-//    // 181.426406871192851
-//    open var firstRingInteriorRadius: CGFloat {
-//        return cruxExteriorRadius + defaultElementSpacing
-//    }
-//    
-//    // 261.226406871192851
-//    open var firstRingExteriorRadius: CGFloat {
-//        return firstRingInteriorRadius + (cruxDiameter * 1.33)
-//    }
-//    
-//    // 276.226406871192851
-//    open var secondRingInteriorRadius: CGFloat {
-//        return firstRingExteriorRadius + defaultElementSpacing
-//    }
-//    
-//    // 326.206406871192851
-//    open var secondRingExteriorRadius: CGFloat {
-//        return secondRingInteriorRadius + (cruxDiameter * 0.833)
-//    }
-//    
-//    // 386.206406871192851
-//    open var secondRingExtendedExteriorRadius: CGFloat {
-//        return secondRingInteriorRadius + (cruxDiameter * 1.833)
-//    }
-//    
-//    // 339.706406871192851
-//    open var secondRingEdgeExteriorRadius: CGFloat {
-//        return secondRingExteriorRadius + (cruxDiameter * 0.225)
-//    }
-//    
-//    // 341.206406871192851
-//    open var thirdRingInteriorRadius: CGFloat {
-//        return secondRingExteriorRadius + defaultElementSpacing
-//    }
-//    
-//    // 386.206406871192851
-//    open var thirdRingExteriorRadius: CGFloat {
-//        return thirdRingInteriorRadius + (cruxDiameter * 0.75)
-//    }
+    open var cruxDirectionDiameter: CGFloat {
+        return cruxExteriorRadius - cruxInteriorRadius
+    }
+    
+    // 181.426406871192851
+    open var firstRingInteriorRadius: CGFloat {
+        return cruxExteriorRadius + defaultElementSpacing
+    }
+    
+    // 261.226406871192851
+    open var firstRingExteriorRadius: CGFloat {
+        return firstRingInteriorRadius + (cruxDiameter * 1.33)
+    }
+    
+    // 276.226406871192851
+    open var secondRingInteriorRadius: CGFloat {
+        return firstRingExteriorRadius + defaultElementSpacing
+    }
+    
+    // 326.206406871192851
+    open var secondRingExteriorRadius: CGFloat {
+        return secondRingInteriorRadius + (cruxDiameter * 0.833)
+    }
+    
+    // 386.206406871192851
+    open var secondRingExtendedExteriorRadius: CGFloat {
+        return secondRingInteriorRadius + (cruxDiameter * 1.833)
+    }
+    
+    // 339.706406871192851
+    open var secondRingEdgeExteriorRadius: CGFloat {
+        return secondRingExteriorRadius + (cruxDiameter * 0.225)
+    }
+    
+    // 341.206406871192851
+    open var thirdRingInteriorRadius: CGFloat {
+        return secondRingExteriorRadius + defaultElementSpacing
+    }
+    
+    // 386.206406871192851
+    open var thirdRingExteriorRadius: CGFloat {
+        return thirdRingInteriorRadius + (cruxDiameter * 0.75)
+    }
     
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        let graphOrigin = GraphOrigin(x: self.bounds.graphOrigin.x + offset.x, y: self.bounds.graphOrigin.y + offset.y)
-        
-        let diameter = cruxDiameter
-        var x = graphOrigin.x - (diameter / 2)
-        var y = graphOrigin.y - (diameter / 2)
-        var width = diameter
-        var height = diameter
-        var frame = CGRect(x: x, y: y, width: width, height: height)
-        
-        crux.setGraphableFrame(frame)
-        
-        height = cruxExteriorRadius - (diameter / 2) - minimalElementSpacing
-        y = graphOrigin.y - cruxExteriorRadius
-        frame = CGRect(x: x, y: y, width: width, height: height)
-        
-        up.setGraphableFrame(frame)
-        
-        y = graphOrigin.y + (diameter / 2) + minimalElementSpacing
-        frame = CGRect(x: x, y: y, width: width, height: height)
-        
-        down.setGraphableFrame(frame)
-        
-        height = cruxInteriorRadius
-        width = cruxExteriorRadius - (diameter / 2) - minimalElementSpacing
-        x = graphOrigin.x - (diameter / 2) - width - minimalElementSpacing
-        y = graphOrigin.y - cruxInteriorRadius / 2
-        frame = CGRect(x: x, y: y, width: width, height: height)
-        
-        left.setGraphableFrame(frame)
-        
-        x = graphOrigin.x + (diameter / 2) + minimalElementSpacing
-        frame = CGRect(x: x, y: y, width: width, height: height)
-        
-        right.setGraphableFrame(frame)
-        
+        crux.layoutIfNeeded()
+        up.layoutIfNeeded()
+        down.layoutIfNeeded()
+        left.layoutIfNeeded()
+        right.layoutIfNeeded()
         sector01.layoutIfNeeded()
         sector02.layoutIfNeeded()
         sector03.layoutIfNeeded()

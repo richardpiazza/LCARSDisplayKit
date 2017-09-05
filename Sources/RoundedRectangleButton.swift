@@ -29,6 +29,7 @@
 //===----------------------------------------------------------------------===//
 
 import UIKit
+import GraphPoint
 
 /// A rectangular button with options for rounding left/right edges.
 @IBDesignable open class RoundedRectangleButton: Button {
@@ -62,6 +63,11 @@ import UIKit
     
     open override var intrinsicContentSize: CGSize {
         return CGSize(width: 144, height: 60)
+    }
+    
+    convenience init(with roundedRectangle: RoundedRectangle, frame: CGRect) {
+        self.init(frame: frame)
+        self.rectangle = roundedRectangle
     }
 }
 

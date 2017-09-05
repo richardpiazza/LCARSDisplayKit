@@ -39,7 +39,11 @@ import GraphPoint
         get {
             return elbow
         }
-        set {}
+        set {
+            if let type = newValue as? Elbow {
+                elbow = type
+            }
+        }
     }
     
     @IBInspectable open var top: Bool {

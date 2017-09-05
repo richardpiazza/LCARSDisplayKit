@@ -39,7 +39,11 @@ import GraphPoint
         get {
             return arc
         }
-        set {}
+        set {
+            if let type = newValue as? Arc {
+                arc = type
+            }
+        }
     }
     
     @IBInspectable open var radius: CGFloat {
@@ -74,12 +78,14 @@ import GraphPoint
         self.radius = arc.radius
         self.startDegree = arc.startDegree
         self.endDegree = arc.endDegree
+        self.arc.size = frame.size
     }
     
     convenience init(with arc: Arc, rect: CGRect, offset: GraphOriginOffset) {
         let frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
         self.init(frame: frame)
         self.arc = arc
+        self.arc.size = frame.size
     }
     
     open func setArc(_ arc: Arc, rect: CGRect, offset: GraphOriginOffset) {

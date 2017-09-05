@@ -43,6 +43,7 @@
 		E14DEAFF1F521CBD00F1EEFF /* beep3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */; };
 		E14DEB011F5452DE00F1EEFF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEB001F5452DE00F1EEFF /* UIColor.swift */; };
 		E14DEB051F546F0000F1EEFF /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14DEB041F546F0000F1EEFF /* Direction.swift */; };
+		E1697B401F5E05ED0080A166 /* DirectionGroupingView01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1697B3F1F5E05ED0080A166 /* DirectionGroupingView01.swift */; };
 		E172FFBE1F5AED110071B963 /* RoundedRectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E172FFBD1F5AED110071B963 /* RoundedRectangleButton.swift */; };
 		E172FFC01F5AF3DE0071B963 /* DirectionGroupingView03.swift in Sources */ = {isa = PBXBuildFile; fileRef = E172FFBF1F5AF3DE0071B963 /* DirectionGroupingView03.swift */; };
 		E176A6901D8DE5CD00823E19 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E176A68F1D8DE5CD00823E19 /* CGFloat.swift */; };
@@ -117,6 +118,7 @@
 		E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep3.m4a; sourceTree = "<group>"; };
 		E14DEB001F5452DE00F1EEFF /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		E14DEB041F546F0000F1EEFF /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		E1697B3F1F5E05ED0080A166 /* DirectionGroupingView01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionGroupingView01.swift; sourceTree = "<group>"; };
 		E172FFBD1F5AED110071B963 /* RoundedRectangleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButton.swift; sourceTree = "<group>"; };
 		E172FFBF1F5AF3DE0071B963 /* DirectionGroupingView03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionGroupingView03.swift; sourceTree = "<group>"; };
 		E176A68F1D8DE5CD00823E19 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				E14DEB041F546F0000F1EEFF /* Direction.swift */,
 				E105B75D1D5A5F73004AE5D9 /* DirectionButton.swift */,
 				E1F9706E1F5C7FDD001A6797 /* DirectionGroupingView.swift */,
+				E1697B3F1F5E05ED0080A166 /* DirectionGroupingView01.swift */,
 				E172FFBF1F5AF3DE0071B963 /* DirectionGroupingView03.swift */,
 				E1B5F3551F5840F70010B293 /* DPad.swift */,
 				E127EB221BBE803700AAD675 /* DPadView.swift */,
@@ -602,6 +605,7 @@
 				E1B5F3561F5840F70010B293 /* DPad.swift in Sources */,
 				E172FFBE1F5AED110071B963 /* RoundedRectangleButton.swift in Sources */,
 				E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */,
+				E1697B401F5E05ED0080A166 /* DirectionGroupingView01.swift in Sources */,
 				E105B7751D5A5F73004AE5D9 /* ArcButton.swift in Sources */,
 				E11009F61F5492E30040D29B /* Elbow.swift in Sources */,
 				E172FFC01F5AF3DE0071B963 /* DirectionGroupingView03.swift in Sources */,

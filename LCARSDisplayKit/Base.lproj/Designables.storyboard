@@ -21,7 +21,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="424" height="424"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ax6-oL-q9n" customClass="DPadView" customModule="LCARSDisplayKit" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ax6-oL-q9n" customClass="DirectionGroupingView" customModule="LCARSDisplayKit" customModuleProvider="target">
                                 <rect key="frame" x="20" y="20" width="384" height="384"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -38,7 +38,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3Y-dZ-XMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="811" y="454"/>
+            <point key="canvasLocation" x="1166" y="463"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HSK-Ia-u4r">
+            <objects>
+                <viewController id="KXY-Ju-n8h" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ypc-rY-NvB"/>
+                        <viewControllerLayoutGuide type="bottom" id="OZ4-Go-3UM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j7q-9E-NGE">
+                        <rect key="frame" x="0.0" y="0.0" width="840" height="700"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTd-ZZ-WHO" customClass="DirectionGroupingView01" customModule="LCARSDisplayKit" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="800" height="660"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gTd-ZZ-WHO" firstAttribute="centerY" secondItem="j7q-9E-NGE" secondAttribute="centerY" id="taf-6A-8Fs"/>
+                            <constraint firstItem="gTd-ZZ-WHO" firstAttribute="centerX" secondItem="j7q-9E-NGE" secondAttribute="centerX" id="vFh-AL-j2Y"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="840" height="700"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eG1-F0-V1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1691" y="-60"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="kQm-lu-SSq">
@@ -69,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7P-SC-ncN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1344.53125" y="453.51562499999994"/>
+            <point key="canvasLocation" x="1691" y="383"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="bxk-x1-mqA">
@@ -100,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heX-A5-jjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1344.53125" y="935.74218749999989"/>
+            <point key="canvasLocation" x="1029" y="804"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="OS6-Jf-YNg">
@@ -131,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Xg-Pp-aV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2023" y="454"/>
+            <point key="canvasLocation" x="1691" y="879"/>
         </scene>
     </scenes>
 </document>

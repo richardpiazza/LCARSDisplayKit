@@ -79,6 +79,14 @@ import GraphPoint
         }
     }
     
+    convenience init(frame: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinal: Direction.Cardinal) {
+        self.init(frame: frame)
+        self.radius = radius
+        self.startDegree = startDegree
+        self.endDegree = endDegree
+        self.cardinalDegree = cardinal.degree
+    }
+    
     convenience init(radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, cardinal: Direction.Cardinal) {
         self.init()
         self.radius = radius
