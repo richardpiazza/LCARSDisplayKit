@@ -38,6 +38,7 @@
 		E127EB251BBE808500AAD675 /* DPadViewVariation1.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB241BBE808500AAD675 /* DPadViewVariation1.swift */; };
 		E127EB271BBE80C800AAD675 /* DPadViewVariation2.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127EB261BBE80C800AAD675 /* DPadViewVariation2.swift */; };
 		E12815341F56E8B900B68748 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12815331F56E8B900B68748 /* Behavior.swift */; };
+		E13E4C6F1F5ECAF3001C1CC5 /* DirectionGroupingView02.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13E4C6E1F5ECAF3001C1CC5 /* DirectionGroupingView02.swift */; };
 		E14DEAFD1F521CBD00F1EEFF /* beep2.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFA1F521CBC00F1EEFF /* beep2.m4a */; };
 		E14DEAFE1F521CBD00F1EEFF /* beep1.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */; };
 		E14DEAFF1F521CBD00F1EEFF /* beep3.m4a in Resources */ = {isa = PBXBuildFile; fileRef = E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */; };
@@ -113,6 +114,7 @@
 		E127EB241BBE808500AAD675 /* DPadViewVariation1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPadViewVariation1.swift; sourceTree = "<group>"; };
 		E127EB261BBE80C800AAD675 /* DPadViewVariation2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPadViewVariation2.swift; sourceTree = "<group>"; };
 		E12815331F56E8B900B68748 /* Behavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
+		E13E4C6E1F5ECAF3001C1CC5 /* DirectionGroupingView02.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionGroupingView02.swift; sourceTree = "<group>"; };
 		E14DEAFA1F521CBC00F1EEFF /* beep2.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep2.m4a; sourceTree = "<group>"; };
 		E14DEAFB1F521CBC00F1EEFF /* beep1.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep1.m4a; sourceTree = "<group>"; };
 		E14DEAFC1F521CBD00F1EEFF /* beep3.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep3.m4a; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				E105B75D1D5A5F73004AE5D9 /* DirectionButton.swift */,
 				E1F9706E1F5C7FDD001A6797 /* DirectionGroupingView.swift */,
 				E1697B3F1F5E05ED0080A166 /* DirectionGroupingView01.swift */,
+				E13E4C6E1F5ECAF3001C1CC5 /* DirectionGroupingView02.swift */,
 				E172FFBF1F5AF3DE0071B963 /* DirectionGroupingView03.swift */,
 				E1B5F3551F5840F70010B293 /* DPad.swift */,
 				E127EB221BBE803700AAD675 /* DPadView.swift */,
@@ -603,6 +606,7 @@
 				E105B77C1D5A61DC004AE5D9 /* Theme.swift in Sources */,
 				E105B7731D5A5F73004AE5D9 /* ElbowButton.swift in Sources */,
 				E1B5F3561F5840F70010B293 /* DPad.swift in Sources */,
+				E13E4C6F1F5ECAF3001C1CC5 /* DirectionGroupingView02.swift in Sources */,
 				E172FFBE1F5AED110071B963 /* RoundedRectangleButton.swift in Sources */,
 				E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */,
 				E1697B401F5E05ED0080A166 /* DirectionGroupingView01.swift in Sources */,

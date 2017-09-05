@@ -32,7 +32,7 @@ import UIKit
 import GraphPoint
 
 /// A Button that draws an arc connected by a right angle pivot.
-@IBDesignable open class ArcButton: Button {
+open class ArcButton: Button {
     
     open var arc: Arc = Arc()
     open override var graphable: Graphable {
@@ -46,38 +46,11 @@ import GraphPoint
         }
     }
     
-    @IBInspectable open var radius: CGFloat {
-        get {
-            return arc.radius
-        }
-        set {
-            arc.radius = newValue
-        }
-    }
-    @IBInspectable open var startDegree: CGFloat {
-        get {
-            return arc.startDegree
-        }
-        set {
-            arc.startDegree = newValue
-        }
-    }
-    @IBInspectable open var endDegree: CGFloat {
-        get {
-            return arc.endDegree
-        }
-        set {
-            arc.endDegree = newValue
-        }
-    }
-    
     convenience init(rect: CGRect, radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, graphOrigin: GraphOrigin) {
         let arc = Arc(radius: radius, startDegree: startDegree, endDegree: endDegree)
         let frame = GraphFrame.graphFrame(graphPoints: arc.graphPoints)
         self.init(frame: frame)
-        self.radius = arc.radius
-        self.startDegree = arc.startDegree
-        self.endDegree = arc.endDegree
+        self.arc = arc
         self.arc.size = frame.size
     }
     

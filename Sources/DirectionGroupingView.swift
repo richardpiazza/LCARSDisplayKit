@@ -207,6 +207,10 @@ import GraphPoint
         return firstRingInteriorRadius + (cruxDiameter * 1.33)
     }
     
+    open var firstRingEdgeExteriorRadius: CGFloat {
+        return firstRingExteriorRadius
+    }
+    
     // 276.226406871192851
     open var secondRingInteriorRadius: CGFloat {
         return firstRingExteriorRadius + defaultElementSpacing

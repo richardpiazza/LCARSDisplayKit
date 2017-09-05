@@ -31,6 +31,8 @@
 import UIKit
 import GraphPoint
 
+/// An expansion of the `DirectionGroupingView` with surrounding buttons.
+/// This layout is representative of LCARS starting in 2371.
 @IBDesignable open class DirectionGroupingView01: DirectionGroupingView {
     open lazy var innerRing01: CrescentButton = {
         let crescent = Crescent(innerRadius: self.firstRingInteriorRadius, outerRadius: self.firstRingExteriorRadius, startDegree: DPad.Ring.arc01.start, endDegree: DPad.Ring.arc04.end)
@@ -194,7 +196,7 @@ import GraphPoint
     }()
     open lazy var edge06: EdgedCrescentButton = {
         let interiorArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc06.start, endDegree: DPad.Ring.arc06.end)
-        let exteriorArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc06.start, endDegree: DPad.Ring.arc06.end)
+        let exteriorArc = Arc(radius: firstRingEdgeExteriorRadius, startDegree: DPad.Ring.arc06.start, endDegree: DPad.Ring.arc06.end)
         
         let interiorAngleEnd = interiorArc.endDegree - 90
         let exteriorAngleEnd = 90 - interiorAngleEnd
@@ -213,7 +215,7 @@ import GraphPoint
         return button
     }()
     open lazy var edge07: EdgedCrescentButton = {
-        let edge06ExteriorArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc06.start, endDegree: DPad.Ring.arc06.end)
+        let edge06ExteriorArc = Arc(radius: firstRingEdgeExteriorRadius, startDegree: DPad.Ring.arc06.start, endDegree: DPad.Ring.arc06.end)
         let edge09ExteriorArc = Arc(radius: secondRingExtendedExteriorRadius, startDegree: DPad.Ring.arc09.start, endDegree: DPad.Ring.arc09.end)
         
         let interiorArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc07.start, endDegree: DPad.Ring.arc08.end)
@@ -306,12 +308,12 @@ import GraphPoint
     }()
     
     open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 800, height: 660)
+        return CGSize(width: 790, height: 655)
     }
     
-    // {-27.0, 79.0}
+    // {0.0, 50.0}
     open override var offset: GraphOriginOffset {
-        return GraphOriginOffset(x: 0.0, y: (scaledContentSize.height * 0.075))
+        return GraphOriginOffset(x: 0.0, y: (scaledContentSize.height * 0.0775))
     }
     
     override open var secondRingEdgeExteriorRadius: CGFloat {

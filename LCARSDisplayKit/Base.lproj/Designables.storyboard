@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h3Y-dZ-XMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1166" y="463"/>
+            <point key="canvasLocation" x="1061" y="432"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="HSK-Ia-u4r">
@@ -53,7 +53,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTd-ZZ-WHO" customClass="DirectionGroupingView01" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="800" height="660"/>
+                                <rect key="frame" x="25" y="22.5" width="790" height="655"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -78,27 +78,25 @@
                         <viewControllerLayoutGuide type="bottom" id="kq5-2T-TpK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="JhB-pr-7OE">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="840" height="840"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeY-ke-H2Z" customClass="DPadViewVariation1" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="794" height="660"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeY-ke-H2Z" customClass="DirectionGroupingView02" customModule="LCARSDisplayKit" customModuleProvider="target">
+                                <rect key="frame" x="25" y="25" width="790" height="790"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="QeY-ke-H2Z" firstAttribute="leading" secondItem="JhB-pr-7OE" secondAttribute="leadingMargin" id="3U5-xC-fVw"/>
-                            <constraint firstItem="kq5-2T-TpK" firstAttribute="top" secondItem="QeY-ke-H2Z" secondAttribute="bottom" constant="20" id="hUc-Y3-LWq"/>
-                            <constraint firstItem="QeY-ke-H2Z" firstAttribute="top" secondItem="zP8-Pe-lHh" secondAttribute="bottom" id="n0P-rY-Gqm"/>
-                            <constraint firstItem="QeY-ke-H2Z" firstAttribute="trailing" secondItem="JhB-pr-7OE" secondAttribute="trailingMargin" id="tgH-CF-Jld"/>
+                            <constraint firstItem="QeY-ke-H2Z" firstAttribute="centerY" secondItem="JhB-pr-7OE" secondAttribute="centerY" id="jpT-Td-lbb"/>
+                            <constraint firstItem="QeY-ke-H2Z" firstAttribute="centerX" secondItem="JhB-pr-7OE" secondAttribute="centerX" id="oLi-fL-wBo"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="834" height="700"/>
+                    <size key="freeformSize" width="840" height="840"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7P-SC-ncN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1691" y="383"/>
+            <point key="canvasLocation" x="1691" y="432"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="bxk-x1-mqA">
@@ -129,38 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="heX-A5-jjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="804"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="OS6-Jf-YNg">
-            <objects>
-                <viewController storyboardIdentifier="DPadFull" id="LZc-gi-GKv" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="pqh-TJ-pMl"/>
-                        <viewControllerLayoutGuide type="bottom" id="8af-78-1hl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dj1-6d-amR">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="834"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BPf-mg-hmo" customClass="DPadViewVariation2" customModule="LCARSDisplayKit" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="794" height="794"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="BPf-mg-hmo" firstAttribute="trailing" secondItem="dj1-6d-amR" secondAttribute="trailingMargin" id="U3X-DK-5Zn"/>
-                            <constraint firstItem="BPf-mg-hmo" firstAttribute="leading" secondItem="dj1-6d-amR" secondAttribute="leadingMargin" id="iT5-Gk-Bij"/>
-                            <constraint firstItem="8af-78-1hl" firstAttribute="top" secondItem="BPf-mg-hmo" secondAttribute="bottom" constant="20" id="muv-Gt-c0Y"/>
-                            <constraint firstItem="BPf-mg-hmo" firstAttribute="top" secondItem="pqh-TJ-pMl" secondAttribute="bottom" id="tln-RP-LUW"/>
-                        </constraints>
-                    </view>
-                    <size key="freeformSize" width="834" height="834"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Xg-Pp-aV6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1691" y="879"/>
+            <point key="canvasLocation" x="1666" y="896"/>
         </scene>
     </scenes>
 </document>
