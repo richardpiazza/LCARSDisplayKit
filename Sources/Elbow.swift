@@ -58,7 +58,7 @@ public struct Elbow: Graphable {
         if top && left {
             // Upper Left
             if rounded {
-                path.addArc(center: upperLeftOuterCenter, radius: outerRadius, startAngle: CGFloat.radians180, endAngle: CGFloat.radians270, clockwise: false)
+                path.addArc(center: upperLeftOuterCenter, radius: outerRadius, startAngle: CGFloat(180).radians, endAngle: CGFloat(270).radians, clockwise: false)
             } else {
                 path.move(to: CGPoint.zero)
             }
@@ -66,7 +66,7 @@ public struct Elbow: Graphable {
             path.addLine(to: CGPoint(x: size.width, y: horizontalHeight))
             if rounded {
                 path.addLine(to: CGPoint(x: verticalWidth + innerRadius, y: horizontalHeight))
-                path.addArc(center: upperLeftInnerCenter, radius: innerRadius, startAngle: CGFloat.radians270, endAngle: CGFloat.radians180, clockwise: true)
+                path.addArc(center: upperLeftInnerCenter, radius: innerRadius, startAngle: CGFloat(270).radians, endAngle: CGFloat(180).radians, clockwise: true)
             } else {
                 path.addLine(to: CGPoint(x: verticalWidth, y: horizontalHeight))
             }
@@ -82,7 +82,7 @@ public struct Elbow: Graphable {
         } else if !top && left {
             // Lower Left
             if rounded {
-                path.addArc(center: CGPoint(x: upperLeftOuterCenter.x, y: lowerRightOuterCenter.y), radius: outerRadius, startAngle: CGFloat.radians180, endAngle: CGFloat.radians90, clockwise: true)
+                path.addArc(center: CGPoint(x: upperLeftOuterCenter.x, y: lowerRightOuterCenter.y), radius: outerRadius, startAngle: CGFloat(180).radians, endAngle: CGFloat(90).radians, clockwise: true)
             } else {
                 path.move(to: CGPoint(x: 0, y: size.height))
             }
@@ -90,7 +90,7 @@ public struct Elbow: Graphable {
             path.addLine(to: CGPoint(x: size.width, y: size.height - horizontalHeight))
             if rounded {
                 path.addLine(to: CGPoint(x: verticalWidth + innerRadius, y: size.height - horizontalHeight))
-                path.addArc(center: CGPoint(x: upperLeftInnerCenter.x, y: lowerRightInnerCenter.y), radius: innerRadius, startAngle: CGFloat.radians90, endAngle: CGFloat.radians180, clockwise: false)
+                path.addArc(center: CGPoint(x: upperLeftInnerCenter.x, y: lowerRightInnerCenter.y), radius: innerRadius, startAngle: CGFloat(90).radians, endAngle: CGFloat(180).radians, clockwise: false)
             } else {
                 path.addLine(to: CGPoint(x: verticalWidth, y: size.height - horizontalHeight))
             }
@@ -106,7 +106,7 @@ public struct Elbow: Graphable {
         } else if top && !left {
             // Upper Right
             if rounded {
-                path.addArc(center: CGPoint(x: lowerRightOuterCenter.x, y: upperLeftOuterCenter.y), radius: outerRadius, startAngle: CGFloat.radians0, endAngle: CGFloat.radians270, clockwise: true)
+                path.addArc(center: CGPoint(x: lowerRightOuterCenter.x, y: upperLeftOuterCenter.y), radius: outerRadius, startAngle: CGFloat(0).radians, endAngle: CGFloat(270).radians, clockwise: true)
             } else {
                 path.move(to: CGPoint(x: size.width, y: 0))
             }
@@ -114,7 +114,7 @@ public struct Elbow: Graphable {
             path.addLine(to: CGPoint(x: 0, y: horizontalHeight))
             if rounded {
                 path.addLine(to: CGPoint(x: size.width - verticalWidth - innerRadius, y: horizontalHeight))
-                path.addArc(center: CGPoint(x: lowerRightInnerCenter.x, y: upperLeftInnerCenter.y), radius: innerRadius, startAngle: CGFloat.radians270, endAngle: CGFloat.radians0, clockwise: false)
+                path.addArc(center: CGPoint(x: lowerRightInnerCenter.x, y: upperLeftInnerCenter.y), radius: innerRadius, startAngle: CGFloat(270).radians, endAngle: CGFloat(0).radians, clockwise: false)
             } else {
                 path.addLine(to: CGPoint(x: size.width - verticalWidth, y: horizontalHeight))
             }
@@ -130,7 +130,7 @@ public struct Elbow: Graphable {
         } else if !top && !left {
             // Lower Right
             if rounded {
-                path.addArc(center: lowerRightOuterCenter, radius: outerRadius, startAngle: CGFloat.radians0, endAngle: CGFloat.radians90, clockwise: false)
+                path.addArc(center: lowerRightOuterCenter, radius: outerRadius, startAngle: CGFloat(0).radians, endAngle: CGFloat(90).radians, clockwise: false)
             } else {
                 path.move(to: CGPoint(x: size.width, y: size.height))
             }
@@ -138,7 +138,7 @@ public struct Elbow: Graphable {
             path.addLine(to: CGPoint(x: 0, y: size.height - horizontalHeight))
             if rounded {
                 path.addLine(to: CGPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight))
-                path.addArc(center: lowerRightInnerCenter, radius: innerRadius, startAngle: CGFloat.radians90, endAngle: CGFloat.radians0, clockwise: true)
+                path.addArc(center: lowerRightInnerCenter, radius: innerRadius, startAngle: CGFloat(90).radians, endAngle: CGFloat(0).radians, clockwise: true)
             } else {
                 path.addLine(to: CGPoint(x: size.width - verticalWidth, y: size.height - horizontalHeight))
             }

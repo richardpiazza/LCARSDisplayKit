@@ -34,10 +34,10 @@ import GraphPoint
 /// The standard circular Direction-Pad found in many LCARS layouts.
 @IBDesignable open class DirectionGroupingView: UIView {
     
+    open static var defaultCruxDiameter: CGFloat = CGFloat(60)
+    
     open lazy var crux: RoundedRectangleButton = {
-        let x = graphOrigin.x - (cruxDiameter / 2)
-        let y = graphOrigin.y - (cruxDiameter / 2)
-        let frame = CGRect(x: x, y: y, width: cruxDiameter, height: cruxDiameter)
+        let frame = CGRect(x: graphOrigin.x - (cruxDiameter / 2), y: graphOrigin.y - (cruxDiameter / 2), width: cruxDiameter, height: cruxDiameter)
         let button = RoundedRectangleButton(frame: frame)
         button.color = Interface.theme.primaryDark
         button.setTitle("", for: UIControlState())
@@ -45,85 +45,68 @@ import GraphPoint
         return button
     }()
     open lazy var up: DirectionButton = {
-        let x = graphOrigin.x - (cruxDiameter / 2)
-        let y = graphOrigin.y - cruxExteriorRadius
-        let frame = CGRect(x: x, y: y, width: cruxDiameter, height: cruxDirectionDiameter)
-        
-        let arc = Arc(radius: cruxExteriorRadius, startDegree: DPad.Crux.up.start, endDegree: DPad.Crux.up.end)
+        let frame = self.frame(for: .up)
+        let arc = Arc(radius: dpadRadius, startDegree: DPad.Crux.up.start, endDegree: DPad.Crux.up.end + 0.5)
         let direction = Direction(with: arc, cardinal: .up)
-        
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
     }()
     open lazy var down: DirectionButton = {
-        let x = graphOrigin.x - (cruxDiameter / 2)
-        let y = graphOrigin.y + (cruxDiameter / 2) + minimalElementSpacing
-        let frame = CGRect(x: x, y: y, width: cruxDiameter, height: cruxDirectionDiameter)
-        
-        let arc = Arc(radius: cruxExteriorRadius, startDegree: DPad.Crux.down.start, endDegree: DPad.Crux.down.end)
+        let frame = self.frame(for: .down)
+        let arc = Arc(radius: dpadRadius, startDegree: DPad.Crux.down.start - 0.5, endDegree: DPad.Crux.down.end)
         let direction = Direction(with: arc, cardinal: .down)
-        
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
     }()
     open lazy var left: DirectionButton = {
-        let x = graphOrigin.x - (cruxDiameter / 2) - cruxDirectionDiameter - minimalElementSpacing
-        let y = graphOrigin.y - (cruxDiameter / 2)
-        let frame = CGRect(x: x, y: y, width: cruxDirectionDiameter, height: cruxDiameter)
-        
-        let arc = Arc(radius: cruxExteriorRadius, startDegree: DPad.Crux.left.start, endDegree: DPad.Crux.left.end)
+        let frame = self.frame(for: .left)
+        let arc = Arc(radius: dpadRadius, startDegree: DPad.Crux.left.start - 0.5, endDegree: DPad.Crux.left.end)
         let direction = Direction(with: arc, cardinal: .left)
-        
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
     }()
     open lazy var right: DirectionButton = {
-        let graphOrigin = GraphOrigin(x: self.bounds.graphOrigin.x + offset.x, y: self.bounds.graphOrigin.y + offset.y)
-        let x = graphOrigin.x + (cruxDiameter / 2) + minimalElementSpacing
-        let y = graphOrigin.y - (cruxDiameter / 2)
-        let frame = CGRect(x: x, y: y, width: cruxDirectionDiameter, height: cruxDiameter)
-        
-        let arc = Arc(radius: cruxExteriorRadius, startDegree: DPad.Crux.right.start, endDegree: DPad.Crux.right.end)
+        let frame = self.frame(for: .right)
+        let arc = Arc(radius: dpadRadius, startDegree: DPad.Crux.right.start, endDegree: DPad.Crux.right.end + 0.5)
         let direction = Direction(with: arc, cardinal: .right)
-        
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControlState())
         self.addSubview(button)
         return button
     }()
     open lazy var sector01: ArcButton = {
-        let arc = Arc(radius: self.cruxExteriorRadius, startDegree: DPad.Crux.sector01.start, endDegree: DPad.Crux.sector01.end)
-        let button = ArcButton(with: arc, rect: self.bounds, offset: self.offset)
+        let arc = Arc(radius: dpadRadius, startDegree: DPad.Crux.sector01.start, endDegree: DPad.Crux.sector01.end)
+        let button = ArcButton(with: arc, rect: bounds, offset: offset)
         button.setTitle("", for: UIControlState())
         button.color = Interface.theme.primaryMedium
         self.addSubview(button)
         return button
     }()
     open lazy var sector02: ArcButton = {
-        let arc = Arc(radius: self.cruxExteriorRadius, startDegree: DPad.Crux.sector02.start, endDegree: DPad.Crux.sector02.end)
-        let button = ArcButton(with: arc, rect: self.bounds, offset: self.offset)
+        let arc = Arc(radius: dpadRadius, startDegree: DPad.Crux.sector02.start, endDegree: DPad.Crux.sector02.end)
+        let button = ArcButton(with: arc, rect: bounds, offset: offset)
         button.setTitle("", for: UIControlState())
         button.color = Interface.theme.primaryMedium
         self.addSubview(button)
         return button
     }()
     open lazy var sector03: ArcButton = {
-        let arc = Arc(radius: self.cruxExteriorRadius, startDegree: DPad.Crux.sector03.start, endDegree: DPad.Crux.sector03.end)
-        let button = ArcButton(with: arc, rect: self.bounds, offset: self.offset)
+        let arc = Arc(radius: dpadRadius, startDegree: DPad.Crux.sector03.start, endDegree: DPad.Crux.sector03.end)
+        let button = ArcButton(with: arc, rect: bounds, offset: offset)
         button.setTitle("", for: UIControlState())
         button.color = Interface.theme.primaryMedium
         self.addSubview(button)
         return button
     }()
     open lazy var sector04: ArcButton = {
-        let arc = Arc(radius: self.cruxExteriorRadius, startDegree: DPad.Crux.sector04.start, endDegree: DPad.Crux.sector04.end)
-        let button = ArcButton(with: arc, rect: self.bounds, offset: self.offset)
+        let arc = Arc(radius: dpadRadius, startDegree: DPad.Crux.sector04.start, endDegree: DPad.Crux.sector04.end)
+        let button = ArcButton(with: arc, rect: bounds, offset: offset)
         button.setTitle("", for: UIControlState())
         button.color = Interface.theme.primaryMedium
         self.addSubview(button)
@@ -131,7 +114,7 @@ import GraphPoint
     }()
     
     open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 348, height: 348)
+        return CGSize(width: 350, height: 350)
     }
     
     open var intrinsicRatio: CGFloat{
@@ -150,8 +133,13 @@ import GraphPoint
         }
     }
     
-    open var scaleMultiplier: CGSize {
-        return CGSize(width: scaledContentSize.width / intrinsicContentSize.width, height: scaledContentSize.height / intrinsicContentSize.height)
+    /// Percent to scale individual amounts by
+    open var scaleRatio: CGFloat {
+        if scaledContentSize.width >= scaledContentSize.height {
+            return scaledContentSize.width / intrinsicContentSize.width
+        } else {
+            return scaledContentSize.height / intrinsicContentSize.height
+        }
     }
     
     // {x: 0.0, y: 0.0}
@@ -163,98 +151,69 @@ import GraphPoint
         return GraphOrigin(x: bounds.graphOrigin.x + offset.x, y: bounds.graphOrigin.y + offset.y)
     }
     
-    // 8.0
-    open var minimalElementSpacing: CGFloat {
-        if scaledContentSize.width >= scaledContentSize.height {
-            return scaledContentSize.width * 0.01085
-        } else {
-            return scaledContentSize.height * 0.01486
-        }
-    }
-    
-    // 15.0
-    open var defaultElementSpacing: CGFloat {
-        if scaledContentSize.width >= scaledContentSize.height {
-            return scaledContentSize.width * 0.02035
-        } else {
-            return scaledContentSize.height * 0.02788
-        }
-    }
-    
-    // 30.0
-    open var maximumElementSpacing: CGFloat {
-        if scaledContentSize.width >= scaledContentSize.height {
-            return scaledContentSize.width * 0.0407
-        } else {
-            return scaledContentSize.height * 0.05576
-        }
-    }
-    
-    // 60.0
+    /// The width and height of the central square
     open var cruxDiameter: CGFloat {
-        if scaledContentSize.width >= scaledContentSize.height {
-            return RoundedRectangleButton.defaultSize.height * scaleMultiplier.width
-        } else {
-            return RoundedRectangleButton.defaultSize.height * scaleMultiplier.height
+        return DirectionGroupingView.defaultCruxDiameter * scaleRatio
+    }
+    
+    /// Determines the frame for each of the direction buttons.
+    open func frame(for direction: Direction.Cardinal) -> CGRect {
+        var size: CGSize
+        switch direction {
+        case .up, .down:
+            size = CGSize(width: cruxDiameter, height: (dpadRadius - (cruxDiameter / 2) - Interface.theme.defaultSpacing))
+        case .left, .right:
+            size = CGSize(width: (dpadRadius - (cruxDiameter / 2) - Interface.theme.defaultSpacing), height: cruxDiameter)
         }
+        
+        var origin: CGPoint
+        switch direction {
+        case .up:
+            origin = CGPoint(x: graphOrigin.x - (cruxDiameter / 2), y: graphOrigin.y - dpadRadius)
+        case .down:
+            origin = CGPoint(x: graphOrigin.x - (cruxDiameter / 2), y: graphOrigin.y + (cruxDiameter / 2) + Interface.theme.defaultSpacing)
+        case .left:
+            origin = CGPoint(x: graphOrigin.x - dpadRadius, y: graphOrigin.y - (cruxDiameter / 2))
+        case .right:
+            origin = CGPoint(x: graphOrigin.x + (cruxDiameter / 2) + Interface.theme.defaultSpacing, y: graphOrigin.y - (cruxDiameter / 2))
+        }
+        
+        return CGRect(origin: origin, size: size)
     }
     
-    // 46.426406871192851
-    open var cruxInteriorRadius: CGFloat {
-        return (cruxDiameter / 2) + minimalElementSpacing
+    /// Radius of the entire Direction Pad
+    open var dpadRadius: CGFloat {
+        return scaleRatio * 175.0
     }
     
-    // 166.426406871192851
-    open var cruxExteriorRadius: CGFloat {
-        return cruxInteriorRadius + (cruxDiameter * 2.3)
-    }
-    
-    open var cruxDirectionDiameter: CGFloat {
-        return cruxExteriorRadius - cruxInteriorRadius
-    }
-    
-    // 181.426406871192851
+    ///
     open var firstRingInteriorRadius: CGFloat {
-        return cruxExteriorRadius + defaultElementSpacing
+        return dpadRadius + Interface.theme.defaultSpacing
     }
     
-    // 261.226406871192851
+    ///
     open var firstRingExteriorRadius: CGFloat {
-        return firstRingInteriorRadius + (cruxDiameter * 1.33)
+        return firstRingInteriorRadius + (scaleRatio * 80.0)
     }
     
+    ///
     open var firstRingEdgeExteriorRadius: CGFloat {
         return firstRingExteriorRadius
     }
     
-    // 276.226406871192851
+    ///
     open var secondRingInteriorRadius: CGFloat {
-        return firstRingExteriorRadius + defaultElementSpacing
+        return firstRingExteriorRadius + Interface.theme.defaultSpacing
     }
     
-    // 326.206406871192851
+    ///
     open var secondRingExteriorRadius: CGFloat {
-        return secondRingInteriorRadius + (cruxDiameter * 0.833)
+        return secondRingInteriorRadius + (scaleRatio * 50.0)
     }
     
-    // 386.206406871192851
+    ///
     open var secondRingExtendedExteriorRadius: CGFloat {
-        return secondRingInteriorRadius + (cruxDiameter * 1.833)
-    }
-    
-    // 339.706406871192851
-    open var secondRingEdgeExteriorRadius: CGFloat {
-        return secondRingExteriorRadius + (cruxDiameter * 0.225)
-    }
-    
-    // 341.206406871192851
-    open var thirdRingInteriorRadius: CGFloat {
-        return secondRingExteriorRadius + defaultElementSpacing
-    }
-    
-    // 386.206406871192851
-    open var thirdRingExteriorRadius: CGFloat {
-        return thirdRingInteriorRadius + (cruxDiameter * 0.75)
+        return secondRingInteriorRadius + (scaleRatio * 110.0)
     }
     
     open override func layoutSubviews() {

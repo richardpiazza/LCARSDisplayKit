@@ -1,14 +1,14 @@
 PODS:
-  - GraphPoint (3.0.2):
-    - GraphPoint/CoreGraphics (= 3.0.2)
-  - GraphPoint/CoreGraphics (3.0.2)
+  - GraphPoint (3.1.0):
+    - GraphPoint/CoreGraphics (= 3.1.0)
+  - GraphPoint/CoreGraphics (3.1.0)
 
 DEPENDENCIES:
-  - GraphPoint (~> 3.0)
+  - GraphPoint (~> 3.1)
 
 SPEC CHECKSUMS:
-  GraphPoint: 89ee36b9798f97ad16b6a87492c569357f759946
+  GraphPoint: 48af7aa9ebdca076c0f92b22b988f0cd5898cff7
 
-PODFILE CHECKSUM: cc6479e1fdf557329ccc0d8ed7035a2cce967b30
+PODFILE CHECKSUM: 552281c7b97ef2d0d57f106b6d6d4427236f7300
 
 COCOAPODS: 1.3.1

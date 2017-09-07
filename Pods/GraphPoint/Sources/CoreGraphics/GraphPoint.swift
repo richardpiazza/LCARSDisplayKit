@@ -96,7 +96,7 @@ public extension GraphPoint {
         return point
     }
     
-    /// Uses the Pythagorean Theorem to solve for the y/x intercept given the
+    /// Uses the Pythagorean Theorem to solve for the x or y intercept given the
     /// supplied `GraphPoint` `sideA`.
     ///
     /// - note Degree 0 (zero) is the positive x axis and increments clockwise.

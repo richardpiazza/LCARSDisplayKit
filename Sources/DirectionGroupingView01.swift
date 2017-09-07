@@ -373,8 +373,8 @@ import GraphPoint
     open lazy var top00: RoundedRectangleButton = {
         let edge15Origin = edge15.frame.origin
         
-        let width = RoundedRectangleButton.defaultSize.width * scaleMultiplier.width
-        let height = RoundedRectangleButton.defaultSize.height * scaleMultiplier.width
+        let width = RoundedRectangleButton.defaultSize.width * scaleRatio
+        let height = RoundedRectangleButton.defaultSize.height * scaleRatio
         let x = bounds.size.width + width - edge15Origin.x
         let y = edge15Origin.y
         
@@ -388,20 +388,24 @@ import GraphPoint
     }()
     
     open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 790, height: 655)
+        return CGSize(width: 760, height: 625)
     }
     
     // {0.0, 50.0}
     open override var offset: GraphOriginOffset {
-        return GraphOriginOffset(x: 0.0, y: (scaledContentSize.height * 0.0775))
+        return GraphOriginOffset(x: 0.0, y: (scaledContentSize.height * 0.0765))
     }
     
-    override open var secondRingEdgeExteriorRadius: CGFloat {
-        return secondRingExteriorRadius + (cruxDiameter * 0.69)
+    open var secondRingEdgeExteriorRadius: CGFloat {
+        return secondRingExteriorRadius + (scaleRatio * 41.5)
     }
     
-    override open var thirdRingExteriorRadius: CGFloat {
-        return thirdRingInteriorRadius + (cruxDiameter * 1.2)
+    open var thirdRingInteriorRadius: CGFloat {
+        return secondRingExteriorRadius + Interface.theme.defaultSpacing
+    }
+    
+    open var thirdRingExteriorRadius: CGFloat {
+        return thirdRingInteriorRadius + (scaleRatio * 72.0)
     }
     
     open override func layoutSubviews() {

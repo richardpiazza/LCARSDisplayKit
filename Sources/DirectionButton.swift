@@ -51,6 +51,13 @@ open class DirectionButton: Button {
         self.direction = direction
     }
     
+//    convenience init(with direction: Direction, rect: CGRect, offset: GraphOriginOffset) {
+//        let exteriorRadius = direction.arc.radius
+//        let frame = rect.frame(graphFrame: direction.graphFrame, offset: offset)
+//        self.init(frame: frame)
+//        self.direction = direction
+//    }
+    
     // MARK: - Tappable
     override open var colors: [UIColor]? {
         return [Interface.theme.primaryDark, Interface.theme.primaryLight]

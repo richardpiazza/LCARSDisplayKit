@@ -111,8 +111,8 @@ import GraphPoint
         return button
     }()
     open lazy var innerRing14: CrescentButton = {
-        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end)
-        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end + 2.0)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end - 1.0)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc14.start, endDegree: DPad.Ring.arc14.end - 1.0)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: false, boundedEnd: true)
         
@@ -137,8 +137,8 @@ import GraphPoint
     open lazy var innerRing16: CrescentButton = {
         let half = DPad.Ring.arc17.start + ((DPad.Ring.arc17.end - DPad.Ring.arc17.start) / 2)
         
-        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc16.start, endDegree: half)
-        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc16.start - 3.0, endDegree: half)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc16.start + 1.0, endDegree: half)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc16.start - 2.0, endDegree: half)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: false)
         
@@ -149,7 +149,7 @@ import GraphPoint
         return button
     }()
     open lazy var innerRing17: CrescentButton = {
-        let half = DPad.Ring.arc17.start + ((DPad.Ring.arc17.end - DPad.Ring.arc17.start) / 2) + 2.0
+        let half = DPad.Ring.arc17.start + ((DPad.Ring.arc17.end - DPad.Ring.arc17.start) / 2) + 1.5
         
         let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: half, endDegree: DPad.Ring.arc19.end - 1.5)
         let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: half, endDegree: DPad.Ring.arc19.end + 2.0)
@@ -163,8 +163,8 @@ import GraphPoint
         return button
     }()
     open lazy var innerRing20: CrescentButton = {
-        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc20.start - 1.0, endDegree: DPad.Ring.arc20.end)
-        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc20.start - 1.0, endDegree: DPad.Ring.arc20.end)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.Ring.arc20.start, endDegree: DPad.Ring.arc20.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startDegree: DPad.Ring.arc20.start, endDegree: DPad.Ring.arc20.end)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: true)
         
@@ -312,11 +312,7 @@ import GraphPoint
     }()
     open lazy var top00: RoundedRectangleButton = {
         var frame = CGRect(x: 0, y: 0, width: 0, height: self.cruxDiameter)
-        if scaledContentSize.width >= scaledContentSize.height {
-            frame.size.width = RoundedRectangleButton.defaultSize.width * scaleMultiplier.width
-        } else {
-            frame.size.width = RoundedRectangleButton.defaultSize.width * scaleMultiplier.height
-        }
+        frame.size.width = RoundedRectangleButton.defaultSize.width * scaleRatio
         frame.origin.y = edge05.frame.origin.y
         frame.origin.x = innerRing17.frame.origin.x
         
@@ -329,12 +325,24 @@ import GraphPoint
     }()
     
     open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 737, height: 538)
+        return CGSize(width: 715, height: 520)
     }
     
     // {-27.0, 79.0}
     open override var offset: GraphOriginOffset {
-        return GraphOriginOffset(x: -(scaledContentSize.width * 0.0366), y: (scaledContentSize.height * 0.1468))
+        return GraphOriginOffset(x: -(scaledContentSize.width * 0.0366), y: (scaledContentSize.height * 0.14))
+    }
+    
+    open var secondRingEdgeExteriorRadius: CGFloat {
+        return secondRingInteriorRadius + (scaleRatio * 62.0)
+    }
+    
+    open var thirdRingInteriorRadius: CGFloat {
+        return secondRingExteriorRadius + Interface.theme.defaultSpacing
+    }
+    
+    open var thirdRingExteriorRadius: CGFloat {
+        return thirdRingInteriorRadius + (scaleRatio * 45.0)
     }
     
     open override func layoutSubviews() {

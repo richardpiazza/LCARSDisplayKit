@@ -50,6 +50,8 @@ public protocol Theme {
     // Sounds
     var beepURL: URL? { get }
     var beepSoundID: SystemSoundID { get set }
+    // Sizes
+    var defaultSpacing: CGFloat { get }
 }
 
 public extension Theme {
@@ -73,6 +75,10 @@ public extension Theme {
     
     public func beep() {
         AudioServicesPlaySystemSound(beepSoundID)
+    }
+    
+    public var defaultSpacing: CGFloat {
+        return CGFloat(8)
     }
 }
 

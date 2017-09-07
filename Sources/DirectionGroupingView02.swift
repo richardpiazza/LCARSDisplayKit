@@ -63,9 +63,9 @@ import GraphPoint
         let e13Origin = edge13.frame.origin
         
         let width = e13Points[1].x - e13Points[0].x
-        let height = RoundedRectangleButton.defaultSize.height * scaleMultiplier.height
+        let height = RoundedRectangleButton.defaultSize.height * scaleRatio
         let x = e13Origin.x
-        let y = e13Origin.y - height - minimalElementSpacing
+        let y = e13Origin.y - height - Interface.theme.defaultSpacing
         
         let button = RoundedRectangleButton(frame: CGRect(x: x, y: y, width: width, height: height))
         button.setTitle("CALIBRATE", for: UIControlState())
@@ -75,8 +75,8 @@ import GraphPoint
     }()
     open lazy var top02: RoundedRectangleButton = {
         var frame = top03.frame
-        frame.size.width = (RoundedRectangleButton.defaultSize.width * scaleMultiplier.width) * 0.55
-        frame.origin.x = frame.origin.x - frame.size.width - minimalElementSpacing
+        frame.size.width = (RoundedRectangleButton.defaultSize.width * scaleRatio) * 0.55
+        frame.origin.x = frame.origin.x - frame.size.width - Interface.theme.defaultSpacing
         
         let button = RoundedRectangleButton(frame: frame)
         button.setTitle("T02", for: UIControlState())
@@ -90,9 +90,9 @@ import GraphPoint
         let e15Origin = edge15.frame.origin
         
         let width = e15Points[1].x - e15Points[0].x
-        let height = RoundedRectangleButton.defaultSize.height * scaleMultiplier.height
+        let height = RoundedRectangleButton.defaultSize.height * scaleRatio
         let x = e15Origin.x
-        let y = e15Origin.y - height - minimalElementSpacing
+        let y = e15Origin.y - height - Interface.theme.defaultSpacing
         
         let button = RoundedRectangleButton(frame: CGRect(x: x, y: y, width: width, height: height))
         button.setTitle("T03", for: UIControlState())
@@ -103,8 +103,8 @@ import GraphPoint
     open lazy var top04: RoundedRectangleButton = {
         var frame = top03.frame
         let top03Width = frame.size.width
-        frame.size.width = (RoundedRectangleButton.defaultSize.width * scaleMultiplier.width) * 0.55
-        frame.origin.x = frame.origin.x + top03Width + minimalElementSpacing
+        frame.size.width = (RoundedRectangleButton.defaultSize.width * scaleRatio) * 0.55
+        frame.origin.x = frame.origin.x + top03Width + Interface.theme.defaultSpacing
         
         let button = RoundedRectangleButton(frame: frame)
         button.setTitle("T04", for: UIControlState())
@@ -115,7 +115,7 @@ import GraphPoint
     }()
     open lazy var top05: RoundedRectangleButton = {
         var frame = top00.frame
-        frame.origin.y = frame.origin.y - frame.size.height - minimalElementSpacing
+        frame.origin.y = frame.origin.y - frame.size.height - Interface.theme.defaultSpacing
         
         let button = RoundedRectangleButton(frame: frame)
         button.setTitle("T05", for: UIControlState())
@@ -127,12 +127,12 @@ import GraphPoint
     }()
     
     open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 790, height: 790)
+        return CGSize(width: 760, height: 755)
     }
     
     // {0.0, 52.0}
     open override var offset: GraphOriginOffset {
-        return GraphOriginOffset(x: 0.0, y: (scaledContentSize.height * 0.066))
+        return GraphOriginOffset(x: 0.0, y: (scaledContentSize.height * 0.068))
     }
     
     open override var firstRingEdgeExteriorRadius: CGFloat {

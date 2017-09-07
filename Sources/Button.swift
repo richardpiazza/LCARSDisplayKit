@@ -53,10 +53,6 @@ open class Button: UIButton, Tappable {
     }
     
     @IBInspectable open var color: UIColor = Interface.theme.inactive
-    @IBInspectable lazy open var touchedColor: UIColor = {
-        [unowned self] in
-        return self.color.adaptingSaturation(by: 0.8)
-        }()
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -109,31 +105,7 @@ open class Button: UIButton, Tappable {
         super.touchesEnded(touches, with: event)
     }
     
-    // - MARK: Tappable
-    open var path: CGMutablePath {
-        return graphable.path
-    }
-    
-    open func image(_ context: CGContext?) -> UIImage? {
-        if let paths = self.subpaths, let colors = self.colors {
-            return UIImage.image(with: paths, colors: colors, size: graphable.size, context: context)
-        }
-        
-        return UIImage.image(with: path, fillColor: color, context: context)
-    }
-    
-    open func touchedImage(_ context: CGContext?) -> UIImage? {
-        if let paths = self.subpaths, let colors = touchedColors {
-            return UIImage.image(with: paths, colors: colors, size: graphable.size, context: context)
-        }
-        
-        return UIImage.image(with: path, fillColor: touchedColor, context: context)
-    }
-    
-    open var subpaths: [CGMutablePath]? {
-        return graphable.subpaths
-    }
-    
+    // - MARK: Tappable    
     open var colors: [UIColor]? {
         return nil
     }
