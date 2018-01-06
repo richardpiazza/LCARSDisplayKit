@@ -1,0 +1,6 @@
+framework module Pods_LCARSDisplayKitUI {
+  umbrella header "Pods-LCARSDisplayKitUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

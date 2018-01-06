@@ -16,6 +16,9 @@ public struct Elbow: Graphable {
     /// If true, the interior radius will match the exterior radius.
     public var shouldMatchRadius: Bool = false
     
+    public init() {
+    }
+    
     // - MARK: Graphable
     public var path: CGMutablePath {
         let path: CGMutablePath = CGMutablePath()

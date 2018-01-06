@@ -1,0 +1,1640 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06888ACC8D0175D7A60BD77C /* Pods_LCARSDisplayKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5455D6569D6153585B746C9F /* Pods_LCARSDisplayKitExampleTests.framework */; };
+		0CB0A131F5A40A5271C13385 /* Pods_LCARSDisplayKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42556F990947F4CA1C621042 /* Pods_LCARSDisplayKitExample.framework */; };
+		10C95D044B33AD0072351817 /* Pods_LCARSDisplayKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE6D6D729E46A34B843642F /* Pods_LCARSDisplayKitTests.framework */; };
+		173C9A74BBA50CE6CAD2374B /* Pods_LCARSDisplayKitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B407EED54ACE24C643FB1EC3 /* Pods_LCARSDisplayKitUITests.framework */; };
+		49A643C29F64E7EA5C1A7015 /* Pods_LCARSDisplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCFF6865E998F9855CED3F1 /* Pods_LCARSDisplayKit.framework */; };
+		4A1977DE759A211E4F5EC8F6 /* Pods_LCARSDisplayKitExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD9120B7B039A8154C9501C /* Pods_LCARSDisplayKitExampleUITests.framework */; };
+		54564C6EEC62336155087FE4 /* Pods_LCARSDisplayKitViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D37A3C953BFA5C97AFF919 /* Pods_LCARSDisplayKitViews.framework */; };
+		76349B486F1C563580711DEF /* Pods_LCARSDisplayKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B174C3A8B120D9B133313046 /* Pods_LCARSDisplayKitUI.framework */; };
+		DD6393785E559408478C102A /* Pods_LCARSDisplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCFF6865E998F9855CED3F1 /* Pods_LCARSDisplayKit.framework */; };
+		E105B78D1D5E6688004AE5D9 /* Designables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E105B78B1D5E6688004AE5D9 /* Designables.storyboard */; };
+		E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */; };
+		E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB51BBE7FBC0001C33D /* ViewController.swift */; };
+		E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FB71BBE7FBC0001C33D /* Main.storyboard */; };
+		E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */; };
+		E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */; };
+		E1112FD41BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FD31BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift */; };
+		E160D49220006256000EF3FE /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160D490200060C7000EF3FE /* Assets.swift */; };
+		E160D4992000672F000EF3FE /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160D49720006688000EF3FE /* Configuration.swift */; };
+		E160D49A20006733000EF3FE /* CommandSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160D4952000638A000EF3FE /* CommandSequencer.swift */; };
+		E160D49B20006740000EF3FE /* TNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160D49320006335000EF3FE /* TNG.swift */; };
+		E160D49D20006A34000EF3FE /* DGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160D49C20006A34000EF3FE /* DGroupView.swift */; };
+		E19C227C200040C000F0C3E8 /* LCARSDisplayKit.h in Headers */ = {isa = PBXBuildFile; fileRef = E19C227A200040C000F0C3E8 /* LCARSDisplayKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E19C227F200040C000F0C3E8 /* LCARSDisplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19C2278200040C000F0C3E8 /* LCARSDisplayKit.framework */; };
+		E19C2280200040C000F0C3E8 /* LCARSDisplayKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E19C2278200040C000F0C3E8 /* LCARSDisplayKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E19C228E200040DA00F0C3E8 /* LCARSDisplayKitUI.h in Headers */ = {isa = PBXBuildFile; fileRef = E19C228C200040DA00F0C3E8 /* LCARSDisplayKitUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E19C2291200040DA00F0C3E8 /* LCARSDisplayKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19C228A200040DA00F0C3E8 /* LCARSDisplayKitUI.framework */; };
+		E19C2292200040DA00F0C3E8 /* LCARSDisplayKitUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E19C228A200040DA00F0C3E8 /* LCARSDisplayKitUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E19C22982000426E00F0C3E8 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B541FFECB210002EF25 /* Arc.swift */; };
+		E19C22992000426E00F0C3E8 /* Crescent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B5B1FFECB210002EF25 /* Crescent.swift */; };
+		E19C229A2000426E00F0C3E8 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B681FFECB210002EF25 /* Direction.swift */; };
+		E19C229B2000426E00F0C3E8 /* EdgedCrescent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B611FFECB210002EF25 /* EdgedCrescent.swift */; };
+		E19C229C2000426E00F0C3E8 /* Elbow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B5E1FFECB210002EF25 /* Elbow.swift */; };
+		E19C229D2000426E00F0C3E8 /* Graphable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B631FFECB210002EF25 /* Graphable.swift */; };
+		E19C229E2000426E00F0C3E8 /* RoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B5F1FFECB210002EF25 /* RoundedRectangle.swift */; };
+		E19C229F2000427400F0C3E8 /* ArcButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B601FFECB210002EF25 /* ArcButton.swift */; };
+		E19C22A02000427400F0C3E8 /* Behavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B651FFECB210002EF25 /* Behavior.swift */; };
+		E19C22A12000427400F0C3E8 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B671FFECB210002EF25 /* Button.swift */; };
+		E19C22A22000427400F0C3E8 /* CrescentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B661FFECB210002EF25 /* CrescentButton.swift */; };
+		E19C22A32000427400F0C3E8 /* DirectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B5A1FFECB210002EF25 /* DirectionButton.swift */; };
+		E19C22A92000427400F0C3E8 /* EdgedCrescentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B521FFECB210002EF25 /* EdgedCrescentButton.swift */; };
+		E19C22AA2000427400F0C3E8 /* ElbowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B571FFECB210002EF25 /* ElbowButton.swift */; };
+		E19C22AB2000427400F0C3E8 /* RoundedRectangleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B531FFECB210002EF25 /* RoundedRectangleButton.swift */; };
+		E19C22AC2000427400F0C3E8 /* Tappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B581FFECB210002EF25 /* Tappable.swift */; };
+		E19C22AD2000427400F0C3E8 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B641FFECB210002EF25 /* Theme.swift */; };
+		E19C22AE2000427400F0C3E8 /* UIColor+LCARSDisplayKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B591FFECB210002EF25 /* UIColor+LCARSDisplayKit.swift */; };
+		E19C22AF2000427400F0C3E8 /* UIFont+LCARSDisplayKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6BC61FFEF1650002EF25 /* UIFont+LCARSDisplayKit.swift */; };
+		E19C22B02000427400F0C3E8 /* UIImage+LCARSDisplayKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B621FFECB210002EF25 /* UIImage+LCARSDisplayKit.swift */; };
+		E19C22BD20004CA500F0C3E8 /* LCARSDisplayKitViews.h in Headers */ = {isa = PBXBuildFile; fileRef = E19C22BB20004CA500F0C3E8 /* LCARSDisplayKitViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E19C22C020004CA500F0C3E8 /* LCARSDisplayKitViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E19C22B920004CA500F0C3E8 /* LCARSDisplayKitViews.framework */; };
+		E19C22C120004CA500F0C3E8 /* LCARSDisplayKitViews.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E19C22B920004CA500F0C3E8 /* LCARSDisplayKitViews.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E19C22C920004D0600F0C3E8 /* DirectionGroupingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B5C1FFECB210002EF25 /* DirectionGroupingView.swift */; };
+		E19C22CA20004D0600F0C3E8 /* DirectionGroupingView01.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B561FFECB210002EF25 /* DirectionGroupingView01.swift */; };
+		E19C22CB20004D0600F0C3E8 /* DirectionGroupingView02.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B5D1FFECB210002EF25 /* DirectionGroupingView02.swift */; };
+		E19C22CC20004D0600F0C3E8 /* DirectionGroupingView03.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B551FFECB210002EF25 /* DirectionGroupingView03.swift */; };
+		E19C22CD20004D0600F0C3E8 /* DPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B511FFECB210002EF25 /* DPad.swift */; };
+		E1CA6B821FFECB2B0002EF25 /* LCARSDisplayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B4E1FFECB210002EF25 /* LCARSDisplayKitTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E1112FC51BBE7FBC0001C33D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1112FAF1BBE7FBB0001C33D;
+			remoteInfo = LCARSDisplayKit;
+		};
+		E1112FD01BBE7FBC0001C33D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1112FAF1BBE7FBB0001C33D;
+			remoteInfo = LCARSDisplayKit;
+		};
+		E19C227D200040C000F0C3E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E19C2277200040C000F0C3E8;
+			remoteInfo = LCARSDisplayKit;
+		};
+		E19C228F200040DA00F0C3E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E19C2289200040DA00F0C3E8;
+			remoteInfo = LCARSDisplayKitUI;
+		};
+		E19C22B1200043CC00F0C3E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E19C2277200040C000F0C3E8;
+			remoteInfo = LCARSDisplayKit;
+		};
+		E19C22BE20004CA500F0C3E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E19C22B820004CA500F0C3E8;
+			remoteInfo = LCARSDisplayKitViews;
+		};
+		E19C22C520004CAE00F0C3E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E19C2289200040DA00F0C3E8;
+			remoteInfo = LCARSDisplayKitUI;
+		};
+		E19C22C720004CB200F0C3E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E19C2277200040C000F0C3E8;
+			remoteInfo = LCARSDisplayKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E19C2284200040C100F0C3E8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E19C2292200040DA00F0C3E8 /* LCARSDisplayKitUI.framework in Embed Frameworks */,
+				E19C22C120004CA500F0C3E8 /* LCARSDisplayKitViews.framework in Embed Frameworks */,
+				E19C2280200040C000F0C3E8 /* LCARSDisplayKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		04AC52179B82A10C1DB01B08 /* Pods-LCARSDisplayKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitTests/Pods-LCARSDisplayKitTests.release.xcconfig"; sourceTree = "<group>"; };
+		1087146956080ED615108710 /* Pods-LCARSDisplayKitExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitExampleTests/Pods-LCARSDisplayKitExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1AD9120B7B039A8154C9501C /* Pods_LCARSDisplayKitExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LCARSDisplayKitExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		42556F990947F4CA1C621042 /* Pods_LCARSDisplayKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LCARSDisplayKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5455D6569D6153585B746C9F /* Pods_LCARSDisplayKitExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LCARSDisplayKitExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DCFF6865E998F9855CED3F1 /* Pods_LCARSDisplayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LCARSDisplayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A8D366209B4EFD276AC68EF /* Pods-LCARSDisplayKitExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitExampleTests/Pods-LCARSDisplayKitExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		8B8B14692F708C643FF00174 /* Pods-LCARSDisplayKitUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitUITests/Pods-LCARSDisplayKitUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8FE6D6D729E46A34B843642F /* Pods_LCARSDisplayKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LCARSDisplayKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		916B89F1536684D8808DADAE /* Pods-LCARSDisplayKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitTests/Pods-LCARSDisplayKitTests.debug.xcconfig"; sourceTree = "<group>"; };
+		91AB2E4C48D426B0EDA35E2F /* Pods-LCARSDisplayKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKit/Pods-LCARSDisplayKit.debug.xcconfig"; sourceTree = "<group>"; };
+		94D37A3C953BFA5C97AFF919 /* Pods_LCARSDisplayKitViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LCARSDisplayKitViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9507201F69EEF92975C507D5 /* Pods-LCARSDisplayKitViews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitViews.release.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitViews/Pods-LCARSDisplayKitViews.release.xcconfig"; sourceTree = "<group>"; };
+		9559BE001B34391C7F437B65 /* Pods-LCARSDisplayKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitExample/Pods-LCARSDisplayKitExample.release.xcconfig"; sourceTree = "<group>"; };
+		95A5E58705BFC653A2C74135 /* Pods-LCARSDisplayKitExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitExampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitExampleUITests/Pods-LCARSDisplayKitExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
+		998CEF5DD8BD0E9ED1FF7546 /* Pods-LCARSDisplayKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKit/Pods-LCARSDisplayKit.release.xcconfig"; sourceTree = "<group>"; };
+		A1703DD5CA2911C058812951 /* Pods-LCARSDisplayKitUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitUI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitUI/Pods-LCARSDisplayKitUI.debug.xcconfig"; sourceTree = "<group>"; };
+		A1B704C7F1939D9957AB566E /* Pods-LCARSDisplayKitUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitUI.release.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitUI/Pods-LCARSDisplayKitUI.release.xcconfig"; sourceTree = "<group>"; };
+		A8B8A02FD4BCABDEF9699B79 /* Pods-LCARSDisplayKitUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitUITests/Pods-LCARSDisplayKitUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B174C3A8B120D9B133313046 /* Pods_LCARSDisplayKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LCARSDisplayKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B407EED54ACE24C643FB1EC3 /* Pods_LCARSDisplayKitUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LCARSDisplayKitUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C01532F41E6539242A9B728D /* Pods-LCARSDisplayKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitExample/Pods-LCARSDisplayKitExample.debug.xcconfig"; sourceTree = "<group>"; };
+		E105B78C1D5E6688004AE5D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Designables.storyboard; sourceTree = "<group>"; };
+		E1112FB01BBE7FBC0001C33D /* LCARSDisplayKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCARSDisplayKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E1112FB51BBE7FBC0001C33D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E1112FB81BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E1112FBD1BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E1112FBF1BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1112FC41BBE7FBC0001C33D /* LCARSDisplayKitExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LCARSDisplayKitExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1112FCA1BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1112FCF1BBE7FBC0001C33D /* LCARSDisplayKitExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LCARSDisplayKitExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1112FD31BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitUITests.swift; sourceTree = "<group>"; };
+		E1112FD51BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E160D490200060C7000EF3FE /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		E160D49320006335000EF3FE /* TNG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TNG.swift; sourceTree = "<group>"; };
+		E160D4952000638A000EF3FE /* CommandSequencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSequencer.swift; sourceTree = "<group>"; };
+		E160D49720006688000EF3FE /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		E160D49C20006A34000EF3FE /* DGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGroupView.swift; sourceTree = "<group>"; };
+		E19C2278200040C000F0C3E8 /* LCARSDisplayKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LCARSDisplayKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E19C227A200040C000F0C3E8 /* LCARSDisplayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCARSDisplayKit.h; sourceTree = "<group>"; };
+		E19C227B200040C000F0C3E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E19C228A200040DA00F0C3E8 /* LCARSDisplayKitUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LCARSDisplayKitUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E19C228C200040DA00F0C3E8 /* LCARSDisplayKitUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCARSDisplayKitUI.h; sourceTree = "<group>"; };
+		E19C228D200040DA00F0C3E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E19C22B920004CA500F0C3E8 /* LCARSDisplayKitViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LCARSDisplayKitViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E19C22BB20004CA500F0C3E8 /* LCARSDisplayKitViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCARSDisplayKitViews.h; sourceTree = "<group>"; };
+		E19C22BC20004CA500F0C3E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1CA6B4E1FFECB210002EF25 /* LCARSDisplayKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitTests.swift; sourceTree = "<group>"; };
+		E1CA6B511FFECB210002EF25 /* DPad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPad.swift; sourceTree = "<group>"; };
+		E1CA6B521FFECB210002EF25 /* EdgedCrescentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgedCrescentButton.swift; sourceTree = "<group>"; };
+		E1CA6B531FFECB210002EF25 /* RoundedRectangleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectangleButton.swift; sourceTree = "<group>"; };
+		E1CA6B541FFECB210002EF25 /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
+		E1CA6B551FFECB210002EF25 /* DirectionGroupingView03.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionGroupingView03.swift; sourceTree = "<group>"; };
+		E1CA6B561FFECB210002EF25 /* DirectionGroupingView01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionGroupingView01.swift; sourceTree = "<group>"; };
+		E1CA6B571FFECB210002EF25 /* ElbowButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ElbowButton.swift; sourceTree = "<group>"; };
+		E1CA6B581FFECB210002EF25 /* Tappable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tappable.swift; sourceTree = "<group>"; };
+		E1CA6B591FFECB210002EF25 /* UIColor+LCARSDisplayKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+LCARSDisplayKit.swift"; sourceTree = "<group>"; };
+		E1CA6B5A1FFECB210002EF25 /* DirectionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionButton.swift; sourceTree = "<group>"; };
+		E1CA6B5B1FFECB210002EF25 /* Crescent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crescent.swift; sourceTree = "<group>"; };
+		E1CA6B5C1FFECB210002EF25 /* DirectionGroupingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionGroupingView.swift; sourceTree = "<group>"; };
+		E1CA6B5D1FFECB210002EF25 /* DirectionGroupingView02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionGroupingView02.swift; sourceTree = "<group>"; };
+		E1CA6B5E1FFECB210002EF25 /* Elbow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Elbow.swift; sourceTree = "<group>"; };
+		E1CA6B5F1FFECB210002EF25 /* RoundedRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedRectangle.swift; sourceTree = "<group>"; };
+		E1CA6B601FFECB210002EF25 /* ArcButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcButton.swift; sourceTree = "<group>"; };
+		E1CA6B611FFECB210002EF25 /* EdgedCrescent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdgedCrescent.swift; sourceTree = "<group>"; };
+		E1CA6B621FFECB210002EF25 /* UIImage+LCARSDisplayKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+LCARSDisplayKit.swift"; sourceTree = "<group>"; };
+		E1CA6B631FFECB210002EF25 /* Graphable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graphable.swift; sourceTree = "<group>"; };
+		E1CA6B641FFECB210002EF25 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		E1CA6B651FFECB210002EF25 /* Behavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Behavior.swift; sourceTree = "<group>"; };
+		E1CA6B661FFECB210002EF25 /* CrescentButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrescentButton.swift; sourceTree = "<group>"; };
+		E1CA6B671FFECB210002EF25 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		E1CA6B681FFECB210002EF25 /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		E1CA6B831FFECC150002EF25 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		E1CA6B841FFECC150002EF25 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
+		E1CA6B851FFECC150002EF25 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		E1CA6B861FFECC150002EF25 /* LCARSDisplayKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LCARSDisplayKit.podspec; path = ../LCARSDisplayKit.podspec; sourceTree = "<group>"; };
+		E1CA6BC61FFEF1650002EF25 /* UIFont+LCARSDisplayKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+LCARSDisplayKit.swift"; sourceTree = "<group>"; };
+		F572E4250827A1BF2197FB98 /* Pods-LCARSDisplayKitExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitExampleUITests/Pods-LCARSDisplayKitExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA218770675089D6BCA5DB8A /* Pods-LCARSDisplayKitViews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitViews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitViews/Pods-LCARSDisplayKitViews.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1112FAD1BBE7FBB0001C33D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19C2291200040DA00F0C3E8 /* LCARSDisplayKitUI.framework in Frameworks */,
+				E19C227F200040C000F0C3E8 /* LCARSDisplayKit.framework in Frameworks */,
+				E19C22C020004CA500F0C3E8 /* LCARSDisplayKitViews.framework in Frameworks */,
+				49A643C29F64E7EA5C1A7015 /* Pods_LCARSDisplayKit.framework in Frameworks */,
+				0CB0A131F5A40A5271C13385 /* Pods_LCARSDisplayKitExample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FC11BBE7FBC0001C33D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				10C95D044B33AD0072351817 /* Pods_LCARSDisplayKitTests.framework in Frameworks */,
+				06888ACC8D0175D7A60BD77C /* Pods_LCARSDisplayKitExampleTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FCC1BBE7FBC0001C33D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				173C9A74BBA50CE6CAD2374B /* Pods_LCARSDisplayKitUITests.framework in Frameworks */,
+				4A1977DE759A211E4F5EC8F6 /* Pods_LCARSDisplayKitExampleUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C2274200040C000F0C3E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD6393785E559408478C102A /* Pods_LCARSDisplayKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C2286200040DA00F0C3E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76349B486F1C563580711DEF /* Pods_LCARSDisplayKitUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C22B520004CA500F0C3E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54564C6EEC62336155087FE4 /* Pods_LCARSDisplayKitViews.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1054C190AB12424E7E52B81A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				91AB2E4C48D426B0EDA35E2F /* Pods-LCARSDisplayKit.debug.xcconfig */,
+				998CEF5DD8BD0E9ED1FF7546 /* Pods-LCARSDisplayKit.release.xcconfig */,
+				916B89F1536684D8808DADAE /* Pods-LCARSDisplayKitTests.debug.xcconfig */,
+				04AC52179B82A10C1DB01B08 /* Pods-LCARSDisplayKitTests.release.xcconfig */,
+				8B8B14692F708C643FF00174 /* Pods-LCARSDisplayKitUITests.debug.xcconfig */,
+				A8B8A02FD4BCABDEF9699B79 /* Pods-LCARSDisplayKitUITests.release.xcconfig */,
+				C01532F41E6539242A9B728D /* Pods-LCARSDisplayKitExample.debug.xcconfig */,
+				9559BE001B34391C7F437B65 /* Pods-LCARSDisplayKitExample.release.xcconfig */,
+				1087146956080ED615108710 /* Pods-LCARSDisplayKitExampleTests.debug.xcconfig */,
+				8A8D366209B4EFD276AC68EF /* Pods-LCARSDisplayKitExampleTests.release.xcconfig */,
+				F572E4250827A1BF2197FB98 /* Pods-LCARSDisplayKitExampleUITests.debug.xcconfig */,
+				95A5E58705BFC653A2C74135 /* Pods-LCARSDisplayKitExampleUITests.release.xcconfig */,
+				A1703DD5CA2911C058812951 /* Pods-LCARSDisplayKitUI.debug.xcconfig */,
+				A1B704C7F1939D9957AB566E /* Pods-LCARSDisplayKitUI.release.xcconfig */,
+				FA218770675089D6BCA5DB8A /* Pods-LCARSDisplayKitViews.debug.xcconfig */,
+				9507201F69EEF92975C507D5 /* Pods-LCARSDisplayKitViews.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		49A5E7EA70267973AC3B7DEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DCFF6865E998F9855CED3F1 /* Pods_LCARSDisplayKit.framework */,
+				8FE6D6D729E46A34B843642F /* Pods_LCARSDisplayKitTests.framework */,
+				B407EED54ACE24C643FB1EC3 /* Pods_LCARSDisplayKitUITests.framework */,
+				42556F990947F4CA1C621042 /* Pods_LCARSDisplayKitExample.framework */,
+				5455D6569D6153585B746C9F /* Pods_LCARSDisplayKitExampleTests.framework */,
+				1AD9120B7B039A8154C9501C /* Pods_LCARSDisplayKitExampleUITests.framework */,
+				B174C3A8B120D9B133313046 /* Pods_LCARSDisplayKitUI.framework */,
+				94D37A3C953BFA5C97AFF919 /* Pods_LCARSDisplayKitViews.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1112FA71BBE7FBB0001C33D = {
+			isa = PBXGroup;
+			children = (
+				E1CA6B861FFECC150002EF25 /* LCARSDisplayKit.podspec */,
+				E1CA6B831FFECC150002EF25 /* LICENSE */,
+				E1CA6B841FFECC150002EF25 /* Package.swift */,
+				E1CA6B851FFECC150002EF25 /* README.md */,
+				E1CA6B4F1FFECB210002EF25 /* Sources */,
+				E1CA6B4C1FFECB210002EF25 /* Tests */,
+				E1112FB21BBE7FBC0001C33D /* LCARSDisplayKitExample */,
+				E1112FC71BBE7FBC0001C33D /* LCARSDisplayKitExampleTests */,
+				E1112FD21BBE7FBC0001C33D /* LCARSDisplayKitExampleUITests */,
+				E19C2279200040C000F0C3E8 /* LCARSDisplayKit */,
+				E19C228B200040DA00F0C3E8 /* LCARSDisplayKitUI */,
+				E19C22BA20004CA500F0C3E8 /* LCARSDisplayKitViews */,
+				E1112FB11BBE7FBC0001C33D /* Products */,
+				1054C190AB12424E7E52B81A /* Pods */,
+				49A5E7EA70267973AC3B7DEA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E1112FB11BBE7FBC0001C33D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1112FB01BBE7FBC0001C33D /* LCARSDisplayKitExample.app */,
+				E1112FC41BBE7FBC0001C33D /* LCARSDisplayKitExampleTests.xctest */,
+				E1112FCF1BBE7FBC0001C33D /* LCARSDisplayKitExampleUITests.xctest */,
+				E19C2278200040C000F0C3E8 /* LCARSDisplayKit.framework */,
+				E19C228A200040DA00F0C3E8 /* LCARSDisplayKitUI.framework */,
+				E19C22B920004CA500F0C3E8 /* LCARSDisplayKitViews.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1112FB21BBE7FBC0001C33D /* LCARSDisplayKitExample */ = {
+			isa = PBXGroup;
+			children = (
+				E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */,
+				E1112FB51BBE7FBC0001C33D /* ViewController.swift */,
+				E1112FB71BBE7FBC0001C33D /* Main.storyboard */,
+				E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */,
+				E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */,
+				E1112FBF1BBE7FBC0001C33D /* Info.plist */,
+				E105B78B1D5E6688004AE5D9 /* Designables.storyboard */,
+				E160D49C20006A34000EF3FE /* DGroupView.swift */,
+			);
+			path = LCARSDisplayKitExample;
+			sourceTree = "<group>";
+		};
+		E1112FC71BBE7FBC0001C33D /* LCARSDisplayKitExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				E1112FCA1BBE7FBC0001C33D /* Info.plist */,
+			);
+			path = LCARSDisplayKitExampleTests;
+			sourceTree = "<group>";
+		};
+		E1112FD21BBE7FBC0001C33D /* LCARSDisplayKitExampleUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E1112FD31BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift */,
+				E1112FD51BBE7FBC0001C33D /* Info.plist */,
+			);
+			path = LCARSDisplayKitExampleUITests;
+			sourceTree = "<group>";
+		};
+		E19C2279200040C000F0C3E8 /* LCARSDisplayKit */ = {
+			isa = PBXGroup;
+			children = (
+				E19C227A200040C000F0C3E8 /* LCARSDisplayKit.h */,
+				E19C227B200040C000F0C3E8 /* Info.plist */,
+			);
+			path = LCARSDisplayKit;
+			sourceTree = "<group>";
+		};
+		E19C228B200040DA00F0C3E8 /* LCARSDisplayKitUI */ = {
+			isa = PBXGroup;
+			children = (
+				E19C228C200040DA00F0C3E8 /* LCARSDisplayKitUI.h */,
+				E19C228D200040DA00F0C3E8 /* Info.plist */,
+			);
+			path = LCARSDisplayKitUI;
+			sourceTree = "<group>";
+		};
+		E19C22962000420300F0C3E8 /* LCARSDisplayKitUI */ = {
+			isa = PBXGroup;
+			children = (
+				E1CA6B601FFECB210002EF25 /* ArcButton.swift */,
+				E1CA6B651FFECB210002EF25 /* Behavior.swift */,
+				E1CA6B671FFECB210002EF25 /* Button.swift */,
+				E160D49720006688000EF3FE /* Configuration.swift */,
+				E160D4952000638A000EF3FE /* CommandSequencer.swift */,
+				E1CA6B661FFECB210002EF25 /* CrescentButton.swift */,
+				E1CA6B5A1FFECB210002EF25 /* DirectionButton.swift */,
+				E1CA6B521FFECB210002EF25 /* EdgedCrescentButton.swift */,
+				E1CA6B571FFECB210002EF25 /* ElbowButton.swift */,
+				E1CA6B531FFECB210002EF25 /* RoundedRectangleButton.swift */,
+				E1CA6B581FFECB210002EF25 /* Tappable.swift */,
+				E1CA6B641FFECB210002EF25 /* Theme.swift */,
+				E160D49320006335000EF3FE /* TNG.swift */,
+				E1CA6B591FFECB210002EF25 /* UIColor+LCARSDisplayKit.swift */,
+				E1CA6BC61FFEF1650002EF25 /* UIFont+LCARSDisplayKit.swift */,
+				E1CA6B621FFECB210002EF25 /* UIImage+LCARSDisplayKit.swift */,
+			);
+			path = LCARSDisplayKitUI;
+			sourceTree = "<group>";
+		};
+		E19C22B320004C3B00F0C3E8 /* LCARSDisplayKitViews */ = {
+			isa = PBXGroup;
+			children = (
+				E1CA6B5C1FFECB210002EF25 /* DirectionGroupingView.swift */,
+				E1CA6B561FFECB210002EF25 /* DirectionGroupingView01.swift */,
+				E1CA6B5D1FFECB210002EF25 /* DirectionGroupingView02.swift */,
+				E1CA6B551FFECB210002EF25 /* DirectionGroupingView03.swift */,
+				E1CA6B511FFECB210002EF25 /* DPad.swift */,
+			);
+			path = LCARSDisplayKitViews;
+			sourceTree = "<group>";
+		};
+		E19C22BA20004CA500F0C3E8 /* LCARSDisplayKitViews */ = {
+			isa = PBXGroup;
+			children = (
+				E19C22BB20004CA500F0C3E8 /* LCARSDisplayKitViews.h */,
+				E19C22BC20004CA500F0C3E8 /* Info.plist */,
+			);
+			path = LCARSDisplayKitViews;
+			sourceTree = "<group>";
+		};
+		E1CA6B4C1FFECB210002EF25 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E1CA6B4D1FFECB210002EF25 /* LCARSDisplayKitTests */,
+			);
+			name = Tests;
+			path = ../Tests;
+			sourceTree = "<group>";
+		};
+		E1CA6B4D1FFECB210002EF25 /* LCARSDisplayKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				E1CA6B4E1FFECB210002EF25 /* LCARSDisplayKitTests.swift */,
+			);
+			path = LCARSDisplayKitTests;
+			sourceTree = "<group>";
+		};
+		E1CA6B4F1FFECB210002EF25 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E1CA6B501FFECB210002EF25 /* LCARSDisplayKit */,
+				E19C22962000420300F0C3E8 /* LCARSDisplayKitUI */,
+				E19C22B320004C3B00F0C3E8 /* LCARSDisplayKitViews */,
+			);
+			name = Sources;
+			path = ../Sources;
+			sourceTree = "<group>";
+		};
+		E1CA6B501FFECB210002EF25 /* LCARSDisplayKit */ = {
+			isa = PBXGroup;
+			children = (
+				E1CA6B541FFECB210002EF25 /* Arc.swift */,
+				E160D490200060C7000EF3FE /* Assets.swift */,
+				E1CA6B5B1FFECB210002EF25 /* Crescent.swift */,
+				E1CA6B681FFECB210002EF25 /* Direction.swift */,
+				E1CA6B611FFECB210002EF25 /* EdgedCrescent.swift */,
+				E1CA6B5E1FFECB210002EF25 /* Elbow.swift */,
+				E1CA6B631FFECB210002EF25 /* Graphable.swift */,
+				E1CA6B5F1FFECB210002EF25 /* RoundedRectangle.swift */,
+			);
+			path = LCARSDisplayKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		E19C2275200040C000F0C3E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19C227C200040C000F0C3E8 /* LCARSDisplayKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C2287200040DA00F0C3E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19C228E200040DA00F0C3E8 /* LCARSDisplayKitUI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C22B620004CA500F0C3E8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19C22BD20004CA500F0C3E8 /* LCARSDisplayKitViews.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKitExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1112FD81BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitExample" */;
+			buildPhases = (
+				4905BE85BC03F85F1DEA1343 /* [CP] Check Pods Manifest.lock */,
+				E1112FAC1BBE7FBB0001C33D /* Sources */,
+				E1112FAD1BBE7FBB0001C33D /* Frameworks */,
+				E1112FAE1BBE7FBB0001C33D /* Resources */,
+				BAB320067CD4AEF5433FF59D /* [CP] Embed Pods Frameworks */,
+				FB629C968C3EE02206FDE681 /* [CP] Copy Pods Resources */,
+				E19C2284200040C100F0C3E8 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E19C227E200040C000F0C3E8 /* PBXTargetDependency */,
+				E19C2290200040DA00F0C3E8 /* PBXTargetDependency */,
+				E19C22BF20004CA500F0C3E8 /* PBXTargetDependency */,
+			);
+			name = LCARSDisplayKitExample;
+			productName = LCARSDisplayKit;
+			productReference = E1112FB01BBE7FBC0001C33D /* LCARSDisplayKitExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E1112FC31BBE7FBC0001C33D /* LCARSDisplayKitExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1112FDB1BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitExampleTests" */;
+			buildPhases = (
+				491C2F527391A38B6A2B9158 /* [CP] Check Pods Manifest.lock */,
+				E1112FC01BBE7FBC0001C33D /* Sources */,
+				E1112FC11BBE7FBC0001C33D /* Frameworks */,
+				E1112FC21BBE7FBC0001C33D /* Resources */,
+				D26A99C13FF668BBF614438D /* [CP] Embed Pods Frameworks */,
+				882E42C3986C711E02A26688 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1112FC61BBE7FBC0001C33D /* PBXTargetDependency */,
+			);
+			name = LCARSDisplayKitExampleTests;
+			productName = LCARSDisplayKitTests;
+			productReference = E1112FC41BBE7FBC0001C33D /* LCARSDisplayKitExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E1112FCE1BBE7FBC0001C33D /* LCARSDisplayKitExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1112FDE1BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitExampleUITests" */;
+			buildPhases = (
+				53C95805D3239E37549B8713 /* [CP] Check Pods Manifest.lock */,
+				E1112FCB1BBE7FBC0001C33D /* Sources */,
+				E1112FCC1BBE7FBC0001C33D /* Frameworks */,
+				E1112FCD1BBE7FBC0001C33D /* Resources */,
+				9A2B5EB27E904E21246E0A89 /* [CP] Copy Pods Resources */,
+				1E066837BAE15D0BF8245D33 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E1112FD11BBE7FBC0001C33D /* PBXTargetDependency */,
+			);
+			name = LCARSDisplayKitExampleUITests;
+			productName = LCARSDisplayKitUITests;
+			productReference = E1112FCF1BBE7FBC0001C33D /* LCARSDisplayKitExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		E19C2277200040C000F0C3E8 /* LCARSDisplayKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E19C2281200040C100F0C3E8 /* Build configuration list for PBXNativeTarget "LCARSDisplayKit" */;
+			buildPhases = (
+				B89FF5B88FFC236F78B35C2D /* [CP] Check Pods Manifest.lock */,
+				E19C2273200040C000F0C3E8 /* Sources */,
+				E19C2274200040C000F0C3E8 /* Frameworks */,
+				E19C2275200040C000F0C3E8 /* Headers */,
+				E19C2276200040C000F0C3E8 /* Resources */,
+				5BA6DE8CF49053BB2967B9CB /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LCARSDisplayKit;
+			productName = LCARSDisplayKit;
+			productReference = E19C2278200040C000F0C3E8 /* LCARSDisplayKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E19C2289200040DA00F0C3E8 /* LCARSDisplayKitUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E19C2293200040DA00F0C3E8 /* Build configuration list for PBXNativeTarget "LCARSDisplayKitUI" */;
+			buildPhases = (
+				8ECBBD5BEE3EA766D56447FC /* [CP] Check Pods Manifest.lock */,
+				E19C2285200040DA00F0C3E8 /* Sources */,
+				E19C2286200040DA00F0C3E8 /* Frameworks */,
+				E19C2287200040DA00F0C3E8 /* Headers */,
+				E19C2288200040DA00F0C3E8 /* Resources */,
+				F46000468369CD37B671CF84 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E19C22B2200043CC00F0C3E8 /* PBXTargetDependency */,
+			);
+			name = LCARSDisplayKitUI;
+			productName = LCARSDisplayKitUI;
+			productReference = E19C228A200040DA00F0C3E8 /* LCARSDisplayKitUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E19C22B820004CA500F0C3E8 /* LCARSDisplayKitViews */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E19C22C220004CA500F0C3E8 /* Build configuration list for PBXNativeTarget "LCARSDisplayKitViews" */;
+			buildPhases = (
+				D067BF8DF052BA50B74BF0C9 /* [CP] Check Pods Manifest.lock */,
+				E19C22B420004CA500F0C3E8 /* Sources */,
+				E19C22B520004CA500F0C3E8 /* Frameworks */,
+				E19C22B620004CA500F0C3E8 /* Headers */,
+				E19C22B720004CA500F0C3E8 /* Resources */,
+				4BB6F282318C7C4F25F461D6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E19C22C820004CB200F0C3E8 /* PBXTargetDependency */,
+				E19C22C620004CAE00F0C3E8 /* PBXTargetDependency */,
+			);
+			name = LCARSDisplayKitViews;
+			productName = LCARSDisplayKitViews;
+			productReference = E19C22B920004CA500F0C3E8 /* LCARSDisplayKitViews.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1112FA81BBE7FBB0001C33D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "Richard Piazza";
+				TargetAttributes = {
+					E1112FAF1BBE7FBB0001C33D = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = EX6YK9HKXA;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+					E1112FC31BBE7FBC0001C33D = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = EX6YK9HKXA;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E1112FAF1BBE7FBB0001C33D;
+					};
+					E1112FCE1BBE7FBC0001C33D = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = EX6YK9HKXA;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E1112FAF1BBE7FBB0001C33D;
+					};
+					E19C2277200040C000F0C3E8 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = EX6YK9HKXA;
+						ProvisioningStyle = Automatic;
+					};
+					E19C2289200040DA00F0C3E8 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = EX6YK9HKXA;
+						ProvisioningStyle = Automatic;
+					};
+					E19C22B820004CA500F0C3E8 = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = EX6YK9HKXA;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = E1112FAB1BBE7FBB0001C33D /* Build configuration list for PBXProject "LCARSDisplayKitExample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E1112FA71BBE7FBB0001C33D;
+			productRefGroup = E1112FB11BBE7FBC0001C33D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKitExample */,
+				E1112FC31BBE7FBC0001C33D /* LCARSDisplayKitExampleTests */,
+				E1112FCE1BBE7FBC0001C33D /* LCARSDisplayKitExampleUITests */,
+				E19C2277200040C000F0C3E8 /* LCARSDisplayKit */,
+				E19C2289200040DA00F0C3E8 /* LCARSDisplayKitUI */,
+				E19C22B820004CA500F0C3E8 /* LCARSDisplayKitViews */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1112FAE1BBE7FBB0001C33D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */,
+				E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */,
+				E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */,
+				E105B78D1D5E6688004AE5D9 /* Designables.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FC21BBE7FBC0001C33D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FCD1BBE7FBC0001C33D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C2276200040C000F0C3E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C2288200040DA00F0C3E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C22B720004CA500F0C3E8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E066837BAE15D0BF8245D33 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExampleUITests/Pods-LCARSDisplayKitExampleUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4905BE85BC03F85F1DEA1343 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LCARSDisplayKitExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		491C2F527391A38B6A2B9158 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LCARSDisplayKitExampleTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4BB6F282318C7C4F25F461D6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitViews/Pods-LCARSDisplayKitViews-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53C95805D3239E37549B8713 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LCARSDisplayKitExampleUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BA6DE8CF49053BB2967B9CB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKit/Pods-LCARSDisplayKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		882E42C3986C711E02A26688 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExampleTests/Pods-LCARSDisplayKitExampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8ECBBD5BEE3EA766D56447FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LCARSDisplayKitUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A2B5EB27E904E21246E0A89 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExampleUITests/Pods-LCARSDisplayKitExampleUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B89FF5B88FFC236F78B35C2D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LCARSDisplayKit-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BAB320067CD4AEF5433FF59D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExample/Pods-LCARSDisplayKitExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GraphPoint/GraphPoint.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GraphPoint.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExample/Pods-LCARSDisplayKitExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D067BF8DF052BA50B74BF0C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LCARSDisplayKitViews-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D26A99C13FF668BBF614438D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExampleTests/Pods-LCARSDisplayKitExampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F46000468369CD37B671CF84 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitUI/Pods-LCARSDisplayKitUI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FB629C968C3EE02206FDE681 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExample/Pods-LCARSDisplayKitExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1112FAC1BBE7FBB0001C33D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E160D49D20006A34000EF3FE /* DGroupView.swift in Sources */,
+				E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */,
+				E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FC01BBE7FBC0001C33D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1CA6B821FFECB2B0002EF25 /* LCARSDisplayKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E1112FCB1BBE7FBC0001C33D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1112FD41BBE7FBC0001C33D /* LCARSDisplayKitUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C2273200040C000F0C3E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19C229E2000426E00F0C3E8 /* RoundedRectangle.swift in Sources */,
+				E19C229D2000426E00F0C3E8 /* Graphable.swift in Sources */,
+				E160D49220006256000EF3FE /* Assets.swift in Sources */,
+				E19C229C2000426E00F0C3E8 /* Elbow.swift in Sources */,
+				E19C22992000426E00F0C3E8 /* Crescent.swift in Sources */,
+				E19C22982000426E00F0C3E8 /* Arc.swift in Sources */,
+				E19C229B2000426E00F0C3E8 /* EdgedCrescent.swift in Sources */,
+				E19C229A2000426E00F0C3E8 /* Direction.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C2285200040DA00F0C3E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E160D49A20006733000EF3FE /* CommandSequencer.swift in Sources */,
+				E19C229F2000427400F0C3E8 /* ArcButton.swift in Sources */,
+				E19C22AE2000427400F0C3E8 /* UIColor+LCARSDisplayKit.swift in Sources */,
+				E160D4992000672F000EF3FE /* Configuration.swift in Sources */,
+				E19C22AB2000427400F0C3E8 /* RoundedRectangleButton.swift in Sources */,
+				E19C22AC2000427400F0C3E8 /* Tappable.swift in Sources */,
+				E19C22A12000427400F0C3E8 /* Button.swift in Sources */,
+				E19C22A22000427400F0C3E8 /* CrescentButton.swift in Sources */,
+				E19C22A92000427400F0C3E8 /* EdgedCrescentButton.swift in Sources */,
+				E19C22AF2000427400F0C3E8 /* UIFont+LCARSDisplayKit.swift in Sources */,
+				E19C22B02000427400F0C3E8 /* UIImage+LCARSDisplayKit.swift in Sources */,
+				E19C22AA2000427400F0C3E8 /* ElbowButton.swift in Sources */,
+				E19C22AD2000427400F0C3E8 /* Theme.swift in Sources */,
+				E160D49B20006740000EF3FE /* TNG.swift in Sources */,
+				E19C22A32000427400F0C3E8 /* DirectionButton.swift in Sources */,
+				E19C22A02000427400F0C3E8 /* Behavior.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19C22B420004CA500F0C3E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E19C22CA20004D0600F0C3E8 /* DirectionGroupingView01.swift in Sources */,
+				E19C22CD20004D0600F0C3E8 /* DPad.swift in Sources */,
+				E19C22CB20004D0600F0C3E8 /* DirectionGroupingView02.swift in Sources */,
+				E19C22CC20004D0600F0C3E8 /* DirectionGroupingView03.swift in Sources */,
+				E19C22C920004D0600F0C3E8 /* DirectionGroupingView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E1112FC61BBE7FBC0001C33D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKitExample */;
+			targetProxy = E1112FC51BBE7FBC0001C33D /* PBXContainerItemProxy */;
+		};
+		E1112FD11BBE7FBC0001C33D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKitExample */;
+			targetProxy = E1112FD01BBE7FBC0001C33D /* PBXContainerItemProxy */;
+		};
+		E19C227E200040C000F0C3E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E19C2277200040C000F0C3E8 /* LCARSDisplayKit */;
+			targetProxy = E19C227D200040C000F0C3E8 /* PBXContainerItemProxy */;
+		};
+		E19C2290200040DA00F0C3E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E19C2289200040DA00F0C3E8 /* LCARSDisplayKitUI */;
+			targetProxy = E19C228F200040DA00F0C3E8 /* PBXContainerItemProxy */;
+		};
+		E19C22B2200043CC00F0C3E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E19C2277200040C000F0C3E8 /* LCARSDisplayKit */;
+			targetProxy = E19C22B1200043CC00F0C3E8 /* PBXContainerItemProxy */;
+		};
+		E19C22BF20004CA500F0C3E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E19C22B820004CA500F0C3E8 /* LCARSDisplayKitViews */;
+			targetProxy = E19C22BE20004CA500F0C3E8 /* PBXContainerItemProxy */;
+		};
+		E19C22C620004CAE00F0C3E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E19C2289200040DA00F0C3E8 /* LCARSDisplayKitUI */;
+			targetProxy = E19C22C520004CAE00F0C3E8 /* PBXContainerItemProxy */;
+		};
+		E19C22C820004CB200F0C3E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E19C2277200040C000F0C3E8 /* LCARSDisplayKit */;
+			targetProxy = E19C22C720004CB200F0C3E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E105B78B1D5E6688004AE5D9 /* Designables.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E105B78C1D5E6688004AE5D9 /* Base */,
+			);
+			name = Designables.storyboard;
+			sourceTree = "<group>";
+		};
+		E1112FB71BBE7FBC0001C33D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1112FB81BBE7FBC0001C33D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1112FBD1BBE7FBC0001C33D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E1112FD61BBE7FBC0001C33D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E1112FD71BBE7FBC0001C33D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1112FD91BBE7FBC0001C33D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C01532F41E6539242A9B728D /* Pods-LCARSDisplayKitExample.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				INFOPLIST_FILE = LCARSDisplayKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		E1112FDA1BBE7FBC0001C33D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9559BE001B34391C7F437B65 /* Pods-LCARSDisplayKitExample.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				INFOPLIST_FILE = LCARSDisplayKit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		E1112FDC1BBE7FBC0001C33D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1087146956080ED615108710 /* Pods-LCARSDisplayKitExampleTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				INFOPLIST_FILE = LCARSDisplayKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LCARSDisplayKitExample.app/LCARSDisplayKitExample";
+			};
+			name = Debug;
+		};
+		E1112FDD1BBE7FBC0001C33D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A8D366209B4EFD276AC68EF /* Pods-LCARSDisplayKitExampleTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				INFOPLIST_FILE = LCARSDisplayKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LCARSDisplayKitExample.app/LCARSDisplayKitExample";
+			};
+			name = Release;
+		};
+		E1112FDF1BBE7FBC0001C33D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F572E4250827A1BF2197FB98 /* Pods-LCARSDisplayKitExampleUITests.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				INFOPLIST_FILE = LCARSDisplayKitUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = LCARSDisplayKit;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		E1112FE01BBE7FBC0001C33D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95A5E58705BFC653A2C74135 /* Pods-LCARSDisplayKitExampleUITests.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				INFOPLIST_FILE = LCARSDisplayKitUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
+				TEST_TARGET_NAME = LCARSDisplayKit;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+		E19C2282200040C100F0C3E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91AB2E4C48D426B0EDA35E2F /* Pods-LCARSDisplayKit.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LCARSDisplayKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E19C2283200040C100F0C3E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 998CEF5DD8BD0E9ED1FF7546 /* Pods-LCARSDisplayKit.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LCARSDisplayKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E19C2294200040DA00F0C3E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1703DD5CA2911C058812951 /* Pods-LCARSDisplayKitUI.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LCARSDisplayKitUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E19C2295200040DA00F0C3E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1B704C7F1939D9957AB566E /* Pods-LCARSDisplayKitUI.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LCARSDisplayKitUI/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUI;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E19C22C320004CA500F0C3E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA218770675089D6BCA5DB8A /* Pods-LCARSDisplayKitViews.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LCARSDisplayKitViews/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitViews;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E19C22C420004CA500F0C3E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9507201F69EEF92975C507D5 /* Pods-LCARSDisplayKitViews.release.xcconfig */;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = EX6YK9HKXA;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LCARSDisplayKitViews/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitViews;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1112FAB1BBE7FBB0001C33D /* Build configuration list for PBXProject "LCARSDisplayKitExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1112FD61BBE7FBC0001C33D /* Debug */,
+				E1112FD71BBE7FBC0001C33D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1112FD81BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1112FD91BBE7FBC0001C33D /* Debug */,
+				E1112FDA1BBE7FBC0001C33D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1112FDB1BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1112FDC1BBE7FBC0001C33D /* Debug */,
+				E1112FDD1BBE7FBC0001C33D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1112FDE1BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1112FDF1BBE7FBC0001C33D /* Debug */,
+				E1112FE01BBE7FBC0001C33D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E19C2281200040C100F0C3E8 /* Build configuration list for PBXNativeTarget "LCARSDisplayKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E19C2282200040C100F0C3E8 /* Debug */,
+				E19C2283200040C100F0C3E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E19C2293200040DA00F0C3E8 /* Build configuration list for PBXNativeTarget "LCARSDisplayKitUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E19C2294200040DA00F0C3E8 /* Debug */,
+				E19C2295200040DA00F0C3E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E19C22C220004CA500F0C3E8 /* Build configuration list for PBXNativeTarget "LCARSDisplayKitViews" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E19C22C320004CA500F0C3E8 /* Debug */,
+				E19C22C420004CA500F0C3E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1112FA81BBE7FBB0001C33D /* Project object */;
+}

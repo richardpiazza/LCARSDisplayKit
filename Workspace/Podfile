@@ -2,18 +2,33 @@
 platform :ios, '11.0'
 
 target 'LCARSDisplayKit' do
+    use_frameworks!
+    pod 'GraphPoint', '~> 3.1'
+end
+
+target 'LCARSDisplayKitUI' do
+    use_frameworks!
+    pod 'GraphPoint', '~> 3.1'
+end
+
+target 'LCARSDisplayKitViews' do
+    use_frameworks!
+    pod 'GraphPoint', '~> 3.1'
+end
+
+target 'LCARSDisplayKitExample' do
   # Comment this line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for LCARSDisplayKit
   pod 'GraphPoint', '~> 3.1'
 
-  target 'LCARSDisplayKitTests' do
+  target 'LCARSDisplayKitExampleTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'LCARSDisplayKitUITests' do
+  target 'LCARSDisplayKitExampleUITests' do
     inherit! :search_paths
     # Pods for testing
   end
