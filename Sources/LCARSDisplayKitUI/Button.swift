@@ -24,7 +24,7 @@ open class Button: UIButton, Tappable {
             behavior?.begin(self)
         }
     }
-    open var commandSequencer: CommandSequencer = CommandSequencer.default
+    open var commandSequencer: CommandSequencer = CommandSequencer.`default`
     
     @IBInspectable open var color: UIColor = Configuration.theme.inactive
     

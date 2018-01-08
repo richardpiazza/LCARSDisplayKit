@@ -1,55 +1,48 @@
 #if (os(iOS) || os(tvOS))
 
 import UIKit
-import AVFoundation
 import LCARSDisplayKit
 
-public typealias CommandSequence = [Button]
+public protocol CommandSequencerDelegate {
+    func neutralBeep()
+    func successBeep()
+    func failureBeep()
+}
+
 public typealias CommandSequenceCompletion = () -> Void
+
+public struct CommandSequence {
+    public var path: [Button]
+    public var completion: CommandSequenceCompletion?
     
-public struct CommandSequencer {
-    public static var `default`: CommandSequencer = CommandSequencer()
-    
-    private var neutralBeepSoundID: SystemSoundID = 0
-    private var successBeepSoundID: SystemSoundID = 0
-    private var failureBeepSoundID: SystemSoundID = 0
-    
-    private var _commandSequences: [(CommandSequence, CommandSequenceCompletion)] = []
-    private var _currentSequence: CommandSequence = CommandSequence()
-    
-    public init() {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        if let url = Configuration.theme.neutralBeepURL {
-            AudioServicesCreateSystemSoundID(url as CFURL, &neutralBeepSoundID)
-        }
-        if let url = Configuration.theme.successBeepURL {
-            AudioServicesCreateSystemSoundID(url as CFURL, &successBeepSoundID)
-        }
-        if let url = Configuration.theme.failureBeepURL {
-            AudioServicesCreateSystemSoundID(url as CFURL, &failureBeepSoundID)
-        }
+    public init(_ path: [Button], completion: CommandSequenceCompletion? = nil) {
+        self.path = path
+        self.completion = completion
     }
+}
     
-    public mutating func register(commandSequence sequence: CommandSequence, completion: @escaping CommandSequenceCompletion) {
-        if _commandSequences.contains(where: { (s, c) -> Bool in
-            return s == sequence
+public class CommandSequencer {
+    public static var `default`: CommandSequencer = CommandSequencer()
+    public var delegate: CommandSequencerDelegate?
+    
+    private var commandSequences: [CommandSequence] = []
+    private var currentPath: [Button] = []
+    
+    public func register(commandSequence sequence: CommandSequence) {
+        if commandSequences.contains(where: { (cs) -> Bool in
+            return cs.path == sequence.path
         }) {
             return
         }
         
-        _commandSequences.append((sequence, completion))
+        print("Registering Command Sequence")
+        commandSequences.append(sequence)
     }
     
-    public mutating func unregister(commandSequence sequence: CommandSequence) {
+    public func unregister(commandSequence sequence: CommandSequence) {
         var index: Int = -1
-        for (idx, cs) in _commandSequences.enumerated() {
-            if cs.0 == sequence {
+        for (idx, cs) in commandSequences.enumerated() {
+            if cs.path == sequence.path {
                 index = idx
                 break
             }
@@ -59,83 +52,71 @@ public struct CommandSequencer {
             return
         }
         
-        _commandSequences.remove(at: index)
+        print("Unregistering Comannd Sequence")
+        commandSequences.remove(at: index)
     }
     
-    public func neutralBeep() {
-        guard neutralBeepSoundID != 0 else {
-            return
-        }
-        
-        AudioServicesPlaySystemSound(neutralBeepSoundID)
-    }
-    
-    public func successBeep() {
-        guard successBeepSoundID != 0 else {
-            return
-        }
-        
-        AudioServicesPlaySystemSound(successBeepSoundID)
-    }
-    
-    public func failureBeep() {
-        guard failureBeepSoundID != 0 else {
-            return
-        }
-        
-        AudioServicesPlaySystemSound(failureBeepSoundID)
-    }
-    
-    private func completion(for commandSequence: CommandSequence) -> CommandSequenceCompletion? {
-        let sequence = _commandSequences.first(where: { (s, c) -> Bool in
-            return s == commandSequence
+    private func completion(for commandSequence: [Button]) -> CommandSequenceCompletion? {
+        let sequence = commandSequences.first(where: { (cs) -> Bool in
+            return cs.path == commandSequence
         })
         
-        return sequence?.1
+        return sequence?.completion
     }
     
-    private func commandSequencesContainPrefix(_ commandSequence: CommandSequence) -> Bool {
+    private func sequencesContainingPrefix(_ commandSequence: [Button]) -> [CommandSequence] {
         guard commandSequence.count > 0 else {
-            return false
+            return []
         }
         
-        let sequence = _commandSequences.first(where: { (s, c) -> Bool in
-            guard s.count >= commandSequence.count else {
-                return false
+        var sequences = [CommandSequence]()
+        for sequence in commandSequences {
+            guard sequence.path.count >= commandSequence.count else {
+                break
             }
             
-            for i in 0...commandSequence.count {
-                if s[i] != commandSequence[i] {
-                    return false
+            var prefixed = true
+            for i in 0..<commandSequence.count {
+                if sequence.path[i] != commandSequence[i] {
+                    prefixed = false
                 }
             }
             
-            return true
-        })
+            if prefixed {
+                sequences.append(sequence)
+            }
+        }
         
-        return sequence != nil
+        return sequences
     }
     
-    public mutating func didTouch(_ sender: Button) {
-        _currentSequence.append(sender)
+    public func didTouch(_ sender: Button) {
+        currentPath.append(sender)
         
-        if let completion = completion(for: _currentSequence) {
-            print("Command Sequence Complete")
-            completion()
-            self.successBeep()
-            _currentSequence.removeAll()
+        guard commandSequences.count > 0 else {
+            print("No Command Sequences")
+            delegate?.failureBeep()
+            currentPath.removeAll()
             return
         }
         
-        if !commandSequencesContainPrefix(_currentSequence) {
+        guard sequencesContainingPrefix(currentPath).count > 0 else {
             print("Command Sequence Failed")
-            self.failureBeep()
-            _currentSequence.removeAll()
+            delegate?.failureBeep()
+            currentPath.removeAll()
+            return
+        }
+        
+        if let completion = completion(for: currentPath) {
+            print("Command Sequence Complete")
+            completion()
+            delegate?.successBeep()
+            currentPath.removeAll()
             return
         }
         
         print("Command Sequence In Progress")
-        self.neutralBeep()
+        delegate?.neutralBeep()
     }
 }
 

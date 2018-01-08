@@ -25,10 +25,11 @@ class ViewController: UIViewController {
             return
         }
         
-        let commandSequence: CommandSequence = [dgroup.edge07, dgroup.outerRing18, dgroup.top05]
-        CommandSequencer.default.register(commandSequence: commandSequence) {
+        let commandSequence = CommandSequence([dgroup.edge07, dgroup.outerRing18, dgroup.top05]) {
             print("Did Execute Sequence")
         }
+        
+        CommandSequencer.`default`.register(commandSequence: commandSequence)
     }
 }
 
