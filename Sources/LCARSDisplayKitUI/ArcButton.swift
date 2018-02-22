@@ -19,8 +19,8 @@ open class ArcButton: Button {
         }
     }
     
-    public convenience init(with arc: LCARSDisplayKit.Arc, rect: CGRect, offset: GraphOriginOffset) {
-        let frame = rect.frame(graphFrame: arc.graphFrame, offset: offset)
+    public convenience init(with arc: LCARSDisplayKit.Arc, inBounds: CGRect, offset: GraphOriginOffset) {
+        let frame = inBounds.frame(graphFrame: arc.graphFrame, offset: offset)
         self.init(frame: frame)
         self.arc = arc
     }

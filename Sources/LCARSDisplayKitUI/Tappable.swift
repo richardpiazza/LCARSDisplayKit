@@ -56,14 +56,6 @@ public extension Tappable {
     var subpaths: [CGMutablePath]? {
         return graphable.subpaths
     }
-
-//    var colors: [UIColor]? {
-//        return nil
-//    }
-//
-//    var touchedColors: [UIColor]? {
-//        return nil
-//    }
 }
 
 #endif

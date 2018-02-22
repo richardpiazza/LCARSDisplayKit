@@ -1,43 +1,40 @@
 #if (os(iOS) || os(tvOS))
 
 import UIKit
-
+ 
 public enum Behavior {
-    case pulsate
+    case pulsate(timeInterval: TimeInterval)
     
-    internal struct Timers {
-        static var action: Timer?
-        static var inverseAction: Timer?
-    }
+    static var activationTimers: [UIControl : Timer] = [UIControl : Timer]()
+    static var inverseTimers: [UIControl : Timer] = [UIControl : Timer]()
     
-    public func begin(_ view: UIView) {
+    public func begin(_ control: UIControl) {
         switch self {
-        case .pulsate:
-            Timers.action = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: { (timer) in
+        case .pulsate(let timeInterval):
+            Behavior.activationTimers[control] = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (timer) in
                 UIView.animate(withDuration: 0.25, delay: 0.0, options: [.curveEaseOut], animations: {
-                    view.alpha = 0.0
+                    control.alpha = 0.0
                 }, completion: nil)
             })
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                Timers.inverseAction = Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: { (timer) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + (timeInterval / 2), execute: {
+                Behavior.inverseTimers[control] = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (timer) in
                     UIView.animate(withDuration: 0.25, delay: 0.0, options: [.curveEaseIn], animations: {
-                        view.alpha = 1.0
+                        control.alpha = 1.0
                     }, completion: nil)
                 })
             })
-            break
         }
     }
     
-    public func end(_ view: UIView) {
+    public func end(_ control: UIControl) {
+        Behavior.activationTimers[control]?.invalidate()
+        Behavior.activationTimers[control] = nil
+        Behavior.inverseTimers[control]?.invalidate()
+        Behavior.inverseTimers[control] = nil
+        
         switch self {
         case .pulsate:
-            Timers.inverseAction?.invalidate()
-            Timers.inverseAction = nil
-            Timers.action?.invalidate()
-            Timers.action = nil
-            view.alpha = 1.0
-            break
+            control.alpha = 1.0
         }
     }
 }

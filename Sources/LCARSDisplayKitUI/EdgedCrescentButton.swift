@@ -19,8 +19,8 @@ open class EdgedCrescentButton: Button {
         }
     }
     
-    public convenience init(with edgedCrescent: EdgedCrescent, rect: CGRect, offset: GraphOriginOffset) {
-        let frame = rect.frame(graphFrame: edgedCrescent.graphFrame, offset: offset)
+    public convenience init(with edgedCrescent: EdgedCrescent, inBounds: CGRect, offset: GraphOriginOffset) {
+        let frame = inBounds.frame(graphFrame: edgedCrescent.graphFrame, offset: offset)
         self.init(frame: frame)
         self.edgedCrescent = edgedCrescent
     }

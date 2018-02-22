@@ -19,8 +19,8 @@ open class CrescentButton: Button {
         }
     }
     
-    public convenience init(with crescent: Crescent, rect: CGRect, offset: GraphOriginOffset) {
-        let frame = rect.frame(graphFrame: crescent.graphFrame, offset: offset)
+    public convenience init(with crescent: Crescent, inBounds: CGRect, offset: GraphOriginOffset) {
+        let frame = inBounds.frame(graphFrame: crescent.graphFrame, offset: offset)
         self.init(frame: frame)
         self.crescent = crescent
     }

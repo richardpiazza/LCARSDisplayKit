@@ -82,11 +82,11 @@ public struct TNG: Theme {
     }
     
     public var successBeepURL: URL? {
-        return Assets.Sounds.beep1URL
+        return Assets.Sounds.beep2URL
     }
     
     public var failureBeepURL: URL? {
-        return Assets.Sounds.beep2URL
+        return Assets.Sounds.beep1URL
     }
 }
 
