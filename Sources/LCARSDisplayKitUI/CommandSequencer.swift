@@ -100,17 +100,17 @@ public class CommandSequencer {
             return
         }
         
-        guard sequencesContainingPrefix(currentPath).count > 0 else {
-            print("Command Sequence Failed")
-            delegate?.failureBeep()
-            currentPath.removeAll()
-            return
-        }
-        
         if let completion = completion(for: currentPath) {
             print("Command Sequence Complete")
             completion()
             delegate?.successBeep()
+            currentPath.removeAll()
+            return
+        }
+        
+        guard sequencesContainingPrefix(currentPath).count > 0 else {
+            print("Command Sequence Failed")
+            delegate?.failureBeep()
             currentPath.removeAll()
             return
         }

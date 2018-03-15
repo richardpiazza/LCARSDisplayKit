@@ -12,6 +12,7 @@ import LCARSDisplayKitUI
 class ViewController: UIViewController {
     
     @IBOutlet weak var dgroup: DGroupView02?
+    var isConditionRed = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,11 @@ class ViewController: UIViewController {
             return
         }
         
-        let blinkSequence = CommandSequence([dgroup.top01, dgroup.outerRing12, dgroup.outerRing18]) {
+        dgroup.outerRing14.isHidden = true
+        dgroup.innerRing10.isHidden = true
+        dgroup.innerRing16.isHidden = true
+        
+        let blinkSequence = CommandSequence([dgroup.modeSelect, dgroup.outerRing16]) {
             dgroup.innerRing11.behavior = .pulsate(timeInterval: 2.5)
             dgroup.outerRing16.behavior = .pulsate(timeInterval: 3.0)
             dgroup.outerRing01.behavior = .pulsate(timeInterval: 4.0)
@@ -33,13 +38,20 @@ class ViewController: UIViewController {
         
         CommandSequencer.default.register(commandSequence: blinkSequence)
         
-        let inverseBlink = CommandSequence([dgroup.top01, dgroup.outerRing12, dgroup.outerRing19]) {
+        let inverseBlink = CommandSequence([dgroup.modeSelect, dgroup.outerRing17]) {
             dgroup.innerRing11.behavior = nil
             dgroup.outerRing16.behavior = nil
             dgroup.outerRing01.behavior = nil
         }
         
         CommandSequencer.default.register(commandSequence: inverseBlink)
+        
+        let redAlert = CommandSequence([dgroup.outerRing20, dgroup.outerRing20, dgroup.outerRing20]) {
+            self.isConditionRed = !self.isConditionRed
+            print("Is Condition Red: \(self.isConditionRed)")
+        }
+        
+        CommandSequencer.default.register(commandSequence: redAlert)
     }
 }
 

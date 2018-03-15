@@ -294,6 +294,9 @@ import LCARSDisplayKitUI
         self.addSubview(button)
         return button
     }()
+    open var modeSelect: EdgedCrescentButton {
+        return edge07
+    }
     open lazy var edge09: EdgedCrescentButton = {
         let interiorArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.arc09.start, endDegree: DPad.arc09.end)
         let exteriorArc = Arc(radius: secondRingExtendedExteriorRadius, startDegree: DPad.arc09.start, endDegree: DPad.arc09.end)

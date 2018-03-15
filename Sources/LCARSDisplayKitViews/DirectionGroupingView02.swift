@@ -47,6 +47,9 @@ import LCARSDisplayKitUI
         self.addSubview(button)
         return button
     }()
+    open var calibrate: RoundedRectangleButton {
+        return top01
+    }
     open lazy var top02: RoundedRectangleButton = {
         var frame = top03.frame
         frame.size.width = (RoundedRectangleButton.defaultSize.width * scaleRatio) * 0.55
