@@ -8,7 +8,7 @@ import LCARSDisplayKitUI
 /// The standard circular Direction-Pad found in many LCARS layouts.
 @IBDesignable open class DirectionGroupingView: UIView {
     
-    open static var defaultCruxDiameter: CGFloat = CGFloat(60)
+    public static var defaultCruxDiameter: CGFloat = CGFloat(60)
     
     open lazy var crux: RoundedRectangleButton = {
         let frame = CGRect(x: graphOrigin.x - (cruxDiameter / 2), y: graphOrigin.y - (cruxDiameter / 2), width: cruxDiameter, height: cruxDiameter)

@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.source_files = 'Sources/*'
   s.resources = 'Resources/*'
   s.frameworks = 'Foundation', 'AVFoundation'
+  s.swift_version = '4.2'
   s.requires_arc = true
   s.dependency 'GraphPoint', '~> 3.1'
 

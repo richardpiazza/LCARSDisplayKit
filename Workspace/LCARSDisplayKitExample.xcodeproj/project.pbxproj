@@ -66,13 +66,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E1112FC51BBE7FBC0001C33D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E1112FAF1BBE7FBB0001C33D;
-			remoteInfo = LCARSDisplayKit;
-		};
 		E1112FD01BBE7FBC0001C33D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
@@ -116,6 +109,13 @@
 			remoteInfo = LCARSDisplayKitUI;
 		};
 		E19C22C720004CB200F0C3E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E19C2277200040C000F0C3E8;
+			remoteInfo = LCARSDisplayKit;
+		};
+		E1F600E821A8A1DF008E412B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
 			proxyType = 1;
@@ -530,7 +530,6 @@
 				E1112FAD1BBE7FBB0001C33D /* Frameworks */,
 				E1112FAE1BBE7FBB0001C33D /* Resources */,
 				BAB320067CD4AEF5433FF59D /* [CP] Embed Pods Frameworks */,
-				FB629C968C3EE02206FDE681 /* [CP] Copy Pods Resources */,
 				E19C2284200040C100F0C3E8 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -554,12 +553,11 @@
 				E1112FC11BBE7FBC0001C33D /* Frameworks */,
 				E1112FC21BBE7FBC0001C33D /* Resources */,
 				D26A99C13FF668BBF614438D /* [CP] Embed Pods Frameworks */,
-				882E42C3986C711E02A26688 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E1112FC61BBE7FBC0001C33D /* PBXTargetDependency */,
+				E1F600E921A8A1DF008E412B /* PBXTargetDependency */,
 			);
 			name = LCARSDisplayKitExampleTests;
 			productName = LCARSDisplayKitTests;
@@ -574,8 +572,6 @@
 				E1112FCB1BBE7FBC0001C33D /* Sources */,
 				E1112FCC1BBE7FBC0001C33D /* Frameworks */,
 				E1112FCD1BBE7FBC0001C33D /* Resources */,
-				9A2B5EB27E904E21246E0A89 /* [CP] Copy Pods Resources */,
-				1E066837BAE15D0BF8245D33 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -596,7 +592,6 @@
 				E19C2274200040C000F0C3E8 /* Frameworks */,
 				E19C2275200040C000F0C3E8 /* Headers */,
 				E19C2276200040C000F0C3E8 /* Resources */,
-				5BA6DE8CF49053BB2967B9CB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -616,7 +611,6 @@
 				E19C2286200040DA00F0C3E8 /* Frameworks */,
 				E19C2287200040DA00F0C3E8 /* Headers */,
 				E19C2288200040DA00F0C3E8 /* Resources */,
-				F46000468369CD37B671CF84 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -637,7 +631,6 @@
 				E19C22B520004CA500F0C3E8 /* Frameworks */,
 				E19C22B620004CA500F0C3E8 /* Headers */,
 				E19C22B720004CA500F0C3E8 /* Resources */,
-				4BB6F282318C7C4F25F461D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -656,7 +649,7 @@
 		E1112FA81BBE7FBB0001C33D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Richard Piazza";
 				TargetAttributes = {
 					E1112FAF1BBE7FBB0001C33D = {
@@ -769,21 +762,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1E066837BAE15D0BF8245D33 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExampleUITests/Pods-LCARSDisplayKitExampleUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4905BE85BC03F85F1DEA1343 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -820,21 +798,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4BB6F282318C7C4F25F461D6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitViews/Pods-LCARSDisplayKitViews-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		53C95805D3239E37549B8713 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -853,36 +816,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5BA6DE8CF49053BB2967B9CB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKit/Pods-LCARSDisplayKit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		882E42C3986C711E02A26688 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExampleTests/Pods-LCARSDisplayKitExampleTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		8ECBBD5BEE3EA766D56447FC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -899,21 +832,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9A2B5EB27E904E21246E0A89 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExampleUITests/Pods-LCARSDisplayKitExampleUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B89FF5B88FFC236F78B35C2D /* [CP] Check Pods Manifest.lock */ = {
@@ -940,7 +858,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExample/Pods-LCARSDisplayKitExample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-LCARSDisplayKitExample/Pods-LCARSDisplayKitExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GraphPoint/GraphPoint.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -949,7 +867,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExample/Pods-LCARSDisplayKitExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LCARSDisplayKitExample/Pods-LCARSDisplayKitExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D067BF8DF052BA50B74BF0C9 /* [CP] Check Pods Manifest.lock */ = {
@@ -976,43 +894,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LCARSDisplayKitExampleTests/Pods-LCARSDisplayKitExampleTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GraphPoint/GraphPoint.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GraphPoint.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExampleTests/Pods-LCARSDisplayKitExampleTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F46000468369CD37B671CF84 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitUI/Pods-LCARSDisplayKitUI-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FB629C968C3EE02206FDE681 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LCARSDisplayKitExample/Pods-LCARSDisplayKitExample-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LCARSDisplayKitExampleTests/Pods-LCARSDisplayKitExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1097,11 +988,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E1112FC61BBE7FBC0001C33D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKitExample */;
-			targetProxy = E1112FC51BBE7FBC0001C33D /* PBXContainerItemProxy */;
-		};
 		E1112FD11BBE7FBC0001C33D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKitExample */;
@@ -1136,6 +1022,11 @@
 			isa = PBXTargetDependency;
 			target = E19C2277200040C000F0C3E8 /* LCARSDisplayKit */;
 			targetProxy = E19C22C720004CB200F0C3E8 /* PBXContainerItemProxy */;
+		};
+		E1F600E921A8A1DF008E412B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E19C2277200040C000F0C3E8 /* LCARSDisplayKit */;
+			targetProxy = E1F600E821A8A1DF008E412B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1179,12 +1070,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1231,12 +1124,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1274,7 +1169,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EX6YK9HKXA;
-				INFOPLIST_FILE = LCARSDisplayKit/Info.plist;
+				INFOPLIST_FILE = LCARSDisplayKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1291,7 +1186,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EX6YK9HKXA;
-				INFOPLIST_FILE = LCARSDisplayKit/Info.plist;
+				INFOPLIST_FILE = LCARSDisplayKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1306,11 +1201,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EX6YK9HKXA;
-				INFOPLIST_FILE = LCARSDisplayKitTests/Info.plist;
+				INFOPLIST_FILE = LCARSDisplayKitExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LCARSDisplayKitExample.app/LCARSDisplayKitExample";
 			};
@@ -1323,11 +1217,10 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EX6YK9HKXA;
-				INFOPLIST_FILE = LCARSDisplayKitTests/Info.plist;
+				INFOPLIST_FILE = LCARSDisplayKitExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LCARSDisplayKitExample.app/LCARSDisplayKitExample";
 			};
@@ -1339,11 +1232,10 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EX6YK9HKXA;
-				INFOPLIST_FILE = LCARSDisplayKitUITests/Info.plist;
+				INFOPLIST_FILE = LCARSDisplayKitExampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LCARSDisplayKit;
 				USES_XCTRUNNER = YES;
@@ -1356,11 +1248,10 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EX6YK9HKXA;
-				INFOPLIST_FILE = LCARSDisplayKitUITests/Info.plist;
+				INFOPLIST_FILE = LCARSDisplayKitExampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LCARSDisplayKit;
 				USES_XCTRUNNER = YES;
