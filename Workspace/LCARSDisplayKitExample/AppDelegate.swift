@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CommandSequencerDelegate 
     private var successBeepSoundID: SystemSoundID = 0
     private var failureBeepSoundID: SystemSoundID = 0
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryAmbient)
+            try AVAudioSession.sharedInstance().setCategory(.ambient)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             print(error.localizedDescription)
@@ -89,4 +89,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CommandSequencerDelegate 
         AudioServicesPlaySystemSound(failureBeepSoundID)
     }
 }
-

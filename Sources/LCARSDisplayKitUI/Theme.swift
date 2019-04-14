@@ -28,13 +28,13 @@ public protocol Theme {
 }
 
 public extension Theme {
-    public func randomColor() -> UIColor {
+    func randomColor() -> UIColor {
         let colors = [primaryLight, primaryDark, tertiaryLight, tertiaryDark]
         let random = arc4random_uniform(UInt32(colors.count))
         return colors[Int(random)]
     }
     
-    public var defaultSpacing: CGFloat {
+    var defaultSpacing: CGFloat {
         return CGFloat(8)
     }
 }

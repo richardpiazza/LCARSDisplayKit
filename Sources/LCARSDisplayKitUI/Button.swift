@@ -32,13 +32,13 @@ open class Button: UIButton, Tappable {
         super.init(frame: frame)
         graphable.size = frame.size
         self.titleLabel?.font = Configuration.theme.body
-        self.setTitleColor(UIColor.black, for: UIControlState())
+        self.setTitleColor(UIColor.black, for: UIControl.State())
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.titleLabel?.font = Configuration.theme.body
-        self.setTitleColor(UIColor.black, for: UIControlState())
+        self.setTitleColor(UIColor.black, for: UIControl.State())
     }
     
     open override var intrinsicContentSize: CGSize {
@@ -50,7 +50,7 @@ open class Button: UIButton, Tappable {
         
         graphable.size = rect.size
         let context = UIGraphicsGetCurrentContext()
-        self.setBackgroundImage(self.image(context), for: UIControlState())
+        self.setBackgroundImage(self.image(context), for: UIControl.State())
     }
     
     open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
@@ -65,7 +65,7 @@ open class Button: UIButton, Tappable {
         let size = self.bounds.size
         UIGraphicsBeginImageContext(size)
         let context = UIGraphicsGetCurrentContext()
-        self.setBackgroundImage(self.touchedImage(context), for: UIControlState())
+        self.setBackgroundImage(self.touchedImage(context), for: UIControl.State())
         UIGraphicsEndImageContext()
     }
     
@@ -73,7 +73,7 @@ open class Button: UIButton, Tappable {
         let size = self.bounds.size
         UIGraphicsBeginImageContext(size)
         let context = UIGraphicsGetCurrentContext()
-        self.setBackgroundImage(self.image(context), for: UIControlState())
+        self.setBackgroundImage(self.image(context), for: UIControl.State())
         UIGraphicsEndImageContext()
         
         super.touchesEnded(touches, with: event)

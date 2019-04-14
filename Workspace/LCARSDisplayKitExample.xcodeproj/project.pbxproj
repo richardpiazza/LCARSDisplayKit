@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		06888ACC8D0175D7A60BD77C /* Pods_LCARSDisplayKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5455D6569D6153585B746C9F /* Pods_LCARSDisplayKitExampleTests.framework */; };
 		0CB0A131F5A40A5271C13385 /* Pods_LCARSDisplayKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42556F990947F4CA1C621042 /* Pods_LCARSDisplayKitExample.framework */; };
-		10C95D044B33AD0072351817 /* Pods_LCARSDisplayKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FE6D6D729E46A34B843642F /* Pods_LCARSDisplayKitTests.framework */; };
-		173C9A74BBA50CE6CAD2374B /* Pods_LCARSDisplayKitUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B407EED54ACE24C643FB1EC3 /* Pods_LCARSDisplayKitUITests.framework */; };
 		49A643C29F64E7EA5C1A7015 /* Pods_LCARSDisplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCFF6865E998F9855CED3F1 /* Pods_LCARSDisplayKit.framework */; };
 		4A1977DE759A211E4F5EC8F6 /* Pods_LCARSDisplayKitExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AD9120B7B039A8154C9501C /* Pods_LCARSDisplayKitExampleUITests.framework */; };
 		54564C6EEC62336155087FE4 /* Pods_LCARSDisplayKitViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D37A3C953BFA5C97AFF919 /* Pods_LCARSDisplayKitViews.framework */; };
@@ -72,6 +70,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = E1112FAF1BBE7FBB0001C33D;
 			remoteInfo = LCARSDisplayKit;
+		};
+		E168B3922263D24E00BA94F7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E1112FA81BBE7FBB0001C33D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E1112FAF1BBE7FBB0001C33D;
+			remoteInfo = LCARSDisplayKitExample;
 		};
 		E19C227D200040C000F0C3E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -241,7 +246,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				10C95D044B33AD0072351817 /* Pods_LCARSDisplayKitTests.framework in Frameworks */,
 				06888ACC8D0175D7A60BD77C /* Pods_LCARSDisplayKitExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,7 +254,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				173C9A74BBA50CE6CAD2374B /* Pods_LCARSDisplayKitUITests.framework in Frameworks */,
 				4A1977DE759A211E4F5EC8F6 /* Pods_LCARSDisplayKitExampleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +561,7 @@
 			);
 			dependencies = (
 				E1F600E921A8A1DF008E412B /* PBXTargetDependency */,
+				E168B3932263D24E00BA94F7 /* PBXTargetDependency */,
 			);
 			name = LCARSDisplayKitExampleTests;
 			productName = LCARSDisplayKitTests;
@@ -649,42 +653,44 @@
 		E1112FA81BBE7FBB0001C33D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Richard Piazza";
 				TargetAttributes = {
 					E1112FAF1BBE7FBB0001C33D = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = EX6YK9HKXA;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					E1112FC31BBE7FBC0001C33D = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = EX6YK9HKXA;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
-						TestTargetID = E1112FAF1BBE7FBB0001C33D;
 					};
 					E1112FCE1BBE7FBC0001C33D = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = EX6YK9HKXA;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = E1112FAF1BBE7FBB0001C33D;
 					};
 					E19C2277200040C000F0C3E8 = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = EX6YK9HKXA;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					E19C2289200040DA00F0C3E8 = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = EX6YK9HKXA;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					E19C22B820004CA500F0C3E8 = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = EX6YK9HKXA;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -694,6 +700,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -993,6 +1000,11 @@
 			target = E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKitExample */;
 			targetProxy = E1112FD01BBE7FBC0001C33D /* PBXContainerItemProxy */;
 		};
+		E168B3932263D24E00BA94F7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKitExample */;
+			targetProxy = E168B3922263D24E00BA94F7 /* PBXContainerItemProxy */;
+		};
 		E19C227E200040C000F0C3E8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E19C2277200040C000F0C3E8 /* LCARSDisplayKit */;
@@ -1062,6 +1074,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1116,6 +1129,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1164,7 +1178,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C01532F41E6539242A9B728D /* Pods-LCARSDisplayKitExample.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1173,7 +1187,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1181,7 +1195,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9559BE001B34391C7F437B65 /* Pods-LCARSDisplayKitExample.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1190,7 +1204,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1198,15 +1212,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1087146956080ED615108710 /* Pods-LCARSDisplayKitExampleTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EX6YK9HKXA;
 				INFOPLIST_FILE = LCARSDisplayKitExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LCARSDisplayKitExample.app/LCARSDisplayKitExample";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1214,15 +1226,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8A8D366209B4EFD276AC68EF /* Pods-LCARSDisplayKitExampleTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = EX6YK9HKXA;
 				INFOPLIST_FILE = LCARSDisplayKitExampleTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LCARSDisplayKitExample.app/LCARSDisplayKitExample";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1236,7 +1246,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = LCARSDisplayKit;
 				USES_XCTRUNNER = YES;
 			};
@@ -1252,7 +1262,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = LCARSDisplayKit;
 				USES_XCTRUNNER = YES;
 			};
@@ -1285,7 +1295,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1318,7 +1328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1352,7 +1362,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1385,7 +1395,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitUI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1419,7 +1429,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1452,7 +1462,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitViews;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

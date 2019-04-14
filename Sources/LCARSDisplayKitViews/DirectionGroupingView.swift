@@ -14,7 +14,7 @@ import LCARSDisplayKitUI
         let frame = CGRect(x: graphOrigin.x - (cruxDiameter / 2), y: graphOrigin.y - (cruxDiameter / 2), width: cruxDiameter, height: cruxDiameter)
         let button = RoundedRectangleButton(frame: frame)
         button.color = Configuration.theme.primaryDark
-        button.setTitle("", for: UIControlState())
+        button.setTitle("", for: UIControl.State())
         self.addSubview(button)
         return button
     }()
@@ -23,7 +23,7 @@ import LCARSDisplayKitUI
         let arc = Arc(radius: dpadRadius, startDegree: DPad.up.start, endDegree: DPad.up.end + 0.5)
         let direction = Direction(with: arc, cardinal: .up)
         let button = DirectionButton(with: frame, direction: direction)
-        button.setTitle("", for: UIControlState())
+        button.setTitle("", for: UIControl.State())
         self.addSubview(button)
         return button
     }()
@@ -32,7 +32,7 @@ import LCARSDisplayKitUI
         let arc = Arc(radius: dpadRadius, startDegree: DPad.down.start - 0.5, endDegree: DPad.down.end)
         let direction = Direction(with: arc, cardinal: .down)
         let button = DirectionButton(with: frame, direction: direction)
-        button.setTitle("", for: UIControlState())
+        button.setTitle("", for: UIControl.State())
         self.addSubview(button)
         return button
     }()
@@ -41,7 +41,7 @@ import LCARSDisplayKitUI
         let arc = Arc(radius: dpadRadius, startDegree: DPad.left.start - 0.5, endDegree: DPad.left.end)
         let direction = Direction(with: arc, cardinal: .left)
         let button = DirectionButton(with: frame, direction: direction)
-        button.setTitle("", for: UIControlState())
+        button.setTitle("", for: UIControl.State())
         self.addSubview(button)
         return button
     }()
@@ -50,14 +50,14 @@ import LCARSDisplayKitUI
         let arc = Arc(radius: dpadRadius, startDegree: DPad.right.start, endDegree: DPad.right.end + 0.5)
         let direction = Direction(with: arc, cardinal: .right)
         let button = DirectionButton(with: frame, direction: direction)
-        button.setTitle("", for: UIControlState())
+        button.setTitle("", for: UIControl.State())
         self.addSubview(button)
         return button
     }()
     open lazy var sector01: ArcButton = {
         let arc = Arc(radius: dpadRadius, startDegree: DPad.sector01.start, endDegree: DPad.sector01.end)
         let button = ArcButton(with: arc, inBounds: bounds, offset: offset)
-        button.setTitle("", for: UIControlState())
+        button.setTitle("", for: UIControl.State())
         button.color = Configuration.theme.primaryMedium
         self.addSubview(button)
         return button
@@ -65,7 +65,7 @@ import LCARSDisplayKitUI
     open lazy var sector02: ArcButton = {
         let arc = Arc(radius: dpadRadius, startDegree: DPad.sector02.start, endDegree: DPad.sector02.end)
         let button = ArcButton(with: arc, inBounds: bounds, offset: offset)
-        button.setTitle("", for: UIControlState())
+        button.setTitle("", for: UIControl.State())
         button.color = Configuration.theme.primaryMedium
         self.addSubview(button)
         return button
@@ -73,7 +73,7 @@ import LCARSDisplayKitUI
     open lazy var sector03: ArcButton = {
         let arc = Arc(radius: dpadRadius, startDegree: DPad.sector03.start, endDegree: DPad.sector03.end)
         let button = ArcButton(with: arc, inBounds: bounds, offset: offset)
-        button.setTitle("", for: UIControlState())
+        button.setTitle("", for: UIControl.State())
         button.color = Configuration.theme.primaryMedium
         self.addSubview(button)
         return button
@@ -81,7 +81,7 @@ import LCARSDisplayKitUI
     open lazy var sector04: ArcButton = {
         let arc = Arc(radius: dpadRadius, startDegree: DPad.sector04.start, endDegree: DPad.sector04.end)
         let button = ArcButton(with: arc, inBounds: bounds, offset: offset)
-        button.setTitle("", for: UIControlState())
+        button.setTitle("", for: UIControl.State())
         button.color = Configuration.theme.primaryMedium
         self.addSubview(button)
         return button

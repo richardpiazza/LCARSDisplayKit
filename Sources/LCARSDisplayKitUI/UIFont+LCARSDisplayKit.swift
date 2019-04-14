@@ -3,7 +3,7 @@
 import UIKit
 
 public extension UIFont {
-    public convenience init?(data: Data, size: CGFloat) {
+    convenience init?(data: Data, size: CGFloat) {
         guard let dataProvider = CGDataProvider(data: data as CFData) else {
             return nil
         }

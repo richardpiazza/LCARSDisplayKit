@@ -15,7 +15,8 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR01", for: UIControlState())
+        button.setTitle("OR01", for: UIControl.State())
+        button.titleEdgeInsets = UIEdgeInsets(top: 50, left: 50, bottom: 0, right: 0)
         button.color = Configuration.theme.primaryDark
         self.addSubview(button)
         return button
@@ -27,7 +28,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR05", for: UIControlState())
+        button.setTitle("OR05", for: UIControl.State())
         button.color = Configuration.theme.primaryDark
         self.addSubview(button)
         return button
@@ -42,7 +43,7 @@ import LCARSDisplayKitUI
         let y = e13Origin.y - height - Configuration.theme.defaultSpacing
         
         let button = RoundedRectangleButton(frame: CGRect(x: x, y: y, width: width, height: height))
-        button.setTitle("CALIBRATE", for: UIControlState())
+        button.setTitle("CALIBRATE", for: UIControl.State())
         button.color = Configuration.theme.tertiaryLight
         self.addSubview(button)
         return button
@@ -56,7 +57,7 @@ import LCARSDisplayKitUI
         frame.origin.x = frame.origin.x - frame.size.width - Configuration.theme.defaultSpacing
         
         let button = RoundedRectangleButton(frame: frame)
-        button.setTitle("T02", for: UIControlState())
+        button.setTitle("T02", for: UIControl.State())
         button.color = Configuration.theme.primaryLight
         button.roundLeft = true
         self.addSubview(button)
@@ -72,7 +73,7 @@ import LCARSDisplayKitUI
         let y = e15Origin.y - height - Configuration.theme.defaultSpacing
         
         let button = RoundedRectangleButton(frame: CGRect(x: x, y: y, width: width, height: height))
-        button.setTitle("T03", for: UIControlState())
+        button.setTitle("T03", for: UIControl.State())
         button.color = Configuration.theme.tertiaryDark
         self.addSubview(button)
         return button
@@ -84,7 +85,7 @@ import LCARSDisplayKitUI
         frame.origin.x = frame.origin.x + top03Width + Configuration.theme.defaultSpacing
         
         let button = RoundedRectangleButton(frame: frame)
-        button.setTitle("T04", for: UIControlState())
+        button.setTitle("T04", for: UIControl.State())
         button.color = Configuration.theme.primaryDark
         button.roundRight = true
         self.addSubview(button)
@@ -95,7 +96,7 @@ import LCARSDisplayKitUI
         frame.origin.y = frame.origin.y - frame.size.height - Configuration.theme.defaultSpacing
         
         let button = RoundedRectangleButton(frame: frame)
-        button.setTitle("T05", for: UIControlState())
+        button.setTitle("T05", for: UIControl.State())
         button.color = Configuration.theme.primaryDark
         button.roundLeft = true
         button.roundRight = true

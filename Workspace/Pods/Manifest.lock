@@ -1,16 +1,16 @@
 PODS:
-  - GraphPoint (3.1.1)
+  - GraphPoint (3.3.0)
 
 DEPENDENCIES:
-  - GraphPoint (~> 3.1)
+  - GraphPoint (~> 3.3)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - GraphPoint
 
 SPEC CHECKSUMS:
-  GraphPoint: 5fb4496931571f819f0f5dfc2be93cc26f6c748c
+  GraphPoint: 4a0dca1f6d969b75328593e1ce5eb14a4b534759
 
-PODFILE CHECKSUM: aab26665c2b3494266507b54e1ed79413270f754
+PODFILE CHECKSUM: f1c558d03b48fd895efb2f11c6768c29a0f8865f
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.6.0

@@ -15,7 +15,8 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR01", for: UIControlState())
+        button.setTitle("IR01", for: UIControl.State())
+        button.titleEdgeInsets = UIEdgeInsets(top: 40, left: 40, bottom: 0, right: 0)
         button.color = Configuration.theme.tertiaryLight
         self.addSubview(button)
         return button
@@ -27,7 +28,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR05", for: UIControlState())
+        button.setTitle("IR05", for: UIControl.State())
         button.color = Configuration.theme.primaryLight
         self.addSubview(button)
         return button
@@ -39,7 +40,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR10", for: UIControlState())
+        button.setTitle("IR10", for: UIControl.State())
         button.color = Configuration.theme.primaryLight
         self.addSubview(button)
         return button
@@ -51,7 +52,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR11", for: UIControlState())
+        button.setTitle("IR11", for: UIControl.State())
         button.color = Configuration.theme.tertiaryLight
         self.addSubview(button)
         return button
@@ -63,7 +64,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR12", for: UIControlState())
+        button.setTitle("IR12", for: UIControl.State())
         button.color = Configuration.theme.primaryDark
         self.addSubview(button)
         return button
@@ -75,7 +76,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR13", for: UIControlState())
+        button.setTitle("IR13", for: UIControl.State())
         button.color = Configuration.theme.tertiaryDark
         self.addSubview(button)
         return button
@@ -87,7 +88,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR14", for: UIControlState())
+        button.setTitle("IR14", for: UIControl.State())
         button.color = Configuration.theme.tertiaryLight
         self.addSubview(button)
         return button
@@ -99,7 +100,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR15", for: UIControlState())
+        button.setTitle("IR15", for: UIControl.State())
         button.color = Configuration.theme.primaryLight
         self.addSubview(button)
         return button
@@ -111,7 +112,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR16", for: UIControlState())
+        button.setTitle("IR16", for: UIControl.State())
         button.color = Configuration.theme.tertiaryLight
         self.addSubview(button)
         return button
@@ -123,7 +124,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR20", for: UIControlState())
+        button.setTitle("IR20", for: UIControl.State())
         button.color = Configuration.theme.primaryLight
         self.addSubview(button)
         return button
@@ -135,7 +136,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR10", for: UIControlState())
+        button.setTitle("OR10", for: UIControl.State())
         button.color = Configuration.theme.primaryDark
         self.addSubview(button)
         return button
@@ -147,7 +148,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR11", for: UIControlState())
+        button.setTitle("OR11", for: UIControl.State())
         button.color = Configuration.theme.tertiaryDark
         self.addSubview(button)
         return button
@@ -159,7 +160,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR12", for: UIControlState())
+        button.setTitle("OR12", for: UIControl.State())
         button.color = Configuration.theme.tertiaryLight
         self.addSubview(button)
         return button
@@ -171,7 +172,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR13", for: UIControlState())
+        button.setTitle("OR13", for: UIControl.State())
         button.color = Configuration.theme.primaryLight
         self.addSubview(button)
         return button
@@ -183,7 +184,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR14", for: UIControlState())
+        button.setTitle("OR14", for: UIControl.State())
         button.color = Configuration.theme.primaryDark
         self.addSubview(button)
         return button
@@ -195,7 +196,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR16", for: UIControlState())
+        button.setTitle("OR16", for: UIControl.State())
         button.color = Configuration.theme.tertiaryDark
         self.addSubview(button)
         return button
@@ -207,7 +208,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR17", for: UIControlState())
+        button.setTitle("OR17", for: UIControl.State())
         button.color = Configuration.theme.primaryLight
         self.addSubview(button)
         return button
@@ -219,7 +220,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR18", for: UIControlState())
+        button.setTitle("OR18", for: UIControl.State())
         button.color = Configuration.theme.primaryDark
         self.addSubview(button)
         return button
@@ -231,7 +232,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR19", for: UIControlState())
+        button.setTitle("OR19", for: UIControl.State())
         button.color = Configuration.theme.tertiaryDark
         self.addSubview(button)
         return button
@@ -243,7 +244,7 @@ import LCARSDisplayKitUI
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
         let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR20", for: UIControlState())
+        button.setTitle("OR20", for: UIControl.State())
         button.color = Configuration.theme.tertiaryLight
         self.addSubview(button)
         return button
@@ -262,7 +263,7 @@ import LCARSDisplayKitUI
         let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [edgePointStart, edgePointEnd])
         
         let button = EdgedCrescentButton(with: edgedCrescent, inBounds: bounds, offset: offset)
-        button.setTitle("－", for: UIControlState())
+        button.setTitle("－", for: UIControl.State())
         button.color = Configuration.theme.tertiaryLight
         button.titleLabel?.font = Configuration.theme.subtitle
         self.addSubview(button)
@@ -289,7 +290,7 @@ import LCARSDisplayKitUI
         let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [edgePointStart, edgePointMiddle, edgePointEnd])
         
         let button = EdgedCrescentButton(with: edgedCrescent, inBounds: bounds, offset: offset)
-        button.setTitle("MODE SELECT", for: UIControlState())
+        button.setTitle("MODE SELECT", for: UIControl.State())
         button.color = Configuration.theme.primaryLight
         self.addSubview(button)
         return button
@@ -311,7 +312,7 @@ import LCARSDisplayKitUI
         let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [edgePointStart, edgePointEnd])
         
         let button = EdgedCrescentButton(with: edgedCrescent, inBounds: bounds, offset: offset)
-        button.setTitle("+", for: UIControlState())
+        button.setTitle("+", for: UIControl.State())
         button.color = Configuration.theme.tertiaryDark
         button.titleLabel?.font = Configuration.theme.subtitle
         self.addSubview(button)
@@ -331,7 +332,7 @@ import LCARSDisplayKitUI
         let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [edgePointStart, edgePointEnd])
         
         let button = EdgedCrescentButton(with: edgedCrescent, inBounds: bounds, offset: offset)
-        button.setTitle("E13", for: UIControlState())
+        button.setTitle("E13", for: UIControl.State())
         button.color = Configuration.theme.primaryDark
         self.addSubview(button)
         return button
@@ -343,7 +344,7 @@ import LCARSDisplayKitUI
         let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [exteriorArc.startPoint, exteriorArc.endPoint])
         
         let button = EdgedCrescentButton(with: edgedCrescent, inBounds: bounds, offset: offset)
-        button.setTitle("E15", for: UIControlState())
+        button.setTitle("E15", for: UIControl.State())
         button.color = Configuration.theme.tertiaryLight
         self.addSubview(button)
         return button
@@ -359,7 +360,7 @@ import LCARSDisplayKitUI
         let roundedRectangle = RoundedRectangle(size: CGSize(width: width, height: height), leftRounded: true, rightRounded: true, cornersOnly: false)
         
         let button = RoundedRectangleButton(with: CGRect(x: x, y: y, width: width, height: height), roundedRectangle: roundedRectangle)
-        button.setTitle("T00", for: UIControlState())
+        button.setTitle("T00", for: UIControl.State())
         button.color = Configuration.theme.tertiaryLight
         self.addSubview(button)
         return button
