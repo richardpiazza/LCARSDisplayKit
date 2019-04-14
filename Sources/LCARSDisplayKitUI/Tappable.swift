@@ -1,8 +1,9 @@
+#if canImport(LCARSDisplayKit)
+import LCARSDisplayKit
+#endif
 #if (os(iOS) || os(tvOS))
-
 import UIKit
 import GraphPoint
-import LCARSDisplayKit
 
 /// Protocol defining methods of an interactive item backed by a `Graphable` element.
 public protocol Tappable {

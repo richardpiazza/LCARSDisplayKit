@@ -1,8 +1,9 @@
+#if canImport(LCARSDisplayKit)
+import LCARSDisplayKit
+#endif
 #if (os(iOS) || os(tvOS))
-
 import UIKit
 import GraphPoint
-import LCARSDisplayKit
 
 /// A button soley used in a 'DPad' to represent cardinal directions
 open class DirectionButton: Button {

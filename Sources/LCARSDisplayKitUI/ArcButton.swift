@@ -1,8 +1,9 @@
+#if canImport(LCARSDisplayKit)
+import LCARSDisplayKit
+#endif
 #if (os(iOS) || os(tvOS))
-
 import UIKit
 import GraphPoint
-import LCARSDisplayKit
 
 /// A Button that draws an arc connected by a right angle pivot.
 open class ArcButton: Button {

@@ -11,8 +11,8 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/richardpiazza'
 
   s.source = { :git => "https://github.com/richardpiazza/LCARSDisplayKit.git", :tag => s.version.to_s }
-  s.source_files = 'Sources/*'
-  s.resources = 'Resources/*'
+  s.source_files = 'Sources/*/*'
+  s.resources = 'Resources/*/*'
   s.frameworks = 'Foundation', 'AVFoundation'
   s.swift_version = '5.0'
   s.requires_arc = true

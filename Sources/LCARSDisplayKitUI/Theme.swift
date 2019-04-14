@@ -1,7 +1,8 @@
-#if (os(iOS) || os(tvOS))
-
-import UIKit
+#if canImport(LCARSDisplayKit)
 import LCARSDisplayKit
+#endif
+#if (os(iOS) || os(tvOS))
+import UIKit
     
 public protocol Theme {
     // Colors

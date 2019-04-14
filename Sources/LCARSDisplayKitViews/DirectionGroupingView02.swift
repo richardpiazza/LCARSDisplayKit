@@ -1,9 +1,12 @@
+#if canImport(LCARSDisplayKit)
+import LCARSDisplayKit
+#endif
+#if canImport(LCARSDisplayKitUI)
+import LCARSDisplayKitUI
+#endif
 #if (os(iOS) || os(tvOS))
-
 import UIKit
 import GraphPoint
-import LCARSDisplayKit
-import LCARSDisplayKitUI
 
 /// An expansion on `DirectionGroupingView01` that adds Outer Ring controls to
 /// the bottom half, and an additional row of controls to the top.
