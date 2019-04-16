@@ -61,6 +61,7 @@
 		E19C22CC20004D0600F0C3E8 /* DirectionGroupingView03.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B551FFECB210002EF25 /* DirectionGroupingView03.swift */; };
 		E19C22CD20004D0600F0C3E8 /* DPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B511FFECB210002EF25 /* DPad.swift */; };
 		E1CA6B821FFECB2B0002EF25 /* LCARSDisplayKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA6B4E1FFECB210002EF25 /* LCARSDisplayKitTests.swift */; };
+		E1EE4FC5226670BB00443943 /* NoiseMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EE4FC4226670BB00443943 /* NoiseMaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,7 @@
 		E1CA6B851FFECC150002EF25 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		E1CA6B861FFECC150002EF25 /* LCARSDisplayKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LCARSDisplayKit.podspec; path = ../LCARSDisplayKit.podspec; sourceTree = "<group>"; };
 		E1CA6BC61FFEF1650002EF25 /* UIFont+LCARSDisplayKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+LCARSDisplayKit.swift"; sourceTree = "<group>"; };
+		E1EE4FC4226670BB00443943 /* NoiseMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseMaker.swift; sourceTree = "<group>"; };
 		F572E4250827A1BF2197FB98 /* Pods-LCARSDisplayKitExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitExampleUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitExampleUITests/Pods-LCARSDisplayKitExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA218770675089D6BCA5DB8A /* Pods-LCARSDisplayKitViews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LCARSDisplayKitViews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LCARSDisplayKitViews/Pods-LCARSDisplayKitViews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -368,6 +370,7 @@
 				E1112FBF1BBE7FBC0001C33D /* Info.plist */,
 				E105B78B1D5E6688004AE5D9 /* Designables.storyboard */,
 				E160D49C20006A34000EF3FE /* DGroupView.swift */,
+				E1EE4FC4226670BB00443943 /* NoiseMaker.swift */,
 			);
 			path = LCARSDisplayKitExample;
 			sourceTree = "<group>";
@@ -921,6 +924,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E160D49D20006A34000EF3FE /* DGroupView.swift in Sources */,
+				E1EE4FC5226670BB00443943 /* NoiseMaker.swift in Sources */,
 				E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */,
 				E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */,
 			);

@@ -8,35 +8,14 @@
 
 import UIKit
 import LCARSDisplayKitUI
-import AVFoundation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CommandSequencerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    private var neutralBeepSoundID: SystemSoundID = 0
-    private var successBeepSoundID: SystemSoundID = 0
-    private var failureBeepSoundID: SystemSoundID = 0
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.ambient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-        if let url = Configuration.theme.neutralBeepURL {
-            AudioServicesCreateSystemSoundID(url as CFURL, &neutralBeepSoundID)
-        }
-        if let url = Configuration.theme.successBeepURL {
-            AudioServicesCreateSystemSoundID(url as CFURL, &successBeepSoundID)
-        }
-        if let url = Configuration.theme.failureBeepURL {
-            AudioServicesCreateSystemSoundID(url as CFURL, &failureBeepSoundID)
-        }
-        
-        CommandSequencer.`default`.delegate = self
+        CommandSequencer.`default`.delegate = NoiseMaker.shared
         
         return true
     }
@@ -61,31 +40,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CommandSequencerDelegate 
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-    // MARK: - CommandSequencerDelegate
-    
-    public func neutralBeep() {
-        guard neutralBeepSoundID != 0 else {
-            return
-        }
-        
-        AudioServicesPlaySystemSound(neutralBeepSoundID)
-    }
-    
-    public func successBeep() {
-        guard successBeepSoundID != 0 else {
-            return
-        }
-        
-        AudioServicesPlaySystemSound(successBeepSoundID)
-    }
-    
-    public func failureBeep() {
-        guard failureBeepSoundID != 0 else {
-            return
-        }
-        
-        AudioServicesPlaySystemSound(failureBeepSoundID)
     }
 }
