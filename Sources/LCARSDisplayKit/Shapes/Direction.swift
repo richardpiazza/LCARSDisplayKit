@@ -56,7 +56,7 @@ public struct Direction: Graphable {
     public var subpaths: [CGMutablePath]? {
         var paths: [CGMutablePath] = [CGMutablePath]()
         
-        let graphFrame = GraphFrame.graphFrame(graphPoints: arc.graphPoints, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree)
+        let graphFrame = GraphFrame.graphFrame(graphPoints: arc.graphPoints, radius: CGFloat(arc.radius), startDegree: CGFloat(arc.startDegree), endDegree: CGFloat(arc.endDegree))
         let offset = graphFrame.graphOriginOffset
         let unit = min(size.width, size.height) / 2
         

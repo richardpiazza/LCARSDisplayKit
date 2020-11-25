@@ -251,9 +251,9 @@ import UIKit
         let exteriorArc = Arc(radius: self.thirdRingExteriorRadius, startDegree: DPad.arc13.start, endDegree: DPad.arc13.end)
         let interiorAngleStart = 270 - interiorArc.startDegree
         let exteriorAngleStart = 180 - 90 - interiorAngleStart
-        let edgeLength = (exteriorArc.endPoint.y / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
+        let edgeLength = (Float(exteriorArc.endPoint.y) / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
         
-        let point01 = CGPoint(x: -edgeLength, y: exteriorArc.endPoint.y)
+        let point01 = CGPoint(x: CGFloat(-edgeLength), y: exteriorArc.endPoint.y)
         let point02 = CGPoint(x: exteriorArc.endPoint.x, y: exteriorArc.endPoint.y)
         
         var arc = Arc(radius: self.thirdRingInteriorRadius, startDegree: DPad.arc13.start, endDegree: DPad.arc13.end)

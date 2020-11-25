@@ -252,10 +252,10 @@ import UIKit
         
         let interiorAngleEnd = interiorArc.endDegree - 90
         let exteriorAngleEnd = 90 - interiorAngleEnd
-        let endX = (exteriorArc.startPoint.y / sin(exteriorAngleEnd.radians)) * sin(interiorAngleEnd.radians)
+        let endX = (Float(exteriorArc.startPoint.y) / sin(exteriorAngleEnd.radians)) * sin(interiorAngleEnd.radians)
         
         let edgePointStart = GraphPoint(x: exteriorArc.startPoint.x, y: exteriorArc.startPoint.y)
-        let edgePointEnd = GraphPoint(x: endX, y: exteriorArc.startPoint.y)
+        let edgePointEnd = GraphPoint(x: CGFloat(endX), y: exteriorArc.startPoint.y)
         
         let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [edgePointStart, edgePointEnd])
         
@@ -274,15 +274,15 @@ import UIKit
         let interiorArc = Arc(radius: firstRingInteriorRadius, startDegree: DPad.arc07.start, endDegree: DPad.arc08.end)
         let interiorAngleStart = interiorArc.startDegree - 90
         let exteriorAngleStart = 90 - interiorAngleStart
-        let startX = (edge06ExteriorArc.startPoint.y / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
+        let startX = (Float(edge06ExteriorArc.startPoint.y) / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
         
         let interiorAngleEnd = 180 - interiorArc.endDegree
         let exteriorAngleEnd = 90 - interiorAngleEnd
-        let endY = (edge09ExteriorArc.endPoint.x / sin(exteriorAngleEnd.radians)) * sin(interiorAngleEnd.radians)
+        let endY = (Float(edge09ExteriorArc.endPoint.x) / sin(exteriorAngleEnd.radians)) * sin(interiorAngleEnd.radians)
         
-        let edgePointStart = GraphPoint(x: startX, y: edge06ExteriorArc.startPoint.y)
+        let edgePointStart = GraphPoint(x: CGFloat(startX), y: edge06ExteriorArc.startPoint.y)
         let edgePointMiddle = GraphPoint(x: edge09ExteriorArc.endPoint.x, y: edge06ExteriorArc.startPoint.y)
-        let edgePointEnd = GraphPoint(x: edge09ExteriorArc.endPoint.x, y: endY)
+        let edgePointEnd = GraphPoint(x: edge09ExteriorArc.endPoint.x, y: CGFloat(endY))
         
         let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [edgePointStart, edgePointMiddle, edgePointEnd])
         
@@ -301,9 +301,9 @@ import UIKit
         
         let interiorAngleStart = 180 - interiorArc.startDegree
         let exteriorAngleStart = 90 - interiorAngleStart
-        let startY = (exteriorArc.endPoint.x / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
+        let startY = (Float(exteriorArc.endPoint.x) / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
         
-        let edgePointStart = GraphPoint(x: exteriorArc.endPoint.x, y: startY)
+        let edgePointStart = GraphPoint(x: exteriorArc.endPoint.x, y: CGFloat(startY))
         let edgePointEnd = GraphPoint(x: exteriorArc.endPoint.x, y: exteriorArc.endPoint.y)
         
         let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [edgePointStart, edgePointEnd])
@@ -321,9 +321,9 @@ import UIKit
         
         let interiorAngleStart = 270 - interiorArc.startDegree
         let exteriorAngleStart = 90 - interiorAngleStart
-        let startX = (exteriorArc.endPoint.y / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
+        let startX = (Float(exteriorArc.endPoint.y) / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
         
-        let edgePointStart = GraphPoint(x: -startX, y: exteriorArc.endPoint.y)
+        let edgePointStart = GraphPoint(x: CGFloat(-startX), y: exteriorArc.endPoint.y)
         let edgePointEnd = GraphPoint(x: exteriorArc.endPoint.x, y: exteriorArc.endPoint.y)
         
         let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [edgePointStart, edgePointEnd])
