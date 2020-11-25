@@ -13,30 +13,22 @@ let package = Package(
     products: [
         .library(
             name: "LCARSDisplayKit",
-            targets: ["Shapes", "Components", "UI"]),
+            targets: ["LCARSDisplayKit"]),
         ],
     dependencies: [
         .package(url: "https://github.com/richardpiazza/GraphPoint.git", .branch("feature/cartesian-naming")),
         ],
     targets: [
         .target(
-            name: "Shapes",
-            dependencies: ["GraphPoint"]
-        ),
-        .target(
-            name: "Components",
-            dependencies: ["GraphPoint", "Shapes"],
+            name: "LCARSDisplayKit",
+            dependencies: ["GraphPoint"],
             resources: [
                 .process("Resources")
             ]
         ),
-        .target(
-            name: "UI",
-            dependencies: ["GraphPoint", "Shapes", "Components"]
-        ),
         .testTarget(
             name: "LCARSDisplayKitTests",
-            dependencies: ["GraphPoint", "Shapes", "Components", "UI"]
+            dependencies: ["GraphPoint", "LCARSDisplayKit"]
         )
     ],
     swiftLanguageVersions: [.v5]

@@ -1,5 +1,3 @@
-import Shapes
-import Components
 import GraphPoint
 #if canImport(UIKit)
 import UIKit

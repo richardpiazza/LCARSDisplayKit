@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E105B78D1D5E6688004AE5D9 /* Designables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E105B78B1D5E6688004AE5D9 /* Designables.storyboard */; };
-		E1084467256E7FB3005DDC10 /* LCARSDisplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1084466256E7FB3005DDC10 /* LCARSDisplayKit */; };
+		E1084470256E86A4005DDC10 /* LCARSDisplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = E108446F256E86A4005DDC10 /* LCARSDisplayKit */; };
 		E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */; };
 		E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB51BBE7FBC0001C33D /* ViewController.swift */; };
 		E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FB71BBE7FBC0001C33D /* Main.storyboard */; };
@@ -33,7 +33,8 @@
 
 /* Begin PBXFileReference section */
 		E105B78C1D5E6688004AE5D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Designables.storyboard; sourceTree = "<group>"; };
-		E1112FB01BBE7FBC0001C33D /* LCARSDisplayKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LCARSDisplayKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E108446E256E869D005DDC10 /* LCARSDisplayKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LCARSDisplayKit; path = ..; sourceTree = "<group>"; };
+		E1112FB01BBE7FBC0001C33D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1112FB51BBE7FBC0001C33D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E1112FB81BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -41,7 +42,6 @@
 		E1112FBD1BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1112FBF1BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E160D49C20006A34000EF3FE /* DGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGroupView.swift; sourceTree = "<group>"; };
-		E165280F256DD2B500876884 /* LCARSDisplayKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LCARSDisplayKit; path = ..; sourceTree = "<group>"; };
 		E1CA6B4E1FFECB210002EF25 /* LCARSDisplayKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitTests.swift; sourceTree = "<group>"; };
 		E1CA6B831FFECC150002EF25 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E1CA6B841FFECC150002EF25 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1084467256E7FB3005DDC10 /* LCARSDisplayKit in Frameworks */,
+				E1084470256E86A4005DDC10 /* LCARSDisplayKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,12 +64,12 @@
 		E1112FA71BBE7FBB0001C33D = {
 			isa = PBXGroup;
 			children = (
-				E165280F256DD2B500876884 /* LCARSDisplayKit */,
+				E108446E256E869D005DDC10 /* LCARSDisplayKit */,
 				E1CA6B831FFECC150002EF25 /* LICENSE */,
 				E1CA6B841FFECC150002EF25 /* Package.swift */,
 				E1CA6B851FFECC150002EF25 /* README.md */,
 				E1CA6B4C1FFECB210002EF25 /* Tests */,
-				E1112FB21BBE7FBC0001C33D /* LCARSDisplayKitExample */,
+				E1112FB21BBE7FBC0001C33D /* Example */,
 				E1112FB11BBE7FBC0001C33D /* Products */,
 				E1652815256DD2C600876884 /* Frameworks */,
 			);
@@ -78,12 +78,12 @@
 		E1112FB11BBE7FBC0001C33D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1112FB01BBE7FBC0001C33D /* LCARSDisplayKitExample.app */,
+				E1112FB01BBE7FBC0001C33D /* Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E1112FB21BBE7FBC0001C33D /* LCARSDisplayKitExample */ = {
+		E1112FB21BBE7FBC0001C33D /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */,
@@ -96,7 +96,7 @@
 				E160D49C20006A34000EF3FE /* DGroupView.swift */,
 				E1EE4FC4226670BB00443943 /* NoiseMaker.swift */,
 			);
-			path = LCARSDisplayKitExample;
+			path = Example;
 			sourceTree = "<group>";
 		};
 		E1652815256DD2C600876884 /* Frameworks */ = {
@@ -126,9 +126,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKitExample */ = {
+		E1112FAF1BBE7FBB0001C33D /* Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E1112FD81BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitExample" */;
+			buildConfigurationList = E1112FD81BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "Example" */;
 			buildPhases = (
 				E1112FAC1BBE7FBB0001C33D /* Sources */,
 				E1112FAD1BBE7FBB0001C33D /* Frameworks */,
@@ -138,13 +138,14 @@
 			buildRules = (
 			);
 			dependencies = (
+				E1084472256E8806005DDC10 /* PBXTargetDependency */,
 			);
-			name = LCARSDisplayKitExample;
+			name = Example;
 			packageProductDependencies = (
-				E1084466256E7FB3005DDC10 /* LCARSDisplayKit */,
+				E108446F256E86A4005DDC10 /* LCARSDisplayKit */,
 			);
 			productName = LCARSDisplayKit;
-			productReference = E1112FB01BBE7FBC0001C33D /* LCARSDisplayKitExample.app */;
+			productReference = E1112FB01BBE7FBC0001C33D /* Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -158,13 +159,11 @@
 				TargetAttributes = {
 					E1112FAF1BBE7FBB0001C33D = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = EX6YK9HKXA;
 						LastSwiftMigration = 1020;
-						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = E1112FAB1BBE7FBB0001C33D /* Build configuration list for PBXProject "LCARSDisplayKitExample" */;
+			buildConfigurationList = E1112FAB1BBE7FBB0001C33D /* Build configuration list for PBXProject "Example" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -179,7 +178,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E1112FAF1BBE7FBB0001C33D /* LCARSDisplayKitExample */,
+				E1112FAF1BBE7FBB0001C33D /* Example */,
 			);
 		};
 /* End PBXProject section */
@@ -212,6 +211,13 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E1084472256E8806005DDC10 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = E1084471256E8806005DDC10 /* LCARSDisplayKit */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		E105B78B1D5E6688004AE5D9 /* Designables.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -243,7 +249,6 @@
 		E1112FD61BBE7FBC0001C33D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -299,7 +304,6 @@
 		E1112FD71BBE7FBC0001C33D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -353,14 +357,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EX6YK9HKXA;
-				INFOPLIST_FILE = LCARSDisplayKitExample/Info.plist;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.richardpiazza.LCARSDisplayKit.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -371,14 +377,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = EX6YK9HKXA;
-				INFOPLIST_FILE = LCARSDisplayKitExample/Info.plist;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKitExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.github.richardpiazza.LCARSDisplayKit.example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -386,7 +394,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E1112FAB1BBE7FBB0001C33D /* Build configuration list for PBXProject "LCARSDisplayKitExample" */ = {
+		E1112FAB1BBE7FBB0001C33D /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1112FD61BBE7FBC0001C33D /* Debug */,
@@ -395,7 +403,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E1112FD81BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "LCARSDisplayKitExample" */ = {
+		E1112FD81BBE7FBC0001C33D /* Build configuration list for PBXNativeTarget "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E1112FD91BBE7FBC0001C33D /* Debug */,
@@ -407,7 +415,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E1084466256E7FB3005DDC10 /* LCARSDisplayKit */ = {
+		E108446F256E86A4005DDC10 /* LCARSDisplayKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LCARSDisplayKit;
+		};
+		E1084471256E8806005DDC10 /* LCARSDisplayKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LCARSDisplayKit;
 		};

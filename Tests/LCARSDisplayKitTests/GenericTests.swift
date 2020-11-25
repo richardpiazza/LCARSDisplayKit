@@ -1,8 +1,6 @@
 import XCTest
 import GraphPoint
-@testable import Shapes
-@testable import Components
-@testable import UI
+@testable import LCARSDisplayKit
 
 final class GenericTests: XCTestCase {
     
