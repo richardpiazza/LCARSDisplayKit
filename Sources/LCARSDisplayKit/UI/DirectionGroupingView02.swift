@@ -6,8 +6,8 @@ import UIKit
 /// the bottom half, and an additional row of controls to the top.
 @IBDesignable open class DirectionGroupingView02: DirectionGroupingView01 {
     open lazy var outerRing01: CrescentButton = {
-        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.arc01.start, endDegree: DPad.arc04.end)
-        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.arc01.start, endDegree: DPad.arc04.end)
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), startDegree: Degree(DPad.arc01.start), endDegree: Degree(DPad.arc04.end))
+        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), startDegree: Degree(DPad.arc01.start), endDegree: Degree(DPad.arc04.end))
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -19,8 +19,8 @@ import UIKit
         return button
     }()
     open lazy var outerRing05: CrescentButton = {
-        let innerArc = Arc(radius: secondRingInteriorRadius, startDegree: DPad.arc05.start, endDegree: DPad.arc05.end)
-        let outerArc = Arc(radius: secondRingExteriorRadius, startDegree: DPad.arc05.start, endDegree: DPad.arc05.end)
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc05)
+        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc05)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         

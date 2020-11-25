@@ -88,6 +88,12 @@ extension Arc: ExpressibleByPath {
 }
 
 extension Arc {
+    public init(radius: Radius, dPad: DPad) {
+        self.radius = radius
+        self.startDegree = Degree(dPad.start)
+        self.endDegree = Degree(dPad.end)
+    }
+    
     @available(*, deprecated)
     public init(radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat) {
         self.radius = Radius(radius)

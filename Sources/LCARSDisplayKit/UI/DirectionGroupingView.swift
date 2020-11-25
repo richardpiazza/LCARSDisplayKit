@@ -17,8 +17,8 @@ import UIKit
     }()
     open lazy var up: DirectionButton = {
         let frame = self.frame(for: .up)
-        let arc = Arc(radius: dpadRadius, startDegree: DPad.up.start, endDegree: DPad.up.end + 0.5)
-        let direction = Direction(with: arc, cardinal: .up)
+        let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.up.start), endDegree: Degree(DPad.up.end + 0.5))
+        let direction = Direction(.up, arc: arc)
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControl.State())
         self.addSubview(button)
@@ -26,8 +26,8 @@ import UIKit
     }()
     open lazy var down: DirectionButton = {
         let frame = self.frame(for: .down)
-        let arc = Arc(radius: dpadRadius, startDegree: DPad.down.start - 0.5, endDegree: DPad.down.end)
-        let direction = Direction(with: arc, cardinal: .down)
+        let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.down.start - 0.5), endDegree: Degree(DPad.down.end))
+        let direction = Direction(.down, arc: arc)
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControl.State())
         self.addSubview(button)
@@ -35,8 +35,8 @@ import UIKit
     }()
     open lazy var left: DirectionButton = {
         let frame = self.frame(for: .left)
-        let arc = Arc(radius: dpadRadius, startDegree: DPad.left.start - 0.5, endDegree: DPad.left.end)
-        let direction = Direction(with: arc, cardinal: .left)
+        let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.left.start - 0.5), endDegree: Degree(DPad.left.end))
+        let direction = Direction(.left, arc: arc)
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControl.State())
         self.addSubview(button)
@@ -44,15 +44,15 @@ import UIKit
     }()
     open lazy var right: DirectionButton = {
         let frame = self.frame(for: .right)
-        let arc = Arc(radius: dpadRadius, startDegree: DPad.right.start, endDegree: DPad.right.end + 0.5)
-        let direction = Direction(with: arc, cardinal: .right)
+        let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.right.start), endDegree: Degree(DPad.right.end + 0.5))
+        let direction = Direction(.right, arc: arc)
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControl.State())
         self.addSubview(button)
         return button
     }()
     open lazy var sector01: ArcButton = {
-        let arc = Arc(radius: dpadRadius, startDegree: DPad.sector01.start, endDegree: DPad.sector01.end)
+        let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.sector01.start), endDegree: Degree(DPad.sector01.end))
         let button = ArcButton(with: arc, inBounds: bounds, offset: offset)
         button.setTitle("", for: UIControl.State())
         button.color = Configuration.theme.primaryMedium
@@ -60,7 +60,7 @@ import UIKit
         return button
     }()
     open lazy var sector02: ArcButton = {
-        let arc = Arc(radius: dpadRadius, startDegree: DPad.sector02.start, endDegree: DPad.sector02.end)
+        let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.sector02.start), endDegree: Degree(DPad.sector02.end))
         let button = ArcButton(with: arc, inBounds: bounds, offset: offset)
         button.setTitle("", for: UIControl.State())
         button.color = Configuration.theme.primaryMedium
@@ -68,7 +68,7 @@ import UIKit
         return button
     }()
     open lazy var sector03: ArcButton = {
-        let arc = Arc(radius: dpadRadius, startDegree: DPad.sector03.start, endDegree: DPad.sector03.end)
+        let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.sector03.start), endDegree: Degree(DPad.sector03.end))
         let button = ArcButton(with: arc, inBounds: bounds, offset: offset)
         button.setTitle("", for: UIControl.State())
         button.color = Configuration.theme.primaryMedium
@@ -76,7 +76,7 @@ import UIKit
         return button
     }()
     open lazy var sector04: ArcButton = {
-        let arc = Arc(radius: dpadRadius, startDegree: DPad.sector04.start, endDegree: DPad.sector04.end)
+        let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.sector04.start), endDegree: Degree(DPad.sector04.end))
         let button = ArcButton(with: arc, inBounds: bounds, offset: offset)
         button.setTitle("", for: UIControl.State())
         button.color = Configuration.theme.primaryMedium

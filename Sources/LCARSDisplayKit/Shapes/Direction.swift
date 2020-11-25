@@ -1,46 +1,40 @@
 import GraphPoint
 #if canImport(CoreGraphics)
 import CoreGraphics
+#endif
 
-public struct Direction: Graphable {
-    public enum Cardinal {
-        case up
-        case right
-        case down
-        case left
-        
-        public var degree: CGFloat {
-            switch self {
-            case .right: return CGFloat(0)
-            case .down: return CGFloat(90)
-            case .left: return CGFloat(180)
-            case .up: return CGFloat(270)
-            }
-        }
-        
-        public init(degreeValue: CGFloat) {
-            if degreeValue == Cardinal.up.degree {
-                self = .up
-            } else if degreeValue == Cardinal.left.degree {
-                self = .left
-            } else if degreeValue == Cardinal.down.degree {
-                self = .down
-            } else {
-                self = .right
-            }
-        }
+public struct Direction {
+    
+    public enum Cardinal: Degree {
+        case right = 0.0
+        case down = 90.0
+        case left = 180.0
+        case up = 270.0
     }
     
-    public var arc: Arc = Arc()
-    public var cardinal: Cardinal = .up
+    public var cardinal: Cardinal
+    public var arc: Arc
+    
     public var size: CGSize = CGSize()
     
-    public init() {}
-    public init(with arc: Arc, cardinal: Cardinal) {
-        self.arc = arc
+    public init(_ cardinal: Cardinal = .right, arc: Arc = Arc()) {
         self.cardinal = cardinal
+        self.arc = arc
+    }
+}
+
+extension Direction: ExpressibleByCartesianPoints {
+    public var cartesianPoints: [CartesianPoint] {
+        return []
     }
     
+    public var cartesianFrame: CartesianFrame {
+        return (try? CartesianFrame.make(for: arc.startingPoint, point2: arc.endingPoint, radius: arc.radius)) ?? .zero
+    }
+}
+
+#if canImport(CoreGraphics)
+extension Direction: ExpressibleByPath {
     public var path: CGMutablePath {
         let path: CGMutablePath = CGMutablePath()
         
@@ -56,15 +50,15 @@ public struct Direction: Graphable {
     public var subpaths: [CGMutablePath]? {
         var paths: [CGMutablePath] = [CGMutablePath]()
         
-        let graphFrame = GraphFrame.graphFrame(graphPoints: arc.graphPoints, radius: CGFloat(arc.radius), startDegree: CGFloat(arc.startDegree), endDegree: CGFloat(arc.endDegree))
-        let offset = graphFrame.graphOriginOffset
+        let frame = cartesianFrame
+        let center = frame.offsetToCartesianOrigin
         let unit = min(size.width, size.height) / 2
         
         switch cardinal {
         case .right:
             let arrowPath: CGMutablePath = CGMutablePath()
-            let arcX = size.width + offset.x - graphFrame.width
-            arrowPath.addArc(center: CGPoint(x: arcX, y: offset.y), radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
+            let arcX = Float(size.width) + center.x - frame.width
+            arrowPath.addArc(center: CartesianPoint(x: arcX, y: center.y), radius: arc.radius, startAngle: arc.startDegree, endAngle: arc.endDegree, clockwise: false)
             arrowPath.addLine(to: CGPoint(x: size.width - unit, y: size.height))
             arrowPath.addLine(to: CGPoint(x: size.width - unit, y: 0))
             arrowPath.closeSubpath()
@@ -80,7 +74,8 @@ public struct Direction: Graphable {
             paths.append(remainingPath)
         case .down:
             let arrowPath: CGMutablePath = CGMutablePath()
-            arrowPath.addArc(center: CGPoint(x: offset.x, y: size.height + offset.y - graphFrame.height), radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
+            let arcY = Float(size.height) + center.y - frame.height
+            arrowPath.addArc(center: CartesianPoint(x: center.x, y: arcY), radius: arc.radius, startAngle: arc.startDegree, endAngle: arc.endDegree, clockwise: false)
             arrowPath.addLine(to: CGPoint(x: 0, y: size.height - unit))
             arrowPath.addLine(to: CGPoint(x: size.width, y: size.height - unit))
             arrowPath.closeSubpath()
@@ -96,7 +91,7 @@ public struct Direction: Graphable {
             paths.append(remainingPath)
         case .left:
             let arrowPath: CGMutablePath = CGMutablePath()
-            arrowPath.addArc(center: offset, radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
+            arrowPath.addArc(center: center, radius: arc.radius, startAngle: arc.startDegree, endAngle: arc.endDegree, clockwise: false)
             arrowPath.addLine(to: CGPoint(x: unit, y: 0))
             arrowPath.addLine(to: CGPoint(x: unit, y: size.height))
             arrowPath.closeSubpath()
@@ -112,7 +107,7 @@ public struct Direction: Graphable {
             paths.append(remainingPath)
         case .up:
             let arrowPath: CGMutablePath = CGMutablePath()
-            arrowPath.addArc(center: offset, radius: arc.radius, startAngle: arc.startDegree.radians, endAngle: arc.endDegree.radians, clockwise: false)
+            arrowPath.addArc(center: center, radius: arc.radius, startAngle: arc.startDegree, endAngle: arc.endDegree, clockwise: false)
             arrowPath.addLine(to: CGPoint(x: size.width, y: unit))
             arrowPath.addLine(to: CGPoint(x: 0, y: unit))
             arrowPath.closeSubpath()
@@ -135,4 +130,7 @@ public struct Direction: Graphable {
     }
 }
 
+extension Direction: Graphable {
+    
+}
 #endif
