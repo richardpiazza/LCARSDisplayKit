@@ -12,12 +12,16 @@ public enum Assets {
             return Data(base64Encoded: base64)!
         }
         
-        public static var swiss911UltraCompressedBT: Data? {
+        public static var swiss911UltraCompressedBT: Data {
             guard let url = Bundle.module.url(forResource: "Swiss 911 Ultra Compressed BT", withExtension: "ttf") else {
-                return nil
+                preconditionFailure("Failed to locate resource: 'Swiss 911 Ultra Compressed BT.ttf'.")
             }
             
-            return try? Data(contentsOf: url)
+            guard let data = try? Data(contentsOf: url) else {
+                preconditionFailure("Failed to load resource: 'Swiss 911 Ultra Compressed BT.ttf'.")
+            }
+            
+            return data
         }
     }
     
@@ -33,12 +37,16 @@ public enum Assets {
             return url(forData: beep1Data, filename: "beep1", pathExtension: "m4a")
         }
         
-        public static var beep1: Data? {
-            guard let url = Bundle.module.url(forResource: "beep1", withExtension: "mpa") else {
-                return nil
+        public static var beep1: Data {
+            guard let url = Bundle.module.url(forResource: "beep1", withExtension: "m4a") else {
+                preconditionFailure("Failed to locate resource: 'beep1.m4a'.")
             }
             
-            return try? Data(contentsOf: url)
+            guard let data = try? Data(contentsOf: url) else {
+                preconditionFailure("Failed to load resource: 'beep1.m4a'.")
+            }
+            
+            return data
         }
         
         @available(*, deprecated)
@@ -52,12 +60,16 @@ public enum Assets {
             return url(forData: beep2Data, filename: "beep2", pathExtension: "m4a")
         }
         
-        public static var beep2: Data? {
-            guard let url = Bundle.module.url(forResource: "beep2", withExtension: "mpa") else {
-                return nil
+        public static var beep2: Data {
+            guard let url = Bundle.module.url(forResource: "beep2", withExtension: "m4a") else {
+                preconditionFailure("Failed to locate resource: 'beep2.m4a'.")
             }
             
-            return try? Data(contentsOf: url)
+            guard let data = try? Data(contentsOf: url) else {
+                preconditionFailure("Failed to load resource: 'beep2.m4a'.")
+            }
+            
+            return data
         }
         
         @available(*, deprecated)
@@ -71,12 +83,16 @@ public enum Assets {
             return url(forData: beep3Data, filename: "beep3", pathExtension: "m4a")
         }
         
-        public static var beep3: Data? {
-            guard let url = Bundle.module.url(forResource: "beep3", withExtension: "mpa") else {
-                return nil
+        public static var beep3: Data {
+            guard let url = Bundle.module.url(forResource: "beep3", withExtension: "m4a") else {
+                preconditionFailure("Failed to locate resource: 'beep3.m4a'.")
             }
             
-            return try? Data(contentsOf: url)
+            guard let data = try? Data(contentsOf: url) else {
+                preconditionFailure("Failed to load resource: 'beep3.m4a'.")
+            }
+            
+            return data
         }
         
         @available(*, deprecated)

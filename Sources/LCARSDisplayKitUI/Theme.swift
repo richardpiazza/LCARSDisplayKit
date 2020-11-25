@@ -21,9 +21,15 @@ public protocol Theme {
     var subtitle: UIFont { get }
     var body: UIFont { get }
     // Sounds
+    @available(*, deprecated, renamed: "neutralBeep")
     var neutralBeepURL: URL? { get }
+    @available(*, deprecated, renamed: "successBeep")
     var successBeepURL: URL? { get }
+    @available(*, deprecated, renamed: "failureBeep")
     var failureBeepURL: URL? { get }
+    var neutralBeep: Data { get }
+    var successBeep: Data { get }
+    var failureBeep: Data { get }
     // Sizes
     var defaultSpacing: CGFloat { get }
 }

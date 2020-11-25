@@ -67,27 +67,45 @@ public struct TNG: Theme {
     }
     
     public var title: UIFont {
-        return UIFont(data: Assets.Fonts.data, size: 40.0)!
+        return UIFont(data: Assets.Fonts.swiss911UltraCompressedBT, size: 40.0)!
     }
     
     public var subtitle: UIFont {
-        return UIFont(data: Assets.Fonts.data, size: 30.0)!
+        return UIFont(data: Assets.Fonts.swiss911UltraCompressedBT, size: 30.0)!
     }
     
     public var body: UIFont {
-        return UIFont(data: Assets.Fonts.data, size: 20.0)!
+        return UIFont(data: Assets.Fonts.swiss911UltraCompressedBT, size: 20.0)!
     }
     
+    @available(*, deprecated)
     public var neutralBeepURL: URL? {
         return Assets.Sounds.beep3URL
     }
     
+    @available(*, deprecated)
     public var successBeepURL: URL? {
         return Assets.Sounds.beep2URL
     }
     
+    @available(*, deprecated)
     public var failureBeepURL: URL? {
         return Assets.Sounds.beep1URL
+    }
+    
+    public var neutralBeep: Data {
+        return Assets.Sounds.beep3
+    }
+    
+    public var successBeep: Data {
+        return Assets.Sounds.beep2
+    }
+    
+    public var failureBeep: Data {
+        return Assets.Sounds.beep1
+    }
+    
+    public init() {
     }
 }
 

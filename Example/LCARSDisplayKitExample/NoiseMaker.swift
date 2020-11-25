@@ -10,56 +10,22 @@ import Foundation
 import AVFoundation
 import LCARSDisplayKitUI
 
-class NoiseMaker: CommandSequencerDelegate {
+class NoiseMaker: NSObject, CommandSequencerDelegate {
     
-    static var shared: NoiseMaker = NoiseMaker()
+    static var shared: NoiseMaker = NoiseMaker(theme: TNG())
+    private let theme: Theme
+    private var players: [AVAudioPlayer] = []
     
-    private lazy var neutralBeepPlayer: AVAudioPlayer = {
-        guard let url = Configuration.theme.neutralBeepURL else {
-            return AVAudioPlayer()
-        }
+    private let neutralBeepData: Data
+    private let successBeepData: Data
+    private let failureBeepData: Data
+    
+    private init(theme: Theme) {
+        self.theme = theme
+        self.neutralBeepData = theme.neutralBeep
+        self.successBeepData = theme.successBeep
+        self.failureBeepData = theme.failureBeep
         
-        do {
-            let player = try AVAudioPlayer(contentsOf: url)
-            player.numberOfLoops = 0
-            return player
-        } catch {
-            print(error)
-            return AVAudioPlayer()
-        }
-    }()
-    
-    private lazy var successBeepPlayer: AVAudioPlayer = {
-        guard let url = Configuration.theme.successBeepURL else {
-            return AVAudioPlayer()
-        }
-        
-        do {
-            let player = try AVAudioPlayer(contentsOf: url)
-            player.numberOfLoops = 0
-            return player
-        } catch {
-            print(error)
-            return AVAudioPlayer()
-        }
-    }()
-    
-    private lazy var failureBeepPlayer: AVAudioPlayer = {
-        guard let url = Configuration.theme.failureBeepURL else {
-            return AVAudioPlayer()
-        }
-        
-        do {
-            let player = try AVAudioPlayer(contentsOf: url)
-            player.numberOfLoops = 0
-            return player
-        } catch {
-            print(error)
-            return AVAudioPlayer()
-        }
-    }()
-    
-    private init() {
         do {
             try AVAudioSession.sharedInstance().setCategory(.ambient)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -71,14 +37,43 @@ class NoiseMaker: CommandSequencerDelegate {
     // MARK: - CommandSequencerDelegate
     
     public func neutralBeep() {
-        neutralBeepPlayer.play()
+        guard let player = try? AVAudioPlayer(data: neutralBeepData) else {
+            return
+        }
+        
+        players.append(player)
+        player.numberOfLoops = 0
+        player.delegate = self
+        player.play()
     }
     
     public func successBeep() {
-        successBeepPlayer.play()
+        guard let player = try? AVAudioPlayer(data: successBeepData) else {
+            return
+        }
+        
+        players.append(player)
+        player.numberOfLoops = 0
+        player.delegate = self
+        player.play()
     }
     
     public func failureBeep() {
-        failureBeepPlayer.play()
+        guard let player = try? AVAudioPlayer(data: failureBeepData) else {
+            return
+        }
+        
+        players.append(player)
+        player.numberOfLoops = 0
+        player.delegate = self
+        player.play()
+    }
+}
+
+extension NoiseMaker: AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if let index = players.firstIndex(of: player) {
+            players.remove(at: index)
+        }
     }
 }
