@@ -1,5 +1,5 @@
 import XCTest
-@testable import GraphPoint
+import GraphPoint
 @testable import LCARSDisplayKit
 
 class GenericTests: XCTestCase {
