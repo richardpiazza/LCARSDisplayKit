@@ -5,7 +5,7 @@ import LCARSDisplayKit
 import UIKit
 import GraphPoint
 
-/// A button soley used in a 'DPad' to represent cardinal directions
+/// A button solely used in a 'DPad' to represent cardinal directions
 open class DirectionButton: Button {
     
     open var direction: Direction = Direction()

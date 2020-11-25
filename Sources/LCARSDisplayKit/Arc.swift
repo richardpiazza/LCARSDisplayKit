@@ -9,9 +9,9 @@ public struct Arc: Graphable {
     public var radius: CGFloat = CGFloat(0)
     public var startDegree: CGFloat = CGFloat(0)
     public var endDegree: CGFloat = CGFloat(0)
-    /// A `GraphPoint` used to verticaly/horizontaly clip the starting degree
+    /// A `GraphPoint` used to vertically/horizontally clip the starting degree
     public var boundedStart: GraphPoint?
-    /// A `GraphPoint` used to verticaly/horizontaly clip the ending degree
+    /// A `GraphPoint` used to vertically/horizontally clip the ending degree
     public var boundedEnd: GraphPoint?
     
     public init() {

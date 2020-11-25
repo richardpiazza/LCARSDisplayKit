@@ -3,7 +3,7 @@
 import CoreGraphics
 import GraphPoint
 
-/// Two `Arc`s connected by stright lines at their end points.
+/// Two `Arc`s connected by straight lines at their end points.
 public struct Crescent: Graphable {
     public var size: CGSize = CGSize.zero
     public var innerArc: Arc = Arc()

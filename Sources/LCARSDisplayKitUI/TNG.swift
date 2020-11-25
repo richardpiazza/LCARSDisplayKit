@@ -78,21 +78,6 @@ public struct TNG: Theme {
         return UIFont(data: Assets.Fonts.swiss911UltraCompressedBT, size: 20.0)!
     }
     
-    @available(*, deprecated)
-    public var neutralBeepURL: URL? {
-        return Assets.Sounds.beep3URL
-    }
-    
-    @available(*, deprecated)
-    public var successBeepURL: URL? {
-        return Assets.Sounds.beep2URL
-    }
-    
-    @available(*, deprecated)
-    public var failureBeepURL: URL? {
-        return Assets.Sounds.beep1URL
-    }
-    
     public var neutralBeep: Data {
         return Assets.Sounds.beep3
     }

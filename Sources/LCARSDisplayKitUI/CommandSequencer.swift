@@ -52,7 +52,7 @@ public class CommandSequencer {
             return
         }
         
-        print("Unregistering Comannd Sequence")
+        print("Unregistering Command Sequence")
         commandSequences.remove(at: index)
     }
     
