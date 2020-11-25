@@ -2,7 +2,11 @@ import XCTest
 @testable import GraphPoint
 @testable import LCARSDisplayKit
 
-class LCARSDisplayKitTests: XCTestCase {
+class GenericTests: XCTestCase {
+    
+    static var allTests = [
+        ("testExample", testExample)
+    ]
     
     override func setUp() {
         super.setUp()
@@ -12,6 +16,9 @@ class LCARSDisplayKitTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+    }
+    
+    func testExample() {
     }
     
     #if (os(macOS) || os(iOS) || os(tvOS) || os(watchOS))
