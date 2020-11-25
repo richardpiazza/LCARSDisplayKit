@@ -1,9 +1,7 @@
-#if canImport(LCARSDisplayKit)
-import LCARSDisplayKit
-#endif
-#if (os(iOS) || os(tvOS))
-import UIKit
+import Shapes
 import GraphPoint
+#if canImport(UIKit)
+import UIKit
 
 /// A large sweeping button typically used to group other buttons.
 @IBDesignable open class ElbowButton: Button {
@@ -82,5 +80,4 @@ import GraphPoint
         self.elbow = elbow
     }
 }
-
 #endif

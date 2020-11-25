@@ -1,7 +1,5 @@
-#if canImport(LCARSDisplayKit)
-import LCARSDisplayKit
-#endif
-#if (os(iOS) || os(tvOS))
+import Shapes
+#if canImport(UIKit)
 import UIKit
 
 /// Base button class
@@ -89,5 +87,4 @@ open class Button: UIButton, Tappable {
         return nil
     }
 }
-
 #endif

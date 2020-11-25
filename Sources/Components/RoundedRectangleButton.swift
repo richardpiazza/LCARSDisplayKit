@@ -1,9 +1,7 @@
-#if canImport(LCARSDisplayKit)
-import LCARSDisplayKit
-#endif
-#if (os(iOS) || os(tvOS))
-import UIKit
+import Shapes
 import GraphPoint
+#if canImport(UIKit)
+import UIKit
 
 /// A rectangular button with options for rounding left/right edges.
 @IBDesignable open class RoundedRectangleButton: Button {
@@ -44,5 +42,4 @@ import GraphPoint
         self.rectangle = roundedRectangle
     }
 }
-
 #endif

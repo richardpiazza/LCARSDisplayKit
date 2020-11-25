@@ -1,7 +1,6 @@
-#if (os(macOS) || os(iOS) || os(tvOS) || os(watchOS))
-
-import CoreGraphics
 import GraphPoint
+#if canImport(CoreGraphics)
+import CoreGraphics
 
 /// A rectangle with optionally rounded ends
 public struct RoundedRectangle: Graphable {

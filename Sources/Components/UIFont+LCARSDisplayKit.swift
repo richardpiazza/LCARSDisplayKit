@@ -1,5 +1,4 @@
-#if (os(iOS) || os(tvOS))
-
+#if canImport(UIKit)
 import UIKit
 
 public extension UIFont {
@@ -27,5 +26,4 @@ public extension UIFont {
         self.init(name: fontName, size: size)
     }
 }
-
 #endif

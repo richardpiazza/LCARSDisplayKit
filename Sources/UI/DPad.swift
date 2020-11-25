@@ -1,5 +1,4 @@
-#if (os(iOS) || os(tvOS))
-
+#if canImport(UIKit)
 import UIKit
 
 /// A range following the CoreGraphics radial coordinates.
@@ -39,5 +38,4 @@ public struct DPad {
     public static let arc19 = DegreeRange(CGFloat(334.5), CGFloat(350.5))
     public static let arc20 = DegreeRange(CGFloat(351.5), CGFloat(8.5))
 }
-
 #endif

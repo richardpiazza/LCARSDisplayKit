@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import LCARSDisplayKitViews
+import LCARSDisplayKit
 
 @IBDesignable
 class DGroupView: DirectionGroupingView {

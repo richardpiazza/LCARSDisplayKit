@@ -1,7 +1,5 @@
-#if canImport(LCARSDisplayKit)
-import LCARSDisplayKit
-#endif
-#if (os(iOS) || os(tvOS))
+import Shapes
+#if canImport(UIKit)
 import UIKit
     
 public struct TNG: Theme {

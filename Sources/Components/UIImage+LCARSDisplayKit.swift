@@ -1,5 +1,4 @@
-#if (os(iOS) || os(tvOS))
-
+#if canImport(UIKit)
 import UIKit
 
 public extension UIImage {
@@ -89,5 +88,4 @@ public extension UIImage {
         return image
     }
 }
-
 #endif

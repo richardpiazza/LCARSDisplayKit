@@ -1,12 +1,8 @@
-#if canImport(LCARSDisplayKit)
-import LCARSDisplayKit
-#endif
-#if canImport(LCARSDisplayKitUI)
-import LCARSDisplayKitUI
-#endif
-#if (os(iOS) || os(tvOS))
-import UIKit
+import Shapes
+import Components
 import GraphPoint
+#if canImport(UIKit)
+import UIKit
 
 /// An expansion of the `DirectionGroupingView` with surrounding buttons.
 /// This layout is representative of LCARS starting in 2371.
@@ -421,5 +417,4 @@ import GraphPoint
         top00.layoutIfNeeded()
     }
 }
-
 #endif

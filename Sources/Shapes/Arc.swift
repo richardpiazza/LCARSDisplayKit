@@ -1,7 +1,6 @@
-#if (os(macOS) || os(iOS) || os(tvOS) || os(watchOS))
-
-import CoreGraphics
 import GraphPoint
+#if canImport(CoreGraphics)
+import CoreGraphics
 
 /// Arc of a circle (a continuous length around the circumference)
 public struct Arc: Graphable {
@@ -87,5 +86,4 @@ public struct Arc: Graphable {
         return path
     }
 }
-
 #endif

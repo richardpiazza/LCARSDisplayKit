@@ -1,8 +1,10 @@
 import XCTest
 import GraphPoint
-@testable import LCARSDisplayKit
+@testable import Shapes
+@testable import Components
+@testable import UI
 
-class GenericTests: XCTestCase {
+final class GenericTests: XCTestCase {
     
     static var allTests = [
         ("testExample", testExample)

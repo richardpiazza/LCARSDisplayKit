@@ -1,7 +1,5 @@
-#if canImport(LCARSDisplayKit)
-import LCARSDisplayKit
-#endif
-#if (os(iOS) || os(tvOS))
+import Shapes
+#if canImport(UIKit)
 import UIKit
     
 public protocol Theme {
@@ -39,5 +37,4 @@ public extension Theme {
         return CGFloat(8)
     }
 }
-
 #endif

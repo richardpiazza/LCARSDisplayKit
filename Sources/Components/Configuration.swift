@@ -1,9 +1,7 @@
-#if (os(iOS) || os(tvOS))
-
-import Foundation
+#if canImport(UIKit)
+import UIKit
     
 public struct Configuration {
     public static var theme: Theme = TNG()
 }
-
 #endif

@@ -8,15 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		E105B78D1D5E6688004AE5D9 /* Designables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E105B78B1D5E6688004AE5D9 /* Designables.storyboard */; };
+		E1084467256E7FB3005DDC10 /* LCARSDisplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1084466256E7FB3005DDC10 /* LCARSDisplayKit */; };
 		E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */; };
 		E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB51BBE7FBC0001C33D /* ViewController.swift */; };
 		E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FB71BBE7FBC0001C33D /* Main.storyboard */; };
 		E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */; };
 		E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */; };
 		E160D49D20006A34000EF3FE /* DGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160D49C20006A34000EF3FE /* DGroupView.swift */; };
-		E1652817256DD2C600876884 /* LCARSDisplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = E1652816256DD2C600876884 /* LCARSDisplayKit */; };
-		E1652819256DD2C600876884 /* LCARSDisplayKitUI in Frameworks */ = {isa = PBXBuildFile; productRef = E1652818256DD2C600876884 /* LCARSDisplayKitUI */; };
-		E165281B256DD2C600876884 /* LCARSDisplayKitViews in Frameworks */ = {isa = PBXBuildFile; productRef = E165281A256DD2C600876884 /* LCARSDisplayKitViews */; };
 		E1EE4FC5226670BB00443943 /* NoiseMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EE4FC4226670BB00443943 /* NoiseMaker.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,9 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1652819256DD2C600876884 /* LCARSDisplayKitUI in Frameworks */,
-				E1652817256DD2C600876884 /* LCARSDisplayKit in Frameworks */,
-				E165281B256DD2C600876884 /* LCARSDisplayKitViews in Frameworks */,
+				E1084467256E7FB3005DDC10 /* LCARSDisplayKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,9 +141,7 @@
 			);
 			name = LCARSDisplayKitExample;
 			packageProductDependencies = (
-				E1652816256DD2C600876884 /* LCARSDisplayKit */,
-				E1652818256DD2C600876884 /* LCARSDisplayKitUI */,
-				E165281A256DD2C600876884 /* LCARSDisplayKitViews */,
+				E1084466256E7FB3005DDC10 /* LCARSDisplayKit */,
 			);
 			productName = LCARSDisplayKit;
 			productReference = E1112FB01BBE7FBC0001C33D /* LCARSDisplayKitExample.app */;
@@ -413,17 +407,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E1652816256DD2C600876884 /* LCARSDisplayKit */ = {
+		E1084466256E7FB3005DDC10 /* LCARSDisplayKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = LCARSDisplayKit;
-		};
-		E1652818256DD2C600876884 /* LCARSDisplayKitUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LCARSDisplayKitUI;
-		};
-		E165281A256DD2C600876884 /* LCARSDisplayKitViews */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = LCARSDisplayKitViews;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

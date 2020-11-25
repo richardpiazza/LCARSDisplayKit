@@ -1,7 +1,6 @@
-#if (os(macOS) || os(iOS) || os(tvOS) || os(watchOS))
-
-import CoreGraphics
 import GraphPoint
+#if canImport(CoreGraphics)
+import CoreGraphics
 
 /// Two `Arc`s connected by straight lines at their end points.
 public struct Crescent: Graphable {

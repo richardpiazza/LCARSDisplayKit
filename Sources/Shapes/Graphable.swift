@@ -1,7 +1,6 @@
-#if (os(macOS) || os(iOS) || os(tvOS) || os(watchOS))
-
-import CoreGraphics
 import GraphPoint
+#if canImport(CoreGraphics)
+import CoreGraphics
 
 public protocol Graphable {
     /// The `GraphPoint`s that define the area of the object

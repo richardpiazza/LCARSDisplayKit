@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import LCARSDisplayKitUI
+import LCARSDisplayKit
 
 class ViewController: UIViewController {
     

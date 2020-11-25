@@ -1,9 +1,7 @@
-#if canImport(LCARSDisplayKit)
-import LCARSDisplayKit
-#endif
-#if (os(iOS) || os(tvOS))
-import UIKit
+import Shapes
 import GraphPoint
+#if canImport(UIKit)
+import UIKit
 
 /// A button used to outline a circular 'DPad'
 open class CrescentButton: Button {
@@ -26,5 +24,4 @@ open class CrescentButton: Button {
         self.crescent = crescent
     }
 }
-
 #endif

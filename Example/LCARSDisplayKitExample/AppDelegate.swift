@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import LCARSDisplayKitUI
+import LCARSDisplayKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        CommandSequencer.`default`.delegate = NoiseMaker.shared
+        CommandSequencer.default.delegate = NoiseMaker.shared
         
         return true
     }

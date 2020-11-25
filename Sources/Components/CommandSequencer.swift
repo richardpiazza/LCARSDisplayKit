@@ -1,7 +1,6 @@
-#if (os(iOS) || os(tvOS))
-
+import Shapes
+#if canImport(UIKit)
 import UIKit
-import LCARSDisplayKit
 
 public protocol CommandSequencerDelegate {
     func neutralBeep()
@@ -119,5 +118,4 @@ public class CommandSequencer {
         delegate?.neutralBeep()
     }
 }
-
 #endif

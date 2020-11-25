@@ -8,7 +8,7 @@
 
 import Foundation
 import AVFoundation
-import LCARSDisplayKitUI
+import LCARSDisplayKit
 
 class NoiseMaker: NSObject, CommandSequencerDelegate {
     

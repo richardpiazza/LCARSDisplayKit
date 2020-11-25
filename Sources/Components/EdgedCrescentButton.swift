@@ -1,9 +1,7 @@
-#if canImport(LCARSDisplayKit)
-import LCARSDisplayKit
-#endif
-#if (os(iOS) || os(tvOS))
-import UIKit
+import Shapes
 import GraphPoint
+#if canImport(UIKit)
+import UIKit
 
 /// Button that has an interior matching an arc, and a flat exterior.
 open class EdgedCrescentButton: Button {
@@ -26,5 +24,4 @@ open class EdgedCrescentButton: Button {
         self.edgedCrescent = edgedCrescent
     }
 }
-
 #endif

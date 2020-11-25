@@ -1,12 +1,8 @@
-#if canImport(LCARSDisplayKit)
-import LCARSDisplayKit
-#endif
-#if canImport(LCARSDisplayKitUI)
-import LCARSDisplayKitUI
-#endif
-#if (os(iOS) || os(tvOS))
-import UIKit
+import Shapes
+import Components
 import GraphPoint
+#if canImport(UIKit)
+import UIKit
 
 /// The standard circular Direction-Pad found in many LCARS layouts.
 @IBDesignable open class DirectionGroupingView: UIView {
@@ -207,5 +203,4 @@ import GraphPoint
         sector04.layoutIfNeeded()
     }
 }
-
 #endif

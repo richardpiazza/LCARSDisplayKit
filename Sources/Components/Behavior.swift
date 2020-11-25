@@ -1,5 +1,4 @@
-#if (os(iOS) || os(tvOS))
-
+#if canImport(UIKit)
 import UIKit
  
 public enum Behavior {
@@ -38,5 +37,4 @@ public enum Behavior {
         }
     }
 }
-
 #endif

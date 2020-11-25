@@ -1,5 +1,4 @@
-#if (os(iOS) || os(tvOS))
-
+#if canImport(UIKit)
 import UIKit
 
 extension UIColor {
@@ -22,5 +21,4 @@ extension UIColor {
         return UIColor(hue: hue, saturation: adaptedSaturation, brightness: brightness, alpha: alpha)
     }
 }
-
 #endif
