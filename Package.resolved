@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "GraphPoint",
+        "repositoryURL": "https://github.com/richardpiazza/GraphPoint.git",
+        "state": {
+          "branch": "feature/cartesian-naming",
+          "revision": "24f3a60e28b33b8c590fdcfce44e72fd0bc2e83a",
+          "version": null
+        }
+      },
+      {
+        "package": "Swift2D",
+        "repositoryURL": "https://github.com/richardpiazza/Swift2D",
+        "state": {
+          "branch": null,
+          "revision": "2cb008918081b17d852431f0a2a1751c7c429137",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
