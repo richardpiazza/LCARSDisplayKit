@@ -26,6 +26,10 @@ class ViewController: UIViewController {
             return
         }
         
+        dgroup.buttonTapHandler = { (button) in
+            CommandSequencer.default.didTouch(button ?? Button())
+        }
+        
         dgroup.outerRing14.isHidden = true
         dgroup.innerRing10.isHidden = true
         dgroup.innerRing16.isHidden = true

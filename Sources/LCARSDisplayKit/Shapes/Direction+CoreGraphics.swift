@@ -22,7 +22,7 @@ extension Direction: ExpressibleByPath {
         case .right:
             let arrowPath: CGMutablePath = CGMutablePath()
             let arcX = size.width + center.x - frame.width
-            arrowPath.addArc(center: CartesianPoint(x: arcX, y: center.y), radius: arc.radius, startAngle: arc.startDegree, endAngle: arc.endDegree, clockwise: false)
+            arrowPath.addArc(center: CartesianPoint(x: arcX, y: center.y), radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree, clockwise: false)
             arrowPath.addLine(to: CartesianPoint(x: size.width - unit, y: size.height))
             arrowPath.addLine(to: CartesianPoint(x: size.width - unit, y: 0))
             arrowPath.closeSubpath()
@@ -39,7 +39,7 @@ extension Direction: ExpressibleByPath {
         case .down:
             let arrowPath: CGMutablePath = CGMutablePath()
             let arcY = size.height + center.y - frame.height
-            arrowPath.addArc(center: CartesianPoint(x: center.x, y: arcY), radius: arc.radius, startAngle: arc.startDegree, endAngle: arc.endDegree, clockwise: false)
+            arrowPath.addArc(center: CartesianPoint(x: center.x, y: arcY), radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree, clockwise: false)
             arrowPath.addLine(to: CartesianPoint(x: 0.0, y: size.height - unit))
             arrowPath.addLine(to: CartesianPoint(x: size.width, y: size.height - unit))
             arrowPath.closeSubpath()
@@ -55,7 +55,7 @@ extension Direction: ExpressibleByPath {
             paths.append(remainingPath)
         case .left:
             let arrowPath: CGMutablePath = CGMutablePath()
-            arrowPath.addArc(center: center, radius: arc.radius, startAngle: arc.startDegree, endAngle: arc.endDegree, clockwise: false)
+            arrowPath.addArc(center: center, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree, clockwise: false)
             arrowPath.addLine(to: CartesianPoint(x: unit, y: 0))
             arrowPath.addLine(to: CartesianPoint(x: unit, y: size.height))
             arrowPath.closeSubpath()
@@ -71,7 +71,7 @@ extension Direction: ExpressibleByPath {
             paths.append(remainingPath)
         case .up:
             let arrowPath: CGMutablePath = CGMutablePath()
-            arrowPath.addArc(center: center, radius: arc.radius, startAngle: arc.startDegree, endAngle: arc.endDegree, clockwise: false)
+            arrowPath.addArc(center: center, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree, clockwise: false)
             arrowPath.addLine(to: CartesianPoint(x: size.width, y: unit))
             arrowPath.addLine(to: CartesianPoint(x: 0, y: unit))
             arrowPath.closeSubpath()

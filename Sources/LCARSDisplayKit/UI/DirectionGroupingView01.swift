@@ -1,4 +1,5 @@
 import GraphPoint
+import Swift2D
 #if canImport(UIKit)
 import UIKit
 
@@ -354,7 +355,7 @@ import UIKit
         let x = bounds.size.width + width - edge15Origin.x
         let y = edge15Origin.y
         
-        let roundedRectangle = RoundedRectangle(size: CGSize(width: width, height: height), leftRounded: true, rightRounded: true, cornersOnly: false)
+        let roundedRectangle = RoundedRectangle(size: Size(width: Float(width), height: Float(height)), leftRounded: true, rightRounded: true, cornersOnly: false)
         
         let button = RoundedRectangleButton(with: CGRect(x: x, y: y, width: width, height: height), roundedRectangle: roundedRectangle)
         button.setTitle("T00", for: UIControl.State())
@@ -368,8 +369,8 @@ import UIKit
     }
     
     // {0.0, 50.0}
-    open override var offset: GraphOriginOffset {
-        return GraphOriginOffset(x: 0.0, y: (scaledContentSize.height * 0.0765))
+    open override var cartesianOffset: CartesianFrame.Offset {
+        return .init(x: 0.0, y: Float(scaledContentSize.height * 0.0765))
     }
     
     open var secondRingEdgeExteriorRadius: CGFloat {

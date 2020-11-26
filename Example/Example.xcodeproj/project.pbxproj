@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E105B78D1D5E6688004AE5D9 /* Designables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E105B78B1D5E6688004AE5D9 /* Designables.storyboard */; };
 		E1084470256E86A4005DDC10 /* LCARSDisplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = E108446F256E86A4005DDC10 /* LCARSDisplayKit */; };
+		E108447825700249005DDC10 /* CommandSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108447725700248005DDC10 /* CommandSequencer.swift */; };
 		E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */; };
 		E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB51BBE7FBC0001C33D /* ViewController.swift */; };
 		E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FB71BBE7FBC0001C33D /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* Begin PBXFileReference section */
 		E105B78C1D5E6688004AE5D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Designables.storyboard; sourceTree = "<group>"; };
 		E108446E256E869D005DDC10 /* LCARSDisplayKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LCARSDisplayKit; path = ..; sourceTree = "<group>"; };
+		E108447725700248005DDC10 /* CommandSequencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSequencer.swift; sourceTree = "<group>"; };
 		E1112FB01BBE7FBC0001C33D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1112FB51BBE7FBC0001C33D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				E1112FBF1BBE7FBC0001C33D /* Info.plist */,
 				E105B78B1D5E6688004AE5D9 /* Designables.storyboard */,
 				E160D49C20006A34000EF3FE /* DGroupView.swift */,
+				E108447725700248005DDC10 /* CommandSequencer.swift */,
 				E1EE4FC4226670BB00443943 /* NoiseMaker.swift */,
 			);
 			path = Example;
@@ -202,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E108447825700249005DDC10 /* CommandSequencer.swift in Sources */,
 				E160D49D20006A34000EF3FE /* DGroupView.swift in Sources */,
 				E1EE4FC5226670BB00443943 /* NoiseMaker.swift in Sources */,
 				E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */,

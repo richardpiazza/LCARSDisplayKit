@@ -10,7 +10,7 @@ extension Arc: ExpressibleByPath {
         let center = frame.offsetToCartesianOrigin
         let pivot = frame.originModifiedBy(pivotPoint)
         
-        path.addArc(center: center, radius: radius, startAngle: startDegree, endAngle: endDegree, clockwise: false)
+        path.addArc(center: center, radius: radius, startDegree: startDegree, endDegree: endDegree, clockwise: false)
         path.addLine(to: CGPoint(pivot))
         path.closeSubpath()
         

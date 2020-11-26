@@ -2,20 +2,12 @@
 import UIKit
 
 /// Base button class
-open class Button: UIButton, Tappable {
-    public typealias TapHandler = (_ button: Button) -> Void
+open class TappableButton<Shape: Graphable>: UIButton {
     
-    open var rectangle: RoundedRectangle = RoundedRectangle()
-    open var graphable: Graphable {
-        get {
-            return rectangle
-        }
-        set {
-            if let type = newValue as? RoundedRectangle {
-                rectangle = type
-            }
-        }
-    }
+    public typealias TapHandler = (_ button: TappableButton<Shape>) -> Void
+    
+    open var shape: Shape?
+    
     open var behavior: Behavior? {
         willSet {
             behavior?.end(self)
@@ -25,30 +17,31 @@ open class Button: UIButton, Tappable {
         }
     }
     
+    open override var frame: CGRect {
+        didSet {
+            shape?.size = frame.size
+        }
+    }
+    
     open var tapHandler: TapHandler?
     
     @IBInspectable open var color: UIColor = Configuration.theme.inactive
     
-    public init(frame: CGRect, tapHandler: TapHandler? = nil) {
-        super.init(frame: frame)
-        graphable.size = frame.size
+    public init(shape: Shape, tapHandler: TapHandler? = nil) {
+        super.init(frame: .zero)
+        self.shape = shape
         self.tapHandler = tapHandler
+        
+        self.shape?.size = frame.size
+        
         titleLabel?.font = Configuration.theme.body
         setTitleColor(.black, for: .init())
-    }
-    
-    @available(*, deprecated, renamed: "init(frame:font:tapHandler:)")
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        graphable.size = frame.size
-        self.titleLabel?.font = Configuration.theme.body
-        self.setTitleColor(UIColor.black, for: UIControl.State())
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.titleLabel?.font = Configuration.theme.body
-        self.setTitleColor(UIColor.black, for: UIControl.State())
+        self.setTitleColor(.black, for: .init())
     }
     
     open override var intrinsicContentSize: CGSize {
@@ -58,13 +51,13 @@ open class Button: UIButton, Tappable {
     open override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        graphable.size = rect.size
+        shape?.size = rect.size
         let context = UIGraphicsGetCurrentContext()
-        self.setBackgroundImage(self.image(context), for: UIControl.State())
+        self.setBackgroundImage(self.image(context), for: .init())
     }
     
     open override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        return path.contains(point)
+        return shape?.path.contains(point) ?? false
     }
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -89,13 +82,44 @@ open class Button: UIButton, Tappable {
         super.touchesEnded(touches, with: event)
     }
     
-    // - MARK: Tappable    
+    /// Colors that are used for each of the `subpaths`
     open var colors: [UIColor]? {
         return nil
     }
     
+    var touchedColor: UIColor {
+        return self.color.adaptingSaturation(by: 0.8)
+    }
+    
+    /// Colors used for each `subpath` used during active touching
     open var touchedColors: [UIColor]? {
         return nil
+    }
+    
+    /// An image generated using the shape's `path`
+    open func image(_ context: CGContext?) -> UIImage? {
+        guard let shape = self.shape else {
+            return nil
+        }
+        
+        if let paths = shape.subpaths, let colors = self.colors {
+            return UIImage.image(with: paths, colors: colors, size: shape.size, context: context)
+        }
+        
+        return UIImage.image(with: shape.path, fillColor: self.color, context: context)
+    }
+    
+    /// An image generated using the shape's `path` and substituting the `touchedColor`.
+    open func touchedImage(_ context: CGContext?) -> UIImage? {
+        guard let shape = self.shape else {
+            return nil
+        }
+        
+        if let paths = shape.subpaths, let colors = self.touchedColors {
+            return UIImage.image(with: paths, colors: colors, size: shape.size, context: context)
+        }
+        
+        return UIImage.image(with: shape.path, fillColor: self.touchedColor, context: context)
     }
 }
 #endif

@@ -9,7 +9,7 @@ extension EdgedCrescent: ExpressibleByPath {
         let frame = cartesianFrame
         let center = frame.offsetToCartesianOrigin
         
-        path.addArc(center: center, radius: arc.radius, startAngle: arc.startDegree, endAngle: arc.endDegree, clockwise: false)
+        path.addArc(center: center, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree, clockwise: false)
         
         edgePoints.reversed().forEach { (point) in
             let translated = frame.originModifiedBy(point)

@@ -1,11 +1,5 @@
-#if canImport(UIKit)
+import LCARSDisplayKit
 import UIKit
-
-public protocol CommandSequencerDelegate {
-    func neutralBeep()
-    func successBeep()
-    func failureBeep()
-}
 
 public typealias CommandSequenceCompletion = () -> Void
 
@@ -20,11 +14,15 @@ public struct CommandSequence {
 }
     
 public class CommandSequencer {
-    public static var `default`: CommandSequencer = CommandSequencer()
-    public var delegate: CommandSequencerDelegate?
+    public static var `default`: CommandSequencer = CommandSequencer(noiseMaker: .default)
     
+    var noiseMaker: NoiseMaker
     private var commandSequences: [CommandSequence] = []
     private var currentPath: [Button] = []
+    
+    init(noiseMaker: NoiseMaker) {
+        self.noiseMaker = noiseMaker
+    }
     
     public func register(commandSequence sequence: CommandSequence) {
         if commandSequences.contains(where: { (cs) -> Bool in
@@ -93,7 +91,7 @@ public class CommandSequencer {
         
         guard commandSequences.count > 0 else {
             print("No Command Sequences")
-            delegate?.failureBeep()
+            noiseMaker.failureBeep()
             currentPath.removeAll()
             return
         }
@@ -101,20 +99,19 @@ public class CommandSequencer {
         if let completion = completion(for: currentPath) {
             print("Command Sequence Complete")
             completion()
-            delegate?.successBeep()
+            noiseMaker.successBeep()
             currentPath.removeAll()
             return
         }
         
         guard sequencesContainingPrefix(currentPath).count > 0 else {
             print("Command Sequence Failed")
-            delegate?.failureBeep()
+            noiseMaker.failureBeep()
             currentPath.removeAll()
             return
         }
         
         print("Command Sequence In Progress")
-        delegate?.neutralBeep()
+        noiseMaker.neutralBeep()
     }
 }
-#endif

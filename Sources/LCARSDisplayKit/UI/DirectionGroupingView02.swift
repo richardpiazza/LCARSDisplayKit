@@ -106,8 +106,8 @@ import UIKit
     }
     
     // {0.0, 52.0}
-    open override var offset: GraphOriginOffset {
-        return GraphOriginOffset(x: 0.0, y: (scaledContentSize.height * 0.068))
+    open override var cartesianOffset: CartesianFrame.Offset {
+        return .init(x: 0.0, y: Float(scaledContentSize.height * 0.068))
     }
     
     open override var firstRingEdgeExteriorRadius: CGFloat {

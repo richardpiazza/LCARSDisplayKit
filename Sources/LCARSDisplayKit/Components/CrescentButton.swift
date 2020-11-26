@@ -17,6 +17,7 @@ open class CrescentButton: Button {
         }
     }
     
+    @available(*, deprecated)
     public convenience init(with crescent: Crescent, inBounds: CGRect, offset: GraphOriginOffset) {
         let frame = inBounds.frame(graphFrame: crescent.graphFrame, offset: offset)
         self.init(frame: frame)
