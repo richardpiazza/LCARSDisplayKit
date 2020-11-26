@@ -2,6 +2,7 @@ import GraphPoint
 #if canImport(CoreGraphics)
 import CoreGraphics
 
+@available(*, deprecated)
 public protocol Graphable {
     /// The `GraphPoint`s that define the area of the object
     var graphPoints: [GraphPoint] { get }
@@ -15,6 +16,7 @@ public protocol Graphable {
     var subpaths: [CGMutablePath]? { get }
 }
 
+@available(*, deprecated)
 extension Graphable {
     public var graphPoints: [GraphPoint] {
         return []

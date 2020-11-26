@@ -18,7 +18,7 @@ import UIKit
     open lazy var up: DirectionButton = {
         let frame = self.frame(for: .up)
         let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.up.start), endDegree: Degree(DPad.up.end + 0.5))
-        let direction = Direction(.up, arc: arc)
+        let direction = Direction(.up, arc: arc, innerRadius: innerRadius)
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControl.State())
         self.addSubview(button)
@@ -27,7 +27,7 @@ import UIKit
     open lazy var down: DirectionButton = {
         let frame = self.frame(for: .down)
         let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.down.start - 0.5), endDegree: Degree(DPad.down.end))
-        let direction = Direction(.down, arc: arc)
+        let direction = Direction(.down, arc: arc, innerRadius: innerRadius)
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControl.State())
         self.addSubview(button)
@@ -36,7 +36,7 @@ import UIKit
     open lazy var left: DirectionButton = {
         let frame = self.frame(for: .left)
         let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.left.start - 0.5), endDegree: Degree(DPad.left.end))
-        let direction = Direction(.left, arc: arc)
+        let direction = Direction(.left, arc: arc, innerRadius: innerRadius)
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControl.State())
         self.addSubview(button)
@@ -45,7 +45,7 @@ import UIKit
     open lazy var right: DirectionButton = {
         let frame = self.frame(for: .right)
         let arc = Arc(radius: Radius(dpadRadius), startDegree: Degree(DPad.right.start), endDegree: Degree(DPad.right.end + 0.5))
-        let direction = Direction(.right, arc: arc)
+        let direction = Direction(.right, arc: arc, innerRadius: innerRadius)
         let button = DirectionButton(with: frame, direction: direction)
         button.setTitle("", for: UIControl.State())
         self.addSubview(button)
@@ -125,6 +125,10 @@ import UIKit
     /// The width and height of the central square
     open var cruxDiameter: CGFloat {
         return DirectionGroupingView.defaultCruxDiameter * scaleRatio
+    }
+    
+    var innerRadius: Radius {
+        return (Float(cruxDiameter) / 2) + Float(Configuration.theme.defaultSpacing)
     }
     
     /// Determines the frame for each of the direction buttons.

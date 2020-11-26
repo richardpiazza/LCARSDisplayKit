@@ -1,5 +1,5 @@
-#if canImport(UIKit)
-import UIKit
+#if canImport(CoreGraphics)
+import CoreGraphics
 
 /// A collection of radial coordinates used in drawing the `DirectionGroupingView`
 ///

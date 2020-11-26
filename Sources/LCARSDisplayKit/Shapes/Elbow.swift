@@ -41,7 +41,6 @@ extension Elbow: ExpressibleByPath {
         switch (top, left) {
         case (true, true): // Upper Left
             if rounded {
-//                path.addArc(center: upperLeftOuterCenter, radius: outerRadius, startAngle: CGFloat(180).radians, endAngle: CGFloat(270).radians, clockwise: false)
                 path.addArc(center: upperLeftOuterCenter, radius: Radius(outerRadius), startAngle: 180.0, endAngle: 270.0, clockwise: false)
             } else {
                 path.move(to: CGPoint.zero)
@@ -50,7 +49,6 @@ extension Elbow: ExpressibleByPath {
             path.addLine(to: CGPoint(x: size.width, y: horizontalHeight))
             if rounded {
                 path.addLine(to: CGPoint(x: verticalWidth + innerRadius, y: horizontalHeight))
-//                path.addArc(center: upperLeftInnerCenter, radius: innerRadius, startAngle: CGFloat(270).radians, endAngle: CGFloat(180).radians, clockwise: true)
                 path.addArc(center: upperLeftInnerCenter, radius: Radius(innerRadius), startAngle: 270.0, endAngle: 180.0, clockwise: true)
             } else {
                 path.addLine(to: CGPoint(x: verticalWidth, y: horizontalHeight))
@@ -66,7 +64,6 @@ extension Elbow: ExpressibleByPath {
             path.closeSubpath()
         case (false, true): // Lower Left
             if rounded {
-//                path.addArc(center: CGPoint(x: upperLeftOuterCenter.x, y: lowerRightOuterCenter.y), radius: outerRadius, startAngle: CGFloat(180).radians, endAngle: CGFloat(90).radians, clockwise: true)
                 path.addArc(center: CartesianPoint(x: upperLeftOuterCenter.x, y: lowerRightOuterCenter.y), radius: Radius(outerRadius), startAngle: 180.0, endAngle: 90.0, clockwise: true)
             } else {
                 path.move(to: CGPoint(x: 0, y: size.height))
@@ -75,7 +72,6 @@ extension Elbow: ExpressibleByPath {
             path.addLine(to: CGPoint(x: size.width, y: size.height - horizontalHeight))
             if rounded {
                 path.addLine(to: CGPoint(x: verticalWidth + innerRadius, y: size.height - horizontalHeight))
-//                path.addArc(center: CGPoint(x: upperLeftInnerCenter.x, y: lowerRightInnerCenter.y), radius: innerRadius, startAngle: CGFloat(90).radians, endAngle: CGFloat(180).radians, clockwise: false)
                 path.addArc(center: CartesianPoint(x: upperLeftInnerCenter.x, y: lowerRightInnerCenter.y), radius: Radius(innerRadius), startAngle: 90.0, endAngle: 180.0, clockwise: false)
             } else {
                 path.addLine(to: CGPoint(x: verticalWidth, y: size.height - horizontalHeight))
@@ -91,8 +87,7 @@ extension Elbow: ExpressibleByPath {
             path.closeSubpath()
         case (true, false): // Upper Right
             if rounded {
-//                path.addArc(center: CGPoint(x: lowerRightOuterCenter.x, y: upperLeftOuterCenter.y), radius: outerRadius, startAngle: CGFloat(0).radians, endAngle: CGFloat(270).radians, clockwise: true)
-                path.addArc(center: CartesianPoint(x: lowerRightOuterCenter.x, y: upperLeftInnerCenter.y), radius: Radius(outerRadius), startAngle: 0.0, endAngle: 270.0, clockwise: true)
+                path.addArc(center: CartesianPoint(x: lowerRightOuterCenter.x, y: upperLeftOuterCenter.y), radius: Radius(outerRadius), startAngle: 0.0, endAngle: 270.0, clockwise: true)
             } else {
                 path.move(to: CGPoint(x: size.width, y: 0))
             }
@@ -100,7 +95,6 @@ extension Elbow: ExpressibleByPath {
             path.addLine(to: CGPoint(x: 0, y: horizontalHeight))
             if rounded {
                 path.addLine(to: CGPoint(x: size.width - verticalWidth - innerRadius, y: horizontalHeight))
-//                path.addArc(center: CGPoint(x: lowerRightInnerCenter.x, y: upperLeftInnerCenter.y), radius: innerRadius, startAngle: CGFloat(270).radians, endAngle: CGFloat(0).radians, clockwise: false)
                 path.addArc(center: CartesianPoint(x: lowerRightInnerCenter.x, y: upperLeftInnerCenter.y), radius: Radius(innerRadius), startAngle: 270.0, endAngle: 0.0, clockwise: false)
             } else {
                 path.addLine(to: CGPoint(x: size.width - verticalWidth, y: horizontalHeight))
@@ -116,7 +110,6 @@ extension Elbow: ExpressibleByPath {
             path.closeSubpath()
         case (false, false): // Lower Right
             if rounded {
-//                path.addArc(center: lowerRightOuterCenter, radius: outerRadius, startAngle: CGFloat(0).radians, endAngle: CGFloat(90).radians, clockwise: false)
                 path.addArc(center: lowerRightOuterCenter, radius: Radius(outerRadius), startAngle: 0.0, endAngle: 90.0, clockwise: false)
             } else {
                 path.move(to: CGPoint(x: size.width, y: size.height))
@@ -125,7 +118,6 @@ extension Elbow: ExpressibleByPath {
             path.addLine(to: CGPoint(x: 0, y: size.height - horizontalHeight))
             if rounded {
                 path.addLine(to: CGPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight))
-//                path.addArc(center: lowerRightInnerCenter, radius: innerRadius, startAngle: CGFloat(90).radians, endAngle: CGFloat(0).radians, clockwise: true)
                 path.addArc(center: lowerRightInnerCenter, radius: Radius(innerRadius), startAngle: 90.0, endAngle: 0.0, clockwise: true)
             } else {
                 path.addLine(to: CGPoint(x: size.width - verticalWidth, y: size.height - horizontalHeight))
