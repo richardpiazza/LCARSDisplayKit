@@ -35,6 +35,16 @@ extension CGMutablePath {
         )
     }
     
+    func addArc(arc: Arc, center: CartesianPoint, clockwise: Bool) {
+        addArc(
+            center: CGPoint(center),
+            radius: CGFloat(arc.radius),
+            startAngle: CGFloat(arc.startingDegree.radians),
+            endAngle: CGFloat(arc.endingDegree.radians),
+            clockwise: clockwise
+        )
+    }
+    
     func addLine(to point: CartesianPoint) {
         addLine(to: CGPoint(point))
     }

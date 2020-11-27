@@ -47,7 +47,7 @@ extension EdgedCrescent: Graphable {
 
 @available(*, deprecated)
 extension EdgedCrescent {
-    public init(arc: Arc = Arc(), additionalPoints: [GraphPoint]) {
+    public init(arc: ModifiedArc = ModifiedArc(), additionalPoints: [GraphPoint]) {
         self.init(arc: arc, edgePoints: [])
         self.additionalPoints = additionalPoints
     }

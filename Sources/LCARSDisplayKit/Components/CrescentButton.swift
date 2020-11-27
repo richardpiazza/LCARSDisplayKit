@@ -24,4 +24,8 @@ open class CrescentButton: Button {
         self.crescent = crescent
     }
 }
+
+open class Crescent_Button: TappableButton<Crescent> {
+    
+}
 #endif

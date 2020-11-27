@@ -10,8 +10,8 @@ import UIKit
     open lazy var innerRing01: CrescentButton = {
         let half = DPad.arc02.start + ((DPad.arc02.end - DPad.arc02.start) / 2)
         
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc01.start + 1.5), endDegree: Degree(half))
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc01.start - 2.0), endDegree: Degree(half))
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc01.start + 1.5), endDegree: Degree(half))
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc01.start - 2.0), endDegree: Degree(half))
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: false)
         
@@ -22,8 +22,8 @@ import UIKit
         return button
     }()
     open lazy var innerRing08: CrescentButton = {
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc08)
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc08)
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc08)
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc08)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -34,8 +34,8 @@ import UIKit
         return button
     }()
     open lazy var innerRing09: CrescentButton = {
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc09)
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc09)
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc09)
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc09)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -46,8 +46,8 @@ import UIKit
         return button
     }()
     open lazy var innerRing10: CrescentButton = {
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc10)
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc10)
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc10)
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc10)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -58,8 +58,8 @@ import UIKit
         return button
     }()
     open lazy var innerRing11: CrescentButton = {
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc11)
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc11)
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc11)
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc11)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -70,8 +70,8 @@ import UIKit
         return button
     }()
     open lazy var innerRing13: CrescentButton = {
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc13)
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc13)
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc13)
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc13)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -82,8 +82,8 @@ import UIKit
         return button
     }()
     open lazy var innerRing14: CrescentButton = {
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc14.start), endDegree: Degree(DPad.arc14.end - 1.0))
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc14.start), endDegree: Degree(DPad.arc14.end - 1.0))
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc14.start), endDegree: Degree(DPad.arc14.end - 1.0))
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc14.start), endDegree: Degree(DPad.arc14.end - 1.0))
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: false, boundedEnd: true)
         
@@ -94,8 +94,8 @@ import UIKit
         return button
     }()
     open lazy var innerRing15: CrescentButton = {
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc15.start - 0.5), endDegree: Degree(DPad.arc15.end + 0.5))
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc15.start - 0.5), endDegree: Degree(DPad.arc15.end + 0.5))
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc15.start - 0.5), endDegree: Degree(DPad.arc15.end + 0.5))
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc15.start - 0.5), endDegree: Degree(DPad.arc15.end + 0.5))
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: true)
         
@@ -108,8 +108,8 @@ import UIKit
     open lazy var innerRing16: CrescentButton = {
         let half = DPad.arc17.start + ((DPad.arc17.end - DPad.arc17.start) / 2)
         
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc16.start + 1.0), endDegree: Degree(half))
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc16.start - 2.0), endDegree: Degree(half))
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc16.start + 1.0), endDegree: Degree(half))
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc16.start - 2.0), endDegree: Degree(half))
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: false)
         
@@ -122,8 +122,8 @@ import UIKit
     open lazy var innerRing17: CrescentButton = {
         let half = DPad.arc17.start + ((DPad.arc17.end - DPad.arc17.start) / 2) + 1.5
         
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(half), endDegree: Degree(DPad.arc19.end - 1.5))
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(half), endDegree: Degree(DPad.arc19.end + 2.0))
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(half), endDegree: Degree(DPad.arc19.end - 1.5))
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(half), endDegree: Degree(DPad.arc19.end + 2.0))
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: false, boundedEnd: true)
         
@@ -134,8 +134,8 @@ import UIKit
         return button
     }()
     open lazy var innerRing20: CrescentButton = {
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc20)
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc20)
+        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc20)
+        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc20)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: true)
         
@@ -146,8 +146,8 @@ import UIKit
         return button
     }()
     open lazy var outerRing09: CrescentButton = {
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc09)
-        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc09)
+        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc09)
+        let outerArc = ModifiedArc(radius: Radius(secondRingExteriorRadius), dPad: .arc09)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -158,8 +158,8 @@ import UIKit
         return button
     }()
     open lazy var outerRing10: CrescentButton = {
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc10)
-        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc10)
+        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc10)
+        let outerArc = ModifiedArc(radius: Radius(secondRingExteriorRadius), dPad: .arc10)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -170,8 +170,8 @@ import UIKit
         return button
     }()
     open lazy var outerRing11: CrescentButton = {
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc11)
-        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc11)
+        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc11)
+        let outerArc = ModifiedArc(radius: Radius(secondRingExteriorRadius), dPad: .arc11)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -182,8 +182,8 @@ import UIKit
         return button
     }()
     open lazy var outerRing12: CrescentButton = {
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc12)
-        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc12)
+        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc12)
+        let outerArc = ModifiedArc(radius: Radius(secondRingExteriorRadius), dPad: .arc12)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -194,8 +194,8 @@ import UIKit
         return button
     }()
     open lazy var outerRing13: CrescentButton = {
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc13)
-        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc13)
+        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc13)
+        let outerArc = ModifiedArc(radius: Radius(secondRingExteriorRadius), dPad: .arc13)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -206,8 +206,8 @@ import UIKit
         return button
     }()
     open lazy var outerRing18Extended: CrescentButton = {
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc18)
-        let outerArc = Arc(radius: Radius(secondRingExtendedExteriorRadius), dPad: .arc18)
+        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc18)
+        let outerArc = ModifiedArc(radius: Radius(secondRingExtendedExteriorRadius), dPad: .arc18)
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
         
@@ -219,8 +219,8 @@ import UIKit
         return button
     }()
     open lazy var outerRing19Extended: CrescentButton = {
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), startDegree: Degree(DPad.arc19.start), endDegree: Degree(DPad.arc19.end + 2.0))
-        let outerArc = Arc(radius: Radius(secondRingExtendedExteriorRadius), startDegree: Degree(DPad.arc19.start), endDegree: Degree(DPad.arc19.end + 2.0))
+        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), startDegree: Degree(DPad.arc19.start), endDegree: Degree(DPad.arc19.end + 2.0))
+        let outerArc = ModifiedArc(radius: Radius(secondRingExtendedExteriorRadius), startDegree: Degree(DPad.arc19.start), endDegree: Degree(DPad.arc19.end + 2.0))
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: false, boundedEnd: true)
         
@@ -235,8 +235,8 @@ import UIKit
         let startDegree = GraphPoint.degree(graphPoint: innerRing20.crescent.outerArc.startPoint) + 0.25
         let endDegree = GraphPoint.degree(graphPoint: innerRing20.crescent.outerArc.endPoint) - 0.25
         
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
-        let outerArc = Arc(radius: Radius(secondRingExtendedExteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
+        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
+        let outerArc = ModifiedArc(radius: Radius(secondRingExtendedExteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
         
         let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: true)
         
@@ -247,8 +247,8 @@ import UIKit
         return button
     }()
     open lazy var edge04: EdgedCrescentButton = {
-        let interiorArc = Arc(radius: Radius(thirdRingInteriorRadius), dPad: .arc13)
-        let exteriorArc = Arc(radius: Radius(thirdRingExteriorRadius), dPad: .arc13)
+        let interiorArc = ModifiedArc(radius: Radius(thirdRingInteriorRadius), dPad: .arc13)
+        let exteriorArc = ModifiedArc(radius: Radius(thirdRingExteriorRadius), dPad: .arc13)
         let interiorAngleStart = 270 - interiorArc.startDegree
         let exteriorAngleStart = 180 - 90 - interiorAngleStart
         let edgeLength = (Float(exteriorArc.endPoint.y) / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
@@ -256,7 +256,7 @@ import UIKit
         let point01 = CGPoint(x: CGFloat(-edgeLength), y: exteriorArc.endPoint.y)
         let point02 = CGPoint(x: exteriorArc.endPoint.x, y: exteriorArc.endPoint.y)
         
-        var arc = Arc(radius: Radius(thirdRingInteriorRadius), dPad: .arc13)
+        var arc = ModifiedArc(radius: Radius(thirdRingInteriorRadius), dPad: .arc13)
         var edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [point01, point02])
         
         let button = EdgedCrescentButton(with: edgedCrescent, inBounds: bounds, offset: self.offset)
@@ -269,8 +269,8 @@ import UIKit
     open lazy var edge05: EdgedCrescentButton = {
         let startDegree = GraphPoint.degree(graphPoint: innerRing15.crescent.outerArc.startPoint) + 0.25
         let endDegree = GraphPoint.degree(graphPoint: innerRing15.crescent.outerArc.endPoint) - 0.25
-        let interiorArc = Arc(radius: Radius(secondRingInteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
-        var exteriorArc = Arc(radius: Radius(secondRingEdgeExteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
+        let interiorArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
+        var exteriorArc = ModifiedArc(radius: Radius(secondRingEdgeExteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
         exteriorArc.boundedStart = interiorArc.startPoint
         exteriorArc.boundedEnd = interiorArc.endPoint
         let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [exteriorArc.startPoint, exteriorArc.endPoint])

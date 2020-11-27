@@ -2,7 +2,7 @@ import GraphPoint
 #if canImport(CoreGraphics)
 import CoreGraphics
 
-extension Arc: ExpressibleByPath {
+extension ModifiedArc: ExpressibleByPath {
     public var path: CGMutablePath {
         let path: CGMutablePath = CGMutablePath()
         
@@ -23,7 +23,7 @@ extension Arc: ExpressibleByPath {
 }
 
 @available(*, deprecated)
-extension Arc {
+extension ModifiedArc {
     public init(radius: CGFloat, startDegree: CGFloat, endDegree: CGFloat) {
         self.radius = Radius(radius)
         self.startDegree = Degree(startDegree)
@@ -109,7 +109,7 @@ extension Arc {
 }
 
 @available(*, deprecated)
-extension Arc: Graphable {
+extension ModifiedArc: Graphable {
     public var size: CGSize {
         get { .zero }
         set { }

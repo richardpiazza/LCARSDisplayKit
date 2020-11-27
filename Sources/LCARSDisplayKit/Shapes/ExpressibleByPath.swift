@@ -1,4 +1,4 @@
-#if canImport(ObjectiveC) && canImport(CoreGraphics)
+#if canImport(CoreGraphics)
 import CoreGraphics
 
 public protocol ExpressibleByPath {

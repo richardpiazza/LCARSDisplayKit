@@ -1,7 +1,8 @@
 import GraphPoint
 
 /// Arc of a circle (a continuous length around the circumference)
-public struct Arc {
+@available(*, deprecated, message: "Use Arc or Crescent")
+public struct ModifiedArc {
     public var radius: Radius
     public var startDegree: Degree
     public var endDegree: Degree
@@ -22,7 +23,7 @@ public struct Arc {
     }
 }
 
-public extension Arc {
+public extension ModifiedArc {
     var startingPoint: CartesianPoint {
         if let modifier = startLimiter {
             return (try? CartesianPoint.make(for: radius, degree: startDegree, modifier: modifier)) ?? .zero
@@ -62,8 +63,10 @@ public extension Arc {
     }
 }
 
-extension Arc: ExpressibleByCartesianPoints {
+extension ModifiedArc: ExpressibleByCartesianPoints {
     public var cartesianPoints: [CartesianPoint] {
         [startingPoint, endingPoint]
     }
 }
+
+

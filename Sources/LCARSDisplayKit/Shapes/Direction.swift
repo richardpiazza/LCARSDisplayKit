@@ -11,13 +11,32 @@ public struct Direction {
     }
     
     public var cardinal: Cardinal
-    public var arc: Arc
-    public var innerRadius: Radius
+    public var interiorRadius: Radius
+    public var exteriorArc: Arc
     
-    public init(_ cardinal: Cardinal = .right, arc: Arc = Arc(), innerRadius: Radius = 0.0) {
+    @available(*, deprecated, renamed: "exteriorArc")
+    public var arc: ModifiedArc {
+        get { ModifiedArc(radius: exteriorArc.radius, startDegree: exteriorArc.startingDegree, endDegree: exteriorArc.endingDegree) }
+        set { exteriorArc = .init(radius: newValue.radius, startingDegree: newValue.startDegree, endingDegree: newValue.endDegree) }
+    }
+    
+    @available(*, deprecated, renamed: "interiorRadius")
+    public var innerRadius: Radius {
+        get {  interiorRadius }
+        set { interiorRadius = newValue }
+    }
+    
+    public init(_ cardinal: Cardinal = .right, interiorRadius: Radius = 0, exteriorArc: Arc = Arc()) {
         self.cardinal = cardinal
-        self.arc = arc
-        self.innerRadius = innerRadius
+        self.interiorRadius = interiorRadius
+        self.exteriorArc = exteriorArc
+    }
+    
+    @available(*, deprecated, renamed: "init(_:interiorRadius:exteriorArc:)")
+    public init(_ cardinal: Cardinal = .right, arc: ModifiedArc = ModifiedArc(), innerRadius: Radius) {
+        self.cardinal = cardinal
+        self.interiorRadius = innerRadius
+        self.exteriorArc = Arc(radius: arc.radius, startingDegree: arc.startDegree, endingDegree: arc.endDegree)
     }
     
     public var _size: Size {
@@ -27,17 +46,17 @@ public struct Direction {
         
         switch cardinal {
         case .right:
-            width = (frame.x - innerRadius) + frame.width
+            width = (frame.x - interiorRadius) + frame.width
             height = max(frame.width, frame.height)
         case .down:
             width = max(frame.width, frame.height)
-            height = (abs(frame.y) - innerRadius) + frame.height
+            height = (abs(frame.y) - interiorRadius) + frame.height
         case .left:
-            width = (abs(frame.x) - innerRadius) + frame.width
+            width = (abs(frame.x) - interiorRadius) + frame.width
             height = max(frame.width, frame.height)
         case .up:
             width = max(frame.width, frame.height)
-            height = (frame.y - innerRadius) + frame.height
+            height = (frame.y - interiorRadius) + frame.height
         }
         
         return Size(width: width, height: height)
@@ -46,10 +65,11 @@ public struct Direction {
 
 extension Direction: ExpressibleByCartesianPoints {
     public var cartesianPoints: [CartesianPoint] {
-        return []
+        return arc.cartesianPoints
     }
     
     public var cartesianFrame: CartesianFrame {
-        return (try? CartesianFrame.make(for: arc.startingPoint, point2: arc.endingPoint, radius: arc.radius)) ?? .zero
+        let outerArc = Arc(radius: arc.radius, startingDegree: arc.startDegree, endingDegree: arc.endDegree)
+        return (try? CartesianFrame.make(for: outerArc, points: cartesianPoints)) ?? .zero
     }
 }

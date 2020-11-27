@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,32 +15,92 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XN1-9a-she" customClass="DGroupView02" customModule="Example" customModuleProvider="target">
-                                <rect key="frame" x="148" y="408" width="600" height="596"/>
+                                <rect key="frame" x="244" y="571" width="760" height="755"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XN1-9a-she" secondAttribute="height" multiplier="152:151" id="E9W-qD-m6p"/>
                                     <constraint firstAttribute="width" constant="600" id="xZN-zA-dwf"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="xZN-zA-dwf"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysD-d7-gvW" customClass="DGroupView03" customModule="Example" customModuleProvider="target">
-                                <rect key="frame" x="20" y="20" width="550" height="400"/>
+                                <rect key="frame" x="20" y="20" width="715" height="520"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="550" id="5WE-iA-9Li"/>
                                     <constraint firstAttribute="width" secondItem="ysD-d7-gvW" secondAttribute="height" multiplier="11:8" id="y8v-w3-8jq"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5WE-iA-9Li"/>
+                                    </mask>
+                                </variation>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ddK-JN-Gso">
+                                <rect key="frame" x="20" y="571" width="216" height="755"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBf-uU-4OZ" customClass="ElbowButton" customModule="LCARSDisplayKit">
+                                        <rect key="frame" x="0.0" y="0.0" width="216" height="373.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oeo-Nc-tM5" customClass="ElbowButton" customModule="LCARSDisplayKit">
+                                        <rect key="frame" x="0.0" y="381.5" width="216" height="373.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="closedHeight">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kNi-XS-mXP">
+                                <rect key="frame" x="743" y="20" width="261" height="520"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmU-rT-Y5e" customClass="ElbowButton" customModule="LCARSDisplayKit">
+                                        <rect key="frame" x="0.0" y="0.0" width="261" height="256"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="top" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="closedHeight">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TvL-vj-4cm" customClass="ElbowButton" customModule="LCARSDisplayKit">
+                                        <rect key="frame" x="0.0" y="264" width="261" height="256"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="left" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="top" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ddK-JN-Gso" secondAttribute="bottom" constant="20" id="4pH-Fv-7G8"/>
+                            <constraint firstItem="kNi-XS-mXP" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="5ur-yn-mRB"/>
                             <constraint firstItem="ysD-d7-gvW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="Gnb-hl-jIc"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="XN1-9a-she" secondAttribute="bottom" constant="20" id="L8X-gY-VBV"/>
                             <constraint firstItem="XN1-9a-she" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Wcf-BT-CwA"/>
+                            <constraint firstItem="XN1-9a-she" firstAttribute="leading" secondItem="ddK-JN-Gso" secondAttribute="trailing" constant="8" symbolic="YES" id="d3v-X6-MrQ"/>
+                            <constraint firstItem="kNi-XS-mXP" firstAttribute="height" secondItem="ysD-d7-gvW" secondAttribute="height" id="dpo-Ew-FKn"/>
+                            <constraint firstItem="ddK-JN-Gso" firstAttribute="height" secondItem="XN1-9a-she" secondAttribute="height" id="fvh-sJ-ufY"/>
                             <constraint firstItem="ysD-d7-gvW" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="m3Q-AM-ZoD"/>
+                            <constraint firstItem="kNi-XS-mXP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="q3J-hv-yOk"/>
+                            <constraint firstItem="ddK-JN-Gso" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="qv4-aR-KKT"/>
+                            <constraint firstItem="kNi-XS-mXP" firstAttribute="leading" secondItem="ysD-d7-gvW" secondAttribute="trailing" constant="8" symbolic="YES" id="rmY-zA-76N"/>
                         </constraints>
                     </view>
                     <connections>
@@ -49,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="410.15625" y="313.4765625"/>
+            <point key="canvasLocation" x="410.15625" y="313.17715959004391"/>
         </scene>
     </scenes>
     <designables>
