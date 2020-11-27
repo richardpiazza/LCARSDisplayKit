@@ -35,7 +35,7 @@ import UIKit
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        crux.frame = frameForCrux()
+        crux.frame = frameForCrux() // frame(forShape: cruxShape)
         up.frame = frame(for: .up)
         down.frame = frame(for: .down)
         left.frame = frame(for: .left)
@@ -44,16 +44,6 @@ import UIKit
         sector02.frame = frame(forShape: sector2Arc)
         sector03.frame = frame(forShape: sector3Arc)
         sector04.frame = frame(forShape: sector4Arc)
-        
-        crux.layoutIfNeeded()
-        up.layoutIfNeeded()
-        down.layoutIfNeeded()
-        left.layoutIfNeeded()
-        right.layoutIfNeeded()
-        sector01.layoutIfNeeded()
-        sector02.layoutIfNeeded()
-        sector03.layoutIfNeeded()
-        sector04.layoutIfNeeded()
     }
     
     // MARK: - Scale & Position
@@ -158,7 +148,24 @@ import UIKit
         return secondRingInteriorRadius + (scaleRatio * 110.0)
     }
     
-    // MARK: - Components
+    // MARK: - Shapes
+    var cruxShape: RoundedRectangle {
+        let x = cartesianOrigin.x - (Float(cruxDiameter) / 2)
+        let y = cartesianOrigin.y - (Float(cruxDiameter) / 2)
+        let width = Float(cruxDiameter)
+        let height = Float(cruxDiameter)
+        
+        let topLeft: Point = .init(x: x, y: y)
+        let bottomRight: Point = .init(x: x + width, y: y + height)
+        
+        let plane = CartesianPlane(bounds)
+        let first = plane.cartesianPoint(for: topLeft)
+        let second = plane.cartesianPoint(for: bottomRight)
+        
+        return RoundedRectangle(cartesianPoints: [first, second])
+//        return RoundedRectangle(size: .zero, leftRounded: false, rightRounded: false, cornersOnly: false)
+    }
+    
     var upExteriorArc: Arc {
         Arc(radius: Radius(dpadRadius), startingDegree: Degree(DPad.up.start), endingDegree: Degree(DPad.up.end + 0.5))
     }
@@ -191,9 +198,9 @@ import UIKit
         Arc(radius: Radius(dpadRadius), dPad: .sector04)
     }
     
+    // MARK: - Components
     open lazy var crux: RoundedRectangle_Button = {
-        let shape = RoundedRectangle(size: .zero, leftRounded: false, rightRounded: false, cornersOnly: false)
-        let button = RoundedRectangle_Button(shape: shape, tapHandler: { [weak self] (element) in
+        let button = RoundedRectangle_Button(shape: cruxShape, tapHandler: { [weak self] (element) in
             self?.didTapButton(element)
         })
         button.color = Configuration.theme.primaryDark

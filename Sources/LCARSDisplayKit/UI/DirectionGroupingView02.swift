@@ -31,7 +31,7 @@ import UIKit
         return button
     }()
     open lazy var top01: RoundedRectangleButton = {
-        let e13Points = edge13.edgedCrescent.additionalPoints
+        let e13Points = edge13Shape.additionalPoints
         let e13Origin = edge13.frame.origin
         
         let width = e13Points[1].x - e13Points[0].x
@@ -61,7 +61,7 @@ import UIKit
         return button
     }()
     open lazy var top03: RoundedRectangleButton = {
-        let e15Points = edge15.edgedCrescent.additionalPoints
+        let e15Points = edge15Shape.additionalPoints
         let e15Origin = edge15.frame.origin
         
         let width = e15Points[1].x - e15Points[0].x

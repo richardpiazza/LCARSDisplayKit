@@ -24,4 +24,8 @@ open class EdgedCrescentButton: Button {
         self.edgedCrescent = edgedCrescent
     }
 }
+
+open class EdgedCrescent_Button: TappableButton<EdgedCrescent> {
+    
+}
 #endif

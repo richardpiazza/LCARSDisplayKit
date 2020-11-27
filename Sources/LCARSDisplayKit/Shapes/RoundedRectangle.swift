@@ -4,17 +4,31 @@ import Swift2D
 /// A rectangle with optionally rounded ends
 public struct RoundedRectangle {
     public var _size: Size
+    public var _cartesianPoints: [CartesianPoint]
+    
     public var leftRounded: Bool
     public var rightRounded: Bool
     public var cornersOnly: Bool
     
-    public init(size: Size = .zero, leftRounded: Bool = false, rightRounded: Bool = false, cornersOnly: Bool = false) {
+    @available(*, deprecated, renamed: "init(cartesianPoints:leftRounded:rightRounded:cornersOnly:)")
+    public init(size: Size, leftRounded: Bool = false, rightRounded: Bool = false, cornersOnly: Bool = false) {
         self._size = size
+        self._cartesianPoints = []
         self.leftRounded = leftRounded
         self.rightRounded = rightRounded
         self.cornersOnly = cornersOnly
     }
     
+    public init(cartesianPoints: [CartesianPoint] = [], leftRounded: Bool = false, rightRounded: Bool = false, cornersOnly: Bool = false) {
+        self._cartesianPoints = cartesianPoints
+        self._size = CartesianFrame.make(for: cartesianPoints).size
+        self.leftRounded = leftRounded
+        self.rightRounded = rightRounded
+        self.cornersOnly = cornersOnly
+    }
+}
+
+public extension RoundedRectangle {
     /// Calculates the radius of the arcs depending on `cornersOnly`
     var radius: Radius {
         return (cornersOnly) ? _size.height * 0.25 : _size.height * 0.5
@@ -31,6 +45,6 @@ public struct RoundedRectangle {
 
 extension RoundedRectangle: ExpressibleByCartesianPoints {
     public var cartesianPoints: [CartesianPoint] {
-        return []
+        return _cartesianPoints
     }
 }
