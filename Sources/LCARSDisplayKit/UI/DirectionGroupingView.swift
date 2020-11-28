@@ -4,9 +4,9 @@ import Swift2D
 import UIKit
 
 /// The standard circular Direction-Pad found in many LCARS layouts.
-@IBDesignable open class DirectionGroupingView: UIView {
+@IBDesignable open class DirectionGroupingView: UIView, TappableButtonDelegate {
     
-    public typealias ButtonTapHandler = (_ button: Button?) -> Void
+    public typealias ButtonTapHandler = (_ button: UIControl) -> Void
     
     public var buttonTapHandler: ButtonTapHandler?
     
@@ -163,7 +163,6 @@ import UIKit
         let second = plane.cartesianPoint(for: bottomRight)
         
         return RoundedRectangle(cartesianPoints: [first, second])
-//        return RoundedRectangle(size: .zero, leftRounded: false, rightRounded: false, cornersOnly: false)
     }
     
     var upExteriorArc: Arc {
@@ -200,9 +199,7 @@ import UIKit
     
     // MARK: - Components
     open lazy var crux: RoundedRectangle_Button = {
-        let button = RoundedRectangle_Button(shape: cruxShape, tapHandler: { [weak self] (element) in
-            self?.didTapButton(element)
-        })
+        let button = RoundedRectangle_Button(shape: cruxShape, delegate: self)
         button.color = Configuration.theme.primaryDark
         button.setTitle("", for: .init())
         return button
@@ -210,75 +207,64 @@ import UIKit
     
     open lazy var up: Direction_Button = {
         let direction = Direction(.up, interiorRadius: innerRadius, exteriorArc: upExteriorArc)
-        let button = Direction_Button(shape: direction) { [weak self] (element) in
-            self?.didTapButton(element)
-        }
+        let button = Direction_Button(shape: direction, delegate: self)
         button.setTitle("", for: .init())
         return button
     }()
     
     open lazy var down: Direction_Button = {
         let direction = Direction(.down, interiorRadius: innerRadius, exteriorArc: downExteriorArc)
-        let button = Direction_Button(shape: direction) { [weak self] (element) in
-            self?.didTapButton(element)
-        }
+        let button = Direction_Button(shape: direction, delegate: self)
         button.setTitle("", for: .init())
         return button
     }()
     
     open lazy var left: Direction_Button = {
         let direction = Direction(.left, interiorRadius: innerRadius, exteriorArc: leftExteriorArc)
-        let button = Direction_Button(shape: direction) { [weak self] (element) in
-            self?.didTapButton(element)
-        }
+        let button = Direction_Button(shape: direction, delegate: self)
         button.setTitle("", for: .init())
         return button
     }()
     
     open lazy var right: Direction_Button = {
         let direction = Direction(.right, interiorRadius: innerRadius, exteriorArc: rightExteriorArc)
-        let button = Direction_Button(shape: direction) { [weak self] (element) in
-            self?.didTapButton(element)
-        }
+        let button = Direction_Button(shape: direction, delegate: self)
         button.setTitle("", for: UIControl.State())
         return button
     }()
     
     open lazy var sector01: Sector_Button = {
-        let button = Sector_Button(shape: sector1Arc) { [weak self] (element) in
-            self?.didTapButton(element)
-        }
+        let button = Sector_Button(shape: sector1Arc, delegate: self)
         button.setTitle("", for: .init())
         button.color = Configuration.theme.primaryMedium
         return button
     }()
     
     open lazy var sector02: Sector_Button = {
-        let button = Sector_Button(shape: sector2Arc) { [weak self] (element) in
-            self?.didTapButton(element)
-        }
+        let button = Sector_Button(shape: sector2Arc, delegate: self)
         button.setTitle("", for: .init())
         button.color = Configuration.theme.primaryMedium
         return button
     }()
     
     open lazy var sector03: Sector_Button = {
-        let button = Sector_Button(shape: sector3Arc) { [weak self] (element) in
-            self?.didTapButton(element)
-        }
+        let button = Sector_Button(shape: sector3Arc, delegate: self)
         button.setTitle("", for: .init())
         button.color = Configuration.theme.primaryMedium
         return button
     }()
     
     open lazy var sector04: Sector_Button = {
-        let button = Sector_Button(shape: sector4Arc) { [weak self] (element) in
-            self?.didTapButton(element)
-        }
+        let button = Sector_Button(shape: sector4Arc, delegate: self)
         button.setTitle("", for: .init())
         button.color = Configuration.theme.primaryMedium
         return button
     }()
+    
+    // MARK - TappableButtonDelegate
+    public func didTapButton(_ sender: UIButton) {
+        buttonTapHandler?(sender)
+    }
 }
 
 // MARK: - Frame Calculations
@@ -344,17 +330,6 @@ extension DirectionGroupingView {
         }
         
         return CGRect(origin: origin, size: size)
-    }
-}
-
-// MARK: - Interaction
-extension DirectionGroupingView {
-    func didTapButton(_ button: Button) {
-        buttonTapHandler?(button)
-    }
-    
-    func didTapButton<T: Graphable>(_ button: TappableButton<T>) {
-        buttonTapHandler?(nil)
     }
 }
 #endif

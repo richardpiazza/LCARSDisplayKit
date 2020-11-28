@@ -4,10 +4,10 @@ import UIKit
 public typealias CommandSequenceCompletion = () -> Void
 
 public struct CommandSequence {
-    public var path: [Button]
+    public var path: [UIControl]
     public var completion: CommandSequenceCompletion?
     
-    public init(_ path: [Button], completion: CommandSequenceCompletion? = nil) {
+    public init(_ path: [UIControl], completion: CommandSequenceCompletion? = nil) {
         self.path = path
         self.completion = completion
     }
@@ -18,16 +18,14 @@ public class CommandSequencer {
     
     var noiseMaker: NoiseMaker
     private var commandSequences: [CommandSequence] = []
-    private var currentPath: [Button] = []
+    private var currentPath: [UIControl] = []
     
     init(noiseMaker: NoiseMaker) {
         self.noiseMaker = noiseMaker
     }
     
     public func register(commandSequence sequence: CommandSequence) {
-        if commandSequences.contains(where: { (cs) -> Bool in
-            return cs.path == sequence.path
-        }) {
+        if commandSequences.contains(where: { $0.path == sequence.path }) {
             return
         }
         
@@ -52,7 +50,7 @@ public class CommandSequencer {
         commandSequences.remove(at: index)
     }
     
-    private func completion(for commandSequence: [Button]) -> CommandSequenceCompletion? {
+    private func completion(for commandSequence: [UIControl]) -> CommandSequenceCompletion? {
         let sequence = commandSequences.first(where: { (cs) -> Bool in
             return cs.path == commandSequence
         })
@@ -60,7 +58,7 @@ public class CommandSequencer {
         return sequence?.completion
     }
     
-    private func sequencesContainingPrefix(_ commandSequence: [Button]) -> [CommandSequence] {
+    private func sequencesContainingPrefix(_ commandSequence: [UIControl]) -> [CommandSequence] {
         guard commandSequence.count > 0 else {
             return []
         }
@@ -86,7 +84,7 @@ public class CommandSequencer {
         return sequences
     }
     
-    public func didTouch(_ sender: Button) {
+    public func didTouch(_ sender: UIControl) {
         currentPath.append(sender)
         
         guard commandSequences.count > 0 else {

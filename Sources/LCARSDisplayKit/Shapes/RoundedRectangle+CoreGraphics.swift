@@ -57,13 +57,4 @@ extension RoundedRectangle: ExpressibleByPath {
         return nil
     }
 }
-
-@available(*, deprecated)
-extension RoundedRectangle: Graphable {
-    public var size: CGSize {
-        get { CGSize(_size) }
-        set { _size = Size(newValue) }
-    }
-}
-
 #endif

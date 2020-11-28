@@ -7,293 +7,67 @@ import UIKit
 /// chairs on the USS Voyager.
 @IBDesignable open class DirectionGroupingView03: DirectionGroupingView {
     
-    open lazy var innerRing01: CrescentButton = {
-        let half = DPad.arc02.start + ((DPad.arc02.end - DPad.arc02.start) / 2)
+    public override func initializeSubviews() {
+        super.initializeSubviews()
         
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc01.start + 1.5), endDegree: Degree(half))
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc01.start - 2.0), endDegree: Degree(half))
+        addSubview(innerRing01)
+        addSubview(innerRing08)
+        addSubview(innerRing09)
+        addSubview(innerRing10)
+        addSubview(innerRing11)
+        addSubview(innerRing13)
+        addSubview(innerRing14)
+        addSubview(innerRing15)
+        addSubview(innerRing16)
+        addSubview(innerRing17)
+        addSubview(innerRing20)
+        addSubview(outerRing09)
+        addSubview(outerRing10)
+        addSubview(outerRing11)
+        addSubview(outerRing12)
+        addSubview(outerRing13)
+        addSubview(outerRing18Extended)
+        addSubview(outerRing19Extended)
+        addSubview(outerRing20Extended)
+        addSubview(edge04)
+        addSubview(edge05)
+        addSubview(top00)
         
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: false)
+        crux.color = Configuration.theme.tertiaryLight
+        sector01.color = Configuration.theme.inactive
+        sector02.color = Configuration.theme.inactive
+        sector03.color = Configuration.theme.inactive
+        sector04.color = Configuration.theme.inactive
+    }
+    
+    open override func layoutSubviews() {
+        super.layoutSubviews()
         
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("454", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryDark
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var innerRing08: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc08)
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc08)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("81", for: UIControl.State())
-        button.color = Configuration.theme.primaryDark
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var innerRing09: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc09)
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc09)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("77", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryLight
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var innerRing10: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc10)
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc10)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("378", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryDark
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var innerRing11: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc11)
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc11)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("42", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryLight
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var innerRing13: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc13)
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc13)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("25", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryDark
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var innerRing14: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc14.start), endDegree: Degree(DPad.arc14.end - 1.0))
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc14.start), endDegree: Degree(DPad.arc14.end - 1.0))
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: false, boundedEnd: true)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("12", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryLight
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var innerRing15: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc15.start - 0.5), endDegree: Degree(DPad.arc15.end + 0.5))
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc15.start - 0.5), endDegree: Degree(DPad.arc15.end + 0.5))
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: true)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("858", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryDark
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var innerRing16: CrescentButton = {
-        let half = DPad.arc17.start + ((DPad.arc17.end - DPad.arc17.start) / 2)
-        
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(DPad.arc16.start + 1.0), endDegree: Degree(half))
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(DPad.arc16.start - 2.0), endDegree: Degree(half))
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: false)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("453", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryLight
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var innerRing17: CrescentButton = {
-        let half = DPad.arc17.start + ((DPad.arc17.end - DPad.arc17.start) / 2) + 1.5
-        
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), startDegree: Degree(half), endDegree: Degree(DPad.arc19.end - 1.5))
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), startDegree: Degree(half), endDegree: Degree(DPad.arc19.end + 2.0))
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: false, boundedEnd: true)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("2852", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryLight
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var innerRing20: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(firstRingInteriorRadius), dPad: .arc20)
-        let outerArc = ModifiedArc(radius: Radius(firstRingExteriorRadius), dPad: .arc20)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: true)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("IR20", for: UIControl.State())
-        button.color = Configuration.theme.inactive
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var outerRing09: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc09)
-        let outerArc = ModifiedArc(radius: Radius(secondRingExteriorRadius), dPad: .arc09)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("16", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryDark
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var outerRing10: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc10)
-        let outerArc = ModifiedArc(radius: Radius(secondRingExteriorRadius), dPad: .arc10)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("51", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryLight
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var outerRing11: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc11)
-        let outerArc = ModifiedArc(radius: Radius(secondRingExteriorRadius), dPad: .arc11)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("23", for: UIControl.State())
-        button.color = Configuration.theme.primaryDark
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var outerRing12: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc12)
-        let outerArc = ModifiedArc(radius: Radius(secondRingExteriorRadius), dPad: .arc12)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("38", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryDark
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var outerRing13: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc13)
-        let outerArc = ModifiedArc(radius: Radius(secondRingExteriorRadius), dPad: .arc13)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("23", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryLight
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var outerRing18Extended: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), dPad: .arc18)
-        let outerArc = ModifiedArc(radius: Radius(secondRingExtendedExteriorRadius), dPad: .arc18)
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("ORE18", for: UIControl.State())
-        button.color = Configuration.theme.primaryDark
-        button.contentEdgeInsets = UIEdgeInsets(top: 10.0, left: 0.0, bottom: 0.0, right: 0.0)
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var outerRing19Extended: CrescentButton = {
-        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), startDegree: Degree(DPad.arc19.start), endDegree: Degree(DPad.arc19.end + 2.0))
-        let outerArc = ModifiedArc(radius: Radius(secondRingExtendedExteriorRadius), startDegree: Degree(DPad.arc19.start), endDegree: Degree(DPad.arc19.end + 2.0))
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: false, boundedEnd: true)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("ORE19", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryLight
-        button.contentEdgeInsets = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 0.0, right: 0.0)
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var outerRing20Extended: CrescentButton = {
-        let startDegree = GraphPoint.degree(graphPoint: innerRing20.crescent.outerArc.startPoint) + 0.25
-        let endDegree = GraphPoint.degree(graphPoint: innerRing20.crescent.outerArc.endPoint) - 0.25
-        
-        let innerArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
-        let outerArc = ModifiedArc(radius: Radius(secondRingExtendedExteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
-        
-        let crescent = Crescent(innerArc: innerArc, outerArc: outerArc, boundedStart: true, boundedEnd: true)
-        
-        let button = CrescentButton(with: crescent, inBounds: bounds, offset: offset)
-        button.setTitle("OR20", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryDark
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var edge04: EdgedCrescentButton = {
-        let interiorArc = ModifiedArc(radius: Radius(thirdRingInteriorRadius), dPad: .arc13)
-        let exteriorArc = ModifiedArc(radius: Radius(thirdRingExteriorRadius), dPad: .arc13)
-        let interiorAngleStart = 270 - interiorArc.startDegree
-        let exteriorAngleStart = 180 - 90 - interiorAngleStart
-        let edgeLength = (Float(exteriorArc.endPoint.y) / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
-        
-        let point01 = CGPoint(x: CGFloat(-edgeLength), y: exteriorArc.endPoint.y)
-        let point02 = CGPoint(x: exteriorArc.endPoint.x, y: exteriorArc.endPoint.y)
-        
-        var arc = ModifiedArc(radius: Radius(thirdRingInteriorRadius), dPad: .arc13)
-        var edgedCrescent = EdgedCrescent(arc: arc, additionalPoints: [point01, point02])
-        
-        let button = EdgedCrescentButton(with: edgedCrescent, inBounds: bounds, offset: self.offset)
-        button.setTitle("Mark", for: UIControl.State())
-        button.color = Configuration.theme.primaryDark
-        button.contentEdgeInsets = UIEdgeInsets(top: 0.0, left: 40.0, bottom: 20.0, right: 0.0)
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var edge05: EdgedCrescentButton = {
-        let startDegree = GraphPoint.degree(graphPoint: innerRing15.crescent.outerArc.startPoint) + 0.25
-        let endDegree = GraphPoint.degree(graphPoint: innerRing15.crescent.outerArc.endPoint) - 0.25
-        let interiorArc = ModifiedArc(radius: Radius(secondRingInteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
-        var exteriorArc = ModifiedArc(radius: Radius(secondRingEdgeExteriorRadius), startDegree: Degree(startDegree), endDegree: Degree(endDegree))
-        exteriorArc.boundedStart = interiorArc.startPoint
-        exteriorArc.boundedEnd = interiorArc.endPoint
-        let edgedCrescent = EdgedCrescent(arc: interiorArc, additionalPoints: [exteriorArc.startPoint, exteriorArc.endPoint])
-        
-        let button = EdgedCrescentButton(with: edgedCrescent, inBounds: bounds, offset: self.offset)
-        button.setTitle("E05", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryLight
-        self.addSubview(button)
-        return button
-    }()
-    open lazy var top00: RoundedRectangleButton = {
-        var frame = CGRect(x: 0, y: 0, width: 0, height: self.cruxDiameter)
-        frame.size.width = RoundedRectangleButton.defaultSize.width * scaleRatio
-        frame.origin.y = edge05.frame.origin.y
-        frame.origin.x = innerRing17.frame.origin.x
-        
-        let button = RoundedRectangleButton(frame: frame)
-        button.roundRight = true
-        button.setTitle("T00", for: UIControl.State())
-        button.color = Configuration.theme.tertiaryDark
-        self.addSubview(button)
-        return button
-    }()
+        innerRing01.frame = frame(forShape: innerRing01Shape)
+        innerRing08.frame = frame(forShape: innerRing08Shape)
+        innerRing09.frame = frame(forShape: innerRing09Shape)
+        innerRing10.frame = frame(forShape: innerRing10Shape)
+        innerRing11.frame = frame(forShape: innerRing11Shape)
+        innerRing13.frame = frame(forShape: innerRing13Shape)
+        innerRing14.frame = frame(forShape: innerRing14Shape)
+        innerRing15.frame = frame(forShape: innerRing15Shape)
+        innerRing16.frame = frame(forShape: innerRing16Shape)
+        innerRing17.frame = frame(forShape: innerRing17Shape)
+        innerRing20.frame = frame(forShape: innerRing20Shape)
+        outerRing09.frame = frame(forShape: outerRing09Shape)
+        outerRing10.frame = frame(forShape: outerRing10Shape)
+        outerRing11.frame = frame(forShape: outerRing11Shape)
+        outerRing12.frame = frame(forShape: outerRing12Shape)
+        outerRing13.frame = frame(forShape: outerRing13Shape)
+        outerRing18Extended.frame = frame(forShape: outerRing18ExtendedShape)
+        outerRing19Extended.frame = frame(forShape: outerRing19ExtendedShape)
+        outerRing20Extended.frame = frame(forShape: outerRing20ExtendedShape)
+        edge04.frame = frame(forShape: edge04Shape)
+        edge05.frame = frame(forShape: edge05Shape)
+        top00.frame = frameForTop00()
+    }
+    
+    // MARK: - Scale & Position
     
     open override var intrinsicContentSize: CGSize {
         return CGSize(width: 715, height: 520)
@@ -316,37 +90,334 @@ import UIKit
         return thirdRingInteriorRadius + (scaleRatio * 45.0)
     }
     
-    open override func layoutSubviews() {
-        super.layoutSubviews()
+    // MARK: - Shapes
+    
+    var innerRing01Shape: Crescent {
+        let half = DPad.arc02.start + ((DPad.arc02.end - DPad.arc02.start) / 2)
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: Degree(DPad.arc01.start + 1.5), endingDegree: Degree(half))
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startingDegree: Degree(DPad.arc01.start - 2.0), endingDegree: Degree(half))
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc, extendExteriorStart: true, extendExteriorEnd: false)
+    }
+    
+    var innerRing08Shape: Crescent {
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc08)
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc08)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var innerRing09Shape: Crescent {
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc09)
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc09)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var innerRing10Shape: Crescent {
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc10)
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc10)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var innerRing11Shape: Crescent {
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc11)
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc11)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var innerRing13Shape: Crescent {
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc13)
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc13)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var innerRing14Shape: Crescent {
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: Degree(DPad.arc14.start), endingDegree: Degree(DPad.arc14.end - 1.0))
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startingDegree: Degree(DPad.arc14.start), endingDegree: Degree(DPad.arc14.end - 1.0))
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc, extendExteriorStart: false, extendExteriorEnd: true)
+    }
+    
+    var innerRing15Shape: Crescent {
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: Degree(DPad.arc15.start - 0.5), endingDegree: Degree(DPad.arc15.end + 0.5))
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startingDegree: Degree(DPad.arc15.start - 0.5), endingDegree: Degree(DPad.arc15.end + 0.5))
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc, extendExteriorStart: true, extendExteriorEnd: true)
+    }
+    
+    var innerRing16Shape: Crescent {
+        let half = DPad.arc17.start + ((DPad.arc17.end - DPad.arc17.start) / 2)
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: Degree(DPad.arc16.start + 1.0), endingDegree: Degree(half))
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startingDegree: Degree(DPad.arc16.start - 2.0), endingDegree: Degree(half))
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc, extendExteriorStart: true, extendExteriorEnd: false)
+    }
+    
+    var innerRing17Shape: Crescent {
+        let half = DPad.arc17.start + ((DPad.arc17.end - DPad.arc17.start) / 2) + 1.5
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: Degree(half), endingDegree: Degree(DPad.arc19.end - 1.5))
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startingDegree: Degree(half), endingDegree: Degree(DPad.arc19.end + 2.0))
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc, extendExteriorStart: false, extendExteriorEnd: true)
+    }
+    
+    var innerRing20Shape: Crescent {
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), dPad: .arc20)
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), dPad: .arc20)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc, extendExteriorStart: true, extendExteriorEnd: true)
+    }
+    
+    var outerRing09Shape: Crescent {
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc09)
+        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc09)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var outerRing10Shape: Crescent {
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc10)
+        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc10)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var outerRing11Shape: Crescent {
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc11)
+        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc11)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var outerRing12Shape: Crescent {
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc12)
+        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc12)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var outerRing13Shape: Crescent {
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc13)
+        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc13)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var outerRing18ExtendedShape: Crescent {
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc18)
+        let outerArc = Arc(radius: Radius(secondRingExtendedExteriorRadius), dPad: .arc18)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
+    }
+    
+    var outerRing19ExtendedShape: Crescent {
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), startingDegree: Degree(DPad.arc19.start), endingDegree: Degree(DPad.arc19.end + 2.0))
+        let outerArc = Arc(radius: Radius(secondRingExtendedExteriorRadius), startingDegree: Degree(DPad.arc19.start), endingDegree: Degree(DPad.arc19.end + 2.0))
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc, extendExteriorStart: false, extendExteriorEnd: true)
+    }
+    
+    var outerRing20ExtendedShape: Crescent {
+        let startDegree = innerRing20Shape.exteriorArc.startingDegree + 0.25
+        let endDegree = innerRing20Shape.exteriorArc.endingDegree - 0.25
+//        let startDegree = (try? Degree.make(for: innerRing20Shape.interiorArc.startingPoint) + 0.25) ?? .zero
+//        let endDegree = (try? Degree.make(for: innerRing20Shape.interiorArc.endingPoint) - 0.25) ?? .zero
+//        let startDegree = Degree(GraphPoint.degree(graphPoint: innerRing20Shape.outerArc.startPoint) + 0.25)
+//        let endDegree = Degree(GraphPoint.degree(graphPoint: innerRing20Shape.outerArc.endPoint) - 0.25)
         
-        crux.color = Configuration.theme.tertiaryLight
-        sector01.color = Configuration.theme.inactive
-        sector02.color = Configuration.theme.inactive
-        sector03.color = Configuration.theme.inactive
-        sector04.color = Configuration.theme.inactive
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), startingDegree: startDegree, endingDegree: endDegree)
+        let outerArc = Arc(radius: Radius(secondRingExtendedExteriorRadius), startingDegree: startDegree, endingDegree: endDegree)
+        return Crescent(interiorArc: innerArc, exteriorArc: outerArc, extendExteriorStart: true, extendExteriorEnd: true)
+    }
+    
+    var edge04Shape: EdgedCrescent {
+        let interiorArc = Arc(radius: Radius(thirdRingInteriorRadius), dPad: .arc13)
+        let exteriorArc = Arc(radius: Radius(thirdRingExteriorRadius), dPad: .arc13)
+        let interiorAngleStart = 270 - interiorArc.startingDegree
+        let exteriorAngleStart = 180 - 90 - interiorAngleStart
+        let edgeLength = (exteriorArc.endingPoint.y / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
         
-        innerRing01.layoutIfNeeded()
-        innerRing08.layoutIfNeeded()
-        innerRing09.layoutIfNeeded()
-        innerRing10.layoutIfNeeded()
-        innerRing11.layoutIfNeeded()
-        innerRing13.layoutIfNeeded()
-        innerRing14.layoutIfNeeded()
-        innerRing15.layoutIfNeeded()
-        innerRing16.layoutIfNeeded()
-        innerRing17.layoutIfNeeded()
-        innerRing20.layoutIfNeeded()
-        outerRing09.layoutIfNeeded()
-        outerRing10.layoutIfNeeded()
-        outerRing11.layoutIfNeeded()
-        outerRing12.layoutIfNeeded()
-        outerRing13.layoutIfNeeded()
-        outerRing18Extended.layoutIfNeeded()
-        outerRing19Extended.layoutIfNeeded()
-        outerRing20Extended.layoutIfNeeded()
-        edge04.layoutIfNeeded()
-        edge05.layoutIfNeeded()
-        top00.layoutIfNeeded()
+        let point01 = CartesianPoint(x: -edgeLength, y: exteriorArc.endingPoint.y)
+        let point02 = CartesianPoint(x: exteriorArc.endingPoint.x, y: exteriorArc.endingPoint.y)
+        
+        let arc = Arc(radius: Radius(thirdRingInteriorRadius), dPad: .arc13)
+        return EdgedCrescent(interiorArc: arc, edgePoints: [point01, point02])
+    }
+    
+    var edge05Shape: EdgedCrescent {
+        let startDegree = innerRing15Shape.exteriorArc.startingDegree + 0.25
+        let endDegree = innerRing15Shape.exteriorArc.endingDegree - 0.25
+        let interiorArc = Arc(radius: Radius(secondRingInteriorRadius), startingDegree: Degree(startDegree), endingDegree: Degree(endDegree))
+        let exteriorArc = Arc(radius: Radius(secondRingEdgeExteriorRadius), startingDegree: Degree(startDegree), endingDegree: Degree(endDegree))
+        let shape = EdgedCrescent(interiorArc: interiorArc, edgePoints: exteriorArc.cartesianPoints)
+//        exteriorArc.boundedStart = interiorArc.startPoint
+//        exteriorArc.boundedEnd = interiorArc.endPoint
+        return shape
+    }
+    
+    var top00Shape: RoundedRectangle {
+        var frame = CGRect(x: 0, y: 0, width: 0, height: self.cruxDiameter)
+        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width) * scaleRatio
+        frame.origin.y = edge05.frame.origin.y
+        frame.origin.x = innerRing17.frame.origin.x
+        
+        let point1: CartesianPoint = CartesianPoint(frame.origin)
+        let point2: CartesianPoint = CartesianPoint(x: point1.x + Float(frame.size.width), y: Float(cruxDiameter))
+        
+        return RoundedRectangle(cartesianPoints: [point1, point2], rightRounded: true)
+    }
+    
+    // MARK: - Components
+    open lazy var innerRing01: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing01Shape, delegate: self)
+        button.setTitle("454", for: .init())
+        button.color = Configuration.theme.tertiaryDark
+        return button
+    }()
+    
+    open lazy var innerRing08: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing08Shape, delegate: self)
+        button.setTitle("81", for: .init())
+        button.color = Configuration.theme.primaryDark
+        return button
+    }()
+    
+    open lazy var innerRing09: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing09Shape, delegate: self)
+        button.setTitle("77", for: .init())
+        button.color = Configuration.theme.tertiaryLight
+        return button
+    }()
+    
+    open lazy var innerRing10: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing10Shape, delegate: self)
+        button.setTitle("378", for: .init())
+        button.color = Configuration.theme.tertiaryDark
+        return button
+    }()
+    
+    open lazy var innerRing11: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing11Shape, delegate: self)
+        button.setTitle("42", for: .init())
+        button.color = Configuration.theme.tertiaryLight
+        return button
+    }()
+    
+    open lazy var innerRing13: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing13Shape, delegate: self)
+        button.setTitle("25", for: .init())
+        button.color = Configuration.theme.tertiaryDark
+        return button
+    }()
+    
+    open lazy var innerRing14: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing14Shape, delegate: self)
+        button.setTitle("12", for: .init())
+        button.color = Configuration.theme.tertiaryLight
+        return button
+    }()
+    
+    open lazy var innerRing15: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing15Shape, delegate: self)
+        button.setTitle("858", for: .init())
+        button.color = Configuration.theme.tertiaryDark
+        return button
+    }()
+    
+    open lazy var innerRing16: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing16Shape, delegate: self)
+        button.setTitle("453", for: .init())
+        button.color = Configuration.theme.tertiaryLight
+        return button
+    }()
+    
+    open lazy var innerRing17: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing17Shape, delegate: self)
+        button.setTitle("2852", for: .init())
+        button.color = Configuration.theme.tertiaryLight
+        return button
+    }()
+    
+    open lazy var innerRing20: Crescent_Button = {
+        let button = Crescent_Button(shape: innerRing20Shape, delegate: self)
+        button.setTitle("IR20", for: .init())
+        button.color = Configuration.theme.inactive
+        return button
+    }()
+    
+    open lazy var outerRing09: Crescent_Button = {
+        let button = Crescent_Button(shape: outerRing09Shape, delegate: self)
+        button.setTitle("16", for: .init())
+        button.color = Configuration.theme.tertiaryDark
+        return button
+    }()
+    
+    open lazy var outerRing10: Crescent_Button = {
+        let button = Crescent_Button(shape: outerRing10Shape, delegate: self)
+        button.setTitle("51", for: .init())
+        button.color = Configuration.theme.tertiaryLight
+        return button
+    }()
+    
+    open lazy var outerRing11: Crescent_Button = {
+        let button = Crescent_Button(shape: outerRing11Shape, delegate: self)
+        button.setTitle("23", for: .init())
+        button.color = Configuration.theme.primaryDark
+        return button
+    }()
+    
+    open lazy var outerRing12: Crescent_Button = {
+        let button = Crescent_Button(shape: outerRing12Shape, delegate: self)
+        button.setTitle("38", for: .init())
+        button.color = Configuration.theme.tertiaryDark
+        return button
+    }()
+    
+    open lazy var outerRing13: Crescent_Button = {
+        let button = Crescent_Button(shape: outerRing13Shape, delegate: self)
+        button.setTitle("23", for: .init())
+        button.color = Configuration.theme.tertiaryLight
+        return button
+    }()
+    
+    open lazy var outerRing18Extended: Crescent_Button = {
+        let button = Crescent_Button(shape: outerRing18ExtendedShape, delegate: self)
+        button.setTitle("ORE18", for: .init())
+        button.color = Configuration.theme.primaryDark
+        button.contentEdgeInsets = UIEdgeInsets(top: 10.0, left: 0.0, bottom: 0.0, right: 0.0)
+        return button
+    }()
+    
+    open lazy var outerRing19Extended: Crescent_Button = {
+        let button = Crescent_Button(shape: outerRing19ExtendedShape, delegate: self)
+        button.setTitle("ORE19", for: .init())
+        button.color = Configuration.theme.tertiaryLight
+        button.contentEdgeInsets = UIEdgeInsets(top: 20.0, left: 0.0, bottom: 0.0, right: 0.0)
+        return button
+    }()
+    
+    open lazy var outerRing20Extended: Crescent_Button = {
+        let button = Crescent_Button(shape: outerRing20ExtendedShape, delegate: self)
+        button.setTitle("OR20", for: .init())
+        button.color = Configuration.theme.tertiaryDark
+        return button
+    }()
+    
+    open lazy var edge04: EdgedCrescent_Button = {
+        let button = EdgedCrescent_Button(shape: edge04Shape, delegate: self)
+        button.setTitle("Mark", for: .init())
+        button.color = Configuration.theme.primaryDark
+        button.contentEdgeInsets = UIEdgeInsets(top: 0.0, left: 40.0, bottom: 20.0, right: 0.0)
+        return button
+    }()
+    
+    open lazy var edge05: EdgedCrescent_Button = {
+        let button = EdgedCrescent_Button(shape: edge05Shape, delegate: self)
+        button.setTitle("E05", for: .init())
+        button.color = Configuration.theme.tertiaryLight
+        return button
+    }()
+    
+    open lazy var top00: RoundedRectangle_Button = {
+        let button = RoundedRectangle_Button(shape: top00Shape, delegate: self)
+        button.setTitle("T00", for: UIControl.State())
+        button.color = Configuration.theme.tertiaryDark
+        return button
+    }()
+    
+    // MARK: - Frame Calculations
+    func frameForTop00() -> CGRect {
+        var frame = CGRect(x: 0, y: 0, width: 0, height: cruxDiameter)
+        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width) * scaleRatio
+        frame.origin.y = edge05.frame.origin.y
+        frame.origin.x = innerRing17.frame.origin.x
+        return frame
     }
 }
 #endif

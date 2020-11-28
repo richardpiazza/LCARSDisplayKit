@@ -3,97 +3,37 @@ import GraphPoint
 /// Two `Arc`s connected by straight lines at their end points.
 public struct Crescent {
     /// Arc with radius closest to the cartesian origin.
-    public var interiorArc: Arc = Arc()
+    public var interiorArc: Arc
     /// Arc with radius farthest from the cartesian origin.
-    public var exteriorArc: Arc = Arc()
+    public var exteriorArc: Arc
     /// Uses the interior starting point to extend the exterior starting point, creating a straight line.
-    public var extendExteriorStart: Bool = false
+    public var extendExteriorStart: Bool
     /// Uses the interior ending point to extend the exterior ending point, creating a straight line.
-    public var extendExteriorEnd: Bool = false
+    public var extendExteriorEnd: Bool
     
-    @available(*, deprecated, renamed: "interiorArc")
-    public var innerArc: ModifiedArc
-    @available(*, deprecated, renamed: "exteriorArc")
-    public var outerArc: ModifiedArc
-    
-    public init(interiorArc: Arc, exteriorArc: Arc, extendExteriorStart: Bool = false, extendExteriorEnd: Bool = false) {
+    public init(interiorArc: Arc = Arc(), exteriorArc: Arc = Arc(), extendExteriorStart: Bool = false, extendExteriorEnd: Bool = false) {
         self.interiorArc = interiorArc
         self.exteriorArc = exteriorArc
         self.extendExteriorStart = extendExteriorStart
         self.extendExteriorEnd = extendExteriorEnd
-        
-        self.innerArc = ModifiedArc(radius: interiorArc.radius, startDegree: interiorArc.startingDegree, endDegree: interiorArc.endingDegree)
-        self.outerArc = ModifiedArc(radius: exteriorArc.radius, startDegree: exteriorArc.startingDegree, endDegree: exteriorArc.endingDegree)
-        self.boundStart = extendExteriorStart
-        self.boundEnd = extendExteriorEnd
-    }
-    
-    @available(*, deprecated, renamed: "init(interiorArc:exteriorArc:extendExteriorStart:extendExteriorEnd:)")
-    public init(innerArc: ModifiedArc = ModifiedArc(), outerArc: ModifiedArc = ModifiedArc(), boundedStart: Bool = false, boundedEnd: Bool = false) {
-        self.interiorArc = Arc(radius: innerArc.radius, startingDegree: innerArc.startDegree, endingDegree: innerArc.endDegree)
-        self.exteriorArc = Arc(radius: outerArc.radius, startingDegree: outerArc.startDegree, endingDegree: outerArc.endDegree)
-        self.innerArc = innerArc
-        self.outerArc = outerArc
-        self.extendExteriorStart = boundedStart
-        self.extendExteriorEnd = boundedEnd
-        if boundedStart {
-            self.outerArc.startLimiter = self.innerArc.startingPoint
-        }
-        if boundedEnd {
-            self.outerArc.endLimiter = self.innerArc.endingPoint
-        }
-    }
-    
-    @available(*, deprecated, renamed: "extendExteriorStart")
-    var boundStart: Bool = false {
-        didSet {
-            extendExteriorStart = boundStart
-            if boundStart {
-                outerArc.startLimiter = innerArc.startingPoint
-            } else {
-                outerArc.startLimiter = nil
-            }
-        }
-    }
-    
-    @available(*, deprecated, renamed: "extendExteriorEnd")
-    var boundEnd: Bool = false {
-        didSet {
-            extendExteriorEnd = boundEnd
-            if boundEnd {
-                outerArc.endLimiter = innerArc.endingPoint
-            } else {
-                outerArc.endLimiter = nil
-            }
-        }
     }
 }
 
 public extension Crescent {
-    @available(*, deprecated, renamed: "interiorRadius")
-    var innerRadius: Radius {
-        return interiorRadius
-    }
-    
-    @available(*, deprecated, renamed: "exteriorRadius")
-    var outerRadius: Radius {
-        return exteriorRadius
-    }
-    
     var interiorRadius: Radius {
-        return min(innerArc.radius, outerArc.radius)
+        return min(interiorArc.radius, exteriorArc.radius)
     }
     
     var exteriorRadius: Radius {
-        return max(outerArc.radius, innerArc.radius)
+        return max(exteriorArc.radius, interiorArc.radius)
     }
     
     var startDegree: Degree {
-        return min(innerArc.startDegree, outerArc.startDegree)
+        return min(interiorArc.startingDegree, exteriorArc.startingDegree)
     }
     
     var endDegree: Degree {
-        return max(innerArc.endDegree, outerArc.endDegree)
+        return max(interiorArc.endingDegree, exteriorArc.endingDegree)
     }
     
     var interiorArcStartingPoint: CartesianPoint {
@@ -133,7 +73,6 @@ public extension Crescent {
 
 extension Crescent: ExpressibleByCartesianPoints {
     public var cartesianPoints: [CartesianPoint] {
-//        return [innerArc.cartesianPoints, outerArc.cartesianPoints].flatMap { $0 }
         return [
             interiorArcStartingPoint, interiorArcEndingPoint,
             exteriorArcStartingPoint, exteriorArcEndingPoint

@@ -3,17 +3,6 @@ import GraphPoint
 import CoreGraphics
 
 extension CGMutablePath {
-    @available(*, deprecated, renamed: "addArc(center:radius:startDegree:endDegree:clockwise:)")
-    func addArc(center: CGPoint, radius: Radius, startAngle: Degree, endAngle: Degree, clockwise: Bool) {
-        addArc(
-            center: center,
-            radius: CGFloat(radius),
-            startAngle: CGFloat(startAngle),
-            endAngle: CGFloat(endAngle),
-            clockwise: clockwise
-        )
-    }
-    
     /// Adds an arc of a circle to the path, specified with a radius and angles.
     ///
     /// This is a convenience method that will automatically convert the provided **Degree**s to **Radian**s required

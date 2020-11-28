@@ -3,21 +3,15 @@ import Swift2D
 
 /// A rectangle with optionally rounded ends
 public struct RoundedRectangle {
+    
+    public static let defaultSize: Size = Size(width: 144, height: 60)
+    
     public var _size: Size
     public var _cartesianPoints: [CartesianPoint]
     
     public var leftRounded: Bool
     public var rightRounded: Bool
     public var cornersOnly: Bool
-    
-    @available(*, deprecated, renamed: "init(cartesianPoints:leftRounded:rightRounded:cornersOnly:)")
-    public init(size: Size, leftRounded: Bool = false, rightRounded: Bool = false, cornersOnly: Bool = false) {
-        self._size = size
-        self._cartesianPoints = []
-        self.leftRounded = leftRounded
-        self.rightRounded = rightRounded
-        self.cornersOnly = cornersOnly
-    }
     
     public init(cartesianPoints: [CartesianPoint] = [], leftRounded: Bool = false, rightRounded: Bool = false, cornersOnly: Bool = false) {
         self._cartesianPoints = cartesianPoints

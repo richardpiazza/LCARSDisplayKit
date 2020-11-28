@@ -9,7 +9,7 @@ extension EdgedCrescent: ExpressibleByPath {
         let frame = cartesianFrame
         let center = frame.offsetToCartesianOrigin
         
-        path.addArc(center: center, radius: arc.radius, startDegree: arc.startDegree, endDegree: arc.endDegree, clockwise: false)
+        path.addArc(arc: interiorArc, center: center, clockwise: false)
         
         edgePoints.reversed().forEach { (point) in
             let translated = frame.originModifiedBy(point)
@@ -25,41 +25,4 @@ extension EdgedCrescent: ExpressibleByPath {
         return nil
     }
 }
-
-@available(*, deprecated)
-extension EdgedCrescent: Graphable {
-    public var size: CGSize {
-        get { .zero }
-        set { }
-    }
-    
-    public var graphPoints: [GraphPoint] {
-        var points = [GraphPoint]()
-        points.append(contentsOf: arc.graphPoints)
-        points.append(contentsOf: additionalPoints)
-        return points
-    }
-    
-    public var graphFrame: GraphFrame {
-        return GraphFrame.graphFrame(graphPoints: graphPoints, radius: CGFloat(arc.radius), startDegree: CGFloat(arc.startDegree), endDegree: CGFloat(arc.endDegree))
-    }
-}
-
-@available(*, deprecated)
-extension EdgedCrescent {
-    public init(arc: ModifiedArc = ModifiedArc(), additionalPoints: [GraphPoint]) {
-        self.init(arc: arc, edgePoints: [])
-        self.additionalPoints = additionalPoints
-    }
-    
-    public var additionalPoints: [GraphPoint] {
-        get {
-            edgePoints.map { GraphPoint($0) }
-        }
-        set {
-            edgePoints = newValue.map { CartesianPoint($0) }
-        }
-    }
-}
-
 #endif

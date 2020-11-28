@@ -2,6 +2,11 @@ import GraphPoint
 import Swift2D
 
 public struct Elbow {
+    
+    public static let defaultHorizontalHeight: Float = 120.0
+    public static let defaultVerticalWidth: Float = 30.0
+    public static let defaultClosedHeight: Float = 0.0
+    
     public var _size: Size
     public var top: Bool
     public var left: Bool
@@ -19,9 +24,9 @@ public struct Elbow {
         top: Bool = true,
         left: Bool = true,
         rounded: Bool = true,
-        horizontalHeight: Float = 120.0,
-        verticalWidth: Float = 30.0,
-        closedHeight: Float = 0.0,
+        horizontalHeight: Float = Self.defaultHorizontalHeight,
+        verticalWidth: Float = Self.defaultVerticalWidth,
+        closedHeight: Float = Self.defaultClosedHeight,
         shouldMatchRadius: Bool = false
     ) {
         self._size = size

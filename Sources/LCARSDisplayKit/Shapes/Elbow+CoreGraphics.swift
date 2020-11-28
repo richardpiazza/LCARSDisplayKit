@@ -109,12 +109,4 @@ extension Elbow: ExpressibleByPath {
         return nil
     }
 }
-
-@available(*, deprecated)
-extension Elbow: Graphable {
-    public var size: CGSize {
-        get { CGSize(_size) }
-        set { _size = Size(newValue) }
-    }
-}
 #endif

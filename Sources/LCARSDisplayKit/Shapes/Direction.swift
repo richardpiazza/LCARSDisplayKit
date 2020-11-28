@@ -14,29 +14,10 @@ public struct Direction {
     public var interiorRadius: Radius
     public var exteriorArc: Arc
     
-    @available(*, deprecated, renamed: "exteriorArc")
-    public var arc: ModifiedArc {
-        get { ModifiedArc(radius: exteriorArc.radius, startDegree: exteriorArc.startingDegree, endDegree: exteriorArc.endingDegree) }
-        set { exteriorArc = .init(radius: newValue.radius, startingDegree: newValue.startDegree, endingDegree: newValue.endDegree) }
-    }
-    
-    @available(*, deprecated, renamed: "interiorRadius")
-    public var innerRadius: Radius {
-        get {  interiorRadius }
-        set { interiorRadius = newValue }
-    }
-    
     public init(_ cardinal: Cardinal = .right, interiorRadius: Radius = 0, exteriorArc: Arc = Arc()) {
         self.cardinal = cardinal
         self.interiorRadius = interiorRadius
         self.exteriorArc = exteriorArc
-    }
-    
-    @available(*, deprecated, renamed: "init(_:interiorRadius:exteriorArc:)")
-    public init(_ cardinal: Cardinal = .right, arc: ModifiedArc = ModifiedArc(), innerRadius: Radius) {
-        self.cardinal = cardinal
-        self.interiorRadius = innerRadius
-        self.exteriorArc = Arc(radius: arc.radius, startingDegree: arc.startDegree, endingDegree: arc.endDegree)
     }
     
     public var _size: Size {
@@ -65,11 +46,10 @@ public struct Direction {
 
 extension Direction: ExpressibleByCartesianPoints {
     public var cartesianPoints: [CartesianPoint] {
-        return arc.cartesianPoints
+        return exteriorArc.cartesianPoints
     }
     
     public var cartesianFrame: CartesianFrame {
-        let outerArc = Arc(radius: arc.radius, startingDegree: arc.startDegree, endingDegree: arc.endDegree)
-        return (try? CartesianFrame.make(for: outerArc, points: cartesianPoints)) ?? .zero
+        return (try? CartesianFrame.make(for: exteriorArc, points: cartesianPoints)) ?? .zero
     }
 }

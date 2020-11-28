@@ -27,35 +27,35 @@ class ViewController: UIViewController {
         }
         
         dgroup.buttonTapHandler = { (button) in
-            CommandSequencer.default.didTouch(button ?? Button())
+            CommandSequencer.default.didTouch(button)
         }
         
-//        dgroup.outerRing14.isHidden = true
-//        dgroup.innerRing10.isHidden = true
-//        dgroup.innerRing16.isHidden = true
-//        
-//        let blinkSequence = CommandSequence([dgroup.modeSelect, dgroup.outerRing16]) {
-//            dgroup.innerRing11.behavior = .pulsate(timeInterval: 2.5)
-//            dgroup.outerRing16.behavior = .pulsate(timeInterval: 3.0)
-//            dgroup.outerRing01.behavior = .pulsate(timeInterval: 4.0)
-//        }
-//        
-//        CommandSequencer.default.register(commandSequence: blinkSequence)
-//        
-//        let inverseBlink = CommandSequence([dgroup.modeSelect, dgroup.outerRing17]) {
-//            dgroup.innerRing11.behavior = nil
-//            dgroup.outerRing16.behavior = nil
-//            dgroup.outerRing01.behavior = nil
-//        }
-//        
-//        CommandSequencer.default.register(commandSequence: inverseBlink)
-//        
-//        let redAlert = CommandSequence([dgroup.outerRing20, dgroup.outerRing20, dgroup.outerRing20]) {
-//            self.isConditionRed = !self.isConditionRed
-//            print("Is Condition Red: \(self.isConditionRed)")
-//        }
-//        
-//        CommandSequencer.default.register(commandSequence: redAlert)
+        dgroup.outerRing14.isHidden = true
+        dgroup.innerRing10.isHidden = true
+        dgroup.innerRing16.isHidden = true
+        
+        let blinkSequence = CommandSequence([dgroup.modeSelect, dgroup.outerRing16]) {
+            dgroup.innerRing11.behavior = .pulsate(timeInterval: 2.5)
+            dgroup.outerRing16.behavior = .pulsate(timeInterval: 3.0)
+            dgroup.outerRing01.behavior = .pulsate(timeInterval: 4.0)
+        }
+        
+        CommandSequencer.default.register(commandSequence: blinkSequence)
+        
+        let inverseBlink = CommandSequence([dgroup.modeSelect, dgroup.outerRing17]) {
+            dgroup.innerRing11.behavior = nil
+            dgroup.outerRing16.behavior = nil
+            dgroup.outerRing01.behavior = nil
+        }
+        
+        CommandSequencer.default.register(commandSequence: inverseBlink)
+        
+        let redAlert = CommandSequence([dgroup.outerRing20, dgroup.outerRing20, dgroup.outerRing20]) {
+            self.isConditionRed = !self.isConditionRed
+            print("Is Condition Red: \(self.isConditionRed)")
+        }
+        
+        CommandSequencer.default.register(commandSequence: redAlert)
     }
 }
 
