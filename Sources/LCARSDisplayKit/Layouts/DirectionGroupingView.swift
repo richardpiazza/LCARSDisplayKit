@@ -53,28 +53,31 @@ import UIKit
         return CGSize(width: 350, height: 350)
     }
     
-    open var intrinsicRatio: CGFloat{
+    open var intrinsicRatio: Float {
         if intrinsicContentSize.width >= intrinsicContentSize.height {
-            return intrinsicContentSize.width / intrinsicContentSize.height
+            return Float(intrinsicContentSize.width / intrinsicContentSize.height)
         } else {
-            return intrinsicContentSize.height / intrinsicContentSize.width
+            return Float(intrinsicContentSize.height / intrinsicContentSize.width)
         }
     }
     
-    open var scaledContentSize: CGSize {
-        if self.bounds.size.width >= self.bounds.size.height {
-            return CGSize(width: self.bounds.height * intrinsicRatio, height: self.bounds.height)
+    open var scaledContentSize: Size {
+        let width = Float(bounds.size.width)
+        let height = Float(bounds.size.height)
+        
+        if width >= height {
+            return Size(width: height * intrinsicRatio, height: height)
         } else {
-            return CGSize(width: self.bounds.width, height: self.bounds.width * intrinsicRatio)
+            return Size(width: width, height: width * intrinsicRatio)
         }
     }
     
     /// Percent to scale individual amounts by
-    open var scaleRatio: CGFloat {
+    open var scaleRatio: Float {
         if scaledContentSize.width >= scaledContentSize.height {
-            return scaledContentSize.width / intrinsicContentSize.width
+            return scaledContentSize.width / Float(intrinsicContentSize.width)
         } else {
-            return scaledContentSize.height / intrinsicContentSize.height
+            return scaledContentSize.height / Float(intrinsicContentSize.height)
         }
     }
     
@@ -93,58 +96,58 @@ import UIKit
     
     // MARK: - Measurements
     
-    public static var defaultCruxDiameter: CGFloat = CGFloat(60)
+    public static var defaultCruxDiameter: Float = 60.0
     
     /// The width and height of the central square
-    open var cruxDiameter: CGFloat {
+    open var cruxDiameter: Float {
         return Self.defaultCruxDiameter * scaleRatio
     }
     
     var innerRadius: Radius {
-        return (Float(cruxDiameter) / 2) + Float(theme.defaultSpacing)
+        return (cruxDiameter / 2) + Float(theme.defaultSpacing)
     }
     
     /// Radius of the entire Direction Pad
-    open var dpadRadius: CGFloat {
+    open var dpadRadius: Radius {
         return scaleRatio * 175.0
     }
     
     ///
-    open var firstRingInteriorRadius: CGFloat {
-        return dpadRadius + theme.defaultSpacing
+    open var firstRingInteriorRadius: Radius {
+        return dpadRadius + Float(theme.defaultSpacing)
     }
     
     ///
-    open var firstRingExteriorRadius: CGFloat {
+    open var firstRingExteriorRadius: Radius {
         return firstRingInteriorRadius + (scaleRatio * 80.0)
     }
     
     ///
-    open var firstRingEdgeExteriorRadius: CGFloat {
+    open var firstRingEdgeExteriorRadius: Radius {
         return firstRingExteriorRadius
     }
     
     ///
-    open var secondRingInteriorRadius: CGFloat {
-        return firstRingExteriorRadius + theme.defaultSpacing
+    open var secondRingInteriorRadius: Radius {
+        return firstRingExteriorRadius + Float(theme.defaultSpacing)
     }
     
     ///
-    open var secondRingExteriorRadius: CGFloat {
+    open var secondRingExteriorRadius: Radius {
         return secondRingInteriorRadius + (scaleRatio * 50.0)
     }
     
     ///
-    open var secondRingExtendedExteriorRadius: CGFloat {
+    open var secondRingExtendedExteriorRadius: Radius {
         return secondRingInteriorRadius + (scaleRatio * 110.0)
     }
     
     // MARK: - Shapes
     var cruxShape: RoundedRectangle {
-        let x = cartesianOrigin.x - (Float(cruxDiameter) / 2)
-        let y = cartesianOrigin.y - (Float(cruxDiameter) / 2)
-        let width = Float(cruxDiameter)
-        let height = Float(cruxDiameter)
+        let x = cartesianOrigin.x - (cruxDiameter / 2)
+        let y = cartesianOrigin.y - (cruxDiameter / 2)
+        let width = cruxDiameter
+        let height = cruxDiameter
         
         let topLeft: Point = .init(x: x, y: y)
         let bottomRight: Point = .init(x: x + width, y: y + height)
@@ -157,35 +160,35 @@ import UIKit
     }
     
     var upExteriorArc: Arc {
-        Arc(radius: Radius(dpadRadius), startingDegree: DPad.up.start, endingDegree: DPad.up.end + 0.5)
+        Arc(radius: dpadRadius, startingDegree: DPad.up.start, endingDegree: DPad.up.end + 0.5)
     }
     
     var downExteriorArc: Arc {
-        Arc(radius: Radius(dpadRadius), startingDegree: DPad.down.start - 0.5, endingDegree: DPad.down.end)
+        Arc(radius: dpadRadius, startingDegree: DPad.down.start - 0.5, endingDegree: DPad.down.end)
     }
     
     var leftExteriorArc: Arc {
-        Arc(radius: Radius(dpadRadius), startingDegree: DPad.left.start - 0.5, endingDegree: DPad.left.end)
+        Arc(radius: dpadRadius, startingDegree: DPad.left.start - 0.5, endingDegree: DPad.left.end)
     }
     
     var rightExteriorArc: Arc {
-        Arc(radius: Radius(dpadRadius), startingDegree: DPad.right.start, endingDegree: DPad.right.end + 0.5)
+        Arc(radius: dpadRadius, startingDegree: DPad.right.start, endingDegree: DPad.right.end + 0.5)
     }
     
     var sector1Shape: Wedge {
-        Wedge(exteriorArc: Arc(radius: Radius(dpadRadius), dPad: .sector01))
+        Wedge(exteriorArc: Arc(radius: dpadRadius, dPad: .sector01))
     }
     
     var sector2Shape: Wedge {
-        Wedge(exteriorArc: Arc(radius: Radius(dpadRadius), dPad: .sector02))
+        Wedge(exteriorArc: Arc(radius: dpadRadius, dPad: .sector02))
     }
     
     var sector3Shape: Wedge {
-        Wedge(exteriorArc: Arc(radius: Radius(dpadRadius), dPad: .sector03))
+        Wedge(exteriorArc: Arc(radius: dpadRadius, dPad: .sector03))
     }
     
     var sector4Shape: Wedge {
-        Wedge(exteriorArc: Arc(radius: Radius(dpadRadius), dPad: .sector04))
+        Wedge(exteriorArc: Arc(radius: dpadRadius, dPad: .sector04))
     }
     
     // MARK: - Components
@@ -261,7 +264,14 @@ import UIKit
 // MARK: - Frame Calculations
 extension DirectionGroupingView {
     func frameForCrux() -> CGRect {
-        return CGRect(x: CGFloat(cartesianOrigin.x) - (cruxDiameter / 2), y: CGFloat(cartesianOrigin.y) - (cruxDiameter / 2), width: cruxDiameter, height: cruxDiameter)
+        return CGRect(
+            Rect(
+                x: cartesianOrigin.x - (cruxDiameter / 2),
+                y: cartesianOrigin.y - (cruxDiameter / 2),
+                width: cruxDiameter,
+                height: cruxDiameter
+            )
+        )
     }
     
     /// Calculates the frame for the shape taking into account the offset.
@@ -286,13 +296,13 @@ extension DirectionGroupingView {
         switch direction {
         case .up, .down:
             size = CGSize(
-                width: cruxDiameter,
-                height: (dpadRadius - (cruxDiameter / 2) - theme.defaultSpacing)
+                width: CGFloat(cruxDiameter),
+                height: CGFloat(dpadRadius - (cruxDiameter / 2)) - theme.defaultSpacing
             )
         case .left, .right:
             size = CGSize(
-                width: (dpadRadius - (cruxDiameter / 2) - theme.defaultSpacing),
-                height: cruxDiameter
+                width: CGFloat(dpadRadius - (cruxDiameter / 2)) - theme.defaultSpacing,
+                height: CGFloat(cruxDiameter)
             )
         }
         
@@ -300,23 +310,23 @@ extension DirectionGroupingView {
         switch direction {
         case .up:
             origin = CGPoint(
-                x: CGFloat(cartesianOrigin.x) - (cruxDiameter / 2),
-                y: CGFloat(cartesianOrigin.y) - dpadRadius
+                x: CGFloat(cartesianOrigin.x - (cruxDiameter / 2)),
+                y: CGFloat(cartesianOrigin.y - dpadRadius)
             )
         case .down:
             origin = CGPoint(
-                x: CGFloat(cartesianOrigin.x) - (cruxDiameter / 2),
-                y: CGFloat(cartesianOrigin.y) + (cruxDiameter / 2) + theme.defaultSpacing
+                x: CGFloat(cartesianOrigin.x - (cruxDiameter / 2)),
+                y: CGFloat(cartesianOrigin.y + (cruxDiameter / 2)) + theme.defaultSpacing
             )
         case .left:
             origin = CGPoint(
-                x: CGFloat(cartesianOrigin.x) - dpadRadius,
-                y: CGFloat(cartesianOrigin.y) - (cruxDiameter / 2)
+                x: CGFloat(cartesianOrigin.x - dpadRadius),
+                y: CGFloat(cartesianOrigin.y - (cruxDiameter / 2))
             )
         case .right:
             origin = CGPoint(
-                x: CGFloat(cartesianOrigin.x) + (cruxDiameter / 2) + theme.defaultSpacing,
-                y: CGFloat(cartesianOrigin.y) - (cruxDiameter / 2)
+                x: CGFloat(cartesianOrigin.x + (cruxDiameter / 2)) + theme.defaultSpacing,
+                y: CGFloat(cartesianOrigin.y - (cruxDiameter / 2))
             )
         }
         

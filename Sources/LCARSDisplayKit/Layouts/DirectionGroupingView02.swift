@@ -42,20 +42,20 @@ import UIKit
         return .init(x: 0.0, y: Float(scaledContentSize.height * 0.068))
     }
     
-    open override var firstRingEdgeExteriorRadius: CGFloat {
+    open override var firstRingEdgeExteriorRadius: Radius {
         return secondRingExteriorRadius
     }
     
     // MARK: - Shapes
     var outerRing01Shape: Crescent {
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
-        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing05Shape: Crescent {
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), dPad: .arc05)
-        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), dPad: .arc05)
+        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc05)
+        let outerArc = Arc(radius: secondRingExteriorRadius, dPad: .arc05)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
@@ -75,7 +75,7 @@ import UIKit
     
     var top02Shape: RoundedRectangle {
         var frame = frameForTop03()
-        frame.size.width = (CGFloat(RoundedRectangle.defaultSize.width) * scaleRatio) * 0.55
+        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio * 0.55)
         frame.origin.x = frame.origin.x - frame.size.width - theme.defaultSpacing
         
         let point1: CartesianPoint = .init(x: Float(frame.origin.x), y: Float(frame.origin.y))
@@ -86,15 +86,15 @@ import UIKit
     
     var top03Shape: RoundedRectangle {
         let e15Points = edge15Shape.edgePoints
-        let e15Origin = frame(forShape: edge15Shape).origin
+        let e15Origin = Point(frame(forShape: edge15Shape).origin)
         
-        let width = CGFloat(e15Points[1].x - e15Points[0].x)
-        let height = CGFloat(RoundedRectangle.defaultSize.height) * scaleRatio
+        let width = e15Points[1].x - e15Points[0].x
+        let height = RoundedRectangle.defaultSize.height * scaleRatio
         let x = e15Origin.x
-        let y = e15Origin.y - height - theme.defaultSpacing
+        let y = e15Origin.y - height - Float(theme.defaultSpacing)
         
-        let point1: CartesianPoint = .init(x: Float(x), y: Float(y))
-        let point2: CartesianPoint = .init(x: point1.x + Float(width), y: point1.y + Float(height))
+        let point1: CartesianPoint = .init(x: x, y: y)
+        let point2: CartesianPoint = .init(x: point1.x + width, y: point1.y + height)
         
         return RoundedRectangle(cartesianPoints: [point1, point2])
     }
@@ -102,7 +102,7 @@ import UIKit
     var top04Shape: RoundedRectangle {
         var frame = frameForTop03()
         let top03Width = frame.size.width
-        frame.size.width = (CGFloat(RoundedRectangle.defaultSize.width) * scaleRatio) * 0.55
+        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio * 0.55)
         frame.origin.x = frame.origin.x + top03Width + theme.defaultSpacing
         let rect = Rect(frame)
         
@@ -185,7 +185,7 @@ import UIKit
         let e13Points = edge13Shape.edgePoints
         let e13Origin = frame(forShape: edge13Shape).origin
         let width = CGFloat(e13Points[1].x - e13Points[0].x)
-        let height = CGFloat(RoundedRectangle.defaultSize.height) * scaleRatio
+        let height = CGFloat(RoundedRectangle.defaultSize.height * scaleRatio)
         let x = e13Origin.x
         let y = e13Origin.y - height - theme.defaultSpacing
         return CGRect(x: x, y: y, width: width, height: height)
@@ -193,7 +193,7 @@ import UIKit
     
     func frameForTop02() -> CGRect {
         var frame = frameForTop03()
-        frame.size.width = (CGFloat(RoundedRectangle.defaultSize.width) * scaleRatio) * 0.55
+        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio * 0.55)
         frame.origin.x = frame.origin.x - frame.size.width - theme.defaultSpacing
         return frame
     }
@@ -203,7 +203,7 @@ import UIKit
         let e15Origin = frame(forShape: edge15Shape).origin
         
         let width = CGFloat(e15Points[1].x - e15Points[0].x)
-        let height = CGFloat(RoundedRectangle.defaultSize.height) * scaleRatio
+        let height = CGFloat(RoundedRectangle.defaultSize.height * scaleRatio)
         let x = e15Origin.x
         let y = e15Origin.y - height - theme.defaultSpacing
         
@@ -213,7 +213,7 @@ import UIKit
     func frameForTop04() -> CGRect {
         var frame = frameForTop03()
         let top03Width = frame.size.width
-        frame.size.width = (CGFloat(RoundedRectangle.defaultSize.width) * scaleRatio) * 0.55
+        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio * 0.55)
         frame.origin.x = frame.origin.x + top03Width + theme.defaultSpacing
         
         return frame
