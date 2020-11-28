@@ -65,7 +65,7 @@ import UIKit
         let width = e13Points[1].x - e13Points[0].x
         let height = RoundedRectangle.defaultSize.height * Float(scaleRatio)
         let x = Float(e13Origin.x)
-        let y = Float(e13Origin.y - CGFloat(height) - Configuration.theme.defaultSpacing)
+        let y = Float(e13Origin.y - CGFloat(height) - theme.defaultSpacing)
         
         let point1: CartesianPoint = .init(x: x, y: y)
         let point2: CartesianPoint = .init(x: x + width, y: y + height)
@@ -76,7 +76,7 @@ import UIKit
     var top02Shape: RoundedRectangle {
         var frame = frameForTop03()
         frame.size.width = (CGFloat(RoundedRectangle.defaultSize.width) * scaleRatio) * 0.55
-        frame.origin.x = frame.origin.x - frame.size.width - Configuration.theme.defaultSpacing
+        frame.origin.x = frame.origin.x - frame.size.width - theme.defaultSpacing
         
         let point1: CartesianPoint = .init(x: Float(frame.origin.x), y: Float(frame.origin.y))
         let point2: CartesianPoint = .init(x: point1.x + Float(frame.width), y: point1.y + Float(frame.height))
@@ -91,7 +91,7 @@ import UIKit
         let width = CGFloat(e15Points[1].x - e15Points[0].x)
         let height = CGFloat(RoundedRectangle.defaultSize.height) * scaleRatio
         let x = e15Origin.x
-        let y = e15Origin.y - height - Configuration.theme.defaultSpacing
+        let y = e15Origin.y - height - theme.defaultSpacing
         
         let point1: CartesianPoint = .init(x: Float(x), y: Float(y))
         let point2: CartesianPoint = .init(x: point1.x + Float(width), y: point1.y + Float(height))
@@ -103,7 +103,7 @@ import UIKit
         var frame = frameForTop03()
         let top03Width = frame.size.width
         frame.size.width = (CGFloat(RoundedRectangle.defaultSize.width) * scaleRatio) * 0.55
-        frame.origin.x = frame.origin.x + top03Width + Configuration.theme.defaultSpacing
+        frame.origin.x = frame.origin.x + top03Width + theme.defaultSpacing
         let rect = Rect(frame)
         
         let point1 = rect.origin
@@ -114,7 +114,7 @@ import UIKit
     
     var top05Shape: RoundedRectangle {
         var frame = frameForTop00()
-        frame.origin.y = frame.origin.y - frame.size.height - Configuration.theme.defaultSpacing
+        frame.origin.y = frame.origin.y - frame.size.height - theme.defaultSpacing
         let rect = Rect(frame)
         
         let point1 = rect.origin
@@ -125,57 +125,57 @@ import UIKit
     
     // MARK: - Components
     
-    open lazy var outerRing01: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing01Shape, delegate: self)
+    open lazy var outerRing01: CrescentControl = {
+        let button = CrescentControl(shape: outerRing01Shape, delegate: self)
         button.setTitle("OR01", for: .init())
         button.titleEdgeInsets = UIEdgeInsets(top: 50, left: 50, bottom: 0, right: 0)
-        button.color = Configuration.theme.primaryDark
+        button.color = theme.primaryDark
         return button
     }()
     
-    open lazy var outerRing05: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing05Shape, delegate: self)
+    open lazy var outerRing05: CrescentControl = {
+        let button = CrescentControl(shape: outerRing05Shape, delegate: self)
         button.setTitle("OR05", for: .init())
-        button.color = Configuration.theme.primaryDark
+        button.color = theme.primaryDark
         return button
     }()
     
-    open lazy var top01: RoundedRectangle_Button = {
-        let button = RoundedRectangle_Button(shape: top01Shape, delegate: self)
+    open lazy var top01: RoundedRectangleControl = {
+        let button = RoundedRectangleControl(shape: top01Shape, delegate: self)
         button.setTitle("CALIBRATE", for: .init())
-        button.color = Configuration.theme.tertiaryLight
+        button.color = theme.tertiaryLight
         return button
     }()
     
-    open var calibrate: RoundedRectangle_Button {
+    open var calibrate: RoundedRectangleControl {
         return top01
     }
     
-    open lazy var top02: RoundedRectangle_Button = {
-        let button = RoundedRectangle_Button(shape: top02Shape, delegate: self)
+    open lazy var top02: RoundedRectangleControl = {
+        let button = RoundedRectangleControl(shape: top02Shape, delegate: self)
         button.setTitle("T02", for: .init())
-        button.color = Configuration.theme.primaryLight
+        button.color = theme.primaryLight
         return button
     }()
     
-    open lazy var top03: RoundedRectangle_Button = {
-        let button = RoundedRectangle_Button(shape: top03Shape, delegate: self)
+    open lazy var top03: RoundedRectangleControl = {
+        let button = RoundedRectangleControl(shape: top03Shape, delegate: self)
         button.setTitle("T03", for: .init())
-        button.color = Configuration.theme.tertiaryDark
+        button.color = theme.tertiaryDark
         return button
     }()
     
-    open lazy var top04: RoundedRectangle_Button = {
-        let button = RoundedRectangle_Button(shape: top04Shape, delegate: self)
+    open lazy var top04: RoundedRectangleControl = {
+        let button = RoundedRectangleControl(shape: top04Shape, delegate: self)
         button.setTitle("T04", for: .init())
-        button.color = Configuration.theme.primaryDark
+        button.color = theme.primaryDark
         return button
     }()
     
-    open lazy var top05: RoundedRectangle_Button = {
-        let button = RoundedRectangle_Button(shape: top05Shape, delegate: self)
+    open lazy var top05: RoundedRectangleControl = {
+        let button = RoundedRectangleControl(shape: top05Shape, delegate: self)
         button.setTitle("T05", for: .init())
-        button.color = Configuration.theme.primaryDark
+        button.color = theme.primaryDark
         return button
     }()
     
@@ -187,14 +187,14 @@ import UIKit
         let width = CGFloat(e13Points[1].x - e13Points[0].x)
         let height = CGFloat(RoundedRectangle.defaultSize.height) * scaleRatio
         let x = e13Origin.x
-        let y = e13Origin.y - height - Configuration.theme.defaultSpacing
+        let y = e13Origin.y - height - theme.defaultSpacing
         return CGRect(x: x, y: y, width: width, height: height)
     }
     
     func frameForTop02() -> CGRect {
         var frame = frameForTop03()
         frame.size.width = (CGFloat(RoundedRectangle.defaultSize.width) * scaleRatio) * 0.55
-        frame.origin.x = frame.origin.x - frame.size.width - Configuration.theme.defaultSpacing
+        frame.origin.x = frame.origin.x - frame.size.width - theme.defaultSpacing
         return frame
     }
     
@@ -205,7 +205,7 @@ import UIKit
         let width = CGFloat(e15Points[1].x - e15Points[0].x)
         let height = CGFloat(RoundedRectangle.defaultSize.height) * scaleRatio
         let x = e15Origin.x
-        let y = e15Origin.y - height - Configuration.theme.defaultSpacing
+        let y = e15Origin.y - height - theme.defaultSpacing
         
         return CGRect(x: x, y: y, width: width, height: height)
     }
@@ -214,14 +214,14 @@ import UIKit
         var frame = frameForTop03()
         let top03Width = frame.size.width
         frame.size.width = (CGFloat(RoundedRectangle.defaultSize.width) * scaleRatio) * 0.55
-        frame.origin.x = frame.origin.x + top03Width + Configuration.theme.defaultSpacing
+        frame.origin.x = frame.origin.x + top03Width + theme.defaultSpacing
         
         return frame
     }
     
     func frameForTop05() -> CGRect {
         var frame = frameForTop00()
-        frame.origin.y = frame.origin.y - frame.size.height - Configuration.theme.defaultSpacing
+        frame.origin.y = frame.origin.y - frame.size.height - theme.defaultSpacing
         return frame
     }
 }

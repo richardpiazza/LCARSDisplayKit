@@ -46,7 +46,7 @@ public struct Direction {
 
 extension Direction: ExpressibleByCartesianPoints {
     public var cartesianPoints: [CartesianPoint] {
-        return exteriorArc.cartesianPoints
+        return [exteriorArc.startingPoint, exteriorArc.endingPoint]
     }
     
     public var cartesianFrame: CartesianFrame {

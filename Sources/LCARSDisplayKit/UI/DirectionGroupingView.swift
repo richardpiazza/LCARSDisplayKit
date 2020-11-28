@@ -4,11 +4,12 @@ import Swift2D
 import UIKit
 
 /// The standard circular Direction-Pad found in many LCARS layouts.
-@IBDesignable open class DirectionGroupingView: UIView, TappableButtonDelegate {
+@IBDesignable open class DirectionGroupingView: UIView, InteractiveControlDelegate {
     
     public typealias ButtonTapHandler = (_ button: UIControl) -> Void
     
     public var buttonTapHandler: ButtonTapHandler?
+    public var theme: Theme = TNG.shared
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,10 +41,10 @@ import UIKit
         down.frame = frame(for: .down)
         left.frame = frame(for: .left)
         right.frame = frame(for: .right)
-        sector01.frame = frame(forShape: sector1Arc)
-        sector02.frame = frame(forShape: sector2Arc)
-        sector03.frame = frame(forShape: sector3Arc)
-        sector04.frame = frame(forShape: sector4Arc)
+        sector01.frame = frame(forShape: sector1Shape)
+        sector02.frame = frame(forShape: sector2Shape)
+        sector03.frame = frame(forShape: sector3Shape)
+        sector04.frame = frame(forShape: sector4Shape)
     }
     
     // MARK: - Scale & Position
@@ -110,7 +111,7 @@ import UIKit
     }
     
     var innerRadius: Radius {
-        return (Float(cruxDiameter) / 2) + Float(Configuration.theme.defaultSpacing)
+        return (Float(cruxDiameter) / 2) + Float(theme.defaultSpacing)
     }
     
     /// Radius of the entire Direction Pad
@@ -120,7 +121,7 @@ import UIKit
     
     ///
     open var firstRingInteriorRadius: CGFloat {
-        return dpadRadius + Configuration.theme.defaultSpacing
+        return dpadRadius + theme.defaultSpacing
     }
     
     ///
@@ -135,7 +136,7 @@ import UIKit
     
     ///
     open var secondRingInteriorRadius: CGFloat {
-        return firstRingExteriorRadius + Configuration.theme.defaultSpacing
+        return firstRingExteriorRadius + theme.defaultSpacing
     }
     
     ///
@@ -181,83 +182,83 @@ import UIKit
         Arc(radius: Radius(dpadRadius), startingDegree: Degree(DPad.right.start), endingDegree: Degree(DPad.right.end + 0.5))
     }
     
-    var sector1Arc: Arc {
-        Arc(radius: Radius(dpadRadius), dPad: .sector01)
+    var sector1Shape: Wedge {
+        Wedge(exteriorArc: Arc(radius: Radius(dpadRadius), dPad: .sector01))
     }
     
-    var sector2Arc: Arc {
-        Arc(radius: Radius(dpadRadius), dPad: .sector02)
+    var sector2Shape: Wedge {
+        Wedge(exteriorArc: Arc(radius: Radius(dpadRadius), dPad: .sector02))
     }
     
-    var sector3Arc: Arc {
-        Arc(radius: Radius(dpadRadius), dPad: .sector03)
+    var sector3Shape: Wedge {
+        Wedge(exteriorArc: Arc(radius: Radius(dpadRadius), dPad: .sector03))
     }
     
-    var sector4Arc: Arc {
-        Arc(radius: Radius(dpadRadius), dPad: .sector04)
+    var sector4Shape: Wedge {
+        Wedge(exteriorArc: Arc(radius: Radius(dpadRadius), dPad: .sector04))
     }
     
     // MARK: - Components
-    open lazy var crux: RoundedRectangle_Button = {
-        let button = RoundedRectangle_Button(shape: cruxShape, delegate: self)
-        button.color = Configuration.theme.primaryDark
+    open lazy var crux: RoundedRectangleControl = {
+        let button = RoundedRectangleControl(shape: cruxShape, delegate: self)
+        button.color = theme.primaryDark
         button.setTitle("", for: .init())
         return button
     }()
     
-    open lazy var up: Direction_Button = {
+    open lazy var up: DirectionControl = {
         let direction = Direction(.up, interiorRadius: innerRadius, exteriorArc: upExteriorArc)
-        let button = Direction_Button(shape: direction, delegate: self)
+        let button = DirectionControl(shape: direction, delegate: self)
         button.setTitle("", for: .init())
         return button
     }()
     
-    open lazy var down: Direction_Button = {
+    open lazy var down: DirectionControl = {
         let direction = Direction(.down, interiorRadius: innerRadius, exteriorArc: downExteriorArc)
-        let button = Direction_Button(shape: direction, delegate: self)
+        let button = DirectionControl(shape: direction, delegate: self)
         button.setTitle("", for: .init())
         return button
     }()
     
-    open lazy var left: Direction_Button = {
+    open lazy var left: DirectionControl = {
         let direction = Direction(.left, interiorRadius: innerRadius, exteriorArc: leftExteriorArc)
-        let button = Direction_Button(shape: direction, delegate: self)
+        let button = DirectionControl(shape: direction, delegate: self)
         button.setTitle("", for: .init())
         return button
     }()
     
-    open lazy var right: Direction_Button = {
+    open lazy var right: DirectionControl = {
         let direction = Direction(.right, interiorRadius: innerRadius, exteriorArc: rightExteriorArc)
-        let button = Direction_Button(shape: direction, delegate: self)
+        let button = DirectionControl(shape: direction, delegate: self)
         button.setTitle("", for: UIControl.State())
         return button
     }()
     
-    open lazy var sector01: Sector_Button = {
-        let button = Sector_Button(shape: sector1Arc, delegate: self)
+    open lazy var sector01: WedgeControl = {
+        let button = WedgeControl(shape: sector1Shape, delegate: self)
         button.setTitle("", for: .init())
-        button.color = Configuration.theme.primaryMedium
+        button.color = theme.primaryMedium
         return button
     }()
     
-    open lazy var sector02: Sector_Button = {
-        let button = Sector_Button(shape: sector2Arc, delegate: self)
+    open lazy var sector02: WedgeControl = {
+        let button = WedgeControl(shape: sector2Shape, delegate: self)
         button.setTitle("", for: .init())
-        button.color = Configuration.theme.primaryMedium
+        button.color = theme.primaryMedium
         return button
     }()
     
-    open lazy var sector03: Sector_Button = {
-        let button = Sector_Button(shape: sector3Arc, delegate: self)
+    open lazy var sector03: WedgeControl = {
+        let button = WedgeControl(shape: sector3Shape, delegate: self)
         button.setTitle("", for: .init())
-        button.color = Configuration.theme.primaryMedium
+        button.color = theme.primaryMedium
         return button
     }()
     
-    open lazy var sector04: Sector_Button = {
-        let button = Sector_Button(shape: sector4Arc, delegate: self)
+    open lazy var sector04: WedgeControl = {
+        let button = WedgeControl(shape: sector4Shape, delegate: self)
         button.setTitle("", for: .init())
-        button.color = Configuration.theme.primaryMedium
+        button.color = theme.primaryMedium
         return button
     }()
     
@@ -296,11 +297,11 @@ extension DirectionGroupingView {
         case .up, .down:
             size = CGSize(
                 width: cruxDiameter,
-                height: (dpadRadius - (cruxDiameter / 2) - Configuration.theme.defaultSpacing)
+                height: (dpadRadius - (cruxDiameter / 2) - theme.defaultSpacing)
             )
         case .left, .right:
             size = CGSize(
-                width: (dpadRadius - (cruxDiameter / 2) - Configuration.theme.defaultSpacing),
+                width: (dpadRadius - (cruxDiameter / 2) - theme.defaultSpacing),
                 height: cruxDiameter
             )
         }
@@ -315,7 +316,7 @@ extension DirectionGroupingView {
         case .down:
             origin = CGPoint(
                 x: CGFloat(cartesianOrigin.x) - (cruxDiameter / 2),
-                y: CGFloat(cartesianOrigin.y) + (cruxDiameter / 2) + Configuration.theme.defaultSpacing
+                y: CGFloat(cartesianOrigin.y) + (cruxDiameter / 2) + theme.defaultSpacing
             )
         case .left:
             origin = CGPoint(
@@ -324,7 +325,7 @@ extension DirectionGroupingView {
             )
         case .right:
             origin = CGPoint(
-                x: CGFloat(cartesianOrigin.x) + (cruxDiameter / 2) + Configuration.theme.defaultSpacing,
+                x: CGFloat(cartesianOrigin.x) + (cruxDiameter / 2) + theme.defaultSpacing,
                 y: CGFloat(cartesianOrigin.y) - (cruxDiameter / 2)
             )
         }

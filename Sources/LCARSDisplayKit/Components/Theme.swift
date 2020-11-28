@@ -28,8 +28,7 @@ public protocol Theme {
 public extension Theme {
     func randomColor() -> UIColor {
         let colors = [primaryLight, primaryDark, tertiaryLight, tertiaryDark]
-        let random = arc4random_uniform(UInt32(colors.count))
-        return colors[Int(random)]
+        return colors.randomElement()!
     }
     
     var defaultSpacing: CGFloat {

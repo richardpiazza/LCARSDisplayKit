@@ -1,7 +1,29 @@
 import GraphPoint
 import Swift2D
-#if canImport(CoreGraphics)
-import CoreGraphics
+#if canImport(UIKit)
+import UIKit
+
+@IBDesignable open class RoundedRectangleControl: InteractiveControl<RoundedRectangle> {
+
+    open override var intrinsicContentSize: CGSize {
+        return CGSize(RoundedRectangle.defaultSize)
+    }
+    
+    @IBInspectable open var roundLeft: Bool {
+        get { shape?.leftRounded ?? true }
+        set { shape?.leftRounded = newValue }
+    }
+    
+    @IBInspectable open var roundRight: Bool {
+        get { shape?.rightRounded ?? true }
+        set { shape?.rightRounded = newValue }
+    }
+    
+    @IBInspectable open var isFrame: Bool {
+        get { shape?.cornersOnly ?? false }
+        set { shape?.cornersOnly = newValue }
+    }
+}
 
 extension RoundedRectangle: ExpressibleByPath {
     public var path: CGMutablePath {
@@ -51,10 +73,6 @@ extension RoundedRectangle: ExpressibleByPath {
         }
         
         return path
-    }
-    
-    public var subpaths: [CGMutablePath]? {
-        return nil
     }
 }
 #endif

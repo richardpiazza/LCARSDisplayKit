@@ -1,7 +1,50 @@
 import GraphPoint
 import Swift2D
-#if canImport(CoreGraphics)
-import CoreGraphics
+#if canImport(UIKit)
+import UIKit
+
+@IBDesignable open class ElbowControl: InteractiveControl<Elbow> {
+    
+    @IBInspectable open var top: Bool {
+        get { shape?.top ?? true }
+        set { shape?.top = newValue }
+    }
+    
+    @IBInspectable open var left: Bool {
+        get { shape?.left ?? true }
+        set { shape?.left = newValue }
+    }
+    
+    @IBInspectable open var rounded: Bool {
+        get { shape?.rounded ?? true }
+        set { shape?.rounded = newValue }
+    }
+    
+    @IBInspectable open var horizontalHeight: CGFloat {
+        get { CGFloat(shape?.horizontalHeight ?? Elbow.defaultHorizontalHeight) }
+        set { shape?.horizontalHeight = Float(newValue) }
+    }
+    
+    @IBInspectable open var verticalWidth: CGFloat {
+        get { CGFloat(shape?.verticalWidth ?? Elbow.defaultVerticalWidth) }
+        set { shape?.verticalWidth = Float(newValue) }
+    }
+    
+    @IBInspectable open var closedHeight: CGFloat {
+        get { CGFloat(shape?.closedHeight ?? Elbow.defaultClosedHeight) }
+        set { shape?.closedHeight = Float(newValue) }
+    }
+    
+    @IBInspectable open var matchRadius: Bool {
+        get { shape?.shouldMatchRadius ?? false }
+        set { shape?.shouldMatchRadius = newValue }
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        shape = Elbow(size: Size(bounds.size))
+    }
+}
 
 extension Elbow: ExpressibleByPath {
     public var path: CGMutablePath {
@@ -103,10 +146,6 @@ extension Elbow: ExpressibleByPath {
         }
         
         return path
-    }
-    
-    public var subpaths: [CGMutablePath]? {
-        return nil
     }
 }
 #endif

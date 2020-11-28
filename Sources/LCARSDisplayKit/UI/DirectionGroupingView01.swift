@@ -85,7 +85,7 @@ import UIKit
     }
     
     open var thirdRingInteriorRadius: CGFloat {
-        return secondRingExteriorRadius + Configuration.theme.defaultSpacing
+        return secondRingExteriorRadius + theme.defaultSpacing
     }
     
     open var thirdRingExteriorRadius: CGFloat {
@@ -298,193 +298,193 @@ import UIKit
     
     // MARK: - Components
     
-    open lazy var innerRing01: Crescent_Button = {
-        let button = Crescent_Button(shape: innerRing01Crescent, delegate: self)
+    open lazy var innerRing01: CrescentControl = {
+        let button = CrescentControl(shape: innerRing01Crescent, delegate: self)
         button.setTitle("IR01", for: .init())
         button.titleEdgeInsets = UIEdgeInsets(top: 40, left: 40, bottom: 0, right: 0)
-        button.color = Configuration.theme.tertiaryLight
+        button.color = theme.tertiaryLight
         return button
     }()
     
-    open lazy var innerRing05: Crescent_Button = {
-        let button = Crescent_Button(shape: innerRing05Crescent, delegate: self)
+    open lazy var innerRing05: CrescentControl = {
+        let button = CrescentControl(shape: innerRing05Crescent, delegate: self)
         button.setTitle("IR05", for: .init())
-        button.color = Configuration.theme.primaryLight
+        button.color = theme.primaryLight
         return button
     }()
     
-    open lazy var innerRing10: Crescent_Button = {
-        let button = Crescent_Button(shape: innerRing10Crescent, delegate: self)
+    open lazy var innerRing10: CrescentControl = {
+        let button = CrescentControl(shape: innerRing10Crescent, delegate: self)
         button.setTitle("IR10", for: .init())
-        button.color = Configuration.theme.primaryLight
+        button.color = theme.primaryLight
         return button
     }()
     
-    open lazy var innerRing11: Crescent_Button = {
-        let button = Crescent_Button(shape: innerRing11Crescent, delegate: self)
+    open lazy var innerRing11: CrescentControl = {
+        let button = CrescentControl(shape: innerRing11Crescent, delegate: self)
         button.setTitle("IR11", for: .init())
-        button.color = Configuration.theme.tertiaryLight
+        button.color = theme.tertiaryLight
         return button
     }()
     
-    open lazy var innerRing12: Crescent_Button = {
-        let button = Crescent_Button(shape: innerRing12Crescent, delegate: self)
+    open lazy var innerRing12: CrescentControl = {
+        let button = CrescentControl(shape: innerRing12Crescent, delegate: self)
         button.setTitle("IR12", for: .init())
-        button.color = Configuration.theme.primaryDark
+        button.color = theme.primaryDark
         return button
     }()
     
-    open lazy var innerRing13: Crescent_Button = {
-        let button = Crescent_Button(shape: innerRing13Crescent, delegate: self)
+    open lazy var innerRing13: CrescentControl = {
+        let button = CrescentControl(shape: innerRing13Crescent, delegate: self)
         button.setTitle("IR13", for: .init())
-        button.color = Configuration.theme.tertiaryDark
+        button.color = theme.tertiaryDark
         return button
     }()
     
-    open lazy var innerRing14: Crescent_Button = {
-        let button = Crescent_Button(shape: innerRing14Crescent, delegate: self)
+    open lazy var innerRing14: CrescentControl = {
+        let button = CrescentControl(shape: innerRing14Crescent, delegate: self)
         button.setTitle("IR14", for: .init())
-        button.color = Configuration.theme.tertiaryLight
+        button.color = theme.tertiaryLight
         return button
     }()
     
-    open lazy var innerRing15: Crescent_Button = {
-        let button = Crescent_Button(shape: innerRing15Crescent, delegate: self)
+    open lazy var innerRing15: CrescentControl = {
+        let button = CrescentControl(shape: innerRing15Crescent, delegate: self)
         button.setTitle("IR15", for: .init())
-        button.color = Configuration.theme.primaryLight
+        button.color = theme.primaryLight
         return button
     }()
     
-    open lazy var innerRing16: Crescent_Button = {
-        let button = Crescent_Button(shape: innerRing16Crescent, delegate: self)
+    open lazy var innerRing16: CrescentControl = {
+        let button = CrescentControl(shape: innerRing16Crescent, delegate: self)
         button.setTitle("IR16", for: .init())
-        button.color = Configuration.theme.tertiaryLight
+        button.color = theme.tertiaryLight
         return button
     }()
     
-    open lazy var innerRing20: Crescent_Button = {
-        let button = Crescent_Button(shape: innerRing20Crescent, delegate: self)
+    open lazy var innerRing20: CrescentControl = {
+        let button = CrescentControl(shape: innerRing20Crescent, delegate: self)
         button.setTitle("IR20", for: .init())
-        button.color = Configuration.theme.primaryLight
+        button.color = theme.primaryLight
         return button
     }()
     
-    open lazy var outerRing10: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing10Crescent, delegate: self)
+    open lazy var outerRing10: CrescentControl = {
+        let button = CrescentControl(shape: outerRing10Crescent, delegate: self)
         button.setTitle("OR10", for: .init())
-        button.color = Configuration.theme.primaryDark
+        button.color = theme.primaryDark
         return button
     }()
     
-    open lazy var outerRing11: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing11Crescent, delegate: self)
+    open lazy var outerRing11: CrescentControl = {
+        let button = CrescentControl(shape: outerRing11Crescent, delegate: self)
         button.setTitle("OR11", for: .init())
-        button.color = Configuration.theme.tertiaryDark
+        button.color = theme.tertiaryDark
         return button
     }()
     
-    open lazy var outerRing12: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing12Crescent, delegate: self)
+    open lazy var outerRing12: CrescentControl = {
+        let button = CrescentControl(shape: outerRing12Crescent, delegate: self)
         button.setTitle("OR12", for: .init())
-        button.color = Configuration.theme.tertiaryLight
+        button.color = theme.tertiaryLight
         return button
     }()
     
-    open lazy var outerRing13: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing13Crescent, delegate: self)
+    open lazy var outerRing13: CrescentControl = {
+        let button = CrescentControl(shape: outerRing13Crescent, delegate: self)
         button.setTitle("OR13", for: .init())
-        button.color = Configuration.theme.primaryLight
+        button.color = theme.primaryLight
         return button
     }()
     
-    open lazy var outerRing14: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing14Crescent, delegate: self)
+    open lazy var outerRing14: CrescentControl = {
+        let button = CrescentControl(shape: outerRing14Crescent, delegate: self)
         button.setTitle("OR14", for: .init())
-        button.color = Configuration.theme.primaryDark
+        button.color = theme.primaryDark
         return button
     }()
     
-    open lazy var outerRing16: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing16Crescent, delegate: self)
+    open lazy var outerRing16: CrescentControl = {
+        let button = CrescentControl(shape: outerRing16Crescent, delegate: self)
         button.setTitle("OR16", for: .init())
-        button.color = Configuration.theme.tertiaryDark
+        button.color = theme.tertiaryDark
         return button
     }()
     
-    open lazy var outerRing17: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing17Crescent, delegate: self)
+    open lazy var outerRing17: CrescentControl = {
+        let button = CrescentControl(shape: outerRing17Crescent, delegate: self)
         button.setTitle("OR17", for: .init())
-        button.color = Configuration.theme.primaryLight
+        button.color = theme.primaryLight
         return button
     }()
     
-    open lazy var outerRing18: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing18Crescent, delegate: self)
+    open lazy var outerRing18: CrescentControl = {
+        let button = CrescentControl(shape: outerRing18Crescent, delegate: self)
         button.setTitle("OR18", for: .init())
-        button.color = Configuration.theme.primaryDark
+        button.color = theme.primaryDark
         return button
     }()
     
-    open lazy var outerRing19: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing19Crescent, delegate: self)
+    open lazy var outerRing19: CrescentControl = {
+        let button = CrescentControl(shape: outerRing19Crescent, delegate: self)
         button.setTitle("OR19", for: .init())
-        button.color = Configuration.theme.tertiaryDark
+        button.color = theme.tertiaryDark
         return button
     }()
     
-    open lazy var outerRing20: Crescent_Button = {
-        let button = Crescent_Button(shape: outerRing20Crescent, delegate: self)
+    open lazy var outerRing20: CrescentControl = {
+        let button = CrescentControl(shape: outerRing20Crescent, delegate: self)
         button.setTitle("OR20", for: .init())
-        button.color = Configuration.theme.tertiaryLight
+        button.color = theme.tertiaryLight
         return button
     }()
     
-    open lazy var edge06: EdgedCrescent_Button = {
-        let button = EdgedCrescent_Button(shape: edge06Shape, delegate: self)
+    open lazy var edge06: EdgedCrescentControl = {
+        let button = EdgedCrescentControl(shape: edge06Shape, delegate: self)
         button.setTitle("－", for: .init())
-        button.color = Configuration.theme.tertiaryLight
-        button.titleLabel?.font = Configuration.theme.subtitle
+        button.color = theme.tertiaryLight
+        button.titleLabel?.font = theme.subtitle
         return button
     }()
     
     /// Mode Select
-    open lazy var edge07: EdgedCrescent_Button = {
-        let button = EdgedCrescent_Button(shape: edge07Shape, delegate: self)
+    open lazy var edge07: EdgedCrescentControl = {
+        let button = EdgedCrescentControl(shape: edge07Shape, delegate: self)
         button.setTitle("MODE SELECT", for: .init())
-        button.color = Configuration.theme.primaryLight
+        button.color = theme.primaryLight
         return button
     }()
     
-    open var modeSelect: EdgedCrescent_Button {
+    open var modeSelect: EdgedCrescentControl {
         return edge07
     }
     
-    open lazy var edge09: EdgedCrescent_Button = {
-        let button = EdgedCrescent_Button(shape: edge09Shape, delegate: self)
+    open lazy var edge09: EdgedCrescentControl = {
+        let button = EdgedCrescentControl(shape: edge09Shape, delegate: self)
         button.setTitle("+", for: .init())
-        button.color = Configuration.theme.tertiaryDark
-        button.titleLabel?.font = Configuration.theme.subtitle
+        button.color = theme.tertiaryDark
+        button.titleLabel?.font = theme.subtitle
         return button
     }()
     
-    open lazy var edge13: EdgedCrescent_Button = {
-        let button = EdgedCrescent_Button(shape: edge13Shape, delegate: self)
+    open lazy var edge13: EdgedCrescentControl = {
+        let button = EdgedCrescentControl(shape: edge13Shape, delegate: self)
         button.setTitle("E13", for: .init())
-        button.color = Configuration.theme.primaryDark
+        button.color = theme.primaryDark
         return button
     }()
     
-    open lazy var edge15: EdgedCrescent_Button = {
-        let button = EdgedCrescent_Button(shape: edge15Shape, delegate: self)
+    open lazy var edge15: EdgedCrescentControl = {
+        let button = EdgedCrescentControl(shape: edge15Shape, delegate: self)
         button.setTitle("E15", for: .init())
-        button.color = Configuration.theme.tertiaryLight
+        button.color = theme.tertiaryLight
         return button
     }()
     
-    open lazy var top00: RoundedRectangle_Button = {
-        let button = RoundedRectangle_Button(shape: top00Shape, delegate: self)
+    open lazy var top00: RoundedRectangleControl = {
+        let button = RoundedRectangleControl(shape: top00Shape, delegate: self)
         button.setTitle("T00", for: .init())
-        button.color = Configuration.theme.tertiaryLight
+        button.color = theme.tertiaryLight
         return button
     }()
     

@@ -1,6 +1,11 @@
 import GraphPoint
-#if canImport(CoreGraphics)
-import CoreGraphics
+import Swift2D
+#if canImport(UIKit)
+import UIKit
+
+open class CrescentControl: InteractiveControl<Crescent> {
+    
+}
 
 extension Crescent: ExpressibleByPath {
     public var path: CGMutablePath {
@@ -16,10 +21,6 @@ extension Crescent: ExpressibleByPath {
         path.closeSubpath()
         
         return path
-    }
-    
-    public var subpaths: [CGMutablePath]? {
-        return nil
     }
 }
 #endif

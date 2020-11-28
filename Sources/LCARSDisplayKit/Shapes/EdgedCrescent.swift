@@ -13,6 +13,7 @@ public struct EdgedCrescent {
 
 extension EdgedCrescent: ExpressibleByCartesianPoints {
     public var cartesianPoints: [CartesianPoint] {
-        return [interiorArc.cartesianPoints, edgePoints].flatMap { $0 }
+        let arcPoints = [interiorArc.startingPoint, interiorArc.endingPoint]
+        return [arcPoints, edgePoints].flatMap { $0 }
     }
 }

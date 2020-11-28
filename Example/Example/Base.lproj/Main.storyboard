@@ -47,11 +47,11 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ddK-JN-Gso">
                                 <rect key="frame" x="20" y="571" width="216" height="755"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBf-uU-4OZ" customClass="Elbow_Button" customModule="LCARSDisplayKit">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JBf-uU-4OZ" customClass="ElbowControl" customModule="LCARSDisplayKit">
                                         <rect key="frame" x="0.0" y="0.0" width="216" height="373.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oeo-Nc-tM5" customClass="Elbow_Button" customModule="LCARSDisplayKit">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oeo-Nc-tM5" customClass="ElbowControl" customModule="LCARSDisplayKit">
                                         <rect key="frame" x="0.0" y="381.5" width="216" height="373.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
@@ -66,7 +66,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kNi-XS-mXP">
                                 <rect key="frame" x="743" y="20" width="261" height="520"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmU-rT-Y5e" customClass="Elbow_Button" customModule="LCARSDisplayKit">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VmU-rT-Y5e" customClass="ElbowControl" customModule="LCARSDisplayKit">
                                         <rect key="frame" x="0.0" y="0.0" width="261" height="256"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
@@ -76,7 +76,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TvL-vj-4cm" customClass="Elbow_Button" customModule="LCARSDisplayKit">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TvL-vj-4cm" customClass="ElbowControl" customModule="LCARSDisplayKit">
                                         <rect key="frame" x="0.0" y="264" width="261" height="256"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
