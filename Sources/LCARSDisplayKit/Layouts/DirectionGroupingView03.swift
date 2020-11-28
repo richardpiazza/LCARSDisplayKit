@@ -235,9 +235,8 @@ import UIKit
         let endDegree = innerRing15Shape.exteriorArc.endingDegree - 0.25
         let interiorArc = Arc(radius: Radius(secondRingInteriorRadius), startingDegree: startDegree, endingDegree: endDegree)
         let exteriorArc = Arc(radius: Radius(secondRingEdgeExteriorRadius), startingDegree: startDegree, endingDegree: endDegree)
-        let shape = EdgedCrescent(interiorArc: interiorArc, edgePoints: [exteriorArc.startingPoint, exteriorArc.endingPoint])
-//        exteriorArc.boundedStart = interiorArc.startPoint
-//        exteriorArc.boundedEnd = interiorArc.endPoint
+        let crescent = Crescent(interiorArc: interiorArc, exteriorArc: exteriorArc, extendExteriorStart: true, extendExteriorEnd: true)
+        let shape = EdgedCrescent(interiorArc: interiorArc, edgePoints: [crescent.exteriorArcStartingPoint, crescent.exteriorArcEndingPoint])
         return shape
     }
     
