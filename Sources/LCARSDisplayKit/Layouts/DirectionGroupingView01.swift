@@ -95,8 +95,8 @@ import UIKit
     // MARK: - Shapes
     
     var innerRing01Crescent: Crescent {
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: Degree(DPad.arc01.start), endingDegree: Degree(DPad.arc04.end))
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startingDegree: Degree(DPad.arc01.start), endingDegree: Degree(DPad.arc04.end))
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
@@ -143,8 +143,8 @@ import UIKit
     }
     
     var innerRing16Crescent: Crescent {
-        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: Degree(DPad.arc16.start), endingDegree: Degree(DPad.arc19.end))
-        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startingDegree: Degree(DPad.arc16.start), endingDegree: Degree(DPad.arc19.end))
+        let innerArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: DPad.arc16.start, endingDegree: DPad.arc19.end)
+        let outerArc = Arc(radius: Radius(firstRingExteriorRadius), startingDegree: DPad.arc16.start, endingDegree: DPad.arc19.end)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
@@ -232,7 +232,7 @@ import UIKit
         let edge06ExteriorArc = Arc(radius: Radius(firstRingEdgeExteriorRadius), dPad: .arc06)
         let edge09ExteriorArc = Arc(radius: Radius(secondRingExtendedExteriorRadius), dPad: .arc09)
         
-        let interiorArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: Degree(DPad.arc07.start), endingDegree: Degree(DPad.arc08.end))
+        let interiorArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: DPad.arc07.start, endingDegree: DPad.arc08.end)
         let interiorAngleStart = interiorArc.startingDegree - 90
         let exteriorAngleStart = 90 - interiorAngleStart
         let startX = (edge06ExteriorArc.startingPoint.y / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)

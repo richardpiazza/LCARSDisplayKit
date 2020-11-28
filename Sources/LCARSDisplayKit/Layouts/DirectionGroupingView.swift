@@ -79,16 +79,6 @@ import UIKit
     }
     
     // {x: 0.0, y: 0.0}
-    @available(*, deprecated, renamed: "cartesianOffset")
-    open var offset: GraphOriginOffset {
-        return GraphOriginOffset(cartesianOffset)
-    }
-    
-    @available(*, deprecated, renamed: "cartesianOrigin")
-    open var graphOrigin: GraphOrigin {
-        return GraphOrigin(x: bounds.graphOrigin.x + offset.x, y: bounds.graphOrigin.y + offset.y)
-    }
-    
     open var cartesianOffset: CartesianFrame.Offset {
         return .zero
     }
@@ -167,19 +157,19 @@ import UIKit
     }
     
     var upExteriorArc: Arc {
-        Arc(radius: Radius(dpadRadius), startingDegree: Degree(DPad.up.start), endingDegree: Degree(DPad.up.end + 0.5))
+        Arc(radius: Radius(dpadRadius), startingDegree: DPad.up.start, endingDegree: DPad.up.end + 0.5)
     }
     
     var downExteriorArc: Arc {
-        Arc(radius: Radius(dpadRadius), startingDegree: Degree(DPad.down.start - 0.5), endingDegree: Degree(DPad.down.end))
+        Arc(radius: Radius(dpadRadius), startingDegree: DPad.down.start - 0.5, endingDegree: DPad.down.end)
     }
     
     var leftExteriorArc: Arc {
-        Arc(radius: Radius(dpadRadius), startingDegree: Degree(DPad.left.start - 0.5), endingDegree: Degree(DPad.left.end))
+        Arc(radius: Radius(dpadRadius), startingDegree: DPad.left.start - 0.5, endingDegree: DPad.left.end)
     }
     
     var rightExteriorArc: Arc {
-        Arc(radius: Radius(dpadRadius), startingDegree: Degree(DPad.right.start), endingDegree: Degree(DPad.right.end + 0.5))
+        Arc(radius: Radius(dpadRadius), startingDegree: DPad.right.start, endingDegree: DPad.right.end + 0.5)
     }
     
     var sector1Shape: Wedge {

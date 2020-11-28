@@ -48,8 +48,8 @@ import UIKit
     
     // MARK: - Shapes
     var outerRing01Shape: Crescent {
-        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), startingDegree: Degree(DPad.arc01.start), endingDegree: Degree(DPad.arc04.end))
-        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), startingDegree: Degree(DPad.arc01.start), endingDegree: Degree(DPad.arc04.end))
+        let innerArc = Arc(radius: Radius(secondRingInteriorRadius), startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
+        let outerArc = Arc(radius: Radius(secondRingExteriorRadius), startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
