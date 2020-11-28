@@ -204,12 +204,13 @@ import UIKit
     }
     
     var outerRing20ExtendedShape: Crescent {
-        let startDegree = innerRing20Shape.exteriorArc.startingDegree + 0.25
-        let endDegree = innerRing20Shape.exteriorArc.endingDegree - 0.25
-//        let startDegree = (try? Degree.make(for: innerRing20Shape.interiorArc.startingPoint) + 0.25) ?? .zero
-//        let endDegree = (try? Degree.make(for: innerRing20Shape.interiorArc.endingPoint) - 0.25) ?? .zero
-//        let startDegree = Degree(GraphPoint.degree(graphPoint: innerRing20Shape.outerArc.startPoint) + 0.25)
-//        let endDegree = Degree(GraphPoint.degree(graphPoint: innerRing20Shape.outerArc.endPoint) - 0.25)
+        let shape = innerRing20Shape
+        var startPoint = shape.exteriorArcStartingPoint
+        startPoint.x += Float(secondRingInteriorRadius - firstRingExteriorRadius)
+        let startDegree = try! Degree.make(for: startPoint)
+        var endPoint = shape.exteriorArcEndingPoint
+        endPoint.x += Float(secondRingInteriorRadius - firstRingExteriorRadius)
+        let endDegree = try! Degree.make(for: endPoint)
         
         let innerArc = Arc(radius: Radius(secondRingInteriorRadius), startingDegree: startDegree, endingDegree: endDegree)
         let outerArc = Arc(radius: Radius(secondRingExtendedExteriorRadius), startingDegree: startDegree, endingDegree: endDegree)
@@ -231,13 +232,18 @@ import UIKit
     }
     
     var edge05Shape: EdgedCrescent {
-        let startDegree = innerRing15Shape.exteriorArc.startingDegree + 0.25
-        let endDegree = innerRing15Shape.exteriorArc.endingDegree - 0.25
+        let shape = innerRing15Shape
+        var startPoint = shape.exteriorArcStartingPoint
+        startPoint.y += Float(secondRingInteriorRadius - firstRingExteriorRadius)
+        let startDegree = try! Degree.make(for: startPoint)
+        var endPoint = shape.exteriorArcEndingPoint
+        endPoint.y += Float(secondRingInteriorRadius - firstRingExteriorRadius)
+        let endDegree = try! Degree.make(for: endPoint)
+        
         let interiorArc = Arc(radius: Radius(secondRingInteriorRadius), startingDegree: startDegree, endingDegree: endDegree)
         let exteriorArc = Arc(radius: Radius(secondRingEdgeExteriorRadius), startingDegree: startDegree, endingDegree: endDegree)
         let crescent = Crescent(interiorArc: interiorArc, exteriorArc: exteriorArc, extendExteriorStart: true, extendExteriorEnd: true)
-        let shape = EdgedCrescent(interiorArc: interiorArc, edgePoints: [crescent.exteriorArcStartingPoint, crescent.exteriorArcEndingPoint])
-        return shape
+        return EdgedCrescent(interiorArc: interiorArc, edgePoints: [crescent.exteriorArcStartingPoint, crescent.exteriorArcEndingPoint])
     }
     
     var top00Shape: RoundedRectangle {
