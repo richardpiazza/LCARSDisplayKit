@@ -6,7 +6,7 @@ import UIKit
 @IBDesignable open class RoundedRectangleControl: InteractiveControl<RoundedRectangle> {
 
     open override var intrinsicContentSize: CGSize {
-        return CGSize(RoundedRectangle.defaultSize)
+        return CGSize(width: 144, height: 60)
     }
     
     @IBInspectable open var roundLeft: Bool {

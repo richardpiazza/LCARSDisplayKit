@@ -15,7 +15,6 @@
 		E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FB71BBE7FBC0001C33D /* Main.storyboard */; };
 		E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */; };
 		E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */; };
-		E160D49D20006A34000EF3FE /* DGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E160D49C20006A34000EF3FE /* DGroupView.swift */; };
 		E1EE4FC5226670BB00443943 /* NoiseMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EE4FC4226670BB00443943 /* NoiseMaker.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +42,6 @@
 		E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1112FBD1BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1112FBF1BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E160D49C20006A34000EF3FE /* DGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGroupView.swift; sourceTree = "<group>"; };
 		E1CA6B4E1FFECB210002EF25 /* LCARSDisplayKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitTests.swift; sourceTree = "<group>"; };
 		E1CA6B831FFECC150002EF25 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E1CA6B841FFECC150002EF25 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
@@ -95,7 +93,6 @@
 				E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */,
 				E1112FBF1BBE7FBC0001C33D /* Info.plist */,
 				E105B78B1D5E6688004AE5D9 /* Designables.storyboard */,
-				E160D49C20006A34000EF3FE /* DGroupView.swift */,
 				E108447725700248005DDC10 /* CommandSequencer.swift */,
 				E1EE4FC4226670BB00443943 /* NoiseMaker.swift */,
 			);
@@ -206,7 +203,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E108447825700249005DDC10 /* CommandSequencer.swift in Sources */,
-				E160D49D20006A34000EF3FE /* DGroupView.swift in Sources */,
 				E1EE4FC5226670BB00443943 /* NoiseMaker.swift in Sources */,
 				E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */,
 				E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */,

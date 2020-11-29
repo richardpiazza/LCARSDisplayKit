@@ -37,5 +37,5 @@ let package = Package(
             dependencies: ["GraphPoint", "LCARSDisplayKit"],
             path: "Tests/LCARSDisplayKitTests")
     ],
-    swiftLanguageVersions: [.v4_2, .v5]
+    swiftLanguageVersions: [.v5]
 )

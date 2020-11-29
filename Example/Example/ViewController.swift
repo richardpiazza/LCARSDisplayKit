@@ -11,7 +11,7 @@ import LCARSDisplayKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var dgroup: DGroupView02?
+    @IBOutlet weak var dgroup: DirectionGroupingView02?
     var isConditionRed = false
     
     override func viewDidLoad() {

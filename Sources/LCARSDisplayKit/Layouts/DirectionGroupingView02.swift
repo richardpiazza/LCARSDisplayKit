@@ -63,7 +63,7 @@ import UIKit
         let e13Points = edge13Shape.edgePoints
         let e13Origin = frame(forShape: edge13Shape).origin
         let width = e13Points[1].x - e13Points[0].x
-        let height = RoundedRectangle.defaultSize.height * Float(scaleRatio)
+        let height = Self.defaultControlSize.height * scaleRatio
         let x = Float(e13Origin.x)
         let y = Float(e13Origin.y - CGFloat(height) - theme.defaultSpacing)
         
@@ -75,7 +75,7 @@ import UIKit
     
     var top02Shape: RoundedRectangle {
         var frame = frameForTop03()
-        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio * 0.55)
+        frame.size.width = CGFloat(Self.defaultControlSize.width * scaleRatio * 0.55)
         frame.origin.x = frame.origin.x - frame.size.width - theme.defaultSpacing
         
         let point1: CartesianPoint = .init(x: Float(frame.origin.x), y: Float(frame.origin.y))
@@ -89,7 +89,7 @@ import UIKit
         let e15Origin = Point(frame(forShape: edge15Shape).origin)
         
         let width = e15Points[1].x - e15Points[0].x
-        let height = RoundedRectangle.defaultSize.height * scaleRatio
+        let height = Self.defaultControlSize.height * scaleRatio
         let x = e15Origin.x
         let y = e15Origin.y - height - Float(theme.defaultSpacing)
         
@@ -102,7 +102,7 @@ import UIKit
     var top04Shape: RoundedRectangle {
         var frame = frameForTop03()
         let top03Width = frame.size.width
-        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio * 0.55)
+        frame.size.width = CGFloat(Self.defaultControlSize.width * scaleRatio * 0.55)
         frame.origin.x = frame.origin.x + top03Width + theme.defaultSpacing
         let rect = Rect(frame)
         
@@ -185,7 +185,7 @@ import UIKit
         let e13Points = edge13Shape.edgePoints
         let e13Origin = frame(forShape: edge13Shape).origin
         let width = CGFloat(e13Points[1].x - e13Points[0].x)
-        let height = CGFloat(RoundedRectangle.defaultSize.height * scaleRatio)
+        let height = CGFloat(Self.defaultControlSize.height * scaleRatio)
         let x = e13Origin.x
         let y = e13Origin.y - height - theme.defaultSpacing
         return CGRect(x: x, y: y, width: width, height: height)
@@ -193,7 +193,7 @@ import UIKit
     
     func frameForTop02() -> CGRect {
         var frame = frameForTop03()
-        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio * 0.55)
+        frame.size.width = CGFloat(Self.defaultControlSize.width * scaleRatio * 0.55)
         frame.origin.x = frame.origin.x - frame.size.width - theme.defaultSpacing
         return frame
     }
@@ -203,7 +203,7 @@ import UIKit
         let e15Origin = frame(forShape: edge15Shape).origin
         
         let width = CGFloat(e15Points[1].x - e15Points[0].x)
-        let height = CGFloat(RoundedRectangle.defaultSize.height * scaleRatio)
+        let height = CGFloat(Self.defaultControlSize.height * scaleRatio)
         let x = e15Origin.x
         let y = e15Origin.y - height - theme.defaultSpacing
         
@@ -213,7 +213,7 @@ import UIKit
     func frameForTop04() -> CGRect {
         var frame = frameForTop03()
         let top03Width = frame.size.width
-        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio * 0.55)
+        frame.size.width = CGFloat(Self.defaultControlSize.width * scaleRatio * 0.55)
         frame.origin.x = frame.origin.x + top03Width + theme.defaultSpacing
         
         return frame

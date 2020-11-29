@@ -8,6 +8,9 @@ import UIKit
     
     public typealias ButtonTapHandler = (_ button: UIControl) -> Void
     
+    /// Size for the standard `RoundedRectangle` control.
+    public static let defaultControlSize: Size = Size(width: 144, height: 60)
+    
     public var buttonTapHandler: ButtonTapHandler?
     public var theme: Theme = TNG.shared
     

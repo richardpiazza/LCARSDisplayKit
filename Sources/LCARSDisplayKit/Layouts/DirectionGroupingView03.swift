@@ -248,7 +248,7 @@ import UIKit
     
     var top00Shape: RoundedRectangle {
         var frame = CGRect(x: 0, y: 0, width: 0, height: CGFloat(cruxDiameter))
-        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio)
+        frame.size.width = CGFloat(Self.defaultControlSize.width * scaleRatio)
         frame.origin.y = edge05.frame.origin.y
         frame.origin.x = innerRing17.frame.origin.x
         
@@ -419,7 +419,7 @@ import UIKit
     // MARK: - Frame Calculations
     func frameForTop00() -> CGRect {
         var frame = CGRect(x: 0, y: 0, width: 0, height: CGFloat(cruxDiameter))
-        frame.size.width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio)
+        frame.size.width = CGFloat(Self.defaultControlSize.width * scaleRatio)
         frame.origin.y = edge05.frame.origin.y
         frame.origin.x = innerRing17.frame.origin.x
         return frame

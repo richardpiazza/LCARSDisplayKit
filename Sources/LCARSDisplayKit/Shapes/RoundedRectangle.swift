@@ -4,8 +4,6 @@ import Swift2D
 /// A rectangle with optionally rounded ends
 public struct RoundedRectangle {
     
-    public static let defaultSize: Size = Size(width: 144, height: 60)
-    
     public var _size: Size
     public var _cartesianPoints: [CartesianPoint]
     

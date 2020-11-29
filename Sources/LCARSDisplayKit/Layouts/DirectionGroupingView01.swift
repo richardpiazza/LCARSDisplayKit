@@ -285,8 +285,8 @@ import UIKit
     var top00Shape: RoundedRectangle {
         let edge15Origin = frame(forShape: edge15Shape).origin
         
-        let width = RoundedRectangle.defaultSize.width * Float(scaleRatio)
-        let height = RoundedRectangle.defaultSize.height * Float(scaleRatio)
+        let width = Self.defaultControlSize.width * Float(scaleRatio)
+        let height = Self.defaultControlSize.height * Float(scaleRatio)
         let x = Float(bounds.size.width + CGFloat(width) - edge15Origin.x)
         let y = Float(edge15Origin.y)
         
@@ -494,8 +494,8 @@ import UIKit
     func frameForTop00() -> CGRect {
         let edge15Origin = frame(forShape: edge15Shape).origin
         
-        let width = CGFloat(RoundedRectangle.defaultSize.width * scaleRatio)
-        let height = CGFloat(RoundedRectangle.defaultSize.height * scaleRatio)
+        let width = CGFloat(Self.defaultControlSize.width * scaleRatio)
+        let height = CGFloat(Self.defaultControlSize.height * scaleRatio)
         let x = bounds.size.width + width - edge15Origin.x
         let y = edge15Origin.y
         
