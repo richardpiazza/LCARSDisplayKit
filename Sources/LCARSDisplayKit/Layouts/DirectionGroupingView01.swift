@@ -1,11 +1,11 @@
 import GraphPoint
 import Swift2D
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 /// An expansion of the `DirectionGroupingView` with surrounding buttons.
 /// This layout is representative of LCARS starting in 2371.
-@IBDesignable open class DirectionGroupingView01: DirectionGroupingView {
+open class DirectionGroupingView01: DirectionGroupingView {
     
     public override func initializeSubviews() {
         super.initializeSubviews()

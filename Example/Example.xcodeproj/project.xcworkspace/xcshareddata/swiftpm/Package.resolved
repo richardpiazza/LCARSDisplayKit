@@ -5,9 +5,9 @@
         "package": "GraphPoint",
         "repositoryURL": "https://github.com/richardpiazza/GraphPoint.git",
         "state": {
-          "branch": "feature/cartesian-naming",
-          "revision": "aede42692085e7a63756d69df274c9f19d2e2b6f",
-          "version": null
+          "branch": null,
+          "revision": "778fa569ea68c821fda1681b001b99eac87f629e",
+          "version": "4.0.0-beta.1"
         }
       },
       {

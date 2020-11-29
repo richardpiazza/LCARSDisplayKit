@@ -4,16 +4,26 @@ import Swift2D
 /// A rectangle with optionally rounded ends
 public struct RoundedRectangle {
     
-    public var _size: Size
-    public var _cartesianPoints: [CartesianPoint]
+    /// Points used to define the frame of the shaped.
+    public var cartesianPoints: [CartesianPoint]
+    /// The size of the shape - modifiable through intrinsic values
+    public var size: Size
     
     public var leftRounded: Bool
     public var rightRounded: Bool
     public var cornersOnly: Bool
     
-    public init(cartesianPoints: [CartesianPoint] = [], leftRounded: Bool = false, rightRounded: Bool = false, cornersOnly: Bool = false) {
-        self._cartesianPoints = cartesianPoints
-        self._size = CartesianFrame.make(for: cartesianPoints).size
+    public init() {
+        cartesianPoints = []
+        size = .zero
+        leftRounded = false
+        rightRounded = false
+        cornersOnly = false
+    }
+    
+    public init(cartesianPoints: [CartesianPoint], leftRounded: Bool = false, rightRounded: Bool = false, cornersOnly: Bool = false) {
+        self.cartesianPoints = cartesianPoints
+        self.size = CartesianFrame.make(for: cartesianPoints).size
         self.leftRounded = leftRounded
         self.rightRounded = rightRounded
         self.cornersOnly = cornersOnly
@@ -23,7 +33,7 @@ public struct RoundedRectangle {
 public extension RoundedRectangle {
     /// Calculates the radius of the arcs depending on `cornersOnly`
     var radius: Radius {
-        return (cornersOnly) ? _size.height * 0.25 : _size.height * 0.5
+        return (cornersOnly) ? size.height * 0.25 : size.height * 0.5
     }
     
     var upperLeftCenter: Point {
@@ -31,12 +41,9 @@ public extension RoundedRectangle {
     }
     
     var lowerRightCenter: Point {
-        return Point(x: _size.width - radius, y: _size.height - radius)
+        return Point(x: size.width - radius, y: size.height - radius)
     }
 }
 
 extension RoundedRectangle: ExpressibleByCartesianPoints {
-    public var cartesianPoints: [CartesianPoint] {
-        return _cartesianPoints
-    }
 }

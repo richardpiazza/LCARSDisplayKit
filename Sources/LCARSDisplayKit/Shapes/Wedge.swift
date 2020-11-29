@@ -6,7 +6,11 @@ public struct Wedge {
     
     public var exteriorArc: Arc
     
-    public init(exteriorArc: Arc = Arc()) {
+    public init() {
+        exteriorArc = Arc()
+    }
+    
+    public init(exteriorArc: Arc) {
         self.exteriorArc = exteriorArc
     }
 }

@@ -7,7 +7,9 @@ public struct Elbow {
     public static let defaultVerticalWidth: Float = 30.0
     public static let defaultClosedHeight: Float = 0.0
     
-    public var _size: Size
+    /// The size of the shape - modifiable through intrinsic values
+    public var size: Size
+    
     public var top: Bool
     public var left: Bool
     /// Specifies if the corner specified by `top` and `left` should be rounded.
@@ -19,6 +21,17 @@ public struct Elbow {
     /// If true, the interior radius will match the exterior radius.
     public var shouldMatchRadius: Bool
     
+    public init() {
+        size = .zero
+        top = true
+        left = true
+        rounded = true
+        horizontalHeight = Self.defaultHorizontalHeight
+        verticalWidth = Self.defaultVerticalWidth
+        closedHeight = Self.defaultClosedHeight
+        shouldMatchRadius = false
+    }
+    
     public init(
         size: Size,
         top: Bool = true,
@@ -29,7 +42,7 @@ public struct Elbow {
         closedHeight: Float = Self.defaultClosedHeight,
         shouldMatchRadius: Bool = false
     ) {
-        self._size = size
+        self.size = size
         self.top = top
         self.left = left
         self.rounded = rounded
@@ -58,11 +71,11 @@ public extension Elbow {
     }
     
     var lowerRightOuterCenter: CartesianPoint {
-        .init(x: _size.width - outerRadius, y: _size.height - outerRadius)
+        .init(x: size.width - outerRadius, y: size.height - outerRadius)
     }
     
     var lowerRightInnerCenter: CartesianPoint {
-        .init(x: _size.width - verticalWidth - innerRadius, y: _size.height - horizontalHeight - innerRadius)
+        .init(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight - innerRadius)
     }
 }
 

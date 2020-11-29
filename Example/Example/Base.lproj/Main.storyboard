@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="ipad12_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,24 +15,36 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1194"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1y-Vz-7wK" customClass="ElbowControl" customModule="LCARSDisplayKit">
-                                <rect key="frame" x="20" y="20" width="794" height="1146"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1y-Vz-7wK" customClass="ElbowButton" customModule="Example" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="984" height="1318"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="top" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="verticalWidth">
+                                        <real key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="horizontalHeight">
+                                        <real key="value" value="200"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="closedHeight">
+                                        <real key="value" value="60"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4oe-0g-J5g" customClass="DirectionGroupingView" customModule="LCARSDisplayKit">
-                                <rect key="frame" x="297" y="533" width="217" height="147"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baA-Fn-S4y" customClass="DirectionPad02View" customModule="Example" customModuleProvider="target">
+                                <rect key="frame" x="170.5" y="374" width="760" height="755"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="M1y-Vz-7wK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8TN-um-85S"/>
-                            <constraint firstItem="4oe-0g-J5g" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="E4m-a1-4fs"/>
-                            <constraint firstItem="4oe-0g-J5g" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T4X-zg-dJM"/>
                             <constraint firstItem="M1y-Vz-7wK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="XvZ-h9-yns"/>
+                            <constraint firstItem="baA-Fn-S4y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.1" id="dkH-yG-AkP"/>
+                            <constraint firstItem="baA-Fn-S4y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.075" id="iTb-4G-URa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M1y-Vz-7wK" secondAttribute="bottom" constant="8" symbolic="YES" id="mfZ-CL-SOf"/>
                             <constraint firstItem="M1y-Vz-7wK" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="mnt-U8-x1E"/>
                         </constraints>
@@ -40,7 +52,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="410.07194244604318" y="313.06532663316585"/>
+            <point key="canvasLocation" x="409.5703125" y="312.73792093704242"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="M1y-Vz-7wK">
+            <size key="intrinsicContentSize" width="144" height="60"/>
+        </designable>
+        <designable name="baA-Fn-S4y">
+            <size key="intrinsicContentSize" width="760" height="755"/>
+        </designable>
+    </designables>
 </document>

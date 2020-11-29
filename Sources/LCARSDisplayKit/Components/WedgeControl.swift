@@ -3,9 +3,11 @@ import Swift2D
 #if canImport(UIKit)
 import UIKit
 
+#if !os(watchOS)
 open class WedgeControl: InteractiveControl<Wedge> {
     
 }
+#endif
 
 extension Wedge: ExpressibleByPath {
     public var path: CGMutablePath {

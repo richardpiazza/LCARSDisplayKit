@@ -3,9 +3,11 @@ import Swift2D
 #if canImport(UIKit)
 import UIKit
 
+#if !os(watchOS)
 open class CrescentControl: InteractiveControl<Crescent> {
     
 }
+#endif
 
 extension Crescent: ExpressibleByPath {
     public var path: CGMutablePath {

@@ -1,11 +1,11 @@
 import GraphPoint
 import Swift2D
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 /// An expansion on `DirectionGroupingView01` that adds Outer Ring controls to
 /// the bottom half, and an additional row of controls to the top.
-@IBDesignable open class DirectionGroupingView02: DirectionGroupingView01 {
+open class DirectionGroupingView02: DirectionGroupingView01 {
     
     public override func initializeSubviews() {
         super.initializeSubviews()

@@ -11,7 +11,14 @@ public struct Crescent {
     /// Uses the interior ending point to extend the exterior ending point, creating a straight line.
     public var extendExteriorEnd: Bool
     
-    public init(interiorArc: Arc = Arc(), exteriorArc: Arc = Arc(), extendExteriorStart: Bool = false, extendExteriorEnd: Bool = false) {
+    public init() {
+        interiorArc = Arc()
+        exteriorArc = Arc()
+        extendExteriorStart = false
+        extendExteriorEnd = false
+    }
+    
+    public init(interiorArc: Arc, exteriorArc: Arc, extendExteriorStart: Bool = false, extendExteriorEnd: Bool = false) {
         self.interiorArc = interiorArc
         self.exteriorArc = exteriorArc
         self.extendExteriorStart = extendExteriorStart

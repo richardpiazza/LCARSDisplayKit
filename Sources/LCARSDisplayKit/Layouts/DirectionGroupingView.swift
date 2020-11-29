@@ -1,10 +1,10 @@
 import GraphPoint
 import Swift2D
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 /// The standard circular Direction-Pad found in many LCARS layouts.
-@IBDesignable open class DirectionGroupingView: UIView, InteractiveControlDelegate {
+open class DirectionGroupingView: UIView, InteractiveControlDelegate {
     
     public typealias ButtonTapHandler = (_ button: UIControl) -> Void
     
@@ -39,7 +39,7 @@ import UIKit
     open override func layoutSubviews() {
         super.layoutSubviews()
         
-        crux.frame = frameForCrux() // frame(forShape: cruxShape)
+        crux.frame = frameForCrux()
         up.frame = frame(for: .up)
         down.frame = frame(for: .down)
         left.frame = frame(for: .left)

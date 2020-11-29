@@ -3,7 +3,9 @@ import Swift2D
 #if canImport(UIKit)
 import UIKit
 
+#if !os(watchOS)
 open class DirectionControl: InteractiveControl<Direction> {
+    
     override open var colors: [UIColor]? {
         return [theme.primaryDark, theme.primaryLight]
     }
@@ -20,6 +22,7 @@ open class DirectionControl: InteractiveControl<Direction> {
         return colors
     }
 }
+#endif
 
 extension Direction: ExpressibleByPath {
     public var path: CGMutablePath {
@@ -34,7 +37,7 @@ extension Direction: ExpressibleByPath {
         let frame = cartesianFrame
         let center = frame.offsetToCartesianOrigin
         let unit = max(frame.width, frame.height) / 2
-        let size = _size
+        let size = self.size
         
         switch cardinal {
         case .right:

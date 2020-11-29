@@ -5,7 +5,12 @@ public struct EdgedCrescent {
     public var interiorArc: Arc
     public var edgePoints: [CartesianPoint]
     
-    public init(interiorArc: Arc = Arc(), edgePoints: [CartesianPoint] = []) {
+    public init() {
+        interiorArc = Arc()
+        edgePoints = []
+    }
+    
+    public init(interiorArc: Arc, edgePoints: [CartesianPoint] = []) {
         self.interiorArc = interiorArc
         self.edgePoints = edgePoints
     }

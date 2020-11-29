@@ -14,13 +14,19 @@ public struct Direction {
     public var interiorRadius: Radius
     public var exteriorArc: Arc
     
-    public init(_ cardinal: Cardinal = .right, interiorRadius: Radius = 0, exteriorArc: Arc = Arc()) {
+    public init() {
+        cardinal = .right
+        interiorRadius = 0.0
+        exteriorArc = Arc()
+    }
+    
+    public init(_ cardinal: Cardinal, interiorRadius: Radius = 0.0, exteriorArc: Arc = Arc()) {
         self.cardinal = cardinal
         self.interiorRadius = interiorRadius
         self.exteriorArc = exteriorArc
     }
     
-    public var _size: Size {
+    public var size: Size {
         let frame = cartesianFrame
         let width: Float
         let height: Float

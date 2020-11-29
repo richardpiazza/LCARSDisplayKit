@@ -1,11 +1,11 @@
 import GraphPoint
-#if canImport(UIKit)
+#if canImport(UIKit) && !os(watchOS)
 import UIKit
 
 /// An expansion of the `DirectionGroupingView` with surrounding buttons.
 /// This particular layout comes from the small Tactical station behind the command
 /// chairs on the USS Voyager.
-@IBDesignable open class DirectionGroupingView03: DirectionGroupingView {
+open class DirectionGroupingView03: DirectionGroupingView {
     
     public override func initializeSubviews() {
         super.initializeSubviews()
