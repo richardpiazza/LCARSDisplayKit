@@ -23,12 +23,19 @@ open class DirectionGroupingView02: DirectionGroupingView01 {
         super.layoutSubviews()
         
         outerRing01.frame = frame(forShape: outerRing01Shape)
+        outerRing01.shape = outerRing01Shape
         outerRing05.frame = frame(forShape: outerRing05Shape)
+        outerRing05.shape = outerRing05Shape
         top01.frame = frameForTop01()
+        top01.shape = top01Shape
         top02.frame = frameForTop02()
+        top02.shape = top02Shape
         top03.frame = frameForTop03()
+        top03.shape = top03Shape
         top04.frame = frameForTop04()
+        top04.shape = top04Shape
         top05.frame = frameForTop05()
+        top05.shape = top05Shape
     }
     
     // MARK: - Scale & Position

@@ -42,31 +42,57 @@ open class DirectionGroupingView01: DirectionGroupingView {
         super.layoutSubviews()
         
         innerRing01.frame = frame(forShape: innerRing01Crescent)
+        innerRing01.shape = innerRing01Crescent
         innerRing05.frame = frame(forShape: innerRing05Crescent)
+        innerRing05.shape = innerRing05Crescent
         innerRing10.frame = frame(forShape: innerRing10Crescent)
+        innerRing10.shape = innerRing10Crescent
         innerRing11.frame = frame(forShape: innerRing11Crescent)
+        innerRing11.shape = innerRing11Crescent
         innerRing12.frame = frame(forShape: innerRing12Crescent)
+        innerRing12.shape = innerRing12Crescent
         innerRing13.frame = frame(forShape: innerRing13Crescent)
+        innerRing13.shape = innerRing13Crescent
         innerRing14.frame = frame(forShape: innerRing14Crescent)
+        innerRing14.shape = innerRing14Crescent
         innerRing15.frame = frame(forShape: innerRing15Crescent)
+        innerRing15.shape = innerRing15Crescent
         innerRing16.frame = frame(forShape: innerRing16Crescent)
+        innerRing16.shape = innerRing16Crescent
         innerRing20.frame = frame(forShape: innerRing20Crescent)
+        innerRing20.shape = innerRing20Crescent
         outerRing10.frame = frame(forShape: outerRing10Crescent)
+        outerRing10.shape = outerRing10Crescent
         outerRing11.frame = frame(forShape: outerRing11Crescent)
+        outerRing11.shape = outerRing11Crescent
         outerRing12.frame = frame(forShape: outerRing12Crescent)
+        outerRing12.shape = outerRing12Crescent
         outerRing13.frame = frame(forShape: outerRing13Crescent)
+        outerRing13.shape = outerRing13Crescent
         outerRing14.frame = frame(forShape: outerRing14Crescent)
+        outerRing14.shape = outerRing14Crescent
         outerRing16.frame = frame(forShape: outerRing16Crescent)
+        outerRing16.shape = outerRing16Crescent
         outerRing17.frame = frame(forShape: outerRing17Crescent)
+        outerRing17.shape = outerRing17Crescent
         outerRing18.frame = frame(forShape: outerRing18Crescent)
+        outerRing18.shape = outerRing18Crescent
         outerRing19.frame = frame(forShape: outerRing19Crescent)
+        outerRing19.shape = outerRing19Crescent
         outerRing20.frame = frame(forShape: outerRing20Crescent)
+        outerRing20.shape = outerRing20Crescent
         edge06.frame = frame(forShape: edge06Shape)
+        edge06.shape = edge06Shape
         edge07.frame = frame(forShape: edge07Shape)
+        edge07.shape = edge07Shape
         edge09.frame = frame(forShape: edge09Shape)
+        edge09.shape = edge09Shape
         edge13.frame = frame(forShape: edge13Shape)
+        edge13.shape = edge13Shape
         edge15.frame = frame(forShape: edge15Shape)
+        edge15.shape = edge15Shape
         top00.frame = frameForTop00()
+        top00.shape = top00Shape
     }
     
     // MARK: - Scale & Position

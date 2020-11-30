@@ -40,14 +40,23 @@ open class DirectionGroupingView: UIView, InteractiveControlDelegate {
         super.layoutSubviews()
         
         crux.frame = frameForCrux()
+        crux.shape = cruxShape
         up.frame = frame(for: .up)
+        up.shape = upShape
         down.frame = frame(for: .down)
+        down.shape = downShape
         left.frame = frame(for: .left)
+        left.shape = leftShape
         right.frame = frame(for: .right)
+        right.shape = rightShape
         sector01.frame = frame(forShape: sector1Shape)
+        sector01.shape = sector1Shape
         sector02.frame = frame(forShape: sector2Shape)
+        sector02.shape = sector2Shape
         sector03.frame = frame(forShape: sector3Shape)
+        sector03.shape = sector3Shape
         sector04.frame = frame(forShape: sector4Shape)
+        sector04.shape = sector4Shape
     }
     
     // MARK: - Scale & Position
@@ -162,20 +171,24 @@ open class DirectionGroupingView: UIView, InteractiveControlDelegate {
         return RoundedRectangle(cartesianPoints: [first, second])
     }
     
-    var upExteriorArc: Arc {
-        Arc(radius: dpadRadius, startingDegree: DPad.up.start, endingDegree: DPad.up.end + 0.5)
+    var upShape: Direction {
+        let arc = Arc(radius: dpadRadius, startingDegree: DPad.up.start, endingDegree: DPad.up.end + 0.5)
+        return Direction(.up, interiorRadius: innerRadius, exteriorArc: arc)
     }
     
-    var downExteriorArc: Arc {
-        Arc(radius: dpadRadius, startingDegree: DPad.down.start - 0.5, endingDegree: DPad.down.end)
+    var downShape: Direction {
+        let arc = Arc(radius: dpadRadius, startingDegree: DPad.down.start - 0.5, endingDegree: DPad.down.end)
+        return Direction(.down, interiorRadius: innerRadius, exteriorArc: arc)
     }
     
-    var leftExteriorArc: Arc {
-        Arc(radius: dpadRadius, startingDegree: DPad.left.start - 0.5, endingDegree: DPad.left.end)
+    var leftShape: Direction {
+        let arc = Arc(radius: dpadRadius, startingDegree: DPad.left.start - 0.5, endingDegree: DPad.left.end)
+        return Direction(.left, interiorRadius: innerRadius, exteriorArc: arc)
     }
     
-    var rightExteriorArc: Arc {
-        Arc(radius: dpadRadius, startingDegree: DPad.right.start, endingDegree: DPad.right.end + 0.5)
+    var rightShape: Direction {
+        let arc = Arc(radius: dpadRadius, startingDegree: DPad.right.start, endingDegree: DPad.right.end + 0.5)
+        return Direction(.right, interiorRadius: innerRadius, exteriorArc: arc)
     }
     
     var sector1Shape: Wedge {
@@ -203,29 +216,25 @@ open class DirectionGroupingView: UIView, InteractiveControlDelegate {
     }()
     
     open lazy var up: DirectionControl = {
-        let direction = Direction(.up, interiorRadius: innerRadius, exteriorArc: upExteriorArc)
-        let button = DirectionControl(shape: direction, delegate: self)
+        let button = DirectionControl(shape: upShape, delegate: self)
         button.setTitle("", for: .init())
         return button
     }()
     
     open lazy var down: DirectionControl = {
-        let direction = Direction(.down, interiorRadius: innerRadius, exteriorArc: downExteriorArc)
-        let button = DirectionControl(shape: direction, delegate: self)
+        let button = DirectionControl(shape: downShape, delegate: self)
         button.setTitle("", for: .init())
         return button
     }()
     
     open lazy var left: DirectionControl = {
-        let direction = Direction(.left, interiorRadius: innerRadius, exteriorArc: leftExteriorArc)
-        let button = DirectionControl(shape: direction, delegate: self)
+        let button = DirectionControl(shape: leftShape, delegate: self)
         button.setTitle("", for: .init())
         return button
     }()
     
     open lazy var right: DirectionControl = {
-        let direction = Direction(.right, interiorRadius: innerRadius, exteriorArc: rightExteriorArc)
-        let button = DirectionControl(shape: direction, delegate: self)
+        let button = DirectionControl(shape: rightShape, delegate: self)
         button.setTitle("", for: UIControl.State())
         return button
     }()

@@ -34,8 +34,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="baA-Fn-S4y" customClass="DirectionPad02View" customModule="Example" customModuleProvider="target">
-                                <rect key="frame" x="170.5" y="374" width="760" height="755"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1z-ek-O18" customClass="DirectionPad03View" customModule="Example" customModuleProvider="target">
+                                <rect key="frame" x="154.5" y="423" width="715" height="520"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -43,10 +43,10 @@
                         <constraints>
                             <constraint firstItem="M1y-Vz-7wK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="8TN-um-85S"/>
                             <constraint firstItem="M1y-Vz-7wK" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="XvZ-h9-yns"/>
-                            <constraint firstItem="baA-Fn-S4y" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.1" id="dkH-yG-AkP"/>
-                            <constraint firstItem="baA-Fn-S4y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="1.075" id="iTb-4G-URa"/>
+                            <constraint firstItem="C1z-ek-O18" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fHX-68-cLP"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M1y-Vz-7wK" secondAttribute="bottom" constant="8" symbolic="YES" id="mfZ-CL-SOf"/>
                             <constraint firstItem="M1y-Vz-7wK" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="mnt-U8-x1E"/>
+                            <constraint firstItem="C1z-ek-O18" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="w5e-wN-diW"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -56,11 +56,11 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="C1z-ek-O18">
+            <size key="intrinsicContentSize" width="715" height="520"/>
+        </designable>
         <designable name="M1y-Vz-7wK">
             <size key="intrinsicContentSize" width="144" height="60"/>
-        </designable>
-        <designable name="baA-Fn-S4y">
-            <size key="intrinsicContentSize" width="760" height="755"/>
         </designable>
     </designables>
 </document>
