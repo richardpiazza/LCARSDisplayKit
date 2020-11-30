@@ -1,92 +1,49 @@
 import GraphPoint
-#if canImport(CoreGraphics)
-import CoreGraphics
+import Swift2D
 
 /// A rectangle with optionally rounded ends
-public struct RoundedRectangle: Graphable {
-    public var size: CGSize = CGSize.zero
-    public var leftRounded: Bool = false
-    public var rightRounded: Bool = false
-    public var cornersOnly: Bool = false
+public struct RoundedRectangle {
     
-    public init() {}
-    public init(size: CGSize, leftRounded: Bool, rightRounded: Bool, cornersOnly: Bool) {
-        self.size = size
+    /// Points used to define the frame of the shaped.
+    public var cartesianPoints: [CartesianPoint]
+    /// The size of the shape - modifiable through intrinsic values
+    public var size: Size
+    
+    public var leftRounded: Bool
+    public var rightRounded: Bool
+    public var cornersOnly: Bool
+    
+    public init() {
+        cartesianPoints = []
+        size = .zero
+        leftRounded = false
+        rightRounded = false
+        cornersOnly = false
+    }
+    
+    public init(cartesianPoints: [CartesianPoint], leftRounded: Bool = false, rightRounded: Bool = false, cornersOnly: Bool = false) {
+        self.cartesianPoints = cartesianPoints
+        self.size = CartesianFrame.make(for: cartesianPoints).size
         self.leftRounded = leftRounded
         self.rightRounded = rightRounded
         self.cornersOnly = cornersOnly
     }
-    
-    /// Caluclates the radius of the arcs depending on `cornersOnly`
-    var radius: CGFloat {
+}
+
+public extension RoundedRectangle {
+    /// Calculates the radius of the arcs depending on `cornersOnly`
+    var radius: Radius {
         return (cornersOnly) ? size.height * 0.25 : size.height * 0.5
     }
     
-    var upperLeftCenter: CGPoint {
-        return CGPoint(x: radius, y: radius)
+    var upperLeftCenter: Point {
+        return Point(x: radius, y: radius)
     }
     
-    var lowerRightCenter: CGPoint {
-        return CGPoint(x: size.width - radius, y: size.height - radius)
-    }
-    
-    // MARK: - Graphable
-    public var path: CGMutablePath {
-        let path = CGMutablePath()
-        
-        guard leftRounded == true || rightRounded == true else {
-            path.addRect(CGRect(origin: CGPoint.zero, size: size))
-            return path
-        }
-        
-        if leftRounded && rightRounded {
-            if cornersOnly {
-                path.addArc(center: upperLeftCenter, radius: radius, startAngle: CGFloat(180).radians, endAngle: CGFloat(270).radians, clockwise: false)
-                path.addLine(to: CGPoint(x: lowerRightCenter.x, y: 0))
-                path.addArc(center: CGPoint(x: lowerRightCenter.x, y: upperLeftCenter.y), radius: radius, startAngle: CGFloat(270).radians, endAngle: CGFloat(0).radians, clockwise: false)
-                path.addLine(to: CGPoint(x: size.width, y: lowerRightCenter.y))
-                path.addArc(center: lowerRightCenter, radius: radius, startAngle: CGFloat(0).radians, endAngle: CGFloat(90).radians, clockwise: false)
-                path.addLine(to: CGPoint(x: upperLeftCenter.x, y: size.height))
-                path.addArc(center: CGPoint(x: upperLeftCenter.x, y:lowerRightCenter.y), radius: radius, startAngle: CGFloat(90).radians, endAngle: CGFloat(180).radians, clockwise: false)
-                path.closeSubpath()
-            } else {
-                path.addArc(center: upperLeftCenter, radius: radius, startAngle: CGFloat(90).radians, endAngle: CGFloat(270).radians, clockwise: false)
-                path.addLine(to: CGPoint(x: lowerRightCenter.x, y: 0))
-                path.addArc(center: lowerRightCenter, radius: radius, startAngle: CGFloat(270).radians, endAngle: CGFloat(90).radians, clockwise: false)
-                path.closeSubpath()
-            }
-        } else if leftRounded {
-            if cornersOnly {
-                path.addArc(center: upperLeftCenter, radius: radius, startAngle: CGFloat(180).radians, endAngle: CGFloat(270).radians, clockwise: false)
-                path.addLine(to: CGPoint(x: size.width, y: 0))
-                path.addLine(to: CGPoint(x: size.width, y: size.height))
-                path.addLine(to: CGPoint(x: upperLeftCenter.x, y: size.height))
-                path.addArc(center: CGPoint(x: upperLeftCenter.x, y: lowerRightCenter.y), radius: radius, startAngle: CGFloat(90).radians, endAngle: CGFloat(180).radians, clockwise: false)
-                path.closeSubpath()
-            } else {
-                path.addArc(center: upperLeftCenter, radius: radius, startAngle: CGFloat(90).radians, endAngle: CGFloat(270).radians, clockwise: false)
-                path.addLine(to: CGPoint(x: size.width, y: 0))
-                path.addLine(to: CGPoint(x: size.width, y: size.height))
-                path.closeSubpath()
-            }
-        } else if rightRounded {
-            if cornersOnly {
-                path.addArc(center: CGPoint(x: lowerRightCenter.x, y: upperLeftCenter.y), radius: radius, startAngle: CGFloat(270).radians, endAngle: CGFloat(0).radians, clockwise: false)
-                path.addLine(to: CGPoint(x: size.width, y: lowerRightCenter.y))
-                path.addArc(center: lowerRightCenter, radius: radius, startAngle: CGFloat(0).radians, endAngle: CGFloat(90).radians, clockwise: false)
-                path.addLine(to: CGPoint(x: 0, y: size.height))
-                path.addLine(to: CGPoint.zero)
-                path.closeSubpath()
-            } else {
-                path.addArc(center: lowerRightCenter, radius: radius, startAngle: CGFloat(270).radians, endAngle: CGFloat(90).radians, clockwise: false)
-                path.addLine(to: CGPoint(x: 0, y: size.height))
-                path.addLine(to: CGPoint.zero)
-                path.closeSubpath()
-            }
-        }
-        
-        return path
+    var lowerRightCenter: Point {
+        return Point(x: size.width - radius, y: size.height - radius)
     }
 }
 
-#endif
+extension RoundedRectangle: ExpressibleByCartesianPoints {
+}

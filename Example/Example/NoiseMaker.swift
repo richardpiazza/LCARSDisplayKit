@@ -10,18 +10,16 @@ import Foundation
 import AVFoundation
 import LCARSDisplayKit
 
-class NoiseMaker: NSObject, CommandSequencerDelegate {
+class NoiseMaker: NSObject {
     
-    static var shared: NoiseMaker = NoiseMaker(theme: TNG())
-    private let theme: Theme
-    private var players: [AVAudioPlayer] = []
+    static var `default`: NoiseMaker = NoiseMaker(theme: TNG())
     
     private let neutralBeepData: Data
     private let successBeepData: Data
     private let failureBeepData: Data
+    private var players: [AVAudioPlayer] = []
     
     private init(theme: Theme) {
-        self.theme = theme
         self.neutralBeepData = theme.neutralBeep
         self.successBeepData = theme.successBeep
         self.failureBeepData = theme.failureBeep

@@ -8,6 +8,7 @@ let package = Package(
     platforms: [
         .iOS(.v14),
         .tvOS(.v14),
+        .watchOS(.v7),
         .macOS(.v10_15)
     ],
     products: [
@@ -16,7 +17,7 @@ let package = Package(
             targets: ["LCARSDisplayKit"]),
         ],
     dependencies: [
-        .package(url: "https://github.com/richardpiazza/GraphPoint.git", .branch("feature/cartesian-naming")),
+        .package(url: "https://github.com/richardpiazza/GraphPoint.git", .upToNextMinor(from: "4.0.0")),
         ],
     targets: [
         .target(

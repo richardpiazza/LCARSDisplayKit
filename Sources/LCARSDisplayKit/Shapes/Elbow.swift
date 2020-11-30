@@ -1,134 +1,86 @@
 import GraphPoint
-#if canImport(CoreGraphics)
-import CoreGraphics
+import Swift2D
 
-public struct Elbow: Graphable {
-    public var size: CGSize = CGSize.zero
-    public var top: Bool = true
-    public var left: Bool = true
+public struct Elbow {
+    
+    public static let defaultHorizontalHeight: Float = 120.0
+    public static let defaultVerticalWidth: Float = 30.0
+    public static let defaultClosedHeight: Float = 0.0
+    
+    /// The size of the shape - modifiable through intrinsic values
+    public var size: Size
+    
+    public var top: Bool
+    public var left: Bool
     /// Specifies if the corner specified by `top` and `left` should be rounded.
-    public var rounded: Bool = true
-    public var horizontalHeight: CGFloat = CGFloat(120)
-    public var verticalWidth: CGFloat = CGFloat(30)
+    public var rounded: Bool
+    public var horizontalHeight: Float
+    public var verticalWidth: Float
     /// If closedHeight > 0, an additional area is drawn parallel to the horizontalHeight area.
-    public var closedHeight: CGFloat = CGFloat(0)
+    public var closedHeight: Float
     /// If true, the interior radius will match the exterior radius.
-    public var shouldMatchRadius: Bool = false
+    public var shouldMatchRadius: Bool
     
     public init() {
+        size = .zero
+        top = true
+        left = true
+        rounded = true
+        horizontalHeight = Self.defaultHorizontalHeight
+        verticalWidth = Self.defaultVerticalWidth
+        closedHeight = Self.defaultClosedHeight
+        shouldMatchRadius = false
     }
     
-    // - MARK: Graphable
-    public var path: CGMutablePath {
-        let path: CGMutablePath = CGMutablePath()
-        
-        let outerRadius = fmax(horizontalHeight, verticalWidth) / 2
-        let innerRadius = shouldMatchRadius ? outerRadius : (outerRadius / 2.4)
-        let upperLeftOuterCenter = CGPoint(x: outerRadius, y: outerRadius)
-        let upperLeftInnerCenter = CGPoint(x: verticalWidth + innerRadius, y: horizontalHeight + innerRadius)
-        let lowerRightOuterCenter = CGPoint(x: size.width - outerRadius, y: size.height - outerRadius)
-        let lowerRightInnerCenter = CGPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight - innerRadius)
-        
-        if top && left {
-            // Upper Left
-            if rounded {
-                path.addArc(center: upperLeftOuterCenter, radius: outerRadius, startAngle: CGFloat(180).radians, endAngle: CGFloat(270).radians, clockwise: false)
-            } else {
-                path.move(to: CGPoint.zero)
-            }
-            path.addLine(to: CGPoint(x: size.width, y: 0))
-            path.addLine(to: CGPoint(x: size.width, y: horizontalHeight))
-            if rounded {
-                path.addLine(to: CGPoint(x: verticalWidth + innerRadius, y: horizontalHeight))
-                path.addArc(center: upperLeftInnerCenter, radius: innerRadius, startAngle: CGFloat(270).radians, endAngle: CGFloat(180).radians, clockwise: true)
-            } else {
-                path.addLine(to: CGPoint(x: verticalWidth, y: horizontalHeight))
-            }
-            if closedHeight > 0 {
-                path.addLine(to: CGPoint(x: verticalWidth, y: size.height - closedHeight))
-                path.addLine(to: CGPoint(x: size.width, y: size.height - closedHeight))
-                path.addLine(to: CGPoint(x: size.width, y: size.height))
-            } else {
-                path.addLine(to: CGPoint(x: verticalWidth, y: size.height))
-            }
-            path.addLine(to: CGPoint(x: 0, y: size.height))
-            path.closeSubpath()
-        } else if !top && left {
-            // Lower Left
-            if rounded {
-                path.addArc(center: CGPoint(x: upperLeftOuterCenter.x, y: lowerRightOuterCenter.y), radius: outerRadius, startAngle: CGFloat(180).radians, endAngle: CGFloat(90).radians, clockwise: true)
-            } else {
-                path.move(to: CGPoint(x: 0, y: size.height))
-            }
-            path.addLine(to: CGPoint(x: size.width, y: size.height))
-            path.addLine(to: CGPoint(x: size.width, y: size.height - horizontalHeight))
-            if rounded {
-                path.addLine(to: CGPoint(x: verticalWidth + innerRadius, y: size.height - horizontalHeight))
-                path.addArc(center: CGPoint(x: upperLeftInnerCenter.x, y: lowerRightInnerCenter.y), radius: innerRadius, startAngle: CGFloat(90).radians, endAngle: CGFloat(180).radians, clockwise: false)
-            } else {
-                path.addLine(to: CGPoint(x: verticalWidth, y: size.height - horizontalHeight))
-            }
-            if closedHeight > 0 {
-                path.addLine(to: CGPoint(x: verticalWidth, y: closedHeight))
-                path.addLine(to: CGPoint(x: size.width, y: closedHeight))
-                path.addLine(to: CGPoint(x: size.width, y: 0))
-            } else {
-                path.addLine(to: CGPoint(x: verticalWidth, y: 0))
-            }
-            path.addLine(to: CGPoint.zero)
-            path.closeSubpath()
-        } else if top && !left {
-            // Upper Right
-            if rounded {
-                path.addArc(center: CGPoint(x: lowerRightOuterCenter.x, y: upperLeftOuterCenter.y), radius: outerRadius, startAngle: CGFloat(0).radians, endAngle: CGFloat(270).radians, clockwise: true)
-            } else {
-                path.move(to: CGPoint(x: size.width, y: 0))
-            }
-            path.addLine(to: CGPoint.zero)
-            path.addLine(to: CGPoint(x: 0, y: horizontalHeight))
-            if rounded {
-                path.addLine(to: CGPoint(x: size.width - verticalWidth - innerRadius, y: horizontalHeight))
-                path.addArc(center: CGPoint(x: lowerRightInnerCenter.x, y: upperLeftInnerCenter.y), radius: innerRadius, startAngle: CGFloat(270).radians, endAngle: CGFloat(0).radians, clockwise: false)
-            } else {
-                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: horizontalHeight))
-            }
-            if closedHeight > 0 {
-                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: size.height - closedHeight))
-                path.addLine(to: CGPoint(x: 0, y: size.height - closedHeight))
-                path.addLine(to: CGPoint(x: 0, y: size.height))
-            } else {
-                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: size.height))
-            }
-            path.addLine(to: CGPoint(x: size.width, y: size.height))
-            path.closeSubpath()
-        } else if !top && !left {
-            // Lower Right
-            if rounded {
-                path.addArc(center: lowerRightOuterCenter, radius: outerRadius, startAngle: CGFloat(0).radians, endAngle: CGFloat(90).radians, clockwise: false)
-            } else {
-                path.move(to: CGPoint(x: size.width, y: size.height))
-            }
-            path.addLine(to: CGPoint(x: 0, y: size.height))
-            path.addLine(to: CGPoint(x: 0, y: size.height - horizontalHeight))
-            if rounded {
-                path.addLine(to: CGPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight))
-                path.addArc(center: lowerRightInnerCenter, radius: innerRadius, startAngle: CGFloat(90).radians, endAngle: CGFloat(0).radians, clockwise: true)
-            } else {
-                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: size.height - horizontalHeight))
-            }
-            if closedHeight > 0 {
-                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: closedHeight))
-                path.addLine(to: CGPoint(x: 0, y: closedHeight))
-                path.addLine(to: CGPoint.zero)
-            } else {
-                path.addLine(to: CGPoint(x: size.width - verticalWidth, y: 0))
-            }
-            path.addLine(to: CGPoint(x: size.width, y: 0))
-            path.closeSubpath()
-        }
-        
-        return path
+    public init(
+        size: Size,
+        top: Bool = true,
+        left: Bool = true,
+        rounded: Bool = true,
+        horizontalHeight: Float = Self.defaultHorizontalHeight,
+        verticalWidth: Float = Self.defaultVerticalWidth,
+        closedHeight: Float = Self.defaultClosedHeight,
+        shouldMatchRadius: Bool = false
+    ) {
+        self.size = size
+        self.top = top
+        self.left = left
+        self.rounded = rounded
+        self.horizontalHeight = horizontalHeight
+        self.verticalWidth = verticalWidth
+        self.closedHeight = closedHeight
+        self.shouldMatchRadius = shouldMatchRadius
     }
 }
 
-#endif
+public extension Elbow {
+    var outerRadius: Radius {
+        return max(horizontalHeight, verticalWidth) / 2
+    }
+    
+    var innerRadius: Radius {
+        shouldMatchRadius ? outerRadius : (outerRadius / 2.4)
+    }
+    
+    var upperLeftOuterCenter: CartesianPoint {
+        .init(x: outerRadius, y: outerRadius)
+    }
+    
+    var upperLeftInnerCenter: CartesianPoint {
+        .init(x: verticalWidth + innerRadius, y: horizontalHeight + innerRadius)
+    }
+    
+    var lowerRightOuterCenter: CartesianPoint {
+        .init(x: size.width - outerRadius, y: size.height - outerRadius)
+    }
+    
+    var lowerRightInnerCenter: CartesianPoint {
+        .init(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight - innerRadius)
+    }
+}
+
+extension Elbow: ExpressibleByCartesianPoints {
+    public var cartesianPoints: [CartesianPoint] {
+        return []
+    }
+}

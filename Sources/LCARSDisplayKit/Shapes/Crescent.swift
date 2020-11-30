@@ -1,93 +1,96 @@
 import GraphPoint
-#if canImport(CoreGraphics)
-import CoreGraphics
 
 /// Two `Arc`s connected by straight lines at their end points.
-public struct Crescent: Graphable {
-    public var size: CGSize = CGSize.zero
-    public var innerArc: Arc = Arc()
-    public var outerArc: Arc = Arc()
+public struct Crescent {
+    /// Arc with radius closest to the cartesian origin.
+    public var interiorArc: Arc
+    /// Arc with radius farthest from the cartesian origin.
+    public var exteriorArc: Arc
+    /// Uses the interior starting point to extend the exterior starting point, creating a straight line.
+    public var extendExteriorStart: Bool
+    /// Uses the interior ending point to extend the exterior ending point, creating a straight line.
+    public var extendExteriorEnd: Bool
     
-    public var innerRadius: CGFloat {
-        return min(innerArc.radius, outerArc.radius)
+    public init() {
+        interiorArc = Arc()
+        exteriorArc = Arc()
+        extendExteriorStart = false
+        extendExteriorEnd = false
     }
     
-    public var outerRadius: CGFloat {
-        return max(outerArc.radius, innerArc.radius)
-    }
-    
-    public var startDegree: CGFloat {
-        return min(innerArc.startDegree, outerArc.startDegree)
-    }
-    
-    public var endDegree: CGFloat {
-        return max(innerArc.endDegree, outerArc.endDegree)
-    }
-    
-    public var boundStart: Bool = false {
-        didSet {
-            if boundStart {
-                outerArc.boundedStart = innerArc.startPoint
-            } else {
-                outerArc.boundedStart = nil
-            }
-        }
-    }
-    
-    public var boundEnd: Bool = false {
-        didSet {
-            if boundEnd {
-                outerArc.boundedEnd = innerArc.endPoint
-            } else {
-                outerArc.boundedEnd = nil
-            }
-        }
-    }
-    
-    public init() {}
-    public init(innerArc: Arc, outerArc: Arc, boundedStart: Bool = false, boundedEnd: Bool = false) {
-        self.init()
-        self.innerArc = innerArc
-        self.outerArc = outerArc
-        if boundedStart {
-            self.outerArc.boundedStart = self.innerArc.startPoint
-        }
-        if boundedEnd {
-            self.outerArc.boundedEnd = self.innerArc.endPoint
-        }
-    }
-    public init(innerRadius: CGFloat, outerRadius: CGFloat, startDegree: CGFloat, endDegree: CGFloat, boundedStart: Bool = false, boundedEnd: Bool = false) {
-        let innerArc = Arc(radius: innerRadius, startDegree: startDegree, endDegree: endDegree)
-        let outerArc = Arc(radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
-        self.init(innerArc: innerArc, outerArc: outerArc, boundedStart: boundedStart, boundedEnd: boundedEnd)
-    }
-    
-    // MARK: - Graphable
-    public var graphPoints: [GraphPoint] {
-        var points = [GraphPoint]()
-        points.append(contentsOf: innerArc.graphPoints)
-        points.append(contentsOf: outerArc.graphPoints)
-        return points
-    }
-    
-    public var graphFrame: GraphFrame {
-        return GraphFrame.graphFrame(graphPoints: graphPoints, radius: outerRadius, startDegree: startDegree, endDegree: endDegree)
-    }
-    
-    public var path: CGMutablePath {
-        let path = CGMutablePath()
-        
-        let gf = graphFrame
-        let offset = gf.graphOriginOffset
-        let translatedEnd = gf.boundedPoint(graphPoint: outerArc.endPoint)
-        
-        path.addArc(center: offset, radius: innerArc.radius, startAngle: innerArc.startDegree.radians, endAngle: innerArc.endDegree.radians, clockwise: false)
-        path.addLine(to: translatedEnd)
-        path.addArc(center: offset, radius: outerArc.radius, startAngle: outerArc.endDegree.radians, endAngle: outerArc.startDegree.radians, clockwise: true)
-        path.closeSubpath()
-        
-        return path
+    public init(interiorArc: Arc, exteriorArc: Arc, extendExteriorStart: Bool = false, extendExteriorEnd: Bool = false) {
+        self.interiorArc = interiorArc
+        self.exteriorArc = exteriorArc
+        self.extendExteriorStart = extendExteriorStart
+        self.extendExteriorEnd = extendExteriorEnd
     }
 }
 
-#endif
+public extension Crescent {
+    var interiorRadius: Radius {
+        return min(interiorArc.radius, exteriorArc.radius)
+    }
+    
+    var exteriorRadius: Radius {
+        return max(exteriorArc.radius, interiorArc.radius)
+    }
+    
+    var startDegree: Degree {
+        return min(interiorArc.startingDegree, exteriorArc.startingDegree)
+    }
+    
+    var endDegree: Degree {
+        return max(interiorArc.endingDegree, exteriorArc.endingDegree)
+    }
+    
+    var interiorArcStartingPoint: CartesianPoint {
+        return interiorArc.startingPoint
+    }
+    
+    var interiorArcEndingPoint: CartesianPoint {
+        return interiorArc.endingPoint
+    }
+    
+    var exteriorArcStartingPoint: CartesianPoint {
+        do {
+            switch extendExteriorStart {
+            case true:
+                return try CartesianPoint.make(for: exteriorRadius, degree: startDegree, modifier: interiorArc.startingPoint)
+            case false:
+                return exteriorArc.startingPoint
+            }
+        } catch {
+            return .zero
+        }
+    }
+    
+    var exteriorArcEndingPoint: CartesianPoint {
+        do {
+            switch extendExteriorEnd {
+            case true:
+                return try CartesianPoint.make(for: exteriorRadius, degree: endDegree, modifier: interiorArc.endingPoint)
+            case false:
+                return exteriorArc.endingPoint
+            }
+        } catch {
+            return .zero
+        }
+    }
+}
+
+extension Crescent: ExpressibleByCartesianPoints {
+    public var cartesianPoints: [CartesianPoint] {
+        return [
+            interiorArcStartingPoint, interiorArcEndingPoint,
+            exteriorArcStartingPoint, exteriorArcEndingPoint
+        ]
+    }
+    
+    public var cartesianFrame: CartesianFrame {
+        do {
+            return try .make(for: exteriorArc, points: cartesianPoints)
+        } catch {
+            return .zero
+        }
+    }
+}

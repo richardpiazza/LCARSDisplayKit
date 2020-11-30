@@ -11,7 +11,7 @@ import LCARSDisplayKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var dgroup: DGroupView02?
+    @IBOutlet weak var dgroup: DirectionGroupingView02?
     var isConditionRed = false
     
     override func viewDidLoad() {
@@ -24,6 +24,10 @@ class ViewController: UIViewController {
         
         guard let dgroup = self.dgroup else {
             return
+        }
+        
+        dgroup.buttonTapHandler = { (button) in
+            CommandSequencer.default.didTouch(button)
         }
         
         dgroup.outerRing14.isHidden = true
