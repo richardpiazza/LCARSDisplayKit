@@ -10,16 +10,16 @@ open class CrescentControl: InteractiveControl<Crescent> {
 #endif
 
 extension Crescent: ExpressibleByPath {
-    public var path: CGMutablePath {
+    public var path: CGPath {
         let path = CGMutablePath()
         
         let frame = cartesianFrame
         let center = frame.offsetToCartesianOrigin
-        let translated = frame.originModifiedBy(exteriorArcEndingPoint)
+        let translated = frame.relativePointForCartesianPoint(exteriorArcEndingPoint)
         
-        path.addArc(center: center, radius: interiorRadius, startDegree: interiorArc.startingDegree, endDegree: interiorArc.endingDegree, clockwise: false)
+        path.addArc(arc: interiorArc, center: center, clockwise: false)
         path.addLine(to: translated)
-        path.addArc(center: center, radius: exteriorRadius, startDegree: exteriorArc.endingDegree, endDegree: exteriorArc.startingDegree, clockwise: true)
+        path.addArc(arc: exteriorArc.reversed, center: center, clockwise: true)
         path.closeSubpath()
         
         return path

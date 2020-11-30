@@ -17,7 +17,7 @@ let package = Package(
             targets: ["LCARSDisplayKit"]),
         ],
     dependencies: [
-        .package(url: "https://github.com/richardpiazza/GraphPoint.git", .upToNextMinor(from: "4.0.0-beta.1")),
+        .package(url: "https://github.com/richardpiazza/GraphPoint.git", .upToNextMinor(from: "4.0.0")),
         ],
     targets: [
         .target(

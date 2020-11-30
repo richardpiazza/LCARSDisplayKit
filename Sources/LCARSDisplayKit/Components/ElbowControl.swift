@@ -14,7 +14,7 @@ open class ElbowControl: InteractiveControl<Elbow> {
 #endif
 
 extension Elbow: ExpressibleByPath {
-    public var path: CGMutablePath {
+    public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
         let size = self.size
         

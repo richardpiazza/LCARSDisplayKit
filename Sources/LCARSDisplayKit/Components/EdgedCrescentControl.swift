@@ -10,7 +10,7 @@ open class EdgedCrescentControl: InteractiveControl<EdgedCrescent> {
 #endif
 
 extension EdgedCrescent: ExpressibleByPath {
-    public var path: CGMutablePath {
+    public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
         
         let frame = cartesianFrame
@@ -19,7 +19,7 @@ extension EdgedCrescent: ExpressibleByPath {
         path.addArc(arc: interiorArc, center: center, clockwise: false)
         
         edgePoints.reversed().forEach { (point) in
-            let translated = frame.originModifiedBy(point)
+            let translated = frame.relativePointForCartesianPoint(point)
             path.addLine(to: translated)
         }
         

@@ -10,12 +10,12 @@ open class WedgeControl: InteractiveControl<Wedge> {
 #endif
 
 extension Wedge: ExpressibleByPath {
-    public var path: CGMutablePath {
+    public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
         
         let frame = cartesianFrame
         let center = frame.offsetToCartesianOrigin
-        let pivot = frame.originModifiedBy(exteriorArc.pivotPoint)
+        let pivot = frame.relativePointForCartesianPoint(exteriorArc.pivotPoint)
         
         path.addArc(arc: exteriorArc, center: center, clockwise: false)
         path.addLine(to: pivot)

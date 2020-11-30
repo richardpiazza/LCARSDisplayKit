@@ -18,7 +18,7 @@ open class RoundedRectangleControl: InteractiveControl<RoundedRectangle> {
 #endif
 
 extension RoundedRectangle: ExpressibleByPath {
-    public var path: CGMutablePath {
+    public var path: CGPath {
         let path = CGMutablePath()
         
         switch (leftRounded, rightRounded, cornersOnly) {

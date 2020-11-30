@@ -25,13 +25,13 @@ open class DirectionControl: InteractiveControl<Direction> {
 #endif
 
 extension Direction: ExpressibleByPath {
-    public var path: CGMutablePath {
+    public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
         subpaths?.forEach { path.addPath($0) }
         return path
     }
     
-    public var subpaths: [CGMutablePath]? {
+    public var subpaths: [CGPath]? {
         var paths: [CGMutablePath] = [CGMutablePath]()
         
         let frame = cartesianFrame
