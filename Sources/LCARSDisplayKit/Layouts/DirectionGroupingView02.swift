@@ -71,8 +71,8 @@ open class DirectionGroupingView02: DirectionGroupingView01 {
         let e13Origin = frame(forShape: edge13Shape).origin
         let width = e13Points[1].x - e13Points[0].x
         let height = Self.defaultControlSize.height * scaleRatio
-        let x = Float(e13Origin.x)
-        let y = Float(e13Origin.y - CGFloat(height) - theme.defaultSpacing)
+        let x = e13Origin.x
+        let y = e13Origin.y - CGFloat(height) - theme.defaultSpacing
         
         let point1: CartesianPoint = .init(x: x, y: y)
         let point2: CartesianPoint = .init(x: x + width, y: y + height)
@@ -85,8 +85,8 @@ open class DirectionGroupingView02: DirectionGroupingView01 {
         frame.size.width = CGFloat(Self.defaultControlSize.width * scaleRatio * 0.55)
         frame.origin.x = frame.origin.x - frame.size.width - theme.defaultSpacing
         
-        let point1: CartesianPoint = .init(x: Float(frame.origin.x), y: Float(frame.origin.y))
-        let point2: CartesianPoint = .init(x: point1.x + Float(frame.width), y: point1.y + Float(frame.height))
+        let point1: CartesianPoint = .init(x: frame.origin.x, y: frame.origin.y)
+        let point2: CartesianPoint = .init(x: point1.x + frame.width, y: point1.y + frame.height)
         
         return RoundedRectangle(cartesianPoints: [point1, point2], leftRounded: true)
     }
@@ -98,7 +98,7 @@ open class DirectionGroupingView02: DirectionGroupingView01 {
         let width = e15Points[1].x - e15Points[0].x
         let height = Self.defaultControlSize.height * scaleRatio
         let x = e15Origin.x
-        let y = e15Origin.y - height - Float(theme.defaultSpacing)
+        let y = e15Origin.y - height - theme.defaultSpacing
         
         let point1: CartesianPoint = .init(x: x, y: y)
         let point2: CartesianPoint = .init(x: point1.x + width, y: point1.y + height)

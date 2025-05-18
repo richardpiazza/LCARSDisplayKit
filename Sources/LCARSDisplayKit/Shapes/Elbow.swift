@@ -3,9 +3,9 @@ import Swift2D
 
 public struct Elbow {
     
-    public static let defaultHorizontalHeight: Float = 120.0
-    public static let defaultVerticalWidth: Float = 30.0
-    public static let defaultClosedHeight: Float = 0.0
+    public static let defaultHorizontalHeight: Double = 120.0
+    public static let defaultVerticalWidth: Double = 30.0
+    public static let defaultClosedHeight: Double = 0.0
     
     /// The size of the shape - modifiable through intrinsic values
     public var size: Size
@@ -14,10 +14,10 @@ public struct Elbow {
     public var left: Bool
     /// Specifies if the corner specified by `top` and `left` should be rounded.
     public var rounded: Bool
-    public var horizontalHeight: Float
-    public var verticalWidth: Float
+    public var horizontalHeight: Double
+    public var verticalWidth: Double
     /// If closedHeight > 0, an additional area is drawn parallel to the horizontalHeight area.
-    public var closedHeight: Float
+    public var closedHeight: Double
     /// If true, the interior radius will match the exterior radius.
     public var shouldMatchRadius: Bool
     
@@ -37,9 +37,9 @@ public struct Elbow {
         top: Bool = true,
         left: Bool = true,
         rounded: Bool = true,
-        horizontalHeight: Float = Self.defaultHorizontalHeight,
-        verticalWidth: Float = Self.defaultVerticalWidth,
-        closedHeight: Float = Self.defaultClosedHeight,
+        horizontalHeight: Double = Self.defaultHorizontalHeight,
+        verticalWidth: Double = Self.defaultVerticalWidth,
+        closedHeight: Double = Self.defaultClosedHeight,
         shouldMatchRadius: Bool = false
     ) {
         self.size = size

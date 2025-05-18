@@ -111,7 +111,7 @@ open class DirectionGroupingView01: DirectionGroupingView {
     }
     
     open var thirdRingInteriorRadius: Radius {
-        return secondRingExteriorRadius + Float(theme.defaultSpacing)
+        return secondRingExteriorRadius + theme.defaultSpacing
     }
     
     open var thirdRingExteriorRadius: Radius {
@@ -311,10 +311,10 @@ open class DirectionGroupingView01: DirectionGroupingView {
     var top00Shape: RoundedRectangle {
         let edge15Origin = frame(forShape: edge15Shape).origin
         
-        let width = Self.defaultControlSize.width * Float(scaleRatio)
-        let height = Self.defaultControlSize.height * Float(scaleRatio)
-        let x = Float(bounds.size.width + CGFloat(width) - edge15Origin.x)
-        let y = Float(edge15Origin.y)
+        let width = Self.defaultControlSize.width * scaleRatio
+        let height = Self.defaultControlSize.height * scaleRatio
+        let x = bounds.size.width + CGFloat(width) - edge15Origin.x
+        let y = edge15Origin.y
         
         let point1: CartesianPoint = .init(x: x, y: y)
         let point2: CartesianPoint = .init(x: x + width, y: y + height)

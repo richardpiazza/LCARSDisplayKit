@@ -29,17 +29,17 @@ import Swift2D
     
     @IBInspectable var horizontalHeight: CGFloat {
         get { CGFloat(shape.horizontalHeight) }
-        set { shape.horizontalHeight = Float(newValue) }
+        set { shape.horizontalHeight = newValue }
     }
     
     @IBInspectable var verticalWidth: CGFloat {
         get { CGFloat(shape.verticalWidth) }
-        set { shape.verticalWidth = Float(newValue) }
+        set { shape.verticalWidth = newValue }
     }
     
     @IBInspectable var closedHeight: CGFloat {
         get { CGFloat(shape.closedHeight) }
-        set { shape.closedHeight = Float(newValue) }
+        set { shape.closedHeight = newValue }
     }
     
     @IBInspectable var matchRadius: Bool {

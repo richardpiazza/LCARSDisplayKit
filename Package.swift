@@ -1,41 +1,38 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "LCARSDisplayKit",
+    platforms: [
+        .macOS(.v13),
+        .macCatalyst(.v16),
+        .iOS(.v16),
+        .tvOS(.v16),
+        .watchOS(.v9),
+    ],
     products: [
         .library(
             name: "LCARSDisplayKit",
-            targets: ["LCARSDisplayKit"]),
-        .library(
-            name: "LCARSDisplayKitUI",
-            targets: ["LCARSDisplayKitUI"]),
-        .library(
-            name: "LCARSDisplayKitViews",
-            targets: ["LCARSDisplayKitViews"]),
-        ],
+            targets: ["LCARSDisplayKit"],
+        ),
+    ],
     dependencies: [
-        .package(url: "https://github.com/richardpiazza/GraphPoint.git", .upToNextMajor(from: "3.3.0")),
-        ],
+        .package(url: "https://github.com/richardpiazza/GraphPoint.git", .upToNextMajor(from: "5.1.0")),
+    ],
     targets: [
         .target(
             name: "LCARSDisplayKit",
             dependencies: ["GraphPoint"],
-            path: "Sources/LCARSDisplayKit"),
-        .target(
-            name: "LCARSDisplayKitUI",
-            dependencies: ["GraphPoint", "LCARSDisplayKit"],
-            path: "Sources/LCARSDisplayKitUI"),
-        .target(
-            name: "LCARSDisplayKitViews",
-            dependencies: ["GraphPoint", "LCARSDisplayKit", "LCARSDisplayKitUI"],
-            path: "Sources/LCARSDisplayKitViews"),
+            resources: [
+                .process("Resources"),
+            ]
+        ),
         .testTarget(
             name: "LCARSDisplayKitTests",
             dependencies: ["GraphPoint", "LCARSDisplayKit"],
-            path: "Tests/LCARSDisplayKitTests")
+        )
     ],
     swiftLanguageVersions: [.v5]
 )

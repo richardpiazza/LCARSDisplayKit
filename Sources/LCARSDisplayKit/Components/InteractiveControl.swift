@@ -3,7 +3,7 @@ import Swift2D
 #if canImport(UIKit) && !os(watchOS)
 import UIKit
 
-public protocol InteractiveControlDelegate: class {
+public protocol InteractiveControlDelegate: AnyObject {
     func didTapButton(_ sender: UIButton)
 }
 

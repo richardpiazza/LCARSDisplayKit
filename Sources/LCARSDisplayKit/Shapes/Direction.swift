@@ -28,8 +28,8 @@ public struct Direction {
     
     public var size: Size {
         let frame = cartesianFrame
-        let width: Float
-        let height: Float
+        let width: Double
+        let height: Double
         
         switch cardinal {
         case .right:

@@ -80,7 +80,7 @@ extension UIColor {
 
 extension UIFont {
     private static var swiss911UltraCompressedBT: Data {
-        guard let url = Bundle.module.url(forResource: "Swiss 911 Ultra Compressed BT", withExtension: "ttf") else {
+        guard let url = Bundle.lcarsDisplayKit.url(forResource: "Swiss 911 Ultra Compressed BT", withExtension: "ttf") else {
             preconditionFailure("Failed to locate resource: 'Swiss 911 Ultra Compressed BT.ttf'.")
         }
         
@@ -130,7 +130,7 @@ extension UIFont {
 
 extension Data {
     static func bundleSound(name: String) -> Data {
-        guard let url = Bundle.module.url(forResource: name, withExtension: "m4a") else {
+        guard let url = Bundle.lcarsDisplayKit.url(forResource: name, withExtension: "m4a") else {
             preconditionFailure("Failed to locate resource: '\(name).m4a'.")
         }
         

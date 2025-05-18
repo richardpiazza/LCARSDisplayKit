@@ -65,17 +65,17 @@ open class DirectionGroupingView: UIView, InteractiveControlDelegate {
         return CGSize(width: 350, height: 350)
     }
     
-    open var intrinsicRatio: Float {
+    open var intrinsicRatio: Double {
         if intrinsicContentSize.width >= intrinsicContentSize.height {
-            return Float(intrinsicContentSize.width / intrinsicContentSize.height)
+            return intrinsicContentSize.width / intrinsicContentSize.height
         } else {
-            return Float(intrinsicContentSize.height / intrinsicContentSize.width)
+            return intrinsicContentSize.height / intrinsicContentSize.width
         }
     }
     
     open var scaledContentSize: Size {
-        let width = Float(bounds.size.width)
-        let height = Float(bounds.size.height)
+        let width = bounds.size.width
+        let height = bounds.size.height
         
         if width >= height {
             return Size(width: height * intrinsicRatio, height: height)
@@ -85,11 +85,11 @@ open class DirectionGroupingView: UIView, InteractiveControlDelegate {
     }
     
     /// Percent to scale individual amounts by
-    open var scaleRatio: Float {
+    open var scaleRatio: Double {
         if scaledContentSize.width >= scaledContentSize.height {
-            return scaledContentSize.width / Float(intrinsicContentSize.width)
+            return scaledContentSize.width / intrinsicContentSize.width
         } else {
-            return scaledContentSize.height / Float(intrinsicContentSize.height)
+            return scaledContentSize.height / intrinsicContentSize.height
         }
     }
     
@@ -100,23 +100,23 @@ open class DirectionGroupingView: UIView, InteractiveControlDelegate {
     
     /// The origin of the plane used for calculations. This includes the _offset_.
     open var cartesianOrigin: CartesianPoint {
-        var origin = CartesianPlane(bounds).cartesianOrigin
-        origin.x += cartesianOffset.x
-        origin.y += cartesianOffset.y
-        return origin
+        let origin = CartesianPlane(bounds).cartesianOrigin
+        let x = origin.x + cartesianOffset.x
+        let y = origin.y + cartesianOffset.y
+        return origin.with(x: x).with(y: y)
     }
     
     // MARK: - Measurements
     
-    public static var defaultCruxDiameter: Float = 60.0
+    public static var defaultCruxDiameter: Double = 60.0
     
     /// The width and height of the central square
-    open var cruxDiameter: Float {
+    open var cruxDiameter: Double {
         return Self.defaultCruxDiameter * scaleRatio
     }
     
     var innerRadius: Radius {
-        return (cruxDiameter / 2) + Float(theme.defaultSpacing)
+        return (cruxDiameter / 2) + theme.defaultSpacing
     }
     
     /// Radius of the entire Direction Pad
@@ -126,7 +126,7 @@ open class DirectionGroupingView: UIView, InteractiveControlDelegate {
     
     ///
     open var firstRingInteriorRadius: Radius {
-        return dpadRadius + Float(theme.defaultSpacing)
+        return dpadRadius + theme.defaultSpacing
     }
     
     ///
@@ -141,7 +141,7 @@ open class DirectionGroupingView: UIView, InteractiveControlDelegate {
     
     ///
     open var secondRingInteriorRadius: Radius {
-        return firstRingExteriorRadius + Float(theme.defaultSpacing)
+        return firstRingExteriorRadius + theme.defaultSpacing
     }
     
     ///
