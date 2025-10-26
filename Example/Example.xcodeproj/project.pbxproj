@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		E1084470256E86A4005DDC10 /* LCARSDisplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = E108446F256E86A4005DDC10 /* LCARSDisplayKit */; };
 		E108447825700249005DDC10 /* CommandSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108447725700248005DDC10 /* CommandSequencer.swift */; };
-		E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */; };
 		E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1112FB51BBE7FBC0001C33D /* ViewController.swift */; };
 		E1112FB91BBE7FBC0001C33D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FB71BBE7FBC0001C33D /* Main.storyboard */; };
 		E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */; };
 		E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */; };
+		E180FF1C2EAE679700B0D81F /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180FF1B2EAE678A00B0D81F /* ExampleApp.swift */; };
+		E180FF1E2EAE684600B0D81F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180FF1D2EAE684400B0D81F /* ContentView.swift */; };
 		E1EE4FC5226670BB00443943 /* NoiseMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EE4FC4226670BB00443943 /* NoiseMaker.swift */; };
 		E1FD85EE257401D700F3F58C /* ElbowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FD85ED257401D700F3F58C /* ElbowButton.swift */; };
 		E1FD85F0257402C400F3F58C /* DirectionPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FD85EF257402C400F3F58C /* DirectionPadView.swift */; };
@@ -36,13 +37,14 @@
 /* Begin PBXFileReference section */
 		E108446E256E869D005DDC10 /* LCARSDisplayKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LCARSDisplayKit; path = ..; sourceTree = "<group>"; };
 		E108447725700248005DDC10 /* CommandSequencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSequencer.swift; sourceTree = "<group>"; };
-		E1112FB01BBE7FBC0001C33D /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E1112FB01BBE7FBC0001C33D /* LCARS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LCARS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1112FB51BBE7FBC0001C33D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E1112FB81BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1112FBD1BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1112FBF1BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E180FF1B2EAE678A00B0D81F /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
+		E180FF1D2EAE684400B0D81F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E1CA6B4E1FFECB210002EF25 /* LCARSDisplayKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitTests.swift; sourceTree = "<group>"; };
 		E1CA6B831FFECC150002EF25 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E1CA6B841FFECC150002EF25 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
@@ -82,7 +84,7 @@
 		E1112FB11BBE7FBC0001C33D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E1112FB01BBE7FBC0001C33D /* Example.app */,
+				E1112FB01BBE7FBC0001C33D /* LCARS Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -90,7 +92,8 @@
 		E1112FB21BBE7FBC0001C33D /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				E1112FB31BBE7FBC0001C33D /* AppDelegate.swift */,
+				E180FF1D2EAE684400B0D81F /* ContentView.swift */,
+				E180FF1B2EAE678A00B0D81F /* ExampleApp.swift */,
 				E1112FB51BBE7FBC0001C33D /* ViewController.swift */,
 				E1112FB71BBE7FBC0001C33D /* Main.storyboard */,
 				E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */,
@@ -151,7 +154,7 @@
 				E108446F256E86A4005DDC10 /* LCARSDisplayKit */,
 			);
 			productName = LCARSDisplayKit;
-			productReference = E1112FB01BBE7FBC0001C33D /* Example.app */;
+			productReference = E1112FB01BBE7FBC0001C33D /* LCARS Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -208,12 +211,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E180FF1C2EAE679700B0D81F /* ExampleApp.swift in Sources */,
 				E1FD85F2257443AC00F3F58C /* RoundedRectangleButton.swift in Sources */,
 				E108447825700249005DDC10 /* CommandSequencer.swift in Sources */,
 				E1EE4FC5226670BB00443943 /* NoiseMaker.swift in Sources */,
 				E1FD85F0257402C400F3F58C /* DirectionPadView.swift in Sources */,
+				E180FF1E2EAE684600B0D81F /* ContentView.swift in Sources */,
 				E1112FB61BBE7FBC0001C33D /* ViewController.swift in Sources */,
-				E1112FB41BBE7FBC0001C33D /* AppDelegate.swift in Sources */,
 				E1FD85EE257401D700F3F58C /* ElbowButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,12 +298,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 18.6;
+				XROS_DEPLOYMENT_TARGET = 2.6;
 			};
 			name = Debug;
 		};
@@ -344,13 +351,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
+				MACOSX_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 18.6;
 				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 2.6;
 			};
 			name = Release;
 		};
@@ -361,15 +371,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.richardpiazza.LCARSDisplayKit.example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
+				PRODUCT_NAME = "LCARS Example";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
@@ -382,15 +394,17 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Example/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.github.richardpiazza.LCARSDisplayKit.example;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
+				PRODUCT_NAME = "LCARS Example";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};

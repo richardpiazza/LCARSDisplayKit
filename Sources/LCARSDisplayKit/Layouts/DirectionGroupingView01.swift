@@ -528,4 +528,21 @@ open class DirectionGroupingView01: DirectionGroupingView {
         return CGRect(x: x, y: y, width: width, height: height)
     }
 }
+
+#if canImport(SwiftUI)
+import SwiftUI
+
+struct DirectionGroupingView01Representable: UIViewRepresentable {
+    func makeUIView(context: Context) -> DirectionGroupingView01 {
+        DirectionGroupingView01(frame: .zero)
+    }
+    
+    func updateUIView(_ uiView: DirectionGroupingView01, context: Context) {
+    }
+}
+
+#Preview {
+    DirectionGroupingView01Representable()
+}
+#endif
 #endif

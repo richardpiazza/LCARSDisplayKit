@@ -232,4 +232,21 @@ open class DirectionGroupingView02: DirectionGroupingView01 {
         return frame
     }
 }
+
+#if canImport(SwiftUI)
+import SwiftUI
+
+struct DirectionGroupingView02Representable: UIViewRepresentable {
+    func makeUIView(context: Context) -> DirectionGroupingView02 {
+        DirectionGroupingView02(frame: .zero)
+    }
+    
+    func updateUIView(_ uiView: DirectionGroupingView02, context: Context) {
+    }
+}
+
+#Preview {
+    DirectionGroupingView02Representable()
+}
+#endif
 #endif

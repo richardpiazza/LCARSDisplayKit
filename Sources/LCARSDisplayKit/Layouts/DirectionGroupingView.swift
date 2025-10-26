@@ -345,4 +345,21 @@ extension DirectionGroupingView {
         return CGRect(origin: origin, size: size)
     }
 }
+
+#if canImport(SwiftUI)
+import SwiftUI
+
+struct DirectionGroupingViewRepresentable: UIViewRepresentable {
+    func makeUIView(context: Context) -> DirectionGroupingView {
+        DirectionGroupingView(frame: .zero)
+    }
+    
+    func updateUIView(_ uiView: DirectionGroupingView, context: Context) {
+    }
+}
+
+#Preview {
+    DirectionGroupingViewRepresentable()
+}
+#endif
 #endif
