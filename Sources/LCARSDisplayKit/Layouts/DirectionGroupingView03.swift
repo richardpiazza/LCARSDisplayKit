@@ -97,7 +97,7 @@ open class DirectionGroupingView03: DirectionGroupingView {
     
     // {-27.0, 79.0}
     open override var cartesianOffset: CartesianFrame.Offset {
-        return .init(x: Float(-(scaledContentSize.width * 0.0366)), y: Float(scaledContentSize.height * 0.14))
+        return .init(x: -(scaledContentSize.width * 0.0366), y: scaledContentSize.height * 0.14)
     }
     
     open var secondRingEdgeExteriorRadius: Radius {
@@ -105,7 +105,7 @@ open class DirectionGroupingView03: DirectionGroupingView {
     }
     
     open var thirdRingInteriorRadius: Radius {
-        return secondRingExteriorRadius + Float(theme.defaultSpacing)
+        return secondRingExteriorRadius + theme.defaultSpacing
     }
     
     open var thirdRingExteriorRadius: Radius {
@@ -228,10 +228,12 @@ open class DirectionGroupingView03: DirectionGroupingView {
     var outerRing20ExtendedShape: Crescent {
         let shape = innerRing20Shape
         var startPoint = shape.exteriorArcStartingPoint
-        startPoint.x += secondRingInteriorRadius - firstRingExteriorRadius
+        let startX = startPoint.x + secondRingInteriorRadius - firstRingExteriorRadius
+        startPoint = startPoint.with(x: startX)
         let startDegree = try! Degree.make(for: startPoint)
         var endPoint = shape.exteriorArcEndingPoint
-        endPoint.x += secondRingInteriorRadius - firstRingExteriorRadius
+        let endX = endPoint.x + secondRingInteriorRadius - firstRingExteriorRadius
+        endPoint = endPoint.with(x: endX)
         let endDegree = try! Degree.make(for: endPoint)
         
         let innerArc = Arc(radius: secondRingInteriorRadius, startingDegree: startDegree, endingDegree: endDegree)
@@ -256,10 +258,12 @@ open class DirectionGroupingView03: DirectionGroupingView {
     var edge05Shape: EdgedCrescent {
         let shape = innerRing15Shape
         var startPoint = shape.exteriorArcStartingPoint
-        startPoint.y += secondRingInteriorRadius - firstRingExteriorRadius
+        let startY = startPoint.y + secondRingInteriorRadius - firstRingExteriorRadius
+        startPoint = startPoint.with(y: startY)
         let startDegree = try! Degree.make(for: startPoint)
         var endPoint = shape.exteriorArcEndingPoint
-        endPoint.y += secondRingInteriorRadius - firstRingExteriorRadius
+        let endY = endPoint.y + secondRingInteriorRadius - firstRingExteriorRadius
+        endPoint = endPoint.with(y: endY)
         let endDegree = try! Degree.make(for: endPoint)
         
         let interiorArc = Arc(radius: secondRingInteriorRadius, startingDegree: startDegree, endingDegree: endDegree)
@@ -275,7 +279,7 @@ open class DirectionGroupingView03: DirectionGroupingView {
         frame.origin.x = innerRing17.frame.origin.x
         
         let point1: CartesianPoint = CartesianPoint(frame.origin)
-        let point2: CartesianPoint = CartesianPoint(x: point1.x + Float(frame.size.width), y: Float(cruxDiameter))
+        let point2: CartesianPoint = CartesianPoint(x: point1.x + frame.size.width, y: cruxDiameter)
         
         return RoundedRectangle(cartesianPoints: [point1, point2], rightRounded: true)
     }
@@ -447,4 +451,21 @@ open class DirectionGroupingView03: DirectionGroupingView {
         return frame
     }
 }
+
+#if canImport(SwiftUI)
+import SwiftUI
+
+struct DirectionGroupingView03Representable: UIViewRepresentable {
+    func makeUIView(context: Context) -> DirectionGroupingView03 {
+        DirectionGroupingView03(frame: .zero)
+    }
+    
+    func updateUIView(_ uiView: DirectionGroupingView03, context: Context) {
+    }
+}
+
+#Preview {
+    DirectionGroupingView03Representable()
+}
+#endif
 #endif

@@ -12,7 +12,7 @@ import LCARSDisplayKit
 
 class NoiseMaker: NSObject {
     
-    static var `default`: NoiseMaker = NoiseMaker(theme: TNG())
+    static var `default`: NoiseMaker = NoiseMaker(theme: TNG.shared)
     
     private let neutralBeepData: Data
     private let successBeepData: Data

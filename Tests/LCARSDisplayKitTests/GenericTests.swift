@@ -4,12 +4,7 @@ import Swift2D
 @testable import LCARSDisplayKit
 
 final class GenericTests: XCTestCase {
-    
-    static var allTests = [
-        ("testOuterRing05", testOuterRing05),
-        ("testOuterRingExtended19", testOuterRingExtended19),
-    ]
-    
+
     func testOuterRing05() {
         let secondRingInteriorRadius = Radius(290.19289459)
         let secondRingExteriorRadius = Radius(340.57360394)
