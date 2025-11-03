@@ -1,3 +1,6 @@
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 import GraphPoint
 
 /// An interior `Arc` extended with straight lines to additional points
@@ -16,9 +19,31 @@ public struct EdgedCrescent {
     }
 }
 
-extension EdgedCrescent: ExpressibleByCartesianPoints {
+extension EdgedCrescent: CartesianPointConvertible {
     public var cartesianPoints: [CartesianPoint] {
         let arcPoints = [interiorArc.startingPoint, interiorArc.endingPoint]
         return [arcPoints, edgePoints].flatMap { $0 }
     }
 }
+
+#if canImport(CoreGraphics)
+extension EdgedCrescent: PathConvertible {
+    public var path: CGPath {
+        let path: CGMutablePath = CGMutablePath()
+        
+        let frame = cartesianFrame
+        let center = frame.offsetToCartesianOrigin
+        
+        path.addArc(arc: interiorArc, center: center, clockwise: false)
+        
+        edgePoints.reversed().forEach { (point) in
+            let translated = frame.relativePointForCartesianPoint(point)
+            path.addLine(to: translated)
+        }
+        
+        path.closeSubpath()
+        
+        return path
+    }
+}
+#endif

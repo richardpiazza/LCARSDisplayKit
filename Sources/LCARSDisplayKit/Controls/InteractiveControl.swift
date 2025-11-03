@@ -19,7 +19,7 @@ extension RoundedRectangle: InitializedWithoutArguments { }
 extension Wedge: InitializedWithoutArguments { }
 
 /// Base button class
-open class InteractiveControl<Shape: ExpressibleByCartesianPoints & ExpressibleByPath & InitializedWithoutArguments>: UIButton {
+open class InteractiveControl<Shape: CartesianPointConvertible & PathConvertible & InitializedWithoutArguments>: UIButton {
     
     open var shape: Shape = Shape.init() {
         didSet {

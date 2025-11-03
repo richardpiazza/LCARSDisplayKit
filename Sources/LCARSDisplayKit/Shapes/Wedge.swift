@@ -1,3 +1,6 @@
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 import GraphPoint
 import Swift2D
 
@@ -15,8 +18,26 @@ public struct Wedge {
     }
 }
 
-extension Wedge: ExpressibleByCartesianPoints {
+extension Wedge: CartesianPointConvertible {
     public var cartesianPoints: [CartesianPoint] {
-        return [exteriorArc.startingPoint, exteriorArc.endingPoint]
+        [exteriorArc.startingPoint, exteriorArc.endingPoint]
     }
 }
+
+#if canImport(CoreGraphics)
+extension Wedge: PathConvertible {
+    public var path: CGPath {
+        let path: CGMutablePath = CGMutablePath()
+        
+        let frame = cartesianFrame
+        let center = frame.offsetToCartesianOrigin
+        let pivot = frame.relativePointForCartesianPoint(exteriorArc.pivotPoint)
+        
+        path.addArc(arc: exteriorArc, center: center, clockwise: false)
+        path.addLine(to: pivot)
+        path.closeSubpath()
+        
+        return path
+    }
+}
+#endif

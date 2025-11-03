@@ -289,7 +289,7 @@ extension DirectionGroupingView {
     /// Calculates the frame for the shape taking into account the offset.
     ///
     /// Duplications of `CartesianPlane(bounds).rect(for: frame)` logic.
-    func frame<Shape: ExpressibleByCartesianPoints>(forShape shape: Shape) -> CGRect {
+    func frame<Shape: CartesianPointConvertible>(forShape shape: Shape) -> CGRect {
         let origin = cartesianOrigin
         let frame = shape.cartesianFrame
         let rect = Rect(
@@ -360,6 +360,7 @@ struct DirectionGroupingViewRepresentable: UIViewRepresentable {
 
 #Preview {
     DirectionGroupingViewRepresentable()
+        .background(.black)
 }
 #endif
 #endif

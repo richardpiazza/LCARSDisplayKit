@@ -1,23 +1,62 @@
+#if canImport(CoreGraphics)
+import CoreGraphics
+#endif
 import GraphPoint
 import Swift2D
-#if canImport(UIKit)
-import UIKit
 
-#if !os(watchOS)
-open class RoundedRectangleControl: InteractiveControl<RoundedRectangle> {
+public typealias RoundedRectangle = Obround
 
-    open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 144, height: 60)
+/// A rectangle with optionally rounded ends
+public struct Obround {
+    
+    /// Points used to define the frame of the shaped.
+    public var cartesianPoints: [CartesianPoint]
+    /// The size of the shape - modifiable through intrinsic values
+    public var size: Size
+    
+    public var leftRounded: Bool
+    public var rightRounded: Bool
+    public var cornersOnly: Bool
+    
+    /// Calculates the radius of the arcs depending on `cornersOnly`
+    public var radius: Radius {
+        cornersOnly ? size.height * 0.25 : size.height * 0.5
     }
     
-    open override func didChangeSize(_ size: Size) {
-        super.didChangeSize(size)
-        shape.size = size
+    public var upperLeftCenter: Point {
+        Point(x: radius, y: radius)
+    }
+    
+    public var lowerRightCenter: Point {
+        Point(x: size.width - radius, y: size.height - radius)
+    }
+    
+    public init() {
+        cartesianPoints = []
+        size = .zero
+        leftRounded = false
+        rightRounded = false
+        cornersOnly = false
+    }
+    
+    public init(
+        cartesianPoints: [CartesianPoint],
+        leftRounded: Bool = false,
+        rightRounded: Bool = false,
+        cornersOnly: Bool = false
+    ) {
+        self.cartesianPoints = cartesianPoints
+        self.size = CartesianFrame.make(for: cartesianPoints).size
+        self.leftRounded = leftRounded
+        self.rightRounded = rightRounded
+        self.cornersOnly = cornersOnly
     }
 }
-#endif
 
-extension RoundedRectangle: ExpressibleByPath {
+extension Obround: CartesianPointConvertible {}
+
+#if canImport(CoreGraphics)
+extension RoundedRectangle: PathConvertible {
     public var path: CGPath {
         let path = CGMutablePath()
         

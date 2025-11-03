@@ -247,6 +247,7 @@ struct DirectionGroupingView02Representable: UIViewRepresentable {
 
 #Preview {
     DirectionGroupingView02Representable()
+        .background(.black)
 }
 #endif
 #endif

@@ -1,7 +1,10 @@
 import GraphPoint
 import Swift2D
 
-public protocol ExpressibleByCartesianPoints {
+@available(*, deprecated, renamed: "CartesianPointConvertible")
+public typealias ExpressibleByCartesianPoints = CartesianPointConvertible
+
+public protocol CartesianPointConvertible {
     /// The points that define the shape of the object.
     var cartesianPoints: [CartesianPoint] { get }
     /// The rectangle of the plane which contains all of the points.
@@ -9,7 +12,7 @@ public protocol ExpressibleByCartesianPoints {
     
 }
 
-public extension ExpressibleByCartesianPoints {
+public extension CartesianPointConvertible {
     var cartesianFrame: CartesianFrame {
         return CartesianFrame.make(for: cartesianPoints)
     }
