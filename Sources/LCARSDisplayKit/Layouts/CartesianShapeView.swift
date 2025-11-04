@@ -3,10 +3,25 @@ import GraphPoint
 import SwiftUI
 
 struct CartesianShapeView<T: CartesianPointConvertible & PathConvertible>: View {
+    
+    struct PathButtonStyle: ButtonStyle {
+        var path: Path
+        
+        func makeBody(configuration: Configuration) -> some View {
+            ZStack {
+                path
+                
+                configuration.label
+            }
+            .clipShape(path)
+            .contentShape(path)
+        }
+    }
+    
     var path: Path
     var rect: CGRect
     var offset: CGPoint
-    var action: () -> Void = { }
+    var action: () -> Void
     
     init(
         _ shape: T,
@@ -21,7 +36,8 @@ struct CartesianShapeView<T: CartesianPointConvertible & PathConvertible>: View 
     }
     
     var body: some View {
-        path
+        Button("", action: action)
+            .buttonStyle(PathButtonStyle(path: path))
             .frame(
                 width: rect.width,
                 height: rect.height
@@ -30,10 +46,22 @@ struct CartesianShapeView<T: CartesianPointConvertible & PathConvertible>: View 
                 x: rect.minX + offset.x + (rect.width / 2.0),
                 y: rect.minY + offset.y + (rect.height / 2.0)
             )
-            .onTapGesture {
-                action()
-            }
     }
+    
+//    var body: some View {
+//        path
+//            .frame(
+//                width: rect.width,
+//                height: rect.height
+//            )
+//            .position(
+//                x: rect.minX + offset.x + (rect.width / 2.0),
+//                y: rect.minY + offset.y + (rect.height / 2.0)
+//            )
+//            .onTapGesture {
+//                action()
+//            }
+//    }
 }
 
 typealias CruxView = CartesianShapeView<Crux>

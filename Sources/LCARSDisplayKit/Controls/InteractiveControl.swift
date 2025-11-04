@@ -7,6 +7,7 @@ public protocol InteractiveControlDelegate: AnyObject {
     func didTapButton(_ sender: UIButton)
 }
 
+#warning("May be able to remove after UIKit")
 public protocol InitializedWithoutArguments {
     init()
 }

@@ -16,6 +16,10 @@ public struct Wedge {
     public init(exteriorArc: Arc) {
         self.exteriorArc = exteriorArc
     }
+    
+    public init(_ sector: DPad.Sector, radius: Radius) {
+        exteriorArc = Arc(radius: radius, sector: sector)
+    }
 }
 
 extension Wedge: CartesianPointConvertible {

@@ -22,6 +22,12 @@ public struct Direction {
         self.interiorRadius = interiorRadius
         self.exteriorArc = exteriorArc
     }
+    
+    public init(_ cardinal: Cardinal, interiorRadius: Radius = 0.0, exteriorRadius: Radius = 0.0) {
+        self.cardinal = cardinal
+        self.interiorRadius = interiorRadius
+        exteriorArc = Arc(radius: exteriorRadius, cardinalDirection: cardinal)
+    }
 }
 
 extension Direction: CartesianPointConvertible {
@@ -38,8 +44,9 @@ extension Direction: CartesianPointConvertible {
             return .zero
         }
         
-        let x, y, width, height : CGFloat
+        let x, y, width, height: CGFloat
         
+        #warning("Calculations are slightly off. Width affecting x; Height affecting y.")
         switch cardinal {
         case .up:
             width = max(frame.width, frame.height)

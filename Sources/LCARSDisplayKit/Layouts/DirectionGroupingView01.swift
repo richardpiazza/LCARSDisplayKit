@@ -121,128 +121,128 @@ open class DirectionGroupingView01: DirectionGroupingView {
     // MARK: - Shapes
     
     var innerRing01Crescent: Crescent {
-        let innerArc = Arc(radius: firstRingInteriorRadius, startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
-        let outerArc = Arc(radius: firstRingExteriorRadius, startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startingDegree: DPad.Arc.arc01.start, endingDegree: DPad.Arc.arc04.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startingDegree: DPad.Arc.arc01.start, endingDegree: DPad.Arc.arc04.end)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var innerRing05Crescent: Crescent {
-        let innerArc = Arc(radius: firstRingInteriorRadius, dPad: .arc05)
-        let outerArc = Arc(radius: firstRingExteriorRadius, dPad: .arc05)
+        let innerArc = Arc(radius: firstRingInteriorRadius, arc: .arc05)
+        let outerArc = Arc(radius: firstRingExteriorRadius, arc: .arc05)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var innerRing10Crescent: Crescent {
-        let innerArc = Arc(radius: firstRingInteriorRadius, dPad: .arc10)
-        let outerArc = Arc(radius: firstRingExteriorRadius, dPad: .arc10)
+        let innerArc = Arc(radius: firstRingInteriorRadius, arc: .arc10)
+        let outerArc = Arc(radius: firstRingExteriorRadius, arc: .arc10)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var innerRing11Crescent: Crescent {
-        let innerArc = Arc(radius: firstRingInteriorRadius, dPad: .arc11)
-        let outerArc = Arc(radius: firstRingExteriorRadius, dPad: .arc11)
+        let innerArc = Arc(radius: firstRingInteriorRadius, arc: .arc11)
+        let outerArc = Arc(radius: firstRingExteriorRadius, arc: .arc11)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var innerRing12Crescent: Crescent {
-        let innerArc = Arc(radius: firstRingInteriorRadius, dPad: .arc12)
-        let outerArc = Arc(radius: firstRingExteriorRadius, dPad: .arc12)
+        let innerArc = Arc(radius: firstRingInteriorRadius, arc: .arc12)
+        let outerArc = Arc(radius: firstRingExteriorRadius, arc: .arc12)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var innerRing13Crescent: Crescent {
-        let innerArc = Arc(radius: firstRingInteriorRadius, dPad: .arc13)
-        let outerArc = Arc(radius: firstRingExteriorRadius, dPad: .arc13)
+        let innerArc = Arc(radius: firstRingInteriorRadius, arc: .arc13)
+        let outerArc = Arc(radius: firstRingExteriorRadius, arc: .arc13)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var innerRing14Crescent: Crescent {
-        let innerArc = Arc(radius: firstRingInteriorRadius, dPad: .arc14)
-        let outerArc = Arc(radius: firstRingExteriorRadius, dPad: .arc14)
+        let innerArc = Arc(radius: firstRingInteriorRadius, arc: .arc14)
+        let outerArc = Arc(radius: firstRingExteriorRadius, arc: .arc14)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var innerRing15Crescent: Crescent {
-        let innerArc = Arc(radius: firstRingInteriorRadius, dPad: .arc15)
-        let outerArc = Arc(radius: firstRingExteriorRadius, dPad: .arc15)
+        let innerArc = Arc(radius: firstRingInteriorRadius, arc: .arc15)
+        let outerArc = Arc(radius: firstRingExteriorRadius, arc: .arc15)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var innerRing16Crescent: Crescent {
-        let innerArc = Arc(radius: firstRingInteriorRadius, startingDegree: DPad.arc16.start, endingDegree: DPad.arc19.end)
-        let outerArc = Arc(radius: firstRingExteriorRadius, startingDegree: DPad.arc16.start, endingDegree: DPad.arc19.end)
+        let innerArc = Arc(radius: firstRingInteriorRadius, startingDegree: DPad.Arc.arc16.start, endingDegree: DPad.Arc.arc19.end)
+        let outerArc = Arc(radius: firstRingExteriorRadius, startingDegree: DPad.Arc.arc16.start, endingDegree: DPad.Arc.arc19.end)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var innerRing20Crescent: Crescent {
-        let innerArc = Arc(radius: firstRingInteriorRadius, dPad: .arc20)
-        let outerArc = Arc(radius: firstRingExteriorRadius, dPad: .arc20)
+        let innerArc = Arc(radius: firstRingInteriorRadius, arc: .arc20)
+        let outerArc = Arc(radius: firstRingExteriorRadius, arc: .arc20)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing10Crescent: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc10)
-        let outerArc = Arc(radius: secondRingExteriorRadius, dPad: .arc10)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc10)
+        let outerArc = Arc(radius: secondRingExteriorRadius, arc: .arc10)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing11Crescent: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc11)
-        let outerArc = Arc(radius: secondRingExteriorRadius, dPad: .arc11)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc11)
+        let outerArc = Arc(radius: secondRingExteriorRadius, arc: .arc11)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing12Crescent: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc12)
-        let outerArc = Arc(radius: secondRingExteriorRadius, dPad: .arc12)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc12)
+        let outerArc = Arc(radius: secondRingExteriorRadius, arc: .arc12)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing13Crescent: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc13)
-        let outerArc = Arc(radius: secondRingExteriorRadius, dPad: .arc13)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc13)
+        let outerArc = Arc(radius: secondRingExteriorRadius, arc: .arc13)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing14Crescent: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc14)
-        let outerArc = Arc(radius: secondRingExteriorRadius, dPad: .arc14)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc14)
+        let outerArc = Arc(radius: secondRingExteriorRadius, arc: .arc14)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing16Crescent: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc16)
-        let outerArc = Arc(radius: secondRingExteriorRadius, dPad: .arc16)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc16)
+        let outerArc = Arc(radius: secondRingExteriorRadius, arc: .arc16)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing17Crescent: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc17)
-        let outerArc = Arc(radius: secondRingExteriorRadius, dPad: .arc17)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc17)
+        let outerArc = Arc(radius: secondRingExteriorRadius, arc: .arc17)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing18Crescent: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc18)
-        let outerArc = Arc(radius: secondRingExtendedExteriorRadius, dPad: .arc18)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc18)
+        let outerArc = Arc(radius: secondRingExtendedExteriorRadius, arc: .arc18)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing19Crescent: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc19)
-        let outerArc = Arc(radius: secondRingExtendedExteriorRadius, dPad: .arc19)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc19)
+        let outerArc = Arc(radius: secondRingExtendedExteriorRadius, arc: .arc19)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing20Crescent: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc20)
-        let outerArc = Arc(radius: secondRingExteriorRadius, dPad: .arc20)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc20)
+        let outerArc = Arc(radius: secondRingExteriorRadius, arc: .arc20)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var edge06Shape: EdgedCrescent {
-        let interiorArc = Arc(radius: firstRingInteriorRadius, dPad: .arc06)
-        let exteriorArc = Arc(radius: firstRingEdgeExteriorRadius, dPad: .arc06)
+        let interiorArc = Arc(radius: firstRingInteriorRadius, arc: .arc06)
+        let exteriorArc = Arc(radius: firstRingEdgeExteriorRadius, arc: .arc06)
         
         let interiorAngleEnd = interiorArc.endingDegree - 90
         let exteriorAngleEnd = 90 - interiorAngleEnd
@@ -255,10 +255,10 @@ open class DirectionGroupingView01: DirectionGroupingView {
     }
     
     var edge07Shape: EdgedCrescent {
-        let edge06ExteriorArc = Arc(radius: firstRingEdgeExteriorRadius, dPad: .arc06)
-        let edge09ExteriorArc = Arc(radius: secondRingExtendedExteriorRadius, dPad: .arc09)
+        let edge06ExteriorArc = Arc(radius: firstRingEdgeExteriorRadius, arc: .arc06)
+        let edge09ExteriorArc = Arc(radius: secondRingExtendedExteriorRadius, arc: .arc09)
         
-        let interiorArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: DPad.arc07.start, endingDegree: DPad.arc08.end)
+        let interiorArc = Arc(radius: Radius(firstRingInteriorRadius), startingDegree: DPad.Arc.arc07.start, endingDegree: DPad.Arc.arc08.end)
         let interiorAngleStart = interiorArc.startingDegree - 90
         let exteriorAngleStart = 90 - interiorAngleStart
         let startX = (edge06ExteriorArc.startingPoint.y / sin(exteriorAngleStart.radians)) * sin(interiorAngleStart.radians)
@@ -275,8 +275,8 @@ open class DirectionGroupingView01: DirectionGroupingView {
     }
     
     var edge09Shape: EdgedCrescent {
-        let interiorArc = Arc(radius: firstRingInteriorRadius, dPad: .arc09)
-        let exteriorArc = Arc(radius: secondRingExtendedExteriorRadius, dPad: .arc09)
+        let interiorArc = Arc(radius: firstRingInteriorRadius, arc: .arc09)
+        let exteriorArc = Arc(radius: secondRingExtendedExteriorRadius, arc: .arc09)
         
         let interiorAngleStart = 180 - interiorArc.startingDegree
         let exteriorAngleStart = 90 - interiorAngleStart
@@ -289,8 +289,8 @@ open class DirectionGroupingView01: DirectionGroupingView {
     }
     
     var edge13Shape: EdgedCrescent {
-        let interiorArc = Arc(radius: thirdRingInteriorRadius, dPad: .arc13)
-        let exteriorArc = Arc(radius: thirdRingExteriorRadius, dPad: .arc13)
+        let interiorArc = Arc(radius: thirdRingInteriorRadius, arc: .arc13)
+        let exteriorArc = Arc(radius: thirdRingExteriorRadius, arc: .arc13)
         
         let interiorAngleStart = 270 - interiorArc.startingDegree
         let exteriorAngleStart = 90 - interiorAngleStart
@@ -303,8 +303,8 @@ open class DirectionGroupingView01: DirectionGroupingView {
     }
     
     var edge15Shape: EdgedCrescent {
-        let interiorArc = Arc(radius: secondRingInteriorRadius, dPad: .arc15)
-        let exteriorArc = Arc(radius: secondRingEdgeExteriorRadius, dPad: .arc15)
+        let interiorArc = Arc(radius: secondRingInteriorRadius, arc: .arc15)
+        let exteriorArc = Arc(radius: secondRingEdgeExteriorRadius, arc: .arc15)
         return EdgedCrescent(interiorArc: interiorArc, edgePoints: [exteriorArc.startingPoint, exteriorArc.endingPoint])
     }
     

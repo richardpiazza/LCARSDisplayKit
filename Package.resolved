@@ -1,4 +1,5 @@
 {
+  "originHash" : "482296c8483d34cbcacddec6bc97c09c0fa361dd64cf3a5a6b4463ac4329dc3c",
   "pins" : [
     {
       "identity" : "graphpoint",
@@ -17,7 +18,16 @@
         "revision" : "b18c58dbcc4aa8091df51be0512ee5b0d16559e5",
         "version" : "2.2.0"
       }
+    },
+    {
+      "identity" : "swiftcolor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/richardpiazza/SwiftColor.git",
+      "state" : {
+        "revision" : "9510aa53299fd143d0094cfc5d3f8cd9b8144464",
+        "version" : "0.3.0"
+      }
     }
   ],
-  "version" : 2
+  "version" : 3
 }

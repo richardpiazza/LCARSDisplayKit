@@ -55,14 +55,14 @@ open class DirectionGroupingView02: DirectionGroupingView01 {
     
     // MARK: - Shapes
     var outerRing01Shape: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
-        let outerArc = Arc(radius: secondRingExteriorRadius, startingDegree: DPad.arc01.start, endingDegree: DPad.arc04.end)
+        let innerArc = Arc(radius: secondRingInteriorRadius, startingDegree: DPad.Arc.arc01.start, endingDegree: DPad.Arc.arc04.end)
+        let outerArc = Arc(radius: secondRingExteriorRadius, startingDegree: DPad.Arc.arc01.start, endingDegree: DPad.Arc.arc04.end)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     
     var outerRing05Shape: Crescent {
-        let innerArc = Arc(radius: secondRingInteriorRadius, dPad: .arc05)
-        let outerArc = Arc(radius: secondRingExteriorRadius, dPad: .arc05)
+        let innerArc = Arc(radius: secondRingInteriorRadius, arc: .arc05)
+        let outerArc = Arc(radius: secondRingExteriorRadius, arc: .arc05)
         return Crescent(interiorArc: innerArc, exteriorArc: outerArc)
     }
     

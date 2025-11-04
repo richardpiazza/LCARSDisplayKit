@@ -172,39 +172,39 @@ open class DirectionGroupingView: UIView, InteractiveControlDelegate {
     }
     
     var upShape: Direction {
-        let arc = Arc(radius: dpadRadius, startingDegree: DPad.up.start, endingDegree: DPad.up.end + 0.5)
+        let arc = Arc(radius: dpadRadius, startingDegree: DPad.CardinalDirection.up.start, endingDegree: DPad.CardinalDirection.up.end + 0.5)
         return Direction(.up, interiorRadius: innerRadius, exteriorArc: arc)
     }
     
     var downShape: Direction {
-        let arc = Arc(radius: dpadRadius, startingDegree: DPad.down.start - 0.5, endingDegree: DPad.down.end)
+        let arc = Arc(radius: dpadRadius, startingDegree: DPad.CardinalDirection.down.start - 0.5, endingDegree: DPad.CardinalDirection.down.end)
         return Direction(.down, interiorRadius: innerRadius, exteriorArc: arc)
     }
     
     var leftShape: Direction {
-        let arc = Arc(radius: dpadRadius, startingDegree: DPad.left.start - 0.5, endingDegree: DPad.left.end)
+        let arc = Arc(radius: dpadRadius, startingDegree: DPad.CardinalDirection.left.start - 0.5, endingDegree: DPad.CardinalDirection.left.end)
         return Direction(.left, interiorRadius: innerRadius, exteriorArc: arc)
     }
     
     var rightShape: Direction {
-        let arc = Arc(radius: dpadRadius, startingDegree: DPad.right.start, endingDegree: DPad.right.end + 0.5)
+        let arc = Arc(radius: dpadRadius, startingDegree: DPad.CardinalDirection.right.start, endingDegree: DPad.CardinalDirection.right.end + 0.5)
         return Direction(.right, interiorRadius: innerRadius, exteriorArc: arc)
     }
     
     var sector1Shape: Wedge {
-        Wedge(exteriorArc: Arc(radius: dpadRadius, dPad: .sector01))
+        Wedge(exteriorArc: Arc(radius: dpadRadius, sector: .sector01))
     }
     
     var sector2Shape: Wedge {
-        Wedge(exteriorArc: Arc(radius: dpadRadius, dPad: .sector02))
+        Wedge(exteriorArc: Arc(radius: dpadRadius, sector: .sector02))
     }
     
     var sector3Shape: Wedge {
-        Wedge(exteriorArc: Arc(radius: dpadRadius, dPad: .sector03))
+        Wedge(exteriorArc: Arc(radius: dpadRadius, sector: .sector03))
     }
     
     var sector4Shape: Wedge {
-        Wedge(exteriorArc: Arc(radius: dpadRadius, dPad: .sector04))
+        Wedge(exteriorArc: Arc(radius: dpadRadius, sector: .sector04))
     }
     
     // MARK: - Components
