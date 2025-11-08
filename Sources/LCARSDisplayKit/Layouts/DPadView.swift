@@ -5,14 +5,13 @@ import SwiftUI
 
 public struct DPadView: View {
     
-    public static let intrinsicDiameter: CGFloat = 350.0
+    public static let intrinsicSize: CGSize = CGSize(width: 350.0, height: 350.0)
     public static let intrinsicCruxDiameter: CGFloat = 60.0
     public static let intrinsicSpacing: CGFloat = 8.0
     
     var plane: CartesianPlane
     var diameter: CGFloat
     var radius: CGFloat
-    var scale: CGFloat
     var spacing: CGFloat
     var cruxRadius: CGFloat
     var cartesianOffset: CartesianFrame.Offset = .zero
@@ -20,11 +19,23 @@ public struct DPadView: View {
     @Environment(\.appearance) private var appearance
     
     public init(
-        size: CGSize = CGSize(width: Self.intrinsicDiameter, height: Self.intrinsicDiameter)
+        size: CGSize = Self.intrinsicSize
     ) {
         plane = CartesianPlane(CGRect(origin: .zero, size: size))
-        (diameter, radius, scale, spacing, cruxRadius) = size.dPadValues(
-            intrinsicDiameter: Self.intrinsicDiameter,
+        (diameter, radius, _, spacing, cruxRadius) = size.dPadValues(
+            intrinsicSize: Self.intrinsicSize,
+            intrinsicCruxDiameter: Self.intrinsicCruxDiameter,
+            intrinsicSpacing: Self.intrinsicSpacing
+        )
+    }
+    
+    public init(
+        scale value: CGFloat
+    ) {
+        let size = CGSize(width: Self.intrinsicSize.width * value, height: Self.intrinsicSize.height * value)
+        plane = CartesianPlane(CGRect(origin: .zero, size: size))
+        (diameter, radius, _, spacing, cruxRadius) = size.dPadValues(
+            intrinsicSize: Self.intrinsicSize,
             intrinsicCruxDiameter: Self.intrinsicCruxDiameter,
             intrinsicSpacing: Self.intrinsicSpacing
         )
@@ -61,7 +72,6 @@ public struct DPadView: View {
                 .foregroundStyle(gradient(for: direction))
             }
         }
-        .background(.black)
     }
     
     private func gradient(for direction: DPad.CardinalDirection) -> LinearGradient {
@@ -105,5 +115,6 @@ public struct DPadView: View {
     GeometryReader { geometry in
         DPadView(size: geometry.size)
     }
+    .background(.black)
 }
 #endif

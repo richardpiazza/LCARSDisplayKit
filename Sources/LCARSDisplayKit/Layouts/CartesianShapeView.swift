@@ -64,7 +64,9 @@ struct CartesianShapeView<T: CartesianPointConvertible & PathConvertible>: View 
 //    }
 }
 
+typealias CrescentView = CartesianShapeView<Crescent>
 typealias CruxView = CartesianShapeView<Crux>
 typealias DirectionView = CartesianShapeView<Direction>
+typealias EdgedCrescentView = CartesianShapeView<EdgedCrescent>
 typealias WedgeView = CartesianShapeView<Wedge>
 #endif

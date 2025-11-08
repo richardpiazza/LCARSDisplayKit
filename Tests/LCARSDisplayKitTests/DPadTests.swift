@@ -104,26 +104,26 @@ final class DPadTests: XCTestCase {
         
         let right = Direction(.right, interiorRadius: cruxRadius + spacing, exteriorRadius: radius)
         cartesianFrame = right.cartesianFrame
-        XCTAssertEqual(cartesianFrame.x, 38.0, accuracy: 0.0001)
+        XCTAssertEqual(cartesianFrame.x, 35.34135677713641, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, 30.388431091712807, accuracy: 0.0001)
-        XCTAssertEqual(cartesianFrame.width, 137.0, accuracy: 0.0001)
+        XCTAssertEqual(cartesianFrame.width, 139.6586432228636, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.height, 60.776862183425614, accuracy: 0.0001)
         absoluteFrame = plane.rect(for: cartesianFrame)
-        XCTAssertEqual(absoluteFrame.x, 213.0, accuracy: 0.0001)
+        XCTAssertEqual(absoluteFrame.x, 210.3413567771364, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.y, 144.61156890828718, accuracy: 0.0001)
-        XCTAssertEqual(absoluteFrame.width, 137.0, accuracy: 0.0001)
+        XCTAssertEqual(absoluteFrame.width, 139.6586432228636, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 60.776862183425614, accuracy: 0.0001)
         
         let down = Direction(.down, interiorRadius: cruxRadius + spacing, exteriorRadius: radius)
         cartesianFrame = down.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, -30.388431091712807, accuracy: 0.0001)
-        XCTAssertEqual(cartesianFrame.y, -38.0, accuracy: 0.0001)
+        XCTAssertEqual(cartesianFrame.y, -35.34135677713641, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.width, 60.776862183425614, accuracy: 0.0001)
-        XCTAssertEqual(cartesianFrame.height, 137.0, accuracy: 0.0001)
+        XCTAssertEqual(cartesianFrame.height, 139.6586432228636, accuracy: 0.0001)
         absoluteFrame = plane.rect(for: cartesianFrame)
         XCTAssertEqual(absoluteFrame.x, 144.61156890828718, accuracy: 0.0001)
-        XCTAssertEqual(absoluteFrame.y, 213.0, accuracy: 0.0001)
+        XCTAssertEqual(absoluteFrame.y, 210.3413567771364, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.width, 60.776862183425614, accuracy: 0.0001)
-        XCTAssertEqual(absoluteFrame.height, 137.0, accuracy: 0.0001)
+        XCTAssertEqual(absoluteFrame.height, 139.6586432228636, accuracy: 0.0001)
     }
 }

@@ -46,28 +46,27 @@ extension Direction: CartesianPointConvertible {
         
         let x, y, width, height: CGFloat
         
-        #warning("Calculations are slightly off. Width affecting x; Height affecting y.")
         switch cardinal {
         case .up:
-            width = max(frame.width, frame.height)
-            height = (frame.y - interiorRadius) + frame.height
+            width = frame.width
+            height = (exteriorArc.radius - interiorRadius) + frame.height
             x = frame.x
             y = frame.y
         case .left:
-            width = (abs(frame.x) - interiorRadius) + frame.width
-            height = max(frame.width, frame.height)
+            width = (exteriorArc.radius - interiorRadius) + frame.width
+            height = frame.height
             x = frame.x
             y = frame.y
         case .right:
-            width = (frame.x - interiorRadius) + frame.width
-            height = max(frame.width, frame.height)
-            x = frame.x - (width - frame.width)
+            width = (exteriorArc.radius - interiorRadius) + frame.width
+            height = frame.height
+            x = frame.x - (exteriorArc.radius - interiorRadius)
             y = frame.y
         case .down:
-            width = max(frame.width, frame.height)
-            height = (abs(frame.y) - interiorRadius) + frame.height
+            width = frame.width
+            height = (exteriorArc.radius - interiorRadius) + frame.height
             x = frame.x
-            y = frame.y + (height - frame.height)
+            y = frame.y + (exteriorArc.radius - interiorRadius)
         }
         
         return CartesianFrame(

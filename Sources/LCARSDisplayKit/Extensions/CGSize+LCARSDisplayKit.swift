@@ -3,7 +3,7 @@ import CoreGraphics
 
 public extension CGSize {
     func dPadValues(
-        intrinsicDiameter: CGFloat = 350.0,
+        intrinsicSize: CGSize = CGSize(width: 350.0, height: 350.0),
         intrinsicCruxDiameter: CGFloat = 60.0,
         intrinsicSpacing: CGFloat = 8.0
     ) -> (
@@ -13,6 +13,8 @@ public extension CGSize {
         spacing: CGFloat,
         cruxRadius: CGFloat
     ) {
+        #warning("Should this be 'min' or 'max'?")
+        let intrinsicDiameter = max(intrinsicSize.width, intrinsicSize.height)
         let diameter = min(height, width)
         let radius = diameter / 2.0
         let scale = diameter / intrinsicDiameter
@@ -20,6 +22,24 @@ public extension CGSize {
         let cruxRadius = (intrinsicCruxDiameter * scale) / 2.0
         
         return (diameter, radius, scale, spacing, cruxRadius)
+    }
+    
+    func dPadValues(
+        intrinsicDiameter: CGFloat,
+        intrinsicCruxDiameter: CGFloat = 60.0,
+        intrinsicSpacing: CGFloat = 8.0
+    ) -> (
+        diameter: CGFloat,
+        radius: CGFloat,
+        scale: CGFloat,
+        spacing: CGFloat,
+        cruxRadius: CGFloat
+    ) {
+        dPadValues(
+            intrinsicSize: CGSize(width: intrinsicDiameter, height: intrinsicDiameter),
+            intrinsicCruxDiameter: intrinsicCruxDiameter,
+            intrinsicSpacing: intrinsicSpacing
+        )
     }
 }
 #endif

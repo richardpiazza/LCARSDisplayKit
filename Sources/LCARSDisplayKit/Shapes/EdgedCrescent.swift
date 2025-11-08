@@ -17,6 +17,30 @@ public struct EdgedCrescent {
         self.interiorArc = interiorArc
         self.edgePoints = edgePoints
     }
+    
+    public init(
+        interiorRadius: Radius,
+        exteriorRadius: Radius,
+        startingDegree: Degree,
+        endingDegree: Degree
+    ) {
+        let iArc = Arc(radius: interiorRadius, startingDegree: startingDegree, endingDegree: endingDegree)
+        let eArc = Arc(radius: exteriorRadius, startingDegree: startingDegree, endingDegree: endingDegree)
+
+        switch (startingDegree, endingDegree) {
+        case (let s, let e) where s >= 270 && s < 360 && e >= 270 && e < 360:
+            fallthrough
+        case (let s, let e) where s >= 180 && s < 270 && e >= 180 && e < 270:
+            fallthrough
+        case (let s, let e) where s >= 90 && s < 180 && e >= 90 && e < 180:
+            fallthrough
+        case (let s, let e) where s >= 0 && s < 90 && e >= 0 && e < 180:
+            fallthrough
+        default:
+            interiorArc = iArc
+            edgePoints = []
+        }
+    }
 }
 
 extension EdgedCrescent: CartesianPointConvertible {
