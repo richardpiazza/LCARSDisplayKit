@@ -1,7 +1,7 @@
 import GraphPoint
 
 public extension Arc {
-    init(radius: Radius, arc convertible: DPad.Arc) {
+    init(radius: Radius, arc convertible: DPad.Ring) {
         self.init(
             radius: radius,
             startingDegree: convertible.start,

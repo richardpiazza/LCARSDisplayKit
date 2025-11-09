@@ -72,6 +72,7 @@ public struct DPadView: View {
                 .foregroundStyle(gradient(for: direction))
             }
         }
+        .frame(width: plane.size.width, height: plane.size.height)
     }
     
     private func gradient(for direction: DPad.CardinalDirection) -> LinearGradient {
@@ -113,7 +114,9 @@ public struct DPadView: View {
 
 #Preview {
     GeometryReader { geometry in
+//        DPadView()
         DPadView(size: geometry.size)
+            .border(.red, width: 2)
     }
     .background(.black)
 }

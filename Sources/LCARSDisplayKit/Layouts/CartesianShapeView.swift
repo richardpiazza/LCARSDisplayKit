@@ -2,7 +2,7 @@ import GraphPoint
 #if canImport(SwiftUI)
 import SwiftUI
 
-struct CartesianShapeView<T: CartesianPointConvertible & PathConvertible>: View {
+struct CartesianShapeView<T: CartesianShape>: View {
     
     struct PathButtonStyle: ButtonStyle {
         var path: Path

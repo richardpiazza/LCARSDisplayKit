@@ -3,20 +3,13 @@ import Swift2D
 #if canImport(SwiftUI)
 import SwiftUI
 
-public struct DPadView01: View {
+/// An example cluster control set that extends a 'DPad'.
+public struct DPadClusterView: View {
     
-    private struct LongArc: Hashable, DegreeConvertible {
+    private struct ShapedEdge<T: CartesianShape> {
         var title: String = ""
-        var start: Degree
-        var end: Degree
+        var shape: T
         var color: Color
-    }
-    
-    private struct ShortArc: Hashable {
-        var title: String = ""
-        var arc: DPad.Arc
-        var color: Color
-        var extended: Bool = false
     }
     
     public static let intrinsicSize: CGSize = CGSize(width: 760.0, height: 625.0)
@@ -94,194 +87,122 @@ public struct DPadView01: View {
                     y: plane.midY + cartesianOffset.y
                 )
             
-            innerRing(
+            crescents(
                 interiorRadius: firstRingInteriorRadius,
                 exteriorRadius: firstRingExteriorRadius,
+                extendedExteriorRadius: firstRingExteriorRadius,
                 in: plane,
                 with: cartesianOffset,
-                longArcs: [
-                    LongArc(title: "IR01", start: DPad.Arc.arc01.start, end: DPad.Arc.arc04.end, color: appearance.secondary.light),
-                    LongArc(title: "IR16", start: DPad.Arc.arc16.start, end: DPad.Arc.arc19.end, color: appearance.secondary.light),
+                rings: [
+                    DPadCrescent(title: "IR01", arc: .arc01, to: .arc04, color: appearance.secondary.light),
+                    DPadCrescent(title: "IR05", arc: .arc05, color: appearance.primary.light),
+                    DPadCrescent(title: "IR10", arc: .arc10, color: appearance.primary.light),
+                    DPadCrescent(title: "IR11", arc: .arc11, color: appearance.secondary.light),
+                    DPadCrescent(title: "IR12", arc: .arc12, color: appearance.primary.dark),
+                    DPadCrescent(title: "IR13", arc: .arc13, color: appearance.secondary.dark),
+                    DPadCrescent(title: "IR14", arc: .arc14, color: appearance.secondary.light),
+                    DPadCrescent(title: "IR15", arc: .arc15, color: appearance.primary.light),
+                    DPadCrescent(title: "IR16", arc: .arc16, to: .arc19, color: appearance.secondary.light),
+                    DPadCrescent(title: "IR20", arc: .arc20, color: appearance.primary.light),
                 ],
-                shortArcs: [
-                    ShortArc(title: "IR05", arc: .arc05, color: appearance.primary.light),
-                    ShortArc(title: "IR10", arc: .arc10, color: appearance.primary.light),
-                    ShortArc(title: "IR11", arc: .arc11, color: appearance.secondary.light),
-                    ShortArc(title: "IR12", arc: .arc12, color: appearance.primary.dark),
-                    ShortArc(title: "IR13", arc: .arc13, color: appearance.secondary.dark),
-                    ShortArc(title: "IR14", arc: .arc14, color: appearance.secondary.light),
-                    ShortArc(title: "IR15", arc: .arc15, color: appearance.primary.light),
-                    ShortArc(title: "IR20", arc: .arc20, color: appearance.primary.light),
-                ]
             )
             
-            outerRing(
+            crescents(
                 interiorRadius: secondRingInteriorRadius,
                 exteriorRadius: secondRingExteriorRadius,
                 extendedExteriorRadius: secondRingExtendedExteriorRadius,
                 in: plane,
                 with: cartesianOffset,
-                shortArcs: [
-                    ShortArc(title: "OR10", arc: .arc10, color: appearance.primary.dark),
-                    ShortArc(title: "OR11", arc: .arc11, color: appearance.secondary.dark),
-                    ShortArc(title: "OR12", arc: .arc12, color: appearance.secondary.light),
-                    ShortArc(title: "OR13", arc: .arc13, color: appearance.primary.light),
-                    ShortArc(title: "OR14", arc: .arc14, color: appearance.primary.dark),
-                    ShortArc(title: "OR16", arc: .arc16, color: appearance.secondary.dark),
-                    ShortArc(title: "OR17", arc: .arc17, color: appearance.primary.light),
-                    ShortArc(title: "OR18", arc: .arc18, color: appearance.primary.dark, extended: true),
-                    ShortArc(title: "OR19", arc: .arc19, color: appearance.secondary.dark, extended: true),
-                    ShortArc(title: "OR20", arc: .arc20, color: appearance.secondary.light),
+                rings: [
+                    DPadCrescent(title: "OR10", arc: .arc10, color: appearance.primary.dark),
+                    DPadCrescent(title: "OR11", arc: .arc11, color: appearance.secondary.dark),
+                    DPadCrescent(title: "OR12", arc: .arc12, color: appearance.secondary.light),
+                    DPadCrescent(title: "OR13", arc: .arc13, color: appearance.primary.light),
+                    DPadCrescent(title: "OR14", arc: .arc14, color: appearance.primary.dark),
+                    DPadCrescent(title: "OR16", arc: .arc16, color: appearance.secondary.dark),
+                    DPadCrescent(title: "OR17", arc: .arc17, color: appearance.primary.light),
+                    DPadCrescent(title: "OR18", arc: .arc18, color: appearance.primary.dark, extended: true),
+                    DPadCrescent(title: "OR19", arc: .arc19, color: appearance.secondary.dark, extended: true),
+                    DPadCrescent(title: "OR20", arc: .arc20, color: appearance.secondary.light),
                 ]
             )
             
             edges(
                 in: plane,
-                with: cartesianOffset
+                with: cartesianOffset,
+                edges: [
+                    ShapedEdge(title: "-", shape: edge06, color: appearance.secondary.light),
+                    ShapedEdge(title: "MODE SELECT", shape: edge07, color: appearance.primary.light),
+                    ShapedEdge(title: "+", shape: edge09, color: appearance.secondary.dark),
+                    ShapedEdge(title: "E13", shape: edge13, color: appearance.primary.dark),
+                    ShapedEdge(title: "E15", shape: edge15, color: appearance.secondary.light),
+                ],
+                obrounds: [
+                    ShapedEdge(title: "T00", shape: top00, color: appearance.secondary.light),
+                ]
             )
         }
+        .frame(width: plane.size.width, height: plane.size.height)
     }
     
-    private func innerRing(
-        interiorRadius: CGFloat,
-        exteriorRadius: CGFloat,
-        in plane: CartesianPlane,
-        with offset: CartesianFrame.Offset,
-        longArcs: [LongArc] = [],
-        shortArcs: [ShortArc] = []
-    ) -> some View {
-        ZStack {
-            ForEach(longArcs, id: \.self) { longArc in
-                CrescentView(
-                    longArc.title,
-                    shape: Crescent(
-                        interiorArc: Arc(
-                            radius: interiorRadius,
-                            startingDegree: longArc.start,
-                            endingDegree: longArc.end
-                        ),
-                        exteriorArc: Arc(
-                            radius: exteriorRadius,
-                            startingDegree: longArc.start,
-                            endingDegree: longArc.end
-                        )
-                    ),
-                    in: plane,
-                    with: offset
-                )
-                .foregroundStyle(longArc.color)
-            }
-            
-            ForEach(shortArcs, id: \.self) { shortArc in
-                CrescentView(
-                    shortArc.title,
-                    shape: Crescent(
-                        interiorArc: Arc(
-                            radius: interiorRadius,
-                            arc: shortArc.arc
-                        ),
-                        exteriorArc: Arc(
-                            radius: exteriorRadius,
-                            arc: shortArc.arc
-                        )
-                    ),
-                    in: plane,
-                    with: offset
-                )
-                .foregroundStyle(shortArc.color)
-            }
-        }
-    }
-    
-    private func outerRing(
+    private func crescents(
         interiorRadius: CGFloat,
         exteriorRadius: CGFloat,
         extendedExteriorRadius: CGFloat,
         in plane: CartesianPlane,
         with offset: CartesianFrame.Offset,
-        shortArcs: [ShortArc] = []
+        rings: [DPadCrescent] = []
     ) -> some View {
         ZStack {
-            ForEach(shortArcs, id: \.self) { shortArc in
+            ForEach(rings, id: \.self) { ring in
                 CrescentView(
-                    shortArc.title,
-                    shape: Crescent(
-                        interiorArc: Arc(
-                            radius: interiorRadius,
-                            arc: shortArc.arc
-                        ),
-                        exteriorArc: Arc(
-                            radius: shortArc.extended ? extendedExteriorRadius : exteriorRadius,
-                            arc: shortArc.arc
-                        )
+                    ring.title,
+                    shape: ring.shape(
+                        interiorRadius: interiorRadius,
+                        exteriorRadius: exteriorRadius,
+                        extendedRadius: extendedExteriorRadius
                     ),
                     in: plane,
                     with: offset
                 )
-                .foregroundStyle(shortArc.color)
+                .foregroundStyle(ring.color)
             }
         }
     }
     
     private func edges(
         in plane: CartesianPlane,
-        with offset: CartesianFrame.Offset
+        with offset: CartesianFrame.Offset,
+        edges: [ShapedEdge<EdgedCrescent>] = [],
+        obrounds: [ShapedEdge<Obround>] = []
     ) -> some View {
         ZStack {
-            EdgedCrescentView(
-                "-",
-                shape: edge06,
-                in: plane,
-                with: offset
-            )
-            .foregroundStyle(appearance.secondary.light)
+            ForEach(edges, id: \.title) { edge in
+                EdgedCrescentView(
+                    edge.title,
+                    shape: edge.shape,
+                    in: plane,
+                    with: offset
+                )
+                .foregroundStyle(edge.color)
+            }
             
-            EdgedCrescentView(
-                "MODE SELECT",
-                shape: edge07,
-                in: plane,
-                with: offset
-            )
-            .foregroundStyle(appearance.primary.light)
-            
-            EdgedCrescentView(
-                "+",
-                shape: edge09,
-                in: plane,
-                with: offset
-            )
-            .foregroundStyle(appearance.secondary.dark)
-            
-            EdgedCrescentView(
-                "E13",
-                shape: edge13,
-                in: plane,
-                with: offset
-            )
-            .foregroundStyle(appearance.primary.dark)
-            
-            EdgedCrescentView(
-                "E15",
-                shape: edge15,
-                in: plane,
-                with: offset
-            )
-            .foregroundStyle(appearance.secondary.light)
-            
-            ObroundView(
-                "T00",
-                shape: top00,
-                in: plane,
-                with: offset
-            )
-            .foregroundStyle(appearance.secondary.light)
+            ForEach(obrounds, id: \.title) { obround in
+                ObroundView(
+                    obround.title,
+                    shape: obround.shape,
+                    in: plane,
+                    with: offset
+                )
+                .foregroundStyle(obround.color)
+            }
         }
     }
     
     private var edge06: EdgedCrescent {
         let interiorArc = Arc(radius: firstRingInteriorRadius, arc: .arc06)
         let exteriorArc = Arc(radius: firstRingExteriorRadius, arc: .arc06)
-        let point = try! CartesianPoint.make(for: firstRingExteriorRadius, degree: DPad.Arc.arc06.end)
+        let point = try! CartesianPoint.make(for: firstRingExteriorRadius, degree: DPad.Ring.arc06.end)
         
         return EdgedCrescent(
             interiorArc: interiorArc,
@@ -293,12 +214,12 @@ public struct DPadView01: View {
     }
     
     private var edge07: EdgedCrescent {
-        let interiorArc = Arc(radius: firstRingInteriorRadius, startingDegree: DPad.Arc.arc07.start, endingDegree: DPad.Arc.arc08.end)
+        let interiorArc = Arc(radius: firstRingInteriorRadius, startingDegree: DPad.Ring.arc07.start, endingDegree: DPad.Ring.arc08.end)
         
         let edge06Exterior = Arc(radius: firstRingExteriorRadius, arc: .arc06)
         let edge09Exterior = Arc(radius: secondRingExtendedExteriorRadius, arc: .arc09)
-        let startingEdge = try! CartesianPoint.make(for: firstRingExteriorRadius, degree: DPad.Arc.arc07.start)
-        let endingEdge = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: DPad.Arc.arc08.end)
+        let startingEdge = try! CartesianPoint.make(for: firstRingExteriorRadius, degree: DPad.Ring.arc07.start)
+        let endingEdge = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: DPad.Ring.arc08.end)
         
         return EdgedCrescent(
             interiorArc: interiorArc,
@@ -313,7 +234,7 @@ public struct DPadView01: View {
     private var edge09: EdgedCrescent {
         let interiorArc = Arc(radius: firstRingInteriorRadius, arc: .arc09)
         let exteriorArc = Arc(radius: secondRingExtendedExteriorRadius, arc: .arc09)
-        let point = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: DPad.Arc.arc09.start)
+        let point = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: DPad.Ring.arc09.start)
         
         return EdgedCrescent(
             interiorArc: interiorArc,
@@ -327,7 +248,7 @@ public struct DPadView01: View {
     private var edge13: EdgedCrescent {
         let interiorArc = Arc(radius: thirdRingInteriorRadius, arc: .arc13)
         let exteriorArc = Arc(radius: thirdRingExteriorRadius, arc: .arc13)
-        let point = try! CartesianPoint.make(for: thirdRingExteriorRadius, degree: DPad.Arc.arc12.start)
+        let point = try! CartesianPoint.make(for: thirdRingExteriorRadius, degree: DPad.Ring.arc12.start)
         
         return EdgedCrescent(
             interiorArc: interiorArc,
@@ -356,7 +277,9 @@ public struct DPadView01: View {
             width: Obround.intrinsicSize.width * scale,
             height: Obround.intrinsicSize.height * scale
         )
-        let x = radius - (size.width / 1.25)
+        
+        let arc = Arc(radius: secondRingInteriorRadius, arc: .arc18)
+        let x = arc.startingPoint.x + (arc.endingPoint.x - arc.startingPoint.x) / 2.0
         let y = edge15.cartesianFrame.origin.y
         
         return Obround(
@@ -368,7 +291,9 @@ public struct DPadView01: View {
 
 #Preview {
     GeometryReader { geometry in
-        DPadView01(size: geometry.size)
+//        DPadClusterView()
+        DPadClusterView(size: geometry.size)
+            .border(.red, width: 2)
     }
     .background(.black)
 }

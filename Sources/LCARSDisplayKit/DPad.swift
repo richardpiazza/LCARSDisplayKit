@@ -5,77 +5,35 @@ import GraphPoint
 /// Each arc in the ring should contain 17° with 0.5° on each side for spacing.
 /// (20 x 17°) + (20 x 0.5°) + (20 x 0.5°) = 360°
 public enum DPad {
-    public enum Arc: DegreeConvertible, CaseIterable {
-        case arc01
-        case arc02
-        case arc03
-        case arc04
-        case arc05
-        case arc06
-        case arc07
-        case arc08
-        case arc09
-        case arc10
-        case arc11
-        case arc12
-        case arc13
-        case arc14
-        case arc15
-        case arc16
-        case arc17
-        case arc18
-        case arc19
-        case arc20
+    @available(*, deprecated, renamed: "Ring")
+    public typealias Arc = Ring
+
+    public struct Ring: Hashable, DegreeConvertible {
+        public let start: Degree
+        public let end: Degree
         
-        public var start: Degree {
-            switch self {
-            case .arc01: return 9.5
-            case .arc02: return 27.5
-            case .arc03: return 45.5
-            case .arc04: return 63.5
-            case .arc05: return 81.5
-            case .arc06: return 99.5
-            case .arc07: return 117.5
-            case .arc08: return 135.5
-            case .arc09: return 153.5
-            case .arc10: return 171.5
-            case .arc11: return 189.5
-            case .arc12: return 207.5
-            case .arc13: return 225.5
-            case .arc14: return 243.5
-            case .arc15: return 261.5
-            case .arc16: return 279.5
-            case .arc17: return 297.5
-            case .arc18: return 315.5
-            case .arc19: return 334.5
-            case .arc20: return 351.5
-            }
-        }
+        public var mid: Degree { end - start }
         
-        public var end: Degree {
-            switch self {
-            case .arc01: return 26.5
-            case .arc02: return 44.5
-            case .arc03: return 62.5
-            case .arc04: return 80.5
-            case .arc05: return 98.5
-            case .arc06: return 116.5
-            case .arc07: return 134.5
-            case .arc08: return 152.5
-            case .arc09: return 170.5
-            case .arc10: return 188.5
-            case .arc11: return 206.5
-            case .arc12: return 224.5
-            case .arc13: return 242.5
-            case .arc14: return 260.5
-            case .arc15: return 278.5
-            case .arc16: return 296.5
-            case .arc17: return 314.5
-            case .arc18: return 332.5
-            case .arc19: return 350.5
-            case .arc20: return 8.5
-            }
-        }
+        static let arc01: Self = Ring(start: 9.5, end: 26.5)
+        static let arc02: Self = Ring(start: 27.5, end: 44.5)
+        static let arc03: Self = Ring(start: 45.5, end: 62.5)
+        static let arc04: Self = Ring(start: 63.5, end: 80.5)
+        static let arc05: Self = Ring(start: 81.5, end: 98.5)
+        static let arc06: Self = Ring(start: 99.5, end: 116.5)
+        static let arc07: Self = Ring(start: 117.5, end: 134.5)
+        static let arc08: Self = Ring(start: 135.5, end: 152.5)
+        static let arc09: Self = Ring(start: 153.5, end: 170.5)
+        static let arc10: Self = Ring(start: 171.5, end: 188.5)
+        static let arc11: Self = Ring(start: 189.5, end: 206.5)
+        static let arc12: Self = Ring(start: 207.5, end: 224.5)
+        static let arc13: Self = Ring(start: 225.5, end: 242.5)
+        static let arc14: Self = Ring(start: 243.5, end: 260.5)
+        static let arc15: Self = Ring(start: 261.5, end: 278.5)
+        static let arc16: Self = Ring(start: 279.5, end: 296.5)
+        static let arc17: Self = Ring(start: 297.5, end: 314.5)
+        static let arc18: Self = Ring(start: 315.5, end: 332.5)
+        static let arc19: Self = Ring(start: 333.5, end: 350.5)
+        static let arc20: Self = Ring(start: 351.5, end: 8.5)
     }
 
     public enum CardinalDirection: DegreeConvertible, CaseIterable {

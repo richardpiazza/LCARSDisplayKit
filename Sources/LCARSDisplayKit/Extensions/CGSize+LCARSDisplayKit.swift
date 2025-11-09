@@ -13,7 +13,6 @@ public extension CGSize {
         spacing: CGFloat,
         cruxRadius: CGFloat
     ) {
-        #warning("Should this be 'min' or 'max'?")
         let intrinsicDiameter = max(intrinsicSize.width, intrinsicSize.height)
         let diameter = min(height, width)
         let radius = diameter / 2.0
