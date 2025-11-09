@@ -11,15 +11,15 @@ public struct Appearance2360s: Appearance {
     )
     
     public let secondary: ColorGroup = ColorGroup(
-        light: Color(Pigment.cosmic.uiColor),
-        medium: Color(Pigment.pastelViolet.uiColor),
-        dark: Color(Pigment.darkPurple.uiColor)
-    )
-    
-    public let tertiary: ColorGroup = ColorGroup(
         light: Color(Pigment.babyBlueEyes.uiColor),
         medium: Color(Pigment.bahamaBlue.uiColor),
         dark: Color(Pigment.mariner.uiColor)
+    )
+    
+    public let tertiary: ColorGroup = ColorGroup(
+        light: Color(Pigment.cosmic.uiColor),
+        medium: Color(Pigment.pastelViolet.uiColor),
+        dark: Color(Pigment.darkPurple.uiColor)
     )
     
     public var inactive: Color = Color(Pigment.flatGray.uiColor)

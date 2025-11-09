@@ -7,17 +7,23 @@ struct CartesianShapeView<T: CartesianPointConvertible & PathConvertible>: View 
     struct PathButtonStyle: ButtonStyle {
         var path: Path
         
+        @Environment(\.appearance) private var appearance
+        
         func makeBody(configuration: Configuration) -> some View {
             ZStack {
                 path
                 
-                configuration.label
+                configuration
+                    .label
+                    .foregroundStyle(appearance.text)
+                    .font(.scaledLCARS(for: .title2))
             }
             .clipShape(path)
             .contentShape(path)
         }
     }
     
+    var title: String
     var path: Path
     var rect: CGRect
     var offset: CGPoint
@@ -29,6 +35,21 @@ struct CartesianShapeView<T: CartesianPointConvertible & PathConvertible>: View 
         with offset: CartesianFrame.Offset = .zero,
         action: @escaping () -> Void = { }
     ) {
+        title = ""
+        self.path = Path(shape.path)
+        self.rect = CGRect(plane.rect(for: shape.cartesianFrame))
+        self.offset = CGPoint(offset)
+        self.action = action
+    }
+    
+    init(
+        _ title: String,
+        shape: T,
+        in plane: CartesianPlane,
+        with offset: CartesianFrame.Offset = .zero,
+        action: @escaping () -> Void = { }
+    ) {
+        self.title = title
         self.path = Path(shape.path)
         self.rect = CGRect(plane.rect(for: shape.cartesianFrame))
         self.offset = CGPoint(offset)
@@ -36,7 +57,7 @@ struct CartesianShapeView<T: CartesianPointConvertible & PathConvertible>: View 
     }
     
     var body: some View {
-        Button("", action: action)
+        Button(title, action: action)
             .buttonStyle(PathButtonStyle(path: path))
             .frame(
                 width: rect.width,
@@ -47,26 +68,12 @@ struct CartesianShapeView<T: CartesianPointConvertible & PathConvertible>: View 
                 y: rect.minY + offset.y + (rect.height / 2.0)
             )
     }
-    
-//    var body: some View {
-//        path
-//            .frame(
-//                width: rect.width,
-//                height: rect.height
-//            )
-//            .position(
-//                x: rect.minX + offset.x + (rect.width / 2.0),
-//                y: rect.minY + offset.y + (rect.height / 2.0)
-//            )
-//            .onTapGesture {
-//                action()
-//            }
-//    }
 }
 
 typealias CrescentView = CartesianShapeView<Crescent>
 typealias CruxView = CartesianShapeView<Crux>
 typealias DirectionView = CartesianShapeView<Direction>
 typealias EdgedCrescentView = CartesianShapeView<EdgedCrescent>
+typealias ObroundView = CartesianShapeView<Obround>
 typealias WedgeView = CartesianShapeView<Wedge>
 #endif

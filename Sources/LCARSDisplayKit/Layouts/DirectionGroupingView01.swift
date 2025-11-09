@@ -244,7 +244,6 @@ open class DirectionGroupingView01: DirectionGroupingView {
         let interiorArc = Arc(radius: firstRingInteriorRadius, arc: .arc06)
         let exteriorArc = Arc(radius: firstRingEdgeExteriorRadius, arc: .arc06)
         
-        #warning("Re-educate on right triangle geometry.")
         let interiorAngleEnd = interiorArc.endingDegree - 90
         let exteriorAngleEnd = 90 - interiorAngleEnd
         let endX = (exteriorArc.startingPoint.y / sin(exteriorAngleEnd.radians)) * sin(interiorAngleEnd.radians)

@@ -6,12 +6,14 @@ import SwiftUI
 public struct DPadView01: View {
     
     private struct LongArc: Hashable, DegreeConvertible {
+        var title: String = ""
         var start: Degree
         var end: Degree
         var color: Color
     }
     
     private struct ShortArc: Hashable {
+        var title: String = ""
         var arc: DPad.Arc
         var color: Color
         var extended: Bool = false
@@ -40,6 +42,7 @@ public struct DPadView01: View {
     var firstRingExteriorRadius: CGFloat
     var secondRingInteriorRadius: CGFloat
     var secondRingExteriorRadius: CGFloat
+    var secondRingEdgeExteriorRadius: CGFloat
     var secondRingExtendedExteriorRadius: CGFloat
     var thirdRingInteriorRadius: CGFloat
     var thirdRingExteriorRadius: CGFloat
@@ -73,6 +76,7 @@ public struct DPadView01: View {
         firstRingExteriorRadius = firstRingInteriorRadius + (80.0 * scale)
         secondRingInteriorRadius = firstRingExteriorRadius + spacing
         secondRingExteriorRadius = secondRingInteriorRadius + (50.0 * scale)
+        secondRingEdgeExteriorRadius = secondRingExteriorRadius + (41.5 * scale)
         secondRingExtendedExteriorRadius = secondRingInteriorRadius + (110.0 * scale)
         thirdRingInteriorRadius = secondRingExteriorRadius + spacing
         thirdRingExteriorRadius = thirdRingInteriorRadius + (72.0 * scale)
@@ -85,9 +89,9 @@ public struct DPadView01: View {
                     width: DPadView.intrinsicSize.width * scale,
                     height: DPadView.intrinsicSize.height * scale
                 )
-                .offset(
-                    x: cartesianOffset.x,
-                    y: cartesianOffset.y
+                .position(
+                    x: plane.midX + cartesianOffset.x,
+                    y: plane.midY + cartesianOffset.y
                 )
             
             innerRing(
@@ -96,18 +100,18 @@ public struct DPadView01: View {
                 in: plane,
                 with: cartesianOffset,
                 longArcs: [
-                    LongArc(start: DPad.Arc.arc01.start, end: DPad.Arc.arc04.end, color: appearance.tertiary.light),
-                    LongArc(start: DPad.Arc.arc16.start, end: DPad.Arc.arc19.end, color: appearance.tertiary.light),
+                    LongArc(title: "IR01", start: DPad.Arc.arc01.start, end: DPad.Arc.arc04.end, color: appearance.secondary.light),
+                    LongArc(title: "IR16", start: DPad.Arc.arc16.start, end: DPad.Arc.arc19.end, color: appearance.secondary.light),
                 ],
                 shortArcs: [
-                    ShortArc(arc: .arc05, color: appearance.primary.light),
-                    ShortArc(arc: .arc10, color: appearance.primary.light),
-                    ShortArc(arc: .arc11, color: appearance.tertiary.light),
-                    ShortArc(arc: .arc12, color: appearance.primary.dark),
-                    ShortArc(arc: .arc13, color: appearance.tertiary.dark),
-                    ShortArc(arc: .arc14, color: appearance.tertiary.light),
-                    ShortArc(arc: .arc15, color: appearance.primary.light),
-                    ShortArc(arc: .arc20, color: appearance.primary.light),
+                    ShortArc(title: "IR05", arc: .arc05, color: appearance.primary.light),
+                    ShortArc(title: "IR10", arc: .arc10, color: appearance.primary.light),
+                    ShortArc(title: "IR11", arc: .arc11, color: appearance.secondary.light),
+                    ShortArc(title: "IR12", arc: .arc12, color: appearance.primary.dark),
+                    ShortArc(title: "IR13", arc: .arc13, color: appearance.secondary.dark),
+                    ShortArc(title: "IR14", arc: .arc14, color: appearance.secondary.light),
+                    ShortArc(title: "IR15", arc: .arc15, color: appearance.primary.light),
+                    ShortArc(title: "IR20", arc: .arc20, color: appearance.primary.light),
                 ]
             )
             
@@ -118,17 +122,22 @@ public struct DPadView01: View {
                 in: plane,
                 with: cartesianOffset,
                 shortArcs: [
-                    ShortArc(arc: .arc10, color: appearance.primary.dark),
-                    ShortArc(arc: .arc11, color: appearance.tertiary.dark),
-                    ShortArc(arc: .arc12, color: appearance.tertiary.light),
-                    ShortArc(arc: .arc13, color: appearance.primary.light),
-                    ShortArc(arc: .arc14, color: appearance.primary.dark),
-                    ShortArc(arc: .arc16, color: appearance.tertiary.dark),
-                    ShortArc(arc: .arc17, color: appearance.primary.light),
-                    ShortArc(arc: .arc18, color: appearance.primary.dark, extended: true),
-                    ShortArc(arc: .arc19, color: appearance.tertiary.dark, extended: true),
-                    ShortArc(arc: .arc20, color: appearance.tertiary.light),
+                    ShortArc(title: "OR10", arc: .arc10, color: appearance.primary.dark),
+                    ShortArc(title: "OR11", arc: .arc11, color: appearance.secondary.dark),
+                    ShortArc(title: "OR12", arc: .arc12, color: appearance.secondary.light),
+                    ShortArc(title: "OR13", arc: .arc13, color: appearance.primary.light),
+                    ShortArc(title: "OR14", arc: .arc14, color: appearance.primary.dark),
+                    ShortArc(title: "OR16", arc: .arc16, color: appearance.secondary.dark),
+                    ShortArc(title: "OR17", arc: .arc17, color: appearance.primary.light),
+                    ShortArc(title: "OR18", arc: .arc18, color: appearance.primary.dark, extended: true),
+                    ShortArc(title: "OR19", arc: .arc19, color: appearance.secondary.dark, extended: true),
+                    ShortArc(title: "OR20", arc: .arc20, color: appearance.secondary.light),
                 ]
+            )
+            
+            edges(
+                in: plane,
+                with: cartesianOffset
             )
         }
     }
@@ -144,7 +153,8 @@ public struct DPadView01: View {
         ZStack {
             ForEach(longArcs, id: \.self) { longArc in
                 CrescentView(
-                    Crescent(
+                    longArc.title,
+                    shape: Crescent(
                         interiorArc: Arc(
                             radius: interiorRadius,
                             startingDegree: longArc.start,
@@ -164,7 +174,8 @@ public struct DPadView01: View {
             
             ForEach(shortArcs, id: \.self) { shortArc in
                 CrescentView(
-                    Crescent(
+                    shortArc.title,
+                    shape: Crescent(
                         interiorArc: Arc(
                             radius: interiorRadius,
                             arc: shortArc.arc
@@ -193,7 +204,8 @@ public struct DPadView01: View {
         ZStack {
             ForEach(shortArcs, id: \.self) { shortArc in
                 CrescentView(
-                    Crescent(
+                    shortArc.title,
+                    shape: Crescent(
                         interiorArc: Arc(
                             radius: interiorRadius,
                             arc: shortArc.arc
@@ -209,6 +221,148 @@ public struct DPadView01: View {
                 .foregroundStyle(shortArc.color)
             }
         }
+    }
+    
+    private func edges(
+        in plane: CartesianPlane,
+        with offset: CartesianFrame.Offset
+    ) -> some View {
+        ZStack {
+            EdgedCrescentView(
+                "-",
+                shape: edge06,
+                in: plane,
+                with: offset
+            )
+            .foregroundStyle(appearance.secondary.light)
+            
+            EdgedCrescentView(
+                "MODE SELECT",
+                shape: edge07,
+                in: plane,
+                with: offset
+            )
+            .foregroundStyle(appearance.primary.light)
+            
+            EdgedCrescentView(
+                "+",
+                shape: edge09,
+                in: plane,
+                with: offset
+            )
+            .foregroundStyle(appearance.secondary.dark)
+            
+            EdgedCrescentView(
+                "E13",
+                shape: edge13,
+                in: plane,
+                with: offset
+            )
+            .foregroundStyle(appearance.primary.dark)
+            
+            EdgedCrescentView(
+                "E15",
+                shape: edge15,
+                in: plane,
+                with: offset
+            )
+            .foregroundStyle(appearance.secondary.light)
+            
+            ObroundView(
+                "T00",
+                shape: top00,
+                in: plane,
+                with: offset
+            )
+            .foregroundStyle(appearance.secondary.light)
+        }
+    }
+    
+    private var edge06: EdgedCrescent {
+        let interiorArc = Arc(radius: firstRingInteriorRadius, arc: .arc06)
+        let exteriorArc = Arc(radius: firstRingExteriorRadius, arc: .arc06)
+        let point = try! CartesianPoint.make(for: firstRingExteriorRadius, degree: DPad.Arc.arc06.end)
+        
+        return EdgedCrescent(
+            interiorArc: interiorArc,
+            edgePoints: [
+                CartesianPoint(x: exteriorArc.startingPoint.x, y: exteriorArc.startingPoint.y),
+                CartesianPoint(x: point.x, y: exteriorArc.startingPoint.y),
+            ]
+        )
+    }
+    
+    private var edge07: EdgedCrescent {
+        let interiorArc = Arc(radius: firstRingInteriorRadius, startingDegree: DPad.Arc.arc07.start, endingDegree: DPad.Arc.arc08.end)
+        
+        let edge06Exterior = Arc(radius: firstRingExteriorRadius, arc: .arc06)
+        let edge09Exterior = Arc(radius: secondRingExtendedExteriorRadius, arc: .arc09)
+        let startingEdge = try! CartesianPoint.make(for: firstRingExteriorRadius, degree: DPad.Arc.arc07.start)
+        let endingEdge = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: DPad.Arc.arc08.end)
+        
+        return EdgedCrescent(
+            interiorArc: interiorArc,
+            edgePoints: [
+                CartesianPoint(x: startingEdge.x, y: edge06Exterior.startingPoint.y),
+                CartesianPoint(x: edge09Exterior.endingPoint.x, y: edge06Exterior.startingPoint.y),
+                CartesianPoint(x: edge09Exterior.endingPoint.x, y: endingEdge.y),
+            ]
+        )
+    }
+    
+    private var edge09: EdgedCrescent {
+        let interiorArc = Arc(radius: firstRingInteriorRadius, arc: .arc09)
+        let exteriorArc = Arc(radius: secondRingExtendedExteriorRadius, arc: .arc09)
+        let point = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: DPad.Arc.arc09.start)
+        
+        return EdgedCrescent(
+            interiorArc: interiorArc,
+            edgePoints: [
+                CartesianPoint(x: exteriorArc.endingPoint.x, y: point.y),
+                exteriorArc.endingPoint,
+            ]
+        )
+    }
+    
+    private var edge13: EdgedCrescent {
+        let interiorArc = Arc(radius: thirdRingInteriorRadius, arc: .arc13)
+        let exteriorArc = Arc(radius: thirdRingExteriorRadius, arc: .arc13)
+        let point = try! CartesianPoint.make(for: thirdRingExteriorRadius, degree: DPad.Arc.arc12.start)
+        
+        return EdgedCrescent(
+            interiorArc: interiorArc,
+            edgePoints: [
+                CartesianPoint(x: point.x, y: exteriorArc.endingPoint.y),
+                exteriorArc.endingPoint,
+            ]
+        )
+    }
+    
+    private var edge15: EdgedCrescent {
+        let interiorArc = Arc(radius: secondRingInteriorRadius, arc: .arc15)
+        let exteriorArc = Arc(radius: secondRingEdgeExteriorRadius, arc: .arc15)
+        
+        return EdgedCrescent(
+            interiorArc: interiorArc,
+            edgePoints: [
+                exteriorArc.startingPoint,
+                exteriorArc.endingPoint,
+            ]
+        )
+    }
+    
+    private var top00: Obround {
+        let size = CGSize(
+            width: Obround.intrinsicSize.width * scale,
+            height: Obround.intrinsicSize.height * scale
+        )
+        let x = radius - (size.width / 1.25)
+        let y = edge15.cartesianFrame.origin.y
+        
+        return Obround(
+            size: Size(size),
+            at: CartesianPoint(x: x, y: y)
+        )
     }
 }
 

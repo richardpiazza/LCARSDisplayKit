@@ -9,7 +9,9 @@ public typealias RoundedRectangle = Obround
 /// A rectangle with optionally rounded ends
 public struct Obround {
     
-    /// Points used to define the frame of the shaped.
+    public static let intrinsicSize: CGSize = CGSize(width: 144.0, height: 60.0)
+    
+    /// Points used to define the frame of the shape.
     public var cartesianPoints: [CartesianPoint]
     /// The size of the shape - modifiable through intrinsic values
     public var size: Size
@@ -49,6 +51,26 @@ public struct Obround {
         self.size = CartesianFrame.make(for: cartesianPoints).size
         self.leftRounded = leftRounded
         self.rightRounded = rightRounded
+        self.cornersOnly = cornersOnly
+    }
+    
+    public init(
+        size: Size,
+        at point: CartesianPoint,
+        roundLeading: Bool = true,
+        roundTrailing: Bool = true,
+        cornersOnly: Bool = false
+    ) {
+        self.size = size
+        cartesianPoints = [
+            point,
+            CartesianPoint(
+                x: point.x + size.width,
+                y: point.y - size.height
+            )
+        ]
+        leftRounded = roundLeading
+        rightRounded = roundTrailing
         self.cornersOnly = cornersOnly
     }
 }
