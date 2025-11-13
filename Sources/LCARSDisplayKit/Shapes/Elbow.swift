@@ -24,26 +24,32 @@ public struct Elbow {
     /// If true, the interior radius will match the exterior radius.
     public var shouldMatchRadius: Bool
     
+    @available(*, deprecated, message: "Private?")
     public var outerRadius: Radius {
         max(horizontalHeight, verticalWidth) / 2
     }
     
+    @available(*, deprecated, message: "Private?")
     public var innerRadius: Radius {
         shouldMatchRadius ? outerRadius : (outerRadius / 2.4)
     }
     
+    @available(*, deprecated, message: "Private?")
     public var upperLeftOuterCenter: CartesianPoint {
         CartesianPoint(x: outerRadius, y: outerRadius)
     }
     
+    @available(*, deprecated, message: "Private?")
     public var upperLeftInnerCenter: CartesianPoint {
         CartesianPoint(x: verticalWidth + innerRadius, y: horizontalHeight + innerRadius)
     }
     
+    @available(*, deprecated, message: "Private?")
     public var lowerRightOuterCenter: CartesianPoint {
         CartesianPoint(x: size.width - outerRadius, y: size.height - outerRadius)
     }
     
+    @available(*, deprecated, message: "Private?")
     public var lowerRightInnerCenter: CartesianPoint {
         CartesianPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight - innerRadius)
     }
@@ -82,7 +88,10 @@ public struct Elbow {
 
 extension Elbow: CartesianPointConvertible {
     public var cartesianPoints: [CartesianPoint] {
-        return []
+        return [
+            CartesianPoint(x: -(size.width / 2.0), y: -(size.height / 2.0)),
+            CartesianPoint(x: (size.width / 2.0), y: (size.height / 2.0)),
+        ]
     }
 }
 

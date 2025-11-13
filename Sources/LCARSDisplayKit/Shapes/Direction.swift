@@ -32,9 +32,13 @@ public struct Direction {
 
 extension Direction: CartesianPointConvertible {
     public var cartesianPoints: [CartesianPoint] {
-        [exteriorArc.startingPoint, exteriorArc.endingPoint]
+        [
+            exteriorArc.startingPoint,
+            exteriorArc.endingPoint,
+        ]
     }
     
+    @available(*, deprecated)
     public var exteriorArcFrame: CartesianFrame {
         (try? CartesianFrame.make(for: exteriorArc, points: cartesianPoints)) ?? .zero
     }
@@ -87,9 +91,11 @@ extension Direction: PathConvertible {
     }
     
     public var subpaths: [CGPath]? {
-        var paths: [CGMutablePath] = [CGMutablePath]()
+        guard let frame = try? CartesianFrame.make(for: exteriorArc, points: cartesianPoints) else {
+            return nil
+        }
         
-        let frame = exteriorArcFrame
+        var paths: [CGMutablePath] = [CGMutablePath]()
         let center = frame.offsetToCartesianOrigin
         let unit = max(frame.width, frame.height) / 2
         let size = cartesianFrame.size

@@ -14,26 +14,32 @@ public struct Crescent {
     /// Uses the interior ending point to extend the exterior ending point, creating a straight line.
     public var extendExteriorEnd: Bool
     
+    @available(*, deprecated, renamed: "interiorArc.radius")
     public var interiorRadius: Radius {
         min(interiorArc.radius, exteriorArc.radius)
     }
     
+    @available(*, deprecated, renamed: "exteriorArc.radius")
     public var exteriorRadius: Radius {
         max(exteriorArc.radius, interiorArc.radius)
     }
     
+    @available(*, deprecated)
     public var startDegree: Degree {
         min(interiorArc.startingDegree, exteriorArc.startingDegree)
     }
     
+    @available(*, deprecated)
     public var endDegree: Degree {
         max(interiorArc.endingDegree, exteriorArc.endingDegree)
     }
     
+    @available(*, deprecated, renamed: "interiorArc.startingPoint")
     public var interiorArcStartingPoint: CartesianPoint {
         interiorArc.startingPoint
     }
     
+    @available(*, deprecated, renamed: "interiorArc.endingPoint")
     public var interiorArcEndingPoint: CartesianPoint {
         interiorArc.endingPoint
     }
@@ -81,9 +87,11 @@ public struct Crescent {
 
 extension Crescent: CartesianPointConvertible {
     public var cartesianPoints: [CartesianPoint] {
-        return [
-            interiorArcStartingPoint, interiorArcEndingPoint,
-            exteriorArcStartingPoint, exteriorArcEndingPoint
+        [
+            interiorArc.startingPoint,
+            interiorArc.endingPoint,
+            exteriorArc.startingPoint,
+            exteriorArc.endingPoint,
         ]
     }
     

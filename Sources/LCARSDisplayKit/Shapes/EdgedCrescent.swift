@@ -13,7 +13,10 @@ public struct EdgedCrescent {
         edgePoints = []
     }
     
-    public init(interiorArc: Arc, edgePoints: [CartesianPoint] = []) {
+    public init(
+        interiorArc: Arc,
+        edgePoints: [CartesianPoint] = []
+    ) {
         self.interiorArc = interiorArc
         self.edgePoints = edgePoints
     }
@@ -21,8 +24,7 @@ public struct EdgedCrescent {
 
 extension EdgedCrescent: CartesianPointConvertible {
     public var cartesianPoints: [CartesianPoint] {
-        let arcPoints = [interiorArc.startingPoint, interiorArc.endingPoint]
-        return [arcPoints, edgePoints].flatMap { $0 }
+        [interiorArc.startingPoint, interiorArc.endingPoint] + edgePoints
     }
 }
 

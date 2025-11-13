@@ -1,8 +1,9 @@
 import GraphPoint
+import Swift2D
 #if canImport(SwiftUI)
 import SwiftUI
 
-struct CartesianShapeView<T: CartesianShape>: View {
+public struct CartesianShapeView<T: CartesianShape>: View {
     
     struct PathButtonStyle: ButtonStyle {
         var path: Path
@@ -29,7 +30,7 @@ struct CartesianShapeView<T: CartesianShape>: View {
     var offset: CGPoint
     var action: () -> Void
     
-    init(
+    public init(
         _ shape: T,
         in plane: CartesianPlane,
         with offset: CartesianFrame.Offset = .zero,
@@ -42,7 +43,7 @@ struct CartesianShapeView<T: CartesianShape>: View {
         self.action = action
     }
     
-    init(
+    public init(
         _ title: String,
         shape: T,
         in plane: CartesianPlane,
@@ -56,7 +57,7 @@ struct CartesianShapeView<T: CartesianShape>: View {
         self.action = action
     }
     
-    var body: some View {
+    public var body: some View {
         Button(title, action: action)
             .buttonStyle(PathButtonStyle(path: path))
             .frame(
@@ -70,10 +71,11 @@ struct CartesianShapeView<T: CartesianShape>: View {
     }
 }
 
-typealias CrescentView = CartesianShapeView<Crescent>
-typealias CruxView = CartesianShapeView<Crux>
-typealias DirectionView = CartesianShapeView<Direction>
-typealias EdgedCrescentView = CartesianShapeView<EdgedCrescent>
-typealias ObroundView = CartesianShapeView<Obround>
-typealias WedgeView = CartesianShapeView<Wedge>
+public typealias CrescentView = CartesianShapeView<Crescent>
+public typealias CruxView = CartesianShapeView<Crux>
+public typealias DirectionView = CartesianShapeView<Direction>
+public typealias ElbowView = CartesianShapeView<Elbow>
+public typealias EdgedCrescentView = CartesianShapeView<EdgedCrescent>
+public typealias ObroundView = CartesianShapeView<Obround>
+public typealias WedgeView = CartesianShapeView<Wedge>
 #endif

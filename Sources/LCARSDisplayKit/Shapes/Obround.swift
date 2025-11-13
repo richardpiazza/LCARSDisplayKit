@@ -21,14 +21,17 @@ public struct Obround {
     public var cornersOnly: Bool
     
     /// Calculates the radius of the arcs depending on `cornersOnly`
+    @available(*, deprecated, message: "Private?")
     public var radius: Radius {
         cornersOnly ? size.height * 0.25 : size.height * 0.5
     }
     
+    @available(*, deprecated, message: "Private?")
     public var upperLeftCenter: Point {
         Point(x: radius, y: radius)
     }
     
+    @available(*, deprecated, message: "Private?")
     public var lowerRightCenter: Point {
         Point(x: size.width - radius, y: size.height - radius)
     }

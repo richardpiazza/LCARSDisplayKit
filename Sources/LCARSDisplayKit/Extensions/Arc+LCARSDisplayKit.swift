@@ -1,5 +1,9 @@
 import GraphPoint
 
+extension Arc: @retroactive Identifiable {
+    public var id: Int { hashValue }
+}
+
 public extension Arc {
     init(radius: Radius, arc convertible: DPad.Ring) {
         self.init(

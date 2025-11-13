@@ -15,11 +15,17 @@ public struct DPadView: View {
     var spacing: CGFloat
     var cruxRadius: CGFloat
     var cartesianOffset: CartesianFrame.Offset = .zero
+    var cruxColor: Color?
+    var sectorColor: Color?
+    var upGradientStop: CGFloat?
     
     @Environment(\.appearance) private var appearance
     
     public init(
-        size: CGSize = Self.intrinsicSize
+        size: CGSize = Self.intrinsicSize,
+        cruxColor: Color? = nil,
+        sectorColor: Color? = nil,
+        upGradientStop: CGFloat? = nil
     ) {
         plane = CartesianPlane(CGRect(origin: .zero, size: size))
         (diameter, radius, _, spacing, cruxRadius) = size.dPadValues(
@@ -27,10 +33,16 @@ public struct DPadView: View {
             intrinsicCruxDiameter: Self.intrinsicCruxDiameter,
             intrinsicSpacing: Self.intrinsicSpacing
         )
+        self.cruxColor = cruxColor
+        self.sectorColor = sectorColor
+        self.upGradientStop = upGradientStop
     }
     
     public init(
-        scale value: CGFloat
+        scale value: CGFloat,
+        cruxColor: Color? = nil,
+        sectorColor: Color? = nil,
+        upGradientStop: CGFloat? = nil
     ) {
         let size = CGSize(width: Self.intrinsicSize.width * value, height: Self.intrinsicSize.height * value)
         plane = CartesianPlane(CGRect(origin: .zero, size: size))
@@ -39,6 +51,9 @@ public struct DPadView: View {
             intrinsicCruxDiameter: Self.intrinsicCruxDiameter,
             intrinsicSpacing: Self.intrinsicSpacing
         )
+        self.cruxColor = cruxColor
+        self.sectorColor = sectorColor
+        self.upGradientStop = upGradientStop
     }
     
     public var body: some View {
@@ -48,7 +63,7 @@ public struct DPadView: View {
                 in: plane,
                 with: cartesianOffset
             )
-            .foregroundStyle(appearance.primary.dark)
+            .foregroundStyle(cruxColor ?? appearance.primary.dark)
             
             ForEach(DPad.Sector.allCases, id: \.self) { sector in
                 WedgeView(
@@ -56,7 +71,7 @@ public struct DPadView: View {
                     in: plane,
                     with: cartesianOffset
                 )
-                .foregroundStyle(appearance.primary.medium)
+                .foregroundStyle(sectorColor ?? appearance.primary.medium)
             }
             
             ForEach(DPad.CardinalDirection.allCases, id: \.self) { direction in
@@ -76,15 +91,15 @@ public struct DPadView: View {
     }
     
     private func gradient(for direction: DPad.CardinalDirection) -> LinearGradient {
-        let (start, end): (UnitPoint, UnitPoint) = switch direction {
+        let (start, end, stop): (UnitPoint, UnitPoint, CGFloat) = switch direction {
         case .down:
-            (.bottom, .top)
+            (.bottom, .top, 0.4)
         case .left:
-            (.leading, .trailing)
+            (.leading, .trailing, 0.4)
         case .up:
-            (.top, .bottom)
+            (.top, .bottom, upGradientStop ?? 0.4)
         case .right:
-            (.trailing, .leading)
+            (.trailing, .leading, 0.4)
         }
         
         return LinearGradient(
@@ -95,11 +110,11 @@ public struct DPadView: View {
                 ),
                 Gradient.Stop(
                     color: appearance.primary.dark,
-                    location: 0.4
+                    location: stop
                 ),
                 Gradient.Stop(
                     color: appearance.primary.light,
-                    location: 0.4
+                    location: stop
                 ),
                 Gradient.Stop(
                     color: appearance.primary.light,

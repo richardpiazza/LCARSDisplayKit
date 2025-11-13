@@ -1,6 +1,7 @@
 #if canImport(UIKit)
 import UIKit
     
+@available(*, deprecated)
 public protocol Theme {
     // Colors
     var primaryLight: UIColor { get }
@@ -25,6 +26,7 @@ public protocol Theme {
     var defaultSpacing: CGFloat { get }
 }
 
+@available(*, deprecated)
 public extension Theme {
     func randomColor() -> UIColor {
         let colors = [primaryLight, primaryDark, tertiaryLight, tertiaryDark]

@@ -5,7 +5,7 @@ import GraphPoint
 import Swift2D
 
 /// A `Arc` that uses it's `pivotPoint` to draw a wedge.
-public struct Wedge {
+public struct Wedge: Hashable, Sendable {
     
     public var exteriorArc: Arc
     

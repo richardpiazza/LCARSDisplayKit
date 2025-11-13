@@ -5,6 +5,9 @@ import GraphPoint
 import Swift2D
 
 public struct Crux {
+    
+    public static let intrinsicSize: CGSize = CGSize(width: 60.0, height: 60.0)
+    
     public let radius: Radius
     
     public init(radius: Radius = 0.0) {

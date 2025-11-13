@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E1112FAF1BBE7FBB0001C33D"
-               BuildableName = "Example.app"
+               BuildableName = "LCARS Example.app"
                BlueprintName = "Example"
                ReferencedContainer = "container:Example.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E1112FAF1BBE7FBB0001C33D"
-            BuildableName = "Example.app"
+            BuildableName = "LCARS Example.app"
             BlueprintName = "Example"
             ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E1112FAF1BBE7FBB0001C33D"
-            BuildableName = "Example.app"
+            BuildableName = "LCARS Example.app"
             BlueprintName = "Example"
             ReferencedContainer = "container:Example.xcodeproj">
          </BuildableReference>

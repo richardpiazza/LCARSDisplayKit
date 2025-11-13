@@ -1,6 +1,7 @@
 #if canImport(UIKit)
 import UIKit
     
+@available(*, deprecated)
 public struct TNG: Theme {
     
     public static let shared: TNG = TNG()
