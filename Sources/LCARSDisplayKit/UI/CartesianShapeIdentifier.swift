@@ -1,7 +1,7 @@
-public struct CartesianShapeIdentifier: Hashable, Sendable, ExpressibleByIntegerLiteral {
-    public let rawValue: Int
+public struct CartesianShapeIdentifier: Hashable, Sendable, ExpressibleByStringLiteral {
+    public let rawValue: String
     
-    public init(integerLiteral value: Int) {
+    public init(stringLiteral value: String) {
         rawValue = value
     }
 }

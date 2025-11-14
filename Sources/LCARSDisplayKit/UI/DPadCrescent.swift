@@ -3,7 +3,7 @@ import GraphPoint
 import SwiftUI
 
 /// Properties uses to configure a button using the `DPad` Arcs.
-internal struct DPadCrescent: Hashable {
+struct DPadCrescent: Hashable {
     let title: String
     let start: Degree
     let end: Degree
@@ -32,8 +32,8 @@ internal struct DPadCrescent: Hashable {
     
     init(
         title: String,
-        arc: DPad.Ring,
-        to: DPad.Ring? = nil,
+        arc: Curve,
+        to: Curve? = nil,
         color: Color,
         extended: Bool = false,
         parallelStart: Bool = false,

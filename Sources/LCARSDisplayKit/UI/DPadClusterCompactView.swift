@@ -222,7 +222,7 @@ public struct DPadClusterCompactView: View {
 
     private var innerRing01: Crescent {
         let ir20 = innerRing20
-        let twoAndOneQuarter = DPad.Ring.arc02.start + (DPad.Ring.arc02.mid / 2.0)
+        let twoAndOneQuarter = Curve.arc02.start + Curve.arc02.quarter
         let inner = Arc(radius: firstRingInteriorRadius, startingDegree: ir20.interiorArc.endingDegree + 1.5, endingDegree: twoAndOneQuarter)
         let outer = Arc(radius: firstRingExteriorRadius, startingDegree: ir20.exteriorArc.endingDegree + 1.0, endingDegree: twoAndOneQuarter)
         return Crescent(
@@ -233,8 +233,8 @@ public struct DPadClusterCompactView: View {
     
     private var innerRing14: Crescent {
         let ir15 = innerRing15
-        let inner = Arc(radius: firstRingInteriorRadius, startingDegree: DPad.Ring.arc14.start, endingDegree: ir15.interiorArc.startingDegree - 1.5)
-        let outer = Arc(radius: firstRingExteriorRadius, startingDegree: DPad.Ring.arc14.start, endingDegree: ir15.exteriorArc.startingDegree - 1.0)
+        let inner = Arc(radius: firstRingInteriorRadius, startingDegree: Curve.arc14.start, endingDegree: ir15.interiorArc.startingDegree - 1.5)
+        let outer = Arc(radius: firstRingExteriorRadius, startingDegree: Curve.arc14.start, endingDegree: ir15.exteriorArc.startingDegree - 1.0)
         return Crescent(
             interiorArc: inner,
             exteriorArc: outer
@@ -242,7 +242,11 @@ public struct DPadClusterCompactView: View {
     }
     
     private var innerRing15: Crescent {
-        let arc = Arc(radius: firstRingInteriorRadius - spacing, cardinalDirection: .up)
+        let arc = Arc(
+            radius: firstRingInteriorRadius - spacing,
+            startingDegree: Direction.Cardinal.up.start,
+            endingDegree: Direction.Cardinal.up.end
+        )
         let startPoint = CartesianPoint(x: arc.startingPoint.x, y: arc.startingPoint.y + spacing)
         let startDegree = try! Degree.make(for: startPoint)
         let endPoint = CartesianPoint(x: arc.endingPoint.x, y: arc.endingPoint.y + spacing)
@@ -258,7 +262,7 @@ public struct DPadClusterCompactView: View {
     }
     
     private var innerRing16: Crescent {
-        let seventeenAndOneQuarter = DPad.Ring.arc17.start + (DPad.Ring.arc17.mid / 2.0)
+        let seventeenAndOneQuarter = Curve.arc17.start + Curve.arc17.quarter
         let ir15 = innerRing15
         let inner = Arc(radius: firstRingInteriorRadius, startingDegree: ir15.interiorArc.endingDegree + 1.5, endingDegree: seventeenAndOneQuarter)
         let outer = Arc(radius: firstRingExteriorRadius, startingDegree: ir15.exteriorArc.endingDegree + 1.0, endingDegree: seventeenAndOneQuarter)
@@ -269,7 +273,7 @@ public struct DPadClusterCompactView: View {
     }
     
     private var innerRing17: Crescent {
-        let seventeenAndOneQuarter = DPad.Ring.arc17.start + (DPad.Ring.arc17.mid / 2.0)
+        let seventeenAndOneQuarter = Curve.arc17.start + Curve.arc17.quarter
         let ir20 = innerRing20
         let inner = Arc(radius: firstRingInteriorRadius, startingDegree: seventeenAndOneQuarter + 1.0, endingDegree: ir20.interiorArc.startingDegree - 1.5)
         let outer = Arc(radius: firstRingExteriorRadius, startingDegree: seventeenAndOneQuarter + 1.0, endingDegree: ir20.exteriorArc.startingDegree - 1.0)
@@ -280,7 +284,11 @@ public struct DPadClusterCompactView: View {
     }
     
     private var innerRing20: Crescent {
-        let arc = Arc(radius: firstRingInteriorRadius - spacing, cardinalDirection: .right)
+        let arc = Arc(
+            radius: firstRingInteriorRadius - spacing,
+            startingDegree: Direction.Cardinal.right.start,
+            endingDegree: Direction.Cardinal.right.end
+        )
         let startPoint = CartesianPoint(x: arc.startingPoint.x + spacing, y: arc.startingPoint.y)
         let startDegree = try! Degree.make(for: startPoint)
         let endPoint = CartesianPoint(x: arc.endingPoint.x + spacing, y: arc.endingPoint.y)
@@ -297,8 +305,8 @@ public struct DPadClusterCompactView: View {
     
     private var outerRing19: Crescent {
         let or20 = outerRing20
-        let inner = Arc(radius: secondRingInteriorRadius, startingDegree: DPad.Ring.arc19.start, endingDegree: or20.interiorArc.startingDegree - 1.0)
-        let outer = Arc(radius: secondRingExtendedExteriorRadius, startingDegree: DPad.Ring.arc19.start, endingDegree: or20.exteriorArc.startingDegree - 0.75)
+        let inner = Arc(radius: secondRingInteriorRadius, startingDegree: Curve.arc19.start, endingDegree: or20.interiorArc.startingDegree - 1.0)
+        let outer = Arc(radius: secondRingExtendedExteriorRadius, startingDegree: Curve.arc19.start, endingDegree: or20.exteriorArc.startingDegree - 0.75)
         return Crescent(
             interiorArc: inner,
             exteriorArc: outer
@@ -324,9 +332,9 @@ public struct DPadClusterCompactView: View {
     }
     
     private var edge13: EdgedCrescent {
-        let interiorArc = Arc(radius: thirdRingInteriorRadius, arc: .arc13)
-        let exteriorArc = Arc(radius: thirdRingExteriorRadius, arc: .arc13)
-        let point = try! CartesianPoint.make(for: thirdRingExteriorRadius, degree: DPad.Ring.arc12.start)
+        let interiorArc = Curve.arc13.arc(radius: thirdRingInteriorRadius)
+        let exteriorArc = Curve.arc13.arc(radius: thirdRingExteriorRadius)
+        let point = try! CartesianPoint.make(for: thirdRingExteriorRadius, degree: Curve.arc12.start)
         
         return EdgedCrescent(
             interiorArc: interiorArc,
@@ -368,7 +376,7 @@ public struct DPadClusterCompactView: View {
             height: Obround.intrinsicSize.height * scale
         )
         
-        let arc = Arc(radius: firstRingInteriorRadius, arc: .arc17)
+        let arc = Curve.arc17.arc(radius: firstRingInteriorRadius)
         let x = arc.startingPoint.x + (arc.endingPoint.x - arc.startingPoint.x) / 2.0
         let y = edge13.cartesianFrame.origin.y
         

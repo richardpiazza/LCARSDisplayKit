@@ -203,9 +203,9 @@ public struct DPadClusterView: View {
     }
     
     private var edge06: EdgedCrescent {
-        let interiorArc = Arc(radius: firstRingInteriorRadius, arc: .arc06)
-        let exteriorArc = Arc(radius: firstRingExteriorRadius, arc: .arc06)
-        let point = try! CartesianPoint.make(for: firstRingExteriorRadius, degree: DPad.Ring.arc06.end)
+        let interiorArc = Curve.arc06.arc(radius: firstRingInteriorRadius)
+        let exteriorArc = Curve.arc06.arc(radius: firstRingExteriorRadius)
+        let point = try! CartesianPoint.make(for: firstRingExteriorRadius, degree: Curve.arc06.end)
         
         return EdgedCrescent(
             interiorArc: interiorArc,
@@ -217,12 +217,12 @@ public struct DPadClusterView: View {
     }
     
     private var edge07: EdgedCrescent {
-        let interiorArc = Arc(radius: firstRingInteriorRadius, startingDegree: DPad.Ring.arc07.start, endingDegree: DPad.Ring.arc08.end)
+        let interiorArc = Arc(radius: firstRingInteriorRadius, startingDegree: Curve.arc07.start, endingDegree: Curve.arc08.end)
         
-        let edge06Exterior = Arc(radius: firstRingExteriorRadius, arc: .arc06)
-        let edge09Exterior = Arc(radius: secondRingExtendedExteriorRadius, arc: .arc09)
-        let startingEdge = try! CartesianPoint.make(for: firstRingExteriorRadius, degree: DPad.Ring.arc07.start)
-        let endingEdge = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: DPad.Ring.arc08.end)
+        let edge06Exterior = Curve.arc06.arc(radius: firstRingExteriorRadius)
+        let edge09Exterior = Curve.arc09.arc(radius: secondRingExtendedExteriorRadius)
+        let startingEdge = try! CartesianPoint.make(for: firstRingExteriorRadius, degree: Curve.arc07.start)
+        let endingEdge = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: Curve.arc08.end)
         
         return EdgedCrescent(
             interiorArc: interiorArc,
@@ -235,9 +235,9 @@ public struct DPadClusterView: View {
     }
     
     private var edge09: EdgedCrescent {
-        let interiorArc = Arc(radius: firstRingInteriorRadius, arc: .arc09)
-        let exteriorArc = Arc(radius: secondRingExtendedExteriorRadius, arc: .arc09)
-        let point = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: DPad.Ring.arc09.start)
+        let interiorArc = Curve.arc09.arc(radius: firstRingInteriorRadius)
+        let exteriorArc = Curve.arc09.arc(radius: secondRingExtendedExteriorRadius)
+        let point = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: Curve.arc09.start)
         
         return EdgedCrescent(
             interiorArc: interiorArc,
@@ -249,9 +249,9 @@ public struct DPadClusterView: View {
     }
     
     private var edge13: EdgedCrescent {
-        let interiorArc = Arc(radius: thirdRingInteriorRadius, arc: .arc13)
-        let exteriorArc = Arc(radius: thirdRingExteriorRadius, arc: .arc13)
-        let point = try! CartesianPoint.make(for: thirdRingExteriorRadius, degree: DPad.Ring.arc12.start)
+        let interiorArc = Curve.arc13.arc(radius: thirdRingInteriorRadius)
+        let exteriorArc = Curve.arc13.arc(radius: thirdRingExteriorRadius)
+        let point = try! CartesianPoint.make(for: thirdRingExteriorRadius, degree: Curve.arc12.start)
         
         return EdgedCrescent(
             interiorArc: interiorArc,
@@ -263,8 +263,8 @@ public struct DPadClusterView: View {
     }
     
     private var edge15: EdgedCrescent {
-        let interiorArc = Arc(radius: secondRingInteriorRadius, arc: .arc15)
-        let exteriorArc = Arc(radius: secondRingEdgeExteriorRadius, arc: .arc15)
+        let interiorArc = Curve.arc15.arc(radius: secondRingInteriorRadius)
+        let exteriorArc = Curve.arc15.arc(radius: secondRingEdgeExteriorRadius)
         
         return EdgedCrescent(
             interiorArc: interiorArc,
@@ -281,7 +281,7 @@ public struct DPadClusterView: View {
             height: Obround.intrinsicSize.height * scale
         )
         
-        let arc = Arc(radius: secondRingInteriorRadius, arc: .arc18)
+        let arc = Curve.arc18.arc(radius: secondRingInteriorRadius)
         let x = arc.startingPoint.x + (arc.endingPoint.x - arc.startingPoint.x) / 2.0
         let y = edge15.cartesianFrame.origin.y
         

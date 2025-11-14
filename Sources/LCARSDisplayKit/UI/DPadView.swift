@@ -70,9 +70,9 @@ public struct DPadView: View {
             )
             .foregroundStyle(cruxColor ?? appearance.primary.dark)
             
-            ForEach(DPad.Sector.allCases, id: \.self) { sector in
+            ForEach(Wedge.Sector.allCases, id: \.self) { sector in
                 WedgeView(
-                    Wedge(exteriorArc: Arc(radius: radius, sector: sector)),
+                    Wedge(sector: sector, radius: radius),
                     in: plane,
                     with: cartesianOffset,
                     action: action
@@ -85,7 +85,7 @@ public struct DPadView: View {
                     Direction(
                         direction,
                         interiorRadius: cruxRadius + spacing,
-                        exteriorArc: Arc(radius: radius, cardinalDirection: direction.dPadCardinal)
+                        exteriorRadius: radius
                     ),
                     in: plane,
                     with: cartesianOffset,

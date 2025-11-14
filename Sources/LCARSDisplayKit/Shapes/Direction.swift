@@ -4,20 +4,30 @@ import CoreGraphics
 import GraphPoint
 import Swift2D
 
+/// A shape representing a cardinal direction in a control cluster.
 public struct Direction: Hashable, Sendable {
 
     public enum Cardinal: Hashable, Sendable, CaseIterable {
         case down
         case left
-        case up
         case right
+        case up
         
-        internal var dPadCardinal: DPad.CardinalDirection {
+        public var start: Degree {
             switch self {
-            case .down: .down
-            case .left: .left
-            case .up: .up
-            case .right: .right
+            case .down: return 80
+            case .left: return 170
+            case .right: return 350
+            case .up: return 260
+            }
+        }
+        
+        public var end: Degree {
+            switch self {
+            case .down: return 100
+            case .left: return 190
+            case .right: return 10
+            case .up: return 280
             }
         }
     }
@@ -38,12 +48,16 @@ public struct Direction: Hashable, Sendable {
     
     public init(
         _ cardinal: Cardinal = .up,
-        interiorRadius: Radius = 0.0,
+        interiorRadius: Radius,
         exteriorRadius: Radius
     ) {
         self.cardinal = cardinal
         self.interiorRadius = interiorRadius
-        exteriorArc = Arc(radius: exteriorRadius, cardinalDirection: cardinal.dPadCardinal)
+        exteriorArc = Arc(
+            radius: exteriorRadius,
+            startingDegree: cardinal.start,
+            endingDegree: cardinal.end
+        )
     }
 }
 

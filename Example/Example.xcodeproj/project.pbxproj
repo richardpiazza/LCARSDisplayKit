@@ -149,7 +149,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 2610;
 				ORGANIZATIONNAME = "Richard Piazza";
 				TargetAttributes = {
 					E1112FAF1BBE7FBB0001C33D = {

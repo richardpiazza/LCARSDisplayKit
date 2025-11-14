@@ -4,16 +4,42 @@ import CoreGraphics
 import GraphPoint
 import Swift2D
 
+/// The central element of any cardinal direction cluster.
 public struct Crux: Hashable, Sendable {
     
     public static let intrinsicSize: CGSize = CGSize(width: 60.0, height: 60.0)
     
-    public let radius: Radius
+    public let identifier: CartesianShapeIdentifier?
+    public let size: CGSize
     
+    private var radius: Radius {
+        max(size.width, size.height) / 2.0
+    }
+    
+    /// Initialize a `Crux` Cartesian Shape.
+    ///
+    /// - parameters:
+    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - size: The `CGSize` that the element should have.
     public init(
-        radius: Radius = 0.0
+        identifier: CartesianShapeIdentifier? = nil,
+        size: CGSize = Self.intrinsicSize
     ) {
-        self.radius = radius
+        self.identifier = identifier
+        self.size = size
+    }
+    
+    /// Initialize a `Crux` Cartesian Shape.
+    ///
+    /// - parameters:
+    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - radius: The radius used to calculate the `size` of the element.
+    public init(
+        identifier: CartesianShapeIdentifier? = nil,
+        radius: Radius
+    ) {
+        self.identifier = identifier
+        size = CGSize(width: radius * 2.0, height: radius * 2.0)
     }
 }
 
@@ -36,9 +62,7 @@ extension Crux: CartesianShape {
         let path = CGMutablePath()
         
         path.move(to: .zero)
-        path.addLine(to: CGPoint(x: radius * 2.0, y: 0))
-        path.addLine(to: CGPoint(x: radius * 2.0, y: radius * 2.0))
-        path.addLine(to: CGPoint(x: 0, y: radius * 2.0))
+        path.addRect(CGRect(origin: .zero, size: size))
         path.closeSubpath()
         
         return path

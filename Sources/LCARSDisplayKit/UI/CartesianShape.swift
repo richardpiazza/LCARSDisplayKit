@@ -4,6 +4,8 @@ import CoreGraphics
 import GraphPoint
 
 public protocol CartesianShape: Hashable, Identifiable<CartesianShapeIdentifier> {
+    var identifier: CartesianShapeIdentifier? { get }
+    
     /// The points that define the shape of the object.
     var cartesianPoints: [CartesianPoint] { get }
 
@@ -20,8 +22,12 @@ public protocol CartesianShape: Hashable, Identifiable<CartesianShapeIdentifier>
 }
 
 public extension CartesianShape {
+    var identifier: CartesianShapeIdentifier? {
+        nil
+    }
+    
     var id: CartesianShapeIdentifier {
-        CartesianShapeIdentifier(integerLiteral: hashValue)
+        identifier ?? CartesianShapeIdentifier(stringLiteral: hashValue.formatted())
     }
     
     var cartesianFrame: CartesianFrame {
