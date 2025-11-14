@@ -4,43 +4,55 @@ import CoreGraphics
 import GraphPoint
 import Swift2D
 
-public struct Direction {
-    public typealias Cardinal = DPad.CardinalDirection
-    
-    public var cardinal: Cardinal
-    public var interiorRadius: Radius
-    public var exteriorArc: Arc
-    
-    public init() {
-        cardinal = .right
-        interiorRadius = 0.0
-        exteriorArc = Arc()
+public struct Direction: Hashable, Sendable {
+
+    public enum Cardinal: Hashable, Sendable, CaseIterable {
+        case down
+        case left
+        case up
+        case right
+        
+        internal var dPadCardinal: DPad.CardinalDirection {
+            switch self {
+            case .down: .down
+            case .left: .left
+            case .up: .up
+            case .right: .right
+            }
+        }
     }
     
-    public init(_ cardinal: Cardinal, interiorRadius: Radius = 0.0, exteriorArc: Arc = Arc()) {
+    public let cardinal: Cardinal
+    public let interiorRadius: Radius
+    public let exteriorArc: Arc
+    
+    public init(
+        _ cardinal: Cardinal = .up,
+        interiorRadius: Radius = 0.0,
+        exteriorArc: Arc = Arc()
+    ) {
         self.cardinal = cardinal
         self.interiorRadius = interiorRadius
         self.exteriorArc = exteriorArc
     }
     
-    public init(_ cardinal: Cardinal, interiorRadius: Radius = 0.0, exteriorRadius: Radius = 0.0) {
+    public init(
+        _ cardinal: Cardinal = .up,
+        interiorRadius: Radius = 0.0,
+        exteriorRadius: Radius
+    ) {
         self.cardinal = cardinal
         self.interiorRadius = interiorRadius
-        exteriorArc = Arc(radius: exteriorRadius, cardinalDirection: cardinal)
+        exteriorArc = Arc(radius: exteriorRadius, cardinalDirection: cardinal.dPadCardinal)
     }
 }
 
-extension Direction: CartesianPointConvertible {
+extension Direction: CartesianShape {
     public var cartesianPoints: [CartesianPoint] {
         [
             exteriorArc.startingPoint,
             exteriorArc.endingPoint,
         ]
-    }
-    
-    @available(*, deprecated)
-    public var exteriorArcFrame: CartesianFrame {
-        (try? CartesianFrame.make(for: exteriorArc, points: cartesianPoints)) ?? .zero
     }
 
     public var cartesianFrame: CartesianFrame {
@@ -80,16 +92,14 @@ extension Direction: CartesianPointConvertible {
             height: height
         )
     }
-}
-
-#if canImport(CoreGraphics)
-extension Direction: PathConvertible {
+    
+    #if canImport(CoreGraphics)
     public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
         subpaths?.forEach { path.addPath($0) }
         return path
     }
-    
+
     public var subpaths: [CGPath]? {
         guard let frame = try? CartesianFrame.make(for: exteriorArc, points: cartesianPoints) else {
             return nil
@@ -174,5 +184,5 @@ extension Direction: PathConvertible {
         
         return paths
     }
+    #endif
 }
-#endif

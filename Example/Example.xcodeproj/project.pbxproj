@@ -11,9 +11,9 @@
 		E108447825700249005DDC10 /* CommandSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108447725700248005DDC10 /* CommandSequencer.swift */; };
 		E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */; };
 		E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */; };
+		E141F8782EC7C455007B93AD /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F8772EC7C44D007B93AD /* AudioPlayer.swift */; };
 		E180FF1C2EAE679700B0D81F /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180FF1B2EAE678A00B0D81F /* ExampleApp.swift */; };
 		E180FF1E2EAE684600B0D81F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180FF1D2EAE684400B0D81F /* ContentView.swift */; };
-		E1EE4FC5226670BB00443943 /* NoiseMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EE4FC4226670BB00443943 /* NoiseMaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,13 +36,13 @@
 		E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1112FBD1BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1112FBF1BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E141F8772EC7C44D007B93AD /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		E180FF1B2EAE678A00B0D81F /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		E180FF1D2EAE684400B0D81F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E1CA6B4E1FFECB210002EF25 /* LCARSDisplayKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitTests.swift; sourceTree = "<group>"; };
 		E1CA6B831FFECC150002EF25 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E1CA6B841FFECC150002EF25 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		E1CA6B851FFECC150002EF25 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		E1EE4FC4226670BB00443943 /* NoiseMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoiseMaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,13 +82,13 @@
 		E1112FB21BBE7FBC0001C33D /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				E141F8772EC7C44D007B93AD /* AudioPlayer.swift */,
+				E108447725700248005DDC10 /* CommandSequencer.swift */,
 				E180FF1D2EAE684400B0D81F /* ContentView.swift */,
 				E180FF1B2EAE678A00B0D81F /* ExampleApp.swift */,
 				E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */,
 				E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */,
 				E1112FBF1BBE7FBC0001C33D /* Info.plist */,
-				E108447725700248005DDC10 /* CommandSequencer.swift */,
-				E1EE4FC4226670BB00443943 /* NoiseMaker.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -197,7 +197,7 @@
 			files = (
 				E180FF1C2EAE679700B0D81F /* ExampleApp.swift in Sources */,
 				E108447825700249005DDC10 /* CommandSequencer.swift in Sources */,
-				E1EE4FC5226670BB00443943 /* NoiseMaker.swift in Sources */,
+				E141F8782EC7C455007B93AD /* AudioPlayer.swift in Sources */,
 				E180FF1E2EAE684600B0D81F /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

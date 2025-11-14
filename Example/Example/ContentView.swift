@@ -5,6 +5,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    private let commandSequencer = CommandSequencer()
+    
     @Environment(\.appearance) private var appearance
     
     var body: some View {
@@ -23,8 +25,10 @@ struct ContentView: View {
                 .foregroundStyle(appearance.inactive)
             }
             
-            DPadClusterExtendedView()
-                .offset(x: 50, y: -40)
+            DPadClusterExtendedView { id in
+                commandSequencer.didActivate(id)
+            }
+            .offset(x: 50, y: -40)
         }
         .background(.black)
     }

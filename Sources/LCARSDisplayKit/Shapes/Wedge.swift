@@ -7,41 +7,32 @@ import Swift2D
 /// A `Arc` that uses it's `pivotPoint` to draw a wedge.
 public struct Wedge: Hashable, Sendable {
     
-    public var exteriorArc: Arc
+    public let exteriorArc: Arc
     
-    public init() {
-        exteriorArc = Arc()
-    }
-    
-    public init(exteriorArc: Arc) {
+    public init(
+        exteriorArc: Arc = Arc()
+    ) {
         self.exteriorArc = exteriorArc
-    }
-    
-    public init(_ sector: DPad.Sector, radius: Radius) {
-        exteriorArc = Arc(radius: radius, sector: sector)
     }
 }
 
-extension Wedge: CartesianPointConvertible {
+extension Wedge: CartesianShape {
     public var cartesianPoints: [CartesianPoint] {
         [exteriorArc.startingPoint, exteriorArc.endingPoint]
     }
-}
-
-#if canImport(CoreGraphics)
-extension Wedge: PathConvertible {
+    
+    #if canImport(CoreGraphics)
     public var path: CGPath {
-        let path: CGMutablePath = CGMutablePath()
-        
         let frame = cartesianFrame
         let center = frame.offsetToCartesianOrigin
         let pivot = frame.relativePointForCartesianPoint(exteriorArc.pivotPoint)
         
+        let path = CGMutablePath()
         path.addArc(arc: exteriorArc, center: center, clockwise: false)
         path.addLine(to: pivot)
         path.closeSubpath()
         
         return path
     }
+    #endif
 }
-#endif

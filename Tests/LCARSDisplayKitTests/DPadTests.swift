@@ -1,5 +1,5 @@
 import GraphPoint
-import LCARSDisplayKit
+@testable import LCARSDisplayKit
 import Swift2D
 import XCTest
 
@@ -30,7 +30,7 @@ final class DPadTests: XCTestCase {
         let plane = CartesianPlane(intrinsicRect)
         let (_, radius, _, spacing, cruxRadius) = intrinsicRect.size.dPadValues()
         
-        let wedge01 = Wedge(.sector01, radius: radius)
+        let wedge01 = Wedge(exteriorArc: Arc(radius: radius, sector: .sector01))
         var cartesianFrame = wedge01.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, 36.384545893107884, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, -36.384545893107884, accuracy: 0.0001)
@@ -42,7 +42,7 @@ final class DPadTests: XCTestCase {
         XCTAssertEqual(absoluteFrame.width, 134.7912842353081, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 134.7912842353081, accuracy: 0.0001)
         
-        let wedge02 = Wedge(.sector02, radius: radius)
+        let wedge02 = Wedge(exteriorArc: Arc(radius: radius, sector: .sector02))
         cartesianFrame = wedge02.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, -171.17583012841598, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, -36.384545893107884, accuracy: 0.0001)
@@ -54,7 +54,7 @@ final class DPadTests: XCTestCase {
         XCTAssertEqual(absoluteFrame.width, 134.7912842353081, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 134.7912842353081, accuracy: 0.0001)
         
-        let wedge03 = Wedge(.sector03, radius: radius)
+        let wedge03 = Wedge(exteriorArc: Arc(radius: radius, sector: .sector03))
         cartesianFrame = wedge03.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, -171.17583012841598, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, 171.17583012841598, accuracy: 0.0001)
@@ -66,7 +66,7 @@ final class DPadTests: XCTestCase {
         XCTAssertEqual(absoluteFrame.width, 134.7912842353081, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 134.7912842353081, accuracy: 0.0001)
         
-        let wedge04 = Wedge(.sector04, radius: radius)
+        let wedge04 = Wedge(exteriorArc: Arc(radius: radius, sector: .sector04))
         cartesianFrame = wedge04.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, 36.384545893107884, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, 171.17583012841598, accuracy: 0.0001)

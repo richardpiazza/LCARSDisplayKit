@@ -5,13 +5,7 @@ import SwiftUI
 
 /// An example cluster control set that extends a 'DPadCluster'.
 public struct DPadClusterExtendedView: View {
-    
-    private struct ShapedEdge<T: CartesianShape> {
-        var title: String = ""
-        var shape: T
-        var color: Color
-    }
-    
+
     public static let intrinsicSize: CGSize = CGSize(width: 760.0, height: 755.0)
     public static let intrinsicCruxDiameter: CGFloat = 60.0
     public static let intrinsicSpacing: CGFloat = 8.0
@@ -30,6 +24,7 @@ public struct DPadClusterExtendedView: View {
     var spacing: CGFloat
     var cruxRadius: CGFloat
     var cartesianOffset: CartesianFrame.Offset
+    var action: (CartesianShapeIdentifier) -> Void
     
     var firstRingInteriorRadius: CGFloat
     var firstRingExteriorRadius: CGFloat
@@ -43,7 +38,8 @@ public struct DPadClusterExtendedView: View {
     @Environment(\.appearance) private var appearance
     
     public init(
-        size: CGSize = Self.intrinsicSize
+        size: CGSize = Self.intrinsicSize,
+        action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
     ) {
         plane = CartesianPlane(CGRect(origin: .zero, size: size))
         (diameter, radius, _, spacing, cruxRadius) = size.dPadValues(
@@ -64,6 +60,7 @@ public struct DPadClusterExtendedView: View {
         }
         
         cartesianOffset = CartesianFrame.Offset(x: 0, y: scaledContentSize.height * 0.068)
+        self.action = action
         
         firstRingInteriorRadius = ((DPadView.intrinsicSize.width / 2.0) * scale) + spacing
         firstRingExteriorRadius = firstRingInteriorRadius + (80.0 * scale)
@@ -77,15 +74,18 @@ public struct DPadClusterExtendedView: View {
     
     public var body: some View {
         ZStack {
-            DPadView(scale: scale)
-                .frame(
-                    width: DPadView.intrinsicSize.width * scale,
-                    height: DPadView.intrinsicSize.height * scale
-                )
-                .position(
-                    x: plane.midX + cartesianOffset.x,
-                    y: plane.midY + cartesianOffset.y
-                )
+            DPadView(
+                scale: scale,
+                action: action
+            )
+            .frame(
+                width: DPadView.intrinsicSize.width * scale,
+                height: DPadView.intrinsicSize.height * scale
+            )
+            .position(
+                x: plane.midX + cartesianOffset.x,
+                y: plane.midY + cartesianOffset.y
+            )
             
             crescents(
                 interiorRadius: firstRingInteriorRadius,
@@ -170,7 +170,8 @@ public struct DPadClusterExtendedView: View {
                         extendedRadius: extendedExteriorRadius
                     ),
                     in: plane,
-                    with: offset
+                    with: offset,
+                    action: action
                 )
                 .foregroundStyle(ring.color)
             }
@@ -189,7 +190,8 @@ public struct DPadClusterExtendedView: View {
                     edge.title,
                     shape: edge.shape,
                     in: plane,
-                    with: offset
+                    with: offset,
+                    action: action
                 )
                 .foregroundStyle(edge.color)
             }
@@ -199,7 +201,8 @@ public struct DPadClusterExtendedView: View {
                     obround.title,
                     shape: obround.shape,
                     in: plane,
-                    with: offset
+                    with: offset,
+                    action: action
                 )
                 .foregroundStyle(obround.color)
             }

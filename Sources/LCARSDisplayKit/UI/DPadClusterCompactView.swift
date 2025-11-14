@@ -8,15 +8,8 @@ import SwiftUI
 /// This particular layout comes from small tactical station behind the command
 /// chairs on the USS Voyager.
 public struct DPadClusterCompactView: View {
-    
-    private struct ShapedEdge<T: CartesianShape> {
-        var title: String = ""
-        var shape: T
-        var color: Color
-    }
-    
+
     public static let intrinsicSize: CGSize = CGSize(width: 715.0, height: 520.0)
-    public static let intrinsicCruxDiameter: CGFloat = 60.0
     public static let intrinsicSpacing: CGFloat = 8.0
     public static let intrinsicRatio: CGFloat = {
         if intrinsicSize.width >= intrinsicSize.height {
@@ -33,6 +26,7 @@ public struct DPadClusterCompactView: View {
     var spacing: CGFloat
     var cruxRadius: CGFloat
     var cartesianOffset: CartesianFrame.Offset
+    var action: (CartesianShapeIdentifier) -> Void
     
     var firstRingInteriorRadius: CGFloat
     var firstRingExteriorRadius: CGFloat
@@ -46,12 +40,13 @@ public struct DPadClusterCompactView: View {
     @Environment(\.appearance) private var appearance
     
     public init(
-        size: CGSize = Self.intrinsicSize
+        size: CGSize = Self.intrinsicSize,
+        action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
     ) {
         plane = CartesianPlane(CGRect(origin: .zero, size: size))
         (diameter, radius, _, spacing, cruxRadius) = size.dPadValues(
             intrinsicSize: Self.intrinsicSize,
-            intrinsicCruxDiameter: Self.intrinsicCruxDiameter,
+            intrinsicCruxDiameter: max(Crux.intrinsicSize.width, Crux.intrinsicSize.height),
             intrinsicSpacing: Self.intrinsicSpacing
         )
         
@@ -70,6 +65,7 @@ public struct DPadClusterCompactView: View {
             x: -(scaledContentSize.width * 0.0366),
             y: scaledContentSize.height * 0.14
         )
+        self.action = action
         
         firstRingInteriorRadius = ((DPadView.intrinsicSize.width / 2.0) * scale) + spacing
         firstRingExteriorRadius = firstRingInteriorRadius + (80.0 * scale)
@@ -87,7 +83,8 @@ public struct DPadClusterCompactView: View {
                 scale: scale,
                 cruxColor: appearance.secondary.light,
                 sectorColor: appearance.inactive,
-                upGradientStop: 0.6
+                upGradientStop: 0.6,
+                action: action
             )
             .frame(
                 width: DPadView.intrinsicSize.width * scale,
@@ -172,7 +169,8 @@ public struct DPadClusterCompactView: View {
                         extendedRadius: extendedExteriorRadius
                     ),
                     in: plane,
-                    with: offset
+                    with: offset,
+                    action: action
                 )
                 .foregroundStyle(ring.color)
             }
@@ -192,7 +190,8 @@ public struct DPadClusterCompactView: View {
                     crescent.title,
                     shape: crescent.shape,
                     in: plane,
-                    with: offset
+                    with: offset,
+                    action: action
                 )
                 .foregroundStyle(crescent.color)
             }
@@ -202,7 +201,8 @@ public struct DPadClusterCompactView: View {
                     edge.title,
                     shape: edge.shape,
                     in: plane,
-                    with: offset
+                    with: offset,
+                    action: action
                 )
                 .foregroundStyle(edge.color)
             }
@@ -212,7 +212,8 @@ public struct DPadClusterCompactView: View {
                     obround.title,
                     shape: obround.shape,
                     in: plane,
-                    with: offset
+                    with: offset,
+                    action: action
                 )
                 .foregroundStyle(obround.color)
             }

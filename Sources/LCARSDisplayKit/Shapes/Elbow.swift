@@ -4,69 +4,27 @@ import CoreGraphics
 import GraphPoint
 import Swift2D
 
-public struct Elbow {
+public struct Elbow: Hashable, Sendable {
     
     public static let defaultHorizontalHeight: Double = 120.0
     public static let defaultVerticalWidth: Double = 30.0
     public static let defaultClosedHeight: Double = 0.0
     
-    /// The size of the shape - modifiable through intrinsic values
-    public var size: Size
-    
-    public var top: Bool
-    public var left: Bool
+    /// The size of the shape
+    public let size: Size
+    public let top: Bool
+    public let left: Bool
     /// Specifies if the corner specified by `top` and `left` should be rounded.
-    public var rounded: Bool
-    public var horizontalHeight: Double
-    public var verticalWidth: Double
+    public let rounded: Bool
+    public let horizontalHeight: Double
+    public let verticalWidth: Double
     /// If closedHeight > 0, an additional area is drawn parallel to the horizontalHeight area.
-    public var closedHeight: Double
+    public let closedHeight: Double
     /// If true, the interior radius will match the exterior radius.
-    public var shouldMatchRadius: Bool
-    
-    @available(*, deprecated, message: "Private?")
-    public var outerRadius: Radius {
-        max(horizontalHeight, verticalWidth) / 2
-    }
-    
-    @available(*, deprecated, message: "Private?")
-    public var innerRadius: Radius {
-        shouldMatchRadius ? outerRadius : (outerRadius / 2.4)
-    }
-    
-    @available(*, deprecated, message: "Private?")
-    public var upperLeftOuterCenter: CartesianPoint {
-        CartesianPoint(x: outerRadius, y: outerRadius)
-    }
-    
-    @available(*, deprecated, message: "Private?")
-    public var upperLeftInnerCenter: CartesianPoint {
-        CartesianPoint(x: verticalWidth + innerRadius, y: horizontalHeight + innerRadius)
-    }
-    
-    @available(*, deprecated, message: "Private?")
-    public var lowerRightOuterCenter: CartesianPoint {
-        CartesianPoint(x: size.width - outerRadius, y: size.height - outerRadius)
-    }
-    
-    @available(*, deprecated, message: "Private?")
-    public var lowerRightInnerCenter: CartesianPoint {
-        CartesianPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight - innerRadius)
-    }
-    
-    public init() {
-        size = .zero
-        top = true
-        left = true
-        rounded = true
-        horizontalHeight = Self.defaultHorizontalHeight
-        verticalWidth = Self.defaultVerticalWidth
-        closedHeight = Self.defaultClosedHeight
-        shouldMatchRadius = false
-    }
+    public let shouldMatchRadius: Bool
     
     public init(
-        size: Size,
+        size: Size = .zero,
         top: Bool = true,
         left: Bool = true,
         rounded: Bool = true,
@@ -86,17 +44,34 @@ public struct Elbow {
     }
 }
 
-extension Elbow: CartesianPointConvertible {
+extension Elbow: CartesianShape {
     public var cartesianPoints: [CartesianPoint] {
-        return [
+        [
             CartesianPoint(x: -(size.width / 2.0), y: -(size.height / 2.0)),
             CartesianPoint(x: (size.width / 2.0), y: (size.height / 2.0)),
         ]
     }
-}
-
-#if canImport(CoreGraphics)
-extension Elbow: PathConvertible {
+    
+    #if canImport(CoreGraphics)
+    private var outerRadius: Radius {
+        max(horizontalHeight, verticalWidth) / 2
+    }
+    private var innerRadius: Radius {
+        shouldMatchRadius ? outerRadius : (outerRadius / 2.4)
+    }
+    private var upperLeftOuterCenter: CartesianPoint {
+        CartesianPoint(x: outerRadius, y: outerRadius)
+    }
+    private var upperLeftInnerCenter: CartesianPoint {
+        CartesianPoint(x: verticalWidth + innerRadius, y: horizontalHeight + innerRadius)
+    }
+    private var lowerRightOuterCenter: CartesianPoint {
+        CartesianPoint(x: size.width - outerRadius, y: size.height - outerRadius)
+    }
+    private var lowerRightInnerCenter: CartesianPoint {
+        CartesianPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight - innerRadius)
+    }
+    
     public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
         let size = self.size
@@ -198,5 +173,5 @@ extension Elbow: PathConvertible {
         
         return path
     }
+    #endif
 }
-#endif

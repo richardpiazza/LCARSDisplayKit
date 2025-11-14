@@ -4,18 +4,20 @@ import CoreGraphics
 import GraphPoint
 import Swift2D
 
-public struct Crux {
+public struct Crux: Hashable, Sendable {
     
     public static let intrinsicSize: CGSize = CGSize(width: 60.0, height: 60.0)
     
     public let radius: Radius
     
-    public init(radius: Radius = 0.0) {
+    public init(
+        radius: Radius = 0.0
+    ) {
         self.radius = radius
     }
 }
 
-extension Crux: CartesianPointConvertible {
+extension Crux: CartesianShape {
     public var cartesianPoints: [CartesianPoint] {
         [
             CartesianPoint(x: -radius, y: -radius),
@@ -28,10 +30,8 @@ extension Crux: CartesianPointConvertible {
     public var cartesianFrame: CartesianFrame {
         CartesianFrame.make(for: cartesianPoints)
     }
-}
-
-#if canImport(CoreGraphics)
-extension Crux: PathConvertible {
+    
+    #if canImport(CoreGraphics)
     public var path: CGPath {
         let path = CGMutablePath()
         
@@ -43,5 +43,5 @@ extension Crux: PathConvertible {
         
         return path
     }
+    #endif
 }
-#endif

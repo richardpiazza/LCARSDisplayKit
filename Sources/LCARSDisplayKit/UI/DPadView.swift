@@ -6,7 +6,6 @@ import SwiftUI
 public struct DPadView: View {
     
     public static let intrinsicSize: CGSize = CGSize(width: 350.0, height: 350.0)
-    public static let intrinsicCruxDiameter: CGFloat = 60.0
     public static let intrinsicSpacing: CGFloat = 8.0
     
     var plane: CartesianPlane
@@ -18,6 +17,7 @@ public struct DPadView: View {
     var cruxColor: Color?
     var sectorColor: Color?
     var upGradientStop: CGFloat?
+    var action: (CartesianShapeIdentifier) -> Void
     
     @Environment(\.appearance) private var appearance
     
@@ -25,35 +25,39 @@ public struct DPadView: View {
         size: CGSize = Self.intrinsicSize,
         cruxColor: Color? = nil,
         sectorColor: Color? = nil,
-        upGradientStop: CGFloat? = nil
+        upGradientStop: CGFloat? = nil,
+        action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
     ) {
         plane = CartesianPlane(CGRect(origin: .zero, size: size))
         (diameter, radius, _, spacing, cruxRadius) = size.dPadValues(
             intrinsicSize: Self.intrinsicSize,
-            intrinsicCruxDiameter: Self.intrinsicCruxDiameter,
+            intrinsicCruxDiameter: max(Crux.intrinsicSize.width, Crux.intrinsicSize.height),
             intrinsicSpacing: Self.intrinsicSpacing
         )
         self.cruxColor = cruxColor
         self.sectorColor = sectorColor
         self.upGradientStop = upGradientStop
+        self.action = action
     }
     
     public init(
         scale value: CGFloat,
         cruxColor: Color? = nil,
         sectorColor: Color? = nil,
-        upGradientStop: CGFloat? = nil
+        upGradientStop: CGFloat? = nil,
+        action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
     ) {
         let size = CGSize(width: Self.intrinsicSize.width * value, height: Self.intrinsicSize.height * value)
         plane = CartesianPlane(CGRect(origin: .zero, size: size))
         (diameter, radius, _, spacing, cruxRadius) = size.dPadValues(
             intrinsicSize: Self.intrinsicSize,
-            intrinsicCruxDiameter: Self.intrinsicCruxDiameter,
+            intrinsicCruxDiameter: max(Crux.intrinsicSize.width, Crux.intrinsicSize.height),
             intrinsicSpacing: Self.intrinsicSpacing
         )
         self.cruxColor = cruxColor
         self.sectorColor = sectorColor
         self.upGradientStop = upGradientStop
+        self.action = action
     }
     
     public var body: some View {
@@ -61,7 +65,8 @@ public struct DPadView: View {
             CruxView(
                 Crux(radius: cruxRadius),
                 in: plane,
-                with: cartesianOffset
+                with: cartesianOffset,
+                action: action
             )
             .foregroundStyle(cruxColor ?? appearance.primary.dark)
             
@@ -69,20 +74,22 @@ public struct DPadView: View {
                 WedgeView(
                     Wedge(exteriorArc: Arc(radius: radius, sector: sector)),
                     in: plane,
-                    with: cartesianOffset
+                    with: cartesianOffset,
+                    action: action
                 )
                 .foregroundStyle(sectorColor ?? appearance.primary.medium)
             }
             
-            ForEach(DPad.CardinalDirection.allCases, id: \.self) { direction in
+            ForEach(Direction.Cardinal.allCases, id: \.self) { direction in
                 DirectionView(
                     Direction(
                         direction,
                         interiorRadius: cruxRadius + spacing,
-                        exteriorArc: Arc(radius: radius, cardinalDirection: direction)
+                        exteriorArc: Arc(radius: radius, cardinalDirection: direction.dPadCardinal)
                     ),
                     in: plane,
-                    with: cartesianOffset
+                    with: cartesianOffset,
+                    action: action
                 )
                 .foregroundStyle(gradient(for: direction))
             }
@@ -90,7 +97,7 @@ public struct DPadView: View {
         .frame(width: plane.size.width, height: plane.size.height)
     }
     
-    private func gradient(for direction: DPad.CardinalDirection) -> LinearGradient {
+    private func gradient(for direction: Direction.Cardinal) -> LinearGradient {
         let (start, end, stop): (UnitPoint, UnitPoint, CGFloat) = switch direction {
         case .down:
             (.bottom, .top, 0.4)

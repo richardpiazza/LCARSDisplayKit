@@ -4,11 +4,8 @@ import GraphPoint
 ///
 /// Each arc in the ring should contain 17° with 0.5° on each side for spacing.
 /// (20 x 17°) + (20 x 0.5°) + (20 x 0.5°) = 360°
-public enum DPad {
-    @available(*, deprecated, renamed: "Ring")
-    public typealias Arc = Ring
-
-    public struct Ring: Hashable, DegreeConvertible {
+enum DPad {
+    struct Ring: Hashable {
         public let start: Degree
         public let end: Degree
         
@@ -36,7 +33,7 @@ public enum DPad {
         static let arc20: Self = Ring(start: 351.5, end: 8.5)
     }
 
-    public enum CardinalDirection: DegreeConvertible, CaseIterable {
+    enum CardinalDirection: CaseIterable {
         case down
         case left
         case up
@@ -61,7 +58,7 @@ public enum DPad {
         }
     }
 
-    public enum Sector: DegreeConvertible, CaseIterable {
+    enum Sector: CaseIterable {
         case sector01
         case sector02
         case sector03

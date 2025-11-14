@@ -4,48 +4,21 @@ import CoreGraphics
 import GraphPoint
 import Swift2D
 
-public typealias RoundedRectangle = Obround
-
 /// A rectangle with optionally rounded ends
-public struct Obround {
+public struct Obround: Hashable, Sendable {
     
     public static let intrinsicSize: CGSize = CGSize(width: 144.0, height: 60.0)
     
     /// Points used to define the frame of the shape.
-    public var cartesianPoints: [CartesianPoint]
+    public let cartesianPoints: [CartesianPoint]
     /// The size of the shape - modifiable through intrinsic values
-    public var size: Size
-    
-    public var leftRounded: Bool
-    public var rightRounded: Bool
-    public var cornersOnly: Bool
-    
-    /// Calculates the radius of the arcs depending on `cornersOnly`
-    @available(*, deprecated, message: "Private?")
-    public var radius: Radius {
-        cornersOnly ? size.height * 0.25 : size.height * 0.5
-    }
-    
-    @available(*, deprecated, message: "Private?")
-    public var upperLeftCenter: Point {
-        Point(x: radius, y: radius)
-    }
-    
-    @available(*, deprecated, message: "Private?")
-    public var lowerRightCenter: Point {
-        Point(x: size.width - radius, y: size.height - radius)
-    }
-    
-    public init() {
-        cartesianPoints = []
-        size = .zero
-        leftRounded = false
-        rightRounded = false
-        cornersOnly = false
-    }
+    public let size: Size
+    public let leftRounded: Bool
+    public let rightRounded: Bool
+    public let cornersOnly: Bool
     
     public init(
-        cartesianPoints: [CartesianPoint],
+        cartesianPoints: [CartesianPoint] = [],
         leftRounded: Bool = false,
         rightRounded: Bool = false,
         cornersOnly: Bool = false
@@ -78,10 +51,13 @@ public struct Obround {
     }
 }
 
-extension Obround: CartesianPointConvertible {}
-
-#if canImport(CoreGraphics)
-extension RoundedRectangle: PathConvertible {
+extension Obround: CartesianShape {
+    #if canImport(CoreGraphics)
+    /// Calculates the radius of the arcs depending on `cornersOnly`
+    private var radius: Radius { cornersOnly ? size.height * 0.25 : size.height * 0.5 }
+    private var upperLeftCenter: Point { Point(x: radius, y: radius) }
+    private var lowerRightCenter: Point { Point(x: size.width - radius, y: size.height - radius) }
+    
     public var path: CGPath {
         let path = CGMutablePath()
         
@@ -130,5 +106,5 @@ extension RoundedRectangle: PathConvertible {
         
         return path
     }
+    #endif
 }
-#endif

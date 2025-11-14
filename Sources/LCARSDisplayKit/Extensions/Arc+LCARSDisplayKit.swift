@@ -5,6 +5,13 @@ extension Arc: @retroactive Identifiable {
 }
 
 public extension Arc {
+    /// Arc with 'startingDegree' and 'endingDegree' reversed.
+    var reversed: Arc {
+        Arc(radius: radius, startingDegree: endingDegree, endingDegree: startingDegree)
+    }
+}
+
+extension Arc {
     init(radius: Radius, arc convertible: DPad.Ring) {
         self.init(
             radius: radius,
@@ -27,10 +34,5 @@ public extension Arc {
             startingDegree: convertible.start,
             endingDegree: convertible.end
         )
-    }
-    
-    /// Arc with 'startingDegree' and 'endingDegree' reversed.
-    var reversed: Arc {
-        Arc(radius: radius, startingDegree: endingDegree, endingDegree: startingDegree)
     }
 }
