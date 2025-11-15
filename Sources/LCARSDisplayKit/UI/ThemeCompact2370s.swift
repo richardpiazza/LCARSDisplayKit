@@ -8,29 +8,29 @@ public struct ThemeCompact2370s: Theme {
     public func color(for appearance: ControlAppearance) -> Color {
         switch appearance {
         case .primaryDark:
-            Color(Pigment.neonCarrot.uiColor)
+            Pigment.neonCarrot.color
         case .primaryLight:
-            Color(Pigment.paleCanary.uiColor)
+            Pigment.paleCanary.color
         case .primaryMedium:
-            Color(Pigment.goldenTainoi.uiColor)
+            Pigment.goldenTainoi.color
         case .secondaryDark:
-            Color(Pigment.mariner.uiColor)
+            Pigment.mariner.color
         case .secondaryLight:
-            Color(Pigment.babyBlueEyes.uiColor)
+            Pigment.babyBlueEyes.color
         case .secondaryMedium:
-            Color(Pigment.bahamaBlue.uiColor)
+            Pigment.bahamaBlue.color
         case .tertiaryDark:
-            Color(Pigment.darkPurple.uiColor)
+            Pigment.darkPurple.color
         case .tertiaryLight:
-            Color(Pigment.cosmic.uiColor)
+            Pigment.cosmic.color
         case .tertiaryMedium:
-            Color(Pigment.pastelViolet.uiColor)
+            Pigment.pastelViolet.color
         case .quaternaryDark:
-            Color(Pigment.flatGray.uiColor)
+            Pigment.flatGray.color
         case .quaternaryLight:
-            Color(Pigment.flatGray.uiColor)
+            Pigment.flatGray.color
         case .quaternaryMedium:
-            Color(Pigment.flatGray.uiColor)
+            Pigment.flatGray.color
         }
     }
 

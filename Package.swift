@@ -21,7 +21,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/richardpiazza/GraphPoint.git", from: "5.1.0"),
-        .package(url: "https://github.com/richardpiazza/SwiftColor.git", from: "0.3.0"),
+        .package(url: "https://github.com/richardpiazza/SwiftColor.git", branch: "feature/swift-ui"), // from: "0.3.0"
     ],
     targets: [
         .target(
