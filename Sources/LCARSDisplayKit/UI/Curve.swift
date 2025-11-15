@@ -7,10 +7,10 @@ import GraphPoint
 public struct Curve: Hashable {
     public let start: Degree
     public let end: Degree
-    
+
     public var mid: Degree { end - start }
     public var quarter: Degree { mid / 2.0 }
-    
+
     public func arc(radius: Radius) -> Arc {
         Arc(
             radius: radius,
@@ -18,7 +18,7 @@ public struct Curve: Hashable {
             endingDegree: end
         )
     }
-    
+
     public static let arc01: Self = Curve(start: 9.5, end: 26.5)
     public static let arc02: Self = Curve(start: 27.5, end: 44.5)
     public static let arc03: Self = Curve(start: 45.5, end: 62.5)

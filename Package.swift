@@ -16,7 +16,7 @@ let package = Package(
     products: [
         .library(
             name: "LCARSDisplayKit",
-            targets: ["LCARSDisplayKit"],
+            targets: ["LCARSDisplayKit"]
         ),
     ],
     dependencies: [
@@ -39,8 +39,8 @@ let package = Package(
             dependencies: [
                 "LCARSDisplayKit",
                 .product(name: "GraphPoint", package: "GraphPoint"),
-            ],
-        )
+            ]
+        ),
     ],
     swiftLanguageModes: [.v5]
 )

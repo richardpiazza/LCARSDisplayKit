@@ -1,14 +1,14 @@
 public struct CartesianShapeIdentifier: Hashable, Sendable, ExpressibleByStringLiteral, RawRepresentable {
     public let rawValue: String
-    
+
     public init(stringLiteral value: String) {
         rawValue = value
     }
-    
+
     public init?(rawValue: String) {
         self.rawValue = rawValue
     }
-    
+
     public static let crux: Self = "crux"
     public static let down: Self = "down"
     public static let edge06: Self = "edge06"

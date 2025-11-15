@@ -6,35 +6,35 @@ import Swift2D
 
 /// A `Arc` that uses it's `pivotPoint` to draw a wedge.
 public struct Wedge: Hashable, Sendable {
-    
+
     public enum Sector: CartesianShapeIdentifier, Hashable, Sendable, CaseIterable {
         case sector1
         case sector2
         case sector3
         case sector4
-        
+
         public var start: Degree {
             switch self {
-            case .sector1: return 12
-            case .sector2: return 102
-            case .sector3: return 192
-            case .sector4: return 282
+            case .sector1: 12
+            case .sector2: 102
+            case .sector3: 192
+            case .sector4: 282
             }
         }
-        
+
         public var end: Degree {
             switch self {
-            case .sector1: return 78
-            case .sector2: return 168
-            case .sector3: return 258
-            case .sector4: return 348
+            case .sector1: 78
+            case .sector2: 168
+            case .sector3: 258
+            case .sector4: 348
             }
         }
     }
-    
+
     public let identifier: CartesianShapeIdentifier?
     public let exteriorArc: Arc
-    
+
     /// Initialize a `Wedge` Cartesian Shape.
     ///
     /// - parameters:
@@ -47,7 +47,7 @@ public struct Wedge: Hashable, Sendable {
         self.identifier = identifier
         self.exteriorArc = exteriorArc
     }
-    
+
     /// Initialize a `Wedge` Cartesian Shape.
     ///
     /// - parameters:
@@ -75,18 +75,18 @@ extension Wedge: CartesianShape {
             exteriorArc.endingPoint,
         ]
     }
-    
+
     #if canImport(CoreGraphics)
     public var path: CGPath {
         let frame = cartesianFrame
         let center = frame.offsetToCartesianOrigin
         let pivot = frame.relativePointForCartesianPoint(exteriorArc.pivotPoint)
-        
+
         let path = CGMutablePath()
         path.addArc(arc: exteriorArc, center: center, clockwise: false)
         path.addLine(to: pivot)
         path.closeSubpath()
-        
+
         return path
     }
     #endif

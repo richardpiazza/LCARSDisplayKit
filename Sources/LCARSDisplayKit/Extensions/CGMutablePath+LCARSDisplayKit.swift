@@ -23,7 +23,7 @@ extension CGMutablePath {
             clockwise: clockwise
         )
     }
-    
+
     func addArc(arc: Arc, center: CartesianPoint, clockwise: Bool) {
         addArc(
             center: CGPoint(center),
@@ -33,15 +33,15 @@ extension CGMutablePath {
             clockwise: clockwise
         )
     }
-    
+
     func addLine(to point: CartesianPoint) {
         addLine(to: CGPoint(point))
     }
-    
+
     func move(to point: CartesianPoint) {
         move(to: CGPoint(point))
     }
-    
+
     func addRect(_ rect: CartesianFrame) {
         addRect(CGRect(rect))
     }

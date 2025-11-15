@@ -11,7 +11,7 @@ extension CartesianFrame {
     /// The output of this function is only a `Point`, because it no longer has any relation to the Cartesian 'frame' or
     /// 'plane'.
     func relativePointForCartesianPoint(_ cartesianPoint: CartesianPoint) -> Point {
-        return CartesianPoint(
+        CartesianPoint(
             x: abs(origin.x - cartesianPoint.x),
             y: abs(origin.y - cartesianPoint.y)
         )

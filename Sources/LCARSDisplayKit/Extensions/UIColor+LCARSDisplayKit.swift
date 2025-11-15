@@ -11,13 +11,13 @@ extension UIColor {
         var saturation: CGFloat = 0
         var brightness: CGFloat = 0
         var alpha: CGFloat = 0
-        
-        guard self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) else {
+
+        guard getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) else {
             return self
         }
-        
+
         let adaptedSaturation = saturation * amount
-        
+
         return UIColor(hue: hue, saturation: adaptedSaturation, brightness: brightness, alpha: alpha)
     }
 }

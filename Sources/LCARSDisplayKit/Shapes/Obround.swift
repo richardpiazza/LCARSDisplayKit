@@ -6,16 +6,16 @@ import Swift2D
 
 /// A rectangle with optionally rounded ends
 public struct Obround: Hashable, Sendable {
-    
+
     public static let intrinsicSize: CGSize = CGSize(width: 144.0, height: 60.0)
-    
+
     public let identifier: CartesianShapeIdentifier?
     public let cartesianPoints: [CartesianPoint]
     public let size: CGSize
     public let leftRounded: Bool
     public let rightRounded: Bool
     public let cornersOnly: Bool
-    
+
     /// Initialize a `Obround` Cartesian Shape.
     ///
     /// - parameters:
@@ -39,7 +39,7 @@ public struct Obround: Hashable, Sendable {
             CartesianPoint(
                 x: point.x + size.width,
                 y: point.y - size.height
-            )
+            ),
         ]
         leftRounded = roundLeading
         rightRounded = roundTrailing
@@ -53,10 +53,10 @@ extension Obround: CartesianShape {
     private var radius: Radius { cornersOnly ? size.height * 0.25 : size.height * 0.5 }
     private var upperLeftCenter: Point { Point(x: radius, y: radius) }
     private var lowerRightCenter: Point { Point(x: size.width - radius, y: size.height - radius) }
-    
+
     public var path: CGPath {
         let path = CGMutablePath()
-        
+
         switch (leftRounded, rightRounded, cornersOnly) {
         case (true, true, true):
             path.addArc(center: upperLeftCenter, radius: Radius(radius), startDegree: 180.0, endDegree: 270.0, clockwise: false)
@@ -99,7 +99,7 @@ extension Obround: CartesianShape {
         default:
             path.addRect(CartesianFrame(origin: .zero, size: Size(size)))
         }
-        
+
         return path
     }
     #endif

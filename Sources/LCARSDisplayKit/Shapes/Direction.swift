@@ -12,22 +12,22 @@ public struct Direction: Hashable, Sendable {
         case left
         case right
         case up
-        
+
         public var start: Degree {
             switch self {
-            case .down: return 80
-            case .left: return 170
-            case .right: return 350
-            case .up: return 260
+            case .down: 80
+            case .left: 170
+            case .right: 350
+            case .up: 260
             }
         }
-        
+
         public var end: Degree {
             switch self {
-            case .down: return 100
-            case .left: return 190
-            case .right: return 10
-            case .up: return 280
+            case .down: 100
+            case .left: 190
+            case .right: 10
+            case .up: 280
             }
         }
     }
@@ -43,7 +43,7 @@ public struct Direction: Hashable, Sendable {
     public let cardinal: Cardinal
     public let interiorRadius: Radius
     public let exteriorArc: Arc
-    
+
     public init(
         identifier: CartesianShapeIdentifier? = nil,
         cardinal: Cardinal = .up,
@@ -55,7 +55,7 @@ public struct Direction: Hashable, Sendable {
         self.interiorRadius = interiorRadius
         self.exteriorArc = exteriorArc
     }
-    
+
     /// Initialize a `Direction` Cartesian Shape.
     ///
     /// - parameters:
@@ -92,9 +92,9 @@ extension Direction: CartesianShape {
         guard let frame = try? CartesianFrame.make(for: exteriorArc, points: cartesianPoints) else {
             return .zero
         }
-        
+
         let x, y, width, height: CGFloat
-        
+
         switch cardinal {
         case .up:
             width = frame.width
@@ -117,7 +117,7 @@ extension Direction: CartesianShape {
             x = frame.x
             y = frame.y + (exteriorArc.radius - interiorRadius)
         }
-        
+
         return CartesianFrame(
             x: x,
             y: y,
@@ -125,7 +125,7 @@ extension Direction: CartesianShape {
             height: height
         )
     }
-    
+
     #if canImport(CoreGraphics)
     public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
@@ -137,12 +137,12 @@ extension Direction: CartesianShape {
         guard let frame = try? CartesianFrame.make(for: exteriorArc, points: cartesianPoints) else {
             return nil
         }
-        
+
         var paths: [CGMutablePath] = [CGMutablePath]()
         let center = frame.offsetToCartesianOrigin
         let unit = max(frame.width, frame.height) / 2
         let size = cartesianFrame.size
-        
+
         switch cardinal {
         case .right:
             let arrowPath: CGMutablePath = CGMutablePath()
@@ -151,13 +151,13 @@ extension Direction: CartesianShape {
             arrowPath.addLine(to: CartesianPoint(x: size.width - unit, y: size.height))
             arrowPath.addLine(to: CartesianPoint(x: size.width - unit, y: 0))
             arrowPath.closeSubpath()
-            
+
             arrowPath.move(to: CartesianPoint(x: size.width - (unit * 1.25), y: unit))
             arrowPath.addLine(to: CartesianPoint(x: size.width - (unit * 1.75), y: size.height * 0.1))
             arrowPath.addLine(to: CartesianPoint(x: size.width - (unit * 1.75), y: size.height * 0.9))
             arrowPath.closeSubpath()
             paths.append(arrowPath)
-            
+
             let remainingPath: CGMutablePath = CGMutablePath()
             remainingPath.addRect(Rect(x: 0, y: 0, width: size.width - (unit * 2.0), height: size.height))
             paths.append(remainingPath)
@@ -168,13 +168,13 @@ extension Direction: CartesianShape {
             arrowPath.addLine(to: CartesianPoint(x: 0.0, y: size.height - unit))
             arrowPath.addLine(to: CartesianPoint(x: size.width, y: size.height - unit))
             arrowPath.closeSubpath()
-            
+
             arrowPath.move(to: CartesianPoint(x: unit, y: size.height - (unit * 1.25)))
             arrowPath.addLine(to: CartesianPoint(x: size.width * 0.1, y: size.height - (unit * 1.75)))
             arrowPath.addLine(to: CartesianPoint(x: size.width * 0.9, y: size.height - (unit * 1.75)))
             arrowPath.closeSubpath()
             paths.append(arrowPath)
-            
+
             let remainingPath: CGMutablePath = CGMutablePath()
             remainingPath.addRect(Rect(x: 0, y: 0, width: size.width, height: size.height - (unit * 2)))
             paths.append(remainingPath)
@@ -184,15 +184,15 @@ extension Direction: CartesianShape {
             arrowPath.addLine(to: CartesianPoint(x: unit, y: 0))
             arrowPath.addLine(to: CartesianPoint(x: unit, y: size.height))
             arrowPath.closeSubpath()
-            
+
             arrowPath.move(to: CartesianPoint(x: unit * 1.25, y: unit))
             arrowPath.addLine(to: CartesianPoint(x: unit * 1.75, y: size.height * 0.1))
             arrowPath.addLine(to: CartesianPoint(x: unit * 1.75, y: size.height * 0.9))
             arrowPath.closeSubpath()
             paths.append(arrowPath)
-            
+
             let remainingPath: CGMutablePath = CGMutablePath()
-            remainingPath.addRect(Rect(x: (unit * 2), y: 0, width: size.width - (unit * 2.0), height: size.height))
+            remainingPath.addRect(Rect(x: unit * 2, y: 0, width: size.width - (unit * 2.0), height: size.height))
             paths.append(remainingPath)
         case .up:
             let arrowPath: CGMutablePath = CGMutablePath()
@@ -200,21 +200,21 @@ extension Direction: CartesianShape {
             arrowPath.addLine(to: CartesianPoint(x: size.width, y: unit))
             arrowPath.addLine(to: CartesianPoint(x: 0, y: unit))
             arrowPath.closeSubpath()
-            
+
             arrowPath.move(to: CartesianPoint(x: unit, y: unit * 1.25))
             arrowPath.addLine(to: CartesianPoint(x: size.width * 0.1, y: unit * 1.75))
             arrowPath.addLine(to: CartesianPoint(x: size.width * 0.9, y: unit * 1.75))
             arrowPath.closeSubpath()
-            
-            arrowPath.addRect(Rect(x: 0, y: (unit * 2.0), width: size.width, height: (unit * 0.5)))
+
+            arrowPath.addRect(Rect(x: 0, y: unit * 2.0, width: size.width, height: unit * 0.5))
             paths.append(arrowPath)
-            
+
             let remainingPath: CGMutablePath = CGMutablePath()
-            remainingPath.addRect(Rect(x: 0, y: (unit * 2.75), width: size.width, height: unit))
-            remainingPath.addRect(Rect(x: 0, y: (unit * 4.0), width: size.width, height: size.height - (unit * 4.0)))
+            remainingPath.addRect(Rect(x: 0, y: unit * 2.75, width: size.width, height: unit))
+            remainingPath.addRect(Rect(x: 0, y: unit * 4.0, width: size.width, height: size.height - (unit * 4.0)))
             paths.append(remainingPath)
         }
-        
+
         return paths
     }
     #endif

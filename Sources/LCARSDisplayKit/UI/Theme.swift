@@ -12,11 +12,11 @@ public extension Theme {
     func textColor(on appearance: ControlAppearance) -> Color {
         .black
     }
-    
+
     func color(for id: CartesianShapeIdentifier) -> Color? {
         nil
     }
-    
+
     func gradient(for direction: Direction.Cardinal) -> LinearGradient {
         let (start, end): (UnitPoint, UnitPoint) = switch direction {
         case .down:
@@ -28,7 +28,7 @@ public extension Theme {
         case .right:
             (.trailing, .leading)
         }
-        
+
         return LinearGradient(
             stops: [
                 Gradient.Stop(
@@ -46,7 +46,7 @@ public extension Theme {
                 Gradient.Stop(
                     color: color(for: .primaryLight),
                     location: 1.0
-                )
+                ),
             ],
             startPoint: start,
             endPoint: end

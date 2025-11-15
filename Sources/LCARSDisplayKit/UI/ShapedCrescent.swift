@@ -12,7 +12,7 @@ struct ShapedCrescent: Hashable {
     let extended: Bool
     let parallelStart: Bool
     let parallelEnd: Bool
-    
+
     init(
         id: CartesianShapeIdentifier? = nil,
         title: String,
@@ -32,7 +32,7 @@ struct ShapedCrescent: Hashable {
         self.parallelStart = parallelStart
         self.parallelEnd = parallelEnd
     }
-    
+
     init(
         id: CartesianShapeIdentifier? = nil,
         title: String,
@@ -56,11 +56,11 @@ struct ShapedCrescent: Hashable {
         self.parallelStart = parallelStart
         self.parallelEnd = parallelEnd
     }
-    
+
     func shape(
         interiorRadius: Radius,
         exteriorRadius: Radius,
-        extendedRadius: Radius,
+        extendedRadius: Radius
     ) -> Crescent {
         Crescent(
             identifier: id,

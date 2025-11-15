@@ -8,14 +8,12 @@ public struct DPadClusterExtendedView: View {
 
     public static let intrinsicSize: CGSize = CGSize(width: 760.0, height: 755.0)
     public static let intrinsicSpacing: CGFloat = 8.0
-    public static let intrinsicRatio: CGFloat = {
-        if intrinsicSize.width >= intrinsicSize.height {
-            intrinsicSize.width / intrinsicSize.height
-        } else {
-            intrinsicSize.height / intrinsicSize.width
-        }
-    }()
-    
+    public static let intrinsicRatio: CGFloat = if intrinsicSize.width >= intrinsicSize.height {
+        intrinsicSize.width / intrinsicSize.height
+    } else {
+        intrinsicSize.height / intrinsicSize.width
+    }
+
     var plane: CartesianPlane
     var diameter: CGFloat
     var radius: CGFloat
@@ -24,7 +22,7 @@ public struct DPadClusterExtendedView: View {
     var cruxRadius: CGFloat
     var cartesianOffset: CartesianFrame.Offset
     var action: (CartesianShapeIdentifier) -> Void
-    
+
     var firstRingInteriorRadius: CGFloat
     var firstRingExteriorRadius: CGFloat
     var secondRingInteriorRadius: CGFloat
@@ -33,9 +31,9 @@ public struct DPadClusterExtendedView: View {
     var secondRingExtendedExteriorRadius: CGFloat
     var thirdRingInteriorRadius: CGFloat
     var thirdRingExteriorRadius: CGFloat
-    
+
     @Environment(\.theme) private var theme
-    
+
     public init(
         size: CGSize = Self.intrinsicSize,
         action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
@@ -46,7 +44,7 @@ public struct DPadClusterExtendedView: View {
             intrinsicCruxDiameter: max(Crux.intrinsicSize.width, Crux.intrinsicSize.height),
             intrinsicSpacing: Self.intrinsicSpacing
         )
-        
+
         let scaledContentSize = if size.width > size.height {
             CGSize(width: size.height * Self.intrinsicRatio, height: size.height)
         } else {
@@ -57,10 +55,10 @@ public struct DPadClusterExtendedView: View {
         } else {
             scaledContentSize.height / Self.intrinsicSize.height
         }
-        
+
         cartesianOffset = CartesianFrame.Offset(x: 0, y: scaledContentSize.height * 0.068)
         self.action = action
-        
+
         firstRingInteriorRadius = ((DPadView.intrinsicSize.width / 2.0) * scale) + spacing
         firstRingExteriorRadius = firstRingInteriorRadius + (80.0 * scale)
         secondRingInteriorRadius = firstRingExteriorRadius + spacing
@@ -70,7 +68,7 @@ public struct DPadClusterExtendedView: View {
         thirdRingInteriorRadius = secondRingExteriorRadius + spacing
         thirdRingExteriorRadius = thirdRingInteriorRadius + (72.0 * scale)
     }
-    
+
     public var body: some View {
         ZStack {
             DPadView(
@@ -85,7 +83,7 @@ public struct DPadClusterExtendedView: View {
                 x: plane.midX + cartesianOffset.x,
                 y: plane.midY + cartesianOffset.y
             )
-            
+
             crescents(
                 interiorRadius: firstRingInteriorRadius,
                 exteriorRadius: firstRingExteriorRadius,
@@ -105,7 +103,7 @@ public struct DPadClusterExtendedView: View {
                     ShapedCrescent(id: .innerRing20, title: "IR20", arc: .arc20, appearance: .primaryLight),
                 ]
             )
-            
+
             crescents(
                 interiorRadius: secondRingInteriorRadius,
                 exteriorRadius: secondRingExteriorRadius,
@@ -127,7 +125,7 @@ public struct DPadClusterExtendedView: View {
                     ShapedCrescent(id: .outerRing20, title: "OR20", arc: .arc20, appearance: .secondaryLight),
                 ]
             )
-            
+
             edges(
                 in: plane,
                 with: cartesianOffset,
@@ -150,7 +148,7 @@ public struct DPadClusterExtendedView: View {
         }
         .frame(width: plane.size.width, height: plane.size.height)
     }
-    
+
     private func crescents(
         interiorRadius: CGFloat,
         exteriorRadius: CGFloat,
@@ -176,7 +174,7 @@ public struct DPadClusterExtendedView: View {
             }
         }
     }
-    
+
     private func edges(
         in plane: CartesianPlane,
         with offset: CartesianFrame.Offset,
@@ -194,7 +192,7 @@ public struct DPadClusterExtendedView: View {
                 )
                 .foregroundStyle(theme.color(for: edge.appearance))
             }
-            
+
             ForEach(obrounds, id: \.title) { obround in
                 ObroundView(
                     obround.title,
@@ -207,12 +205,12 @@ public struct DPadClusterExtendedView: View {
             }
         }
     }
-    
+
     private var edge06: EdgedCrescent {
         let interiorArc = Curve.arc06.arc(radius: firstRingInteriorRadius)
         let exteriorArc = Curve.arc06.arc(radius: secondRingExteriorRadius)
         let point = try! CartesianPoint.make(for: secondRingExteriorRadius, degree: Curve.arc06.end)
-        
+
         return EdgedCrescent(
             identifier: .edge06,
             interiorArc: interiorArc,
@@ -222,15 +220,15 @@ public struct DPadClusterExtendedView: View {
             ]
         )
     }
-    
+
     private var edge07: EdgedCrescent {
         let interiorArc = Arc(radius: firstRingInteriorRadius, startingDegree: Curve.arc07.start, endingDegree: Curve.arc08.end)
-        
+
         let edge06Exterior = Curve.arc06.arc(radius: secondRingExteriorRadius)
         let edge09Exterior = Curve.arc09.arc(radius: secondRingExtendedExteriorRadius)
         let startingEdge = try! CartesianPoint.make(for: secondRingExteriorRadius, degree: Curve.arc07.start)
         let endingEdge = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: Curve.arc08.end)
-        
+
         return EdgedCrescent(
             identifier: .edge07,
             interiorArc: interiorArc,
@@ -241,12 +239,12 @@ public struct DPadClusterExtendedView: View {
             ]
         )
     }
-    
+
     private var edge09: EdgedCrescent {
         let interiorArc = Curve.arc09.arc(radius: firstRingInteriorRadius)
         let exteriorArc = Curve.arc09.arc(radius: secondRingExtendedExteriorRadius)
         let point = try! CartesianPoint.make(for: secondRingExtendedExteriorRadius, degree: Curve.arc09.start)
-        
+
         return EdgedCrescent(
             identifier: .edge09,
             interiorArc: interiorArc,
@@ -256,12 +254,12 @@ public struct DPadClusterExtendedView: View {
             ]
         )
     }
-    
+
     private var edge13: EdgedCrescent {
         let interiorArc = Curve.arc13.arc(radius: thirdRingInteriorRadius)
         let exteriorArc = Curve.arc13.arc(radius: thirdRingExteriorRadius)
         let point = try! CartesianPoint.make(for: thirdRingExteriorRadius, degree: Curve.arc12.start)
-        
+
         return EdgedCrescent(
             identifier: .edge13,
             interiorArc: interiorArc,
@@ -271,11 +269,11 @@ public struct DPadClusterExtendedView: View {
             ]
         )
     }
-    
+
     private var edge15: EdgedCrescent {
         let interiorArc = Curve.arc15.arc(radius: secondRingInteriorRadius)
         let exteriorArc = Curve.arc15.arc(radius: secondRingEdgeExteriorRadius)
-        
+
         return EdgedCrescent(
             identifier: .edge15,
             interiorArc: interiorArc,
@@ -285,30 +283,30 @@ public struct DPadClusterExtendedView: View {
             ]
         )
     }
-    
+
     private var top00: Obround {
         let size = CGSize(
             width: Obround.intrinsicSize.width * scale,
             height: Obround.intrinsicSize.height * scale
         )
-        
+
         let arc = Curve.arc18.arc(radius: secondRingInteriorRadius)
         let x = arc.startingPoint.x + (arc.endingPoint.x - arc.startingPoint.x) / 2.0
         let y = edge15.cartesianFrame.origin.y
-        
+
         return Obround(
             identifier: .top00,
             size: size,
             at: CartesianPoint(x: x, y: y)
         )
     }
-    
+
     private var top01: Obround {
         let height = Obround.intrinsicSize.height * scale
-        let edge13 = self.edge13
+        let edge13 = edge13
         let frame = edge13.cartesianFrame
         let width = edge13.edgePoints[1].x - edge13.edgePoints[0].x
-        
+
         return Obround(
             identifier: .top01,
             size: CGSize(
@@ -323,12 +321,12 @@ public struct DPadClusterExtendedView: View {
             roundTrailing: false
         )
     }
-    
+
     private var top02: Obround {
         let width = Obround.intrinsicSize.width * scale * 0.55
-        let top03 = self.top03
+        let top03 = top03
         let frame = top03.cartesianFrame
-        
+
         return Obround(
             identifier: .top02,
             size: CGSize(
@@ -342,12 +340,12 @@ public struct DPadClusterExtendedView: View {
             roundTrailing: false
         )
     }
-    
+
     private var top03: Obround {
         let height = Obround.intrinsicSize.height * scale
-        let edge15 = self.edge15
+        let edge15 = edge15
         let frame = edge15.cartesianFrame
-        
+
         return Obround(
             identifier: .top03,
             size: CGSize(
@@ -362,12 +360,12 @@ public struct DPadClusterExtendedView: View {
             roundTrailing: false
         )
     }
-    
+
     private var top04: Obround {
         let width = Obround.intrinsicSize.width * scale * 0.55
-        let top03 = self.top03
+        let top03 = top03
         let frame = top03.cartesianFrame
-        
+
         return Obround(
             identifier: .top04,
             size: CGSize(
@@ -381,11 +379,11 @@ public struct DPadClusterExtendedView: View {
             roundLeading: false
         )
     }
-    
+
     private var top05: Obround {
-        let top00 = self.top00
+        let top00 = top00
         let frame = top00.cartesianFrame
-        
+
         return Obround(
             identifier: .top05,
             size: top00.size,

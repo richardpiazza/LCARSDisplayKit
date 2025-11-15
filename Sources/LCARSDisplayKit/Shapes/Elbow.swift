@@ -5,11 +5,11 @@ import GraphPoint
 
 /// A large container element that 'wraps' around other content.
 public struct Elbow: Hashable, Sendable {
-    
+
     public static let defaultHorizontalHeight: CGFloat = 120.0
     public static let defaultVerticalWidth: CGFloat = 30.0
     public static let defaultClosedHeight: CGFloat = 0.0
-    
+
     public let identifier: CartesianShapeIdentifier?
     public let size: CGSize
     public let top: Bool
@@ -19,7 +19,7 @@ public struct Elbow: Hashable, Sendable {
     public let verticalWidth: CGFloat
     public let closedHeight: CGFloat
     public let shouldMatchRadius: Bool
-    
+
     /// Initialize a `Elbow` Cartesian Shape.
     ///
     /// - parameters:
@@ -59,34 +59,39 @@ extension Elbow: CartesianShape {
     public var cartesianPoints: [CartesianPoint] {
         [
             CartesianPoint(x: -(size.width / 2.0), y: -(size.height / 2.0)),
-            CartesianPoint(x: (size.width / 2.0), y: (size.height / 2.0)),
+            CartesianPoint(x: size.width / 2.0, y: size.height / 2.0),
         ]
     }
-    
+
     #if canImport(CoreGraphics)
     private var outerRadius: Radius {
         max(horizontalHeight, verticalWidth) / 2
     }
+
     private var innerRadius: Radius {
         shouldMatchRadius ? outerRadius : (outerRadius / 2.4)
     }
+
     private var upperLeftOuterCenter: CartesianPoint {
         CartesianPoint(x: outerRadius, y: outerRadius)
     }
+
     private var upperLeftInnerCenter: CartesianPoint {
         CartesianPoint(x: verticalWidth + innerRadius, y: horizontalHeight + innerRadius)
     }
+
     private var lowerRightOuterCenter: CartesianPoint {
         CartesianPoint(x: size.width - outerRadius, y: size.height - outerRadius)
     }
+
     private var lowerRightInnerCenter: CartesianPoint {
         CartesianPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight - innerRadius)
     }
-    
+
     public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
-        let size = self.size
-        
+        let size = size
+
         switch (top, left) {
         case (true, true): // Upper Left
             if rounded {
@@ -181,7 +186,7 @@ extension Elbow: CartesianShape {
             path.addLine(to: CartesianPoint(x: size.width, y: 0.0))
             path.closeSubpath()
         }
-        
+
         return path
     }
     #endif

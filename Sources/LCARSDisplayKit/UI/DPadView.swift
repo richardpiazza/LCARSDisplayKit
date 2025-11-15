@@ -7,7 +7,7 @@ public struct DPadView: View {
 
     public static let intrinsicSize: CGSize = CGSize(width: 350.0, height: 350.0)
     public static let intrinsicSpacing: CGFloat = 8.0
-    
+
     var plane: CartesianPlane
     var diameter: CGFloat
     var radius: CGFloat
@@ -15,9 +15,9 @@ public struct DPadView: View {
     var cruxRadius: CGFloat
     var cartesianOffset: CartesianFrame.Offset = .zero
     var action: (CartesianShapeIdentifier) -> Void
-    
+
     @Environment(\.theme) private var theme
-    
+
     public init(
         size: CGSize = Self.intrinsicSize,
         action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
@@ -30,7 +30,7 @@ public struct DPadView: View {
         )
         self.action = action
     }
-    
+
     public init(
         scale value: CGFloat,
         action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
@@ -44,7 +44,7 @@ public struct DPadView: View {
         )
         self.action = action
     }
-    
+
     public var body: some View {
         ZStack {
             CruxView(
@@ -57,7 +57,7 @@ public struct DPadView: View {
                 action: action
             )
             .foregroundStyle(theme.color(for: .primaryDark))
-            
+
             ForEach(Wedge.Sector.allCases, id: \.self) { sector in
                 WedgeView(
                     Wedge(
@@ -71,7 +71,7 @@ public struct DPadView: View {
                 )
                 .foregroundStyle(theme.color(for: .primaryMedium))
             }
-            
+
             ForEach(Direction.Cardinal.allCases, id: \.self) { direction in
                 DirectionView(
                     Direction(

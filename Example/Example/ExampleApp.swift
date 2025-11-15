@@ -3,7 +3,7 @@ import SwiftUI
 
 @main
 struct ExampleApp: App {
-    
+
     init() {
         do {
             try CTFont.registerLCARSFonts()
@@ -11,7 +11,7 @@ struct ExampleApp: App {
             print(error)
         }
     }
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()

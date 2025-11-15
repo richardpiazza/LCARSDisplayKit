@@ -8,7 +8,7 @@ public struct Crescent: Hashable, Sendable {
     public let identifier: CartesianShapeIdentifier?
     public let interiorArc: Arc
     public let exteriorArc: Arc
-    
+
     /// Initialize a `Crescent` Cartesian Shape.
     ///
     /// - parameters:
@@ -35,24 +35,24 @@ extension Crescent: CartesianShape {
             exteriorArc.endingPoint,
         ]
     }
-    
+
     public var cartesianFrame: CartesianFrame {
         (try? .make(for: exteriorArc, points: cartesianPoints)) ?? .zero
     }
-    
+
     #if canImport(CoreGraphics)
     public var path: CGPath {
         let frame = cartesianFrame
         let center = frame.offsetToCartesianOrigin
         let translated = frame.relativePointForCartesianPoint(exteriorArc.endingPoint)
         let exteriorReversed = Arc(radius: exteriorArc.radius, startingDegree: exteriorArc.endingDegree, endingDegree: exteriorArc.startingDegree)
-        
+
         let path = CGMutablePath()
         path.addArc(arc: interiorArc, center: center, clockwise: false)
         path.addLine(to: translated)
         path.addArc(arc: exteriorReversed, center: center, clockwise: true)
         path.closeSubpath()
-        
+
         return path
     }
     #endif

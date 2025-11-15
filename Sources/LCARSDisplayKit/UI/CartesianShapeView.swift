@@ -12,13 +12,13 @@ public typealias ObroundView = CartesianShapeView<Obround>
 public typealias WedgeView = CartesianShapeView<Wedge>
 
 public struct CartesianShapeView<T: CartesianShape>: View {
-    
+
     struct PathButtonStyle: ButtonStyle {
         var id: T.ID
         var path: Path
-        
+
         @Environment(\.theme) private var theme
-        
+
         func makeBody(configuration: Configuration) -> some View {
             ZStack {
                 if let color = theme.color(for: id) {
@@ -27,7 +27,7 @@ public struct CartesianShapeView<T: CartesianShape>: View {
                 } else {
                     path
                 }
-                
+
                 configuration
                     .label
                     .foregroundStyle(theme.textColor(on: .primaryLight))
@@ -38,21 +38,21 @@ public struct CartesianShapeView<T: CartesianShape>: View {
             .saturation(configuration.isPressed ? 0.5 : 1.0)
         }
     }
-    
+
     var title: String
     var id: T.ID
     var path: Path
     var rect: CGRect
     var offset: CGPoint
     var action: (T.ID) -> Void
-    
+
     @Environment(\.behaviors) private var behaviors
-    
+
     @State private var behavior: ControlBehavior?
     @State private var timer: Timer?
     @State private var opacity: Double = 1.0
     @State private var disabled: Bool = false
-    
+
     public init(
         _ shape: T,
         in plane: CartesianPlane,
@@ -61,12 +61,12 @@ public struct CartesianShapeView<T: CartesianShape>: View {
     ) {
         title = ""
         id = shape.id
-        self.path = Path(shape.path)
-        self.rect = CGRect(plane.rect(for: shape.cartesianFrame))
+        path = Path(shape.path)
+        rect = CGRect(plane.rect(for: shape.cartesianFrame))
         self.offset = CGPoint(offset)
         self.action = action
     }
-    
+
     public init(
         _ title: String,
         shape: T,
@@ -77,11 +77,11 @@ public struct CartesianShapeView<T: CartesianShape>: View {
         self.title = title
         id = shape.id
         path = Path(shape.path)
-        self.rect = CGRect(plane.rect(for: shape.cartesianFrame))
+        rect = CGRect(plane.rect(for: shape.cartesianFrame))
         self.offset = CGPoint(offset)
         self.action = action
     }
-    
+
     public var body: some View {
         Button(title) {
             action(id)
@@ -105,7 +105,7 @@ public struct CartesianShapeView<T: CartesianShape>: View {
             enable(behavior: newValue)
         }
     }
-    
+
     private func disable(behavior value: ControlBehavior?) {
         switch value {
         case .disabled:
@@ -122,7 +122,7 @@ public struct CartesianShapeView<T: CartesianShape>: View {
             break
         }
     }
-    
+
     private func enable(behavior value: ControlBehavior?) {
         switch value {
         case .disabled:

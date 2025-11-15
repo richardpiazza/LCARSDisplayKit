@@ -19,10 +19,10 @@ public extension CGSize {
         let scale = diameter / intrinsicDiameter
         let spacing = intrinsicSpacing * scale
         let cruxRadius = (intrinsicCruxDiameter * scale) / 2.0
-        
+
         return (diameter, radius, scale, spacing, cruxRadius)
     }
-    
+
     func dPadValues(
         intrinsicDiameter: CGFloat,
         intrinsicCruxDiameter: CGFloat = 60.0,

@@ -6,16 +6,16 @@ import Swift2D
 
 /// The central element of any cardinal direction cluster.
 public struct Crux: Hashable, Sendable {
-    
+
     public static let intrinsicSize: CGSize = CGSize(width: 60.0, height: 60.0)
-    
+
     public let identifier: CartesianShapeIdentifier?
     public let size: CGSize
-    
+
     private var radius: Radius {
         max(size.width, size.height) / 2.0
     }
-    
+
     /// Initialize a `Crux` Cartesian Shape.
     ///
     /// - parameters:
@@ -28,7 +28,7 @@ public struct Crux: Hashable, Sendable {
         self.identifier = identifier
         self.size = size
     }
-    
+
     /// Initialize a `Crux` Cartesian Shape.
     ///
     /// - parameters:
@@ -52,19 +52,19 @@ extension Crux: CartesianShape {
             CartesianPoint(x: radius, y: radius),
         ]
     }
-    
+
     public var cartesianFrame: CartesianFrame {
         CartesianFrame.make(for: cartesianPoints)
     }
-    
+
     #if canImport(CoreGraphics)
     public var path: CGPath {
         let path = CGMutablePath()
-        
+
         path.move(to: .zero)
         path.addRect(CGRect(origin: .zero, size: size))
         path.closeSubpath()
-        
+
         return path
     }
     #endif
