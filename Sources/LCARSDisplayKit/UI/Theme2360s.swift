@@ -9,29 +9,29 @@ public struct Theme2360s: Theme {
     public func color(for appearance: ControlAppearance) -> Color {
         switch appearance {
         case .primaryDark:
-            Color(uiColor: Pigment.neonCarrot.uiColor)
+            Color(Pigment.neonCarrot.uiColor)
         case .primaryLight:
-            Color(uiColor: Pigment.paleCanary.uiColor)
+            Color(Pigment.paleCanary.uiColor)
         case .primaryMedium:
-            Color(uiColor: Pigment.goldenTainoi.uiColor)
+            Color(Pigment.goldenTainoi.uiColor)
         case .secondaryDark:
-            Color(uiColor: Pigment.mariner.uiColor)
+            Color(Pigment.mariner.uiColor)
         case .secondaryLight:
-            Color(uiColor: Pigment.babyBlueEyes.uiColor)
+            Color(Pigment.babyBlueEyes.uiColor)
         case .secondaryMedium:
-            Color(uiColor: Pigment.bahamaBlue.uiColor)
+            Color(Pigment.bahamaBlue.uiColor)
         case .tertiaryDark:
-            Color(uiColor: Pigment.darkPurple.uiColor)
+            Color(Pigment.darkPurple.uiColor)
         case .tertiaryLight:
-            Color(uiColor: Pigment.cosmic.uiColor)
+            Color(Pigment.cosmic.uiColor)
         case .tertiaryMedium:
-            Color(uiColor: Pigment.pastelViolet.uiColor)
+            Color(Pigment.pastelViolet.uiColor)
         case .quaternaryDark:
-            Color(uiColor: Pigment.flatGray.uiColor)
+            Color(Pigment.flatGray.uiColor)
         case .quaternaryLight:
-            Color(uiColor: Pigment.flatGray.uiColor)
+            Color(Pigment.flatGray.uiColor)
         case .quaternaryMedium:
-            Color(uiColor: Pigment.flatGray.uiColor)
+            Color(Pigment.flatGray.uiColor)
         }
     }
 }
