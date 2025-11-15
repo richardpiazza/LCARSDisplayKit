@@ -1,6 +1,10 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
+#else
+import Foundation
+#endif
 
+#if canImport(CoreGraphics) || canImport(Foundation)
 public extension CGSize {
     func dPadValues(
         intrinsicSize: CGSize = CGSize(width: 350.0, height: 350.0),
