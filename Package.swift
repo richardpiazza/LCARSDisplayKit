@@ -16,24 +16,31 @@ let package = Package(
     products: [
         .library(
             name: "LCARSDisplayKit",
-            targets: ["LCARSDisplayKit"],
+            targets: ["LCARSDisplayKit"]
         ),
     ],
     dependencies: [
         .package(url: "https://github.com/richardpiazza/GraphPoint.git", from: "5.1.0"),
+        .package(url: "https://github.com/richardpiazza/SwiftColor.git", branch: "feature/swift-ui"), // from: "0.3.0"
     ],
     targets: [
         .target(
             name: "LCARSDisplayKit",
-            dependencies: ["GraphPoint"],
+            dependencies: [
+                .product(name: "GraphPoint", package: "GraphPoint"),
+                .product(name: "SwiftColor", package: "SwiftColor"),
+            ],
             resources: [
                 .process("Resources"),
             ]
         ),
         .testTarget(
             name: "LCARSDisplayKitTests",
-            dependencies: ["GraphPoint", "LCARSDisplayKit"],
-        )
+            dependencies: [
+                "LCARSDisplayKit",
+                .product(name: "GraphPoint", package: "GraphPoint"),
+            ]
+        ),
     ],
     swiftLanguageModes: [.v5]
 )

@@ -1,96 +1,61 @@
+#if canImport(CoreGraphics)
+import CoreGraphics
+#else
+import Foundation
+#endif
 import GraphPoint
 
 /// Two `Arc`s connected by straight lines at their end points.
-public struct Crescent {
-    /// Arc with radius closest to the cartesian origin.
-    public var interiorArc: Arc
-    /// Arc with radius farthest from the cartesian origin.
-    public var exteriorArc: Arc
-    /// Uses the interior starting point to extend the exterior starting point, creating a straight line.
-    public var extendExteriorStart: Bool
-    /// Uses the interior ending point to extend the exterior ending point, creating a straight line.
-    public var extendExteriorEnd: Bool
-    
-    public init() {
-        interiorArc = Arc()
-        exteriorArc = Arc()
-        extendExteriorStart = false
-        extendExteriorEnd = false
-    }
-    
-    public init(interiorArc: Arc, exteriorArc: Arc, extendExteriorStart: Bool = false, extendExteriorEnd: Bool = false) {
+public struct Crescent: Hashable, Sendable {
+    public let identifier: CartesianShapeIdentifier?
+    public let interiorArc: Arc
+    public let exteriorArc: Arc
+
+    /// Initialize a `Crescent` Cartesian Shape.
+    ///
+    /// - parameters:
+    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - interiorArc: Arc with radius closest to the cartesian origin.
+    ///   - exteriorArc: Arc with radius farthest from the cartesian origin.
+    public init(
+        identifier: CartesianShapeIdentifier? = nil,
+        interiorArc: Arc = Arc(),
+        exteriorArc: Arc = Arc()
+    ) {
+        self.identifier = identifier
         self.interiorArc = interiorArc
         self.exteriorArc = exteriorArc
-        self.extendExteriorStart = extendExteriorStart
-        self.extendExteriorEnd = extendExteriorEnd
     }
 }
 
-public extension Crescent {
-    var interiorRadius: Radius {
-        return min(interiorArc.radius, exteriorArc.radius)
-    }
-    
-    var exteriorRadius: Radius {
-        return max(exteriorArc.radius, interiorArc.radius)
-    }
-    
-    var startDegree: Degree {
-        return min(interiorArc.startingDegree, exteriorArc.startingDegree)
-    }
-    
-    var endDegree: Degree {
-        return max(interiorArc.endingDegree, exteriorArc.endingDegree)
-    }
-    
-    var interiorArcStartingPoint: CartesianPoint {
-        return interiorArc.startingPoint
-    }
-    
-    var interiorArcEndingPoint: CartesianPoint {
-        return interiorArc.endingPoint
-    }
-    
-    var exteriorArcStartingPoint: CartesianPoint {
-        do {
-            switch extendExteriorStart {
-            case true:
-                return try CartesianPoint.make(for: exteriorRadius, degree: startDegree, modifier: interiorArc.startingPoint)
-            case false:
-                return exteriorArc.startingPoint
-            }
-        } catch {
-            return .zero
-        }
-    }
-    
-    var exteriorArcEndingPoint: CartesianPoint {
-        do {
-            switch extendExteriorEnd {
-            case true:
-                return try CartesianPoint.make(for: exteriorRadius, degree: endDegree, modifier: interiorArc.endingPoint)
-            case false:
-                return exteriorArc.endingPoint
-            }
-        } catch {
-            return .zero
-        }
-    }
-}
-
-extension Crescent: ExpressibleByCartesianPoints {
+extension Crescent: CartesianShape {
     public var cartesianPoints: [CartesianPoint] {
-        return [
-            interiorArcStartingPoint, interiorArcEndingPoint,
-            exteriorArcStartingPoint, exteriorArcEndingPoint
+        [
+            interiorArc.startingPoint,
+            interiorArc.endingPoint,
+            exteriorArc.startingPoint,
+            exteriorArc.endingPoint,
         ]
     }
-    
+
     public var cartesianFrame: CartesianFrame {
-        do {
-            return try .make(for: exteriorArc, points: cartesianPoints)
-        } catch {
-            return .zero
-        }
+        (try? .make(for: exteriorArc, points: cartesianPoints)) ?? .zero
     }
+
+    #if canImport(CoreGraphics)
+    public var path: CGPath {
+        let frame = cartesianFrame
+        let center = frame.offsetToCartesianOrigin
+        let translated = frame.relativePointForCartesianPoint(exteriorArc.endingPoint)
+        let exteriorReversed = Arc(radius: exteriorArc.radius, startingDegree: exteriorArc.endingDegree, endingDegree: exteriorArc.startingDegree)
+
+        let path = CGMutablePath()
+        path.addArc(arc: interiorArc, center: center, clockwise: false)
+        path.addLine(to: translated)
+        path.addArc(arc: exteriorReversed, center: center, clockwise: true)
+        path.closeSubpath()
+
+        return path
+    }
+    #endif
 }

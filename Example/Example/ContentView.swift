@@ -1,23 +1,55 @@
+import GraphPoint
 import LCARSDisplayKit
+import Swift2D
 import SwiftUI
 
 struct ContentView: View {
-    
-    var body: some View {
-        ViewControllerRepresentable()
-    }
-}
 
-struct ViewControllerRepresentable: UIViewControllerRepresentable {
-    typealias UIViewControllerType = ViewController
-    
-    func makeUIViewController(context: Context) -> ViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: .main)
-        let viewController = storyboard.instantiateInitialViewController()!
-        return viewController as! ViewController
-    }
-    
-    func updateUIViewController(_ uiViewController: ViewController, context: Context) {
+    private let commandSequencer = CommandSequencer()
+
+    @Environment(\.theme) private var theme
+    @State private var behaviors: [CartesianShapeIdentifier: ControlBehavior] = [
+        .innerRing10: .hidden,
+        .innerRing16: .hidden,
+        .outerRing14: .hidden,
+    ]
+
+    var body: some View {
+        ZStack(alignment: .bottomLeading) {
+            GeometryReader { geometry in
+                ElbowView(
+                    "",
+                    shape: Elbow(
+                        size: geometry.size,
+                        horizontalHeight: 140,
+                        verticalWidth: 40,
+                        closedHeight: 30
+                    ),
+                    in: CartesianPlane(origin: .zero, size: Size(geometry.size))
+                )
+                .foregroundStyle(theme.color(for: .quaternaryLight))
+            }
+
+            DPadClusterExtendedView { id in
+                commandSequencer.didActivate(id)
+            }
+            .offset(x: 50, y: -40)
+        }
+        .background(.black)
+        .environment(\.behaviors, behaviors)
+        .task {
+            commandSequencer.register(commandSequence: [.edge07, .outerRing16]) {
+                behaviors[.innerRing11] = .pulsing(timeInterval: 2.5)
+                behaviors[.outerRing16] = .pulsing(timeInterval: 3.0)
+                behaviors[.outerRing01] = .pulsing(timeInterval: 4.0)
+            }
+
+            commandSequencer.register(commandSequence: [.edge07, .outerRing17]) {
+                behaviors[.innerRing11] = nil
+                behaviors[.outerRing16] = nil
+                behaviors[.outerRing01] = nil
+            }
+        }
     }
 }
 

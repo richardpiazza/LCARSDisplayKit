@@ -1,26 +1,64 @@
+#if canImport(CoreGraphics)
+import CoreGraphics
+#else
+import Foundation
+#endif
 import GraphPoint
 import Swift2D
-#if canImport(UIKit)
-import UIKit
 
-#if !os(watchOS)
-open class RoundedRectangleControl: InteractiveControl<RoundedRectangle> {
+/// A rectangle with optionally rounded ends
+public struct Obround: Hashable, Sendable {
 
-    open override var intrinsicContentSize: CGSize {
-        return CGSize(width: 144, height: 60)
-    }
-    
-    open override func didChangeSize(_ size: Size) {
-        super.didChangeSize(size)
-        shape.size = size
+    public static let intrinsicSize: CGSize = CGSize(width: 144.0, height: 60.0)
+
+    public let identifier: CartesianShapeIdentifier?
+    public let cartesianPoints: [CartesianPoint]
+    public let size: CGSize
+    public let leftRounded: Bool
+    public let rightRounded: Bool
+    public let cornersOnly: Bool
+
+    /// Initialize a `Obround` Cartesian Shape.
+    ///
+    /// - parameters:
+    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - size: The size of the shape - modifiable through intrinsic values
+    ///   - leftRounded:
+    ///   - rightRounded:
+    ///   - cornersOnly:
+    public init(
+        identifier: CartesianShapeIdentifier? = nil,
+        size: CGSize = Self.intrinsicSize,
+        at point: CartesianPoint = .zero,
+        roundLeading: Bool = true,
+        roundTrailing: Bool = true,
+        cornersOnly: Bool = false
+    ) {
+        self.identifier = identifier
+        self.size = size
+        cartesianPoints = [
+            point,
+            CartesianPoint(
+                x: point.x + size.width,
+                y: point.y - size.height
+            ),
+        ]
+        leftRounded = roundLeading
+        rightRounded = roundTrailing
+        self.cornersOnly = cornersOnly
     }
 }
-#endif
 
-extension RoundedRectangle: ExpressibleByPath {
+extension Obround: CartesianShape {
+    #if canImport(CoreGraphics)
+    /// Calculates the radius of the arcs depending on `cornersOnly`
+    private var radius: Radius { cornersOnly ? size.height * 0.25 : size.height * 0.5 }
+    private var upperLeftCenter: Point { Point(x: radius, y: radius) }
+    private var lowerRightCenter: Point { Point(x: size.width - radius, y: size.height - radius) }
+
     public var path: CGPath {
         let path = CGMutablePath()
-        
+
         switch (leftRounded, rightRounded, cornersOnly) {
         case (true, true, true):
             path.addArc(center: upperLeftCenter, radius: Radius(radius), startDegree: 180.0, endDegree: 270.0, clockwise: false)
@@ -61,10 +99,10 @@ extension RoundedRectangle: ExpressibleByPath {
             path.addLine(to: CartesianPoint.zero)
             path.closeSubpath()
         default:
-            path.addRect(CartesianFrame(origin: .zero, size: size))
+            path.addRect(CartesianFrame(origin: .zero, size: Size(size)))
         }
-        
+
         return path
     }
+    #endif
 }
-#endif

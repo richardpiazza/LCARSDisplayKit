@@ -19,7 +19,7 @@ public extension Font {
         case .caption2: 11.0
         default: 17.0
         }
-        
+
         return Font.custom("Swiss911 UCm BT", size: size, relativeTo: textStyle)
     }
 }
