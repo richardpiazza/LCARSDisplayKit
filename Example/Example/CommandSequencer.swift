@@ -36,6 +36,7 @@ class CommandSequencer {
     }
     
     func didActivate(_ sender: CartesianShapeIdentifier) {
+        print("Activated: \(sender.rawValue)")
         currentPath.append(sender)
         
         guard commandSequences.count > 0 else {

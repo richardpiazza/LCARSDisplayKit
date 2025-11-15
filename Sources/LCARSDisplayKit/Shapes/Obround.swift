@@ -9,34 +9,30 @@ public struct Obround: Hashable, Sendable {
     
     public static let intrinsicSize: CGSize = CGSize(width: 144.0, height: 60.0)
     
-    /// Points used to define the frame of the shape.
+    public let identifier: CartesianShapeIdentifier?
     public let cartesianPoints: [CartesianPoint]
-    /// The size of the shape - modifiable through intrinsic values
-    public let size: Size
+    public let size: CGSize
     public let leftRounded: Bool
     public let rightRounded: Bool
     public let cornersOnly: Bool
     
+    /// Initialize a `Obround` Cartesian Shape.
+    ///
+    /// - parameters:
+    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - size: The size of the shape - modifiable through intrinsic values
+    ///   - leftRounded:
+    ///   - rightRounded:
+    ///   - cornersOnly:
     public init(
-        cartesianPoints: [CartesianPoint] = [],
-        leftRounded: Bool = false,
-        rightRounded: Bool = false,
-        cornersOnly: Bool = false
-    ) {
-        self.cartesianPoints = cartesianPoints
-        self.size = CartesianFrame.make(for: cartesianPoints).size
-        self.leftRounded = leftRounded
-        self.rightRounded = rightRounded
-        self.cornersOnly = cornersOnly
-    }
-    
-    public init(
-        size: Size,
-        at point: CartesianPoint,
+        identifier: CartesianShapeIdentifier? = nil,
+        size: CGSize = Self.intrinsicSize,
+        at point: CartesianPoint = .zero,
         roundLeading: Bool = true,
         roundTrailing: Bool = true,
         cornersOnly: Bool = false
     ) {
+        self.identifier = identifier
         self.size = size
         cartesianPoints = [
             point,
@@ -101,7 +97,7 @@ extension Obround: CartesianShape {
             path.addLine(to: CartesianPoint.zero)
             path.closeSubpath()
         default:
-            path.addRect(CartesianFrame(origin: .zero, size: size))
+            path.addRect(CartesianFrame(origin: .zero, size: Size(size)))
         }
         
         return path

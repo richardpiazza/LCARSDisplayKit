@@ -6,7 +6,7 @@ extension UIColor {
     /// Supplying the `amount` of 1.0 returns the same color.
     /// - A value of 1.1 returns a color 10% more saturated.
     /// - A value of 0.9 returns a color 10% less saturated.
-    func adaptingSaturation(by amount: Float) -> UIColor {
+    func adaptingSaturation(by amount: CGFloat) -> UIColor {
         var hue: CGFloat = 0
         var saturation: CGFloat = 0
         var brightness: CGFloat = 0
@@ -16,7 +16,7 @@ extension UIColor {
             return self
         }
         
-        let adaptedSaturation = saturation * CGFloat(amount)
+        let adaptedSaturation = saturation * amount
         
         return UIColor(hue: hue, saturation: adaptedSaturation, brightness: brightness, alpha: alpha)
     }

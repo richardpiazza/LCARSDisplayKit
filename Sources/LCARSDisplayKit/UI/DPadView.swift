@@ -4,7 +4,7 @@ import Swift2D
 import SwiftUI
 
 public struct DPadView: View {
-    
+
     public static let intrinsicSize: CGSize = CGSize(width: 350.0, height: 350.0)
     public static let intrinsicSpacing: CGFloat = 8.0
     
@@ -14,18 +14,12 @@ public struct DPadView: View {
     var spacing: CGFloat
     var cruxRadius: CGFloat
     var cartesianOffset: CartesianFrame.Offset = .zero
-    var cruxColor: Color?
-    var sectorColor: Color?
-    var upGradientStop: CGFloat?
     var action: (CartesianShapeIdentifier) -> Void
     
-    @Environment(\.appearance) private var appearance
+    @Environment(\.theme) private var theme
     
     public init(
         size: CGSize = Self.intrinsicSize,
-        cruxColor: Color? = nil,
-        sectorColor: Color? = nil,
-        upGradientStop: CGFloat? = nil,
         action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
     ) {
         plane = CartesianPlane(CGRect(origin: .zero, size: size))
@@ -34,17 +28,11 @@ public struct DPadView: View {
             intrinsicCruxDiameter: max(Crux.intrinsicSize.width, Crux.intrinsicSize.height),
             intrinsicSpacing: Self.intrinsicSpacing
         )
-        self.cruxColor = cruxColor
-        self.sectorColor = sectorColor
-        self.upGradientStop = upGradientStop
         self.action = action
     }
     
     public init(
         scale value: CGFloat,
-        cruxColor: Color? = nil,
-        sectorColor: Color? = nil,
-        upGradientStop: CGFloat? = nil,
         action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
     ) {
         let size = CGSize(width: Self.intrinsicSize.width * value, height: Self.intrinsicSize.height * value)
@@ -54,36 +42,41 @@ public struct DPadView: View {
             intrinsicCruxDiameter: max(Crux.intrinsicSize.width, Crux.intrinsicSize.height),
             intrinsicSpacing: Self.intrinsicSpacing
         )
-        self.cruxColor = cruxColor
-        self.sectorColor = sectorColor
-        self.upGradientStop = upGradientStop
         self.action = action
     }
     
     public var body: some View {
         ZStack {
             CruxView(
-                Crux(radius: cruxRadius),
+                Crux(
+                    identifier: .crux,
+                    radius: cruxRadius
+                ),
                 in: plane,
                 with: cartesianOffset,
                 action: action
             )
-            .foregroundStyle(cruxColor ?? appearance.primary.dark)
+            .foregroundStyle(theme.color(for: .primaryDark))
             
             ForEach(Wedge.Sector.allCases, id: \.self) { sector in
                 WedgeView(
-                    Wedge(sector: sector, radius: radius),
+                    Wedge(
+                        identifier: sector.rawValue,
+                        sector: sector,
+                        radius: radius
+                    ),
                     in: plane,
                     with: cartesianOffset,
                     action: action
                 )
-                .foregroundStyle(sectorColor ?? appearance.primary.medium)
+                .foregroundStyle(theme.color(for: .primaryMedium))
             }
             
             ForEach(Direction.Cardinal.allCases, id: \.self) { direction in
                 DirectionView(
                     Direction(
-                        direction,
+                        identifier: direction.rawValue,
+                        cardinal: direction,
                         interiorRadius: cruxRadius + spacing,
                         exteriorRadius: radius
                     ),
@@ -91,46 +84,10 @@ public struct DPadView: View {
                     with: cartesianOffset,
                     action: action
                 )
-                .foregroundStyle(gradient(for: direction))
+                .foregroundStyle(theme.gradient(for: direction))
             }
         }
         .frame(width: plane.size.width, height: plane.size.height)
-    }
-    
-    private func gradient(for direction: Direction.Cardinal) -> LinearGradient {
-        let (start, end, stop): (UnitPoint, UnitPoint, CGFloat) = switch direction {
-        case .down:
-            (.bottom, .top, 0.4)
-        case .left:
-            (.leading, .trailing, 0.4)
-        case .up:
-            (.top, .bottom, upGradientStop ?? 0.4)
-        case .right:
-            (.trailing, .leading, 0.4)
-        }
-        
-        return LinearGradient(
-            stops: [
-                Gradient.Stop(
-                    color: appearance.primary.dark,
-                    location: 0
-                ),
-                Gradient.Stop(
-                    color: appearance.primary.dark,
-                    location: stop
-                ),
-                Gradient.Stop(
-                    color: appearance.primary.light,
-                    location: stop
-                ),
-                Gradient.Stop(
-                    color: appearance.primary.light,
-                    location: 1.0
-                )
-            ],
-            startPoint: start,
-            endPoint: end
-        )
     }
 }
 

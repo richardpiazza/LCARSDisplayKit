@@ -7,7 +7,7 @@ struct ContentView: View {
     
     private let commandSequencer = CommandSequencer()
     
-    @Environment(\.appearance) private var appearance
+    @Environment(\.theme) private var theme
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -15,14 +15,14 @@ struct ContentView: View {
                 ElbowView(
                     "",
                     shape: Elbow(
-                        size: Size(geometry.size),
+                        size: geometry.size,
                         horizontalHeight: 140,
                         verticalWidth: 40,
                         closedHeight: 30
                     ),
                     in: CartesianPlane(origin: .zero, size: Size(geometry.size)),
                 )
-                .foregroundStyle(appearance.inactive)
+                .foregroundStyle(theme.color(for: .quaternaryLight))
             }
             
             DPadClusterExtendedView { id in

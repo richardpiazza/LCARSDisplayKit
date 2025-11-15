@@ -1,40 +1,52 @@
-#if canImport(UIKit)
-import UIKit
-    
-@available(*, deprecated)
+#if canImport(SwiftUI)
+import SwiftUI
+
 public protocol Theme {
-    // Colors
-    var primaryLight: UIColor { get }
-    var primaryMedium: UIColor { get }
-    var primaryDark: UIColor { get }
-    var secondaryLight: UIColor { get }
-    var secondaryMedium: UIColor { get }
-    var secondaryDark: UIColor { get }
-    var tertiaryLight: UIColor { get }
-    var tertiaryMedium: UIColor { get }
-    var tertiaryDark: UIColor { get }
-    var inactive: UIColor { get }
-    // Fonts
-    var title: UIFont { get }
-    var subtitle: UIFont { get }
-    var body: UIFont { get }
-    // Sounds
-    var neutralBeep: Data { get }
-    var successBeep: Data { get }
-    var failureBeep: Data { get }
-    // Sizes
-    var defaultSpacing: CGFloat { get }
+    func color(for appearance: ControlAppearance) -> Color
+    func textColor(on appearance: ControlAppearance) -> Color
+    func color(for id: CartesianShapeIdentifier) -> Color?
+    func gradient(for direction: Direction.Cardinal) -> LinearGradient
 }
 
-@available(*, deprecated)
 public extension Theme {
-    func randomColor() -> UIColor {
-        let colors = [primaryLight, primaryDark, tertiaryLight, tertiaryDark]
-        return colors.randomElement()!
+    func color(for id: CartesianShapeIdentifier) -> Color? {
+        nil
     }
     
-    var defaultSpacing: CGFloat {
-        return CGFloat(8)
+    func gradient(for direction: Direction.Cardinal) -> LinearGradient {
+        let (start, end): (UnitPoint, UnitPoint) = switch direction {
+        case .down:
+            (.bottom, .top)
+        case .left:
+            (.leading, .trailing)
+        case .up:
+            (.top, .bottom)
+        case .right:
+            (.trailing, .leading)
+        }
+        
+        return LinearGradient(
+            stops: [
+                Gradient.Stop(
+                    color: color(for: .primaryDark),
+                    location: 0
+                ),
+                Gradient.Stop(
+                    color: color(for: .primaryDark),
+                    location: 0.4
+                ),
+                Gradient.Stop(
+                    color: color(for: .primaryLight),
+                    location: 0.4
+                ),
+                Gradient.Stop(
+                    color: color(for: .primaryLight),
+                    location: 1.0
+                )
+            ],
+            startPoint: start,
+            endPoint: end
+        )
     }
 }
 #endif

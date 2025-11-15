@@ -5,7 +5,7 @@ import SwiftUI
 
 /// An example cluster control set that extends a 'DPad'.
 ///
-/// This particular layout comes from small tactical station behind the command
+/// This particular layout comes from the small tactical station behind the command
 /// chairs on the USS Voyager.
 public struct DPadClusterCompactView: View {
 
@@ -37,7 +37,7 @@ public struct DPadClusterCompactView: View {
     var thirdRingInteriorRadius: CGFloat
     var thirdRingExteriorRadius: CGFloat
     
-    @Environment(\.appearance) private var appearance
+    @Environment(\.theme) private var theme
     
     public init(
         size: CGSize = Self.intrinsicSize,
@@ -81,9 +81,6 @@ public struct DPadClusterCompactView: View {
         ZStack {
             DPadView(
                 scale: scale,
-                cruxColor: appearance.secondary.light,
-                sectorColor: appearance.inactive,
-                upGradientStop: 0.6,
                 action: action
             )
             .frame(
@@ -101,12 +98,12 @@ public struct DPadClusterCompactView: View {
                 extendedExteriorRadius: firstRingExteriorRadius,
                 in: plane,
                 with: cartesianOffset,
-                rings: [
-                    DPadCrescent(title: "IR08", arc: .arc08, color: appearance.primary.dark),
-                    DPadCrescent(title: "IR09", arc: .arc09, color: appearance.secondary.light),
-                    DPadCrescent(title: "IR10", arc: .arc10, color: appearance.secondary.dark),
-                    DPadCrescent(title: "IR11", arc: .arc11, color: appearance.secondary.light),
-                    DPadCrescent(title: "IR13", arc: .arc13, color: appearance.secondary.dark),
+                shapes: [
+                    ShapedCrescent(id: .innerRing08, title: "IR08", arc: .arc08, appearance: .primaryDark),
+                    ShapedCrescent(id: .innerRing09, title: "IR09", arc: .arc09, appearance: .secondaryLight),
+                    ShapedCrescent(id: .innerRing10, title: "IR10", arc: .arc10, appearance: .secondaryDark),
+                    ShapedCrescent(id: .innerRing11, title: "IR11", arc: .arc11, appearance: .secondaryLight),
+                    ShapedCrescent(id: .innerRing13, title: "IR13", arc: .arc13, appearance: .secondaryDark),
                 ]
             )
             
@@ -116,13 +113,13 @@ public struct DPadClusterCompactView: View {
                 extendedExteriorRadius: secondRingExtendedExteriorRadius,
                 in: plane,
                 with: cartesianOffset,
-                rings: [
-                    DPadCrescent(title: "OR09", arc: .arc09, color: appearance.secondary.dark),
-                    DPadCrescent(title: "OR10", arc: .arc10, color: appearance.secondary.light),
-                    DPadCrescent(title: "OR11", arc: .arc11, color: appearance.primary.dark),
-                    DPadCrescent(title: "OR12", arc: .arc12, color: appearance.secondary.dark),
-                    DPadCrescent(title: "OR13", arc: .arc13, color: appearance.secondary.light),
-                    DPadCrescent(title: "OR18", arc: .arc18, color: appearance.primary.dark, extended: true),
+                shapes: [
+                    ShapedCrescent(id: .outerRing09, title: "OR09", arc: .arc09, appearance: .secondaryDark),
+                    ShapedCrescent(id: .outerRing10, title: "OR10", arc: .arc10, appearance: .secondaryLight),
+                    ShapedCrescent(id: .outerRing11, title: "OR11", arc: .arc11, appearance: .primaryDark),
+                    ShapedCrescent(id: .outerRing12, title: "OR12", arc: .arc12, appearance: .secondaryDark),
+                    ShapedCrescent(id: .outerRing13, title: "OR13", arc: .arc13, appearance: .secondaryLight),
+                    ShapedCrescent(id: .outerRing18, title: "OR18", arc: .arc18, appearance: .primaryDark, extended: true),
                 ]
             )
             
@@ -130,21 +127,21 @@ public struct DPadClusterCompactView: View {
                 in: plane,
                 with: cartesianOffset,
                 crescents: [
-                    ShapedEdge(title: "IN01", shape: innerRing01, color: appearance.secondary.dark),
-                    ShapedEdge(title: "IN14", shape: innerRing14, color: appearance.secondary.light),
-                    ShapedEdge(title: "IN15", shape: innerRing15, color: appearance.secondary.dark),
-                    ShapedEdge(title: "IN16", shape: innerRing16, color: appearance.secondary.light),
-                    ShapedEdge(title: "IN17", shape: innerRing17, color: appearance.secondary.light),
-                    ShapedEdge(title: "IN20", shape: innerRing20, color: appearance.inactive),
-                    ShapedEdge(title: "OR19", shape: outerRing19, color: appearance.secondary.light),
-                    ShapedEdge(title: "OR20", shape: outerRing20, color: appearance.secondary.dark),
+                    ShapedEdge(title: "IN01", shape: innerRing01, appearance: .secondaryDark),
+                    ShapedEdge(title: "IN14", shape: innerRing14, appearance: .secondaryLight),
+                    ShapedEdge(title: "IN15", shape: innerRing15, appearance: .secondaryDark),
+                    ShapedEdge(title: "IN16", shape: innerRing16, appearance: .secondaryLight),
+                    ShapedEdge(title: "IN17", shape: innerRing17, appearance: .secondaryLight),
+                    ShapedEdge(title: "IN20", shape: innerRing20, appearance: .quaternaryLight),
+                    ShapedEdge(title: "OR19", shape: outerRing19, appearance: .secondaryLight),
+                    ShapedEdge(title: "OR20", shape: outerRing20, appearance: .secondaryDark),
                 ],
                 edges: [
-                    ShapedEdge(title: "E13", shape: edge13, color: appearance.primary.dark),
-                    ShapedEdge(title: "E15", shape: edge15, color: appearance.secondary.light),
+                    ShapedEdge(title: "E13", shape: edge13, appearance: .primaryDark),
+                    ShapedEdge(title: "E15", shape: edge15, appearance: .secondaryLight),
                 ],
                 obrounds: [
-                    ShapedEdge(title: "T00", shape: top00, color: appearance.secondary.dark),
+                    ShapedEdge(title: "T00", shape: top00, appearance: .secondaryDark),
                 ]
             )
         }
@@ -157,13 +154,13 @@ public struct DPadClusterCompactView: View {
         extendedExteriorRadius: CGFloat,
         in plane: CartesianPlane,
         with offset: CartesianFrame.Offset,
-        rings: [DPadCrescent] = []
+        shapes: [ShapedCrescent] = []
     ) -> some View {
         ZStack {
-            ForEach(rings, id: \.self) { ring in
+            ForEach(shapes, id: \.self) { shape in
                 CrescentView(
-                    ring.title,
-                    shape: ring.shape(
+                    shape.title,
+                    shape: shape.shape(
                         interiorRadius: interiorRadius,
                         exteriorRadius: exteriorRadius,
                         extendedRadius: extendedExteriorRadius
@@ -172,7 +169,7 @@ public struct DPadClusterCompactView: View {
                     with: offset,
                     action: action
                 )
-                .foregroundStyle(ring.color)
+                .foregroundStyle(theme.color(for: shape.appearance))
             }
         }
     }
@@ -193,7 +190,7 @@ public struct DPadClusterCompactView: View {
                     with: offset,
                     action: action
                 )
-                .foregroundStyle(crescent.color)
+                .foregroundStyle(theme.color(for: crescent.appearance))
             }
             
             ForEach(edges, id: \.title) { edge in
@@ -204,7 +201,7 @@ public struct DPadClusterCompactView: View {
                     with: offset,
                     action: action
                 )
-                .foregroundStyle(edge.color)
+                .foregroundStyle(theme.color(for: edge.appearance))
             }
             
             ForEach(obrounds, id: \.title) { obround in
@@ -215,7 +212,7 @@ public struct DPadClusterCompactView: View {
                     with: offset,
                     action: action
                 )
-                .foregroundStyle(obround.color)
+                .foregroundStyle(theme.color(for: obround.appearance))
             }
         }
     }
@@ -226,6 +223,7 @@ public struct DPadClusterCompactView: View {
         let inner = Arc(radius: firstRingInteriorRadius, startingDegree: ir20.interiorArc.endingDegree + 1.5, endingDegree: twoAndOneQuarter)
         let outer = Arc(radius: firstRingExteriorRadius, startingDegree: ir20.exteriorArc.endingDegree + 1.0, endingDegree: twoAndOneQuarter)
         return Crescent(
+            identifier: .innerRing01,
             interiorArc: inner,
             exteriorArc: outer
         )
@@ -236,6 +234,7 @@ public struct DPadClusterCompactView: View {
         let inner = Arc(radius: firstRingInteriorRadius, startingDegree: Curve.arc14.start, endingDegree: ir15.interiorArc.startingDegree - 1.5)
         let outer = Arc(radius: firstRingExteriorRadius, startingDegree: Curve.arc14.start, endingDegree: ir15.exteriorArc.startingDegree - 1.0)
         return Crescent(
+            identifier: .innerRing14,
             interiorArc: inner,
             exteriorArc: outer
         )
@@ -256,6 +255,7 @@ public struct DPadClusterCompactView: View {
         let exteriorEnd = try! Degree.make(for: endPoint.with(y: endPoint.y + shift))
         
         return Crescent(
+            identifier: .innerRing15,
             interiorArc: Arc(radius: firstRingInteriorRadius, startingDegree: startDegree, endingDegree: endDegree),
             exteriorArc: Arc(radius: firstRingExteriorRadius, startingDegree: exteriorStart, endingDegree: exteriorEnd),
         )
@@ -267,6 +267,7 @@ public struct DPadClusterCompactView: View {
         let inner = Arc(radius: firstRingInteriorRadius, startingDegree: ir15.interiorArc.endingDegree + 1.5, endingDegree: seventeenAndOneQuarter)
         let outer = Arc(radius: firstRingExteriorRadius, startingDegree: ir15.exteriorArc.endingDegree + 1.0, endingDegree: seventeenAndOneQuarter)
         return Crescent(
+            identifier: .innerRing16,
             interiorArc: inner,
             exteriorArc: outer
         )
@@ -278,6 +279,7 @@ public struct DPadClusterCompactView: View {
         let inner = Arc(radius: firstRingInteriorRadius, startingDegree: seventeenAndOneQuarter + 1.0, endingDegree: ir20.interiorArc.startingDegree - 1.5)
         let outer = Arc(radius: firstRingExteriorRadius, startingDegree: seventeenAndOneQuarter + 1.0, endingDegree: ir20.exteriorArc.startingDegree - 1.0)
         return Crescent(
+            identifier: .innerRing17,
             interiorArc: inner,
             exteriorArc: outer
         )
@@ -298,6 +300,7 @@ public struct DPadClusterCompactView: View {
         let exteriorEnd = try! Degree.make(for: endPoint.with(x: endPoint.x + shift))
         
         return Crescent(
+            identifier: .innerRing20,
             interiorArc: Arc(radius: firstRingInteriorRadius, startingDegree: startDegree, endingDegree: endDegree),
             exteriorArc: Arc(radius: firstRingExteriorRadius, startingDegree: exteriorStart, endingDegree: exteriorEnd),
         )
@@ -308,6 +311,7 @@ public struct DPadClusterCompactView: View {
         let inner = Arc(radius: secondRingInteriorRadius, startingDegree: Curve.arc19.start, endingDegree: or20.interiorArc.startingDegree - 1.0)
         let outer = Arc(radius: secondRingExtendedExteriorRadius, startingDegree: Curve.arc19.start, endingDegree: or20.exteriorArc.startingDegree - 0.75)
         return Crescent(
+            identifier: .outerRing19,
             interiorArc: inner,
             exteriorArc: outer
         )
@@ -326,6 +330,7 @@ public struct DPadClusterCompactView: View {
         let outerEndDegree = try! Degree.make(for: outerEnd)
         
         return Crescent(
+            identifier: .outerRing20,
             interiorArc: Arc(radius: secondRingInteriorRadius, startingDegree: innerStartDegree, endingDegree: innerEndDegree),
             exteriorArc: Arc(radius: secondRingExtendedExteriorRadius, startingDegree: outerStartDegree, endingDegree: outerEndDegree)
         )
@@ -337,6 +342,7 @@ public struct DPadClusterCompactView: View {
         let point = try! CartesianPoint.make(for: thirdRingExteriorRadius, degree: Curve.arc12.start)
         
         return EdgedCrescent(
+            identifier: .edge13,
             interiorArc: interiorArc,
             edgePoints: [
                 CartesianPoint(x: point.x, y: exteriorArc.endingPoint.y),
@@ -362,6 +368,7 @@ public struct DPadClusterCompactView: View {
         let y = edge13.cartesianFrame.origin.y
         
         return EdgedCrescent(
+            identifier: .edge15,
             interiorArc: interiorArc,
             edgePoints: [
                 CartesianPoint(x: interiorArc.startingPoint.x, y: y),
@@ -381,7 +388,8 @@ public struct DPadClusterCompactView: View {
         let y = edge13.cartesianFrame.origin.y
         
         return Obround(
-            size: Size(size),
+            identifier: .top00,
+            size: size,
             at: CartesianPoint(x: x, y: y),
             roundLeading: false
         )
@@ -393,6 +401,7 @@ public struct DPadClusterCompactView: View {
 //        DPadClusterCompactView()
         DPadClusterCompactView(size: geometry.size)
             .border(.red, width: 2)
+            .environment(\.theme, ThemeCompact2370s())
     }
     .background(.black)
 }

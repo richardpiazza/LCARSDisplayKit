@@ -5,13 +5,22 @@ import GraphPoint
 
 /// An `Arc` extended with straight lines to additional points
 public struct EdgedCrescent: Hashable, Sendable {
+    public let identifier: CartesianShapeIdentifier?
     public let interiorArc: Arc
     public let edgePoints: [CartesianPoint]
     
+    /// Initialize a `EdgedCrescent` Cartesian Shape.
+    ///
+    /// - parameters:
+    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - interiorArc:
+    ///   - edgePoints:
     public init(
+        identifier: CartesianShapeIdentifier? = nil,
         interiorArc: Arc = Arc(),
         edgePoints: [CartesianPoint] = []
     ) {
+        self.identifier = identifier
         self.interiorArc = interiorArc
         self.edgePoints = edgePoints
     }

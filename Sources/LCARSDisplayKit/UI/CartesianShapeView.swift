@@ -14,21 +14,28 @@ public typealias WedgeView = CartesianShapeView<Wedge>
 public struct CartesianShapeView<T: CartesianShape>: View {
     
     struct PathButtonStyle: ButtonStyle {
+        var id: T.ID
         var path: Path
         
-        @Environment(\.appearance) private var appearance
+        @Environment(\.theme) private var theme
         
         func makeBody(configuration: Configuration) -> some View {
             ZStack {
-                path
+                if let color = theme.color(for: id) {
+                    path
+                        .foregroundStyle(color)
+                } else {
+                    path
+                }
                 
                 configuration
                     .label
-                    .foregroundStyle(appearance.text)
+                    .foregroundStyle(theme.textColor(on: .primaryLight))
                     .font(.scaledLCARS(for: .title2))
             }
             .clipShape(path)
             .contentShape(path)
+            .saturation(configuration.isPressed ? 0.5 : 1.0)
         }
     }
     
@@ -72,7 +79,7 @@ public struct CartesianShapeView<T: CartesianShape>: View {
         Button(title) {
             action(id)
         }
-        .buttonStyle(PathButtonStyle(path: path))
+        .buttonStyle(PathButtonStyle(id: id, path: path))
         .frame(
             width: rect.width,
             height: rect.height

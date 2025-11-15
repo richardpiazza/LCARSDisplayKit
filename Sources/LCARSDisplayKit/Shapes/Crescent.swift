@@ -5,7 +5,6 @@ import GraphPoint
 
 /// Two `Arc`s connected by straight lines at their end points.
 public struct Crescent: Hashable, Sendable {
-    
     public let identifier: CartesianShapeIdentifier?
     public let interiorArc: Arc
     public let exteriorArc: Arc

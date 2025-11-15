@@ -30,7 +30,7 @@ final class DPadTests: XCTestCase {
         let plane = CartesianPlane(intrinsicRect)
         let (_, radius, _, spacing, cruxRadius) = intrinsicRect.size.dPadValues()
         
-        let wedge01 = Wedge(sector: .sector01, radius: radius)
+        let wedge01 = Wedge(sector: .sector1, radius: radius)
         var cartesianFrame = wedge01.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, 36.384545893107884, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, -36.384545893107884, accuracy: 0.0001)
@@ -42,7 +42,7 @@ final class DPadTests: XCTestCase {
         XCTAssertEqual(absoluteFrame.width, 134.7912842353081, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 134.7912842353081, accuracy: 0.0001)
         
-        let wedge02 = Wedge(sector: .sector02, radius: radius)
+        let wedge02 = Wedge(sector: .sector2, radius: radius)
         cartesianFrame = wedge02.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, -171.17583012841598, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, -36.384545893107884, accuracy: 0.0001)
@@ -54,7 +54,7 @@ final class DPadTests: XCTestCase {
         XCTAssertEqual(absoluteFrame.width, 134.7912842353081, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 134.7912842353081, accuracy: 0.0001)
         
-        let wedge03 = Wedge(sector: .sector03, radius: radius)
+        let wedge03 = Wedge(sector: .sector3, radius: radius)
         cartesianFrame = wedge03.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, -171.17583012841598, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, 171.17583012841598, accuracy: 0.0001)
@@ -66,7 +66,7 @@ final class DPadTests: XCTestCase {
         XCTAssertEqual(absoluteFrame.width, 134.7912842353081, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 134.7912842353081, accuracy: 0.0001)
         
-        let wedge04 = Wedge(sector: .sector04, radius: radius)
+        let wedge04 = Wedge(sector: .sector4, radius: radius)
         cartesianFrame = wedge04.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, 36.384545893107884, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, 171.17583012841598, accuracy: 0.0001)
@@ -78,7 +78,7 @@ final class DPadTests: XCTestCase {
         XCTAssertEqual(absoluteFrame.width, 134.7912842353081, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 134.7912842353081, accuracy: 0.0001)
         
-        let up = Direction(.up, interiorRadius: cruxRadius + spacing, exteriorRadius: radius)
+        let up = Direction(cardinal: .up, interiorRadius: cruxRadius + spacing, exteriorRadius: radius)
         cartesianFrame = up.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, -30.388431091712807, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, 175.0, accuracy: 0.0001)
@@ -90,7 +90,7 @@ final class DPadTests: XCTestCase {
         XCTAssertEqual(absoluteFrame.width, 60.776862183425614, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 139.6586432228636, accuracy: 0.0001)
         
-        let left = Direction(.left, interiorRadius: cruxRadius + spacing, exteriorRadius: radius)
+        let left = Direction(cardinal: .left, interiorRadius: cruxRadius + spacing, exteriorRadius: radius)
         cartesianFrame = left.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, -175.0, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, 30.388431091712807, accuracy: 0.0001)
@@ -102,7 +102,7 @@ final class DPadTests: XCTestCase {
         XCTAssertEqual(absoluteFrame.width, 139.6586432228636, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 60.776862183425614, accuracy: 0.0001)
         
-        let right = Direction(.right, interiorRadius: cruxRadius + spacing, exteriorRadius: radius)
+        let right = Direction(cardinal: .right, interiorRadius: cruxRadius + spacing, exteriorRadius: radius)
         cartesianFrame = right.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, 35.34135677713641, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, 30.388431091712807, accuracy: 0.0001)
@@ -114,7 +114,7 @@ final class DPadTests: XCTestCase {
         XCTAssertEqual(absoluteFrame.width, 139.6586432228636, accuracy: 0.0001)
         XCTAssertEqual(absoluteFrame.height, 60.776862183425614, accuracy: 0.0001)
         
-        let down = Direction(.down, interiorRadius: cruxRadius + spacing, exteriorRadius: radius)
+        let down = Direction(cardinal: .down, interiorRadius: cruxRadius + spacing, exteriorRadius: radius)
         cartesianFrame = down.cartesianFrame
         XCTAssertEqual(cartesianFrame.x, -30.388431091712807, accuracy: 0.0001)
         XCTAssertEqual(cartesianFrame.y, -35.34135677713641, accuracy: 0.0001)

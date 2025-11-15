@@ -2,37 +2,48 @@
 import CoreGraphics
 #endif
 import GraphPoint
-import Swift2D
 
+/// A large container element that 'wraps' around other content.
 public struct Elbow: Hashable, Sendable {
     
-    public static let defaultHorizontalHeight: Double = 120.0
-    public static let defaultVerticalWidth: Double = 30.0
-    public static let defaultClosedHeight: Double = 0.0
+    public static let defaultHorizontalHeight: CGFloat = 120.0
+    public static let defaultVerticalWidth: CGFloat = 30.0
+    public static let defaultClosedHeight: CGFloat = 0.0
     
-    /// The size of the shape
-    public let size: Size
+    public let identifier: CartesianShapeIdentifier?
+    public let size: CGSize
     public let top: Bool
     public let left: Bool
-    /// Specifies if the corner specified by `top` and `left` should be rounded.
     public let rounded: Bool
-    public let horizontalHeight: Double
-    public let verticalWidth: Double
-    /// If closedHeight > 0, an additional area is drawn parallel to the horizontalHeight area.
-    public let closedHeight: Double
-    /// If true, the interior radius will match the exterior radius.
+    public let horizontalHeight: CGFloat
+    public let verticalWidth: CGFloat
+    public let closedHeight: CGFloat
     public let shouldMatchRadius: Bool
     
+    /// Initialize a `Elbow` Cartesian Shape.
+    ///
+    /// - parameters:
+    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - size: The size of the shape.
+    ///   - top:
+    ///   - left:
+    ///   - rounded: Specifies if the corner specified by `top` and `left` should be rounded.
+    ///   - horizontalHeight:
+    ///   - verticalWidth:
+    ///   - closedHeight: If closedHeight > 0, an additional area is drawn parallel to the horizontalHeight area.
+    ///   - shouldMatchRadius: If true, the interior radius will match the exterior radius.
     public init(
-        size: Size = .zero,
+        identifier: CartesianShapeIdentifier? = nil,
+        size: CGSize = .zero,
         top: Bool = true,
         left: Bool = true,
         rounded: Bool = true,
-        horizontalHeight: Double = Self.defaultHorizontalHeight,
-        verticalWidth: Double = Self.defaultVerticalWidth,
-        closedHeight: Double = Self.defaultClosedHeight,
+        horizontalHeight: CGFloat = Self.defaultHorizontalHeight,
+        verticalWidth: CGFloat = Self.defaultVerticalWidth,
+        closedHeight: CGFloat = Self.defaultClosedHeight,
         shouldMatchRadius: Bool = false
     ) {
+        self.identifier = identifier
         self.size = size
         self.top = top
         self.left = left

@@ -7,7 +7,7 @@ import Swift2D
 /// A shape representing a cardinal direction in a control cluster.
 public struct Direction: Hashable, Sendable {
 
-    public enum Cardinal: Hashable, Sendable, CaseIterable {
+    public enum Cardinal: CartesianShapeIdentifier, Hashable, Sendable, CaseIterable {
         case down
         case left
         case right
@@ -31,26 +31,45 @@ public struct Direction: Hashable, Sendable {
             }
         }
     }
-    
+
+    /// Initialize a `Direction` Cartesian Shape.
+    ///
+    /// - parameters:
+    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - cardinal: The cardinal direction represented by this shape.
+    ///   - interiorRadius:
+    ///   - exteriorArc:
+    public let identifier: CartesianShapeIdentifier?
     public let cardinal: Cardinal
     public let interiorRadius: Radius
     public let exteriorArc: Arc
     
     public init(
-        _ cardinal: Cardinal = .up,
+        identifier: CartesianShapeIdentifier? = nil,
+        cardinal: Cardinal = .up,
         interiorRadius: Radius = 0.0,
         exteriorArc: Arc = Arc()
     ) {
+        self.identifier = identifier
         self.cardinal = cardinal
         self.interiorRadius = interiorRadius
         self.exteriorArc = exteriorArc
     }
     
+    /// Initialize a `Direction` Cartesian Shape.
+    ///
+    /// - parameters:
+    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - cardinal: The cardinal direction represented by this shape.
+    ///   - interiorRadius:
+    ///   - exteriorRadius: Radius uses to construct the `exteriorArc`.
     public init(
-        _ cardinal: Cardinal = .up,
+        identifier: CartesianShapeIdentifier? = nil,
+        cardinal: Cardinal = .up,
         interiorRadius: Radius,
         exteriorRadius: Radius
     ) {
+        self.identifier = identifier
         self.cardinal = cardinal
         self.interiorRadius = interiorRadius
         exteriorArc = Arc(

@@ -2,14 +2,14 @@
 import UIKit
  
 public enum Behavior {
-    case pulsate(timeInterval: TimeInterval)
+    case pulse(timeInterval: TimeInterval)
     
     static var activationTimers: [UIControl : Timer] = [UIControl : Timer]()
     static var inverseTimers: [UIControl : Timer] = [UIControl : Timer]()
     
     public func begin(_ control: UIControl) {
         switch self {
-        case .pulsate(let timeInterval):
+        case .pulse(let timeInterval):
             Behavior.activationTimers[control] = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true, block: { (timer) in
                 UIView.animate(withDuration: 0.25, delay: 0.0, options: [.curveEaseOut], animations: {
                     control.alpha = 0.0
@@ -32,7 +32,7 @@ public enum Behavior {
         Behavior.inverseTimers[control] = nil
         
         switch self {
-        case .pulsate:
+        case .pulse:
             control.alpha = 1.0
         }
     }
