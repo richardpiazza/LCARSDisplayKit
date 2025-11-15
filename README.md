@@ -2,31 +2,9 @@
 
 A Swift library for developing personal iOS apps with an LCARS© interface.
 
-<p>
-    <img src="https://github.com/richardpiazza/LCARSDisplayKit/workflows/Swift/badge.svg?branch=main" />
-    <img src="https://img.shields.io/badge/Swift-5.3-orange.svg" />
-    <a href="https://twitter.com/richardpiazza">
-        <img src="https://img.shields.io/badge/twitter-@richardpiazza-blue.svg?style=flat" alt="Twitter: @richardpiazza" />
-    </a>
-</p>
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Frichardpiazza%2FLCARSDisplayKit%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/richardpiazza/LCARSDisplayKit)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Frichardpiazza%2FLCARSDisplayKit%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/richardpiazza/LCARSDisplayKit)
 
 ## Usage
 
-**LCARSDisplayKit** is distributed using the [Swift Package Manager](https://swift.org/package-manager). To install it into a project, add it 
-as a dependency within your `Package.swift` manifest:
-
-```swift
-let package = Package(
-    ...
-    dependencies: [
-        .package(url: "https://github.com/richardpiazza/LCARSDisplayKit.git", .branch("main")
-    ],
-    ...
-)
-```
-
-Then import the **LCARSDisplayKit** packages wherever you'd like to use it:
-
-```swift
-import LCARSDisplayKit
-```
+🙁🛠🔎
