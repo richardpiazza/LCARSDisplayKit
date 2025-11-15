@@ -8,6 +8,11 @@ struct ContentView: View {
     private let commandSequencer = CommandSequencer()
     
     @Environment(\.theme) private var theme
+    @State private var behaviors: [CartesianShapeIdentifier: ControlBehavior] = [
+        .innerRing10: .hidden,
+        .innerRing16: .hidden,
+        .outerRing14: .hidden,
+    ]
     
     var body: some View {
         ZStack(alignment: .bottomLeading) {
@@ -31,6 +36,20 @@ struct ContentView: View {
             .offset(x: 50, y: -40)
         }
         .background(.black)
+        .environment(\.behaviors, behaviors)
+        .task {
+            commandSequencer.register(commandSequence: [.edge07, .outerRing16]) {
+                behaviors[.innerRing11] = .pulsing(timeInterval: 2.5)
+                behaviors[.outerRing16] = .pulsing(timeInterval: 3.0)
+                behaviors[.outerRing01] = .pulsing(timeInterval: 4.0)
+            }
+            
+            commandSequencer.register(commandSequence: [.edge07, .outerRing17]) {
+                behaviors[.innerRing11] = nil
+                behaviors[.outerRing16] = nil
+                behaviors[.outerRing01] = nil
+            }
+        }
     }
 }
 

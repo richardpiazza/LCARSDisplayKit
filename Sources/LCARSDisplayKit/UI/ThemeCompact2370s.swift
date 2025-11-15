@@ -34,10 +34,6 @@ public struct ThemeCompact2370s: Theme {
         }
     }
     
-    public func textColor(on appearance: ControlAppearance) -> Color {
-        .black
-    }
-    
     public func color(for id: CartesianShapeIdentifier) -> Color? {
         switch id {
         case .crux:

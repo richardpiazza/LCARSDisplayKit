@@ -46,6 +46,13 @@ public struct CartesianShapeView<T: CartesianShape>: View {
     var offset: CGPoint
     var action: (T.ID) -> Void
     
+    @Environment(\.behaviors) private var behaviors
+    
+    @State private var behavior: ControlBehavior?
+    @State private var timer: Timer?
+    @State private var opacity: Double = 1.0
+    @State private var disabled: Bool = false
+    
     public init(
         _ shape: T,
         in plane: CartesianPlane,
@@ -88,6 +95,49 @@ public struct CartesianShapeView<T: CartesianShape>: View {
             x: rect.minX + offset.x + (rect.width / 2.0),
             y: rect.minY + offset.y + (rect.height / 2.0)
         )
+        .opacity(opacity)
+        .disabled(disabled)
+        .onChange(of: behaviors, initial: true) { _, newValue in
+            behavior = newValue[id]
+        }
+        .onChange(of: behavior) { oldValue, newValue in
+            disable(behavior: oldValue)
+            enable(behavior: newValue)
+        }
+    }
+    
+    private func disable(behavior value: ControlBehavior?) {
+        switch value {
+        case .disabled:
+            disabled = false
+        case .hidden:
+            opacity = 1.0
+        case .pulsing:
+            timer?.invalidate()
+            timer = nil
+            withAnimation {
+                opacity = 1.0
+            }
+        default:
+            break
+        }
+    }
+    
+    private func enable(behavior value: ControlBehavior?) {
+        switch value {
+        case .disabled:
+            disabled = true
+        case .hidden:
+            opacity = 0.0
+        case .pulsing(let timeInterval):
+            timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { _ in
+                withAnimation {
+                    opacity = (opacity == 1.0) ? 0.0 : 1.0
+                }
+            }
+        default:
+            break
+        }
     }
 }
 #endif

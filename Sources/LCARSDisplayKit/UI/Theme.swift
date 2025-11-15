@@ -9,6 +9,10 @@ public protocol Theme {
 }
 
 public extension Theme {
+    func textColor(on appearance: ControlAppearance) -> Color {
+        .black
+    }
+    
     func color(for id: CartesianShapeIdentifier) -> Color? {
         nil
     }

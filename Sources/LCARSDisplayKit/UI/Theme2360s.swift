@@ -34,9 +34,5 @@ public struct Theme2360s: Theme {
             return Color(uiColor: Pigment.flatGray.uiColor)
         }
     }
-    
-    public func textColor(on appearance: ControlAppearance) -> Color {
-        .black
-    }
 }
 #endif

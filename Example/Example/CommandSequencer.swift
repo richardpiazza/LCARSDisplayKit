@@ -22,8 +22,16 @@ class CommandSequencer {
             return
         }
         
-        print("Registering Command Sequence")
         commandSequences.append(sequence)
+    }
+    
+    func register(commandSequence path: [CartesianShapeIdentifier], activation: @escaping () -> Void) {
+        register(
+            commandSequence: CommandSequence(
+                path: path,
+                activation: activation
+            )
+        )
     }
     
     func unregister(commandSequence sequence: CommandSequence) {
@@ -31,23 +39,19 @@ class CommandSequencer {
             return
         }
         
-        print("Unregistering Command Sequence")
         commandSequences.remove(at: index)
     }
     
     func didActivate(_ sender: CartesianShapeIdentifier) {
-        print("Activated: \(sender.rawValue)")
         currentPath.append(sender)
         
         guard commandSequences.count > 0 else {
-            print("No Command Sequences")
             audioPlayer.playFailure()
             currentPath.removeAll()
             return
         }
         
         if let sequence = commandSequences.first(where: { $0.path == currentPath }) {
-            print("Command Sequence Complete")
             sequence.activation()
             audioPlayer.playSuccess()
             currentPath.removeAll()
@@ -55,13 +59,11 @@ class CommandSequencer {
         }
         
         guard sequencesContainingPrefix(currentPath).count > 0 else {
-            print("Command Sequence Failed")
             audioPlayer.playFailure()
             currentPath.removeAll()
             return
         }
         
-        print("Command Sequence In Progress")
         audioPlayer.playNeutral()
     }
     
