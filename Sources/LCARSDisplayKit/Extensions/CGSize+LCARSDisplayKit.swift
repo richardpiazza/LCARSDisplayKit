@@ -6,6 +6,7 @@ import Foundation
 
 #if canImport(CoreGraphics) || canImport(Foundation)
 public extension CGSize {
+    @available(*, deprecated, message: "Use `DPadValues`")
     func dPadValues(
         intrinsicSize: CGSize = CGSize(width: 350.0, height: 350.0),
         intrinsicCruxDiameter: CGFloat = 60.0,
@@ -27,6 +28,7 @@ public extension CGSize {
         return (diameter, radius, scale, spacing, cruxRadius)
     }
 
+    @available(*, deprecated, message: "Use `DPadValues`")
     func dPadValues(
         intrinsicDiameter: CGFloat,
         intrinsicCruxDiameter: CGFloat = 60.0,
