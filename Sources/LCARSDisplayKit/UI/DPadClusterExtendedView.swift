@@ -7,6 +7,7 @@ import SwiftUI
 public struct DPadClusterExtendedView: View {
 
     public static let intrinsicSize: CGSize = CGSize(width: 760.0, height: 755.0)
+    public static let offsetModifier: CartesianFrame.Offset = Point(x: 0, y: 0.068)
 
     var values: DPadValues
     var radii: DPadValues.Radii
@@ -21,7 +22,7 @@ public struct DPadClusterExtendedView: View {
         values = DPadValues(
             size: size,
             intrinsicSize: Self.intrinsicSize,
-            offsetModifier: Point(x: 0, y: 0.068)
+            offsetModifier: Self.offsetModifier
         )
         radii = values.radii(layout: .standard)
         self.action = action
@@ -355,8 +356,8 @@ public struct DPadClusterExtendedView: View {
 
 #Preview {
     GeometryReader { geometry in
-        DPadClusterExtendedView()
-//        DPadClusterExtendedView(size: geometry.size)
+//        DPadClusterExtendedView()
+        DPadClusterExtendedView(size: geometry.size)
             .border(.red, width: 2)
     }
     .background(.black)

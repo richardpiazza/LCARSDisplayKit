@@ -10,6 +10,7 @@ import SwiftUI
 public struct DPadClusterCompactView: View {
 
     public static let intrinsicSize: CGSize = CGSize(width: 715.0, height: 520.0)
+    public static let offsetModifier: CartesianFrame.Offset = Point(x: -0.0366, y: 0.14)
 
     var values: DPadValues
     var radii: DPadValues.Radii
@@ -24,7 +25,7 @@ public struct DPadClusterCompactView: View {
         values = DPadValues(
             size: size,
             intrinsicSize: Self.intrinsicSize,
-            offsetModifier: Point(x: -0.0366, y: 0.14)
+            offsetModifier: Self.offsetModifier
         )
         radii = values.radii(layout: .compact)
         self.action = action
@@ -351,8 +352,8 @@ public struct DPadClusterCompactView: View {
 
 #Preview {
     GeometryReader { geometry in
-        DPadClusterCompactView()
-//        DPadClusterCompactView(size: geometry.size)
+//        DPadClusterCompactView()
+        DPadClusterCompactView(size: geometry.size)
             .border(.red, width: 2)
             .environment(\.theme, ThemeCompact2370s())
     }
