@@ -5,7 +5,8 @@ import SwiftUI
 
 public struct DPadView: View {
 
-    public static let intrinsicSize: CGSize = CGSize(width: 350.0, height: 350.0)
+    public static let intrinsicSize: Size = Size(width: 350.0, height: 350.0)
+    public static let intrinsicOffset: CartesianFrame.Offset = .zero
 
     var values: DPadValues
     var action: (CartesianShapeIdentifier) -> Void
@@ -13,7 +14,7 @@ public struct DPadView: View {
     @Environment(\.theme) private var theme
 
     public init(
-        size: CGSize = Self.intrinsicSize,
+        size: Size = Self.intrinsicSize,
         action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
     ) {
         values = DPadValues(
@@ -24,7 +25,7 @@ public struct DPadView: View {
     }
 
     public init(
-        scale value: CGFloat,
+        scale value: Double,
         action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
     ) {
         values = DPadValues(
@@ -39,7 +40,7 @@ public struct DPadView: View {
             CruxView(
                 values.crux(),
                 in: values.plane,
-                with: values.cartesianOffset,
+                with: values.offset,
                 action: action
             )
             .foregroundStyle(theme.color(for: .primaryDark))
@@ -48,7 +49,7 @@ public struct DPadView: View {
                 WedgeView(
                     values.wedge(sector: sector),
                     in: values.plane,
-                    with: values.cartesianOffset,
+                    with: values.offset,
                     action: action
                 )
                 .foregroundStyle(theme.color(for: .primaryMedium))
@@ -58,13 +59,26 @@ public struct DPadView: View {
                 DirectionView(
                     values.direction(cardinal: cardinal),
                     in: values.plane,
-                    with: values.cartesianOffset,
+                    with: values.offset,
                     action: action
                 )
                 .foregroundStyle(theme.gradient(for: cardinal))
             }
         }
         .frame(width: values.plane.size.width, height: values.plane.size.height)
+    }
+}
+
+public extension DPadView {
+    init(
+        size: CGSize,
+        action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
+    ) {
+        values = DPadValues(
+            size: Size(size),
+            intrinsicSize: Self.intrinsicSize
+        )
+        self.action = action
     }
 }
 

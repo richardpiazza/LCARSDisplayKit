@@ -5,8 +5,8 @@ import XCTest
 
 final class DPadTests: XCTestCase {
 
-    let intrinsicRect = CGRect(origin: .zero, size: CGSize(width: 350.0, height: 350.0))
-    let canvasRect = CGRect(origin: .zero, size: CGSize(width: 2560.0, height: 1440.0))
+    let intrinsicRect = Rect(origin: .zero, size: Size(width: 350.0, height: 350.0))
+    let canvasRect = Rect(origin: .zero, size: Size(width: 2560.0, height: 1440.0))
 
     func testIntrinsicValues() {
         let values = DPadValues(
@@ -27,8 +27,8 @@ final class DPadTests: XCTestCase {
             intrinsicSize: intrinsicRect.size
         )
         
-        XCTAssertEqual(values.diameter, 1440.0)
-        XCTAssertEqual(values.radius, 720.0)
+        XCTAssertEqual(values.diameter, 1440.0, accuracy: 0.001)
+        XCTAssertEqual(values.radius, 720.0, accuracy: 0.001)
         XCTAssertEqual(values.scale, 4.114285714285714, accuracy: 0.0001)
         XCTAssertEqual(values.spacing, 32.91428571428571, accuracy: 0.0001)
         XCTAssertEqual(values.cruxRadius, 123.42857142857142, accuracy: 0.0001)

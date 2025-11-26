@@ -33,7 +33,7 @@ extension EdgedCrescent: CartesianShape {
         [interiorArc.startingPoint, interiorArc.endingPoint] + edgePoints
     }
 
-    #if canImport(CoreGraphics)
+    #if canImport(CoreGraphics) || canImport(Foundation)
     public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
 

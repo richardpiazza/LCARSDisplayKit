@@ -95,7 +95,7 @@ extension Direction: CartesianShape {
             return .zero
         }
 
-        let x, y, width, height: CGFloat
+        let x, y, width, height: Double
 
         switch cardinal {
         case .up:
@@ -128,7 +128,7 @@ extension Direction: CartesianShape {
         )
     }
 
-    #if canImport(CoreGraphics)
+    #if canImport(CoreGraphics) || canImport(Foundation)
     public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
         subpaths?.forEach { path.addPath($0) }

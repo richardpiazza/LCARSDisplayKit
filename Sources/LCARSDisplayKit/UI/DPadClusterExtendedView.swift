@@ -6,8 +6,8 @@ import SwiftUI
 /// An example cluster control set that extends a 'DPadCluster'.
 public struct DPadClusterExtendedView: View {
 
-    public static let intrinsicSize: CGSize = CGSize(width: 760.0, height: 755.0)
-    public static let offsetModifier: CartesianFrame.Offset = Point(x: 0, y: 0.068)
+    public static let intrinsicSize: Size = Size(width: 760.0, height: 755.0)
+    public static let intrinsicOffset: CartesianFrame.Offset = Point(x: 0, y: 51.34)
 
     var values: DPadValues
     var radii: DPadValues.Radii
@@ -16,13 +16,13 @@ public struct DPadClusterExtendedView: View {
     @Environment(\.theme) private var theme
 
     public init(
-        size: CGSize = Self.intrinsicSize,
+        size: Size = Self.intrinsicSize,
         action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
     ) {
         values = DPadValues(
             size: size,
             intrinsicSize: Self.intrinsicSize,
-            offsetModifier: Self.offsetModifier
+            intrinsicOffset: Self.intrinsicOffset
         )
         radii = values.radii(layout: .standard)
         self.action = action
@@ -39,8 +39,8 @@ public struct DPadClusterExtendedView: View {
                 height: DPadView.intrinsicSize.height * values.scale
             )
             .position(
-                x: values.plane.midX + values.cartesianOffset.x,
-                y: values.plane.midY + values.cartesianOffset.y
+                x: values.plane.midX + values.offset.x,
+                y: values.plane.midY + values.offset.y
             )
 
             crescents(
@@ -48,7 +48,7 @@ public struct DPadClusterExtendedView: View {
                 exteriorRadius: radii.firstRingExteriorRadius,
                 extendedExteriorRadius: radii.firstRingExteriorRadius,
                 in: values.plane,
-                with: values.cartesianOffset,
+                with: values.offset,
                 shapes: [
                     ShapedCrescent(id: .innerRing01, title: "IR01", arc: .arc01, to: .arc04, appearance: .secondaryLight),
                     ShapedCrescent(id: .innerRing05, title: "IR05", arc: .arc05, appearance: .primaryLight),
@@ -68,7 +68,7 @@ public struct DPadClusterExtendedView: View {
                 exteriorRadius: radii.secondRingExteriorRadius,
                 extendedExteriorRadius: radii.secondRingExtendedExteriorRadius,
                 in: values.plane,
-                with: values.cartesianOffset,
+                with: values.offset,
                 shapes: [
                     ShapedCrescent(id: .outerRing01, title: "OR01", arc: .arc01, to: .arc04, appearance: .primaryDark),
                     ShapedCrescent(id: .outerRing05, title: "OR05", arc: .arc05, appearance: .primaryDark),
@@ -87,7 +87,7 @@ public struct DPadClusterExtendedView: View {
 
             edges(
                 in: values.plane,
-                with: values.cartesianOffset,
+                with: values.offset,
                 edges: [
                     ShapedEdge(title: "-", shape: edge06, appearance: .secondaryLight),
                     ShapedEdge(title: "MODE SELECT", shape: edge07, appearance: .primaryLight),
@@ -244,7 +244,7 @@ public struct DPadClusterExtendedView: View {
     }
 
     private var top00: Obround {
-        let size = CGSize(
+        let size = Size(
             width: Obround.intrinsicSize.width * values.scale,
             height: Obround.intrinsicSize.height * values.scale
         )
@@ -268,7 +268,7 @@ public struct DPadClusterExtendedView: View {
 
         return Obround(
             identifier: .top01,
-            size: CGSize(
+            size: Size(
                 width: width,
                 height: height
             ),
@@ -288,7 +288,7 @@ public struct DPadClusterExtendedView: View {
 
         return Obround(
             identifier: .top02,
-            size: CGSize(
+            size: Size(
                 width: width,
                 height: frame.height
             ),
@@ -307,7 +307,7 @@ public struct DPadClusterExtendedView: View {
 
         return Obround(
             identifier: .top03,
-            size: CGSize(
+            size: Size(
                 width: frame.width,
                 height: height
             ),
@@ -327,7 +327,7 @@ public struct DPadClusterExtendedView: View {
 
         return Obround(
             identifier: .top04,
-            size: CGSize(
+            size: Size(
                 width: width,
                 height: frame.height
             ),
@@ -351,6 +351,21 @@ public struct DPadClusterExtendedView: View {
                 y: frame.maxY + values.spacing
             )
         )
+    }
+}
+
+public extension DPadClusterExtendedView {
+    init(
+        size: CGSize,
+        action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
+    ) {
+        values = DPadValues(
+            size: Size(size),
+            intrinsicSize: Self.intrinsicSize,
+            intrinsicOffset: Self.intrinsicOffset
+        )
+        radii = values.radii(layout: .standard)
+        self.action = action
     }
 }
 

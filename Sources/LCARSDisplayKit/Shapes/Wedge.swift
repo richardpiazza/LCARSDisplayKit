@@ -78,7 +78,7 @@ extension Wedge: CartesianShape {
         ]
     }
 
-    #if canImport(CoreGraphics)
+    #if canImport(CoreGraphics) || canImport(Foundation)
     public var path: CGPath {
         let frame = cartesianFrame
         let center = frame.offsetToCartesianOrigin

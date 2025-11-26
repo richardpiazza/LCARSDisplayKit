@@ -1,4 +1,3 @@
-import Foundation
 import GraphPoint
 import Swift2D
 
@@ -10,59 +9,120 @@ public struct DPadValues {
     }
     
     public struct Radii {
-        public let firstRingInteriorRadius: CGFloat
-        public let firstRingExteriorRadius: CGFloat
-        public let secondRingInteriorRadius: CGFloat
-        public let secondRingExteriorRadius: CGFloat
-        public let secondRingExtendedExteriorRadius: CGFloat
-        public let secondRingEdgeExteriorRadius: CGFloat
-        public let thirdRingInteriorRadius: CGFloat
-        public let thirdRingExteriorRadius: CGFloat
+        public let firstRingInteriorRadius: Double
+        public let firstRingExteriorRadius: Double
+        public let secondRingInteriorRadius: Double
+        public let secondRingExteriorRadius: Double
+        public let secondRingExtendedExteriorRadius: Double
+        public let secondRingEdgeExteriorRadius: Double
+        public let thirdRingInteriorRadius: Double
+        public let thirdRingExteriorRadius: Double
     }
     
-    public static let intrinsicSpacing: CGFloat = 8.0
+    public static let intrinsicSpacing: Double = 8.0
     
     public let plane: CartesianPlane
-    public let diameter: CGFloat
-    public let radius: CGFloat
-    public let scale: CGFloat
-    public let spacing: CGFloat
-    public let cruxRadius: CGFloat
-    public let cartesianOffset: CartesianFrame.Offset
+    public let diameter: Double
+    public let radius: Double
+    public let scale: Double
+    public let spacing: Double
+    public let cruxRadius: Double
+    public let offset: CartesianFrame.Offset
     
     private static func make(
-        size: CGSize,
-        intrinsicSize: CGSize,
-        intrinsicCruxSize: CGSize = Crux.intrinsicSize,
-        intrinsicSpacing: CGFloat = intrinsicSpacing,
-        offsetModifier: Point = .zero
+        size: Size,
+        intrinsicSize: Size,
+        intrinsicCruxSize: Size = Crux.intrinsicSize,
+        intrinsicSpacing: Double = intrinsicSpacing,
+        intrinsicOffset: CartesianFrame.Offset = .zero
     ) -> DPadValues {
-        let intrinsicRatio = if intrinsicSize.width >= intrinsicSize.height {
-            intrinsicSize.width / intrinsicSize.height
+        let scaledSize: Size
+        let scale: Double
+        
+        if intrinsicSize.width >= intrinsicSize.height {
+            switch (size.width >= intrinsicSize.width, size.height >= intrinsicSize.height) {
+            case (true, true):
+                let widthRatio = size.width / intrinsicSize.width
+                let proposedHeight = intrinsicSize.height * widthRatio
+                if proposedHeight > size.height {
+                    let heightRatio = size.height / intrinsicSize.height
+                    let proposedWidth = intrinsicSize.width * heightRatio
+                    scaledSize = Size(width: proposedWidth, height: size.height)
+                    scale = heightRatio
+                } else {
+                    scaledSize = Size(width: size.width, height: proposedHeight)
+                    scale = widthRatio
+                }
+            case (true, false):
+                let heightRatio = intrinsicSize.height / size.height
+                let proposedWidth = intrinsicSize.width * heightRatio
+                scaledSize = Size(width: proposedWidth, height: size.height)
+                scale = heightRatio
+            case (false, true):
+                let widthRatio = intrinsicSize.width / size.width
+                let proposedHeight = intrinsicSize.height * widthRatio
+                scaledSize = Size(width: size.width, height: proposedHeight)
+                scale = widthRatio
+            case (false, false):
+                let widthRatio = size.width / intrinsicSize.width
+                let proposedHeight = intrinsicSize.height * widthRatio
+                if proposedHeight > size.height {
+                    let heightRatio = size.height / intrinsicSize.height
+                    let proposedWidth = intrinsicSize.width * heightRatio
+                    scaledSize = Size(width: proposedWidth, height: size.height)
+                    scale = heightRatio
+                } else {
+                    scaledSize = Size(width: size.width, height: proposedHeight)
+                    scale = widthRatio
+                }
+            }
         } else {
-            intrinsicSize.height / intrinsicSize.width
+            switch (size.height >= intrinsicSize.height, size.width >= intrinsicSize.width) {
+            case (true, true):
+                let heightRatio = size.height / intrinsicSize.height
+                let proposedWidth = intrinsicSize.width * heightRatio
+                if proposedWidth > size.width {
+                    let widthRatio = size.width / intrinsicSize.width
+                    let proposedHeight = intrinsicSize.height * widthRatio
+                    scaledSize = Size(width: size.width, height: proposedHeight)
+                    scale = widthRatio
+                } else {
+                    scaledSize = Size(width: proposedWidth, height: size.height)
+                    scale = heightRatio
+                }
+            case (true, false):
+                let widthRatio = intrinsicSize.width / size.width
+                let proposedHeight = intrinsicSize.height * widthRatio
+                scaledSize = Size(width: size.width, height: proposedHeight)
+                scale = widthRatio
+            case (false, true):
+                let heightRatio = size.height / intrinsicSize.height
+                let proposedWidth = intrinsicSize.width * heightRatio
+                scaledSize = Size(width: proposedWidth, height: size.height)
+                scale = heightRatio
+            case (false, false):
+                let heightRatio = size.height / intrinsicSize.height
+                let proposedWidth = intrinsicSize.width * heightRatio
+                if proposedWidth > size.width {
+                    let widthRatio = size.width / intrinsicSize.width
+                    let proposedHeight = intrinsicSize.height * widthRatio
+                    scaledSize = Size(width: size.width, height: proposedHeight)
+                    scale = widthRatio
+                } else {
+                    scaledSize = Size(width: proposedWidth, height: size.height)
+                    scale = heightRatio
+                }
+            }
         }
         
-        let scaledSize = if size.width >= size.height {
-            CGSize(width: size.height * intrinsicRatio, height: size.height)
-        } else {
-            CGSize(width: size.width, height: size.width * intrinsicRatio)
-        }
-        
-        let scale = if size.width >= size.height {
-            scaledSize.width / intrinsicSize.width
-        } else {
-            scaledSize.height / intrinsicSize.height
-        }
-        
-        let plane = CartesianPlane(origin: .zero, size: Size(scaledSize))
+        let plane = CartesianPlane(origin: .zero, size: scaledSize)
         let diameter = min(scaledSize.width, scaledSize.height)
         let radius = diameter / 2.0
         let spacing = intrinsicSpacing * scale
         let cruxRadius = (min(intrinsicCruxSize.width, intrinsicCruxSize.height) * scale) / 2.0
-        let cartesianOffset = CartesianFrame.Offset(
-            x: scaledSize.width * offsetModifier.x,
-            y: scaledSize.height * offsetModifier.y
+        let offset = CartesianFrame.Offset(
+            x: intrinsicOffset.x * scale,
+            y: intrinsicOffset.y * scale
         )
         
         return DPadValues(
@@ -72,18 +132,18 @@ public struct DPadValues {
             scale: scale,
             spacing: spacing,
             cruxRadius: cruxRadius,
-            cartesianOffset: cartesianOffset
+            offset: offset
         )
     }
     
     public init(
         plane: CartesianPlane,
-        diameter: CGFloat,
-        radius: CGFloat,
-        scale: CGFloat,
-        spacing: CGFloat,
-        cruxRadius: CGFloat,
-        cartesianOffset: CartesianFrame.Offset
+        diameter: Double,
+        radius: Double,
+        scale: Double,
+        spacing: Double,
+        cruxRadius: Double,
+        offset: CartesianFrame.Offset
     ) {
         self.plane = plane
         self.diameter = diameter
@@ -91,39 +151,39 @@ public struct DPadValues {
         self.scale = scale
         self.spacing = spacing
         self.cruxRadius = cruxRadius
-        self.cartesianOffset = cartesianOffset
+        self.offset = offset
     }
     
     public init(
-        size: CGSize,
-        intrinsicSize: CGSize,
-        intrinsicCruxSize: CGSize = Crux.intrinsicSize,
-        intrinsicSpacing: CGFloat = Self.intrinsicSpacing,
-        offsetModifier: Point = .zero
+        size: Size,
+        intrinsicSize: Size,
+        intrinsicCruxSize: Size = Crux.intrinsicSize,
+        intrinsicSpacing: Double = Self.intrinsicSpacing,
+        intrinsicOffset: CartesianFrame.Offset = .zero
     ) {
         self = Self.make(
             size: size,
             intrinsicSize: intrinsicSize,
             intrinsicCruxSize: intrinsicCruxSize,
             intrinsicSpacing: intrinsicSpacing,
-            offsetModifier: offsetModifier
+            intrinsicOffset: intrinsicOffset
         )
     }
     
     public init(
-        scale: CGFloat,
-        intrinsicSize: CGSize,
-        intrinsicCruxSize: CGSize = Crux.intrinsicSize,
-        intrinsicSpacing: CGFloat = Self.intrinsicSpacing,
-        offsetModifier: Point = .zero
+        scale: Double,
+        intrinsicSize: Size,
+        intrinsicCruxSize: Size = Crux.intrinsicSize,
+        intrinsicSpacing: Double = Self.intrinsicSpacing,
+        intrinsicOffset: CartesianFrame.Offset = .zero
     ) {
-        let size = CGSize(width: intrinsicSize.width * scale, height: intrinsicSize.height * scale)
+        let size = Size(width: intrinsicSize.width * scale, height: intrinsicSize.height * scale)
         self = Self.make(
             size: size,
             intrinsicSize: intrinsicSize,
             intrinsicCruxSize: intrinsicCruxSize,
             intrinsicSpacing: intrinsicSpacing,
-            offsetModifier: offsetModifier
+            intrinsicOffset: intrinsicOffset
         )
     }
     

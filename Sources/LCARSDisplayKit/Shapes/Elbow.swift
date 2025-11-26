@@ -4,22 +4,23 @@ import CoreGraphics
 import Foundation
 #endif
 import GraphPoint
+import Swift2D
 
 /// A large container element that 'wraps' around other content.
 public struct Elbow: Hashable, Sendable {
 
-    public static let defaultHorizontalHeight: CGFloat = 120.0
-    public static let defaultVerticalWidth: CGFloat = 30.0
-    public static let defaultClosedHeight: CGFloat = 0.0
+    public static let defaultHorizontalHeight: Double = 120.0
+    public static let defaultVerticalWidth: Double = 30.0
+    public static let defaultClosedHeight: Double = 0.0
 
     public let identifier: CartesianShapeIdentifier?
-    public let size: CGSize
+    public let size: Size
     public let top: Bool
     public let left: Bool
     public let rounded: Bool
-    public let horizontalHeight: CGFloat
-    public let verticalWidth: CGFloat
-    public let closedHeight: CGFloat
+    public let horizontalHeight: Double
+    public let verticalWidth: Double
+    public let closedHeight: Double
     public let shouldMatchRadius: Bool
 
     /// Initialize a `Elbow` Cartesian Shape.
@@ -27,22 +28,22 @@ public struct Elbow: Hashable, Sendable {
     /// - parameters:
     ///   - identifier: A unique `CartesianShapeIdentifier`.
     ///   - size: The size of the shape.
-    ///   - top:
-    ///   - left:
+    ///   - top: Indicates the 'elbow' is drawn at the 'top' of the frame.
+    ///   - left: Indicates the 'stem' is drawn at the 'left' of the frame.
     ///   - rounded: Specifies if the corner specified by `top` and `left` should be rounded.
-    ///   - horizontalHeight:
-    ///   - verticalWidth:
+    ///   - horizontalHeight: The height of the 'elbow'.
+    ///   - verticalWidth: The width of the 'stem'.
     ///   - closedHeight: If closedHeight > 0, an additional area is drawn parallel to the horizontalHeight area.
     ///   - shouldMatchRadius: If true, the interior radius will match the exterior radius.
     public init(
         identifier: CartesianShapeIdentifier? = nil,
-        size: CGSize = .zero,
+        size: Size = .zero,
         top: Bool = true,
         left: Bool = true,
         rounded: Bool = true,
-        horizontalHeight: CGFloat = Self.defaultHorizontalHeight,
-        verticalWidth: CGFloat = Self.defaultVerticalWidth,
-        closedHeight: CGFloat = Self.defaultClosedHeight,
+        horizontalHeight: Double = Self.defaultHorizontalHeight,
+        verticalWidth: Double = Self.defaultVerticalWidth,
+        closedHeight: Double = Self.defaultClosedHeight,
         shouldMatchRadius: Bool = false
     ) {
         self.identifier = identifier
@@ -65,7 +66,7 @@ extension Elbow: CartesianShape {
         ]
     }
 
-    #if canImport(CoreGraphics)
+    #if canImport(CoreGraphics) || canImport(Foundation)
     private var outerRadius: Radius {
         max(horizontalHeight, verticalWidth) / 2
     }
