@@ -11,7 +11,7 @@ final class DPadValuesTests: XCTestCase {
     func testDPadViewValues() {
         var values = DPadValues(
             size: Size(width: 350.0, height: 350.0),
-            intrinsicSize: DPadView.intrinsicSize
+            intrinsicSize: Size(width: 350.0, height: 350.0)
         )
         
         XCTAssertEqual(values.plane.width, 350.0, accuracy: 0.1)
@@ -26,7 +26,7 @@ final class DPadValuesTests: XCTestCase {
         
         values = DPadValues(
             size: Size(width: 700.0, height: 700.0),
-            intrinsicSize: DPadView.intrinsicSize
+            intrinsicSize: Size(width: 350.0, height: 350.0)
         )
         
         XCTAssertEqual(values.plane.width, 700.0, accuracy: 0.1)
@@ -41,7 +41,7 @@ final class DPadValuesTests: XCTestCase {
         
         values = DPadValues(
             size: Size(width: 100.0, height: 100.0),
-            intrinsicSize: DPadView.intrinsicSize
+            intrinsicSize: Size(width: 350.0, height: 350.0)
         )
         
         XCTAssertEqual(values.plane.width, 100.0, accuracy: 0.1)
@@ -56,7 +56,7 @@ final class DPadValuesTests: XCTestCase {
         
         values = DPadValues(
             size: Size(width: 500.0, height: 1000.0),
-            intrinsicSize: DPadView.intrinsicSize
+            intrinsicSize: Size(width: 350.0, height: 350.0)
         )
         
         XCTAssertEqual(values.plane.width, 500.0, accuracy: 0.1)
@@ -71,7 +71,7 @@ final class DPadValuesTests: XCTestCase {
         
         values = DPadValues(
             size: Size(width: 1000.0, height: 500.0),
-            intrinsicSize: DPadView.intrinsicSize
+            intrinsicSize: Size(width: 350.0, height: 350.0)
         )
         
         XCTAssertEqual(values.plane.width, 500.0, accuracy: 0.1)
@@ -88,7 +88,7 @@ final class DPadValuesTests: XCTestCase {
     func testClusterCompactView() {
         var values = DPadValues(
             size: iPadLandscape,
-            intrinsicSize: DPadClusterView.intrinsicSize
+            intrinsicSize: Size(width: 760.0, height: 625.0)
         )
         
         XCTAssertEqual(values.plane.width, 1185.6, accuracy: 0.01)
@@ -96,7 +96,7 @@ final class DPadValuesTests: XCTestCase {
         
         values = DPadValues(
             size: iPadPortrait,
-            intrinsicSize: DPadClusterView.intrinsicSize
+            intrinsicSize: Size(width: 760.0, height: 625.0)
         )
         
         XCTAssertEqual(values.plane.width, 1032.0, accuracy: 0.01)
@@ -106,7 +106,7 @@ final class DPadValuesTests: XCTestCase {
     func testClusterStackedView() {
         var values = DPadValues(
             size: iPadPortrait,
-            intrinsicSize: DPadClusterStackedView.intrinsicSize
+            intrinsicSize: Size(width: 410.0, height: 995.0)
         )
         
         XCTAssertEqual(values.plane.width, 543.51, accuracy: 0.01)
@@ -114,7 +114,7 @@ final class DPadValuesTests: XCTestCase {
         
         values = DPadValues(
             size: iPadLandscape,
-            intrinsicSize: DPadClusterStackedView.intrinsicSize
+            intrinsicSize: Size(width: 410.0, height: 995.0)
         )
         
         XCTAssertEqual(values.plane.width, 401.76, accuracy: 0.01)
