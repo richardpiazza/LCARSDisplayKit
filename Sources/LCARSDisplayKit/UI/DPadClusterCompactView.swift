@@ -27,7 +27,7 @@ public struct DPadClusterCompactView: View {
             intrinsicSize: Self.intrinsicSize,
             intrinsicOffset: Self.intrinsicOffset
         )
-        radii = values.radii(layout: .compact)
+        radii = values.radii(layout: .compact, dPadRadius: DPadView.intrinsicSize.width / 2.0)
         self.action = action
     }
 
@@ -360,7 +360,7 @@ public extension DPadClusterCompactView {
             intrinsicSize: Self.intrinsicSize,
             intrinsicOffset: Self.intrinsicOffset
         )
-        radii = values.radii(layout: .compact)
+        radii = values.radii(layout: .compact, dPadRadius: DPadView.intrinsicSize.width / 2.0)
         self.action = action
     }
 }

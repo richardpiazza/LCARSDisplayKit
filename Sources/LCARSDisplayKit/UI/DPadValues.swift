@@ -187,8 +187,7 @@ public struct DPadValues {
         )
     }
     
-    public func radii(layout: Layout) -> Radii {
-        let dPadRadius = DPadView.intrinsicSize.width / 2.0
+    public func radii(layout: Layout, dPadRadius: Radius) -> Radii {
         let firstRingInteriorRadius = (dPadRadius * scale) + spacing
         let firstRingExteriorRadius = firstRingInteriorRadius + (80.0 * scale)
         let secondRingInteriorRadius = firstRingExteriorRadius + spacing

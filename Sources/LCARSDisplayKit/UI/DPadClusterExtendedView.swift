@@ -24,7 +24,7 @@ public struct DPadClusterExtendedView: View {
             intrinsicSize: Self.intrinsicSize,
             intrinsicOffset: Self.intrinsicOffset
         )
-        radii = values.radii(layout: .standard)
+        radii = values.radii(layout: .standard, dPadRadius: DPadView.intrinsicSize.width / 2.0)
         self.action = action
     }
 
@@ -364,7 +364,7 @@ public extension DPadClusterExtendedView {
             intrinsicSize: Self.intrinsicSize,
             intrinsicOffset: Self.intrinsicOffset
         )
-        radii = values.radii(layout: .standard)
+        radii = values.radii(layout: .standard, dPadRadius: DPadView.intrinsicSize.width / 2.0)
         self.action = action
     }
 }
