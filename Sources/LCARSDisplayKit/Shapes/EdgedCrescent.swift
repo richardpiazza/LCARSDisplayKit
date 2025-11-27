@@ -1,7 +1,5 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
-#else
-import Foundation
 #endif
 import GraphPoint
 
@@ -33,7 +31,7 @@ extension EdgedCrescent: CartesianShape {
         [interiorArc.startingPoint, interiorArc.endingPoint] + edgePoints
     }
 
-    #if canImport(CoreGraphics) || canImport(Foundation)
+    #if canImport(CoreGraphics)
     public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
 

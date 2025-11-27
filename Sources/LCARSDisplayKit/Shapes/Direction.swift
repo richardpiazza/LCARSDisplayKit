@@ -1,7 +1,5 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
-#else
-import Foundation
 #endif
 import GraphPoint
 import Swift2D
@@ -128,7 +126,7 @@ extension Direction: CartesianShape {
         )
     }
 
-    #if canImport(CoreGraphics) || canImport(Foundation)
+    #if canImport(CoreGraphics)
     public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
         subpaths?.forEach { path.addPath($0) }

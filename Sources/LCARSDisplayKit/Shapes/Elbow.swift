@@ -1,7 +1,5 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
-#else
-import Foundation
 #endif
 import GraphPoint
 import Swift2D
@@ -66,7 +64,7 @@ extension Elbow: CartesianShape {
         ]
     }
 
-    #if canImport(CoreGraphics) || canImport(Foundation)
+    #if canImport(CoreGraphics)
     private var outerRadius: Radius {
         max(horizontalHeight, verticalWidth) / 2
     }

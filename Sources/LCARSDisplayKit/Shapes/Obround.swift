@@ -1,7 +1,5 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
-#else
-import Foundation
 #endif
 import GraphPoint
 import Swift2D
@@ -50,7 +48,7 @@ public struct Obround: Hashable, Sendable {
 }
 
 extension Obround: CartesianShape {
-    #if canImport(CoreGraphics) || canImport(Foundation)
+    #if canImport(CoreGraphics)
     /// Calculates the radius of the arcs depending on `cornersOnly`
     private var radius: Radius { cornersOnly ? size.height * 0.25 : size.height * 0.5 }
     private var upperLeftCenter: Point { Point(x: radius, y: radius) }

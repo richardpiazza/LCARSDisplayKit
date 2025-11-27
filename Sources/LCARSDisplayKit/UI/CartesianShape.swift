@@ -1,7 +1,5 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
-#else
-import Foundation
 #endif
 import GraphPoint
 
@@ -14,7 +12,7 @@ public protocol CartesianShape: Hashable, Identifiable<CartesianShapeIdentifier>
     /// The rectangle of the plane which contains all of the points.
     var cartesianFrame: CartesianFrame { get }
 
-    #if canImport(CoreGraphics) || canImport(Foundation)
+    #if canImport(CoreGraphics)
     /// A `CoreGraphics` representation of the object.
     var path: CGPath { get }
 
@@ -36,7 +34,7 @@ public extension CartesianShape {
         CartesianFrame.make(for: cartesianPoints)
     }
 
-    #if canImport(CoreGraphics) || canImport(Foundation)
+    #if canImport(CoreGraphics)
     var subpaths: [CGPath]? {
         nil
     }
