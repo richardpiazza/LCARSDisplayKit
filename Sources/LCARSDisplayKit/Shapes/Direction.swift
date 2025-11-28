@@ -1,7 +1,5 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
-#else
-import Foundation
 #endif
 import GraphPoint
 import Swift2D
@@ -95,7 +93,7 @@ extension Direction: CartesianShape {
             return .zero
         }
 
-        let x, y, width, height: CGFloat
+        let x, y, width, height: Double
 
         switch cardinal {
         case .up:

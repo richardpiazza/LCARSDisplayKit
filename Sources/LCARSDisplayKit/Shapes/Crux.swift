@@ -1,7 +1,5 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
-#else
-import Foundation
 #endif
 import GraphPoint
 import Swift2D
@@ -9,10 +7,10 @@ import Swift2D
 /// The central element of any cardinal direction cluster.
 public struct Crux: Hashable, Sendable {
 
-    public static let intrinsicSize: CGSize = CGSize(width: 60.0, height: 60.0)
+    public static let intrinsicSize: Size = Size(width: 60.0, height: 60.0)
 
     public let identifier: CartesianShapeIdentifier?
-    public let size: CGSize
+    public let size: Size
 
     private var radius: Radius {
         max(size.width, size.height) / 2.0
@@ -25,7 +23,7 @@ public struct Crux: Hashable, Sendable {
     ///   - size: The `CGSize` that the element should have.
     public init(
         identifier: CartesianShapeIdentifier? = nil,
-        size: CGSize = Self.intrinsicSize
+        size: Size = Self.intrinsicSize
     ) {
         self.identifier = identifier
         self.size = size
@@ -41,7 +39,7 @@ public struct Crux: Hashable, Sendable {
         radius: Radius
     ) {
         self.identifier = identifier
-        size = CGSize(width: radius * 2.0, height: radius * 2.0)
+        size = Size(width: radius * 2.0, height: radius * 2.0)
     }
 }
 
@@ -64,7 +62,7 @@ extension Crux: CartesianShape {
         let path = CGMutablePath()
 
         path.move(to: .zero)
-        path.addRect(CGRect(origin: .zero, size: size))
+        path.addRect(Rect(origin: .zero, size: size))
         path.closeSubpath()
 
         return path

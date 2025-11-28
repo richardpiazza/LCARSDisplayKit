@@ -1,7 +1,5 @@
 #if canImport(CoreGraphics)
 import CoreGraphics
-#else
-import Foundation
 #endif
 import GraphPoint
 import Swift2D
@@ -9,11 +7,11 @@ import Swift2D
 /// A rectangle with optionally rounded ends
 public struct Obround: Hashable, Sendable {
 
-    public static let intrinsicSize: CGSize = CGSize(width: 144.0, height: 60.0)
+    public static let intrinsicSize: Size = Size(width: 144.0, height: 60.0)
 
     public let identifier: CartesianShapeIdentifier?
     public let cartesianPoints: [CartesianPoint]
-    public let size: CGSize
+    public let size: Size
     public let leftRounded: Bool
     public let rightRounded: Bool
     public let cornersOnly: Bool
@@ -28,7 +26,7 @@ public struct Obround: Hashable, Sendable {
     ///   - cornersOnly:
     public init(
         identifier: CartesianShapeIdentifier? = nil,
-        size: CGSize = Self.intrinsicSize,
+        size: Size = Self.intrinsicSize,
         at point: CartesianPoint = .zero,
         roundLeading: Bool = true,
         roundTrailing: Bool = true,
@@ -99,7 +97,7 @@ extension Obround: CartesianShape {
             path.addLine(to: CartesianPoint.zero)
             path.closeSubpath()
         default:
-            path.addRect(CartesianFrame(origin: .zero, size: Size(size)))
+            path.addRect(CartesianFrame(origin: .zero, size: size))
         }
 
         return path
