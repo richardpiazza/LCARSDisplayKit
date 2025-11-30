@@ -34,7 +34,7 @@ public struct ThemeCompact2370s: Theme {
         }
     }
 
-    public func color(for id: CartesianShapeIdentifier) -> Color? {
+    public func color(for id: CartesianIdentifier) -> Color? {
         switch id {
         case .crux:
             color(for: .secondaryLight)

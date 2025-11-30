@@ -8,7 +8,7 @@ struct ContentView: View {
     private let commandSequencer = CommandSequencer()
 
     @Environment(\.theme) private var theme
-    @State private var behaviors: [CartesianShapeIdentifier: ControlBehavior] = [
+    @State private var behaviors: [CartesianIdentifier: ControlBehavior] = [
         .innerRing10: .hidden,
         .innerRing16: .hidden,
         .outerRing14: .hidden,
@@ -17,13 +17,16 @@ struct ContentView: View {
     var body: some View {
         ZStack(alignment: .bottomLeading) {
             GeometryReader { geometry in
-                ElbowView(
+                ElbowControlView(
                     "",
-                    shape: Elbow(
-                        size: geometry.size,
-                        horizontalHeight: 140,
-                        verticalWidth: 40,
-                        closedHeight: 30
+                    shape: ElbowControl(
+                        elbow: Elbow(
+                            size: Size(geometry.size),
+                            horizontalHeight: 140,
+                            verticalWidth: 40,
+                            closedHeight: 30
+                        ),
+                        identifier: nil
                     ),
                     in: CartesianPlane(origin: .zero, size: Size(geometry.size))
                 )
@@ -39,9 +42,9 @@ struct ContentView: View {
         .environment(\.behaviors, behaviors)
         .task {
             commandSequencer.register(commandSequence: [.edge07, .outerRing16]) {
-                behaviors[.innerRing11] = .pulsing(timeInterval: 2.5)
-                behaviors[.outerRing16] = .pulsing(timeInterval: 3.0)
-                behaviors[.outerRing01] = .pulsing(timeInterval: 4.0)
+                behaviors[.innerRing11] = .pulsing(timeInterval: 1.5)
+                behaviors[.outerRing16] = .pulsing(timeInterval: 1.75)
+                behaviors[.outerRing01] = .pulsing(timeInterval: 2.0)
             }
 
             commandSequencer.register(commandSequence: [.edge07, .outerRing17]) {

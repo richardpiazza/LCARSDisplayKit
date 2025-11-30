@@ -1,4 +1,5 @@
 #if canImport(SwiftUI)
+import GraphPoint
 import SwiftUI
 
 struct ShapedEdge<T: CartesianShape> {

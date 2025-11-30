@@ -15,8 +15,9 @@ final class GenericTests: XCTestCase {
         let exteriorArc = Arc(radius: secondRingExteriorRadius, startingDegree: startDegree, endingDegree: endDegree)
 
         let crescent = Crescent(interiorArc: interiorArc, exteriorArc: exteriorArc)
+        let control = CrescentControl(crescent: crescent)
 
-        let cartesianPoints = crescent.cartesianPoints
+        let cartesianPoints = control.cartesianPoints
 
         XCTAssertEqual(cartesianPoints[0].x, 42.8932408633451, accuracy: 0.01)
         XCTAssertEqual(cartesianPoints[0].y, -287.005376184423, accuracy: 0.01)
@@ -27,7 +28,7 @@ final class GenericTests: XCTestCase {
         XCTAssertEqual(cartesianPoints[3].x, -44.4537756929482, accuracy: 0.01)
         XCTAssertEqual(cartesianPoints[3].y, -337.659949545872, accuracy: 0.01)
 
-        let cartesianFrame = crescent.cartesianFrame
+        let cartesianFrame = control.cartesianFrame
 
         XCTAssertEqual(cartesianFrame.origin.x, -44.4537756929482, accuracy: 0.01)
         XCTAssertEqual(cartesianFrame.origin.y, -287.005376184423, accuracy: 0.01)
@@ -53,8 +54,9 @@ final class GenericTests: XCTestCase {
         let exteriorArc = Arc(radius: secondRingExteriorRadiusExtended, startingDegree: startDegree, endingDegree: endDegree)
 
         let crescent = Crescent(interiorArc: interiorArc, exteriorArc: exteriorArc)
+        let control = CrescentControl(crescent: crescent)
 
-        let cartesianPoints = crescent.cartesianPoints
+        let cartesianPoints = control.cartesianPoints
 
         XCTAssertEqual(cartesianPoints[0].x, 261.923836279824, accuracy: 0.01)
         XCTAssertEqual(cartesianPoints[0].y, 124.931261335915, accuracy: 0.01)
@@ -65,7 +67,7 @@ final class GenericTests: XCTestCase {
         XCTAssertEqual(cartesianPoints[3].x, 391.555383810281, accuracy: 0.01)
         XCTAssertEqual(cartesianPoints[3].y, 65.523899526689, accuracy: 0.01)
 
-        let cartesianFrame = crescent.cartesianFrame
+        let cartesianFrame = control.cartesianFrame
 
         XCTAssertEqual(cartesianFrame.origin.x, 261.923836279824, accuracy: 0.01)
         XCTAssertEqual(cartesianFrame.origin.y, 170.912905432893, accuracy: 0.01)

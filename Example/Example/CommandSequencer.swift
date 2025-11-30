@@ -3,13 +3,13 @@ import LCARSDisplayKit
 class CommandSequencer {
 
     struct CommandSequence {
-        var path: [CartesianShapeIdentifier]
+        var path: [CartesianIdentifier]
         var activation: () -> Void = {}
     }
 
     private let audioPlayer: AudioPlayer
     private var commandSequences: [CommandSequence] = []
-    private var currentPath: [CartesianShapeIdentifier] = []
+    private var currentPath: [CartesianIdentifier] = []
 
     init(
         audioPlayer: AudioPlayer = AudioPlayer()
@@ -25,7 +25,7 @@ class CommandSequencer {
         commandSequences.append(sequence)
     }
 
-    func register(commandSequence path: [CartesianShapeIdentifier], activation: @escaping () -> Void) {
+    func register(commandSequence path: [CartesianIdentifier], activation: @escaping () -> Void) {
         register(
             commandSequence: CommandSequence(
                 path: path,
@@ -42,7 +42,7 @@ class CommandSequencer {
         commandSequences.remove(at: index)
     }
 
-    func didActivate(_ sender: CartesianShapeIdentifier) {
+    func didActivate(_ sender: CartesianIdentifier) {
         currentPath.append(sender)
 
         guard commandSequences.count > 0 else {
@@ -67,7 +67,7 @@ class CommandSequencer {
         audioPlayer.playNeutral()
     }
 
-    private func sequencesContainingPrefix(_ commandSequence: [CartesianShapeIdentifier]) -> [CommandSequence] {
+    private func sequencesContainingPrefix(_ commandSequence: [CartesianIdentifier]) -> [CommandSequence] {
         guard commandSequence.count > 0 else {
             return []
         }
