@@ -10,10 +10,10 @@
 		E1084470256E86A4005DDC10 /* LCARSDisplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = E108446F256E86A4005DDC10 /* LCARSDisplayKit */; };
 		E108447825700249005DDC10 /* CommandSequencer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E108447725700248005DDC10 /* CommandSequencer.swift */; };
 		E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */; };
-		E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */; };
 		E141F8782EC7C455007B93AD /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141F8772EC7C44D007B93AD /* AudioPlayer.swift */; };
 		E180FF1C2EAE679700B0D81F /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180FF1B2EAE678A00B0D81F /* ExampleApp.swift */; };
 		E180FF1E2EAE684600B0D81F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E180FF1D2EAE684400B0D81F /* ContentView.swift */; };
+		E1B7830A2EDB864200CF7BD4 /* SystemDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B783092EDB863D00CF7BD4 /* SystemDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,11 +34,11 @@
 		E108447725700248005DDC10 /* CommandSequencer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandSequencer.swift; sourceTree = "<group>"; };
 		E1112FB01BBE7FBC0001C33D /* LCARS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LCARS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E1112FBD1BBE7FBC0001C33D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1112FBF1BBE7FBC0001C33D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E141F8772EC7C44D007B93AD /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 		E180FF1B2EAE678A00B0D81F /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		E180FF1D2EAE684400B0D81F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E1B783092EDB863D00CF7BD4 /* SystemDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemDisplay.swift; sourceTree = "<group>"; };
 		E1CA6B4E1FFECB210002EF25 /* LCARSDisplayKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCARSDisplayKitTests.swift; sourceTree = "<group>"; };
 		E1CA6B831FFECC150002EF25 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E1CA6B841FFECC150002EF25 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
@@ -82,13 +82,13 @@
 		E1112FB21BBE7FBC0001C33D /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */,
 				E141F8772EC7C44D007B93AD /* AudioPlayer.swift */,
 				E108447725700248005DDC10 /* CommandSequencer.swift */,
 				E180FF1D2EAE684400B0D81F /* ContentView.swift */,
 				E180FF1B2EAE678A00B0D81F /* ExampleApp.swift */,
-				E1112FBA1BBE7FBC0001C33D /* Assets.xcassets */,
-				E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */,
 				E1112FBF1BBE7FBC0001C33D /* Info.plist */,
+				E1B783092EDB863D00CF7BD4 /* SystemDisplay.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -183,7 +183,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1112FBE1BBE7FBC0001C33D /* LaunchScreen.storyboard in Resources */,
 				E1112FBB1BBE7FBC0001C33D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1B7830A2EDB864200CF7BD4 /* SystemDisplay.swift in Sources */,
 				E180FF1C2EAE679700B0D81F /* ExampleApp.swift in Sources */,
 				E108447825700249005DDC10 /* CommandSequencer.swift in Sources */,
 				E141F8782EC7C455007B93AD /* AudioPlayer.swift in Sources */,
@@ -210,17 +210,6 @@
 			productRef = E1084471256E8806005DDC10 /* LCARSDisplayKit */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E1112FBC1BBE7FBC0001C33D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1112FBD1BBE7FBC0001C33D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E1112FD61BBE7FBC0001C33D /* Debug */ = {
@@ -276,7 +265,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 26.0;
 				WATCHOS_DEPLOYMENT_TARGET = 26.0;
 				XROS_DEPLOYMENT_TARGET = 26.0;
@@ -330,7 +319,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 				TVOS_DEPLOYMENT_TARGET = 26.0;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 26.0;
@@ -356,7 +345,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
 				PRODUCT_NAME = "LCARS Example";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Debug;
 		};
@@ -378,7 +370,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.richardpiazza.LCARSDisplayKit;
 				PRODUCT_NAME = "LCARS Example";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,3";
 			};
 			name = Release;
 		};

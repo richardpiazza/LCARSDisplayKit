@@ -2,11 +2,11 @@
 import SwiftUI
 
 private struct BehaviorsKey: EnvironmentKey {
-    static let defaultValue: [CartesianShapeIdentifier: ControlBehavior] = [:]
+    static let defaultValue: [CartesianIdentifier: ControlBehavior] = [:]
 }
 
 public extension EnvironmentValues {
-    var behaviors: [CartesianShapeIdentifier: ControlBehavior] {
+    var behaviors: [CartesianIdentifier: ControlBehavior] {
         get { self[BehaviorsKey.self] }
         set { self[BehaviorsKey.self] = newValue }
     }

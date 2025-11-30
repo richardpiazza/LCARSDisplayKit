@@ -4,7 +4,7 @@ import SwiftUI
 
 /// Properties uses to configure a button using the `DPad` Arcs.
 struct ShapedCrescent: Hashable {
-    let id: CartesianShapeIdentifier?
+    let id: CartesianIdentifier?
     let title: String
     let start: Degree
     let end: Degree
@@ -14,7 +14,7 @@ struct ShapedCrescent: Hashable {
     let parallelEnd: Bool
 
     init(
-        id: CartesianShapeIdentifier? = nil,
+        id: CartesianIdentifier? = nil,
         title: String,
         start: Degree,
         end: Degree,
@@ -34,7 +34,7 @@ struct ShapedCrescent: Hashable {
     }
 
     init(
-        id: CartesianShapeIdentifier? = nil,
+        id: CartesianIdentifier? = nil,
         title: String,
         arc: Curve,
         to: Curve? = nil,
@@ -63,7 +63,6 @@ struct ShapedCrescent: Hashable {
         extendedRadius: Radius
     ) -> Crescent {
         Crescent(
-            identifier: id,
             interiorArc: Arc(
                 radius: interiorRadius,
                 startingDegree: start,

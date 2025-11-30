@@ -8,16 +8,16 @@ public struct DPadView: View {
     public static let intrinsicSize: Size = Size(width: 350.0, height: 350.0)
     public static let intrinsicOffset: CartesianFrame.Offset = .zero
 
-    var values: DPadValues
-    var action: (CartesianShapeIdentifier) -> Void
+    var values: DirectionPad
+    var action: (CartesianIdentifier) -> Void
 
     @Environment(\.theme) private var theme
 
     public init(
         size: Size = Self.intrinsicSize,
-        action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
+        action: @escaping (CartesianIdentifier) -> Void = { _ in }
     ) {
-        values = DPadValues(
+        values = DirectionPad(
             size: size,
             intrinsicSize: Self.intrinsicSize
         )
@@ -26,9 +26,9 @@ public struct DPadView: View {
 
     public init(
         scale value: Double,
-        action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
+        action: @escaping (CartesianIdentifier) -> Void = { _ in }
     ) {
-        values = DPadValues(
+        values = DirectionPad(
             scale: value,
             intrinsicSize: Self.intrinsicSize
         )
@@ -37,8 +37,11 @@ public struct DPadView: View {
 
     public var body: some View {
         ZStack {
-            CruxView(
-                values.crux(),
+            CruxControlView(
+                CruxControl(
+                    crux: values.crux(),
+                    identifier: .crux
+                ),
                 in: values.plane,
                 with: values.offset,
                 action: action
@@ -46,8 +49,11 @@ public struct DPadView: View {
             .foregroundStyle(theme.color(for: .primaryDark))
 
             ForEach(Wedge.Sector.allCases, id: \.self) { sector in
-                WedgeView(
-                    values.wedge(sector: sector),
+                WedgeControlView(
+                    WedgeControl(
+                        wedge: values.wedge(sector: sector),
+                        identifier: sector.rawValue
+                    ),
                     in: values.plane,
                     with: values.offset,
                     action: action
@@ -56,8 +62,11 @@ public struct DPadView: View {
             }
 
             ForEach(Direction.Cardinal.allCases, id: \.self) { cardinal in
-                DirectionView(
-                    values.direction(cardinal: cardinal),
+                DirectionControlView(
+                    DirectionControl(
+                        direction: values.direction(cardinal: cardinal),
+                        identifier: cardinal.rawValue
+                    ),
                     in: values.plane,
                     with: values.offset,
                     action: action
@@ -72,9 +81,9 @@ public struct DPadView: View {
 public extension DPadView {
     init(
         size: CGSize,
-        action: @escaping (CartesianShapeIdentifier) -> Void = { _ in }
+        action: @escaping (CartesianIdentifier) -> Void = { _ in }
     ) {
-        values = DPadValues(
+        values = DirectionPad(
             size: Size(size),
             intrinsicSize: Self.intrinsicSize
         )

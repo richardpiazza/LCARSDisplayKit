@@ -1,13 +1,10 @@
-#if canImport(CoreGraphics)
-import CoreGraphics
-#endif
 import GraphPoint
 import Swift2D
 
 /// A `Arc` that uses it's `pivotPoint` to draw a wedge.
 public struct Wedge: Hashable, Sendable {
 
-    public enum Sector: CartesianShapeIdentifier, Hashable, Sendable, CaseIterable {
+    public enum Sector: CartesianIdentifier, Hashable, Sendable, CaseIterable {
         case sector1
         case sector2
         case sector3
@@ -32,62 +29,57 @@ public struct Wedge: Hashable, Sendable {
         }
     }
 
-    public let identifier: CartesianShapeIdentifier?
     public let exteriorArc: Arc
 
     /// Initialize a `Wedge` Cartesian Shape.
     ///
     /// - parameters:
-    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - identifier: A unique `CartesianIdentifier`.
     ///   - exteriorArc:
     public init(
-        identifier: CartesianShapeIdentifier? = nil,
-        exteriorArc: Arc = Arc()
+        exteriorArc: Arc
     ) {
-        self.identifier = identifier
         self.exteriorArc = exteriorArc
     }
 
     /// Initialize a `Wedge` Cartesian Shape.
     ///
     /// - parameters:
-    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - identifier: A unique `CartesianIdentifier`.
     ///   - sector:
     ///   - radius:
     public init(
-        identifier: CartesianShapeIdentifier? = nil,
         sector: Sector,
         radius: Radius
     ) {
-        self.identifier = identifier
         exteriorArc = Arc(
             radius: radius,
             startingDegree: sector.start,
             endingDegree: sector.end
         )
     }
-}
 
-extension Wedge: CartesianShape {
-    public var cartesianPoints: [CartesianPoint] {
-        [
-            exteriorArc.startingPoint,
-            exteriorArc.endingPoint,
-        ]
+    @available(*, deprecated)
+    public init(
+        identifier: CartesianIdentifier?,
+        exteriorArc: Arc = Arc()
+    ) {
+        self.exteriorArc = exteriorArc
     }
 
-    #if canImport(CoreGraphics)
-    public var path: CGPath {
-        let frame = cartesianFrame
-        let center = frame.offsetToCartesianOrigin
-        let pivot = frame.relativePointForCartesianPoint(exteriorArc.pivotPoint)
-
-        let path = CGMutablePath()
-        path.addArc(arc: exteriorArc, center: center, clockwise: false)
-        path.addLine(to: pivot)
-        path.closeSubpath()
-
-        return path
+    @available(*, deprecated)
+    public init(
+        identifier: CartesianIdentifier?,
+        sector: Sector,
+        radius: Radius
+    ) {
+        exteriorArc = Arc(
+            radius: radius,
+            startingDegree: sector.start,
+            endingDegree: sector.end
+        )
     }
-    #endif
+
+    @available(*, deprecated, message: "Use `WedgeControl`")
+    public var identifier: CartesianIdentifier? { nil }
 }

@@ -4,7 +4,7 @@ import SwiftUI
 public protocol Theme {
     func color(for appearance: ControlAppearance) -> Color
     func textColor(on appearance: ControlAppearance) -> Color
-    func color(for id: CartesianShapeIdentifier) -> Color?
+    func color(for id: CartesianIdentifier) -> Color?
     func gradient(for direction: Direction.Cardinal) -> LinearGradient
 }
 
@@ -13,7 +13,7 @@ public extension Theme {
         .black
     }
 
-    func color(for id: CartesianShapeIdentifier) -> Color? {
+    func color(for id: CartesianIdentifier) -> Color? {
         nil
     }
 

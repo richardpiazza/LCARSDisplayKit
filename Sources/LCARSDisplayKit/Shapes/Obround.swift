@@ -1,6 +1,3 @@
-#if canImport(CoreGraphics)
-import CoreGraphics
-#endif
 import GraphPoint
 import Swift2D
 
@@ -9,8 +6,6 @@ public struct Obround: Hashable, Sendable {
 
     public static let intrinsicSize: Size = Size(width: 144.0, height: 60.0)
 
-    public let identifier: CartesianShapeIdentifier?
-    public let cartesianPoints: [CartesianPoint]
     public let size: Size
     public let leftRounded: Bool
     public let rightRounded: Bool
@@ -19,88 +14,44 @@ public struct Obround: Hashable, Sendable {
     /// Initialize a `Obround` Cartesian Shape.
     ///
     /// - parameters:
-    ///   - identifier: A unique `CartesianShapeIdentifier`.
+    ///   - identifier: A unique `CartesianIdentifier`.
     ///   - size: The size of the shape - modifiable through intrinsic values
-    ///   - leftRounded:
-    ///   - rightRounded:
-    ///   - cornersOnly:
+    ///   - point: Indicates where in a `CartesianPlane` the shape is drawn. (top, left)
+    ///   - roundLeading: Indicates the leading edge of the shape should be rounded.
+    ///   - roundTrailing: Indicates the trailing edge of the shape should be rounded.
+    ///   - cornersOnly: Limits the radius of the corners to '1/4' instead of '1/2'.
     public init(
-        identifier: CartesianShapeIdentifier? = nil,
+        size: Size = Self.intrinsicSize,
+        roundLeading: Bool = true,
+        roundTrailing: Bool = true,
+        cornersOnly: Bool = false
+    ) {
+        self.size = size
+        leftRounded = roundLeading
+        rightRounded = roundTrailing
+        self.cornersOnly = cornersOnly
+    }
+
+    @available(*, deprecated)
+    public init(
+        identifier: CartesianIdentifier? = nil,
         size: Size = Self.intrinsicSize,
         at point: CartesianPoint = .zero,
         roundLeading: Bool = true,
         roundTrailing: Bool = true,
         cornersOnly: Bool = false
     ) {
-        self.identifier = identifier
         self.size = size
-        cartesianPoints = [
-            point,
-            CartesianPoint(
-                x: point.x + size.width,
-                y: point.y - size.height
-            ),
-        ]
         leftRounded = roundLeading
         rightRounded = roundTrailing
         self.cornersOnly = cornersOnly
     }
+
+    @available(*, deprecated, message: "Use `ObroundControl`")
+    public var identifier: CartesianIdentifier? { nil }
+
+    @available(*, deprecated, message: "Use `ObroundControl`")
+    public var cartesianPoints: [CartesianPoint] { [] }
 }
 
-extension Obround: CartesianShape {
-    #if canImport(CoreGraphics)
-    /// Calculates the radius of the arcs depending on `cornersOnly`
-    private var radius: Radius { cornersOnly ? size.height * 0.25 : size.height * 0.5 }
-    private var upperLeftCenter: Point { Point(x: radius, y: radius) }
-    private var lowerRightCenter: Point { Point(x: size.width - radius, y: size.height - radius) }
-
-    public var path: CGPath {
-        let path = CGMutablePath()
-
-        switch (leftRounded, rightRounded, cornersOnly) {
-        case (true, true, true):
-            path.addArc(center: upperLeftCenter, radius: Radius(radius), startDegree: 180.0, endDegree: 270.0, clockwise: false)
-            path.addLine(to: CartesianPoint(x: lowerRightCenter.x, y: 0.0))
-            path.addArc(center: CartesianPoint(x: lowerRightCenter.x, y: upperLeftCenter.y), radius: radius, startDegree: 270.0, endDegree: 0.0, clockwise: false)
-            path.addLine(to: CartesianPoint(x: size.width, y: lowerRightCenter.y))
-            path.addArc(center: lowerRightCenter, radius: radius, startDegree: 0.0, endDegree: 90.0, clockwise: false)
-            path.addLine(to: CartesianPoint(x: upperLeftCenter.x, y: size.height))
-            path.addArc(center: CartesianPoint(x: upperLeftCenter.x, y: lowerRightCenter.y), radius: radius, startDegree: 90.0, endDegree: 180.0, clockwise: false)
-            path.closeSubpath()
-        case (true, true, false):
-            path.addArc(center: upperLeftCenter, radius: radius, startDegree: 90.0, endDegree: 270.0, clockwise: false)
-            path.addLine(to: CartesianPoint(x: lowerRightCenter.x, y: 0))
-            path.addArc(center: lowerRightCenter, radius: radius, startDegree: 270.0, endDegree: 90.0, clockwise: false)
-            path.closeSubpath()
-        case (true, false, true):
-            path.addArc(center: upperLeftCenter, radius: radius, startDegree: 180.0, endDegree: 270.0, clockwise: false)
-            path.addLine(to: CartesianPoint(x: size.width, y: 0))
-            path.addLine(to: CartesianPoint(x: size.width, y: size.height))
-            path.addLine(to: CartesianPoint(x: upperLeftCenter.x, y: size.height))
-            path.addArc(center: CartesianPoint(x: upperLeftCenter.x, y: lowerRightCenter.y), radius: radius, startDegree: 90.0, endDegree: 170.0, clockwise: false)
-            path.closeSubpath()
-        case (true, false, false):
-            path.addArc(center: upperLeftCenter, radius: radius, startDegree: 90.0, endDegree: 270.0, clockwise: false)
-            path.addLine(to: CartesianPoint(x: size.width, y: 0))
-            path.addLine(to: CartesianPoint(x: size.width, y: size.height))
-            path.closeSubpath()
-        case (false, true, true):
-            path.addArc(center: CartesianPoint(x: lowerRightCenter.x, y: upperLeftCenter.y), radius: radius, startDegree: 270.0, endDegree: 0.0, clockwise: false)
-            path.addLine(to: CartesianPoint(x: size.width, y: lowerRightCenter.y))
-            path.addArc(center: lowerRightCenter, radius: radius, startDegree: 0.0, endDegree: 90.0, clockwise: false)
-            path.addLine(to: CartesianPoint(x: 0.0, y: size.height))
-            path.addLine(to: CartesianPoint.zero)
-            path.closeSubpath()
-        case (false, true, false):
-            path.addArc(center: lowerRightCenter, radius: radius, startDegree: 270.0, endDegree: 90.0, clockwise: false)
-            path.addLine(to: CartesianPoint(x: 0.0, y: size.height))
-            path.addLine(to: CartesianPoint.zero)
-            path.closeSubpath()
-        default:
-            path.addRect(CartesianFrame(origin: .zero, size: size))
-        }
-
-        return path
-    }
-    #endif
-}
+extension Obround: SizeConvertible {}

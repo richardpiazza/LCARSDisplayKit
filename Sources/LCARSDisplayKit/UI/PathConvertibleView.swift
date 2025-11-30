@@ -1,24 +1,18 @@
+#if canImport(SwiftUI)
 import GraphPoint
 import Swift2D
-#if canImport(SwiftUI)
 import SwiftUI
 
-public typealias CrescentControlView = CartesianShapeView<CrescentControl>
-public typealias CruxControlView = CartesianShapeView<CruxControl>
-public typealias DirectionControlView = CartesianShapeView<DirectionControl>
-public typealias ElbowControlView = CartesianShapeView<ElbowControl>
-public typealias EdgedCrescentControlView = CartesianShapeView<EdgedCrescentControl>
-public typealias ObroundControlView = CartesianShapeView<ObroundControl>
-public typealias WedgeControlView = CartesianShapeView<WedgeControl>
+public typealias ElbowView = PathConvertibleView<Elbow>
+public typealias ObroundView = PathConvertibleView<Obround>
 
-public struct CartesianShapeView<T: CartesianShape>: View {
+public struct PathConvertibleView<T: PathConvertible & SizeConvertible>: View {
 
-    var title: String
-    var id: T.ID
     var path: Path
-    var rect: CGRect
-    var offset: CGPoint
-    var action: (T.ID) -> Void
+    var size: Size
+    var id: CartesianIdentifier
+    var title: String
+    var action: (CartesianIdentifier) -> Void
 
     @Environment(\.behaviors) private var behaviors
 
@@ -28,31 +22,29 @@ public struct CartesianShapeView<T: CartesianShape>: View {
     @State private var disabled: Bool = false
 
     public init(
-        _ shape: T,
-        in plane: CartesianPlane,
-        with offset: CartesianFrame.Offset = .zero,
-        action: @escaping (T.ID) -> Void = { _ in }
+        path: Path,
+        size: Size,
+        id: CartesianIdentifier = "",
+        title: String = "",
+        action: @escaping (CartesianIdentifier) -> Void
     ) {
-        title = ""
-        id = shape.id
-        path = Path(shape.path)
-        rect = CGRect(plane.rect(for: shape.cartesianFrame))
-        self.offset = CGPoint(offset)
+        self.id = id
+        self.title = title
+        self.path = path
+        self.size = size
         self.action = action
     }
 
     public init(
-        _ title: String,
-        shape: T,
-        in plane: CartesianPlane,
-        with offset: CartesianFrame.Offset = .zero,
-        action: @escaping (T.ID) -> Void = { _ in }
+        _ t: T,
+        id: CartesianIdentifier = "",
+        title: String = "",
+        action: @escaping (CartesianIdentifier) -> Void
     ) {
+        path = Path(t.path)
+        size = t.size
+        self.id = id
         self.title = title
-        id = shape.id
-        path = Path(shape.path)
-        rect = CGRect(plane.rect(for: shape.cartesianFrame))
-        self.offset = CGPoint(offset)
         self.action = action
     }
 
@@ -62,12 +54,8 @@ public struct CartesianShapeView<T: CartesianShape>: View {
         }
         .buttonStyle(PathButtonStyle(id: id, path: path))
         .frame(
-            width: rect.width,
-            height: rect.height
-        )
-        .position(
-            x: rect.minX + offset.x + (rect.width / 2.0),
-            y: rect.minY + offset.y + (rect.height / 2.0)
+            width: size.width,
+            height: size.height
         )
         .opacity(opacity)
         .disabled(disabled)
