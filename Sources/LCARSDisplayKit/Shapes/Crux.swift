@@ -33,25 +33,6 @@ public struct Crux: Hashable, Sendable {
     ) {
         size = Size(width: radius * 2.0, height: radius * 2.0)
     }
-
-    @available(*, deprecated)
-    public init(
-        identifier: CartesianIdentifier?,
-        size: Size = Self.intrinsicSize
-    ) {
-        self.size = size
-    }
-
-    @available(*, deprecated)
-    public init(
-        identifier: CartesianIdentifier?,
-        radius: Radius
-    ) {
-        size = Size(width: radius * 2.0, height: radius * 2.0)
-    }
-
-    @available(*, deprecated, message: "Use `CruxControl`")
-    public var identifier: CartesianIdentifier? { nil }
 }
 
 extension Crux: SizeConvertible {}

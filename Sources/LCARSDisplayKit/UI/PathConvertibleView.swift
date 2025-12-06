@@ -3,9 +3,6 @@ import GraphPoint
 import Swift2D
 import SwiftUI
 
-public typealias ElbowView = PathConvertibleView<Elbow>
-public typealias ObroundView = PathConvertibleView<Obround>
-
 public struct PathConvertibleView<T: PathConvertible & SizeConvertible>: View {
 
     var path: Path
@@ -26,7 +23,7 @@ public struct PathConvertibleView<T: PathConvertible & SizeConvertible>: View {
         size: Size,
         id: CartesianIdentifier = "",
         title: String = "",
-        action: @escaping (CartesianIdentifier) -> Void
+        action: @escaping (CartesianIdentifier) -> Void = { _ in }
     ) {
         self.id = id
         self.title = title
@@ -39,7 +36,7 @@ public struct PathConvertibleView<T: PathConvertible & SizeConvertible>: View {
         _ t: T,
         id: CartesianIdentifier = "",
         title: String = "",
-        action: @escaping (CartesianIdentifier) -> Void
+        action: @escaping (CartesianIdentifier) -> Void = { _ in }
     ) {
         path = Path(t.path)
         size = t.size

@@ -1,8 +1,9 @@
-import GraphPoint
 #if canImport(SwiftUI)
+import GraphPoint
 import SwiftUI
 
 /// Properties uses to configure a button using the `DPad` Arcs.
+@available(*, deprecated, message: "Use `CartesianControl`")
 struct ShapedCrescent: Hashable {
     let id: CartesianIdentifier?
     let title: String
@@ -10,8 +11,6 @@ struct ShapedCrescent: Hashable {
     let end: Degree
     let appearance: ControlAppearance
     let extended: Bool
-    let parallelStart: Bool
-    let parallelEnd: Bool
 
     init(
         id: CartesianIdentifier? = nil,
@@ -19,9 +18,7 @@ struct ShapedCrescent: Hashable {
         start: Degree,
         end: Degree,
         appearance: ControlAppearance,
-        extended: Bool = false,
-        parallelStart: Bool = false,
-        parallelEnd: Bool = false
+        extended: Bool = false
     ) {
         self.id = id
         self.title = title
@@ -29,19 +26,15 @@ struct ShapedCrescent: Hashable {
         self.end = end
         self.appearance = appearance
         self.extended = extended
-        self.parallelStart = parallelStart
-        self.parallelEnd = parallelEnd
     }
 
     init(
         id: CartesianIdentifier? = nil,
         title: String,
-        arc: Curve,
-        to: Curve? = nil,
+        arc: Radial,
+        to: Radial? = nil,
         appearance: ControlAppearance,
         extended: Bool = false,
-        parallelStart: Bool = false,
-        parallelEnd: Bool = false
     ) {
         self.id = id
         self.title = title
@@ -53,8 +46,6 @@ struct ShapedCrescent: Hashable {
         }
         self.appearance = appearance
         self.extended = extended
-        self.parallelStart = parallelStart
-        self.parallelEnd = parallelEnd
     }
 
     func shape(

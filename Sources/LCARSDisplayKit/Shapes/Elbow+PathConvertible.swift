@@ -4,11 +4,11 @@ import GraphPoint
 
 extension Elbow: PathConvertible {
     private var outerRadius: Radius {
-        max(horizontalHeight, verticalWidth) / 2
+        max(bodyHeight, stemWidth) / 2
     }
 
     private var innerRadius: Radius {
-        shouldMatchRadius ? outerRadius : (outerRadius / 2.4)
+        (interiorRounding != nil) ? outerRadius : (outerRadius / 2.4)
     }
 
     private var upperLeftOuterCenter: CartesianPoint {
@@ -16,7 +16,7 @@ extension Elbow: PathConvertible {
     }
 
     private var upperLeftInnerCenter: CartesianPoint {
-        CartesianPoint(x: verticalWidth + innerRadius, y: horizontalHeight + innerRadius)
+        CartesianPoint(x: stemWidth + innerRadius, y: bodyHeight + innerRadius)
     }
 
     private var lowerRightOuterCenter: CartesianPoint {
@@ -24,103 +24,103 @@ extension Elbow: PathConvertible {
     }
 
     private var lowerRightInnerCenter: CartesianPoint {
-        CartesianPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight - innerRadius)
+        CartesianPoint(x: size.width - stemWidth - innerRadius, y: size.height - bodyHeight - innerRadius)
     }
 
     public var path: CGPath {
         let path: CGMutablePath = CGMutablePath()
         let size = size
 
-        switch (top, left) {
-        case (true, true): // Upper Left
-            if rounded {
+        switch alignment {
+        case .topLeft:
+            if (exteriorRounding != nil) {
                 path.addArc(center: upperLeftOuterCenter, radius: outerRadius, startDegree: 180.0, endDegree: 270.0, clockwise: false)
             } else {
                 path.move(to: CartesianPoint.zero)
             }
             path.addLine(to: CartesianPoint(x: size.width, y: 0.0))
-            path.addLine(to: CartesianPoint(x: size.width, y: horizontalHeight))
-            if rounded {
-                path.addLine(to: CartesianPoint(x: verticalWidth + innerRadius, y: horizontalHeight))
+            path.addLine(to: CartesianPoint(x: size.width, y: bodyHeight))
+            if (exteriorRounding != nil) {
+                path.addLine(to: CartesianPoint(x: stemWidth + innerRadius, y: bodyHeight))
                 path.addArc(center: upperLeftInnerCenter, radius: innerRadius, startDegree: 270.0, endDegree: 180.0, clockwise: true)
             } else {
-                path.addLine(to: CartesianPoint(x: verticalWidth, y: horizontalHeight))
+                path.addLine(to: CartesianPoint(x: stemWidth, y: bodyHeight))
             }
             if closedHeight > 0 {
-                path.addLine(to: CartesianPoint(x: verticalWidth, y: size.height - closedHeight))
+                path.addLine(to: CartesianPoint(x: stemWidth, y: size.height - closedHeight))
                 path.addLine(to: CartesianPoint(x: size.width, y: size.height - closedHeight))
                 path.addLine(to: CartesianPoint(x: size.width, y: size.height))
             } else {
-                path.addLine(to: CartesianPoint(x: verticalWidth, y: size.height))
+                path.addLine(to: CartesianPoint(x: stemWidth, y: size.height))
             }
             path.addLine(to: CartesianPoint(x: 0.0, y: size.height))
             path.closeSubpath()
-        case (false, true): // Lower Left
-            if rounded {
+        case .bottomLeft:
+            if (exteriorRounding != nil) {
                 path.addArc(center: CartesianPoint(x: upperLeftOuterCenter.x, y: lowerRightOuterCenter.y), radius: outerRadius, startDegree: 180.0, endDegree: 90.0, clockwise: true)
             } else {
                 path.move(to: CartesianPoint(x: 0, y: size.height))
             }
             path.addLine(to: CartesianPoint(x: size.width, y: size.height))
-            path.addLine(to: CartesianPoint(x: size.width, y: size.height - horizontalHeight))
-            if rounded {
-                path.addLine(to: CartesianPoint(x: verticalWidth + innerRadius, y: size.height - horizontalHeight))
+            path.addLine(to: CartesianPoint(x: size.width, y: size.height - bodyHeight))
+            if (exteriorRounding != nil) {
+                path.addLine(to: CartesianPoint(x: stemWidth + innerRadius, y: size.height - bodyHeight))
                 path.addArc(center: CartesianPoint(x: upperLeftInnerCenter.x, y: lowerRightInnerCenter.y), radius: innerRadius, startDegree: 90.0, endDegree: 180.0, clockwise: false)
             } else {
-                path.addLine(to: CartesianPoint(x: verticalWidth, y: size.height - horizontalHeight))
+                path.addLine(to: CartesianPoint(x: stemWidth, y: size.height - bodyHeight))
             }
             if closedHeight > 0 {
-                path.addLine(to: CartesianPoint(x: verticalWidth, y: closedHeight))
+                path.addLine(to: CartesianPoint(x: stemWidth, y: closedHeight))
                 path.addLine(to: CartesianPoint(x: size.width, y: closedHeight))
                 path.addLine(to: CartesianPoint(x: size.width, y: 0.0))
             } else {
-                path.addLine(to: CartesianPoint(x: verticalWidth, y: 0.0))
+                path.addLine(to: CartesianPoint(x: stemWidth, y: 0.0))
             }
             path.addLine(to: CartesianPoint.zero)
             path.closeSubpath()
-        case (true, false): // Upper Right
-            if rounded {
+        case .topRight:
+            if (exteriorRounding != nil) {
                 path.addArc(center: CartesianPoint(x: lowerRightOuterCenter.x, y: upperLeftOuterCenter.y), radius: outerRadius, startDegree: 0.0, endDegree: 270.0, clockwise: true)
             } else {
                 path.move(to: CartesianPoint(x: size.width, y: 0))
             }
             path.addLine(to: CartesianPoint.zero)
-            path.addLine(to: CartesianPoint(x: 0.0, y: horizontalHeight))
-            if rounded {
-                path.addLine(to: CartesianPoint(x: size.width - verticalWidth - innerRadius, y: horizontalHeight))
+            path.addLine(to: CartesianPoint(x: 0.0, y: bodyHeight))
+            if (exteriorRounding != nil) {
+                path.addLine(to: CartesianPoint(x: size.width - stemWidth - innerRadius, y: bodyHeight))
                 path.addArc(center: CartesianPoint(x: lowerRightInnerCenter.x, y: upperLeftInnerCenter.y), radius: innerRadius, startDegree: 270.0, endDegree: 0.0, clockwise: false)
             } else {
-                path.addLine(to: CartesianPoint(x: size.width - verticalWidth, y: horizontalHeight))
+                path.addLine(to: CartesianPoint(x: size.width - stemWidth, y: bodyHeight))
             }
             if closedHeight > 0 {
-                path.addLine(to: CartesianPoint(x: size.width - verticalWidth, y: size.height - closedHeight))
+                path.addLine(to: CartesianPoint(x: size.width - stemWidth, y: size.height - closedHeight))
                 path.addLine(to: CartesianPoint(x: 0, y: size.height - closedHeight))
                 path.addLine(to: CartesianPoint(x: 0, y: size.height))
             } else {
-                path.addLine(to: CartesianPoint(x: size.width - verticalWidth, y: size.height))
+                path.addLine(to: CartesianPoint(x: size.width - stemWidth, y: size.height))
             }
             path.addLine(to: CartesianPoint(x: size.width, y: size.height))
             path.closeSubpath()
-        case (false, false): // Lower Right
-            if rounded {
+        case .bottomRight:
+            if (exteriorRounding != nil) {
                 path.addArc(center: lowerRightOuterCenter, radius: outerRadius, startDegree: 0.0, endDegree: 90.0, clockwise: false)
             } else {
                 path.move(to: CartesianPoint(x: size.width, y: size.height))
             }
             path.addLine(to: CartesianPoint(x: 0, y: size.height))
-            path.addLine(to: CartesianPoint(x: 0, y: size.height - horizontalHeight))
-            if rounded {
-                path.addLine(to: CartesianPoint(x: size.width - verticalWidth - innerRadius, y: size.height - horizontalHeight))
+            path.addLine(to: CartesianPoint(x: 0, y: size.height - bodyHeight))
+            if (exteriorRounding != nil) {
+                path.addLine(to: CartesianPoint(x: size.width - stemWidth - innerRadius, y: size.height - bodyHeight))
                 path.addArc(center: lowerRightInnerCenter, radius: innerRadius, startDegree: 90.0, endDegree: 0.0, clockwise: true)
             } else {
-                path.addLine(to: CartesianPoint(x: size.width - verticalWidth, y: size.height - horizontalHeight))
+                path.addLine(to: CartesianPoint(x: size.width - stemWidth, y: size.height - bodyHeight))
             }
             if closedHeight > 0 {
-                path.addLine(to: CartesianPoint(x: size.width - verticalWidth, y: closedHeight))
+                path.addLine(to: CartesianPoint(x: size.width - stemWidth, y: closedHeight))
                 path.addLine(to: CartesianPoint(x: 0.0, y: closedHeight))
                 path.addLine(to: CartesianPoint.zero)
             } else {
-                path.addLine(to: CartesianPoint(x: size.width - verticalWidth, y: 0.0))
+                path.addLine(to: CartesianPoint(x: size.width - stemWidth, y: 0.0))
             }
             path.addLine(to: CartesianPoint(x: size.width, y: 0.0))
             path.closeSubpath()

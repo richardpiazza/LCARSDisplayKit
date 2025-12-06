@@ -2,56 +2,66 @@ import GraphPoint
 import Swift2D
 
 /// A rectangle with optionally rounded ends
-public struct Obround: Hashable, Sendable {
+public struct Obround: Hashable, Sendable, SizeConvertible {
 
     public static let intrinsicSize: Size = Size(width: 144.0, height: 60.0)
 
     public let size: Size
-    public let leftRounded: Bool
-    public let rightRounded: Bool
-    public let cornersOnly: Bool
+    public let roundLeading: Bool
+    public let roundTrailing: Bool
+    public let rounding: Rounding
 
-    /// Initialize a `Obround` Cartesian Shape.
+    /// Initialize a `Obround`.
     ///
     /// - parameters:
-    ///   - identifier: A unique `CartesianIdentifier`.
     ///   - size: The size of the shape - modifiable through intrinsic values
-    ///   - point: Indicates where in a `CartesianPlane` the shape is drawn. (top, left)
     ///   - roundLeading: Indicates the leading edge of the shape should be rounded.
     ///   - roundTrailing: Indicates the trailing edge of the shape should be rounded.
-    ///   - cornersOnly: Limits the radius of the corners to '1/4' instead of '1/2'.
+    ///   - rounding: How the corner rounding is applied.
     public init(
         size: Size = Self.intrinsicSize,
         roundLeading: Bool = true,
         roundTrailing: Bool = true,
-        cornersOnly: Bool = false
+        rounding: Rounding = .half
     ) {
         self.size = size
-        leftRounded = roundLeading
-        rightRounded = roundTrailing
-        self.cornersOnly = cornersOnly
+        self.roundLeading = roundLeading
+        self.roundTrailing = roundTrailing
+        self.rounding = rounding
     }
-
-    @available(*, deprecated)
+    
     public init(
-        identifier: CartesianIdentifier? = nil,
-        size: Size = Self.intrinsicSize,
-        at point: CartesianPoint = .zero,
+        scale: Double,
         roundLeading: Bool = true,
         roundTrailing: Bool = true,
-        cornersOnly: Bool = false
+        rounding: Rounding = .half
+    ) {
+        size = Size(
+            width: Self.intrinsicSize.width * scale,
+            height: Self.intrinsicSize.height * scale
+        )
+        self.roundLeading = roundLeading
+        self.roundTrailing = roundTrailing
+        self.rounding = rounding
+    }
+    
+    @available(*, deprecated, renamed: "init(size:roundLeading:roundTrailing:rounding:)")
+    public init(
+        size: Size = Self.intrinsicSize,
+        roundLeading: Bool = true,
+        roundTrailing: Bool = true,
+        cornersOnly: Bool
     ) {
         self.size = size
-        leftRounded = roundLeading
-        rightRounded = roundTrailing
-        self.cornersOnly = cornersOnly
+        self.roundLeading = roundLeading
+        self.roundTrailing = roundTrailing
+        rounding = cornersOnly ? .quarter : .half
     }
-
-    @available(*, deprecated, message: "Use `ObroundControl`")
-    public var identifier: CartesianIdentifier? { nil }
-
-    @available(*, deprecated, message: "Use `ObroundControl`")
-    public var cartesianPoints: [CartesianPoint] { [] }
+    
+    @available(*, deprecated, renamed: "roundLeading")
+    public var leftRounded: Bool { roundLeading }
+    @available(*, deprecated, renamed: "roundTrailing")
+    public var rightRounded: Bool { roundTrailing }
+    @available(*, deprecated, renamed: "rounding")
+    public var cornersOnly: Bool { rounding == .quarter }
 }
-
-extension Obround: SizeConvertible {}

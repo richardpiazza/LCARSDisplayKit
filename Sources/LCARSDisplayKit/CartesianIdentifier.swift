@@ -1,6 +1,3 @@
-@available(*, deprecated, renamed: "CartesianIdentifier")
-public typealias CartesianShapeIdentifier = CartesianIdentifier
-
 public struct CartesianIdentifier: Hashable, Sendable, ExpressibleByStringLiteral, RawRepresentable {
     public let rawValue: String
 

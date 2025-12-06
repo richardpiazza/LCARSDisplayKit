@@ -1,6 +1,6 @@
+#if canImport(SwiftUI)
 import GraphPoint
 import Swift2D
-#if canImport(SwiftUI)
 import SwiftUI
 
 /// An example cluster control set that extends a 'DPad'.
@@ -12,8 +12,7 @@ public struct DPadClusterCompactView: View {
     public static let intrinsicSize: Size = Size(width: 715.0, height: 520.0)
     public static let intrinsicOffset: CartesianFrame.Offset = Point(x: -26.169, y: 72.8)
 
-    var values: DirectionPad
-    var radii: DirectionPad.Radii
+    var values: CartesianValues
     var action: (CartesianIdentifier) -> Void
 
     @Environment(\.theme) private var theme
@@ -22,152 +21,117 @@ public struct DPadClusterCompactView: View {
         size: Size = Self.intrinsicSize,
         action: @escaping (CartesianIdentifier) -> Void = { _ in }
     ) {
-        values = DirectionPad(
+        values = CartesianValues(
             size: size,
             intrinsicSize: Self.intrinsicSize,
-            intrinsicOffset: Self.intrinsicOffset
+            intrinsicOffset: Self.intrinsicOffset,
+            layout: .compact
         )
-        radii = values.radii(layout: .compact, dPadRadius: DPadView.intrinsicSize.width / 2.0)
         self.action = action
     }
-
+    
+    public init(
+        scale: Double,
+        action: @escaping (CartesianIdentifier) -> Void = { _ShapedCrescent in }
+    ) {
+        values = CartesianValues(
+            scale: scale,
+            intrinsicSize: Self.intrinsicSize,
+            intrinsicOffset: Self.intrinsicOffset,
+            layout: .compact
+        )
+        self.action = action
+    }
+    
     public var body: some View {
         ZStack {
-            values.dPadView(action: action)
-
-            crescents(
-                interiorRadius: radii.firstRingInteriorRadius,
-                exteriorRadius: radii.firstRingExteriorRadius,
-                extendedExteriorRadius: radii.firstRingExteriorRadius,
-                in: values.plane,
-                with: values.offset,
-                shapes: [
-                    ShapedCrescent(id: .innerRing08, title: "IR08", arc: .arc08, appearance: .primaryDark),
-                    ShapedCrescent(id: .innerRing09, title: "IR09", arc: .arc09, appearance: .secondaryLight),
-                    ShapedCrescent(id: .innerRing10, title: "IR10", arc: .arc10, appearance: .secondaryDark),
-                    ShapedCrescent(id: .innerRing11, title: "IR11", arc: .arc11, appearance: .secondaryLight),
-                    ShapedCrescent(id: .innerRing13, title: "IR13", arc: .arc13, appearance: .secondaryDark),
-                ]
-            )
-
-            crescents(
-                interiorRadius: radii.secondRingInteriorRadius,
-                exteriorRadius: radii.secondRingExteriorRadius,
-                extendedExteriorRadius: radii.secondRingExtendedExteriorRadius,
-                in: values.plane,
-                with: values.offset,
-                shapes: [
-                    ShapedCrescent(id: .outerRing09, title: "OR09", arc: .arc09, appearance: .secondaryDark),
-                    ShapedCrescent(id: .outerRing10, title: "OR10", arc: .arc10, appearance: .secondaryLight),
-                    ShapedCrescent(id: .outerRing11, title: "OR11", arc: .arc11, appearance: .primaryDark),
-                    ShapedCrescent(id: .outerRing12, title: "OR12", arc: .arc12, appearance: .secondaryDark),
-                    ShapedCrescent(id: .outerRing13, title: "OR13", arc: .arc13, appearance: .secondaryLight),
-                    ShapedCrescent(id: .outerRing18, title: "OR18", arc: .arc18, appearance: .primaryDark, extended: true),
-                ]
-            )
-
-            edges(
-                in: values.plane,
-                with: values.offset,
-                crescents: [
-                    ShapedEdge(title: "IN01", shape: innerRing01, appearance: .secondaryDark),
-                    ShapedEdge(title: "IN14", shape: innerRing14, appearance: .secondaryLight),
-                    ShapedEdge(title: "IN15", shape: innerRing15, appearance: .secondaryDark),
-                    ShapedEdge(title: "IN16", shape: innerRing16, appearance: .secondaryLight),
-                    ShapedEdge(title: "IN17", shape: innerRing17, appearance: .secondaryLight),
-                    ShapedEdge(title: "IN20", shape: innerRing20, appearance: .quaternaryLight),
-                    ShapedEdge(title: "OR19", shape: outerRing19, appearance: .secondaryLight),
-                    ShapedEdge(title: "OR20", shape: outerRing20, appearance: .secondaryDark),
+            dPadView(action: action)
+            
+            addControls(
+                [
+                    CartesianControl(title: "IR08", shape: innerRing08, appearance: .primaryDark),
+                    CartesianControl(title: "IR09", shape: innerRing09, appearance: .secondaryLight),
+                    CartesianControl(title: "IR10", shape: innerRing10, appearance: .secondaryDark),
+                    CartesianControl(title: "IR11", shape: innerRing11, appearance: .secondaryLight),
+                    CartesianControl(title: "IR13", shape: innerRing13, appearance: .secondaryDark),
+                    CartesianControl(title: "OR09", shape: outerRing09, appearance: .secondaryDark),
+                    CartesianControl(title: "OR10", shape: outerRing10, appearance: .secondaryLight),
+                    CartesianControl(title: "OR11", shape: outerRing11, appearance: .primaryDark),
+                    CartesianControl(title: "OR12", shape: outerRing12, appearance: .secondaryDark),
+                    CartesianControl(title: "OR13", shape: outerRing13, appearance: .secondaryLight),
+                    CartesianControl(title: "OR18", shape: outerRing18, appearance: .primaryDark),
+                    CartesianControl(title: "IN01", shape: innerRing01, appearance: .secondaryDark),
+                    CartesianControl(title: "IN14", shape: innerRing14, appearance: .secondaryLight),
+                    CartesianControl(title: "IN15", shape: innerRing15, appearance: .secondaryDark),
+                    CartesianControl(title: "IN16", shape: innerRing16, appearance: .secondaryLight),
+                    CartesianControl(title: "IN17", shape: innerRing17, appearance: .secondaryLight),
+                    CartesianControl(title: "IN20", shape: innerRing20, appearance: .quaternaryLight),
+                    CartesianControl(title: "OR19", shape: outerRing19, appearance: .secondaryLight),
+                    CartesianControl(title: "OR20", shape: outerRing20, appearance: .secondaryDark),
                 ],
-                edges: [
-                    ShapedEdge(title: "E13", shape: edge13, appearance: .primaryDark),
-                    ShapedEdge(title: "E15", shape: edge15, appearance: .secondaryLight),
+                in: values.plane,
+                with: values.offset
+            )
+            
+            addControls(
+                [
+                    CartesianControl(title: "E13", shape: edge13, appearance: .primaryDark),
+                    CartesianControl(title: "E15", shape: edge15, appearance: .secondaryLight),
                 ],
-                obrounds: [
-                    ShapedEdge(title: "T00", shape: top00, appearance: .secondaryDark),
-                ]
+                in: values.plane,
+                with: values.offset
+            )
+            
+            addControls(
+                [
+                    CartesianControl(title: "T00", shape: top00, appearance: .secondaryDark),
+                ],
+                in: values.plane,
+                with: values.offset
             )
         }
         .frame(width: values.plane.size.width, height: values.plane.size.height)
     }
-
-    private func crescents(
-        interiorRadius: CGFloat,
-        exteriorRadius: CGFloat,
-        extendedExteriorRadius: CGFloat,
-        in plane: CartesianPlane,
-        with offset: CartesianFrame.Offset,
-        shapes: [ShapedCrescent] = []
-    ) -> some View {
-        ZStack {
-            ForEach(shapes, id: \.self) { shape in
-                CrescentControlView(
-                    shape.title,
-                    shape: CrescentControl(
-                        crescent: shape.shape(
-                            interiorRadius: interiorRadius,
-                            exteriorRadius: exteriorRadius,
-                            extendedRadius: extendedExteriorRadius
-                        ),
-                        identifier: shape.id
-                    ),
-                    in: plane,
-                    with: offset,
-                    action: action
-                )
-                .foregroundStyle(theme.color(for: shape.appearance))
-            }
-        }
+    
+    func dPadView(action: @escaping (CartesianIdentifier) -> Void) -> some View {
+        DPadView(
+            scale: values.scale,
+            action: action
+        )
+        .frame(
+            width: DPadView.intrinsicSize.width * values.scale,
+            height: DPadView.intrinsicSize.height * values.scale
+        )
+        .position(
+            x: values.plane.midX + values.offset.x,
+            y: values.plane.midY + values.offset.y
+        )
     }
-
-    private func edges(
+    
+    private func addControls<T: CartesianShape>(
+        _ controls: [CartesianControl<T>],
         in plane: CartesianPlane,
-        with offset: CartesianFrame.Offset,
-        crescents: [ShapedEdge<CrescentControl>] = [],
-        edges: [ShapedEdge<EdgedCrescentControl>] = [],
-        obrounds: [ShapedEdge<ObroundControl>] = []
+        with offset: CartesianFrame.Offset
     ) -> some View {
         ZStack {
-            ForEach(crescents, id: \.title) { crescent in
-                CrescentControlView(
-                    crescent.title,
-                    shape: crescent.shape,
+            ForEach(controls, id: \.title) { control in
+                CartesianShapeView(
+                    control.title,
+                    shape: control.shape,
                     in: plane,
                     with: offset,
                     action: action
                 )
-                .foregroundStyle(theme.color(for: crescent.appearance))
-            }
-
-            ForEach(edges, id: \.title) { edge in
-                EdgedCrescentControlView(
-                    edge.title,
-                    shape: edge.shape,
-                    in: plane,
-                    with: offset,
-                    action: action
-                )
-                .foregroundStyle(theme.color(for: edge.appearance))
-            }
-
-            ForEach(obrounds, id: \.title) { obround in
-                ObroundControlView(
-                    obround.title,
-                    shape: obround.shape,
-                    in: plane,
-                    with: offset,
-                    action: action
-                )
-                .foregroundStyle(theme.color(for: obround.appearance))
+                .foregroundStyle(theme.color(for: control.appearance))
             }
         }
     }
 
     private var innerRing01: CrescentControl {
         let ir20 = innerRing20
-        let twoAndOneQuarter = Curve.arc02.start + Curve.arc02.quarter
-        let inner = Arc(radius: radii.firstRingInteriorRadius, startingDegree: ir20.crescent.interiorArc.endingDegree + 1.5, endingDegree: twoAndOneQuarter)
-        let outer = Arc(radius: radii.firstRingExteriorRadius, startingDegree: ir20.crescent.exteriorArc.endingDegree + 1.0, endingDegree: twoAndOneQuarter)
+        let twoAndOneQuarter = Radial.arc02.start + Radial.arc02.quarter
+        let inner = Arc(radius: values.radii.firstRingInteriorRadius, startingDegree: ir20.crescent.interiorArc.endingDegree + 1.5, endingDegree: twoAndOneQuarter)
+        let outer = Arc(radius: values.radii.firstRingExteriorRadius, startingDegree: ir20.crescent.exteriorArc.endingDegree + 1.0, endingDegree: twoAndOneQuarter)
         return CrescentControl(
             crescent: Crescent(
                 interiorArc: inner,
@@ -176,11 +140,61 @@ public struct DPadClusterCompactView: View {
             identifier: .innerRing01
         )
     }
+    
+    private var innerRing08: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.firstRingInteriorRadius, radial: .arc08),
+                exteriorArc: Arc(radius: values.radii.firstRingExteriorRadius, radial: .arc08)
+            ),
+            identifier: .innerRing08
+        )
+    }
+    
+    private var innerRing09: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.firstRingInteriorRadius, radial: .arc09),
+                exteriorArc: Arc(radius: values.radii.firstRingExteriorRadius, radial: .arc09)
+            ),
+            identifier: .innerRing09
+        )
+    }
+    
+    private var innerRing10: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.firstRingInteriorRadius, radial: .arc10),
+                exteriorArc: Arc(radius: values.radii.firstRingExteriorRadius, radial: .arc10)
+            ),
+            identifier: .innerRing08
+        )
+    }
+    
+    private var innerRing11: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.firstRingInteriorRadius, radial: .arc11),
+                exteriorArc: Arc(radius: values.radii.firstRingExteriorRadius, radial: .arc11)
+            ),
+            identifier: .innerRing08
+        )
+    }
+    
+    private var innerRing13: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.firstRingInteriorRadius, radial: .arc13),
+                exteriorArc: Arc(radius: values.radii.firstRingExteriorRadius, radial: .arc13)
+            ),
+            identifier: .innerRing08
+        )
+    }
 
     private var innerRing14: CrescentControl {
         let ir15 = innerRing15
-        let inner = Arc(radius: radii.firstRingInteriorRadius, startingDegree: Curve.arc14.start, endingDegree: ir15.crescent.interiorArc.startingDegree - 1.5)
-        let outer = Arc(radius: radii.firstRingExteriorRadius, startingDegree: Curve.arc14.start, endingDegree: ir15.crescent.exteriorArc.startingDegree - 1.0)
+        let inner = Arc(radius: values.radii.firstRingInteriorRadius, startingDegree: Radial.arc14.start, endingDegree: ir15.crescent.interiorArc.startingDegree - 1.5)
+        let outer = Arc(radius: values.radii.firstRingExteriorRadius, startingDegree: Radial.arc14.start, endingDegree: ir15.crescent.exteriorArc.startingDegree - 1.0)
         return CrescentControl(
             crescent: Crescent(
                 interiorArc: inner,
@@ -192,7 +206,7 @@ public struct DPadClusterCompactView: View {
 
     private var innerRing15: CrescentControl {
         let arc = Arc(
-            radius: radii.firstRingInteriorRadius - values.spacing,
+            radius: values.radii.firstRingInteriorRadius - values.spacing,
             startingDegree: Direction.Cardinal.up.start,
             endingDegree: Direction.Cardinal.up.end
         )
@@ -200,24 +214,24 @@ public struct DPadClusterCompactView: View {
         let startDegree = try! Degree.make(for: startPoint)
         let endPoint = CartesianPoint(x: arc.endingPoint.x, y: arc.endingPoint.y + values.spacing)
         let endDegree = try! Degree.make(for: endPoint)
-        let shift = radii.firstRingExteriorRadius - radii.firstRingInteriorRadius
+        let shift = values.radii.firstRingExteriorRadius - values.radii.firstRingInteriorRadius
         let exteriorStart = try! Degree.make(for: startPoint.with(y: startPoint.y + shift))
         let exteriorEnd = try! Degree.make(for: endPoint.with(y: endPoint.y + shift))
 
         return CrescentControl(
             crescent: Crescent(
-                interiorArc: Arc(radius: radii.firstRingInteriorRadius, startingDegree: startDegree, endingDegree: endDegree),
-                exteriorArc: Arc(radius: radii.firstRingExteriorRadius, startingDegree: exteriorStart, endingDegree: exteriorEnd)
+                interiorArc: Arc(radius: values.radii.firstRingInteriorRadius, startingDegree: startDegree, endingDegree: endDegree),
+                exteriorArc: Arc(radius: values.radii.firstRingExteriorRadius, startingDegree: exteriorStart, endingDegree: exteriorEnd)
             ),
             identifier: .innerRing15
         )
     }
 
     private var innerRing16: CrescentControl {
-        let seventeenAndOneQuarter = Curve.arc17.start + Curve.arc17.quarter
+        let seventeenAndOneQuarter = Radial.arc17.start + Radial.arc17.quarter
         let ir15 = innerRing15
-        let inner = Arc(radius: radii.firstRingInteriorRadius, startingDegree: ir15.crescent.interiorArc.endingDegree + 1.5, endingDegree: seventeenAndOneQuarter)
-        let outer = Arc(radius: radii.firstRingExteriorRadius, startingDegree: ir15.crescent.exteriorArc.endingDegree + 1.0, endingDegree: seventeenAndOneQuarter)
+        let inner = Arc(radius: values.radii.firstRingInteriorRadius, startingDegree: ir15.crescent.interiorArc.endingDegree + 1.5, endingDegree: seventeenAndOneQuarter)
+        let outer = Arc(radius: values.radii.firstRingExteriorRadius, startingDegree: ir15.crescent.exteriorArc.endingDegree + 1.0, endingDegree: seventeenAndOneQuarter)
         return CrescentControl(
             crescent: Crescent(
                 interiorArc: inner,
@@ -228,10 +242,10 @@ public struct DPadClusterCompactView: View {
     }
 
     private var innerRing17: CrescentControl {
-        let seventeenAndOneQuarter = Curve.arc17.start + Curve.arc17.quarter
+        let seventeenAndOneQuarter = Radial.arc17.start + Radial.arc17.quarter
         let ir20 = innerRing20
-        let inner = Arc(radius: radii.firstRingInteriorRadius, startingDegree: seventeenAndOneQuarter + 1.0, endingDegree: ir20.crescent.interiorArc.startingDegree - 1.5)
-        let outer = Arc(radius: radii.firstRingExteriorRadius, startingDegree: seventeenAndOneQuarter + 1.0, endingDegree: ir20.crescent.exteriorArc.startingDegree - 1.0)
+        let inner = Arc(radius: values.radii.firstRingInteriorRadius, startingDegree: seventeenAndOneQuarter + 1.0, endingDegree: ir20.crescent.interiorArc.startingDegree - 1.5)
+        let outer = Arc(radius: values.radii.firstRingExteriorRadius, startingDegree: seventeenAndOneQuarter + 1.0, endingDegree: ir20.crescent.exteriorArc.startingDegree - 1.0)
         return CrescentControl(
             crescent: Crescent(
                 interiorArc: inner,
@@ -243,7 +257,7 @@ public struct DPadClusterCompactView: View {
 
     private var innerRing20: CrescentControl {
         let arc = Arc(
-            radius: radii.firstRingInteriorRadius - values.spacing,
+            radius: values.radii.firstRingInteriorRadius - values.spacing,
             startingDegree: Direction.Cardinal.right.start,
             endingDegree: Direction.Cardinal.right.end
         )
@@ -251,23 +265,83 @@ public struct DPadClusterCompactView: View {
         let startDegree = try! Degree.make(for: startPoint)
         let endPoint = CartesianPoint(x: arc.endingPoint.x + values.spacing, y: arc.endingPoint.y)
         let endDegree = try! Degree.make(for: endPoint)
-        let shift = radii.firstRingExteriorRadius - radii.firstRingInteriorRadius
+        let shift = values.radii.firstRingExteriorRadius - values.radii.firstRingInteriorRadius
         let exteriorStart = try! Degree.make(for: startPoint.with(x: startPoint.x + shift))
         let exteriorEnd = try! Degree.make(for: endPoint.with(x: endPoint.x + shift))
 
         return CrescentControl(
             crescent: Crescent(
-                interiorArc: Arc(radius: radii.firstRingInteriorRadius, startingDegree: startDegree, endingDegree: endDegree),
-                exteriorArc: Arc(radius: radii.firstRingExteriorRadius, startingDegree: exteriorStart, endingDegree: exteriorEnd)
+                interiorArc: Arc(radius: values.radii.firstRingInteriorRadius, startingDegree: startDegree, endingDegree: endDegree),
+                exteriorArc: Arc(radius: values.radii.firstRingExteriorRadius, startingDegree: exteriorStart, endingDegree: exteriorEnd)
             ),
             identifier: .innerRing20
         )
     }
 
+    private var outerRing09: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.secondRingInteriorRadius, radial: .arc09),
+                exteriorArc: Arc(radius: values.radii.secondRingExteriorRadius, radial: .arc09)
+            ),
+            identifier: .outerRing09
+        )
+    }
+    
+    private var outerRing10: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.secondRingInteriorRadius, radial: .arc10),
+                exteriorArc: Arc(radius: values.radii.secondRingExteriorRadius, radial: .arc10)
+            ),
+            identifier: .outerRing10
+        )
+    }
+    
+    private var outerRing11: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.secondRingInteriorRadius, radial: .arc11),
+                exteriorArc: Arc(radius: values.radii.secondRingExteriorRadius, radial: .arc11)
+            ),
+            identifier: .outerRing11
+        )
+    }
+    
+    private var outerRing12: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.secondRingInteriorRadius, radial: .arc12),
+                exteriorArc: Arc(radius: values.radii.secondRingExteriorRadius, radial: .arc12)
+            ),
+            identifier: .outerRing12
+        )
+    }
+    
+    private var outerRing13: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.secondRingInteriorRadius, radial: .arc13),
+                exteriorArc: Arc(radius: values.radii.secondRingExteriorRadius, radial: .arc13)
+            ),
+            identifier: .outerRing13
+        )
+    }
+    
+    private var outerRing18: CrescentControl {
+        CrescentControl(
+            crescent: Crescent(
+                interiorArc: Arc(radius: values.radii.secondRingInteriorRadius, radial: .arc18),
+                exteriorArc: Arc(radius: values.radii.secondRingExtendedExteriorRadius, radial: .arc18)
+            ),
+            identifier: .outerRing18
+        )
+    }
+    
     private var outerRing19: CrescentControl {
         let or20 = outerRing20
-        let inner = Arc(radius: radii.secondRingInteriorRadius, startingDegree: Curve.arc19.start, endingDegree: or20.crescent.interiorArc.startingDegree - 1.0)
-        let outer = Arc(radius: radii.secondRingExtendedExteriorRadius, startingDegree: Curve.arc19.start, endingDegree: or20.crescent.exteriorArc.startingDegree - 0.75)
+        let inner = Arc(radius: values.radii.secondRingInteriorRadius, startingDegree: Radial.arc19.start, endingDegree: or20.crescent.interiorArc.startingDegree - 1.0)
+        let outer = Arc(radius: values.radii.secondRingExtendedExteriorRadius, startingDegree: Radial.arc19.start, endingDegree: or20.crescent.exteriorArc.startingDegree - 0.75)
         return CrescentControl(
             crescent: Crescent(
                 interiorArc: inner,
@@ -283,7 +357,7 @@ public struct DPadClusterCompactView: View {
         let innerStartDegree = try! Degree.make(for: innerStart)
         let innerEnd = ir20.crescent.exteriorArc.endingPoint.with(x: ir20.crescent.exteriorArc.endingPoint.x + values.spacing)
         let innerEndDegree = try! Degree.make(for: innerEnd)
-        let shift = radii.secondRingExtendedExteriorRadius - radii.secondRingInteriorRadius
+        let shift = values.radii.secondRingExtendedExteriorRadius - values.radii.secondRingInteriorRadius
         let outerStart = innerStart.with(x: innerStart.x + shift)
         let outerStartDegree = try! Degree.make(for: outerStart)
         let outerEnd = innerEnd.with(x: innerEnd.x + shift)
@@ -291,17 +365,17 @@ public struct DPadClusterCompactView: View {
 
         return CrescentControl(
             crescent: Crescent(
-                interiorArc: Arc(radius: radii.secondRingInteriorRadius, startingDegree: innerStartDegree, endingDegree: innerEndDegree),
-                exteriorArc: Arc(radius: radii.secondRingExtendedExteriorRadius, startingDegree: outerStartDegree, endingDegree: outerEndDegree)
+                interiorArc: Arc(radius: values.radii.secondRingInteriorRadius, startingDegree: innerStartDegree, endingDegree: innerEndDegree),
+                exteriorArc: Arc(radius: values.radii.secondRingExtendedExteriorRadius, startingDegree: outerStartDegree, endingDegree: outerEndDegree)
             ),
             identifier: .outerRing20
         )
     }
 
     private var edge13: EdgedCrescentControl {
-        let interiorArc = Curve.arc13.arc(radius: radii.thirdRingInteriorRadius)
-        let exteriorArc = Curve.arc13.arc(radius: radii.thirdRingExteriorRadius)
-        let point = try! CartesianPoint.make(for: radii.thirdRingExteriorRadius, degree: Curve.arc12.start)
+        let interiorArc = Radial.arc13.arc(radius: values.radii.thirdRingInteriorRadius)
+        let exteriorArc = Radial.arc13.arc(radius: values.radii.thirdRingExteriorRadius)
+        let point = try! CartesianPoint.make(for: values.radii.thirdRingExteriorRadius, degree: Radial.arc12.start)
 
         return EdgedCrescentControl(
             edgedCrescent: EdgedCrescent(
@@ -328,7 +402,7 @@ public struct DPadClusterCompactView: View {
         )
         let endDegree = try! Degree.make(for: endPoint)
 
-        let interiorArc = Arc(radius: radii.secondRingInteriorRadius, startingDegree: startDegree, endingDegree: endDegree)
+        let interiorArc = Arc(radius: values.radii.secondRingInteriorRadius, startingDegree: startDegree, endingDegree: endDegree)
         let y = edge13.cartesianFrame.origin.y
 
         return EdgedCrescentControl(
@@ -349,7 +423,7 @@ public struct DPadClusterCompactView: View {
             height: Obround.intrinsicSize.height * values.scale
         )
 
-        let arc = Curve.arc17.arc(radius: radii.firstRingInteriorRadius)
+        let arc = Radial.arc17.arc(radius: values.radii.firstRingInteriorRadius)
         let x = arc.startingPoint.x + (arc.endingPoint.x - arc.startingPoint.x) / 2.0
         let y = edge13.cartesianFrame.origin.y
 
@@ -366,12 +440,12 @@ public extension DPadClusterCompactView {
         size: CGSize,
         action: @escaping (CartesianIdentifier) -> Void = { _ in }
     ) {
-        values = DirectionPad(
+        values = CartesianValues(
             size: Size(size),
             intrinsicSize: Self.intrinsicSize,
-            intrinsicOffset: Self.intrinsicOffset
+            intrinsicOffset: Self.intrinsicOffset,
+            layout: .compact
         )
-        radii = values.radii(layout: .compact, dPadRadius: DPadView.intrinsicSize.width / 2.0)
         self.action = action
     }
 }
