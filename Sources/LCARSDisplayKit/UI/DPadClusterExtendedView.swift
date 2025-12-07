@@ -6,6 +6,7 @@ import SwiftUI
 /// An example cluster control set that extends a 'DPadCluster'.
 public struct DPadClusterExtendedView: View {
 
+    /// The design/intrinsic `Size` (Width: 760, Height: 755).
     public static let intrinsicSize: Size = Size(width: 760.0, height: 755.0)
     public static let intrinsicOffset: CartesianFrame.Offset = Point(x: 0, y: 51.34)
 

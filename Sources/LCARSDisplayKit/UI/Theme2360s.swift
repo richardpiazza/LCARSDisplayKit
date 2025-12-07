@@ -23,9 +23,9 @@ public struct Theme2360s: Theme {
         case .tertiaryDark:
             Pigment.darkPurple.color
         case .tertiaryLight:
-            Pigment.cosmic.color
-        case .tertiaryMedium:
             Pigment.pastelViolet.color
+        case .tertiaryMedium:
+            Pigment.cosmic.color
         case .quaternaryDark:
             Pigment.flatGray.color
         case .quaternaryLight:
