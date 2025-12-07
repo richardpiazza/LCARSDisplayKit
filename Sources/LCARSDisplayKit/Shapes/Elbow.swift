@@ -16,13 +16,6 @@ public struct Elbow: Hashable, Sendable, SizeConvertible {
     public static let intrinsicStemWidth: Double = 90.0
     public static let intrinsicClosedHeight: Double = 0.0
 
-    @available(*, deprecated, renamed: "intrinsicBodyHeight")
-    public static var defaultHorizontalHeight: Double { intrinsicBodyHeight }
-    @available(*, deprecated, renamed: "intrinsicStemWidth")
-    public static var defaultVerticalWidth: Double { intrinsicStemWidth }
-    @available(*, deprecated, renamed: "intrinsicClosedHeight")
-    public static var defaultClosedHeight: Double { intrinsicClosedHeight }
-
     public let size: Size
     public let alignment: Alignment
     public let exteriorRounding: Rounding?
@@ -79,42 +72,4 @@ public struct Elbow: Hashable, Sendable, SizeConvertible {
         self.exteriorRounding = exteriorRounding
         self.interiorRounding = interiorRounding
     }
-
-    @available(*, deprecated, renamed: "init(size:alignment:exteriorRounding:interiorRounding:bodyHeight:stemWidth:closedHeight:)")
-    public init(
-        size: Size = Self.intrinsicSize,
-        top: Bool = true,
-        left: Bool = true,
-        rounded: Bool = true,
-        horizontalHeight: Double = Self.defaultHorizontalHeight,
-        verticalWidth: Double = Self.defaultVerticalWidth,
-        closedHeight: Double = Self.defaultClosedHeight,
-        shouldMatchRadius: Bool = false
-    ) {
-        self.size = size
-        alignment = switch (top, left) {
-        case (true, true): .topLeft
-        case (true, false): .topRight
-        case (false, true): .bottomLeft
-        case (false, false): .bottomRight
-        }
-        exteriorRounding = rounded ? .half : nil
-        interiorRounding = shouldMatchRadius ? .half : nil
-        bodyHeight = horizontalHeight
-        stemWidth = verticalWidth
-        self.closedHeight = closedHeight
-    }
-
-    @available(*, deprecated, renamed: "alignment")
-    public var top: Bool { alignment == .topLeft || alignment == .topRight }
-    @available(*, deprecated, renamed: "alignment")
-    public var left: Bool { alignment == .topLeft || alignment == .bottomLeft }
-    @available(*, deprecated, renamed: "exteriorRounding")
-    public var rounded: Bool { exteriorRounding != nil }
-    @available(*, deprecated, renamed: "bodyHeight")
-    public var horizontalHeight: Double { bodyHeight }
-    @available(*, deprecated, renamed: "stemWidth")
-    public var verticalWidth: Double { stemWidth }
-    @available(*, deprecated, renamed: "interiorRounding")
-    public var shouldMatchRadius: Bool { interiorRounding != nil }
 }

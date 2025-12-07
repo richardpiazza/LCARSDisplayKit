@@ -1,9 +1,6 @@
 import GraphPoint
 import Swift2D
 
-@available(*, deprecated, renamed: "CartesianValues")
-public typealias DirectionPad = CartesianValues
-
 public struct CartesianValues {
 
     public enum Layout {
@@ -21,9 +18,6 @@ public struct CartesianValues {
         public let thirdRingInteriorRadius: Double
         public let thirdRingExteriorRadius: Double
     }
-
-    @available(*, deprecated, renamed: "Scaler.intrinsicSpacing")
-    public static let intrinsicSpacing: Double = 8.0
 
     public let plane: CartesianPlane
     public let diameter: Double
@@ -139,29 +133,6 @@ public struct CartesianValues {
             intrinsicSpacing: intrinsicSpacing,
             intrinsicOffset: intrinsicOffset,
             layout: layout
-        )
-    }
-
-    @available(*, deprecated, renamed: "radii")
-    public func radii(layout: Layout, dPadRadius: Radius) -> Radii {
-        let firstRingInteriorRadius = (dPadRadius * scale) + spacing
-        let firstRingExteriorRadius = firstRingInteriorRadius + (80.0 * scale)
-        let secondRingInteriorRadius = firstRingExteriorRadius + spacing
-        let secondRingExteriorRadius = secondRingInteriorRadius + (50.0 * scale)
-        let secondRingExtendedExteriorRadius = secondRingInteriorRadius + (110.0 * scale)
-        let secondRingEdgeExteriorRadius = secondRingExteriorRadius + ((layout == .compact ? 62.0 : 41.5) * scale)
-        let thirdRingInteriorRadius = secondRingExteriorRadius + spacing
-        let thirdRingExteriorRadius = thirdRingInteriorRadius + ((layout == .compact ? 45.0 : 72.0) * scale)
-
-        return Radii(
-            firstRingInteriorRadius: firstRingInteriorRadius,
-            firstRingExteriorRadius: firstRingExteriorRadius,
-            secondRingInteriorRadius: secondRingInteriorRadius,
-            secondRingExteriorRadius: secondRingExteriorRadius,
-            secondRingExtendedExteriorRadius: secondRingExtendedExteriorRadius,
-            secondRingEdgeExteriorRadius: secondRingEdgeExteriorRadius,
-            thirdRingInteriorRadius: thirdRingInteriorRadius,
-            thirdRingExteriorRadius: thirdRingExteriorRadius
         )
     }
 

@@ -1,8 +1,5 @@
 import GraphPoint
 
-@available(*, deprecated, renamed: "Radial")
-public typealias Curve = Radial
-
 /// A collection of radial arcs that are used to draw circular elements.
 ///
 /// Each arc contains 17° with 0.5° on each side for spacing.

@@ -44,24 +44,4 @@ public struct Obround: Hashable, Sendable, SizeConvertible {
         self.roundTrailing = roundTrailing
         self.rounding = rounding
     }
-
-    @available(*, deprecated, renamed: "init(size:roundLeading:roundTrailing:rounding:)")
-    public init(
-        size: Size = Self.intrinsicSize,
-        roundLeading: Bool = true,
-        roundTrailing: Bool = true,
-        cornersOnly: Bool
-    ) {
-        self.size = size
-        self.roundLeading = roundLeading
-        self.roundTrailing = roundTrailing
-        rounding = cornersOnly ? .quarter : .half
-    }
-
-    @available(*, deprecated, renamed: "roundLeading")
-    public var leftRounded: Bool { roundLeading }
-    @available(*, deprecated, renamed: "roundTrailing")
-    public var rightRounded: Bool { roundTrailing }
-    @available(*, deprecated, renamed: "rounding")
-    public var cornersOnly: Bool { rounding == .quarter }
 }
