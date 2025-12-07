@@ -27,7 +27,7 @@ public extension ObroundView {
         self.title = title
         self.action = action
     }
-    
+
     init(
         scale: Double,
         roundLeading: Bool = true,

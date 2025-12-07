@@ -52,7 +52,7 @@ public struct CartesianValues {
             x: intrinsicOffset.x * scale,
             y: intrinsicOffset.y * scale
         )
-        
+
         let firstRingInteriorRadius = (DPadView.intrinsicSize.maxRadius * scale) + spacing
         let firstRingExteriorRadius = firstRingInteriorRadius + (80.0 * scale)
         let secondRingInteriorRadius = firstRingExteriorRadius + spacing

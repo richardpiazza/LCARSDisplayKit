@@ -27,19 +27,19 @@ struct SystemDisplay: View {
         ZStack(alignment: .topLeading) {
             DPadClusterView(scale: clusterScale)
                 .position(x: 400 * scale, y: 640 * scale)
-            
+
             chrome
-            
+
             fork
                 .foregroundStyle(theme.color(for: .quaternaryLight))
-            
+
             ObroundView(
                 size: Obround.intrinsicSize.scale(by: clusterScale),
                 roundLeading: false,
                 roundTrailing: false
             )
             .position(x: 1030 * scale, y: 535 * scale)
-            
+
             ObroundView(
                 size: Size(
                     width: 30,
@@ -49,34 +49,34 @@ struct SystemDisplay: View {
                 roundTrailing: false
             )
             .position(x: 1205 * scale, y: 535 * scale)
-            
+
             Text(" 44")
                 .font(.lcars(size: 65, scale: scale))
                 .position(x: 1265 * scale, y: 537 * scale)
-            
+
             ObroundView(
                 size: Obround.intrinsicSize.scale(by: clusterScale),
                 roundLeading: false
             )
             .position(x: 1375 * scale, y: 535 * scale)
-            
+
             ObroundView(
                 size: Obround.intrinsicSize.scale(by: clusterScale)
             )
             .position(x: 1530 * scale, y: 535 * scale)
-            
+
             ObroundView(
                 size: Obround.intrinsicSize.scale(by: clusterScale)
             )
             .position(x: 1685 * scale, y: 535 * scale)
-            
+
             ObroundView(
                 size: Obround.intrinsicSize.scale(by: clusterScale),
                 roundLeading: false,
                 roundTrailing: false
             )
             .position(x: 1030 * scale, y: 665 * scale)
-            
+
             ObroundView(
                 size: Obround.intrinsicSize.scale(by: clusterScale),
                 roundLeading: false,
@@ -86,13 +86,13 @@ struct SystemDisplay: View {
         }
         .frame(width: size.width, height: size.height)
     }
-    
+
     private var chrome: some View {
         ZStack(alignment: .topLeading) {
             ObroundView(
                 size: Size(
                     width: 210 * scale,
-                    height: 300 * scale,
+                    height: 300 * scale
                 ),
                 roundTrailing: false,
                 rounding: .quarter,
@@ -103,7 +103,7 @@ struct SystemDisplay: View {
                 y: 150 * scale
             )
             .foregroundStyle(theme.color(for: .quaternaryLight))
-            
+
             ObroundView(
                 size: Size(
                     width: 360 * scale,
@@ -119,7 +119,7 @@ struct SystemDisplay: View {
                 y: 150 * scale
             )
             .foregroundStyle(theme.color(for: .secondaryLight))
-            
+
             ElbowView(
                 size: Size(
                     width: 280 * scale,
@@ -136,7 +136,7 @@ struct SystemDisplay: View {
                 y: 225 * scale
             )
             .foregroundStyle(theme.color(for: .quaternaryLight))
-            
+
             ElbowView(
                 size: Size(
                     width: 140 * scale,
@@ -155,7 +155,7 @@ struct SystemDisplay: View {
                 y: 535 * scale
             )
             .foregroundStyle(theme.color(for: .quaternaryLight))
-            
+
             ElbowView(
                 size: Size(
                     width: 140 * scale,
@@ -172,7 +172,7 @@ struct SystemDisplay: View {
                 y: 790 * scale
             )
             .foregroundStyle(theme.color(for: .quaternaryLight))
-            
+
             ObroundView(
                 size: Size(
                     width: 280 * scale,
@@ -187,7 +187,7 @@ struct SystemDisplay: View {
                 y: 870 * scale
             )
             .foregroundStyle(theme.color(for: .primaryMedium))
-            
+
             ObroundView(
                 size: Size(
                     width: 300 * scale,
@@ -202,7 +202,7 @@ struct SystemDisplay: View {
                 y: 807 * scale
             )
             .foregroundStyle(theme.color(for: .secondaryLight))
-            
+
             ObroundView(
                 size: Size(
                     width: 300 * scale,
@@ -217,7 +217,7 @@ struct SystemDisplay: View {
                 y: 870 * scale
             )
             .foregroundStyle(theme.color(for: .tertiaryMedium))
-            
+
             ObroundView(
                 size: Size(
                     width: 300 * scale,
@@ -232,7 +232,7 @@ struct SystemDisplay: View {
                 y: 933 * scale
             )
             .foregroundStyle(theme.color(for: .secondaryDark))
-            
+
             ObroundView(
                 size: Size(
                     width: 195 * scale,
@@ -249,53 +249,53 @@ struct SystemDisplay: View {
             .foregroundStyle(theme.color(for: .quaternaryLight))
         }
     }
-    
+
     private var fork: some View {
         ZStack(alignment: .topLeading) {
             Rectangle()
                 .frame(width: 100 * scale, height: 25 * scale)
                 .position(x: 1008 * scale, y: 472 * scale)
-            
+
             Rectangle()
                 .frame(width: 100 * scale, height: 25 * scale)
                 .position(x: 1008 * scale, y: 598 * scale)
-            
+
             Rectangle()
                 .frame(width: 140 * scale, height: 25 * scale)
                 .position(x: 1138 * scale, y: 472 * scale)
-            
+
             Rectangle()
                 .frame(width: 140 * scale, height: 25 * scale)
                 .position(x: 1138 * scale, y: 598 * scale)
-            
+
             Rectangle()
                 .frame(width: 100 * scale, height: 25 * scale)
                 .position(x: 1268 * scale, y: 472 * scale)
-            
+
             Rectangle()
                 .frame(width: 100 * scale, height: 25 * scale)
                 .position(x: 1268 * scale, y: 598 * scale)
-            
+
             Rectangle()
                 .frame(width: 140 * scale, height: 25 * scale)
                 .position(x: 1398 * scale, y: 472 * scale)
-            
+
             Rectangle()
                 .frame(width: 140 * scale, height: 25 * scale)
                 .position(x: 1398 * scale, y: 598 * scale)
-            
+
             Rectangle()
                 .frame(width: 100 * scale, height: 25 * scale)
                 .position(x: 1528 * scale, y: 472 * scale)
-            
+
             Rectangle()
                 .frame(width: 100 * scale, height: 25 * scale)
                 .position(x: 1528 * scale, y: 598 * scale)
-            
+
             Rectangle()
                 .frame(width: 160 * scale, height: 25 * scale)
                 .position(x: 1668 * scale, y: 472 * scale)
-            
+
             Rectangle()
                 .frame(width: 160 * scale, height: 25 * scale)
                 .position(x: 1668 * scale, y: 598 * scale)

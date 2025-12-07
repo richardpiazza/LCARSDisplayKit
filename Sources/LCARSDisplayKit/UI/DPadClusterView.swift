@@ -26,7 +26,7 @@ public struct DPadClusterView: View {
         )
         self.action = action
     }
-    
+
     public init(
         scale: Double,
         action: @escaping (CartesianIdentifier) -> Void = { _ in }
@@ -69,7 +69,7 @@ public struct DPadClusterView: View {
                 in: values.plane,
                 with: values.offset
             )
-            
+
             addControls(
                 [
                     CartesianControl(title: "-", shape: edge06, appearance: .secondaryLight),
@@ -81,7 +81,7 @@ public struct DPadClusterView: View {
                 in: values.plane,
                 with: values.offset
             )
-            
+
             addControls(
                 [
                     CartesianControl(title: "T00", shape: top00, appearance: .secondaryLight),
@@ -107,9 +107,9 @@ public struct DPadClusterView: View {
             y: values.plane.midY + values.offset.y
         )
     }
-    
-    private func addControls<T: CartesianShape>(
-        _ controls: [CartesianControl<T>],
+
+    private func addControls(
+        _ controls: [CartesianControl<some CartesianShape>],
         in plane: CartesianPlane,
         with offset: CartesianFrame.Offset
     ) -> some View {
@@ -126,7 +126,7 @@ public struct DPadClusterView: View {
             }
         }
     }
-    
+
     private var innerRing01: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -136,7 +136,7 @@ public struct DPadClusterView: View {
             identifier: .innerRing01
         )
     }
-    
+
     private var innerRing05: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -146,7 +146,7 @@ public struct DPadClusterView: View {
             identifier: .innerRing05
         )
     }
-    
+
     private var innerRing10: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -156,7 +156,7 @@ public struct DPadClusterView: View {
             identifier: .innerRing10
         )
     }
-    
+
     private var innerRing11: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -166,7 +166,7 @@ public struct DPadClusterView: View {
             identifier: .innerRing11
         )
     }
-    
+
     private var innerRing12: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -176,7 +176,7 @@ public struct DPadClusterView: View {
             identifier: .innerRing12
         )
     }
-    
+
     private var innerRing13: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -186,7 +186,7 @@ public struct DPadClusterView: View {
             identifier: .innerRing13
         )
     }
-    
+
     private var innerRing14: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -196,7 +196,7 @@ public struct DPadClusterView: View {
             identifier: .innerRing14
         )
     }
-    
+
     private var innerRing15: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -206,7 +206,7 @@ public struct DPadClusterView: View {
             identifier: .innerRing15
         )
     }
-    
+
     private var innerRing16: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -216,7 +216,7 @@ public struct DPadClusterView: View {
             identifier: .innerRing16
         )
     }
-    
+
     private var innerRing20: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -226,7 +226,7 @@ public struct DPadClusterView: View {
             identifier: .innerRing20
         )
     }
-    
+
     private var outerRing10: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -236,7 +236,7 @@ public struct DPadClusterView: View {
             identifier: .outerRing10
         )
     }
-    
+
     private var outerRing11: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -246,7 +246,7 @@ public struct DPadClusterView: View {
             identifier: .outerRing11
         )
     }
-    
+
     private var outerRing12: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -256,7 +256,7 @@ public struct DPadClusterView: View {
             identifier: .outerRing12
         )
     }
-    
+
     private var outerRing13: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -266,7 +266,7 @@ public struct DPadClusterView: View {
             identifier: .outerRing13
         )
     }
-    
+
     private var outerRing14: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -276,7 +276,7 @@ public struct DPadClusterView: View {
             identifier: .outerRing14
         )
     }
-    
+
     private var outerRing16: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -286,7 +286,7 @@ public struct DPadClusterView: View {
             identifier: .outerRing16
         )
     }
-    
+
     private var outerRing17: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -296,7 +296,7 @@ public struct DPadClusterView: View {
             identifier: .outerRing17
         )
     }
-    
+
     private var outerRing18: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -306,7 +306,7 @@ public struct DPadClusterView: View {
             identifier: .outerRing18
         )
     }
-    
+
     private var outerRing19: CrescentControl {
         CrescentControl(
             crescent: Crescent(
@@ -326,7 +326,7 @@ public struct DPadClusterView: View {
             identifier: .outerRing20
         )
     }
-    
+
     private var edge06: EdgedCrescentControl {
         let interiorArc = Radial.arc06.arc(radius: values.radii.firstRingInteriorRadius)
         let exteriorArc = Radial.arc06.arc(radius: values.radii.firstRingExteriorRadius)

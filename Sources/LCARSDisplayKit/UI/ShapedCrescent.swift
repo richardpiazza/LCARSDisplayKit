@@ -34,7 +34,7 @@ struct ShapedCrescent: Hashable {
         arc: Radial,
         to: Radial? = nil,
         appearance: ControlAppearance,
-        extended: Bool = false,
+        extended: Bool = false
     ) {
         self.id = id
         self.title = title

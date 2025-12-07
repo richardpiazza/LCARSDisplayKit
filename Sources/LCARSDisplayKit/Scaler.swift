@@ -3,7 +3,7 @@ import Swift2D
 public enum Scaler {
     /// The default spacing used between control elements
     public static let intrinsicSpacing: Double = 8.0
-    
+
     /// Determines the maximum size and scale at which an element can be presented.
     ///
     /// - parameters:

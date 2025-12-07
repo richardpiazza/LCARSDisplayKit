@@ -10,12 +10,12 @@ public struct Elbow: Hashable, Sendable, SizeConvertible {
         case topLeft
         case topRight
     }
-    
+
     public static let intrinsicSize: Size = Size(width: 340, height: 700)
     public static let intrinsicBodyHeight: Double = 240.0
     public static let intrinsicStemWidth: Double = 90.0
     public static let intrinsicClosedHeight: Double = 0.0
-    
+
     @available(*, deprecated, renamed: "intrinsicBodyHeight")
     public static var defaultHorizontalHeight: Double { intrinsicBodyHeight }
     @available(*, deprecated, renamed: "intrinsicStemWidth")
@@ -58,7 +58,7 @@ public struct Elbow: Hashable, Sendable, SizeConvertible {
         self.stemWidth = stemWidth
         self.closedHeight = closedHeight
     }
-    
+
     public init(
         scale: Double,
         bodyHeight: Double? = nil,
@@ -79,7 +79,7 @@ public struct Elbow: Hashable, Sendable, SizeConvertible {
         self.exteriorRounding = exteriorRounding
         self.interiorRounding = interiorRounding
     }
-    
+
     @available(*, deprecated, renamed: "init(size:alignment:exteriorRounding:interiorRounding:bodyHeight:stemWidth:closedHeight:)")
     public init(
         size: Size = Self.intrinsicSize,
@@ -104,7 +104,7 @@ public struct Elbow: Hashable, Sendable, SizeConvertible {
         stemWidth = verticalWidth
         self.closedHeight = closedHeight
     }
-    
+
     @available(*, deprecated, renamed: "alignment")
     public var top: Bool { alignment == .topLeft || alignment == .topRight }
     @available(*, deprecated, renamed: "alignment")
