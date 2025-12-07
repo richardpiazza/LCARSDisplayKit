@@ -3,6 +3,8 @@ import Swift2D
 public enum Scaler {
     /// The default spacing used between control elements
     public static let intrinsicSpacing: Double = 8.0
+    /// Intrinsic size associated to the `DPadView`
+    public static let intrinsicDPadSize: Size = Size(width: 350.0, height: 350.0)
 
     /// Determines the maximum size and scale at which an element can be presented.
     ///

@@ -5,7 +5,7 @@ import SwiftUI
 
 public struct DPadView: View {
 
-    public static let intrinsicSize: Size = Size(width: 350.0, height: 350.0)
+    public static let intrinsicSize: Size = Scaler.intrinsicDPadSize
     public static let intrinsicOffset: CartesianFrame.Offset = .zero
 
     var values: CartesianValues
