@@ -18,16 +18,4 @@ public struct EdgedCrescent: Hashable, Sendable {
         self.interiorArc = interiorArc
         self.edgePoints = edgePoints
     }
-
-    @available(*, deprecated)
-    public init(
-        identifier: CartesianIdentifier?,
-        interiorArc: Arc = Arc(),
-        edgePoints: [CartesianPoint] = []
-    ) {
-        self.interiorArc = interiorArc
-        self.edgePoints = edgePoints
-    }
-
-    public var identifier: CartesianIdentifier? { nil }
 }

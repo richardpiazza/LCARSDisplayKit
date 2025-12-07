@@ -22,5 +22,9 @@ public extension Font {
 
         return Font.custom("Swiss911 UCm BT", size: size, relativeTo: textStyle)
     }
+
+    static func lcars(size: CGFloat, scale: CGFloat = 1.0) -> Font {
+        Font.custom("Swiss911 UCm BT", size: size * scale, relativeTo: .title)
+    }
 }
 #endif

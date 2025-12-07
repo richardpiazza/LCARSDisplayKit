@@ -68,35 +68,4 @@ public struct Direction: Hashable, Sendable {
             endingDegree: cardinal.end
         )
     }
-
-    @available(*, deprecated)
-    public init(
-        identifier: CartesianIdentifier?,
-        cardinal: Cardinal = .up,
-        interiorRadius: Radius = 0.0,
-        exteriorArc: Arc = Arc()
-    ) {
-        self.cardinal = cardinal
-        self.interiorRadius = interiorRadius
-        self.exteriorArc = exteriorArc
-    }
-
-    @available(*, deprecated)
-    public init(
-        identifier: CartesianIdentifier?,
-        cardinal: Cardinal = .up,
-        interiorRadius: Radius,
-        exteriorRadius: Radius
-    ) {
-        self.cardinal = cardinal
-        self.interiorRadius = interiorRadius
-        exteriorArc = Arc(
-            radius: exteriorRadius,
-            startingDegree: cardinal.start,
-            endingDegree: cardinal.end
-        )
-    }
-
-    @available(*, deprecated)
-    public var identifier: CartesianIdentifier? { nil }
 }

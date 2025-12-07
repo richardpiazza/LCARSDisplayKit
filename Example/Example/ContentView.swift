@@ -22,8 +22,7 @@ struct ContentView: View {
                     shape: ElbowControl(
                         elbow: Elbow(
                             size: Size(geometry.size),
-                            horizontalHeight: 140,
-                            verticalWidth: 40,
+                            stemWidth: 40,
                             closedHeight: 30
                         ),
                         identifier: nil

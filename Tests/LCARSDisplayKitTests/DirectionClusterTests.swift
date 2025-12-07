@@ -12,7 +12,7 @@ final class DirectionClusterTests: XCTestCase {
     let canvasRect = Rect(origin: .zero, size: Size(width: 2560.0, height: 1440.0))
 
     func testDPadViewValues() {
-        var values = DirectionPad(
+        var values = CartesianValues(
             size: Size(width: 350.0, height: 350.0),
             intrinsicSize: Size(width: 350.0, height: 350.0)
         )
@@ -27,7 +27,7 @@ final class DirectionClusterTests: XCTestCase {
         XCTAssertEqual(values.offset.x, 0.0, accuracy: 0.1)
         XCTAssertEqual(values.offset.y, 0.0, accuracy: 0.1)
 
-        values = DirectionPad(
+        values = CartesianValues(
             size: Size(width: 700.0, height: 700.0),
             intrinsicSize: Size(width: 350.0, height: 350.0)
         )
@@ -42,7 +42,7 @@ final class DirectionClusterTests: XCTestCase {
         XCTAssertEqual(values.offset.x, 0.0, accuracy: 0.1)
         XCTAssertEqual(values.offset.y, 0.0, accuracy: 0.1)
 
-        values = DirectionPad(
+        values = CartesianValues(
             size: Size(width: 100.0, height: 100.0),
             intrinsicSize: Size(width: 350.0, height: 350.0)
         )
@@ -57,7 +57,7 @@ final class DirectionClusterTests: XCTestCase {
         XCTAssertEqual(values.offset.x, 0.0, accuracy: 0.1)
         XCTAssertEqual(values.offset.y, 0.0, accuracy: 0.1)
 
-        values = DirectionPad(
+        values = CartesianValues(
             size: Size(width: 500.0, height: 1000.0),
             intrinsicSize: Size(width: 350.0, height: 350.0)
         )
@@ -72,7 +72,7 @@ final class DirectionClusterTests: XCTestCase {
         XCTAssertEqual(values.offset.x, 0.0, accuracy: 0.1)
         XCTAssertEqual(values.offset.y, 0.0, accuracy: 0.1)
 
-        values = DirectionPad(
+        values = CartesianValues(
             size: Size(width: 1000.0, height: 500.0),
             intrinsicSize: Size(width: 350.0, height: 350.0)
         )
@@ -89,7 +89,7 @@ final class DirectionClusterTests: XCTestCase {
     }
 
     func testClusterCompactView() {
-        var values = DirectionPad(
+        var values = CartesianValues(
             size: iPadLandscape,
             intrinsicSize: Size(width: 760.0, height: 625.0)
         )
@@ -97,7 +97,7 @@ final class DirectionClusterTests: XCTestCase {
         XCTAssertEqual(values.plane.width, 1185.6, accuracy: 0.01)
         XCTAssertEqual(values.plane.height, 975.0)
 
-        values = DirectionPad(
+        values = CartesianValues(
             size: iPadPortrait,
             intrinsicSize: Size(width: 760.0, height: 625.0)
         )
@@ -107,7 +107,7 @@ final class DirectionClusterTests: XCTestCase {
     }
 
     func testClusterStackedView() {
-        var values = DirectionPad(
+        var values = CartesianValues(
             size: iPadPortrait,
             intrinsicSize: Size(width: 410.0, height: 995.0)
         )
@@ -115,7 +115,7 @@ final class DirectionClusterTests: XCTestCase {
         XCTAssertEqual(values.plane.width, 543.51, accuracy: 0.01)
         XCTAssertEqual(values.plane.height, 1319.0)
 
-        values = DirectionPad(
+        values = CartesianValues(
             size: iPadLandscape,
             intrinsicSize: Size(width: 410.0, height: 995.0)
         )
@@ -125,7 +125,7 @@ final class DirectionClusterTests: XCTestCase {
     }
 
     func testIntrinsicValues() {
-        let values = DirectionPad(
+        let values = CartesianValues(
             size: intrinsicRect.size,
             intrinsicSize: intrinsicRect.size
         )
@@ -138,7 +138,7 @@ final class DirectionClusterTests: XCTestCase {
     }
 
     func testCanvasValues() {
-        let values = DirectionPad(
+        let values = CartesianValues(
             size: canvasRect.size,
             intrinsicSize: intrinsicRect.size
         )
@@ -151,7 +151,7 @@ final class DirectionClusterTests: XCTestCase {
     }
 
     func testIntrinsicFrames() {
-        let values = DirectionPad(
+        let values = CartesianValues(
             size: intrinsicRect.size,
             intrinsicSize: intrinsicRect.size
         )

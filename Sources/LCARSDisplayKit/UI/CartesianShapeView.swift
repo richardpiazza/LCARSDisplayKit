@@ -1,6 +1,6 @@
+#if canImport(SwiftUI)
 import GraphPoint
 import Swift2D
-#if canImport(SwiftUI)
 import SwiftUI
 
 public typealias CrescentControlView = CartesianShapeView<CrescentControl>

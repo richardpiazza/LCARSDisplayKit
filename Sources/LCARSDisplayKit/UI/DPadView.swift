@@ -5,10 +5,10 @@ import SwiftUI
 
 public struct DPadView: View {
 
-    public static let intrinsicSize: Size = Size(width: 350.0, height: 350.0)
+    public static let intrinsicSize: Size = Scaler.intrinsicDPadSize
     public static let intrinsicOffset: CartesianFrame.Offset = .zero
 
-    var values: DirectionPad
+    var values: CartesianValues
     var action: (CartesianIdentifier) -> Void
 
     @Environment(\.theme) private var theme
@@ -17,7 +17,7 @@ public struct DPadView: View {
         size: Size = Self.intrinsicSize,
         action: @escaping (CartesianIdentifier) -> Void = { _ in }
     ) {
-        values = DirectionPad(
+        values = CartesianValues(
             size: size,
             intrinsicSize: Self.intrinsicSize
         )
@@ -28,7 +28,7 @@ public struct DPadView: View {
         scale value: Double,
         action: @escaping (CartesianIdentifier) -> Void = { _ in }
     ) {
-        values = DirectionPad(
+        values = CartesianValues(
             scale: value,
             intrinsicSize: Self.intrinsicSize
         )
@@ -83,7 +83,7 @@ public extension DPadView {
         size: CGSize,
         action: @escaping (CartesianIdentifier) -> Void = { _ in }
     ) {
-        values = DirectionPad(
+        values = CartesianValues(
             size: Size(size),
             intrinsicSize: Self.intrinsicSize
         )

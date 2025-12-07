@@ -1,13 +1,10 @@
 import GraphPoint
 import Swift2D
-#if canImport(SwiftUI)
-import SwiftUI
-#endif
 
-@available(*, deprecated, renamed: "DirectionPad")
-public typealias DPadValues = DirectionPad
+@available(*, deprecated, renamed: "CartesianValues")
+public typealias DirectionPad = CartesianValues
 
-public struct DirectionPad {
+public struct CartesianValues {
 
     public enum Layout {
         case compact
@@ -25,6 +22,7 @@ public struct DirectionPad {
         public let thirdRingExteriorRadius: Double
     }
 
+    @available(*, deprecated, renamed: "Scaler.intrinsicSpacing")
     public static let intrinsicSpacing: Double = 8.0
 
     public let plane: CartesianPlane
@@ -34,14 +32,16 @@ public struct DirectionPad {
     public let spacing: Double
     public let cruxRadius: Double
     public let offset: CartesianFrame.Offset
+    public let radii: Radii
 
     private static func make(
         size: Size,
         intrinsicSize: Size,
         intrinsicCruxSize: Size = Crux.intrinsicSize,
-        intrinsicSpacing: Double = intrinsicSpacing,
-        intrinsicOffset: CartesianFrame.Offset = .zero
-    ) -> DirectionPad {
+        intrinsicSpacing: Double = Scaler.intrinsicSpacing,
+        intrinsicOffset: CartesianFrame.Offset = .zero,
+        layout: Layout = .standard
+    ) -> CartesianValues {
         let (scaledSize, scale) = Scaler.scale(from: intrinsicSize, to: size)
         let plane = CartesianPlane(origin: .zero, size: scaledSize)
         let diameter = min(scaledSize.width, scaledSize.height)
@@ -53,14 +53,35 @@ public struct DirectionPad {
             y: intrinsicOffset.y * scale
         )
 
-        return DirectionPad(
+        let firstRingInteriorRadius = (Scaler.intrinsicDPadSize.maxRadius * scale) + spacing
+        let firstRingExteriorRadius = firstRingInteriorRadius + (80.0 * scale)
+        let secondRingInteriorRadius = firstRingExteriorRadius + spacing
+        let secondRingExteriorRadius = secondRingInteriorRadius + (50.0 * scale)
+        let secondRingExtendedExteriorRadius = secondRingInteriorRadius + (110.0 * scale)
+        let secondRingEdgeExteriorRadius = secondRingExteriorRadius + ((layout == .compact ? 62.0 : 41.5) * scale)
+        let thirdRingInteriorRadius = secondRingExteriorRadius + spacing
+        let thirdRingExteriorRadius = thirdRingInteriorRadius + ((layout == .compact ? 45.0 : 72.0) * scale)
+
+        let radii = Radii(
+            firstRingInteriorRadius: firstRingInteriorRadius,
+            firstRingExteriorRadius: firstRingExteriorRadius,
+            secondRingInteriorRadius: secondRingInteriorRadius,
+            secondRingExteriorRadius: secondRingExteriorRadius,
+            secondRingExtendedExteriorRadius: secondRingExtendedExteriorRadius,
+            secondRingEdgeExteriorRadius: secondRingEdgeExteriorRadius,
+            thirdRingInteriorRadius: thirdRingInteriorRadius,
+            thirdRingExteriorRadius: thirdRingExteriorRadius
+        )
+
+        return CartesianValues(
             plane: plane,
             diameter: diameter,
             radius: radius,
             scale: scale,
             spacing: spacing,
             cruxRadius: cruxRadius,
-            offset: offset
+            offset: offset,
+            radii: radii
         )
     }
 
@@ -71,7 +92,8 @@ public struct DirectionPad {
         scale: Double,
         spacing: Double,
         cruxRadius: Double,
-        offset: CartesianFrame.Offset
+        offset: CartesianFrame.Offset,
+        radii: Radii
     ) {
         self.plane = plane
         self.diameter = diameter
@@ -80,21 +102,24 @@ public struct DirectionPad {
         self.spacing = spacing
         self.cruxRadius = cruxRadius
         self.offset = offset
+        self.radii = radii
     }
 
     public init(
         size: Size,
         intrinsicSize: Size,
         intrinsicCruxSize: Size = Crux.intrinsicSize,
-        intrinsicSpacing: Double = Self.intrinsicSpacing,
-        intrinsicOffset: CartesianFrame.Offset = .zero
+        intrinsicSpacing: Double = Scaler.intrinsicSpacing,
+        intrinsicOffset: CartesianFrame.Offset = .zero,
+        layout: Layout = .standard
     ) {
         self = Self.make(
             size: size,
             intrinsicSize: intrinsicSize,
             intrinsicCruxSize: intrinsicCruxSize,
             intrinsicSpacing: intrinsicSpacing,
-            intrinsicOffset: intrinsicOffset
+            intrinsicOffset: intrinsicOffset,
+            layout: layout
         )
     }
 
@@ -102,8 +127,9 @@ public struct DirectionPad {
         scale: Double,
         intrinsicSize: Size,
         intrinsicCruxSize: Size = Crux.intrinsicSize,
-        intrinsicSpacing: Double = Self.intrinsicSpacing,
-        intrinsicOffset: CartesianFrame.Offset = .zero
+        intrinsicSpacing: Double = Scaler.intrinsicSpacing,
+        intrinsicOffset: CartesianFrame.Offset = .zero,
+        layout: Layout = .standard
     ) {
         let size = Size(width: intrinsicSize.width * scale, height: intrinsicSize.height * scale)
         self = Self.make(
@@ -111,10 +137,12 @@ public struct DirectionPad {
             intrinsicSize: intrinsicSize,
             intrinsicCruxSize: intrinsicCruxSize,
             intrinsicSpacing: intrinsicSpacing,
-            intrinsicOffset: intrinsicOffset
+            intrinsicOffset: intrinsicOffset,
+            layout: layout
         )
     }
 
+    @available(*, deprecated, renamed: "radii")
     public func radii(layout: Layout, dPadRadius: Radius) -> Radii {
         let firstRingInteriorRadius = (dPadRadius * scale) + spacing
         let firstRingExteriorRadius = firstRingInteriorRadius + (80.0 * scale)
@@ -167,22 +195,3 @@ public struct DirectionPad {
         )
     }
 }
-
-#if canImport(SwiftUI)
-public extension DirectionPad {
-    func dPadView(action: @escaping (CartesianIdentifier) -> Void) -> some View {
-        DPadView(
-            scale: scale,
-            action: action
-        )
-        .frame(
-            width: DPadView.intrinsicSize.width * scale,
-            height: DPadView.intrinsicSize.height * scale
-        )
-        .position(
-            x: plane.midX + offset.x,
-            y: plane.midY + offset.y
-        )
-    }
-}
-#endif

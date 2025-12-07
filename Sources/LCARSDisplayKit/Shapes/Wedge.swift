@@ -58,28 +58,4 @@ public struct Wedge: Hashable, Sendable {
             endingDegree: sector.end
         )
     }
-
-    @available(*, deprecated)
-    public init(
-        identifier: CartesianIdentifier?,
-        exteriorArc: Arc = Arc()
-    ) {
-        self.exteriorArc = exteriorArc
-    }
-
-    @available(*, deprecated)
-    public init(
-        identifier: CartesianIdentifier?,
-        sector: Sector,
-        radius: Radius
-    ) {
-        exteriorArc = Arc(
-            radius: radius,
-            startingDegree: sector.start,
-            endingDegree: sector.end
-        )
-    }
-
-    @available(*, deprecated, message: "Use `WedgeControl`")
-    public var identifier: CartesianIdentifier? { nil }
 }

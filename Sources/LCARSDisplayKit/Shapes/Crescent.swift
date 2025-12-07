@@ -18,16 +18,4 @@ public struct Crescent: Hashable, Sendable {
         self.interiorArc = interiorArc
         self.exteriorArc = exteriorArc
     }
-
-    @available(*, deprecated)
-    public init(
-        identifier: CartesianIdentifier?,
-        interiorArc: Arc = Arc(),
-        exteriorArc: Arc = Arc()
-    ) {
-        self.interiorArc = interiorArc
-        self.exteriorArc = exteriorArc
-    }
-
-    public var identifier: CartesianIdentifier? { nil }
 }
