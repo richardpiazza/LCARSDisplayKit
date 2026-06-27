@@ -36,7 +36,7 @@ public struct CartesianValues {
         intrinsicOffset: CartesianFrame.Offset = .zero,
         layout: Layout = .standard
     ) -> CartesianValues {
-        let (scaledSize, scale) = Scaler.scale(from: intrinsicSize, to: size)
+        let (scaledSize, scale) = intrinsicSize.aspectFit(to: size)
         let plane = CartesianPlane(origin: .zero, size: scaledSize)
         let diameter = min(scaledSize.width, scaledSize.height)
         let radius = diameter / 2.0

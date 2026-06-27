@@ -12,11 +12,13 @@ public enum Scaler {
     /// - intrinsicSize: The default `Size` at which an element was designed.
     /// - providedSize: The space available/provided for presentation
     /// - returns: The proposed `Size` and scale ratio to the default intrinsic size.
+    @available(*, deprecated, renamed: "Size.aspectFit(to:)")
     public static func scale(
         from intrinsicSize: Size,
         to providedSize: Size
     ) -> (size: Size, scale: Double) {
-        // TODO: There _must_ be a better way or formula for this.
+        // ~~TODO: There _must_ be a better way or formula for this.~~
+        // There is... it's called aspect fit.
         let scaledSize: Size
         let scale: Double
 
@@ -97,5 +99,35 @@ public enum Scaler {
         }
 
         return (scaledSize, scale)
+    }
+}
+
+public extension Size {
+    /// Scaling calculations to fully fit the instance in the provided `Size`.
+    ///
+    /// This is commonly known as an 'Aspect Fit' scaling algorithm in which the
+    /// minimum scale (for both width and height) is used to calculate a new
+    /// output size.
+    ///
+    /// - parameters:
+    ///   - to: The `Size` in which this instance should be scaled to fit.
+    /// - returns: The new `Size` and ratio (`Double`) used to calculate that size.
+    func aspectFit(to: Size) -> (size: Size, scale: Double) {
+        let sourceWidth = self.width
+        let sourceHeight = self.height
+        let targetWidth = to.width
+        let targetHeight = to.height
+        
+        let scaleWidth = targetWidth / sourceWidth
+        let scaleHeight = targetHeight / sourceHeight
+        
+        let scale = min(scaleWidth, scaleHeight)
+        
+        let size = Size(
+            width: sourceWidth * scale,
+            height: sourceHeight * scale,
+        )
+        
+        return (size, scale)
     }
 }

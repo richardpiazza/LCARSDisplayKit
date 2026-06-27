@@ -16,11 +16,9 @@ struct SystemDisplay: View {
     init(
         size value: Size = Self.intrinsicSize
     ) {
-        (size, scale) = Scaler.scale(from: Self.intrinsicSize, to: value)
-        (_, clusterScale) = Scaler.scale(
-            from: DPadClusterView.intrinsicSize,
-            to: Size(width: 760 * scale, height: 760 * scale)
-        )
+        (size, scale) = Self.intrinsicSize.aspectFit(to: value)
+        let clusterSize = Size(width: 760 * scale, height: 760 * scale)
+        (_, clusterScale) = DPadClusterView.intrinsicSize.aspectFit(to: clusterSize)
     }
 
     var body: some View {
@@ -304,14 +302,18 @@ struct SystemDisplay: View {
 }
 
 #Preview {
-    GeometryReader { geometry in
-//        SystemDisplay()
-        SystemDisplay(size: Size(geometry.size))
-            .border(.red, width: 2)
-    }
+    SystemDisplay()
+        .border(.red, width: 2)
 }
 
 #Preview {
     SystemDisplay(size: Size(width: 1200, height: 720))
         .border(.red, width: 2)
+}
+
+#Preview {
+    GeometryReader { geometry in
+        SystemDisplay(size: Size(geometry.size))
+            .border(.red, width: 2)
+    }
 }

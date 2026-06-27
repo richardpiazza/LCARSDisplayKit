@@ -7,6 +7,6 @@ public protocol SizeConvertible {
 
 public extension SizeConvertible {
     static func scale(to size: Size) -> (size: Size, scale: Double) {
-        Scaler.scale(from: intrinsicSize, to: size)
+        intrinsicSize.aspectFit(to: size)
     }
 }
