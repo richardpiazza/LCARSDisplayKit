@@ -4,15 +4,15 @@ import Swift2D
 import SwiftUI
 
 struct SystemDisplay: View {
-
+    
     static let intrinsicSize: Size = Size(width: 1760, height: 960)
-
+    
     var size: Size
     var scale: Double
     var clusterScale: Double
-
+    
     @Environment(\.theme) private var theme
-
+    
     init(
         size value: Size = Self.intrinsicSize
     ) {
@@ -20,24 +20,192 @@ struct SystemDisplay: View {
         let clusterSize = Size(width: 760 * scale, height: 760 * scale)
         (_, clusterScale) = DPadClusterView.intrinsicSize.aspectFit(to: clusterSize)
     }
-
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
             DPadClusterView(scale: clusterScale)
                 .position(x: 400 * scale, y: 640 * scale)
-
+            
             chrome
-
+            
             fork
                 .foregroundStyle(theme.color(for: .quaternaryLight))
-
+            
+            forkControls(
+                obroundSize: Obround.intrinsicSize.scale(by: clusterScale),
+            )
+            
+            scalers
+        }
+        .frame(width: size.width, height: size.height)
+    }
+    
+    private var chrome: some View {
+        ZStack(alignment: .topLeading) {
             ObroundView(
-                size: Obround.intrinsicSize.scale(by: clusterScale),
+                size: Size(width: 210 * scale, height: 300 * scale),
+                roundTrailing: false,
+                rounding: .quarter,
+                title: "One"
+            )
+            .position(x: 110 * scale, y: 150 * scale)
+            .foregroundStyle(theme.color(for: .quaternaryLight))
+            
+            ObroundView(
+                size: Size(width: 360 * scale, height: 300 * scale),
                 roundLeading: false,
-                roundTrailing: false
+                roundTrailing: false,
+                rounding: .quarter,
+                title: "Two"
+            )
+            .position(x: 410 * scale, y: 150 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ElbowView(
+                size: Size(width: 280 * scale, height: 450 * scale),
+                alignment: .topRight,
+                interiorRounding: nil,
+                bodyHeight: 300 * scale,
+                stemWidth: 80 * scale,
+                title: "Three"
+            )
+            .position(x: 745 * scale, y: 225 * scale)
+            .foregroundStyle(theme.color(for: .quaternaryLight))
+            
+            ElbowView(
+                size: Size(width: 140 * scale, height: 150 * scale),
+                alignment: .topLeft,
+                exteriorRounding: nil,
+                interiorRounding: nil,
+                bodyHeight: 25 * scale,
+                stemWidth: 80 * scale,
+                closedHeight: 25 * scale,
+                title: "Four"
+            )
+            .position(x: 875 * scale, y: 535 * scale)
+            .foregroundStyle(theme.color(for: .quaternaryLight))
+            
+            ElbowView(
+                size: Size(width: 140 * scale, height: 340 * scale),
+                alignment: .bottomLeft,
+                interiorRounding: nil,
+                bodyHeight: 180 * scale,
+                stemWidth: 80 * scale,
+                title: "Five"
+            )
+            .position(x: 875 * scale, y: 790 * scale)
+            .foregroundStyle(theme.color(for: .quaternaryLight))
+            
+            ObroundView(
+                size: Size(width: 280 * scale, height: 180 * scale),
+                roundLeading: false,
+                roundTrailing: false,
+                title: "Six"
+            )
+            .position(x: 1100 * scale, y: 870 * scale)
+            .foregroundStyle(theme.color(for: .primaryMedium))
+            
+            ObroundView(
+                size: Size(width: 300 * scale, height: 54 * scale),
+                roundLeading: false,
+                roundTrailing: false,
+                title: "Seven"
+            )
+            .position(x: 1400 * scale, y: 807 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ObroundView(
+                size: Size(width: 300 * scale, height: 54 * scale),
+                roundLeading: false,
+                roundTrailing: false,
+                title: "Eight"
+            )
+            .position(x: 1400 * scale, y: 870 * scale)
+            .foregroundStyle(theme.color(for: .tertiaryMedium))
+            
+            ObroundView(
+                size: Size(width: 300 * scale, height: 54 * scale),
+                roundLeading: false,
+                roundTrailing: false,
+                title: "Nine"
+            )
+            .position(x: 1400 * scale, y: 933 * scale)
+            .foregroundStyle(theme.color(for: .secondaryDark))
+            
+            ObroundView(
+                size: Size(width: 195 * scale, height: 180 * scale),
+                roundLeading: false,
+                rounding: .quarter,
+                title: "Ten"
+            )
+            .position(x: 1660 * scale, y: 870 * scale)
+            .foregroundStyle(theme.color(for: .quaternaryLight))
+        }
+    }
+    
+    private var fork: some View {
+        ZStack(alignment: .topLeading) {
+            Rectangle()
+                .frame(width: 100 * scale, height: 25 * scale)
+                .position(x: 1008 * scale, y: 472 * scale)
+            
+            Rectangle()
+                .frame(width: 100 * scale, height: 25 * scale)
+                .position(x: 1008 * scale, y: 598 * scale)
+            
+            Rectangle()
+                .frame(width: 140 * scale, height: 25 * scale)
+                .position(x: 1138 * scale, y: 472 * scale)
+            
+            Rectangle()
+                .frame(width: 140 * scale, height: 25 * scale)
+                .position(x: 1138 * scale, y: 598 * scale)
+            
+            Rectangle()
+                .frame(width: 100 * scale, height: 25 * scale)
+                .position(x: 1268 * scale, y: 472 * scale)
+            
+            Rectangle()
+                .frame(width: 100 * scale, height: 25 * scale)
+                .position(x: 1268 * scale, y: 598 * scale)
+            
+            Rectangle()
+                .frame(width: 140 * scale, height: 25 * scale)
+                .position(x: 1398 * scale, y: 472 * scale)
+            
+            Rectangle()
+                .frame(width: 140 * scale, height: 25 * scale)
+                .position(x: 1398 * scale, y: 598 * scale)
+            
+            Rectangle()
+                .frame(width: 100 * scale, height: 25 * scale)
+                .position(x: 1528 * scale, y: 472 * scale)
+            
+            Rectangle()
+                .frame(width: 100 * scale, height: 25 * scale)
+                .position(x: 1528 * scale, y: 598 * scale)
+            
+            Rectangle()
+                .frame(width: 160 * scale, height: 25 * scale)
+                .position(x: 1668 * scale, y: 472 * scale)
+            
+            Rectangle()
+                .frame(width: 160 * scale, height: 25 * scale)
+                .position(x: 1668 * scale, y: 598 * scale)
+        }
+    }
+    
+    private func forkControls(obroundSize: Size) -> some View {
+        ZStack(alignment: .topLeading) {
+            // Row 1
+            ObroundView(
+                size: obroundSize,
+                roundLeading: false,
+                roundTrailing: false,
             )
             .position(x: 1030 * scale, y: 535 * scale)
-
+            .foregroundStyle(theme.color(for: .primaryLight))
+            
             ObroundView(
                 size: Size(
                     width: 30,
@@ -47,256 +215,209 @@ struct SystemDisplay: View {
                 roundTrailing: false
             )
             .position(x: 1205 * scale, y: 535 * scale)
-
+            .foregroundStyle(theme.color(for: .primaryLight))
+            
             Text(" 44")
                 .font(.lcars(size: 65, scale: scale))
                 .position(x: 1265 * scale, y: 537 * scale)
-
+                .foregroundStyle(theme.color(for: .secondaryLight))
+            
             ObroundView(
-                size: Obround.intrinsicSize.scale(by: clusterScale),
+                size: obroundSize,
                 roundLeading: false
             )
             .position(x: 1375 * scale, y: 535 * scale)
-
+            .foregroundStyle(theme.color(for: .secondaryDark))
+            
+            ObroundView(size: obroundSize)
+                .position(x: 1685 * scale, y: 535 * scale)
+                .foregroundStyle(theme.color(for: .tertiaryLight))
+            
+            // Row 2
             ObroundView(
-                size: Obround.intrinsicSize.scale(by: clusterScale)
-            )
-            .position(x: 1530 * scale, y: 535 * scale)
-
-            ObroundView(
-                size: Obround.intrinsicSize.scale(by: clusterScale)
-            )
-            .position(x: 1685 * scale, y: 535 * scale)
-
-            ObroundView(
-                size: Obround.intrinsicSize.scale(by: clusterScale),
+                size: obroundSize,
                 roundLeading: false,
                 roundTrailing: false
             )
             .position(x: 1030 * scale, y: 665 * scale)
-
+            .foregroundStyle(theme.color(for: .primaryDark))
+            
+            Text(" 17")
+                .font(.lcars(size: 65, scale: scale))
+                .position(x: 1265 * scale, y: 667 * scale)
+                .foregroundStyle(theme.color(for: .primaryMedium))
+            
             ObroundView(
-                size: Obround.intrinsicSize.scale(by: clusterScale),
+                size: obroundSize,
+                roundLeading: false
+            )
+            .position(x: 1375 * scale, y: 665 * scale)
+            .foregroundStyle(theme.color(for: .primaryMedium))
+            
+            ObroundView(size: obroundSize)
+                .position(x: 1530 * scale, y: 665 * scale)
+                .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ObroundView(size: obroundSize)
+                .position(x: 1685 * scale, y: 665 * scale)
+                .foregroundStyle(theme.color(for: .primaryDark))
+            
+            // Row 3
+            ObroundView(
+                size: obroundSize,
                 roundLeading: false,
                 roundTrailing: false
             )
             .position(x: 1030 * scale, y: 735 * scale)
-        }
-        .frame(width: size.width, height: size.height)
-    }
-
-    private var chrome: some View {
-        ZStack(alignment: .topLeading) {
-            ObroundView(
-                size: Size(
-                    width: 210 * scale,
-                    height: 300 * scale
-                ),
-                roundTrailing: false,
-                rounding: .quarter,
-                title: "One"
-            )
-            .position(
-                x: 110 * scale,
-                y: 150 * scale
-            )
-            .foregroundStyle(theme.color(for: .quaternaryLight))
-
-            ObroundView(
-                size: Size(
-                    width: 360 * scale,
-                    height: 300 * scale
-                ),
-                roundLeading: false,
-                roundTrailing: false,
-                rounding: .quarter,
-                title: "Two"
-            )
-            .position(
-                x: 410 * scale,
-                y: 150 * scale
-            )
-            .foregroundStyle(theme.color(for: .secondaryLight))
-
-            ElbowView(
-                size: Size(
-                    width: 280 * scale,
-                    height: 450 * scale
-                ),
-                alignment: .topRight,
-                interiorRounding: nil,
-                bodyHeight: 300 * scale,
-                stemWidth: 80 * scale,
-                title: "Three"
-            )
-            .position(
-                x: 745 * scale,
-                y: 225 * scale
-            )
-            .foregroundStyle(theme.color(for: .quaternaryLight))
-
-            ElbowView(
-                size: Size(
-                    width: 140 * scale,
-                    height: 150 * scale
-                ),
-                alignment: .topLeft,
-                exteriorRounding: nil,
-                interiorRounding: nil,
-                bodyHeight: 25 * scale,
-                stemWidth: 80 * scale,
-                closedHeight: 25 * scale,
-                title: "Four"
-            )
-            .position(
-                x: 875 * scale,
-                y: 535 * scale
-            )
-            .foregroundStyle(theme.color(for: .quaternaryLight))
-
-            ElbowView(
-                size: Size(
-                    width: 140 * scale,
-                    height: 340 * scale
-                ),
-                alignment: .bottomLeft,
-                interiorRounding: nil,
-                bodyHeight: 180 * scale,
-                stemWidth: 80 * scale,
-                title: "Five"
-            )
-            .position(
-                x: 875 * scale,
-                y: 790 * scale
-            )
-            .foregroundStyle(theme.color(for: .quaternaryLight))
-
-            ObroundView(
-                size: Size(
-                    width: 280 * scale,
-                    height: 180 * scale
-                ),
-                roundLeading: false,
-                roundTrailing: false,
-                title: "Six"
-            )
-            .position(
-                x: 1100 * scale,
-                y: 870 * scale
-            )
-            .foregroundStyle(theme.color(for: .primaryMedium))
-
-            ObroundView(
-                size: Size(
-                    width: 300 * scale,
-                    height: 54 * scale
-                ),
-                roundLeading: false,
-                roundTrailing: false,
-                title: "Seven"
-            )
-            .position(
-                x: 1400 * scale,
-                y: 807 * scale
-            )
-            .foregroundStyle(theme.color(for: .secondaryLight))
-
-            ObroundView(
-                size: Size(
-                    width: 300 * scale,
-                    height: 54 * scale
-                ),
-                roundLeading: false,
-                roundTrailing: false,
-                title: "Eight"
-            )
-            .position(
-                x: 1400 * scale,
-                y: 870 * scale
-            )
-            .foregroundStyle(theme.color(for: .tertiaryMedium))
-
-            ObroundView(
-                size: Size(
-                    width: 300 * scale,
-                    height: 54 * scale
-                ),
-                roundLeading: false,
-                roundTrailing: false,
-                title: "Nine"
-            )
-            .position(
-                x: 1400 * scale,
-                y: 933 * scale
-            )
             .foregroundStyle(theme.color(for: .secondaryDark))
-
+            
             ObroundView(
                 size: Size(
-                    width: 195 * scale,
-                    height: 180 * scale
+                    width: 30,
+                    height: Obround.intrinsicSize.height * scale
                 ),
                 roundLeading: false,
-                rounding: .quarter,
-                title: "Ten"
+                roundTrailing: false
             )
-            .position(
-                x: 1660 * scale,
-                y: 870 * scale
-            )
-            .foregroundStyle(theme.color(for: .quaternaryLight))
+            .position(x: 1205 * scale, y: 735 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            Text("583")
+                .font(.lcars(size: 65, scale: scale))
+                .position(x: 1265 * scale, y: 737 * scale)
+                .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ObroundView(size: obroundSize)
+                .position(x: 1530 * scale, y: 735 * scale)
+                .foregroundStyle(theme.color(for: .primaryLight))
+            
+            ObroundView(size: obroundSize)
+                .position(x: 1685 * scale, y: 735 * scale)
+                .foregroundStyle(theme.color(for: .secondaryLight))
         }
     }
-
-    private var fork: some View {
+    
+    private var scalers: some View {
         ZStack(alignment: .topLeading) {
-            Rectangle()
-                .frame(width: 100 * scale, height: 25 * scale)
-                .position(x: 1008 * scale, y: 472 * scale)
-
-            Rectangle()
-                .frame(width: 100 * scale, height: 25 * scale)
-                .position(x: 1008 * scale, y: 598 * scale)
-
-            Rectangle()
-                .frame(width: 140 * scale, height: 25 * scale)
-                .position(x: 1138 * scale, y: 472 * scale)
-
-            Rectangle()
-                .frame(width: 140 * scale, height: 25 * scale)
-                .position(x: 1138 * scale, y: 598 * scale)
-
-            Rectangle()
-                .frame(width: 100 * scale, height: 25 * scale)
-                .position(x: 1268 * scale, y: 472 * scale)
-
-            Rectangle()
-                .frame(width: 100 * scale, height: 25 * scale)
-                .position(x: 1268 * scale, y: 598 * scale)
-
-            Rectangle()
-                .frame(width: 140 * scale, height: 25 * scale)
-                .position(x: 1398 * scale, y: 472 * scale)
-
-            Rectangle()
-                .frame(width: 140 * scale, height: 25 * scale)
-                .position(x: 1398 * scale, y: 598 * scale)
-
-            Rectangle()
-                .frame(width: 100 * scale, height: 25 * scale)
-                .position(x: 1528 * scale, y: 472 * scale)
-
-            Rectangle()
-                .frame(width: 100 * scale, height: 25 * scale)
-                .position(x: 1528 * scale, y: 598 * scale)
-
-            Rectangle()
-                .frame(width: 160 * scale, height: 25 * scale)
-                .position(x: 1668 * scale, y: 472 * scale)
-
-            Rectangle()
-                .frame(width: 160 * scale, height: 25 * scale)
-                .position(x: 1668 * scale, y: 598 * scale)
+            GaugeView(
+                scale: scale,
+                color: theme.color(for: .secondaryLight),
+            )
+            .position(x: 1008 * scale, y: 265 * scale)
+            
+            ObroundView(
+                size: Size(
+                    width: (Obround.intrinsicSize.width - 10) * scale,
+                    height: Obround.intrinsicSize.height * scale
+                ),
+                roundLeading: false
+            )
+            .position(x: 1135 * scale, y: 125 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ObroundView(
+                size: Size(
+                    width: (Obround.intrinsicSize.width - 10) * scale,
+                    height: Obround.intrinsicSize.height * scale
+                ),
+                roundLeading: false
+            )
+            .position(x: 1135 * scale, y: 220 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ObroundView(
+                size: Size(
+                    width: (Obround.intrinsicSize.width - 10) * scale,
+                    height: Obround.intrinsicSize.height * scale
+                ),
+                roundLeading: false
+            )
+            .position(x: 1135 * scale, y: 405 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            GaugeView(
+                scale: scale,
+                capSteps: 3,
+                color: theme.color(for: .primaryLight),
+            )
+            .position(x: 1268 * scale, y: 265 * scale)
+            
+            ObroundView(
+                size: Size(
+                    width: (Obround.intrinsicSize.width - 10) * scale,
+                    height: Obround.intrinsicSize.height * scale
+                ),
+                roundLeading: false
+            )
+            .position(x: 1395 * scale, y: 125 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ObroundView(
+                size: Size(
+                    width: (Obround.intrinsicSize.width - 10) * scale,
+                    height: Obround.intrinsicSize.height * scale
+                ),
+                roundLeading: false
+            )
+            .position(x: 1395 * scale, y: 220 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ObroundView(
+                size: Size(
+                    width: (Obround.intrinsicSize.width - 10) * scale,
+                    height: Obround.intrinsicSize.height * scale
+                ),
+                roundLeading: false
+            )
+            .position(x: 1395 * scale, y: 310 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ObroundView(
+                size: Size(
+                    width: (Obround.intrinsicSize.width - 10) * scale,
+                    height: Obround.intrinsicSize.height * scale
+                ),
+                roundLeading: false
+            )
+            .position(x: 1395 * scale, y: 405 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            GaugeView(
+                scale: scale,
+                value: 0.35,
+                color: theme.color(for: .secondaryLight),
+            )
+            .position(x: 1528 * scale, y: 265 * scale)
+            
+            ObroundView(
+                size: Size(
+                    width: (Obround.intrinsicSize.width - 10) * scale,
+                    height: Obround.intrinsicSize.height * scale
+                ),
+                roundLeading: false
+            )
+            .position(x: 1655 * scale, y: 125 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ObroundView(
+                size: Size(
+                    width: (Obround.intrinsicSize.width - 10) * scale,
+                    height: Obround.intrinsicSize.height * scale
+                ),
+                roundLeading: false
+            )
+            .position(x: 1655 * scale, y: 310 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
+            
+            ObroundView(
+                size: Size(
+                    width: (Obround.intrinsicSize.width - 10) * scale,
+                    height: Obround.intrinsicSize.height * scale
+                ),
+                roundLeading: false
+            )
+            .position(x: 1655 * scale, y: 405 * scale)
+            .foregroundStyle(theme.color(for: .secondaryLight))
         }
     }
 }
